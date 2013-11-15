@@ -270,7 +270,6 @@ class nggOptions {
 			jQuery(fileid).css("background-color", '#' + color );
 		};
 	</script>
-	<?php include('templates/social_media_buttons.php'); ?>
 	<div id="slider" class="wrap" style="display: none;">
         <ul id="tabs">
             <?php

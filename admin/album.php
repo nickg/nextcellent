@@ -277,7 +277,6 @@ function showDialog() {
 </script>
 
 <div class="wrap album" id="wrap" >
-	<?php include('templates/social_media_buttons.php'); ?>
     <?php screen_icon( 'nextgen-gallery' ); ?>
 	<h2><?php esc_html_e('Manage Albums', 'nggallery') ?></h2>
 	<form id="selectalbum" method="POST" onsubmit="ngg_serialize()" accept-charset="utf-8">

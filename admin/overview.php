@@ -11,7 +11,6 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 function nggallery_admin_overview()  {
 	?>
 	<div class="wrap ngg-wrap">
-		<?php include('templates/social_media_buttons.php'); ?>
         <?php screen_icon( 'nextgen-gallery' ); ?>
 		<h2><?php _e('NextCellent Gallery Overview', 'nggallery') ?></h2>
         <?php if (version_compare(PHP_VERSION, '5.0.0', '<')) ngg_check_for_PHP5(); ?>

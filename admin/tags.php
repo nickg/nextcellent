@@ -95,7 +95,6 @@ if ($nb_tags < $tag_count && $offset>0) {
 </style>
 
 <div class="wrap ngg_wrap">
-	<?php include('templates/social_media_buttons.php'); ?>
     <?php screen_icon( 'nextgen-gallery' ); ?>
 	<h2><?php _e('Manage image tags', 'nggallery'); ?></h2>
 

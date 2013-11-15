@@ -6,7 +6,6 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 	?>
 
 	<div class="wrap">
-	<?php include('templates/social_media_buttons.php'); ?>
     <?php screen_icon( 'nextgen-gallery' ); ?>
 	<h2><?php _e('Copyright notes / Credits', 'nggallery') ;?></h2>
 	<div id="poststuff">
