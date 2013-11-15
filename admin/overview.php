@@ -789,7 +789,7 @@ class nextcellent_overview {
             set_transient( 'ngg_related_plugins', $api, 60*60*24 ); //enable to check within a day.
         }
 
-        echo '<div style="margin-bottom:10px;padding:8px;font-size:110%;background:#eebbaa;"><b>Note</b>: third parties plugins compatible with NGG. Be aware that NextCellent cannot provide 100% compatibility with it</div>';
+        echo '<div style="margin-bottom:10px;padding:8px;font-size:110%;background:#eebbaa;"><b>'; _e('Pay attention','nggallery'); echo '</b>:'; _e('third parties plugins that are compatible with NGG may not be 100% compatible with NextCellent Gallery!','nggallery'); echo '</div>';
         //List of suppressed plugin on the list.
         $blacklist = array('nextgen-gallery','nextcellent-gallery-nextgen-legacy');
 
@@ -825,7 +825,6 @@ class nextcellent_overview {
 
 }
 
-
     /**
      * Like Metabox over right
      */
@@ -844,22 +843,7 @@ class nextcellent_overview {
         $url = self::URL_WPGETREADY;
         echo "<li style='padding-left: 38px; background:transparent url(" . NGGALLERY_URLPATH . "admin/images/nextgen.png ) no-repeat scroll center left; background-position: 16px 50%; text-decoration: none;'><a href='{$url}' target='_blank'>";
         _e("Visit the plugin homepage", 'nggallery');
-        echo "</a></li>";
-/*
-        $url = 'http://www.nextgen-gallery.com/languages/';
-        echo "<li style='padding-left: 38px; background:transparent url(" . NGGALLERY_URLPATH . "admin/images/icon-translate.png ) no-repeat scroll center left; background-position: 16px 50%; text-decoration: none;'><a href='{$url}' target='_blank'>";
-        _e("Help translating it", 'nggallery');
-        echo "</a></li>";
-*/
-
-        echo '</ul>';
-
-        /*
-        echo '
-	<div class="social" style="text-align:center;margin:15px 0 10px 0;"><span class="social" style="margin-right:5px;"><a target="_blank" href="http://twitter.com/NextGENGallery"><img title="Follow NextGEN on Twitter" alt="Twitter" src="' . NGGALLERY_URLPATH . 'admin/images/twitter.png"></a></span><span class="social" style="margin-right:5px;"><a target="_blank" href="http://www.facebook.com/NextGENGallery"><img title="Like NextGEN on Facebook" alt="Facebook" src="' . NGGALLERY_URLPATH . 'admin/images/facebook.png"></a></span><span class="social"><a target="_blank" href="http://plus.google.com/101643895780935290171"><img title="Add NextGEN to your circles" alt="GooglePlus" src="' . NGGALLERY_URLPATH . 'admin/images/googleplus.png"></a></span></div>';
-        */
+        echo '</a></li></ul>';
     }
 }
-
-
 ?>
