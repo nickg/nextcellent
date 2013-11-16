@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NextGEN Gallery\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-15 21:29+0100\n"
-"PO-Revision-Date: 2013-11-15 21:30+0100\n"
+"POT-Creation-Date: 2013-11-16 19:02+0100\n"
+"PO-Revision-Date: 2013-11-16 19:03+0100\n"
 "Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: Alex Rabe\n"
 "Language: de_DE\n"
@@ -449,10 +449,9 @@ msgstr "Aktiviere Flash Batch Upload"
 #: ../admin/settings.php:287 ../admin/tinymce/window.php:51
 #: ../admin/tinymce/window.php:63 ../lib/rewrite.php:217
 #: ../lib/rewrite.php:226
+#, fuzzy
 msgid "Gallery"
-msgid_plural "Galleries"
-msgstr[0] "Galerie"
-msgstr[1] "Galerien"
+msgstr "Galerie"
 
 #: ../admin/admin.php:128 ../admin/admin.php:148 ../admin/admin.php:173
 #, fuzzy
@@ -1516,11 +1515,9 @@ msgid "Published a new post"
 msgstr "Veröffentliche einen neuen Beitrag"
 
 #: ../admin/manage.php:589
-#, php-format
+#, fuzzy
 msgid "1 item"
-msgid_plural "%s items"
-msgstr[0] "1 Element"
-msgstr[1] "%s Elemente"
+msgstr "1 Element"
 
 #: ../admin/media-upload.php:11
 #, fuzzy
@@ -1717,17 +1714,15 @@ msgid "At a Glance"
 msgstr "Übersicht"
 
 #: ../admin/overview.php:462
+#, fuzzy
 msgid "Image"
-msgid_plural "Images"
-msgstr[0] "Bild"
-msgstr[1] "Bilder"
+msgstr "Bild"
 
 #: ../admin/overview.php:474 ../admin/tinymce/window.php:52
 #: ../admin/tinymce/window.php:84 ../lib/rewrite.php:223
+#, fuzzy
 msgid "Album"
-msgid_plural "Albums"
-msgstr[0] "Album"
-msgstr[1] "Alben"
+msgstr "Album"
 
 #: ../admin/overview.php:483
 msgid "Upload pictures"
