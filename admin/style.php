@@ -83,7 +83,6 @@ if (!$error && filesize($real_file) > 0) {
 	});
 </script>
 <div class="wrap">
-
 	<div class="bordertitle">
         <?php screen_icon( 'nextgen-gallery' ); ?>
 		<h2><?php _e('Style Editor','nggallery') ?></h2>
@@ -135,7 +134,7 @@ if (!$error && filesize($real_file) > 0) {
 			<li><strong><?php _e('Version','nggallery') ?> :</strong> <?php echo $act_css_version ?></li>
 			<li><strong><?php _e('Description','nggallery') ?> :<br /></strong> <?php echo $act_css_description ?></li>
 		</ul>
-		<p><?php _e('Tip : Copy your stylesheet (nggallery.css) to your theme folder, so it will be not lost during a upgrade','nggallery') ?></p>
+		<p><?php _e('Tip: Copy your stylesheet (nggallery.css) to your theme folder, so it will be not lost during a upgrade','nggallery') ?></p>
 	<?php else: ?>
 		<p><?php _e('Your theme contain a NextCellent Gallery stylesheet (nggallery.css), this file will be used','nggallery') ?></p>
 	<?php endif; ?>
@@ -163,7 +162,7 @@ if (!$error && filesize($real_file) > 0) {
 		</form>
 		<?php
 		} else {
-			echo '<div class="error"><p>' . __('Oops, no such file exists! Double check the name and try again, merci.','nggallery') . '</p></div>';
+			echo '<div class="error"><p>' . __('Oops, no such file exists! Double check the name and try again.','nggallery') . '</p></div>';
 		}
 		?>
 	<div class="clear"> &nbsp; </div>

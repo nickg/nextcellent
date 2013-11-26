@@ -76,10 +76,10 @@ class nggAddGallery {
 
     	if ( isset($_POST['swf_callback']) ){
     		if ($_POST['galleryselect'] == '0' )
-    			nggGallery::show_error(__('No gallery selected !','nggallery'));
+    			nggGallery::show_error(__('You didn\'t select a gallery!','nggallery'));
     		else {
                 if ($_POST['swf_callback'] == '-1' )
-                    nggGallery::show_error( __('Upload failed! ','nggallery') );
+                    nggGallery::show_error( __('Upload failed!','nggallery') );
                 else {
                     $gallery = $nggdb->find_gallery( (int) $_POST['galleryselect'] );
                     nggAdmin::import_gallery( $gallery->path );
@@ -144,8 +144,10 @@ class nggAddGallery {
 
         $post_params_str = implode( ',', $p ). "\n";
 	?>
-
-	<?php include('templates/social_media_buttons.php'); ?>
+	<div class="wrap ngg-wrap">
+	<?php screen_icon( 'nextgen-gallery' ); ?>
+	<h2><?php _e('Add Gallery / Images', 'nggallery') ?></h2>
+	</div>
 
 	<?php if($ngg->options['swfUpload'] && !empty ($this->gallerylist) ) { ?>
     <?php if ( defined('IS_WP_3_3') ) { ?>
@@ -315,8 +317,7 @@ class nggAddGallery {
 	/* <![CDATA[ */
 		jQuery(document).ready(function(){
             jQuery('html,body').scrollTop(0);
-			jQuery('#slider').tabs({ fxFade: true, fxSpeed: 'fast' });
-            jQuery('#slider').css('display', 'block');
+			jQuery('#slider').tabs({ fxFade: true, fxSpeed: 'fast' }).css({ 'display': 'block', 'margin': '4px 15px 0 0' });
 		});
 
 		// File Tree implementation
@@ -337,7 +338,7 @@ class nggAddGallery {
         <ul id="tabs">
             <?php
         	foreach($tabs as $tab_key => $tab_name) {
-        	   echo "\n\t\t<li><a href='#$tab_key'>$tab_name</a></li>";
+        	   echo "\n\t\t<li><a class='nav-tab' href='#$tab_key'>$tab_name</a></li>";
             }
             ?>
 		</ul>
@@ -365,18 +366,18 @@ class nggAddGallery {
     function tabs_order() {
 
     	$tabs = array();
+		
+		if ( nggGallery::current_user_can( 'NextGEN Add new gallery' ))
+			$tabs['addgallery'] = __('New gallery', 'nggallery');
 
     	if ( !empty ($this->gallerylist) )
-    	   $tabs['uploadimage'] = __( 'Upload Images', 'nggallery' );
-
-        if ( nggGallery::current_user_can( 'NextGEN Add new gallery' ))
-    	   $tabs['addgallery'] = __('Add new gallery', 'nggallery');
+			$tabs['uploadimage'] = __( 'Images', 'nggallery' );
 
         if ( wpmu_enable_function('wpmuZipUpload') && nggGallery::current_user_can( 'NextGEN Upload a zip' ) )
-            $tabs['zipupload'] = __('Upload a Zip-File', 'nggallery');
+			$tabs['zipupload'] = __('ZIP file', 'nggallery');
 
         if ( wpmu_enable_function('wpmuImportFolder') && nggGallery::current_user_can( 'NextGEN Import image folder' ) )
-            $tabs['importfolder'] = __('Import image folder', 'nggallery');
+			$tabs['importfolder'] = __('Import folder', 'nggallery');
 
     	$tabs = apply_filters('ngg_addgallery_tabs', $tabs);
 
@@ -387,17 +388,17 @@ class nggAddGallery {
     function tab_addgallery() {
     ?>
 		<!-- create gallery -->
-		<h2><?php _e('Add new gallery', 'nggallery') ;?></h2>
+		<h3><?php _e('Add a new gallery', 'nggallery') ;?></h3>
 		<form name="addgallery" id="addgallery_form" method="POST" action="<?php echo $this->filepath; ?>" accept-charset="utf-8" >
 		<?php wp_nonce_field('ngg_addgallery') ?>
 			<table class="form-table">
 			<tr valign="top">
-				<th scope="row"><?php _e('New Gallery', 'nggallery') ;?>:</th>
+				<th scope="row"><?php _e('Name', 'nggallery') ;?>:</th>
 				<td><input type="text" size="35" name="galleryname" value="" /><br />
 				<?php if(!is_multisite()) { ?>
-				<?php _e('Create a new , empty gallery below the folder', 'nggallery') ;?>  <strong><?php echo $this->defaultpath ?></strong><br />
+				<?php _e('Create a new, empty gallery in the folder', 'nggallery') ;?>  <strong><?php echo $this->defaultpath ?></strong>
 				<?php } ?>
-				<i>( <?php _e('Allowed characters for file and folder names are', 'nggallery') ;?>: a-z, A-Z, 0-9, -, _ )</i></td>
+				<p class="description"><?php _e('Allowed characters for file and folder names are', 'nggallery') ;?>: a-z, A-Z, 0-9, -, _</p></td>
 			</tr>
 			<?php do_action('ngg_add_new_gallery_form'); ?>
 			</table>
@@ -409,20 +410,20 @@ class nggAddGallery {
     function tab_zipupload() {
     ?>
 		<!-- zip-file operation -->
-		<h2><?php _e('Upload a Zip-File', 'nggallery') ;?></h2>
+		<h3><?php _e('Upload a ZIP File', 'nggallery') ;?></h3>
 		<form name="zipupload" id="zipupload_form" method="POST" enctype="multipart/form-data" action="<?php echo $this->filepath.'#zipupload'; ?>" accept-charset="utf-8" >
 		<?php wp_nonce_field('ngg_addgallery') ?>
 			<table class="form-table">
 			<tr valign="top">
-				<th scope="row"><?php _e('Select Zip-File', 'nggallery') ;?>:</th>
-				<td><input type="file" name="zipfile" id="zipfile" size="35" class="uploadform"/><br />
-				<?php _e('Upload a zip file with images', 'nggallery') ;?></td>
+				<th scope="row"><?php _e('Select ZIP file', 'nggallery') ;?>:</th>
+				<td><input type="file" name="zipfile" id="zipfile" size="35" class="uploadform"/><p class="description">
+				<?php _e('Upload a ZIP file with images', 'nggallery') ;?></p></td>
 			</tr>
 			<?php if (function_exists('curl_init')) : ?>
 			<tr valign="top">
-				<th scope="row"><?php _e('or enter a Zip-File URL', 'nggallery') ;?>:</th>
-				<td><input type="text" name="zipurl" id="zipurl" size="35" class="uploadform"/><br />
-				<?php _e('Import a zip file with images from a url', 'nggallery') ;?></td>
+				<th scope="row"><?php _e('or enter URL', 'nggallery') ;?>:</th>
+				<td><input type="text" name="zipurl" id="zipurl" size="35" class="uploadform"/>
+				<p class="description"><?php _e('Import a ZIP file from a URL', 'nggallery') ;?></p></td>
 			</tr>
 			<?php endif; ?>
 			<tr valign="top">
@@ -439,7 +440,7 @@ class nggAddGallery {
 				?>
 				</select>
 				<br /><?php echo $this->maxsize; ?>
-				<br /><?php echo _e('Note : The upload limit on your server is ','nggallery') . "<strong>" . ini_get('upload_max_filesize') . "Byte</strong>\n"; ?>
+				<p class="description"><?php echo _e('Note: the upload limit on your server is ','nggallery') . "<strong>" . ini_get('upload_max_filesize') . "B</strong>\n"; ?></p>
 				<br /><?php if ( (is_multisite()) && wpmu_enable_function('wpmuQuotaCheck') ) display_space_usage(); ?></td>
 			</tr>
 			</table>
@@ -451,17 +452,17 @@ class nggAddGallery {
     function tab_importfolder() {
     ?>
 	<!-- import folder -->
-	<h2><?php _e('Import image folder', 'nggallery') ;?></h2>
+	<h3><?php _e('Import an image folder', 'nggallery') ;?></h3>
 		<form name="importfolder" id="importfolder_form" method="POST" action="<?php echo $this->filepath.'#importfolder'; ?>" accept-charset="utf-8" >
 		<?php wp_nonce_field('ngg_addgallery') ?>
 			<table class="form-table">
 			<tr valign="top">
-				<th scope="row"><?php _e('Import from Server path:', 'nggallery') ;?></th>
+				<th scope="row"><?php _e('Import from server:', 'nggallery') ;?></th>
 				<td><input type="text" size="35" id="galleryfolder" name="galleryfolder" value="<?php echo $this->defaultpath; ?>" /><span class="browsefiles button" style="display:none"><?php _e('Browse...', 'nggallery'); ?></span><br />
 				<div id="file_browser"></div>
-				<br /><i>( <?php _e('Note : Change the default path in the gallery settings', 'nggallery') ;?> )</i>
+				<p class="description"><?php _e('Note: you can change the default path in the gallery settings', 'nggallery') ;?></p>
 				<br /><?php echo $this->maxsize; ?>
-				<?php if (SAFE_MODE) {?><br /><?php _e(' Please note : For safe-mode = ON you need to add the subfolder thumbs manually', 'nggallery') ;?><?php }; ?></td>
+				<?php if (SAFE_MODE) {?><p class="description"><?php _e('Please note: If safe-mode is ON, you need to add the subfolder with thumbs manually', 'nggallery') ;?></p><?php }; ?></td>
 			</tr>
 			</table>
 			<div class="submit"><input class="button-primary" type="submit" name= "importfolder" value="<?php _e('Import folder', 'nggallery') ;?>"/></div>
@@ -475,7 +476,7 @@ class nggAddGallery {
         $checked = get_user_setting('ngg_upload_resize') ? ' checked="true"' : '';
     ?>
     	<!-- upload images -->
-    	<h2><?php _e('Upload Images', 'nggallery') ;?></h2>
+    	<h3><?php _e('Upload images', 'nggallery') ;?></h3>
 		<form name="uploadimage" id="uploadimage_form" method="POST" enctype="multipart/form-data" action="<?php echo $this->filepath.'#uploadimage'; ?>" accept-charset="utf-8" >
 		<?php wp_nonce_field('ngg_addgallery') ?>
 			<table class="form-table">
@@ -495,7 +496,6 @@ class nggAddGallery {
                         <?php printf( __( 'Scale images to max width %1$dpx or max height %2$dpx', 'nggallery' ), (int) $ngg->options['imgWidth' ], (int) $ngg->options[ 'imgHeight' ] ); ?>
                         </label>
                     </p>
-
                  </div>
                 </td>
                 <?php } else { ?>
@@ -508,7 +508,6 @@ class nggAddGallery {
 				<option value="0" ><?php _e('Choose gallery', 'nggallery') ?></option>
 				<?php
 					foreach($this->gallerylist as $gallery) {
-
 						//special case : we check if a user has this cap, then we override the second cap check
 						if ( !current_user_can( 'NextGEN Upload in all galleries' ) )
 							if ( !nggAdmin::can_manage_this_gallery($gallery->author) )
@@ -524,9 +523,9 @@ class nggAddGallery {
 			</table>
 			<div class="submit">
 				<?php if ($ngg->options['swfUpload']) { ?>
-				<input type="submit" name="disable_flash" id="disable_flash" title="<?php _e('The batch upload requires Adobe Flash 10, disable it if you have problems','nggallery') ?>" value="<?php _e('Disable flash upload', 'nggallery') ;?>" />
+				<input class="button action" type="submit" name="disable_flash" id="disable_flash" title="<?php _e('The batch upload requires Adobe Flash 10, disable it if you have problems','nggallery') ?>" value="<?php _e('Disable flash upload', 'nggallery') ;?>" />
 				<?php } else { ?>
-				<input type="submit" name="enable_flash" id="enable_flash" title="<?php _e('Upload multiple files at once by ctrl/shift-selecting in dialog','nggallery') ?>" value="<?php _e('Enable flash based upload', 'nggallery') ;?>" />
+				<input class="button action" type="submit" name="enable_flash" id="enable_flash" title="<?php _e('Upload multiple files at once by ctrl/shift-selecting in dialog','nggallery') ?>" value="<?php _e('Enable flash based upload', 'nggallery') ;?>" />
 				<?php } ?>
 				<input class="button-primary" type="submit" name="uploadimage" id="uploadimage_btn" value="<?php _e('Upload images', 'nggallery') ;?>" />
 			</div>
