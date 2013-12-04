@@ -237,7 +237,7 @@ jQuery(document).ready(
 	   // Auto Minimize if more than 4 (whole site, no differentiation)
 	   if(jQuery('a.min').length > 4)
 	   {
-	   		jQuery('a.min').html('[+]');
+	   		jQuery('a.min').html('&#9547;');
 	   		jQuery('div.itemContent:visible').hide();
 	   		jQuery('#selectContainer div.inUse').toggle();
 	   };
@@ -249,10 +249,10 @@ var toggleContent = function(e)
 	var targetContent = jQuery('div.itemContent', this.parentNode.parentNode);
 	if (targetContent.css('display') == 'none') {
 		targetContent.slideDown(300);
-		jQuery(this).html('[-]');
+		jQuery(this).html('&#9473;');
 	} else {
 		targetContent.slideUp(300);
-		jQuery(this).html('[+]');
+		jQuery(this).html('&#9547;');
 	}
 	return false;
 }
@@ -275,9 +275,7 @@ function showDialog() {
 }
 
 </script>
-
 <div class="wrap album" id="wrap" >
-	<?php include('templates/social_media_buttons.php'); ?>
     <?php screen_icon( 'nextgen-gallery' ); ?>
 	<h2><?php esc_html_e('Manage Albums', 'nggallery') ?></h2>
 	<form id="selectalbum" method="POST" onsubmit="ngg_serialize()" accept-charset="utf-8">
@@ -585,5 +583,4 @@ function showDialog() {
 	function __destruct() {
 		return true;
 	}
-
 }

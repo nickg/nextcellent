@@ -31,7 +31,6 @@ $admin_base_url = admin_url() . 'admin.php?page=nggallery-tags';
 $nb_tags = 50; // Number of tags to show on a single page
 
 // Manage URL
-
 $sort_order = ( isset($_GET['tag_sortorder']) ) ? esc_attr( stripslashes($_GET['tag_sortorder']) ) : 'desc';
 $search_url = ( isset($_GET['search']) ) ? '&amp;search=' . esc_attr ( stripslashes($_GET['search']) ) : '';
 $action_url = $admin_base_url . '&amp;tag_sortorder=' . $sort_order. $search_url;
@@ -95,9 +94,8 @@ if ($nb_tags < $tag_count && $offset>0) {
 </style>
 
 <div class="wrap ngg_wrap">
-	<?php include('templates/social_media_buttons.php'); ?>
     <?php screen_icon( 'nextgen-gallery' ); ?>
-	<h2><?php _e('Manage image tags', 'nggallery'); ?></h2>
+	<h2><?php _e('Manage Image Tags', 'nggallery'); ?></h2>
 
 	<?php if ($action_status['message']!='') : ?>
 	<div id="message" class="<?php echo ($action_status['status']=='ok' ? 'updated' : $action_status['status']); ?> fade">
