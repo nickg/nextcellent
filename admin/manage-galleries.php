@@ -112,7 +112,7 @@ function nggallery_manage_gallery_main() {
 
 	function showAddGallery() {
     	jQuery( "#addGallery").dialog({
-    		width: 640,
+    		width: '70%',
             resizable : false,
     		modal: true,
             title: '<?php echo esc_js(__('Add new gallery','nggallery')); ?>'
@@ -122,9 +122,8 @@ function nggallery_manage_gallery_main() {
 	//-->
 	</script>
 	<div class="wrap">
-		<?php include('templates/social_media_buttons.php'); ?>
 		<?php screen_icon( 'nextgen-gallery' ); ?>
-		<h2><?php echo _n( 'Gallery', 'Galleries', 2, 'nggallery'); ?></h2>
+		<h2><?php echo _e( 'Manage Galleries', 'nggallery');?></h2>
 		<form class="search-form" action="" method="get">
 		<p class="search-box">
 			<label class="hidden" for="media-search-input"><?php _e( 'Search Images', 'nggallery' ); ?>:</label>
@@ -269,7 +268,7 @@ if($gallerylist) {
 		</form>
 	</div>
 	<!-- #addGallery -->
-	<div id="addGallery" style="display: none;" >
+	<div id="addGallery" style="display: none; background: white;" >
 		<form id="form-tags" method="POST" accept-charset="utf-8">
 		<?php wp_nonce_field('ngg_addgallery'); ?>
 		<input type="hidden" name="page" value="manage-galleries" />
@@ -280,7 +279,7 @@ if($gallerylist) {
 					<?php if(!is_multisite()) { ?>
 					<?php _e('Create a new , empty gallery below the folder', 'nggallery') ;?>  <strong><?php echo $ngg->options['gallerypath']; ?></strong><br />
 					<?php } ?>
-					<i>( <?php _e('Allowed characters for file and folder names are', 'nggallery') ;?>: a-z, A-Z, 0-9, -, _ )</i>
+					<i>(<?php _e('Allowed characters for file and folder names are', 'nggallery') ;?>: a-z, A-Z, 0-9, -, _)</i>
 				</td>
 		  	</tr>
             <?php do_action('ngg_add_new_gallery_form'); ?>
@@ -405,11 +404,11 @@ class _NGG_Galleries_List_Table extends WP_List_Table {
 
     	$columns['cb'] = '<input name="checkall" type="checkbox" onclick="checkAll(document.getElementById(\'editgalleries\'));" />';
     	$columns['id'] = __('ID');
-    	$columns['title'] = _n( 'Gallery', 'Galleries', 1, 'nggallery');
+    	$columns['title'] = __( 'Title', 'nggallery');
     	$columns['description'] = __('Description', 'nggallery');
     	$columns['author'] = __('Author', 'nggallery');
     	$columns['page_id'] = __('Page ID', 'nggallery');
-    	$columns['quantity'] = _n( 'Image', 'Images', 2, 'nggallery' );
+    	$columns['quantity'] = __( 'Images', 'nggallery' );
 
     	$columns = apply_filters('ngg_manage_gallery_columns', $columns);
 
