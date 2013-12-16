@@ -58,7 +58,7 @@ jQuery(document).ready(function(){
 		<!-- gallery panel -->
 		<div id="gallery_panel" class="panel current">
 		<br />
-		<table border="0" cellpadding="4" cellspacing="0">
+		<table border="0" cellpadding="4" cellspacing="0" style="font-size:1em;">
          <tr>
             <td nowrap="nowrap"><label for="gallerytag"><?php _e("Gallery", 'nggallery'); ?></label></td>
             <td><select id="gallerytag" name="gallerytag" style="width: 200px">
@@ -79,7 +79,7 @@ jQuery(document).ready(function(){
 		<!-- album panel -->
 		<div id="album_panel" class="panel">
 		<br />
-		<table border="0" cellpadding="4" cellspacing="0">
+		<table border="0" cellpadding="4" cellspacing="0" style="font-size:1em;">
          <tr>
             <td nowrap="nowrap"><label for="albumtag"><?php _e("Album", 'nggallery'); ?></label></td>
             <td><select id="albumtag" name="albumtag" style="width: 200px">
@@ -99,7 +99,7 @@ jQuery(document).ready(function(){
 		<!-- single pic panel -->
 		<div id="singlepic_panel" class="panel">
 		<br />
-		<table border="0" cellpadding="4" cellspacing="0">
+		<table border="0" cellpadding="4" cellspacing="0" style="font-size:1em;">
          <tr>
             <td nowrap="nowrap"><label for="singlepictag"><?php _e("Picture", 'nggallery'); ?></label></td>
             <td><select id="singlepictag" name="singlepictag" style="width: 200px">
