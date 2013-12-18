@@ -388,7 +388,7 @@ class nggOptions {
 		<h3><?php _e('Image settings','nggallery'); ?></h3>
 		<form name="imagesettings" method="POST" action="<?php echo $this->filepath.'#images'; ?>" >
 		<?php wp_nonce_field('ngg_settings') ?>
-		<input type="hidden" name="page_options" value="imgResize,imgWidth,imgHeight,imgQuality,imgBackup,imgAutoResize" />
+		<input type="hidden" name="page_options" value="imgResize,imgWidth,imgHeight,imgQuality,imgBackup,imgAutoResize,thumbwidth,thumbheight,thumbfix,thumbquality" />
 			<table class="form-table ngg-options">
 				<tr valign="top">
 					<th valign="top"><label for="fixratio"><?php _e('Resize images','nggallery') ?></label></th>
@@ -416,9 +416,6 @@ class nggOptions {
 			</table>
 		<!-- Thumbnail settings -->
 		<h3><?php _e('Thumbnail settings','nggallery'); ?></h3>
-		<form name="thumbnailsettings" method="POST" action="<?php echo $this->filepath.'#thumbnails'; ?>" >
-		<?php wp_nonce_field('ngg_settings') ?>
-		<input type="hidden" name="page_options" value="thumbwidth,thumbheight,thumbfix,thumbquality" />
 			<p class="description"><?php _e('Please note: if you change these settings, you need to recreate the thumbnails under -> Manage Gallery .', 'nggallery') ?></p>
 			<table class="form-table ngg-options">
 				<tr valign="top">
@@ -440,7 +437,6 @@ class nggOptions {
 					<td><input type="number" step="1" min="0" class="small-text" name="thumbquality" value="<?php echo $ngg->options['thumbquality']; ?>" /><label for="thumbquality">%</label></td>
 				</tr>
 			</table>
-		</form>
 			<h3><?php _e('Single picture','nggallery') ?></h3>
 			<table class="form-table ngg-options">
 				<tr>
