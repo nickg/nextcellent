@@ -400,7 +400,7 @@ class nggOptions {
 				</tr>
 				<tr valign="top">
 					<th valign="top"><?php _e('Image quality','nggallery'); ?></th>
-					<td><input type="number" step="1" min="0" class="small-text" name="imgQuality" value="<?php echo $ngg->options['imgQuality']; ?>" />
+					<td><input type="number" step="1" min="0" max="100" class="small-text" name="imgQuality" value="<?php echo $ngg->options['imgQuality']; ?>" />
 					<label for="imgQuality">%</label></td>
 				</tr>
 				<tr>
@@ -434,7 +434,7 @@ class nggOptions {
 				</tr>
 				<tr valign="top">
 					<th align="left"><?php _e('Thumbnail quality','nggallery'); ?></th>
-					<td><input type="number" step="1" min="0" class="small-text" name="thumbquality" value="<?php echo $ngg->options['thumbquality']; ?>" /><label for="thumbquality">%</label></td>
+					<td><input type="number" step="1" min="0" max="100" class="small-text" name="thumbquality" value="<?php echo $ngg->options['thumbquality']; ?>" /><label for="thumbquality">%</label></td>
 				</tr>
 			</table>
 			<h3><?php _e('Single picture','nggallery') ?></h3>
@@ -674,7 +674,7 @@ class nggOptions {
 				</tr>
 				<tr>
 					<th><?php _e('Opaque','nggallery') ?></th>
-					<td><input type="number" step="1" min="0" class="small-text" name="wmOpaque" value="<?php echo $ngg->options['wmOpaque'] ?>"/><label for="wmOpaque">%</label></td>
+					<td><input type="number" step="1" min="0" max="100" class="small-text" name="wmOpaque" value="<?php echo $ngg->options['wmOpaque'] ?>"/><label for="wmOpaque">%</label></td>
 				</tr>
 			</table>
 		<div class="clear"> &nbsp; </div>
