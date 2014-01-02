@@ -84,7 +84,7 @@ function nggallery_admin_overview()  {
  * Load the meta boxes
  *
  */
-add_meta_box('dashboard_right_now', __('Welcome to NextCellent Gallery !', 'nggallery'), 'ngg_overview_right_now', 'ngg_overview', 'left', 'core');
+add_meta_box('dashboard_overview', __('Welcome to NextCellent Gallery !', 'nggallery'), 'ngg_overview_right_now', 'ngg_overview', 'left', 'core');
 add_meta_box('ngg_meta_box', __('Help me help YOU!', 'nggallery'), 'nextcellent_overview::likeThisMetaBox', 'ngg_overview', 'right', 'core');
 if ( !(get_locale() == 'en_US') )
 	add_meta_box('ngg_locale', __('Translation', 'nggallery'), 'ngg_widget_locale', 'ngg_overview', 'right', 'core');
@@ -454,7 +454,7 @@ function ngg_overview_right_now() {
 	$albums    = intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggalbum") );
 ?>
 <div class="table table_content">
-	<p class="sub"><?php _e('At a Glance', 'nggallery'); ?></p>
+	<h4><?php _e('At a Glance', 'nggallery'); ?></h4>
 	<table>
 		<tbody>
 			<tr class="first">

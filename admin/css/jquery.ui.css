@@ -42,7 +42,7 @@
 
 /* Interaction states
 ----------------------------------*/
-.ui-dialog-titlebar-close:hover { border: 1px solid #464646; background: #464646 50% 50% repeat-x; font-weight: normal; color: #ffffff; }
+.ui-dialog-titlebar-close:hover { background: #464646 !important; font-weight: normal; color: #ffffff; }
 .ui-widget :active { outline: none; }
 
 /* Icons
@@ -53,7 +53,7 @@
 .ui-widget-content .ui-icon {background-image: url(images/ui-icons_cccccc_256x240.png); }
 .ui-widget-header .ui-icon {background-image: url(images/ui-icons_ffffff_256x240.png); }
 .ui-state-default .ui-icon { background-image: url(images/ui-icons_cccccc_256x240.png); }
-.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_ffffff_256x240.png); }
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_ffffff_256x240.png);}
 .ui-state-active .ui-icon {background-image: url(images/ui-icons_222222_256x240.png); }
 
 /* positioning */
@@ -98,7 +98,7 @@
 .ui-dialog { -moz-box-shadow: rgba(0,0,0,1) 0 4px 30px; -webkit-box-shadow: rgba(0,0,0,1) 0 4px 30px; -khtml-box-shadow: rgba(0,0,0,1) 0 4px 30px; box-shadow: rgba(0,0,0,1) 0 4px 30px; }
 .ui-dialog .ui-dialog-titlebar { position: relative; border-bottom: 1px solid #dfdfdf; }
 .ui-dialog .ui-dialog-title { float: left; padding: 0 16px; font-size: 22px; font-weight: 200; line-height: 45px; margin: 0;}
-.ui-dialog .ui-dialog-titlebar-close {position: absolute; right: .3em; top: .3em; bottom: .6em; width: 40px; margin: auto; padding: 1px; border: none;}
+.ui-dialog .ui-dialog-titlebar-close {position: absolute; right: .3em; top: .3em; bottom: .6em; width: 40px; margin: auto; padding: 1px; border: none; background: white;}
 .ui-dialog-titlebar-close .ui-button-text {display:none;}
 .ui-dialog .ui-dialog-content { position: relative; border: 0; padding: .5em 1em; background: none; overflow: auto; zoom: 1; }
 .ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
