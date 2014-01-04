@@ -36,7 +36,7 @@
 ----------------------------------*/
 
 /* Overlays */
-.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.ui-widget-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
 
 /* jQuery UI CSS Framework @VERSION */
 
@@ -94,7 +94,7 @@
 .ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}/*
 
 /* jQuery UI Dialog  */
-.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; background:white; }
+.ui-dialog { position: absolute; width: 300px; overflow: hidden; background:white; }
 .ui-dialog { -moz-box-shadow: rgba(0,0,0,1) 0 4px 30px; -webkit-box-shadow: rgba(0,0,0,1) 0 4px 30px; -khtml-box-shadow: rgba(0,0,0,1) 0 4px 30px; box-shadow: rgba(0,0,0,1) 0 4px 30px; }
 .ui-dialog .ui-dialog-titlebar { position: relative; border-bottom: 1px solid #dfdfdf; }
 .ui-dialog .ui-dialog-title { float: left; padding: 0 16px; font-size: 22px; font-weight: 200; line-height: 45px; margin: 0;}

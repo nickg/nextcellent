@@ -71,24 +71,23 @@ $preview_image		= trailingslashit( home_url() ) . 'index.php?callback=image&amp;
 	
 -->
 </script>
-
-<table width="98%" align="center" style="border:1px solid #DADADA">
-	<tr style="height : 360px;">
-		<td valign="middle" align="center" style="background-color:#DADADA; width : 370px;">
+<p><?php _e('Select how you would like to rotate the image on the left.', 'nggallery'); ?></p>
+<table width="98%" align="center">
+	<tr style="min-height: 360px;">
+		<td valign="middle" align="center" style="width : 370px;">
 			<img src="<?php echo esc_url( $preview_image ); ?>" alt="" id="imageToEdit" />	
 		</td>
-		<td>
+		<td style="min-width: 160px;">
 			<input type="radio" name="ra" value="cw" /><?php esc_html_e('90&deg; clockwise', 'nggallery'); ?><br />
 			<input type="radio" name="ra" value="ccw" /><?php esc_html_e('90&deg; anticlockwise', 'nggallery'); ?><br />
 			<input type="radio" name="ra" value="fv" /><?php esc_html_e('Flip vertically', 'nggallery'); ?><br />
 			<input type="radio" name="ra" value="fh" /><?php esc_html_e('Flip horizontally', 'nggallery'); ?>
-		</td>		
+		</td>
 	</tr>
-	<tr style="background-color:#DADADA;">
-
+	<tr>
 		<td colspan="2">
-			<input type="button" name="update" value="<?php esc_attr_e('Update', 'nggallery'); ?>" onclick="rotateImage()" class="button-secondary" style="float:right; margin-left:4px;"/>
-			<div id="thumbMsg" style="color:#FF0000; display : none;font-size:11px; float:right; width:60%; height:2em; line-height:2em;"></div>
+			<input type="button" name="update" value="<?php esc_attr_e('Update', 'nggallery'); ?>" onclick="rotateImage()" class="button-primary" style="float:right; margin-top:0.5em;"/>
+			<div id="thumbMsg" style="display : none; float:right; width:60%; height:2em; line-height:2em;"></div>
 		</td>
 	</tr>
 </table>

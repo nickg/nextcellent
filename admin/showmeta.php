@@ -26,12 +26,11 @@ $class = '';
 ?>
 	<!-- META DATA -->
 	<fieldset class="options nggallery">
-	<h3><?php _e('Meta Data','nggallery'); ?></h3>
 	<?php if ($dbdata) { ?>
 		<table id="the-list-x" width="100%" cellspacing="3" cellpadding="3">
-			<thead>
+			<thead style="text-align: left;">
 				<tr>
-					<th scope="col"><?php _e('Tag','nggallery'); ?></th>
+					<th scope="col"><?php _e('Name','nggallery'); ?></th>
 					<th scope="col"><?php _e('Value','nggallery'); ?></th>
 				</tr>
 			</thead>
@@ -55,9 +54,9 @@ $class = '';
 	<h3><?php _e('EXIF Data','nggallery'); ?></h3>
 	<?php if ($exifdata) { ?>
 		<table id="the-list-x" width="100%" cellspacing="3" cellpadding="3">
-			<thead>
+			<thead style="text-align: left;">
 				<tr>
-					<th scope="col"><?php _e('Tag','nggallery'); ?></th>
+					<th scope="col"><?php _e('Name','nggallery'); ?></th>
 					<th scope="col"><?php _e('Value','nggallery'); ?></th>
 				</tr>
 			</thead>
@@ -80,9 +79,9 @@ $class = '';
 	<fieldset class="options nggallery">
 	<h3><?php _e('IPTC Data','nggallery'); ?></h3>
 		<table id="the-list-x" width="100%" cellspacing="3" cellpadding="3">
-			<thead>
+			<thead style="text-align: left;">
 				<tr>
-					<th scope="col"><?php _e('Tag','nggallery'); ?></th>
+					<th scope="col"><?php _e('Name','nggallery'); ?></th>
 					<th scope="col"><?php _e('Value','nggallery'); ?></th>
 				</tr>
 			</thead>
@@ -106,7 +105,7 @@ $class = '';
 		<table id="the-list-x" width="100%" cellspacing="3" cellpadding="3">
 			<thead>
 				<tr>
-					<th scope="col"><?php _e('Tag','nggallery'); ?></th>
+					<th scope="col"><?php _e('Name','nggallery'); ?></th>
 					<th scope="col"><?php _e('Value','nggallery'); ?></th>
 				</tr>
 			</thead>

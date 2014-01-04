@@ -98,10 +98,6 @@ jQuery(function (){
         if ( jQuery( "#spinner" ).length == 0)
             jQuery("body").append('<div id="spinner"></div>');
         var $this = jQuery(this);
-        var results = new RegExp('[\\?&]w=([^&#]*)').exec(this.href);
-	    var width  = ( results ) ? results[1] : 600;
-        var results = new RegExp('[\\?&]h=([^&#]*)').exec(this.href);
-	    var height = ( results ) ? results[1] : 440;
         jQuery('#spinner').fadeIn();
         var dialog = jQuery('<div style="display:hidden"></div>').appendTo('body');
         // load the remote content
@@ -112,12 +108,13 @@ jQuery(function (){
                 jQuery('#spinner').hide();
                 dialog.dialog({
                     title: ($this.attr('title')) ? $this.attr('title') : '',
-                    width: width,
-                    height: height,
+					width: 'auto',
+					height: 'auto',
                     modal: true,
-                    resizable: false,
+                    resizable: true,
+					position: { my: "center", at: "center", of: window },
                     close: function() { dialog.remove(); }
-                }).width(width - 30).height(height - 30);
+                });
             }
         );
         //prevent the browser to follow the link
@@ -235,7 +232,7 @@ jQuery(document).ready( function() {
 <input type="hidden" name="page" value="manage-images" />
 
 <?php else :?>
-<h2><?php echo _n( 'Gallery', 'Galleries', 1, 'nggallery' ); ?> : <?php echo esc_html ( nggGallery::i18n($gallery->title) ); ?></h2>
+<h2><?php echo _e( 'Gallery', 'nggallery' ); ?>: <?php echo esc_html ( nggGallery::i18n($gallery->title) ); ?></h2>
 
 <br style="clear: both;" />
 
@@ -474,8 +471,8 @@ if($picturelist) {
 					case 'alt_title_desc' :
 						?>
 						<td <?php echo $attributes ?>>
-							<input name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo stripslashes($picture->alttext) ?>" /><br/>
-							<textarea name="description[<?php echo $pid ?>]" style="width:95%; margin-top: 2px;" rows="2" ><?php echo stripslashes($picture->description) ?></textarea>
+							<input placeholder="<?php _e("Alt & title text",'nggallery'); ?>" name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo stripslashes($picture->alttext) ?>" /><br/>
+							<textarea placeholder="<?php _e("Description",'nggallery'); ?>" name="description[<?php echo $pid ?>]" style="width:95%; margin: 1px;" rows="2" ><?php echo stripslashes($picture->description) ?></textarea>
 						</td>
 						<?php
 					break;
@@ -592,8 +589,11 @@ if ( $counter == 0 )
 					<strong><?php _e('Resize Images to', 'nggallery'); ?>:</strong>
 				</td>
 				<td>
-					<input type="text" size="5" name="imgWidth" value="<?php echo $ngg->options['imgWidth']; ?>" /> x <input type="text" size="5" name="imgHeight" value="<?php echo $ngg->options['imgHeight']; ?>" />
-					<br /><small><?php _e('Width x height (in pixel). NextGEN Gallery will keep ratio size','nggallery') ?></small>
+					<label for="imgWidth"><?php _e('Width','nggallery') ?></label>
+					<input type="number" step="1" min="0" class="small-text" name="imgWidth" class="small-text" value="<?php echo $ngg->options['imgWidth']; ?>" />
+					<label for="imgHeight"><?php _e('Height','nggallery') ?></label>
+					<input type="number" step="1" min="0" type="text" size="5" name="imgHeight" class="small-text" value="<?php echo $ngg->options['imgHeight']; ?>">
+					<p class="description"><?php _e('Width and height (in pixels). NextCellent Gallery will keep the ratio size.','nggallery') ?></p>
 				</td>
 			</tr>
 		  	<tr align="right">
@@ -617,14 +617,14 @@ if ( $counter == 0 )
 		<input type="hidden" name="page" value="manage-images" />
         <table width="100%" border="0" cellspacing="3" cellpadding="3" >
 			<tr valign="top">
-				<th align="left"><?php _e('Width x height (in pixel)','nggallery') ?></th>
-				<td><input type="text" size="5" maxlength="5" name="thumbwidth" value="<?php echo $ngg->options['thumbwidth']; ?>" /> x <input type="text" size="5" maxlength="5" name="thumbheight" value="<?php echo $ngg->options['thumbheight']; ?>" />
-				<br /><small><?php _e('These values are maximum values ','nggallery') ?></small></td>
+				<th align="left"><?php _e('Size','nggallery') ?></th>
+				<td><label for="thumbwidth"><?php _e('Width','nggallery') ?> </label><input type="text" class="small-text" type="number" step="1" min="0" name="thumbwidth" value="<?php echo $ngg->options['thumbwidth']; ?>" /> <label for="thumbheight"><?php _e('Height','nggallery') ?> </label><input type="text" class="small-text" type="number" step="1" min="0" name="thumbheight" value="<?php echo $ngg->options['thumbheight']; ?>" />
+				<p class="description"><?php _e('These values are maximum values ','nggallery') ?></p></td>
 			</tr>
 			<tr valign="top">
-				<th align="left"><?php _e('Set fix dimension','nggallery') ?></th>
-				<td><input type="checkbox" name="thumbfix" value="1" <?php checked('1', $ngg->options['thumbfix']); ?> />
-				<br /><small><?php _e('Ignore the aspect ratio, no portrait thumbnails','nggallery') ?></small></td>
+					<th align="left"><?php _e('Fixed size','nggallery'); ?></th>
+					<td><input type="checkbox" name="thumbfix" value="1" <?php checked('1', $ngg->options['thumbfix']); ?> />
+					<?php _e('This will ignore the aspect ratio, so no portrait thumbnails','nggallery') ?></td>
 			</tr>
 		  	<tr align="right">
 		    	<td colspan="2" class="submit">
