@@ -287,7 +287,7 @@ class nggGallery {
 	* @autor John Godley
 	* @param string $template_name Name of the template file (without extension)
 	* @param string $vars Array of variable name=>value that is available to the display code (optional)
-	* @return void
+	* @return string
 	**/
 	static function capture ($template_name, $vars = array ()) {
 		ob_start ();

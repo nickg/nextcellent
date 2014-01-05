@@ -392,7 +392,7 @@ function nggCreateGallery($picturelist, $galleryID = false, $template = '', $ima
     $prev = ( empty($nggNav->prev) ) ? false : $nggNav->prev;
 
     // create the output
-    $out = nggGallery::capture ( $filename, array ('gallery' => $gallery, 'images' => $picturelist, 'pagination' => $navigation, 'current' => $current_pid, 'next' => $next, 'prev' => $prev) );
+    $out = nggGallery::capture( $filename, array ('gallery' => $gallery, 'images' => $picturelist, 'pagination' => $navigation, 'current' => $current_pid, 'next' => $next, 'prev' => $prev) );
 
     // apply a filter after the output
     $out = apply_filters('ngg_gallery_output', $out, $picturelist);

@@ -14,7 +14,7 @@ class nggWPMU{
 	 * @class nggWPMU
 	 * @return bool $result
 	 */
-	function check_quota() {
+	static function check_quota() {
         	if ( get_site_option( 'upload_space_check_disabled' ) )
         		return false;
 

@@ -17,7 +17,7 @@ class nggMediaRss {
 	/**
 	 * Add the javascript required to enable PicLens/CoolIris support 
 	 */
-	function add_piclens_javascript() {
+	static function add_piclens_javascript() {
         if (is_ssl())
             wp_enqueue_script( 'piclens', 'https://lite.piclens.com/current/piclens_optimized.js', array(), false, true);
 		else
@@ -34,7 +34,7 @@ class nggMediaRss {
 	/**
 	 * Get the URL of a gallery media RSS
 	 */
-	function get_gallery_mrss_url($gid, $prev_next = false) {		
+	static function get_gallery_mrss_url($gid, $prev_next = false) {
 		return nggMediaRss::get_mrss_url() . '?' . ('gid=' . $gid . ($prev_next ? '&prev_next=true' : '') . '&mode=gallery');
 	}
 	

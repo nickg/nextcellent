@@ -69,7 +69,7 @@ class nggAddGallery {
     			wp_die(__('Cheatin&#8217; uh?'));
 
     		if ( $_FILES['imagefiles']['error'][0] == 0 )
-    			$messagetext = nggAdmin::upload_images();
+    			 nggAdmin::upload_images();
     		else
     			nggGallery::show_error( __('Upload failed! ' . nggAdmin::decode_upload_error( $_FILES['imagefiles']['error'][0]),'nggallery') );
     	}
