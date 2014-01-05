@@ -263,8 +263,25 @@ if($gallerylist) {
 			</tbody>
 		</table>
         <div class="tablenav bottom">
+		<div class="alignleft actions">
+				<?php if ( function_exists('json_encode') ) : ?>
+				<select name="bulkaction" id="bulkaction">
+					<option value="no_action" ><?php _e("Bulk actions",'nggallery'); ?></option>
+					<option value="delete_gallery" ><?php _e("Delete",'nggallery'); ?></option>
+                    <option value="set_watermark" ><?php _e("Set watermark",'nggallery'); ?></option>
+					<option value="new_thumbnail" ><?php _e("Create new thumbnails",'nggallery'); ?></option>
+					<option value="resize_images" ><?php _e("Resize images",'nggallery'); ?></option>
+					<option value="import_meta" ><?php _e("Import metadata",'nggallery'); ?></option>
+					<option value="recover_images" ><?php _e("Recover from backup",'nggallery'); ?></option>
+				</select>
+				<input name="showThickbox" class="button-secondary" type="submit" value="<?php _e('Apply','nggallery'); ?>" onclick="if ( !checkSelected() ) return false;" />
+				<?php endif; ?>
+				<?php if ( current_user_can('NextGEN Upload images') && nggGallery::current_user_can( 'NextGEN Add new gallery' ) ) : ?>
+					<input name="doaction" class="button-secondary action" type="submit" onclick="showAddGallery(); return false;" value="<?php _e('Add new gallery', 'nggallery') ?>"/>
+				<?php endif; ?>
+			</div>
 		<?php $ngg->manage_page->pagination( 'bottom', $_GET['paged'], $nggdb->paged['total_objects'], $nggdb->paged['objects_per_page']  ); ?>
-        </div>
+        <br class="clear"></div>
 		</form>
 	</div>
 	<!-- #addGallery -->
@@ -308,8 +325,11 @@ if($gallerylist) {
 					<strong><?php _e('Resize Images to', 'nggallery'); ?>:</strong>
 				</td>
 				<td>
-					<input type="text" size="5" name="imgWidth" value="<?php echo $ngg->options['imgWidth']; ?>" /> x <input type="text" size="5" name="imgHeight" value="<?php echo $ngg->options['imgHeight']; ?>" />
-					<br /><small><?php _e('Width x height (in pixel). NextCellent Gallery will keep ratio size','nggallery') ?></small>
+					<label for="imgWidth"><?php _e('Width','nggallery') ?></label>
+					<input type="number" step="1" min="0" class="small-text" name="imgWidth" class="small-text" value="<?php echo $ngg->options['imgWidth']; ?>" />
+					<label for="imgHeight"><?php _e('Height','nggallery') ?></label>
+					<input type="number" step="1" min="0" type="text" size="5" name="imgHeight" class="small-text" value="<?php echo $ngg->options['imgHeight']; ?>">
+					<p class="description"><?php _e('Width and height (in pixels). NextCellent Gallery will keep the ratio size.','nggallery') ?></p>
 				</td>
 			</tr>
 		  	<tr align="right">
@@ -333,14 +353,14 @@ if($gallerylist) {
 		<input type="hidden" name="page" value="manage-galleries" />
 		<table width="100%" border="0" cellspacing="3" cellpadding="3" >
 			<tr valign="top">
-				<th align="left"><?php _e('Width x height (in pixel)','nggallery') ?></th>
-				<td><input type="text" size="5" maxlength="5" name="thumbwidth" value="<?php echo $ngg->options['thumbwidth']; ?>" /> x <input type="text" size="5" maxlength="5" name="thumbheight" value="<?php echo $ngg->options['thumbheight']; ?>" />
-				<br /><small><?php _e('These values are maximum values ','nggallery') ?></small></td>
+				<th align="left"><?php _e('Size','nggallery') ?></th>
+				<td><label for="thumbwidth"><?php _e('Width','nggallery') ?> </label><input class="small-text" type="number" step="1" min="0" name="thumbwidth" value="<?php echo $ngg->options['thumbwidth']; ?>" /> <label for="thumbheight"><?php _e('Height','nggallery') ?> </label><input class="small-text" type="number" step="1" min="0" name="thumbheight" value="<?php echo $ngg->options['thumbheight']; ?>" />
+				<p class="description"><?php _e('These values are maximum values ','nggallery') ?></p></td>
 			</tr>
 			<tr valign="top">
-				<th align="left"><?php _e('Set fix dimension','nggallery') ?></th>
-				<td><input type="checkbox" name="thumbfix" value="1" <?php checked('1', $ngg->options['thumbfix']); ?> />
-				<br /><small><?php _e('Ignore the aspect ratio, no portrait thumbnails','nggallery') ?></small></td>
+					<th align="left"><?php _e('Fixed size','nggallery'); ?></th>
+					<td><input type="checkbox" name="thumbfix" value="1" <?php checked('1', $ngg->options['thumbfix']); ?> />
+					<?php _e('This will ignore the aspect ratio, so no portrait thumbnails','nggallery') ?></td>
 			</tr>
 		  	<tr align="right">
 		    	<td colspan="2" class="submit">

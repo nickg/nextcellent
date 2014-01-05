@@ -131,10 +131,6 @@ p#ngg-inlinebutton {
 	top:-25pt;
 }
 
-.fixed tbody th.column-cb {
-	padding:7px 0 22px;
-}
-
 .fixed .column-thumbnail{
 	width:85px;
 }
@@ -159,6 +155,15 @@ p#ngg-inlinebutton {
 .fixed .column-exclude, .fixed .column-action, .fixed .column-delete {
 	width: 10%;
 }
+
+ @media screen and (max-width: 782px) {
+ .column-page_id, .column-quantity, .column-id , .column-description{
+	display: none;
+ }
+ .fixed .column-title {
+	width: initial;
+}
+ }
 
 /* SETTINGS FOR PROGRESS BAR */
 
