@@ -230,7 +230,7 @@ class nggAdmin{
 	 * @param string $dirname
 	 * @return array $files list of image filenames 
 	 */
-	function scandir( $dirname = '.' ) { 
+	static function scandir( $dirname = '.' ) {
 		$ext = apply_filters('ngg_allowed_file_types', array('jpeg', 'jpg', 'png', 'gif') );
 
 		$files = array(); 
@@ -585,7 +585,7 @@ class nggAdmin{
 	 * @param array $imageslist
 	 * @return array $image_ids Id's which are sucessful added
 	 */
-	function add_Images($galleryID, $imageslist) {
+	static function add_Images($galleryID, $imageslist) {
 		
 		global $wpdb, $ngg;
 		
@@ -709,7 +709,7 @@ class nggAdmin{
 	 * @param int $id image ID
 	 * @return array metadata
 	 */
-	function get_MetaData($id) {
+	static function get_MetaData($id) {
 		
 		require_once(NGGALLERY_ABSPATH . '/lib/meta.php');
 		
@@ -1388,7 +1388,7 @@ class nggAdmin{
 	 * @param int $galleryID
 	 * @return void
 	 */
-	function set_gallery_preview( $galleryID ) {
+	static function set_gallery_preview( $galleryID ) {
 		
 		global $wpdb;
 		
