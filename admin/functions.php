@@ -738,7 +738,7 @@ class nggAdmin{
 	 * @param int $id
 	 * @return result
 	 */
-	function maybe_import_meta( $id ) {
+	static function maybe_import_meta( $id ) {
 				
 		require_once(NGGALLERY_ABSPATH . '/lib/meta.php');
 				
@@ -765,7 +765,7 @@ class nggAdmin{
 	 * @param string $file
 	 * @return bool
 	 */
-	function unzip($dir, $file) {
+	static function unzip($dir, $file) {
 		
 		if(! class_exists('PclZip'))
 			require_once(ABSPATH . 'wp-admin/includes/class-pclzip.php');
@@ -1103,7 +1103,7 @@ class nggAdmin{
 	 * @param string $filename
 	 * @return bool $result
 	 */
-	function chmod($filename = '') {
+	static function chmod($filename = '') {
 
 		$stat = @ stat( dirname($filename) );
 		$perms = $stat['mode'] & 0000666; // Remove execute bits for files
