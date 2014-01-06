@@ -310,7 +310,7 @@ class nggdb {
      * @id The album ID or name
      * @return A nggGallery object (false if not found)
      */
-    function find_album( $id ) {
+    static function find_album( $id ) {
         global $wpdb;
 
         // Query database
@@ -438,7 +438,7 @@ class nggdb {
      * @param (optional) int $author
      * @return bool result of update query
      */
-    function update_gallery($id, $name = false, $path = false, $title = false, $description = false, $pageid = false, $previewpic = false, $author = false) {
+    static function update_gallery($id, $name = false, $path = false, $title = false, $description = false, $pageid = false, $previewpic = false, $author = false) {
 
         global $wpdb;
 
@@ -486,7 +486,7 @@ class nggdb {
      * @param (optional) int $pageid
      * @return bool result of update query
      */
-    function update_album($id, $name = false, $previewpic = false, $description = false, $sortorder = false, $pageid = false ) {
+    static function update_album($id, $name = false, $previewpic = false, $description = false, $sortorder = false, $pageid = false ) {
 
         global $wpdb;
 
@@ -798,7 +798,7 @@ class nggdb {
      * @param bool $exclude
      * @return An array containing the nggImage objects representing the images in the album.
      */
-    function find_images_in_album($album, $order_by = 'galleryid', $order_dir = 'ASC', $exclude = true) {
+    static function find_images_in_album($album, $order_by = 'galleryid', $order_dir = 'ASC', $exclude = true) {
         global $wpdb;
 
         if ( !is_object($album) )

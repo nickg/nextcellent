@@ -74,7 +74,7 @@ class nggAPI {
 
 	function start_process() {
 	   
-        global $ngg;
+        global $ngg,$nggdb;
 		
 		if ( !$this->valid_access() ) 
 			return;
@@ -82,7 +82,9 @@ class nggAPI {
 		switch ( $this->method ) {
 			case 'search' :
 				//search for some images
-				$this->result['images'] = array_merge( (array) nggdb::search_for_images( $this->term ), (array) nggTags::find_images_for_tags( $this->term , 'ASC' ));
+                //20140106:shouldn't call it statically when is not...
+				//$this->result['images'] = array_merge( (array) nggdb::search_for_images( $this->term ), (array) nggTags::find_images_for_tags( $this->term , 'ASC' ));
+				$this->result['images'] = array_merge( (array) $nggdb->search_for_images( $this->term ), (array) nggTags::find_images_for_tags( $this->term , 'ASC' ));
 			break;
 			case 'album' :
 				//search for some album  //TODO : Get images for each gallery, could end in a big db query
@@ -90,7 +92,9 @@ class nggAPI {
 			break;            
 			case 'gallery' :
 				//search for some gallery
-				$this->result['images'] = ($this->id == 0) ? nggdb::find_last_images( 0 , 100 ) : nggdb::get_gallery( $this->id, $ngg->options['galSort'], $ngg->options['galSortDir'], true, 0, 0, true );
+                //20140106:shouldn't call it statically when is not...
+				//$this->result['images'] = ($this->id == 0) ? nggdb::find_last_images( 0 , 100 ) : nggdb::get_gallery( $this->id, $ngg->options['galSort'], $ngg->options['galSortDir'], true, 0, 0, true );
+				$this->result['images'] = ($this->id == 0) ? nggdb::find_last_images( 0 , 100 ) : $nggdb->get_gallery( $this->id, $ngg->options['galSort'], $ngg->options['galSortDir'], true, 0, 0, true );
 			break;
 			case 'image' :
 				//search for some image
