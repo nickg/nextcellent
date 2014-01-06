@@ -832,7 +832,7 @@ class nggAdmin{
 			return false;
 		
 		$defaultpath = $ngg->options['gallerypath'];		
-		$zipurl = $_POST['zipurl'];
+		$zipurl = isset($_POST['zipurl'])?$_POST['zipurl']:"";
 		
 		// if someone entered a URL try to upload it
 		if (!empty($zipurl) && (function_exists('curl_init')) ) {
