@@ -1,0 +1,33 @@
+#ngg_social_media {
+	margin-top: -2px;
+	width: 85%;
+	position: relative;
+	overflow: hidden;
+	height: 20px;
+}
+
+.gallery_page_nggallery-manage-gallery #ngg_social_media,
+.gallery_page_nggallery-manage-album #ngg_social_media,
+.gallery_page_nggallery-tags #ngg_social_media,
+.gallery_page_nggallery-roles #ngg_social_media,
+.gallery_page_nggallery-about #ngg_social_media,
+.toplevel_page_nextgen-gallery #ngg_social_media {
+	float: right;
+	width: 55%;
+}
+
+#ngg_facebook_like {
+	position: absolute;
+	right: 0px;
+	width: 81px;
+	overflow: hidden;
+}
+
+#ngg_social_media .twitter-follow-button {
+	position: absolute;
+	right: 85px;
+}
+
+#slider {
+	margin-top: 5px !important;
+}
