@@ -166,7 +166,7 @@ class nggdb {
      * @param int|string $id or $slug
      * @return A nggGallery object (null if not found)
      */
-    function find_gallery( $id ) {
+    static function find_gallery( $id ) {
         global $wpdb;
 
         if( is_numeric($id) ) {
@@ -267,7 +267,7 @@ class nggdb {
      * @param bool $exclude
      * @return An array containing the nggImage objects representing the images in the gallery.
      */
-    function get_ids_from_gallery($id, $order_by = 'sortorder', $order_dir = 'ASC', $exclude = true) {
+    static function get_ids_from_gallery($id, $order_by = 'sortorder', $order_dir = 'ASC', $exclude = true) {
 
         global $wpdb;
 
@@ -292,7 +292,7 @@ class nggdb {
      *
      * @id The gallery ID
      */
-    function delete_gallery( $id ) {
+    static function delete_gallery( $id ) {
         global $wpdb;
 
         $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->nggpictures WHERE galleryid = %d", $id) );
@@ -310,7 +310,7 @@ class nggdb {
      * @id The album ID or name
      * @return A nggGallery object (false if not found)
      */
-    function find_album( $id ) {
+    static function find_album( $id ) {
         global $wpdb;
 
         // Query database
@@ -352,7 +352,7 @@ class nggdb {
      *
      * @id The album ID
      */
-    function delete_album( $id ) {
+    static function delete_album( $id ) {
         global $wpdb;
 
         $result = $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->nggalbum WHERE id = %d", $id) );
@@ -366,7 +366,7 @@ class nggdb {
      *
      * @return the ID of the inserted image
      */
-    function insert_image($gid, $filename, $alttext, $desc, $exclude) {
+    static function insert_image($gid, $filename, $alttext, $desc, $exclude) {
         global $wpdb;
 
         $result = $wpdb->query(
@@ -390,7 +390,7 @@ class nggdb {
      * @param (optional) int $sortorder
      * @return bool result of update query
      */
-    function update_image($pid, $galleryid = false, $filename = false, $description = false, $alttext = false, $exclude = false, $sortorder = false) {
+    static function update_image($pid, $galleryid = false, $filename = false, $description = false, $alttext = false, $exclude = false, $sortorder = false) {
 
         global $wpdb;
 
@@ -438,7 +438,7 @@ class nggdb {
      * @param (optional) int $author
      * @return bool result of update query
      */
-    function update_gallery($id, $name = false, $path = false, $title = false, $description = false, $pageid = false, $previewpic = false, $author = false) {
+    static function update_gallery($id, $name = false, $path = false, $title = false, $description = false, $pageid = false, $previewpic = false, $author = false) {
 
         global $wpdb;
 
@@ -486,7 +486,7 @@ class nggdb {
      * @param (optional) int $pageid
      * @return bool result of update query
      */
-    function update_album($id, $name = false, $previewpic = false, $description = false, $sortorder = false, $pageid = false ) {
+    static function update_album($id, $name = false, $previewpic = false, $description = false, $sortorder = false, $pageid = false ) {
 
         global $wpdb;
 
@@ -526,7 +526,7 @@ class nggdb {
      * @param  int|string The image ID or Slug
      * @return object A nggImage object representing the image (false if not found)
      */
-    function find_image( $id ) {
+    static function find_image( $id ) {
         global $wpdb;
 
         if( is_numeric($id) ) {
@@ -553,7 +553,7 @@ class nggdb {
      * @param $pids array of picture_ids
      * @return An array of nggImage objects representing the images
      */
-    function find_images_in_list( $pids, $exclude = false, $order = 'ASC' ) {
+    static function find_images_in_list( $pids, $exclude = false, $order = 'ASC' ) {
         global $wpdb;
 
         $result = array();
@@ -595,7 +595,7 @@ class nggdb {
     * @param (optional) int $sortorder
     * @return bool result of the ID of the inserted image
     */
-    function add_image( $id = false, $filename = false, $description = '', $alttext = '', $meta_data = false, $post_id = 0, $imagedate = '0000-00-00 00:00:00', $exclude = 0, $sortorder = 0  ) {
+    static function add_image( $id = false, $filename = false, $description = '', $alttext = '', $meta_data = false, $post_id = 0, $imagedate = '0000-00-00 00:00:00', $exclude = 0, $sortorder = 0  ) {
         global $wpdb;
 
 		if ( is_array($meta_data) )
@@ -630,7 +630,7 @@ class nggdb {
     * @param (optional) int $pageid
     * @return bool result of the ID of the inserted album
     */
-    function add_album( $name = false, $previewpic = 0, $description = '', $sortorder = 0, $pageid = 0  ) {
+    static function add_album( $name = false, $previewpic = 0, $description = '', $sortorder = 0, $pageid = 0  ) {
         global $wpdb;
 
         // name must be unique, we use the title for that
@@ -660,7 +660,7 @@ class nggdb {
     * @param (optional) int $author
     * @return bool result of the ID of the inserted gallery
     */
-    function add_gallery( $title = '', $path = '', $description = '', $pageid = 0, $previewpic = 0, $author = 0  ) {
+    static function add_gallery( $title = '', $path = '', $description = '', $pageid = 0, $previewpic = 0, $author = 0  ) {
         global $wpdb;
 
         // slug must be unique, we use the title for that
@@ -682,7 +682,7 @@ class nggdb {
     * Delete an image entry from the database
     * @param integer $id is the Image ID
     */
-    function delete_image( $id ) {
+    static function delete_image( $id ) {
         global $wpdb;
 
         // Delete the image
@@ -707,7 +707,7 @@ class nggdb {
      * @param string $orderby is one of "id" (default, order by pid), "date" (order by exif date), sort (order by user sort order)
      * @return
      */
-    function find_last_images($page = 0, $limit = 30, $exclude = true, $galleryId = 0, $orderby = "id") {
+    static function find_last_images($page = 0, $limit = 30, $exclude = true, $galleryId = 0, $orderby = "id") {
         global $wpdb;
 
         // Check for the exclude setting
@@ -765,7 +765,7 @@ class nggdb {
      * @param integer $galleryID optional a Gallery
      * @return A nggImage object representing the image (null if not found)
      */
-    function get_random_images($number = 1, $galleryID = 0) {
+    static function get_random_images($number = 1, $galleryID = 0) {
         global $wpdb;
 
         $number = (int) $number;
@@ -798,7 +798,7 @@ class nggdb {
      * @param bool $exclude
      * @return An array containing the nggImage objects representing the images in the album.
      */
-    function find_images_in_album($album, $order_by = 'galleryid', $order_dir = 'ASC', $exclude = true) {
+    static function find_images_in_album($album, $order_by = 'galleryid', $order_dir = 'ASC', $exclude = true) {
         global $wpdb;
 
         if ( !is_object($album) )
@@ -1026,7 +1026,7 @@ class nggdb {
      * @param array $values An array with existing or new values
      * @return bool result of query
      */
-    function update_image_meta( $id, $new_values ) {
+    static function update_image_meta( $id, $new_values ) {
         global $wpdb;
 
         // Query database for existing values
@@ -1053,7 +1053,7 @@ class nggdb {
      * @param int (optional) $id of the object, so that it's not checked against itself
      * @return string unique slug for the object, based on $slug (with a -1, -2, etc. suffix)
      */
-    function get_unique_slug( $slug, $type, $id = 0 ) {
+    static function get_unique_slug( $slug, $type, $id = 0 ) {
 
     	global $wpdb;
 

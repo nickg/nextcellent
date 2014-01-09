@@ -525,7 +525,7 @@ class nggMeta{
      * Reason : GD manipulation removes that options
      *
      * @since V1.4.0
-     * @return void
+     * @return array|boolean
      */
     function get_common_meta() {
         global $wpdb;

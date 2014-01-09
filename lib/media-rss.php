@@ -17,7 +17,7 @@ class nggMediaRss {
 	/**
 	 * Add the javascript required to enable PicLens/CoolIris support 
 	 */
-	function add_piclens_javascript() {
+	static function add_piclens_javascript() {
         if (is_ssl())
             wp_enqueue_script( 'piclens', 'https://lite.piclens.com/current/piclens_optimized.js', array(), false, true);
 		else
@@ -34,7 +34,7 @@ class nggMediaRss {
 	/**
 	 * Get the URL of a gallery media RSS
 	 */
-	function get_gallery_mrss_url($gid, $prev_next = false) {		
+	static function get_gallery_mrss_url($gid, $prev_next = false) {
 		return nggMediaRss::get_mrss_url() . '?' . ('gid=' . $gid . ($prev_next ? '&prev_next=true' : '') . '&mode=gallery');
 	}
 	
@@ -78,7 +78,8 @@ class nggMediaRss {
 	 * @param $next_gallery (object) The next gallery to link in RSS (null if none)
 	 */
 	function get_gallery_mrss($gallery, $prev_gallery = null, $next_gallery = null) {
-		
+		global $nggdb;
+
 		$ngg_options = nggGallery::get_option('ngg_options');
 		//Set sort order value, if not used (upgrade issue)
 		$ngg_options['galSort'] = ($ngg_options['galSort']) ? $ngg_options['galSort'] : 'pid';
@@ -89,7 +90,9 @@ class nggMediaRss {
 		$link = nggMediaRss::get_permalink($gallery->pageid);
 		$prev_link = ( $prev_gallery != null) ? nggMediaRss::get_gallery_mrss_url($prev_gallery->gid, true) : '';
 		$next_link = ( $next_gallery != null) ? nggMediaRss::get_gallery_mrss_url($next_gallery->gid, true) : '';
-		$images = nggdb::get_gallery($gallery->gid, $ngg_options['galSort'], $ngg_options['galSortDir']);
+		//20140106:shouldn't call it statically when is not...
+        //$images = nggdb::get_gallery($gallery->gid, $ngg_options['galSort'], $ngg_options['galSortDir']);
+		$images = $nggdb->get_gallery($gallery->gid, $ngg_options['galSort'], $ngg_options['galSortDir']);
 
 		return nggMediaRss::get_mrss_root_node($title, $description, $link, $prev_link, $next_link, $images);
 	}

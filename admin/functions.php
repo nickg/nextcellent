@@ -21,7 +21,7 @@ class nggAdmin{
 	 * @param bool $output if the function should show an error messsage or not
 	 * @return 
 	 */
-	function create_gallery($title, $defaultpath, $output = true) {
+	static function create_gallery($title, $defaultpath, $output = true) {
 
 		global $user_ID;
  
@@ -132,7 +132,7 @@ class nggAdmin{
 	 * @param string $galleryfolder contains relative path to the gallery itself
 	 * @return void
 	 */
-	function import_gallery($galleryfolder) {
+	static function import_gallery($galleryfolder) {
 		
 		global $wpdb, $user_ID;
 
@@ -230,7 +230,7 @@ class nggAdmin{
 	 * @param string $dirname
 	 * @return array $files list of image filenames 
 	 */
-	function scandir( $dirname = '.' ) { 
+	static function scandir( $dirname = '.' ) {
 		$ext = apply_filters('ngg_allowed_file_types', array('jpeg', 'jpg', 'png', 'gif') );
 
 		$files = array(); 
@@ -256,7 +256,7 @@ class nggAdmin{
 	 * @return string result code
 	 * @since v1.0.0
 	 */
-	function create_thumbnail($image) {
+	static function create_thumbnail($image) {
 		
 		global $ngg;
 		
@@ -336,7 +336,7 @@ class nggAdmin{
 	 * @param integer $height optional
 	 * @return string result code
 	 */
-	function resize_image($image, $width = 0, $height = 0) {
+	static function resize_image($image, $width = 0, $height = 0) {
 		
 		global $ngg;
 		
@@ -391,7 +391,7 @@ class nggAdmin{
 	 * @param string (optional)  $flip, could be either false | V (flip vertical) | H (flip horizontal)
 	 * @return string result code
 	 */
-	function rotate_image($image, $dir = false, $flip = false) {
+	static function rotate_image($image, $dir = false, $flip = false) {
 
 		global $ngg;
 
@@ -488,7 +488,7 @@ class nggAdmin{
 	 * @param object | int $image contain all information about the image or the id
 	 * @return string result code
 	 */
-	function set_watermark($image) {
+	static function set_watermark($image) {
 		
 		global $ngg;
 
@@ -545,7 +545,7 @@ class nggAdmin{
 	 * @return string result code
 	 */
 	
-	function recover_image($image) {
+	static function recover_image($image) {
 
 		global $ngg;
 		
@@ -585,7 +585,7 @@ class nggAdmin{
 	 * @param array $imageslist
 	 * @return array $image_ids Id's which are sucessful added
 	 */
-	function add_Images($galleryID, $imageslist) {
+	static function add_Images($galleryID, $imageslist) {
 		
 		global $wpdb, $ngg;
 		
@@ -646,7 +646,7 @@ class nggAdmin{
 	 * @param array|int $imagesIds
 	 * @return string result code
 	 */
-	function import_MetaData($imagesIds) {
+	static function import_MetaData($imagesIds) {
 			
 		global $wpdb;
 		
@@ -709,7 +709,7 @@ class nggAdmin{
 	 * @param int $id image ID
 	 * @return array metadata
 	 */
-	function get_MetaData($id) {
+	static function get_MetaData($id) {
 		
 		require_once(NGGALLERY_ABSPATH . '/lib/meta.php');
 		
@@ -738,7 +738,7 @@ class nggAdmin{
 	 * @param int $id
 	 * @return result
 	 */
-	function maybe_import_meta( $id ) {
+	static function maybe_import_meta( $id ) {
 				
 		require_once(NGGALLERY_ABSPATH . '/lib/meta.php');
 				
@@ -765,7 +765,7 @@ class nggAdmin{
 	 * @param string $file
 	 * @return bool
 	 */
-	function unzip($dir, $file) {
+	static function unzip($dir, $file) {
 		
 		if(! class_exists('PclZip'))
 			require_once(ABSPATH . 'wp-admin/includes/class-pclzip.php');
@@ -791,7 +791,7 @@ class nggAdmin{
 	 * @param mixed $p_header
 	 * @return bool
 	 */
-	function getOnlyImages($p_event, &$p_header)	{
+	static function getOnlyImages($p_event, &$p_header)	{
         // avoid null byte hack (THX to Dominic Szablewski)
         if ( strpos($p_header['filename'], chr(0) ) !== false ) 
             $p_header['filename'] = substr ( $p_header['filename'], 0, strpos($p_header['filename'], chr(0) ));        
@@ -824,7 +824,7 @@ class nggAdmin{
 	 * @param int (optional) $galleryID
 	 * @return bool $result
 	 */
-	function import_zipfile($galleryID) {
+	static function import_zipfile($galleryID) {
 
 		global $ngg, $wpdb;
 		
@@ -832,7 +832,7 @@ class nggAdmin{
 			return false;
 		
 		$defaultpath = $ngg->options['gallerypath'];		
-		$zipurl = $_POST['zipurl'];
+		$zipurl = isset($_POST['zipurl'])?$_POST['zipurl']:"";
 		
 		// if someone entered a URL try to upload it
 		if (!empty($zipurl) && (function_exists('curl_init')) ) {
@@ -917,7 +917,7 @@ class nggAdmin{
 			$message = __('Zip-File successfully unpacked','nggallery') . '<br />';		
 
 			// parse now the folder and add to database
-			$message .= nggAdmin::import_gallery( $foldername );
+			nggAdmin::import_gallery( $foldername );
 			nggGallery::show_message($message);
 		}
 		
@@ -930,7 +930,7 @@ class nggAdmin{
 	 * @class nggAdmin
 	 * @return void
 	 */
-	function upload_images() {
+	static function upload_images() {
 	
 		global $nggdb;
 		
@@ -1103,7 +1103,7 @@ class nggAdmin{
 	 * @param string $filename
 	 * @return bool $result
 	 */
-	function chmod($filename = '') {
+	static function chmod($filename = '') {
 
 		$stat = @ stat( dirname($filename) );
 		$perms = $stat['mode'] & 0000666; // Remove execute bits for files
@@ -1121,7 +1121,7 @@ class nggAdmin{
 	 * @param string $foldername
 	 * @return bool $result
 	 */
-	function check_safemode($foldername) {
+	static function check_safemode($foldername) {
 
 		if ( SAFE_MODE ) {
 			
@@ -1146,7 +1146,7 @@ class nggAdmin{
 	 * @param int $check_ID is the user_id
 	 * @return bool $result
 	 */
-	function can_manage_this_gallery($check_ID) {
+	static function can_manage_this_gallery($check_ID) {
 		
 		global $user_ID, $wp_roles;
 		
@@ -1170,7 +1170,7 @@ class nggAdmin{
 	 * @param int $dest_gid destination gallery
 	 * @return void
 	 */
-	function move_images($pic_ids, $dest_gid) {
+	static function move_images($pic_ids, $dest_gid) {
 
 		$errors = '';
 		$count = 0;
@@ -1248,7 +1248,7 @@ class nggAdmin{
 	 * @param int $dest_gid destination gallery
 	 * @return void
 	 */
-	function copy_images($pic_ids, $dest_gid) {
+	static function copy_images($pic_ids, $dest_gid) {
 	   
         require_once(NGGALLERY_ABSPATH . '/lib/meta.php');
 		
@@ -1352,7 +1352,7 @@ class nggAdmin{
 	 * @param string $title name of the operation
 	 * @return string the javascript output
 	 */
-	function do_ajax_operation( $operation, $image_array, $title = '' ) {
+	static function do_ajax_operation( $operation, $image_array, $title = '' ) {
 		
 		if ( !is_array($image_array) || empty($image_array) )
 			return;
@@ -1388,7 +1388,7 @@ class nggAdmin{
 	 * @param int $galleryID
 	 * @return void
 	 */
-	function set_gallery_preview( $galleryID ) {
+	static function set_gallery_preview( $galleryID ) {
 		
 		global $wpdb;
 		
@@ -1411,9 +1411,9 @@ class nggAdmin{
 	 * 
 	 * @class nggAdmin
 	 * @param int $galleryID
-	 * @return arry (JSON)
+	 * @return array (JSON)
 	 */
-	function get_image_ids( $galleryID ) {
+	static function get_image_ids( $galleryID ) {
 		
 		if ( !function_exists('json_encode') )
 			return(-2);
@@ -1435,7 +1435,7 @@ class nggAdmin{
 	 * @return string message
 	 */
 	
-	function decode_upload_error( $code ) {
+	static function decode_upload_error( $code ) {
 		
 	        switch ($code) {
 	            case UPLOAD_ERR_INI_SIZE:

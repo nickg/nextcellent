@@ -657,7 +657,6 @@ class nggXMLRPC{
 	 */
 	function getAlbum($args) {
 
-		global $nggdb;
 
         $this->escape($args);
 		$blog_ID    = (int) $args[0];
@@ -671,7 +670,7 @@ class nggXMLRPC{
 		if( !current_user_can( 'NextGEN Edit album' ) )
 			return new IXR_Error( 401, __( 'Sorry, you must be able to manage albums' ) );
 
-		$album = $nggdb->find_album( $id );
+		$album = nggdb::find_album( $id );
 
 		return($album);
 

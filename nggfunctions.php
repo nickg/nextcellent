@@ -148,7 +148,7 @@ function nggShow_JS_Slideshow($galleryID, $width, $height, $class = 'ngg-slidesh
  */
 function nggShowGallery( $galleryID, $template = '', $images = false ) {
 
-    global $nggRewrite;
+    global $nggRewrite,$nggdb;
 
     $ngg_options = nggGallery::get_option('ngg_options');
 
@@ -158,7 +158,9 @@ function nggShowGallery( $galleryID, $template = '', $images = false ) {
 
     // get gallery values
     //TODO: Use pagination limits here to reduce memory needs
-    $picturelist = nggdb::get_gallery($galleryID, $ngg_options['galSort'], $ngg_options['galSortDir']);
+    //20130106:shouldn't call it statically if is not...
+    //$picturelist = nggdb::get_gallery($galleryID, $ngg_options['galSort'], $ngg_options['galSortDir']);
+    $picturelist = $nggdb->get_gallery($galleryID, $ngg_options['galSort'], $ngg_options['galSortDir']);
 
     if ( !$picturelist )
         return __('[Gallery not found]','nggallery');
@@ -392,7 +394,7 @@ function nggCreateGallery($picturelist, $galleryID = false, $template = '', $ima
     $prev = ( empty($nggNav->prev) ) ? false : $nggNav->prev;
 
     // create the output
-    $out = nggGallery::capture ( $filename, array ('gallery' => $gallery, 'images' => $picturelist, 'pagination' => $navigation, 'current' => $current_pid, 'next' => $next, 'prev' => $prev) );
+    $out = nggGallery::capture( $filename, array ('gallery' => $gallery, 'images' => $picturelist, 'pagination' => $navigation, 'current' => $current_pid, 'next' => $next, 'prev' => $prev) );
 
     // apply a filter after the output
     $out = apply_filters('ngg_gallery_output', $out, $picturelist);
@@ -518,7 +520,7 @@ function nggCreateAlbum( $galleriesID, $template = 'extend', $album = 0) {
 
         //if we have a prefix 'a' then it's a subalbum, instead a gallery
         if (substr( $key, 0, 1) == 'a') {
-			if (($subalbum = $nggdb->find_album(substr($key, 1)))) {
+			if (($subalbum = nggdb::find_album(substr($key, 1)))) {
 				$galleries[$key]->counter = count($subalbum->gallery_ids);
 				if ($subalbum->previewpic > 0){
 					$image = $nggdb->find_image( $subalbum->previewpic );
@@ -630,7 +632,7 @@ function nggCreateAlbum( $galleriesID, $template = 'extend', $album = 0) {
  */
 function nggShowImageBrowser($galleryID, $template = '') {
 
-    global $wpdb;
+    global $wpdb,$nggdb;
 
     $ngg_options = nggGallery::get_option('ngg_options');
 
@@ -639,7 +641,9 @@ function nggShowImageBrowser($galleryID, $template = '') {
     $ngg_options['galSortDir'] = ($ngg_options['galSortDir'] == 'DESC') ? 'DESC' : 'ASC';
 
     // get the pictures
-    $picturelist = nggdb::get_gallery($galleryID, $ngg_options['galSort'], $ngg_options['galSortDir']);
+    //20140106:shouldn't call it statically if is not...
+    //$picturelist = nggdb::get_gallery($galleryID, $ngg_options['galSort'], $ngg_options['galSortDir']);
+    $picturelist = $nggdb->get_gallery($galleryID, $ngg_options['galSort'], $ngg_options['galSortDir']);
 
     if ( is_array($picturelist) )
         $out = nggCreateImageBrowser($picturelist, $template);

@@ -2,7 +2,7 @@
 Contributors: WPGetReady
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 3.5
-Tested up to: 3.7.1
+Tested up to: 3.8
 Stable tag: trunk
 License: GPLv2
 
@@ -10,54 +10,56 @@ License: GPLv2
 
 = WordPress Gallery Plugin =
 
-= V1.9.15 - 03.10.2013 =
+= V1.9.16 - 08.01.2014 =
 
  What's in it for you?
 
-* Code simplification: code supporting PHP4 has no use. Deprecated.
-* Plugin should work with PHP strict standard enabled.
-* Improper call to static functions corrected all over the code
-* Disabled donator metabox since link is dead
+* Folder and Image Management improved (credits to Niko Strijbol)
+* German translation (credits to Niko Strijbol)
+* Improved style for WP 3.8 (credits to Niko Strijbol)
+* Improper call to method as static when method belongs to instance.
+* Code cleaning, proper call to static fixed
 
 VERY IMPORTANT: Read ON!
 -----------------------
 
-- NextCellent Gallery is based from the last stable NextGEN 1.9.13 version prior 2.x.x . If you are a new user, it is suggested to install latest NextGEN version instead this plugin. Its development is going in the right way if you are starting a new site. Even though, NextCellent development path will also work fine for you. Your choice.
+**NextCellent Gallery provides backward compatibility for older NextGEN until version 1.9.13** . 
 
-- Second, **this plugin WON'T WORK with NextGEN side by side**. <u>It will gracefully deactivate if detects NextGEN is working to avoid compatibility issues</u>.
+- **this plugin will gracefully deactivate if detects NextGEN is working (any version) to avoid compatibility issues**.
 
-- Third, READ THE FAQ!!! Issues for failing to read the FAQ will be IGNORED!!!
+- Please remember to **READ THE FAQ!!!** <u>Issues for failing to read the FAQ will be IGNORED!!!</u>
 
 - If you like it, please spread the word and rate it accordingly. I guess a lot of annoyed users can take advantage of NextCellent. Thank you!
 
-**NextCellent Gallery provides backward compatibility for older NextGEN until version 1.9.13** . 
 
 = So, who is going to use this plugin? =
 
 - The aim of NextCellent is to provide an alternative for traditional NextGEN users to keep their sites updated without breaking compatibility.  Older subplugins will be also compatible (those which were compatible with version 1.9.13 or earlier).
 
-- Users who wants to stay working with older NextGEN version (1.9.13) until they're confident enough to make the jump to newest 2.x.x version
+- Users who wants to stay working with older NextGEN version (1.9.13 or older) until they're confident enough to make the jump to newest 2.x.x version
 
-- Users wishing avoid NextGEN 2.x.x and beyond for the moment. Even though, **I strongly suggest to analyze your schedule and formulate a migration**. That is should be the way to go in the future.
+- Users wishing avoid NextGEN 2.x.x and beyond for the moment.
 
 - Site managers handling several sites using specialized software as InfiniteWP or ManageWP, wanting to keep their sites running with automatic updates.
 
 - Users prefering an alternative development path with backward compatibility.
 
-- Any final user preferring older NextGEN version.
+- Developers wanting to suggest or colaborate improving the code.
 
 
 = What do you get with NextCellent Gallery? =
 
 - Backward compatibility with NextGEN plugin version (1.9.13)
 
-- Slow evolving code path, made only by NextGEN user's suggestions. Yep, you read it right: *slow* in counterpart as *fast*. Older code is good enough to keep a community and it worked (and works) for most people.
+- Slow evolving code path, made only by NextGEN user's suggestions. Yep, you read it right: *slow* in counterpart as *fast*. Older code is good enough to keep a community and it worked (and works) for most people. Versions will rollup about once a month.
 
 - A reliable way to work with already installed NextGEN galleries.
 
 - A place for updating the plugin without using FTP manual updates, but Wordpress plugin repository.
 
 - Alternative path preserving backward compatibility (while possible).
+
+- **Development on Bitbucket open to developers suggestions**. (https://bitbucket.org/wpgetready/nextcellent). You are free to download , test and make suggestions and request.
 
 Being said that, here are the usual classic features:
 
@@ -170,9 +172,8 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 = What are the SIGNIFICATIVE differences between NextCellent and NextGEN 1.9.13? =
 
 - Plugin will detect if NextGEN is installed and it will deativate itself. You'll need to deactivate NextGEN in order to properly use NextCellent.
-- Plugin will deactivate if you install and activate any NextGEN version (all versions).
+- Plugin will deactivate if you install and activate any NextGEN version (any version).
 - Minimal text changes to let the user know what plugin is running. This would affect translated texts in some cases. 
-- Nothing else in this starting version. 
 
 = What are the SIGNIFICATIVE differences between this NextCellent and NextGEN 2.x.x? =
 
@@ -198,7 +199,7 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 - Assuming you have both plugins installed:
 - If you are unsure, backup the site first(!)
 - Be sure NextCellent is deactivated
-- MANUALLY remove NextCellent plugin folder (usually nextcellent-gallery-nextgen-legacy). Do not use traditional Wordpress uninstall procedure.
+- MANUALLY remove NextCellent plugin folder (usually nextcellent-gallery-nextgen-legacy). **DO NOT** use traditional Wordpress uninstall procedure. Remember: if you run the uninstall procedure you are wipping out your images/galleries(!)
 - Reactivate NextGEN (if it was deactivated)
 - That's all
 
@@ -207,13 +208,13 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 - Assuming you have both plugins installed:
 - If you are unsure, I backup the site first(!)
 - Be sure NextGEN is deactivated
-- MANUALLY remove NextGEN plugin folder(usually NextGEN-gallery) . Do not use traditional Wordpress uninstall procedure.
+- MANUALLY remove NextGEN plugin folder(usually NextGEN-gallery) . **DO NOT** use traditional Wordpress uninstall procedure. Remember: if you run the uninstall procedure you are wipping out your images/galleries(!)
 - Activate NextCellent (if it was deactivated)
 - That's all
 
 = I have NextGEN 1.9.13 or older, should I install NextCellent? =
 
-- Good question. NextCellent 1.9.14 makes no significatives differences at this current stage, except minimal text changes and NextGEN detection to avoid user confusion. Aside that, it should be identical, handling your galleries without problems. This is a starting point to anyone using older NextGEN version.
+- Good question. NextCellent makes no significatives differences at this current stage, except minimal text changes and NextGEN detection to avoid user confusion. Aside that, it should be identical, handling your galleries without problems. This is a starting point to anyone using older NextGEN version.
 
 = If I have NextGEN 2.x.x, should I install NextCellent? =
 
@@ -229,12 +230,11 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 - If you are getting performance problems, go with NextCellent.
 - If you need peace of mind right now, go with NextCellent.
 - If you are managing large amounts of sites, and you need update-and-forget without FTP (like InfiniteWP or ManageWP), go with NextCellent.
-- Keep in mind also that every issue existent on version 1.9.13 would eventually exists on 1.9.14, since this is the very first release.
-- NextCellent is a place where you can download and install currently an older, 'stable' version. 
+- NextCellent is a place where you can download and install currently an older, stable version. And when I say 'older' is completely different of saying obsolete. We (the users an me) are taking a different development path, picking up the old, good code and working from there.  
 
 = I am a developer , would be wise to create plugins based on NextCellent? =
 
-- That is another good question. Since NextCellent is a branch from NextGEN 1.9.13, I will do my best to keep it, stable. Time will say if I am right. What I can assure is the code will lack of dramatic changes over the time, unless there is a big need to do that.
+- That is another good question. Since NextCellent is a branch from NextGEN 1.9.13, I will do my best to keep it stable. I can assure the code will lack of dramatic changes over the time, unless there is a big need to do that.
 
 = Are you related with Alex Rabe or PhotoCrati? =
 
@@ -242,7 +242,7 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 
 = Will NextCellent continue evolving? =
 
-- Yes. Current version has things to be improved. Versions will be numbered as 1.9.x avoiding conflicting NextGEN numbering. However NextCellent will respect current configuration and database table format, so you can switch to NextGEN version (theoretically) without effort.
+- **Absolutely**. Current version has many things to be improved. Versions will be numbered as 1.9.x avoiding conflicting NextGEN numbering. However NextCellent will respect current configuration and database table format, so you can switch to NextGEN version (theoretically) without effort.
 
 = Will NextCellent Gallery work with my theme? =
 
@@ -324,6 +324,13 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 - You should go to original NextGEN plugin to check this out. <a href="http://www.NextGEN-gallery.com/languages/" target="_blank">click here to find out more.</a>
 
 == Changelog ==
+
+= V1.9.16 - 08.01.2014 =
+* Folder and Image Management improved (credits to Niko Strijbol)
+* German translation (credits to Niko Strijbol)
+* Improved style for WP 3.8 (credits to Niko Strijbol)
+* Improper call to method as static when method belongs to instance. Fixed
+* Code cleaning, proper call to static method fixed
 
 = V1.9.15 - 03.10.2013 =
 * Code simplification: code supporting PHP4 has no use. Deprecated.

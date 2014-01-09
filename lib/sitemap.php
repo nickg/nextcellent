@@ -64,7 +64,7 @@ class nggSitemaps {
      */
     function add_gallery( $atts ) {
 
-        global $wpdb;
+        global $wpdb,$nggdb;
 
         extract(shortcode_atts(array(
             'id'        => 0
@@ -74,7 +74,9 @@ class nggSitemaps {
         if( !is_numeric($id) )
             $id = $wpdb->get_var( $wpdb->prepare ("SELECT gid FROM $wpdb->nggallery WHERE name = '%s' ", $id) );
 
-        $images = nggdb::get_gallery($id, 'pid', 'ASC', true, 1000);
+        //20140106:shouldn't call it statically when is not...
+        //$images = nggdb::get_gallery($id, 'pid', 'ASC', true, 1000);
+        $images = $nggdb->get_gallery($id, 'pid', 'ASC', true, 1000);
 
         foreach ($images as $image) {
             $newimage = array();
