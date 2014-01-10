@@ -246,12 +246,12 @@ jQuery(document).ready( function() {
 	<div id="gallerydiv" class="postbox <?php echo postbox_classes('gallerydiv', 'ngg-manage-gallery'); ?>" >
 		<h3><?php _e('Gallery settings', 'nggallery') ?><small> (<?php _e('Click here for more settings', 'nggallery') ?>)</small></h3>
 		<div class="inside">
-			<table class="form-table" >
+			<table class="form-table" id="gallery-properties">
 				<tr>
-					<th align="left"><?php _e('Title') ?>:</th>
-					<th align="left"><input <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery title' ); ?> type="text" size="50" name="title" value="<?php echo $gallery->title; ?>"  /></th>
-					<th align="right"><?php _e('Page Link to', 'nggallery') ?>:</th>
-					<th align="left">
+					<td align="left"><?php _e('Title') ?>:</th>
+					<td align="left"><input <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery title' ); ?> type="text" size="50" name="title" value="<?php echo $gallery->title; ?>"  /></th>
+					<td align="right"><?php _e('Page Link to', 'nggallery') ?>:</th>
+					<td align="left">
 					<select <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery page id' ); ?>  name="pageid" style="width:95%">
 						<option value="0" ><?php _e('Not linked', 'nggallery') ?></option>
 						<?php $err = error_reporting(0); ?>
@@ -261,10 +261,10 @@ jQuery(document).ready( function() {
 					</th>
 				</tr>
 				<tr>
-					<th align="left"><?php _e('Description') ?>:</th>
-					<th align="left"><textarea  <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery description' ); ?> name="gallerydesc" cols="30" rows="3" style="width: 95%" ><?php echo $gallery->galdesc; ?></textarea></th>
-					<th align="right"><?php _e('Preview image', 'nggallery') ?>:</th>
-					<th align="left">
+					<td align="left"><?php _e('Description') ?>:</th>
+					<td align="left"><textarea  <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery description' ); ?> name="gallerydesc" cols="30" rows="3" style="width: 95%" ><?php echo $gallery->galdesc; ?></textarea></th>
+					<td align="right"><?php _e('Preview image', 'nggallery') ?>:</th>
+					<td align="left">
 						<select <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery preview pic' ); ?> name="previewpic" style="width:95%" >
 							<option value="0" ><?php _e('No Picture', 'nggallery') ?></option>
 							<?php
@@ -288,10 +288,10 @@ jQuery(document).ready( function() {
 					</th>
 				</tr>
 				<tr>
-					<th align="left"><?php _e('Path', 'nggallery') ?>:</th>
-					<th align="left"><input <?php if ( is_multisite() ) echo 'readonly = "readonly"'; ?> <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery path' ); ?> type="text" size="50" name="path" value="<?php echo $gallery->path; ?>"  /></th>
-					<th align="right"><?php _e('Author', 'nggallery'); ?>:</th>
-					<th align="left">
+					<td align="left"><?php _e('Path', 'nggallery') ?>:</th>
+					<td align="left"><input <?php if ( is_multisite() ) echo 'readonly = "readonly"'; ?> <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery path' ); ?> type="text" size="50" name="path" value="<?php echo $gallery->path; ?>"  /></th>
+					<td align="right"><?php _e('Author', 'nggallery'); ?>:</th>
+					<td align="left">
 					<?php
 						$editable_ids = $ngg->manage_page->get_editable_user_ids( $user_ID );
 						if ( $editable_ids && count( $editable_ids ) > 1 && nggGallery::current_user_can( 'NextGEN Edit gallery author')  )
@@ -303,10 +303,10 @@ jQuery(document).ready( function() {
 				</tr>
 				<?php if(current_user_can( 'publish_pages' )) : ?>
 				<tr>
-					<th align="left">&nbsp;</th>
-					<th align="left">&nbsp;</th>
-					<th align="right"><?php _e('Create new page', 'nggallery') ?>:</th>
-					<th align="left">
+					<td align="left">&nbsp;</th>
+					<td align="left">&nbsp;</th>
+					<td align="right"><?php _e('Create new page', 'nggallery') ?>:</th>
+					<td align="left">
 					<select name="parent_id" style="width:95%">
 						<option value="0"><?php _e ('Main page (No parent)', 'nggallery'); ?></option>
 						<?php if (get_post()): ?>
@@ -485,7 +485,7 @@ if($picturelist) {
 						$picture->tags = wp_get_object_terms($pid, 'ngg_tag', 'fields=names');
 						if (is_array ($picture->tags) ) $picture->tags = implode(', ', $picture->tags);
 						?>
-						<td <?php echo $attributes ?>><textarea name="tags[<?php echo $pid ?>]" style="width:95%;" rows="2"><?php echo $picture->tags ?></textarea></td>
+						<td <?php echo $attributes ?>><textarea placeholder="<?php _e("Seperated by commas",'nggallery'); ?>"name="tags[<?php echo $pid ?>]" style="width:95%;" rows="2"><?php echo $picture->tags ?></textarea></td>
 						<?php
 					break;
 					default :
@@ -722,8 +722,8 @@ class _NGG_Images_List_Table extends WP_List_Table {
     	$columns['thumbnail'] = __('Thumbnail', 'nggallery');
     	$columns['filename'] = __('Filename', 'nggallery');
     	$columns['alt_title_desc'] = __('Alt &amp; Title Text', 'nggallery') . ' / ' . __('Description', 'nggallery');
-    	$columns['tags'] = __('Tags (comma separated list)', 'nggallery');
-    	$columns['exclude'] = __('exclude', 'nggallery');
+    	$columns['tags'] = __('Tags', 'nggallery');
+    	$columns['exclude'] = __('Exclude', 'nggallery');
 
     	$columns = apply_filters('ngg_manage_images_columns', $columns);
 

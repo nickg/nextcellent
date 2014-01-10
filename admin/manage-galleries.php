@@ -428,7 +428,7 @@ class _NGG_Galleries_List_Table extends WP_List_Table {
     	$columns['description'] = __('Description', 'nggallery');
     	$columns['author'] = __('Author', 'nggallery');
     	$columns['page_id'] = __('Page ID', 'nggallery');
-    	$columns['quantity'] = __( 'Images', 'nggallery' );
+    	$columns['quantity'] = '<div class="images-grey-bubble" title="' . __( 'Images', 'nggallery' ) . '"></div>';
 
     	$columns = apply_filters('ngg_manage_gallery_columns', $columns);
 
