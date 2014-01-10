@@ -80,7 +80,7 @@ function showDialog( windowId, title ) {
 						elementlist += "," + form.elements[i].value ;
 		}
 	}
-	jQuery("#" + windowId + "_bulkaction").val(jQuery("#bulkaction").val());
+	jQuery("#" + windowId + "_bulkaction").val(jQuery(".bulkaction").val());
 	jQuery("#" + windowId + "_imagelist").val(elementlist);
     // now show the dialog
 	jQuery( "#" + windowId ).dialog({
@@ -168,7 +168,7 @@ function checkSelected() {
 		return false;
 	}
 
-	actionId = jQuery('#bulkaction').val();
+	actionId = jQuery('.bulkaction').val();
 
 	switch (actionId) {
 		case "copy_to":
@@ -336,7 +336,7 @@ jQuery(document).ready( function() {
 <div class="tablenav top ngg-tablenav">
     <?php $ngg->manage_page->pagination( 'top', $_GET['paged'], $nggdb->paged['total_objects'], $nggdb->paged['objects_per_page']  ); ?>
 	<div class="alignleft actions">
-	<select id="bulkaction" name="bulkaction">
+	<select class="bulkaction" name="bulkaction">
 		<option value="no_action" ><?php _e("Bulk actions",'nggallery'); ?></option>
 		<option value="set_watermark" ><?php _e("Set watermark",'nggallery'); ?></option>
 		<option value="new_thumbnail" ><?php _e("Create new thumbnails",'nggallery'); ?></option>
@@ -511,7 +511,7 @@ if ( $counter == 0 )
 	</table>
     <div class="tablenav bottom">
 	<div class="alignleft actions">
-	<select id="bulkaction" name="bulkaction">
+	<select class="bulkaction" name="bulkaction">
 		<option value="no_action" ><?php _e("Bulk actions",'nggallery'); ?></option>
 		<option value="set_watermark" ><?php _e("Set watermark",'nggallery'); ?></option>
 		<option value="new_thumbnail" ><?php _e("Create new thumbnails",'nggallery'); ?></option>
