@@ -123,7 +123,10 @@ function nggallery_manage_gallery_main() {
 	</script>
 	<div class="wrap">
 		<?php screen_icon( 'nextgen-gallery' ); ?>
-		<h2><?php echo _e( 'Manage Galleries', 'nggallery');?></h2>
+		<h2><?php echo _e( 'Galleries', 'nggallery');?> 
+			<form id="addgalleries" class="nggform add-new-form" method="POST" action="<?php echo $ngg->manage_page->base_page . '&amp;paged=' . $_GET['paged']; ?>" accept-charset="utf-8"><?php if ( current_user_can('NextGEN Upload images') && nggGallery::current_user_can( 'NextGEN Add new gallery' ) ) : ?>
+					<input name="doaction" class="add-new-h2" type="submit" onclick="showAddGallery(); return false;" value="<?php _e('Add new gallery', 'nggallery') ?>"/>
+			<?php endif; ?></form></h2>
 		<form class="search-form" action="" method="get">
 		<p class="search-box">
 			<label class="hidden" for="media-search-input"><?php _e( 'Search Images', 'nggallery' ); ?>:</label>
@@ -150,9 +153,6 @@ function nggallery_manage_gallery_main() {
 					<option value="recover_images" ><?php _e("Recover from backup",'nggallery'); ?></option>
 				</select>
 				<input name="showThickbox" class="button-secondary" type="submit" value="<?php _e('Apply','nggallery'); ?>" onclick="if ( !checkSelected() ) return false;" />
-				<?php endif; ?>
-				<?php if ( current_user_can('NextGEN Upload images') && nggGallery::current_user_can( 'NextGEN Add new gallery' ) ) : ?>
-					<input name="doaction" class="button-secondary action" type="submit" onclick="showAddGallery(); return false;" value="<?php _e('Add new gallery', 'nggallery') ?>"/>
 				<?php endif; ?>
 			</div>
 
@@ -266,7 +266,7 @@ if($gallerylist) {
 		<div class="alignleft actions">
 				<?php if ( function_exists('json_encode') ) : ?>
 				<select name="bulkaction" class="bulkaction">
-					<option value="no_action" ><?php _e("Actions",'nggallery'); ?></option>
+					<option value="no_action" ><?php _e("Bulk actions",'nggallery'); ?></option>
 					<option value="delete_gallery" ><?php _e("Delete",'nggallery'); ?></option>
                     <option value="set_watermark" ><?php _e("Set watermark",'nggallery'); ?></option>
 					<option value="new_thumbnail" ><?php _e("Create new thumbnails",'nggallery'); ?></option>

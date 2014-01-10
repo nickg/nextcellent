@@ -232,7 +232,7 @@ jQuery(document).ready( function() {
 <input type="hidden" name="page" value="manage-images" />
 
 <?php else :?>
-<h2><?php echo _e( 'Gallery', 'nggallery' ); ?>: <?php echo esc_html ( nggGallery::i18n($gallery->title) ); ?></h2>
+<h2><?php echo _e( 'Gallery', 'nggallery' ); ?> <?php echo esc_html ( nggGallery::i18n($gallery->title) ); ?></h2>
 
 <br style="clear: both;" />
 

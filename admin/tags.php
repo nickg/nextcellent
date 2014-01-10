@@ -95,7 +95,7 @@ if ($nb_tags < $tag_count && $offset>0) {
 
 <div class="wrap ngg_wrap">
     <?php screen_icon( 'nextgen-gallery' ); ?>
-	<h2><?php _e('Manage Image Tags', 'nggallery'); ?></h2>
+	<h2><?php _e('Tags', 'nggallery'); ?></h2>
 
 	<?php if ($action_status['message']!='') : ?>
 	<div id="message" class="<?php echo ($action_status['status']=='ok' ? 'updated' : $action_status['status']); ?> fade">

@@ -204,6 +204,26 @@ vertical-align: top;
 text-align: left;
 }
 
+/* SETTINGS FOR ADD NEW */
+.add-new-form {
+display: inline;
+}
+.add-new-form .add-new-h2{
+display: inline;
+color: #0074a2;
+-webkit-transition-property: border,background,color;
+-moz-transition-property: border,background,color;
+transition-property: border,background,color;
+-webkit-transition-duration: .05s;
+-moz-transition-duration: .05s;
+transition-duration: .05s;
+-webkit-transition-timing-function: ease-in-out;
+-moz-transition-timing-function: ease-in-out;
+transition-timing-function: ease-in-out;
+cursor: pointer;
+line-height: initial;
+}
+
 /* SETTINGS FOR PROGRESS BAR */
 
 div .progressborder {
