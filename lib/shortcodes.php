@@ -311,7 +311,6 @@ class NextGEN_shortcodes {
             $out = nggShowAlbumTags  ($album, $template, $sorting);
         else
             $out = nggShowGalleryTags($gallery, $template, $sorting);
-
         return $out;
     }
 
@@ -345,7 +344,6 @@ class NextGEN_shortcodes {
         // show gallery
         if ( is_array($picturelist) )
             $out = nggCreateGallery($picturelist, false, $template);
-
         return $out;
     }
 
