@@ -292,14 +292,16 @@ class nggTags {
 	*/
 	/**
 	 * nggTags::find_images_for_tags()
-	 *
+	 * 20140120: Mode DESC added.
+     *
 	 * @param mixed $taglist
-	 * @param string $mode could be 'ASC' or 'RAND'
+	 * @param string $sorting could be 'ASC' or 'RAND' or 'DESC'
 	 * @return array of images
 	 */
-	static function find_images_for_tags($taglist, $mode = "ASC") {
+	static function find_images_for_tags($taglist, $sorting = "ASC") {
 		// return the images based on the tag
 		global $wpdb;
+        $modes = array ('ASC','DESC','RAND');
 
 		// extract it into a array
 		$taglist = explode(",", $taglist);
@@ -319,10 +321,8 @@ class nggTags {
 		$picids = get_objects_in_term($term_ids, 'ngg_tag');
 
 		//Now lookup in the database
-		if ($mode == 'RAND')
-			$pictures = nggdb::find_images_in_list($picids, true, 'RAND' );
-		else
-			$pictures = nggdb::find_images_in_list($picids, true, 'ASC');
+        $sorting = in_array($sorting,$modes)?$sorting:'ASC';
+        $pictures = nggdb::find_images_in_list($picids, true, $sorting );
 
 		return $pictures;
 	}
