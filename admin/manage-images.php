@@ -509,32 +509,8 @@ if ( $counter == 0 )
 
 		</tbody>
 	</table>
-    <div class="tablenav bottom">
-	<div class="alignleft actions">
-	<select id="bulkaction" name="bulkaction">
-		<option value="no_action" ><?php _e("Actions",'nggallery'); ?></option>
-		<option value="set_watermark" ><?php _e("Set watermark",'nggallery'); ?></option>
-		<option value="new_thumbnail" ><?php _e("Create new thumbnails",'nggallery'); ?></option>
-		<option value="resize_images" ><?php _e("Resize images",'nggallery'); ?></option>
-		<option value="recover_images" ><?php _e("Recover from backup",'nggallery'); ?></option>
-		<option value="delete_images" ><?php _e("Delete images",'nggallery'); ?></option>
-		<option value="import_meta" ><?php _e("Import metadata",'nggallery'); ?></option>
-		<option value="rotate_cw" ><?php _e("Rotate images clockwise",'nggallery'); ?></option>
-		<option value="rotate_ccw" ><?php _e("Rotate images counter-clockwise",'nggallery'); ?></option>
-		<option value="copy_to" ><?php _e("Copy to...",'nggallery'); ?></option>
-		<option value="move_to"><?php _e("Move to...",'nggallery'); ?></option>
-		<option value="add_tags" ><?php _e("Add tags",'nggallery'); ?></option>
-		<option value="delete_tags" ><?php _e("Delete tags",'nggallery'); ?></option>
-		<option value="overwrite_tags" ><?php _e("Overwrite tags",'nggallery'); ?></option>
-	</select>
-	<input class="button-secondary" type="submit" name="showThickbox" value="<?php _e('Apply', 'nggallery'); ?>" onclick="if ( !checkSelected() ) return false;" />
-
-	<?php if (($ngg->options['galSort'] == "sortorder") && (!$is_search) ) { ?>
-		<input class="button-secondary" type="submit" name="sortGallery" value="<?php _e('Sort gallery', 'nggallery');?>" />
-	<?php } ?>
-
-	<input type="submit" name="updatepictures" class="button-primary action"  value="<?php _e('Save Changes', 'nggallery');?>" />
-	</div>
+	<div class="tablenav bottom">
+    <input type="submit" class="button-primary action" name="updatepictures" value="<?php _e('Save Changes', 'nggallery'); ?>" />
     <?php $ngg->manage_page->pagination( 'bottom', $_GET['paged'], $nggdb->paged['total_objects'], $nggdb->paged['objects_per_page']  ); ?>
     </div>
 	</form>

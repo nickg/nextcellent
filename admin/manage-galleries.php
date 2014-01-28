@@ -263,25 +263,8 @@ if($gallerylist) {
 			</tbody>
 		</table>
         <div class="tablenav bottom">
-		<div class="alignleft actions">
-				<?php if ( function_exists('json_encode') ) : ?>
-				<select name="bulkaction" id="bulkaction">
-					<option value="no_action" ><?php _e("Bulk actions",'nggallery'); ?></option>
-					<option value="delete_gallery" ><?php _e("Delete",'nggallery'); ?></option>
-                    <option value="set_watermark" ><?php _e("Set watermark",'nggallery'); ?></option>
-					<option value="new_thumbnail" ><?php _e("Create new thumbnails",'nggallery'); ?></option>
-					<option value="resize_images" ><?php _e("Resize images",'nggallery'); ?></option>
-					<option value="import_meta" ><?php _e("Import metadata",'nggallery'); ?></option>
-					<option value="recover_images" ><?php _e("Recover from backup",'nggallery'); ?></option>
-				</select>
-				<input name="showThickbox" class="button-secondary" type="submit" value="<?php _e('Apply','nggallery'); ?>" onclick="if ( !checkSelected() ) return false;" />
-				<?php endif; ?>
-				<?php if ( current_user_can('NextGEN Upload images') && nggGallery::current_user_can( 'NextGEN Add new gallery' ) ) : ?>
-					<input name="doaction" class="button-secondary action" type="submit" onclick="showAddGallery(); return false;" value="<?php _e('Add new gallery', 'nggallery') ?>"/>
-				<?php endif; ?>
-			</div>
 		<?php $ngg->manage_page->pagination( 'bottom', $_GET['paged'], $nggdb->paged['total_objects'], $nggdb->paged['objects_per_page']  ); ?>
-        <br class="clear"></div>
+        </div>
 		</form>
 	</div>
 	<!-- #addGallery -->
