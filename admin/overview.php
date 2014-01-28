@@ -835,9 +835,9 @@ class nextcellent_overview {
 
         echo '</p><ul>';
 
-        $url = 'wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/' ;
+        $url = 'http://www.wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/' ;
         echo "<li style='padding-left: 38px; background:transparent url(" . NGGALLERY_URLPATH . "admin/images/icon-rating.png ) no-repeat scroll center left; background-position: 16px 50%; text-decoration: none;'><a href='{$url}' target='_blank'>";
-        _e('Please contribute it giving this plugin a good rate! Thank you!!!', 'nggallery');
+        _e('You can contribute by giving this plugin a good rating! Thanks a lot!', 'nggallery');
         echo "</a></li>";
 
         $url = self::URL_WPGETREADY;
