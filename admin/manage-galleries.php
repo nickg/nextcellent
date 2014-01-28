@@ -69,7 +69,7 @@ function nggallery_manage_gallery_main() {
 			return false;
 		}
 
-		actionId = jQuery('.bulkaction').val();
+		actionId = jQuery('#bulkaction').val();
 
 		switch (actionId) {
 			case "resize_images":
@@ -98,7 +98,7 @@ function nggallery_manage_gallery_main() {
 							elementlist += "," + form.elements[i].value ;
 			}
 		}
-		jQuery("#" + windowId + "_bulkaction").val(jQuery(".bulkaction").val());
+		jQuery("#" + windowId + "_bulkaction").val(jQuery("#bulkaction").val());
 		jQuery("#" + windowId + "_imagelist").val(elementlist);
         // now show the dialog
     	jQuery( "#" + windowId ).dialog({
@@ -143,7 +143,7 @@ function nggallery_manage_gallery_main() {
 
 			<div class="alignleft actions">
 				<?php if ( function_exists('json_encode') ) : ?>
-				<select name="bulkaction" class="bulkaction">
+				<select name="bulkaction" id="bulkaction">
 					<option value="no_action" ><?php _e("Actions",'nggallery'); ?></option>
 					<option value="delete_gallery" ><?php _e("Delete",'nggallery'); ?></option>
                     <option value="set_watermark" ><?php _e("Set watermark",'nggallery'); ?></option>
@@ -265,7 +265,7 @@ if($gallerylist) {
         <div class="tablenav bottom">
 		<div class="alignleft actions">
 				<?php if ( function_exists('json_encode') ) : ?>
-				<select name="bulkaction" class="bulkaction">
+				<select name="bulkaction" id="bulkaction">
 					<option value="no_action" ><?php _e("Bulk actions",'nggallery'); ?></option>
 					<option value="delete_gallery" ><?php _e("Delete",'nggallery'); ?></option>
                     <option value="set_watermark" ><?php _e("Set watermark",'nggallery'); ?></option>
