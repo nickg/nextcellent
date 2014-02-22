@@ -407,3 +407,7 @@ p#sortButton{
 	list-style-position:outside;
 	list-style-type:disc;
 }
+
+/*Image Date Select*/
+.datepicker { display: none; }
+.change { font-size:9px; cursor: pointer; margin-left: 15px;}

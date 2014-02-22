@@ -93,6 +93,30 @@ function showDialog( windowId, title ) {
 }
 
 jQuery(function (){
+	
+	//Format for mysql: yy-mm-dd 00:00:00
+	//Load up the datepicker
+	 jQuery(".datepicker").datepicker({
+	 	dateFormat:"MM dd, yy",
+	 	showOn:"focus",
+	 	onSelect: function(date) { 
+	 		//Turn date into mysql and move things around 
+	 		var mydate = jQuery.datepicker.formatDate("yy-mm-dd 00:00:00", new Date(date));
+	 		jQuery(this).siblings('.rawdate').attr('value',mydate);
+	 		jQuery(this).siblings(".date").html(date);
+	 		jQuery(this).siblings(".date").toggle();
+	 		jQuery(this).toggle();
+	 		jQuery(".change").toggle();
+	 	}
+	 	
+ 	});	
+	 //When the user clicks change
+	 jQuery(".change").click(function() { //Show the input and hide the span
+	 	jQuery(this).siblings(".date").toggle();
+	 	jQuery(this).siblings(".datepicker").toggle();
+	 	jQuery(this).toggle();
+	 });
+	
     // load a content via ajax
     jQuery('a.ngg-dialog').click(function() {
         if ( jQuery( "#spinner" ).length == 0)
@@ -123,6 +147,8 @@ jQuery(function (){
         //prevent the browser to follow the link
         return false;
     });
+    
+   
 });
 
 function checkAll(form)
@@ -397,6 +423,7 @@ if($picturelist) {
 		$alternate = ( !isset($alternate) || $alternate == 'alternate' ) ? '' : 'alternate';
 		$exclude   = ( $picture->exclude ) ? 'checked="checked"' : '';
 		$date = mysql2date(get_option('date_format'), $picture->imagedate);
+		$rawdate = $picture->imagedate;
 		$time = mysql2date(get_option('time_format'), $picture->imagedate);
 
 		?>
@@ -432,7 +459,9 @@ if($picturelist) {
 							<strong><a href="<?php echo esc_url( $picture->imageURL ); ?>" class="thickbox" title="<?php echo esc_attr ($picture->filename); ?>">
 								<?php echo ( empty($picture->alttext) ) ? esc_html( $picture->filename ) : esc_html( stripslashes(nggGallery::i18n($picture->alttext)) ); ?>
 							</a></strong>
-							<br /><?php echo $date; ?>
+							<br /><?php echo '<span class="date">'.$date.'</span>'; ?><input type="text" class="datepicker" value="<?php echo $date?>"/><span class="change"> Change</span>
+							<input type="hidden" class="rawdate" name="date[<?php echo $pid ?>]" value="<?php echo $rawdate; ?>" />
+							
 							<?php if ( !empty($picture->meta_data) ): ?>
 							<br /><?php echo $picture->meta_data['width']; ?> x <?php echo $picture->meta_data['height']; ?> <?php _e('pixel', 'nggallery'); ?>
 
