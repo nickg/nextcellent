@@ -598,7 +598,6 @@ if (!class_exists('nggLoader')) {
 
 
 
-
 /**
  * Checks if there is a NextGEN version running. If so, it deactivates itself
  * TODO: Has to be improved. error msg needs to be translated.

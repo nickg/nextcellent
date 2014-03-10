@@ -858,19 +858,19 @@ function nggSinglePicture($imageID, $width = 250, $height = 250, $mode = '', $fl
  * @param string $taglist list of tags as csv
  * @return the content
  */
-function nggShowGalleryTags($taglist) {
+function nggShowGalleryTags($taglist, $template = '',  $sorting = 'ASC') {
 
     // $_GET from wp_query
     $pid    = get_query_var('pid');
     $pageid = get_query_var('pageid');
 
     // get now the related images
-    $picturelist = nggTags::find_images_for_tags($taglist , 'ASC');
+    $picturelist = nggTags::find_images_for_tags($taglist , $sorting);
 
     // look for ImageBrowser if we have a $_GET('pid')
     if ( $pageid == get_the_ID() || !is_home() )
         if (!empty( $pid ))  {
-            $out = nggCreateImageBrowser( $picturelist );
+            $out = nggCreateImageBrowser( $picturelist, $template );
             return $out;
         }
 
@@ -880,7 +880,7 @@ function nggShowGalleryTags($taglist) {
 
     // show gallery
     if ( is_array($picturelist) )
-        $out = nggCreateGallery($picturelist, false);
+        $out = nggCreateGallery($picturelist, false, $template);
 
     $out = apply_filters('ngg_show_gallery_tags_content', $out, $taglist);
     return $out;
@@ -929,12 +929,12 @@ function nggShowRelatedGallery($taglist, $maxImages = 0) {
 
 /**
  * nggShowAlbumTags() - create a gallery based on the tags
- *
+ * 20140119: Added template and sort
  * @access public
  * @param string $taglist list of tags as csv
  * @return the content
  */
-function nggShowAlbumTags($taglist) {
+function nggShowAlbumTags($taglist, $template='', $sorting = 'ASC') {
 
     global $wpdb, $nggRewrite;
 
@@ -950,7 +950,7 @@ function nggShowAlbumTags($taglist) {
             $slug = esc_attr( $tag );
             $tagname = $wpdb->get_var( $wpdb->prepare( "SELECT name FROM $wpdb->terms WHERE slug = %s", $slug ) );
             $out  = '<div id="albumnav"><span><a href="' . get_permalink() . '" title="' . __('Overview', 'nggallery') .' ">'.__('Overview', 'nggallery').'</a> | '.$tagname.'</span></div>';
-            $out .=  nggShowGalleryTags($slug);
+            $out .=  nggShowGalleryTags($slug, $template, $sorting);
             return $out;
 
         }

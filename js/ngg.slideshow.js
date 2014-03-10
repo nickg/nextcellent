@@ -39,22 +39,22 @@ jQuery.fn.nggSlideshow = function ( args ) {
 		}
 	});
 	
-	// load image and bind appendImage() to the img load - here we are making sure the loads do not get displaced
-	function loadImage(num){
-         // check that stack is not empty and we haven't alreay loaded 3 images	   
-         if(stackLength > 0 && num <= 3) { 
-            var img = new Image(); 
+    // load image and bind appendImage() to the img load - here we are making sure the loads do not get displaced
+    function loadImage(num){
+        // check that stack is not empty and we haven't alreay loaded 3 images
+        if(stackLength > 0 && num <= 3) {
+            var img = new Image();
             img.src = stack.shift();
-			stackLength--;
-			// wait to append image until the load is complete
-        	jQuery( img ).one('load', function() { appendImage(img, num); }).each(function(){
-        		// IE browser : in case it's already cached
-        		if(this.complete) jQuery(this).trigger('load');	
-        	});
-         }
-	}
-	
-	// append image to obj
+            stackLength--;
+            // wait to append image until the load is complete
+            jQuery( img ).one('load', function() { appendImage(img, num); }).each(function(){
+                // IE browser : in case it's already cached
+                if(this.complete) jQuery(this).trigger('load');
+            });
+        }
+    }
+
+    // append image to obj
 	function appendImage(img, num){
 	     // Hide them first, Cycle plugin will show them
          jQuery( img ).hide();

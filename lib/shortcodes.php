@@ -123,7 +123,8 @@ class NextGEN_shortcodes {
             if (preg_match_all($search, $content, $matches, PREG_SET_ORDER)) {
 
                 foreach ($matches as $match) {
-                    $replace = "[nggtags gallery=\"{$match[1]}\"]";
+                    //$replace = "[nggtags gallery=\"{$match[1]}\"]";
+                    $replace = "[nggtags gallery=\"{$match[1]}\" template=\"{$match[2]}\"]";
                     $content = str_replace ($match[0], $replace, $content);
                 }
             }
@@ -277,18 +278,39 @@ class NextGEN_shortcodes {
         return $out;
     }
 
+    /**
+     * nggtags shortcode implementation
+     * 20140120: Improved: template option.
+     * Reference: based on improvement of Tony Howden's code
+     * http://howden.net.au/thowden/2012/12/nextgen-gallery-wordpress-nggtags-template-caption-option/
+     * Included template to galleries and albums
+     * Included sorting mode: ASC/DESC/RAND
+     * @param $atts
+     * @return $out
+     */
     function show_tags( $atts ) {
 
         extract(shortcode_atts(array(
             'gallery'       => '',
-            'album'         => ''
+            'album'         => '',
+            'template'      => '',
+            'sort'          => ''
         ), $atts ));
 
-        if ( !empty($album) )
-            $out = nggShowAlbumTags($album);
-        else
-            $out = nggShowGalleryTags($gallery);
+        //gallery/album contains tag list comma separated of terms to filtering out.
+        //Contraintuitive: I'd like something like tags='red,green' and then to specify album/gallery instead.
+        $modes = array ('ASC','DESC','RAND');
 
+        $sorting = strtoupper($sorting);
+
+        if (!in_array(strtoupper($sorting), $modes)) {
+            $sorting = 'ASC';
+        }
+
+        if ( !empty($album) )
+            $out = nggShowAlbumTags  ($album, $template, $sorting);
+        else
+            $out = nggShowGalleryTags($gallery, $template, $sorting);
         return $out;
     }
 
@@ -322,7 +344,6 @@ class NextGEN_shortcodes {
         // show gallery
         if ( is_array($picturelist) )
             $out = nggCreateGallery($picturelist, false, $template);
-
         return $out;
     }
 
