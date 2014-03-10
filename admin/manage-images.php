@@ -456,7 +456,7 @@ if($picturelist) {
 							<strong><a href="<?php echo esc_url( $picture->imageURL ); ?>" class="thickbox" title="<?php echo esc_attr ($picture->filename); ?>">
 								<?php echo ( empty($picture->alttext) ) ? esc_html( $picture->filename ) : esc_html( stripslashes(nggGallery::i18n($picture->alttext)) ); ?>
 							</a></strong>
-							<br /><?php echo '<span class="date">'.$date.'</span>'; ?><input type="text" class="datepicker" value="<?php echo $date?>"/><span class="change"> Change</span>
+							<br /><?php echo '<span class="date">'.$date.'</span>'; ?><input type="text" class="datepicker" value="<?php echo $date?>"/><span class="change"> <?php _e('Change Date', 'nggallery'); ?></span>
 							<input type="hidden" class="rawdate" name="date[<?php echo $pid ?>]" value="<?php echo $rawdate; ?>" />
 							
 							<?php if ( !empty($picture->meta_data) ): ?>
