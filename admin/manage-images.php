@@ -514,7 +514,7 @@ if($picturelist) {
 						$picture->tags = wp_get_object_terms($pid, 'ngg_tag', 'fields=names');
 						if (is_array ($picture->tags) ) $picture->tags = implode(', ', $picture->tags);
 						?>
-						<td <?php echo $attributes ?>><textarea placeholder="<?php _e("Seperated by commas",'nggallery'); ?>"name="tags[<?php echo $pid ?>]" style="width:95%;" rows="2"><?php echo $picture->tags ?></textarea></td>
+						<td <?php echo $attributes ?>><textarea placeholder="<?php _e("Separated by commas",'nggallery'); ?>"name="tags[<?php echo $pid ?>]" style="width:95%;" rows="2"><?php echo $picture->tags ?></textarea></td>
 						<?php
 					break;
 					default :

@@ -841,7 +841,7 @@ class nggdb {
             // added slashes screw with quote grouping when done early, so done later
             $request = stripslashes($request);
 
-            // split the words it a array if seperated by a space or comma
+            // split the words it a array if separated by a space or comma
             preg_match_all('/".*?("|$)|((?<=[\\s",+])|^)[^\\s",+]+/', $request, $matches);
             $search_terms = array_map(create_function('$a', 'return trim($a, "\\"\'\\n\\r ");'), $matches[0]);
 
@@ -901,7 +901,7 @@ class nggdb {
             // added slashes screw with quote grouping when done early, so done later
             $request = stripslashes($request);
 
-            // split the words it a array if seperated by a space or comma
+            // split the words it a array if separated by a space or comma
             preg_match_all('/".*?("|$)|((?<=[\\s",+])|^)[^\\s",+]+/', $request, $matches);
             $search_terms = array_map(create_function('$a', 'return trim($a, "\\"\'\\n\\r ");'), $matches[0]);
 
@@ -949,7 +949,7 @@ class nggdb {
             // added slashes screw with quote grouping when done early, so done later
             $request = stripslashes($request);
 
-            // split the words it a array if seperated by a space or comma
+            // split the words it a array if separated by a space or comma
             preg_match_all('/".*?("|$)|((?<=[\\s",+])|^)[^\\s",+]+/', $request, $matches);
             $search_terms = array_map(create_function('$a', 'return trim($a, "\\"\'\\n\\r ");'), $matches[0]);
 
