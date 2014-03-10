@@ -130,18 +130,13 @@ if ( ($ngg_options['thumbfix'] == 1) ) {
 	};
 //]]>
 </script>
-
-<table width="98%" align="center" style="border:1px solid #DADADA">
+<p><?php _e('Select the area for the thumbnail from the picture on the left.', 'nggallery'); ?></p>
+<table width="98%" align="center">
 	<tr>
-		<td rowspan="3" valign="middle" align="center" width="350" style="background-color:#DADADA;">
+		<td valign="middle" align="center" width="350">
 			<img src="<?php echo esc_url( $preview_image ); ?>" alt="" id="imageToEdit" />	
 		</td>
-		<td width="300" style="background-color : #DADADA;">
-			<small style="margin-left:6px; display:block;"><?php esc_html_e('Select the area for the thumbnail from the picture on the left.', 'nggallery'); ?></small>
-		</td>		
-	</tr>
-	<tr>
-		<td align="center" width="300" height="320">
+		<td align="center" width="300" height="319">
 			<div id="previewNewThumb" style="display:none;width:<?php echo $WidthHtmlPrev; ?>px;height:<?php echo $HeightHtmlPrev; ?>px;overflow:hidden; margin-left:5px;">
 				<img src="<?php echo esc_url( $preview_image ); ?>" id="imageToEditPreview" />
 			</div>
@@ -150,10 +145,10 @@ if ( ($ngg_options['thumbfix'] == 1) ) {
 			</div>
 		</td>
 	</tr>
-	<tr style="background-color:#DADADA;">
-		<td>
-			<input type="button" name="update" value="<?php esc_attr_e('Update', 'nggallery'); ?>" onclick="updateThumb()" class="button-secondary" style="float:left; margin-left:4px;"/>
-			<div id="thumbMsg" style="color:#FF0000; display : none;font-size:11px; float:right; width:60%; height:2em; line-height:2em;"></div>
+	<tr>
+		<td colspan="2">
+			<input type="button" name="update" value="<?php esc_attr_e('Update', 'nggallery'); ?>" onclick="updateThumb()" class="button-primary" style="float:right; margin-top:0.5em;"/>
+			<div id="thumbMsg" style="display : none; float:right; width:60%; height:2em; line-height:2em;"></div>
 		</td>
 	</tr>
 </table>

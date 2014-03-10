@@ -98,10 +98,6 @@ jQuery(function (){
         if ( jQuery( "#spinner" ).length == 0)
             jQuery("body").append('<div id="spinner"></div>');
         var $this = jQuery(this);
-        var results = new RegExp('[\\?&]w=([^&#]*)').exec(this.href);
-	    var width  = ( results ) ? results[1] : 600;
-        var results = new RegExp('[\\?&]h=([^&#]*)').exec(this.href);
-	    var height = ( results ) ? results[1] : 440;
         jQuery('#spinner').fadeIn();
         var dialog = jQuery('<div style="display:hidden"></div>').appendTo('body');
         // load the remote content
@@ -112,12 +108,13 @@ jQuery(function (){
                 jQuery('#spinner').hide();
                 dialog.dialog({
                     title: ($this.attr('title')) ? $this.attr('title') : '',
-                    width: width,
-                    height: height,
+					width: 'auto',
+					height: 'auto',
                     modal: true,
-                    resizable: false,
+                    resizable: true,
+					position: { my: "center", at: "center", of: window },
                     close: function() { dialog.remove(); }
-                }).width(width - 30).height(height - 30);
+                });
             }
         );
         //prevent the browser to follow the link
@@ -235,7 +232,7 @@ jQuery(document).ready( function() {
 <input type="hidden" name="page" value="manage-images" />
 
 <?php else :?>
-<h2><?php echo _n( 'Gallery', 'Galleries', 1, 'nggallery' ); ?> : <?php echo esc_html ( nggGallery::i18n($gallery->title) ); ?></h2>
+<h2><?php echo _e( 'Gallery', 'nggallery' ); ?> <?php echo esc_html ( nggGallery::i18n($gallery->title) ); ?></h2>
 
 <br style="clear: both;" />
 
@@ -249,12 +246,12 @@ jQuery(document).ready( function() {
 	<div id="gallerydiv" class="postbox <?php echo postbox_classes('gallerydiv', 'ngg-manage-gallery'); ?>" >
 		<h3><?php _e('Gallery settings', 'nggallery') ?><small> (<?php _e('Click here for more settings', 'nggallery') ?>)</small></h3>
 		<div class="inside">
-			<table class="form-table" >
+			<table class="form-table" id="gallery-properties">
 				<tr>
-					<th align="left"><?php _e('Title') ?>:</th>
-					<th align="left"><input <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery title' ); ?> type="text" size="50" name="title" value="<?php echo $gallery->title; ?>"  /></th>
-					<th align="right"><?php _e('Page Link to', 'nggallery') ?>:</th>
-					<th align="left">
+					<td align="left"><?php _e('Title') ?>:</th>
+					<td align="left"><input <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery title' ); ?> type="text" size="50" name="title" value="<?php echo $gallery->title; ?>"  /></th>
+					<td align="right"><?php _e('Page Link to', 'nggallery') ?>:</th>
+					<td align="left">
 					<select <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery page id' ); ?>  name="pageid" style="width:95%">
 						<option value="0" ><?php _e('Not linked', 'nggallery') ?></option>
 						<?php $err = error_reporting(0); ?>
@@ -264,10 +261,10 @@ jQuery(document).ready( function() {
 					</th>
 				</tr>
 				<tr>
-					<th align="left"><?php _e('Description') ?>:</th>
-					<th align="left"><textarea  <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery description' ); ?> name="gallerydesc" cols="30" rows="3" style="width: 95%" ><?php echo $gallery->galdesc; ?></textarea></th>
-					<th align="right"><?php _e('Preview image', 'nggallery') ?>:</th>
-					<th align="left">
+					<td align="left"><?php _e('Description') ?>:</th>
+					<td align="left"><textarea  <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery description' ); ?> name="gallerydesc" cols="30" rows="3" style="width: 95%" ><?php echo $gallery->galdesc; ?></textarea></th>
+					<td align="right"><?php _e('Preview image', 'nggallery') ?>:</th>
+					<td align="left">
 						<select <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery preview pic' ); ?> name="previewpic" style="width:95%" >
 							<option value="0" ><?php _e('No Picture', 'nggallery') ?></option>
 							<?php
@@ -291,10 +288,10 @@ jQuery(document).ready( function() {
 					</th>
 				</tr>
 				<tr>
-					<th align="left"><?php _e('Path', 'nggallery') ?>:</th>
-					<th align="left"><input <?php if ( is_multisite() ) echo 'readonly = "readonly"'; ?> <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery path' ); ?> type="text" size="50" name="path" value="<?php echo $gallery->path; ?>"  /></th>
-					<th align="right"><?php _e('Author', 'nggallery'); ?>:</th>
-					<th align="left">
+					<td align="left"><?php _e('Path', 'nggallery') ?>:</th>
+					<td align="left"><input <?php if ( is_multisite() ) echo 'readonly = "readonly"'; ?> <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery path' ); ?> type="text" size="50" name="path" value="<?php echo $gallery->path; ?>"  /></th>
+					<td align="right"><?php _e('Author', 'nggallery'); ?>:</th>
+					<td align="left">
 					<?php
 						$editable_ids = $ngg->manage_page->get_editable_user_ids( $user_ID );
 						if ( $editable_ids && count( $editable_ids ) > 1 && nggGallery::current_user_can( 'NextGEN Edit gallery author')  )
@@ -306,10 +303,10 @@ jQuery(document).ready( function() {
 				</tr>
 				<?php if(current_user_can( 'publish_pages' )) : ?>
 				<tr>
-					<th align="left">&nbsp;</th>
-					<th align="left">&nbsp;</th>
-					<th align="right"><?php _e('Create new page', 'nggallery') ?>:</th>
-					<th align="left">
+					<td align="left">&nbsp;</th>
+					<td align="left">&nbsp;</th>
+					<td align="right"><?php _e('Create new page', 'nggallery') ?>:</th>
+					<td align="left">
 					<select name="parent_id" style="width:95%">
 						<option value="0"><?php _e ('Main page (No parent)', 'nggallery'); ?></option>
 						<?php if (get_post()): ?>
@@ -340,7 +337,7 @@ jQuery(document).ready( function() {
     <?php $ngg->manage_page->pagination( 'top', $_GET['paged'], $nggdb->paged['total_objects'], $nggdb->paged['objects_per_page']  ); ?>
 	<div class="alignleft actions">
 	<select id="bulkaction" name="bulkaction">
-		<option value="no_action" ><?php _e("Bulk actions",'nggallery'); ?></option>
+		<option value="no_action" ><?php _e("Actions",'nggallery'); ?></option>
 		<option value="set_watermark" ><?php _e("Set watermark",'nggallery'); ?></option>
 		<option value="new_thumbnail" ><?php _e("Create new thumbnails",'nggallery'); ?></option>
 		<option value="resize_images" ><?php _e("Resize images",'nggallery'); ?></option>
@@ -474,8 +471,8 @@ if($picturelist) {
 					case 'alt_title_desc' :
 						?>
 						<td <?php echo $attributes ?>>
-							<input name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo stripslashes($picture->alttext) ?>" /><br/>
-							<textarea name="description[<?php echo $pid ?>]" style="width:95%; margin-top: 2px;" rows="2" ><?php echo stripslashes($picture->description) ?></textarea>
+							<input placeholder="<?php _e("Alt & title text",'nggallery'); ?>" name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo stripslashes($picture->alttext) ?>" /><br/>
+							<textarea placeholder="<?php _e("Description",'nggallery'); ?>" name="description[<?php echo $pid ?>]" style="width:95%; margin: 1px;" rows="2" ><?php echo stripslashes($picture->description) ?></textarea>
 						</td>
 						<?php
 					break;
@@ -488,7 +485,7 @@ if($picturelist) {
 						$picture->tags = wp_get_object_terms($pid, 'ngg_tag', 'fields=names');
 						if (is_array ($picture->tags) ) $picture->tags = implode(', ', $picture->tags);
 						?>
-						<td <?php echo $attributes ?>><textarea name="tags[<?php echo $pid ?>]" style="width:95%;" rows="2"><?php echo $picture->tags ?></textarea></td>
+						<td <?php echo $attributes ?>><textarea placeholder="<?php _e("Seperated by commas",'nggallery'); ?>"name="tags[<?php echo $pid ?>]" style="width:95%;" rows="2"><?php echo $picture->tags ?></textarea></td>
 						<?php
 					break;
 					default :
@@ -512,7 +509,7 @@ if ( $counter == 0 )
 
 		</tbody>
 	</table>
-    <div class="tablenav bottom">
+	<div class="tablenav bottom">
     <input type="submit" class="button-primary action" name="updatepictures" value="<?php _e('Save Changes', 'nggallery'); ?>" />
     <?php $ngg->manage_page->pagination( 'bottom', $_GET['paged'], $nggdb->paged['total_objects'], $nggdb->paged['objects_per_page']  ); ?>
     </div>
@@ -592,8 +589,11 @@ if ( $counter == 0 )
 					<strong><?php _e('Resize Images to', 'nggallery'); ?>:</strong>
 				</td>
 				<td>
-					<input type="text" size="5" name="imgWidth" value="<?php echo $ngg->options['imgWidth']; ?>" /> x <input type="text" size="5" name="imgHeight" value="<?php echo $ngg->options['imgHeight']; ?>" />
-					<br /><small><?php _e('Width x height (in pixel). NextGEN Gallery will keep ratio size','nggallery') ?></small>
+					<label for="imgWidth"><?php _e('Width','nggallery') ?></label>
+					<input type="number" step="1" min="0" class="small-text" name="imgWidth" class="small-text" value="<?php echo $ngg->options['imgWidth']; ?>" />
+					<label for="imgHeight"><?php _e('Height','nggallery') ?></label>
+					<input type="number" step="1" min="0" type="text" size="5" name="imgHeight" class="small-text" value="<?php echo $ngg->options['imgHeight']; ?>">
+					<p class="description"><?php _e('Width and height (in pixels). NextCellent Gallery will keep the ratio size.','nggallery') ?></p>
 				</td>
 			</tr>
 		  	<tr align="right">
@@ -617,14 +617,14 @@ if ( $counter == 0 )
 		<input type="hidden" name="page" value="manage-images" />
         <table width="100%" border="0" cellspacing="3" cellpadding="3" >
 			<tr valign="top">
-				<th align="left"><?php _e('Width x height (in pixel)','nggallery') ?></th>
-				<td><input type="text" size="5" maxlength="5" name="thumbwidth" value="<?php echo $ngg->options['thumbwidth']; ?>" /> x <input type="text" size="5" maxlength="5" name="thumbheight" value="<?php echo $ngg->options['thumbheight']; ?>" />
-				<br /><small><?php _e('These values are maximum values ','nggallery') ?></small></td>
+				<th align="left"><?php _e('Size','nggallery') ?></th>
+				<td><label for="thumbwidth"><?php _e('Width','nggallery') ?> </label><input class="small-text" type="number" step="1" min="0" name="thumbwidth" value="<?php echo $ngg->options['thumbwidth']; ?>" /> <label for="thumbheight"><?php _e('Height','nggallery') ?> </label><input class="small-text" type="number" step="1" min="0" name="thumbheight" value="<?php echo $ngg->options['thumbheight']; ?>" />
+				<p class="description"><?php _e('These values are maximum values ','nggallery') ?></p></td>
 			</tr>
 			<tr valign="top">
-				<th align="left"><?php _e('Set fix dimension','nggallery') ?></th>
-				<td><input type="checkbox" name="thumbfix" value="1" <?php checked('1', $ngg->options['thumbfix']); ?> />
-				<br /><small><?php _e('Ignore the aspect ratio, no portrait thumbnails','nggallery') ?></small></td>
+					<th align="left"><?php _e('Fixed size','nggallery'); ?></th>
+					<td><input type="checkbox" name="thumbfix" value="1" <?php checked('1', $ngg->options['thumbfix']); ?> />
+					<?php _e('This will ignore the aspect ratio, so no portrait thumbnails','nggallery') ?></td>
 			</tr>
 		  	<tr align="right">
 		    	<td colspan="2" class="submit">
@@ -698,8 +698,8 @@ class _NGG_Images_List_Table extends WP_List_Table {
     	$columns['thumbnail'] = __('Thumbnail', 'nggallery');
     	$columns['filename'] = __('Filename', 'nggallery');
     	$columns['alt_title_desc'] = __('Alt &amp; Title Text', 'nggallery') . ' / ' . __('Description', 'nggallery');
-    	$columns['tags'] = __('Tags (comma separated list)', 'nggallery');
-    	$columns['exclude'] = __('exclude', 'nggallery');
+    	$columns['tags'] = __('Tags', 'nggallery');
+    	$columns['exclude'] = __('Exclude', 'nggallery');
 
     	$columns = apply_filters('ngg_manage_images_columns', $columns);
 

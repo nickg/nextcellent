@@ -391,7 +391,7 @@ class nggOptions {
 		<input type="hidden" name="page_options" value="imgResize,imgWidth,imgHeight,imgQuality,imgBackup,imgAutoResize,thumbwidth,thumbheight,thumbfix,thumbquality" />
 			<table class="form-table ngg-options">
 				<tr valign="top">
-					<th valign="top"><label for="fixratio"><?php _e('Resize images','nggallery') ?></label></th>
+					<th valign="top"><?php _e('Resize images','nggallery') ?></th>
 					<td><label for="imgWidth"><?php _e('Width','nggallery') ?></label>
 					<input type="number" step="1" min="0" class="small-text" name="imgWidth" class="small-text" value="<?php echo $ngg->options['imgWidth']; ?>" />
 					<label for="imgHeight"><?php _e('Height','nggallery') ?></label>
