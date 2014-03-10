@@ -486,6 +486,7 @@ class nggManageGallery {
 		$exclude = 		isset ( $_POST['exclude'] ) ? $_POST['exclude'] : false;
 		$taglist = 		isset ( $_POST['tags'] ) ? $_POST['tags'] : false;
 		$pictures = 	isset ( $_POST['pid'] ) ? $_POST['pid'] : false;
+		$date =  		isset ( $_POST['date'] ) ? $_POST['date'] : "NOW()"; //Not sure if NOW() will work or not but in theory it should
 
 		if ( is_array($pictures) ){
 			foreach( $pictures as $pid ){
@@ -493,7 +494,7 @@ class nggManageGallery {
                 if ($image) {
                     // description field
                     $image->description = $description[$image->pid];
-                    
+                    $image->date = $date[$image->pid];
                     // only uptade this field if someone change the alttext
                     if ( $image->alttext != $alttext[$image->pid] ) {
                         $image->alttext = $alttext[$image->pid];
@@ -507,8 +508,8 @@ class nggManageGallery {
     					$image->exclude = 0;
                         
                     // update the database
-                    $wpdb->query( $wpdb->prepare ("UPDATE $wpdb->nggpictures SET image_slug = '%s', alttext = '%s', description = '%s', exclude = %d WHERE pid = %d", 
-                                                                                 $image->image_slug, $image->alttext, $image->description, $image->exclude, $image->pid) );    
+                    $wpdb->query( $wpdb->prepare ("UPDATE $wpdb->nggpictures SET image_slug = '%s', alttext = '%s', description = '%s', exclude = %d, imagedate = %s WHERE pid = %d", 
+                                                                                 $image->image_slug, $image->alttext, $image->description, $image->exclude, $image->date, $image->pid) );    
                     // remove from cache    
                     wp_cache_delete($image->pid, 'ngg_image');
                     

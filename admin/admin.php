@@ -317,6 +317,7 @@ class nggAdminPanel{
 				wp_enqueue_script( 'ngg-progressbar' );
 				wp_enqueue_script( 'jquery-ui-dialog' );
 				wp_enqueue_script( 'jquery-ui-sortable' );
+				wp_enqueue_script( 'jquery-ui-datepicker' );
     			wp_register_script('shutter', NGGALLERY_URLPATH .'shutter/shutter-reloaded.js', false ,'1.3.2');
     			wp_localize_script('shutter', 'shutterSettings', array(
     						'msgLoading' => __('L O A D I N G', 'nggallery'),
@@ -383,6 +384,7 @@ class nggAdminPanel{
             break;
 			case "nggallery-manage-gallery" :
                 wp_enqueue_style('shutter', NGGALLERY_URLPATH .'shutter/shutter-reloaded.css', false, '1.3.2', 'screen');
+                wp_enqueue_style( 'datepicker', NGGALLERY_URLPATH .'admin/css/jquery.ui.datepicker.css', false, '1.8.2', 'screen' );
 			case "nggallery-roles" :
 			case "nggallery-manage-album" :
 				wp_enqueue_style( 'ngg-jqueryui' );
