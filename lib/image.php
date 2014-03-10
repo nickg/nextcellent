@@ -64,6 +64,8 @@ class nggImage{
 		$this->previewpic	= $gallery->previewpic;
 	
 		// set urls and paths
+        //20140217:this->path can't be used, because it can contain parameters
+        //for example: mysite/mycategory?lang=en causing improper URL format and also plugin incompatibility (Qtranslate for example.
 		$this->imageURL		= site_url() . '/' . $this->path . '/' . $this->filename;
 		$this->thumbURL 	= site_url() . '/' . $this->path . '/thumbs/thumbs_' . $this->filename;
 		$this->imagePath	= WINABSPATH.$this->path . '/' . $this->filename;
