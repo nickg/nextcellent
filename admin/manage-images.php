@@ -108,14 +108,15 @@ jQuery(function (){
 	 		jQuery(this).toggle();
 	 		jQuery(".change").toggle();
 	 	}
-	 	
- 	});	
-	 //When the user clicks change
-	 jQuery(".change").click(function() { //Show the input and hide the span
-	 	jQuery(this).siblings(".date").toggle();
-	 	jQuery(this).siblings(".datepicker").toggle();
-	 	jQuery(this).toggle();
-	 });
+ 	});
+
+    //When the user clicks change
+    jQuery(".change").click(function() { //Show the input and hide the span
+        jQuery(this).siblings(".date").toggle();
+        jQuery(this).siblings(".datepicker").toggle();
+        //jQuery(this).toggle();
+        jQuery(".change").toggle(); //All buttons disabled
+    });
 	
     // load a content via ajax
     jQuery('a.ngg-dialog').click(function() {
