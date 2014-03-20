@@ -562,7 +562,7 @@ class nggdb {
         $exclude_clause = ($exclude) ? ' AND t.exclude <> 1 ' : '';
 
         // Check for the exclude setting
-        $order_clause = ($order == 'RAND') ? 'ORDER BY rand() ' : ' ORDER BY t.pid ASC' ;
+        $order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.pid $order " ;
 
         if ( is_array($pids) ) {
             $id_list = "'" . implode("', '", $pids) . "'";
