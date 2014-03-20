@@ -301,7 +301,7 @@ class NextGEN_shortcodes {
         //Counterintuitive: I'd like something like tags='red,green' and then to specify album/gallery instead.
         $modes = array ('ASC','DESC','RAND');
 
-        $sorting = strtoupper($sorting);
+        $sorting = strtoupper($sort);
 
         if (!in_array(strtoupper($sorting), $modes)) {
             $sorting = 'ASC';
