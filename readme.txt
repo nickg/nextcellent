@@ -19,7 +19,7 @@ License: GPLv2
 * Russian translation (credits to Vladimir Vasilenko)
 * Finnish translation (credits to Vesa Tiirikainen)
 * Album and gallery template extension (currently in revision, credits to Stefano Sudati)
-* Improved shortcode implementing Tony Howden's suggestions (see http://howden.net.au/thowden/2012/12/nextgen-gallery-wordpress-nggtags-template-caption-option/)
+* Improved nggtags shortcode implementing Tony Howden's suggestions (see http://howden.net.au/thowden/2012/12/nextgen-gallery-wordpress-nggtags-template-caption-option/)
   added modes ASC,DESC and RAND
 
 VERY IMPORTANT: Read ON!
@@ -335,7 +335,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 * Russian translation (credits to Vladimir Vasilenko)
 * Finnish translation (credits to Vesa Tiirikainen)
 * Album and gallery template extension (currently in revision, credits to Stefano Sudati)
-* Improved shortcode implementing Tony Howden's suggestions (see http://howden.net.au/thowden/2012/12/nextgen-gallery-wordpress-nggtags-template-caption-option/)
+* Improved nggtags shortcode implementing Tony Howden's suggestions (see http://howden.net.au/thowden/2012/12/nextgen-gallery-wordpress-nggtags-template-caption-option/)
   added modes ASC,DESC and RAND
 
 = V1.9.16 - 08.01.2014 =
