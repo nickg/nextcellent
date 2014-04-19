@@ -696,7 +696,7 @@ class nggOptions {
 				<tr>
 					<th><?php _e('Default size','nggallery') ?></th>
 					 <td><label for="irWidth"><?php _e('Width','nggallery') ?></label>
-					<input type="number" step="1" min="0" class="small-text" name="irWidth" value="<?php echo $ngg->options['irWidth']; ?> " />
+					<input type="number" step="1" min="0" class="small-text" name="irWidth" value="<?php echo $ngg->options['irWidth']; ?>" />
 					<label for="irHeight"><?php _e('Height','nggallery') ?></label>
 					<input type="number" step="1" min="0" class="small-text" name="irHeight" value="<?php echo $ngg->options['irHeight']; ?>" />
 					</td>
