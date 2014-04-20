@@ -298,10 +298,10 @@ class NextGEN_shortcodes {
         ), $atts ));
 
         //gallery/album contains tag list comma separated of terms to filtering out.
-        //Contraintuitive: I'd like something like tags='red,green' and then to specify album/gallery instead.
+        //Counterintuitive: I'd like something like tags='red,green' and then to specify album/gallery instead.
         $modes = array ('ASC','DESC','RAND');
 
-        $sorting = strtoupper($sorting);
+        $sorting = strtoupper($sort);
 
         if (!in_array(strtoupper($sorting), $modes)) {
             $sorting = 'ASC';

@@ -2,7 +2,7 @@
 Contributors: WPGetReady
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 3.5
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: trunk
 License: GPLv2
 
@@ -10,15 +10,17 @@ License: GPLv2
 
 = WordPress Gallery Plugin =
 
-= V1.9.16 - 08.01.2014 =
+= V1.9.17 - 17.03.2014 =
 
  What's in it for you?
 
-* Folder and Image Management improved (credits to Niko Strijbol)
-* German translation (credits to Niko Strijbol)
-* Improved style for WP 3.8 (credits to Niko Strijbol)
-* Improper call to method as static when method belongs to instance.
-* Code cleaning, proper call to static fixed
+* Fixes to layout and more (credits to Niko Strijbol)
+* Added ability to change image upload + Ajax  (credits to Richard Bale)
+* Russian translation (credits to Vladimir Vasilenko)
+* Finnish translation (credits to Vesa Tiirikainen)
+* Album and gallery template extension (currently in revision, credits to Stefano Sudati)
+* Improved nggtags shortcode implementing Tony Howden's suggestions (see http://howden.net.au/thowden/2012/12/nextgen-gallery-wordpress-nggtags-template-caption-option/)
+  added modes ASC,DESC and RAND
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -98,7 +100,7 @@ As a result, there is large and great community of users and developers, as well
 == Credits ==
 
 Copyright:<br>
-WpGetReady 2013<br>
+WpGetReady 2013-2014<br>
 Photocrati Media 2012<br>
 Alex Rabe 2007-2011<br>
 
@@ -268,7 +270,7 @@ Why then the name NextCellent instead NextGEN Legacy for example? =
 
 = Will NextCellent work with NextGEN plugins and subplugins? =
 
-- Since the code is based on the older version, it will work with all plugins which worked for NextGEN version 1.9.13 or earlier. However be warned many developers already started (and finished) to making the migration to new NextGEN version. 
+- Since the code is based on the older version, it will work with all plugins which worked for NextGEN version 1.9.13 or earlier. However be warned many developers already started (and finished)  making the migration to new NextGEN version.
 
 = Wait, I'm using flash gallery along imagerotator.swf but I cannot find it in this plugin!
 
@@ -322,8 +324,19 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 = Is NextCellent Gallery available in foreign languages? =
 
 - You should go to original NextGEN plugin to check this out. <a href="http://www.NextGEN-gallery.com/languages/" target="_blank">click here to find out more.</a>
+- Many users are creating their respective translations and they will be included, along respective credits. Thanks to them!!!
+
 
 == Changelog ==
+
+= V1.9.17 - 17.03.2014 =
+* Fixes to layout and more (credits to Niko Strijbol)
+* Added ability to change image upload + Ajax  (credits to Richard Bale)
+* Russian translation (credits to Vladimir Vasilenko)
+* Finnish translation (credits to Vesa Tiirikainen)
+* Album and gallery template extension (currently in revision, credits to Stefano Sudati)
+* Improved nggtags shortcode implementing Tony Howden's suggestions (see http://howden.net.au/thowden/2012/12/nextgen-gallery-wordpress-nggtags-template-caption-option/)
+  added modes ASC,DESC and RAND
 
 = V1.9.16 - 08.01.2014 =
 * Folder and Image Management improved (credits to Niko Strijbol)
