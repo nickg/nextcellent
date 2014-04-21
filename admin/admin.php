@@ -280,7 +280,7 @@ class nggAdminPanel{
 					'error' => __('Unexpected Error', 'nggallery'),
 					'failure' => __('A failure occurred', 'nggallery')
 		) );
-        wp_register_script( 'ngg-plupload-handler', NGGALLERY_URLPATH .'admin/js/plupload.handler.js', array('plupload-all'), '0.0.1' );
+        wp_register_script( 'ngg-plupload-handler', NGGALLERY_URLPATH .'admin/js/plupload.handler.js', array('plupload'), '0.0.1' );
     	wp_localize_script( 'ngg-plupload-handler', 'pluploadL10n', array(
     		'queue_limit_exceeded' => __('You have attempted to queue too many files.'),
     		'file_exceeds_size_limit' => __('This file exceeds the maximum upload size for this site.'),
@@ -338,11 +338,7 @@ class nggAdminPanel{
 			break;
 			case "nggallery-add-gallery" :
 				wp_enqueue_script( 'jquery-ui-tabs' );
-				wp_enqueue_script( 'multifile', NGGALLERY_URLPATH .'admin/js/jquery.MultiFile.js', array('jquery'), '1.4.4' );
-                if ( defined('IS_WP_3_3') )
-                    wp_enqueue_script( 'ngg-plupload-handler' );
-                else
-				    wp_enqueue_script( 'ngg-swfupload-handler', NGGALLERY_URLPATH .'admin/js/swfupload.handler.js', array('jquery', 'swfupload'), '1.0.3' );
+				wp_enqueue_script( 'ngg-plupload-handler' );
 				wp_enqueue_script( 'ngg-ajax' );
 				wp_enqueue_script( 'ngg-progressbar' );
                 wp_enqueue_script( 'jquery-ui-dialog' );
