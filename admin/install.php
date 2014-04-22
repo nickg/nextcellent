@@ -40,7 +40,7 @@ function nggallery_install () {
 	// add charset & collate like wp core
 	$charset_collate = '';
 
-	if ( version_compare(mysql_get_server_info(), '4.1.0', '>=') ) {
+	if ( version_compare($wpdb->get_var("SELECT VERSION() AS `mysql_version`"), '4.1.0', '>=') ) {
 		if ( ! empty($wpdb->charset) )
 			$charset_collate = "DEFAULT CHARACTER SET $wpdb->charset";
 		if ( ! empty($wpdb->collate) )

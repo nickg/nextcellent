@@ -24,6 +24,7 @@ function initUploader() {
     	}*/
         
         // enable or disable the resize feature
+		/*
 		jQuery('#image_resize').bind('change', function() {
 			var arg = jQuery(this).prop('checked');
 			setResize( arg );
@@ -36,6 +37,7 @@ function initUploader() {
         
         // get user settings from cookie
         setResize( getUserSetting('ngg_upload_resize', false) );
+		*/
         
         if ( uploader.features.dragdrop )
 				jQuery('.ngg-dragdrop-info').show();
@@ -169,7 +171,7 @@ function uploadError(fileObj, errorCode, message) {
 	jQuery("#" + fileObj.id).remove();
 }
 
-// client side resize feature
+/* client side resize feature
 function setResize(arg) {
 	if ( arg ) {
         debug('[enable resize]');
@@ -183,6 +185,7 @@ function setResize(arg) {
 		delete(uploader.settings.multipart_params.image_resize);
 	}
 }
+*/
 
 function debug() {
     if ( uploader.settings.debug ) {
