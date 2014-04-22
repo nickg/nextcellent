@@ -397,7 +397,3 @@ li.ngg-next a, li.ngg-prev a  {
 	border: none;
 	text-decoration: none;
 }
-
-#TB_window {
-	z-index: 9999 !important;
-}

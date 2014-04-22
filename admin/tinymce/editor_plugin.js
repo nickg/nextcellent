@@ -2,7 +2,7 @@
 
 (function() {
 	// Load plugin specific language pack
-	tinymce.PluginManager.requireLangPack('NextGEN');
+	//tinymce.PluginManager.requireLangPack('NextGEN');
 	
 	tinymce.create('tinymce.plugins.NextGEN', {
 		/**
@@ -19,7 +19,7 @@
 			ed.addCommand('mceNextGEN', function() {
 				ed.windowManager.open({
 				    // call content via admin-ajax, no need to know the full plugin path
-					file : ajaxurl + '?action=ngg_tinymce',
+					url : ajaxurl + '?action=ngg_tinymce',
 					width : 360 + ed.getLang('NextGEN.delta_width', 0),
 					height : 210 + ed.getLang('NextGEN.delta_height', 0),
 					inline : 1
@@ -32,13 +32,14 @@
 			ed.addButton('NextGEN', {
 				title : 'NextGEN.desc',
 				cmd : 'mceNextGEN',
-				image : url + '/nextgen.gif'
+				image : url + '/nextgen.gif',
+				stateSelector: 'img'
 			});
 
 			// Add a node change handler, selects the button in the UI when a image is selected
-			ed.onNodeChange.add(function(ed, cm, n) {
-				cm.setActive('NextGEN', n.nodeName == 'IMG');
-			});
+			//ed.onNodeChange.add(function(ed, cm, n) {
+			//	cm.setActive('NextGEN', n.nodeName == 'IMG');
+			//});
 		},
 
 		/**

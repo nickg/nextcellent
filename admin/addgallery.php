@@ -154,8 +154,6 @@ class nggAddGallery {
     <!-- plupload script -->
     <script type="text/javascript">
     //<![CDATA[
-    var resize_height = <?php echo (int) $ngg->options['imgHeight']; ?>,
-    	resize_width = <?php echo (int) $ngg->options['imgWidth']; ?>;
 
     jQuery(document).ready(function($) {
     	window.uploader = new plupload.Uploader({
@@ -176,6 +174,13 @@ class nggAddGallery {
     		multipart_params : {
     			<?php echo $post_params_str; ?>
     		},
+			<?php if ($ngg->options['imgAutoResize'] == 1) { ?>
+			resize: {
+				width: <?php echo esc_js( $ngg->options['imgWidth'] ); ?>,
+				height: <?php echo esc_js( $ngg->options['imgHeight'] ); ?>,
+				quality: 100
+			},
+			<?php } ?>
             debug: false,
             preinit : {
     			Init: function(up, info) {
@@ -492,10 +497,6 @@ class nggAddGallery {
                 	</div>
                 	<p class="ngg-dragdrop-info howto" style="display:none;" ><?php _e('Or you can drop the files into this window.'); ?></p>
                     <div id='uploadQueue'></div>
-                    <p><label><input name="image_resize" type="checkbox" id="image_resize" value="true"<?php echo $checked; ?> />
-                        <?php printf( __( 'Scale images to max width %1$dpx or max height %2$dpx', 'nggallery' ), (int) $ngg->options['imgWidth' ], (int) $ngg->options[ 'imgHeight' ] ); ?>
-                        </label>
-                    </p>
                  </div>
                 </td>
                 <?php } else { ?>
