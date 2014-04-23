@@ -2,7 +2,7 @@
 Contributors: WPGetReady
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 3.5
-Tested up to: 3.8.1
+Tested up to: 3.9
 Stable tag: trunk
 License: GPLv2
 
@@ -14,15 +14,12 @@ License: GPLv2
 
  What's in it for you?
 
-
 * Fixes compatibility with TinyMCE 1.4, for WordPress 3.9. (credits to Niko Strijbol)
 * Fixes use of mysql_*(), which isn't allowed anymore. (credits to Niko Strijbol)
 * Fixes some style stuff from the datepicker interfering with the style of the tabs. (credits to Niko Strijbol)
 * Fixes "flash" upload. This does remove the resize option, but it wasn't working anyway. (credits to Niko Strijbol)
 * Vulnerability fix: data isn't properly sanitized before being printed ona Alt & Title (credits to Larry W. Cashdollar)
-*
-
-
+* Changing date for uploaded images improved (credits to Richard Bale)
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -330,6 +327,14 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 
 == Changelog ==
+
+= V1.9.18 - 23.04.2014 =
+* Fixes compatibility with TinyMCE 1.4, for WordPress 3.9. (credits to Niko Strijbol)
+* Fixes use of mysql_*(), which isn't allowed anymore. (credits to Niko Strijbol)
+* Fixes some style stuff from the datepicker interfering with the style of the tabs. (credits to Niko Strijbol)
+* Fixes "flash" upload. This does remove the resize option, but it wasn't working anyway. (credits to Niko Strijbol)
+* Vulnerability fix: data isn't properly sanitized before being printed ona Alt & Title (credits to Larry W. Cashdollar)
+* Changing date for uploaded images improved (credits to Richard Bale)
 
 = V1.9.17 - 17.03.2014 =
 * Fixes to layout and more (credits to Niko Strijbol)
