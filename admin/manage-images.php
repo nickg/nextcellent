@@ -107,6 +107,7 @@ jQuery(function (){
 	 		jQuery(this).siblings(".date").toggle();
 	 		jQuery(this).toggle();
 	 		jQuery(".change").toggle();
+            jQuery(this).datepicker("hide"); //Hide the datepicker in case user pressed enter
 	 	}
  	});
 
