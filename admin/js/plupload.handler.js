@@ -33,8 +33,8 @@ function initUploader() {
 			if (jQuery('#galleryselect').val() > "0") {
 				uploader.start(); 
 			} else {
+				event.preventDefault();
 				alert( pluploadL10n.no_gallery );
-				e.preventDefault();
 			}
 		});
 	}); 
