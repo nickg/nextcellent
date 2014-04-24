@@ -107,6 +107,7 @@ jQuery(function (){
 	 		jQuery(this).siblings(".date").toggle();
 	 		jQuery(this).toggle();
 	 		jQuery(".change").toggle();
+            jQuery(this).datepicker("hide"); //Hide the datepicker in case user pressed enter
 	 	}
  	});
 
@@ -275,9 +276,9 @@ jQuery(document).ready( function() {
 		<div class="inside">
 			<table class="form-table" id="gallery-properties">
 				<tr>
-					<td align="left"><?php _e('Title') ?>:</th>
-					<td align="left"><input <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery title' ); ?> type="text" size="50" name="title" value="<?php echo $gallery->title; ?>"  /></th>
-					<td align="right"><?php _e('Page Link to', 'nggallery') ?>:</th>
+					<td align="left"><?php _e('Title') ?>:</td>
+					<td align="left"><input <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery title' ); ?> type="text" size="50" name="title" value="<?php echo $gallery->title; ?>"  /></td>
+					<td align="right"><?php _e('Page Link to', 'nggallery') ?>:</td>
 					<td align="left">
 					<select <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery page id' ); ?>  name="pageid" style="width:95%">
 						<option value="0" ><?php _e('Not linked', 'nggallery') ?></option>
@@ -285,12 +286,12 @@ jQuery(document).ready( function() {
 						<?php parent_dropdown(intval($gallery->pageid)); ?>
 						<?php error_reporting($err); ?>
 					</select>
-					</th>
+					</td>
 				</tr>
 				<tr>
-					<td align="left"><?php _e('Description') ?>:</th>
-					<td align="left"><textarea  <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery description' ); ?> name="gallerydesc" cols="30" rows="3" style="width: 95%" ><?php echo $gallery->galdesc; ?></textarea></th>
-					<td align="right"><?php _e('Preview image', 'nggallery') ?>:</th>
+					<td align="left"><?php _e('Description') ?>:</td>
+					<td align="left"><textarea  <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery description' ); ?> name="gallerydesc" cols="30" rows="3" style="width: 95%" ><?php echo $gallery->galdesc; ?></textarea></td>
+					<td align="right"><?php _e('Preview image', 'nggallery') ?>:</td>
 					<td align="left">
 						<select <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery preview pic' ); ?> name="previewpic" style="width:95%" >
 							<option value="0" ><?php _e('No Picture', 'nggallery') ?></option>
@@ -312,12 +313,12 @@ jQuery(document).ready( function() {
 								}
 							?>
 						</select>
-					</th>
+					</td>
 				</tr>
 				<tr>
-					<td align="left"><?php _e('Path', 'nggallery') ?>:</th>
-					<td align="left"><input <?php if ( is_multisite() ) echo 'readonly = "readonly"'; ?> <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery path' ); ?> type="text" size="50" name="path" value="<?php echo $gallery->path; ?>"  /></th>
-					<td align="right"><?php _e('Author', 'nggallery'); ?>:</th>
+					<td align="left"><?php _e('Path', 'nggallery') ?>:</td>
+					<td align="left"><input <?php if ( is_multisite() ) echo 'readonly = "readonly"'; ?> <?php nggGallery::current_user_can_form( 'NextGEN Edit gallery path' ); ?> type="text" size="50" name="path" value="<?php echo $gallery->path; ?>"  /></td>
+					<td align="right"><?php _e('Author', 'nggallery'); ?>:</td>
 					<td align="left">
 					<?php
 						$editable_ids = $ngg->manage_page->get_editable_user_ids( $user_ID );
@@ -326,13 +327,13 @@ jQuery(document).ready( function() {
 						else
 							echo $act_author_user->display_name;
 					?>
-					</th>
+					</td>
 				</tr>
 				<?php if(current_user_can( 'publish_pages' )) : ?>
 				<tr>
-					<td align="left">&nbsp;</th>
-					<td align="left">&nbsp;</th>
-					<td align="right"><?php _e('Create new page', 'nggallery') ?>:</th>
+					<td align="left">&nbsp;</td>
+					<td align="left">&nbsp;</td>
+					<td align="right"><?php _e('Create new page', 'nggallery') ?>:</td>
 					<td align="left">
 					<select name="parent_id" style="width:95%">
 						<option value="0"><?php _e ('Main page (No parent)', 'nggallery'); ?></option>
@@ -341,7 +342,7 @@ jQuery(document).ready( function() {
 						<?php endif ?>
 					</select>
 					<input class="button-secondary action" type="submit" name="addnewpage" value="<?php _e ('Add page', 'nggallery'); ?>" id="group"/>
-					</th>
+					</td>
 				</tr>
 				<?php endif; ?>
                 <?php do_action('ngg_manage_gallery_settings', $act_gid); ?>
@@ -501,8 +502,8 @@ if($picturelist) {
 					case 'alt_title_desc' :
 						?>
 						<td <?php echo $attributes ?>>
-							<input placeholder="<?php _e("Alt & title text",'nggallery'); ?>" name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo stripslashes($picture->alttext) ?>" /><br/>
-							<textarea placeholder="<?php _e("Description",'nggallery'); ?>" name="description[<?php echo $pid ?>]" style="width:95%; margin: 1px;" rows="2" ><?php echo stripslashes($picture->description) ?></textarea>
+							<input placeholder="<?php _e("Alt & title text",'nggallery'); ?>" name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo sanitize_text_field (stripslashes($picture->alttext)); ?>" /><br/>
+							<textarea placeholder="<?php _e("Description",'nggallery'); ?>" name="description[<?php echo $pid ?>]" style="width:95%; margin: 1px;" rows="2" ><?php echo sanitize_text_field (stripslashes($picture->description)); ?></textarea>
 						</td>
 						<?php
 					break;
