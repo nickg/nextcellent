@@ -120,10 +120,6 @@ a.switch-expert {
 
 /* SETTINGS FOR MANAGE TABLE */
 
-div#poststuff #gallerydiv {
-	cursor:pointer;
-}
-
 p#ngg-inlinebutton {
 	float:right;
 	margin:0pt;
@@ -202,6 +198,10 @@ margin-bottom: 0;
 padding: 0;
 vertical-align: top;
 text-align: left;
+}
+
+#gallery-properties #author {
+width: 95%;
 }
 
 /* SETTINGS FOR ADD NEW */
