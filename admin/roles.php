@@ -32,40 +32,40 @@ if ( isset($_POST['update_cap']) ) {
 		<?php wp_nonce_field('ngg_addroles') ?>
 			<table class="form-table">
 			<tr valign="top">
-				<th scope="row"><?php _e('Main NextCellent Gallery overview', 'nggallery') ;?>:</th>
-				<td><label for="general"><select name="general" id="general"><?php wp_dropdown_roles( ngg_get_role('NextGEN Gallery overview') ); ?></select></label></td>
+				<th scope="row"><label for="general"><?php _e('NextCellent Gallery overview', 'nggallery') ;?></label></th>
+				<td><select name="general" id="general"><?php wp_dropdown_roles( ngg_get_role('NextGEN Gallery overview') ); ?></select></td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><?php _e('Use TinyMCE Button / Upload tab', 'nggallery') ;?>:</th>
-				<td><label for="tinymce"><select name="tinymce" id="tinymce"><?php wp_dropdown_roles( ngg_get_role('NextGEN Use TinyMCE') ); ?></select></label></td>
+				<th scope="row"><label for="tinymce"><?php _e('Use TinyMCE Button / Add Media', 'nggallery') ;?></label></th>
+				<td><select name="tinymce" id="tinymce"><?php wp_dropdown_roles( ngg_get_role('NextGEN Use TinyMCE') ); ?></select></td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><?php _e('Add gallery / Upload images', 'nggallery') ;?>:</th>
-				<td><label for="add_gallery"><select name="add_gallery" id="add_gallery"><?php wp_dropdown_roles( ngg_get_role('NextGEN Upload images') ); ?></select></label></td>
+				<th scope="row"><label for="add_gallery"><?php _e('Add gallery / Upload images', 'nggallery') ;?></label></th>
+				<td><select name="add_gallery" id="add_gallery"><?php wp_dropdown_roles( ngg_get_role('NextGEN Upload images') ); ?></select></td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><?php _e('Manage gallery', 'nggallery') ;?>:</th>
-				<td><label for="manage_gallery"><select name="manage_gallery" id="manage_gallery"><?php wp_dropdown_roles( ngg_get_role('NextGEN Manage gallery') ); ?></select></label></td>
+				<th scope="row"><label for="manage_gallery"><?php _e('Manage gallery', 'nggallery') ;?></label></th>
+				<td><select name="manage_gallery" id="manage_gallery"><?php wp_dropdown_roles( ngg_get_role('NextGEN Manage gallery') ); ?></select></td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><?php _e('Manage others gallery', 'nggallery') ;?>:</th>
-				<td><label for="manage_others"><select name="manage_others" id="manage_others"><?php wp_dropdown_roles( ngg_get_role('NextGEN Manage others gallery') ); ?></select></label></td>
+				<th scope="row"><label for="manage_others"><?php _e('Manage others gallery', 'nggallery') ;?></label></th>
+				<td><select name="manage_others" id="manage_others"><?php wp_dropdown_roles( ngg_get_role('NextGEN Manage others gallery') ); ?></select></td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><?php _e('Manage tags', 'nggallery') ;?>:</th>
-				<td><label for="manage_tags"><select name="manage_tags" id="manage_tags"><?php wp_dropdown_roles( ngg_get_role('NextGEN Manage tags') ); ?></select></label></td>
+				<th scope="row"><label for="manage_tags"><?php _e('Manage tags', 'nggallery') ;?></label></th>
+				<td><select name="manage_tags" id="manage_tags"><?php wp_dropdown_roles( ngg_get_role('NextGEN Manage tags') ); ?></select></td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><?php _e('Edit Album', 'nggallery') ;?>:</th>
-				<td><label for="edit_album"><select name="edit_album" id="edit_album"><?php wp_dropdown_roles( ngg_get_role('NextGEN Edit album') ); ?></select></label></td>
+				<th scope="row"><label for="edit_album"><?php _e('Edit Album', 'nggallery') ;?></label></th>
+				<td><select name="edit_album" id="edit_album"><?php wp_dropdown_roles( ngg_get_role('NextGEN Edit album') ); ?></select></td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><?php _e('Change style', 'nggallery') ;?>:</th>
-				<td><label for="change_style"><select name="change_style" id="change_style"><?php wp_dropdown_roles( ngg_get_role('NextGEN Change style') ); ?></select></label></td>
+				<th scope="row"><label for="change_style"><?php _e('Change style', 'nggallery') ;?></label></th>
+				<td><select name="change_style" id="change_style"><?php wp_dropdown_roles( ngg_get_role('NextGEN Change style') ); ?></select></td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><?php _e('Change options', 'nggallery') ;?>:</th>
-				<td><label for="change_options"><select name="change_options" id="change_options"><?php wp_dropdown_roles( ngg_get_role('NextGEN Change options') ); ?></select></label></td>
+				<th scope="row"><label for="change_options"><?php _e('Change options', 'nggallery') ;?></label></th>
+				<td><select name="change_options" id="change_options"><?php wp_dropdown_roles( ngg_get_role('NextGEN Change options') ); ?></select></td>
 			</tr>
 			</table>
 			<div class="submit"><input type="submit" class="button-primary" name= "update_cap" value="<?php _e('Update capabilities', 'nggallery') ;?>"/></div>
