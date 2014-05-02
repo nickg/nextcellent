@@ -305,7 +305,8 @@ class nggAdminPanel{
     		'dismiss' => __('Dismiss'),
     		'crunching' => __('Crunching&hellip;'),
     		'deleted' => __('moved to the trash.'),
-    		'error_uploading' => __('&#8220;%s&#8221; has failed to upload due to an error')
+    		'error_uploading' => __('&#8220;%s&#8221; has failed to upload due to an error'),
+			'no_gallery' => __('You didn\'t select a gallery!','nggallery')
     	) );
 		wp_register_script('ngg-progressbar', NGGALLERY_URLPATH .'admin/js/ngg.progressbar.js', array('jquery'), '2.0.1');
         wp_register_script('jquery-ui-autocomplete', NGGALLERY_URLPATH .'admin/js/jquery.ui.autocomplete.min.js', array('jquery-ui-core', 'jquery-ui-widget'), '1.8.15');
