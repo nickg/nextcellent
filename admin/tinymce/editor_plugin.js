@@ -2,7 +2,6 @@
 
 (function() {
 	// Load plugin specific language pack
-	//tinymce.PluginManager.requireLangPack('NextGEN');
 	
 	tinymce.create('tinymce.plugins.NextGEN', {
 		/**
@@ -30,7 +29,7 @@
 
 			// Register example button
 			ed.addButton('NextGEN', {
-				title : 'NextGEN.desc',
+				title : 'NextCellent',
 				cmd : 'mceNextGEN',
 				image : url + '/nextgen.gif',
 				stateSelector: 'img'
