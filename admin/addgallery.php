@@ -426,7 +426,7 @@ class nggAddGallery {
 				<?php if (SAFE_MODE) {?><p class="description"><?php _e('Please note: If safe-mode is ON, you need to add the subfolder with thumbs manually', 'nggallery') ;?></p><?php }; ?></td>
 			</tr>
 			</table>
-			<div class="submit"><input class="button-primary" type="submit" name= "importfolder" value="<?php _e('Import folder', 'nggallery') ;?>"/></div>
+			<div class="submit"><input onclick="return confirm('<?php _e("This will change folder and file names (e.g. remove spaces, special characters, ...)","nggallery")?>\n\n<?php _e("You will need to update your URLs if you link directly to the images.","nggallery")?>\n\n<?php _e("Press OK to proceed, and Cancel to stop.","nggallery")?>')" class="button-primary" type="submit" name= "importfolder" value="<?php _e('Import folder', 'nggallery') ;?>"/></div>
 		</form>
     <?php
     }

@@ -409,6 +409,14 @@ class nggManageGallery {
 			$gallerypath = $wpdb->get_var("SELECT path FROM $wpdb->nggallery WHERE gid = '$this->gid' ");
 			nggAdmin::import_gallery($gallerypath);
 		}
+		
+		if (isset ($_POST['oldscanfolder']))  {
+		// old rescan folder
+			check_admin_referer('ngg_updategallery');
+		
+			$gallerypath = $wpdb->get_var("SELECT path FROM $wpdb->nggallery WHERE gid = '$this->gid' ");
+			nggAdmin::old_import_gallery($gallerypath);
+		}
 	
 		if (isset ($_POST['addnewpage']))  {
 		// Add a new page
