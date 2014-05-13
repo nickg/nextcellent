@@ -284,7 +284,7 @@ class nggAdminPanel{
 					'error' => __('Unexpected Error', 'nggallery'),
 					'failure' => __('A failure occurred', 'nggallery')
 		) );
-        wp_register_script( 'ngg-plupload-handler', NGGALLERY_URLPATH .'admin/js/plupload.handler.js', array('plupload'), '0.0.1' );
+        wp_register_script( 'ngg-plupload-handler', NGGALLERY_URLPATH .'admin/js/plupload.handler.js', array('plupload-all'), '0.0.1' );
     	wp_localize_script( 'ngg-plupload-handler', 'pluploadL10n', array(
     		'queue_limit_exceeded' => __('You have attempted to queue too many files.'),
     		'file_exceeds_size_limit' => __('This file exceeds the maximum upload size for this site.'),
