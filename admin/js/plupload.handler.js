@@ -23,28 +23,20 @@ function initUploader() {
     		});
     	}*/
         
-        // enable or disable the resize feature
-		/*
-		jQuery('#image_resize').bind('change', function() {
-			var arg = jQuery(this).prop('checked');
-			setResize( arg );
-            
-			if ( arg )
-				setUserSetting('ngg_upload_resize', '1');
-			else
-				deleteUserSetting('ngg_upload_resize');            
-		});
-        
-        // get user settings from cookie
-        setResize( getUserSetting('ngg_upload_resize', false) );
-		*/
-        
         if ( uploader.features.dragdrop )
 				jQuery('.ngg-dragdrop-info').show();
         	
         jQuery("#uploadimage_btn").after("<input class='button-primary' type='button' name='uploadimage' id='plupload_btn' value='" + uploader.settings.i18n.upload + "' />")
                                   .remove();
-    	jQuery("#plupload_btn").click( function() { uploader.start(); } );
+    	jQuery("#plupload_btn").click( function() {
+			//check if a gallery is selected
+			if (jQuery('#galleryselect').val() > "0") {
+				uploader.start(); 
+			} else {
+				event.preventDefault();
+				alert( pluploadL10n.no_gallery );
+			}
+		});
 	}); 
 }
 
@@ -69,17 +61,10 @@ function fileQueued( fileObj ) {
 function uploadStart(fileObj) {
     debug('[uploadStart]');
     nggProgressBar.init(nggAjaxOptions);
-	// check if a gallery is selected
-	if (jQuery('#galleryselect').val() > "0") {
-	    debug('[gallery selected]');
-		// update the selected gallery in the post_params 
-		uploader.settings.multipart_params.galleryselect = jQuery('#galleryselect').val();
-	} else {
-        debug('[gallery not selected]');
-		jQuery('#uploadimage_form').prepend("<input type=\"hidden\" name=\"swf_callback\" value=\"-1\">");
-		jQuery("#uploadimage_form").submit();
-	}    
-	return true;
+	debug('[gallery selected]');
+	// update the selected gallery in the post_params 
+	uploader.settings.multipart_params.galleryselect = jQuery('#galleryselect').val();   
+	return false;
 }
 
 // called during the upload progress
@@ -170,22 +155,6 @@ function uploadError(fileObj, errorCode, message) {
 	jQuery("#" + fileObj.id).hide("slow");
 	jQuery("#" + fileObj.id).remove();
 }
-
-/* client side resize feature
-function setResize(arg) {
-	if ( arg ) {
-        debug('[enable resize]');
-		if ( uploader.features.jpgresize )
-			uploader.settings['resize'] = { width: resize_width, height: resize_height, quality: 100 };
-		else
-			uploader.settings.multipart_params.image_resize = true;
-	} else {
-        debug('[disable resize]');
-		delete(uploader.settings.resize);
-		delete(uploader.settings.multipart_params.image_resize);
-	}
-}
-*/
 
 function debug() {
     if ( uploader.settings.debug ) {
