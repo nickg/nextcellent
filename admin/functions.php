@@ -127,12 +127,208 @@ class nggAdmin{
 	/**
 	 * nggAdmin::import_gallery()
 	 * TODO: Check permission of existing thumb folder & images
+	 * since 1.9.19: sanitize existing folders and images - see old_import_gallery() to use the old system
 	 * 
 	 * @class nggAdmin
 	 * @param string $galleryfolder contains relative path to the gallery itself
 	 * @return void
 	 */
+	 
 	static function import_gallery($galleryfolder) {
+		
+		global $wpdb, $user_ID;
+
+		// get the current user ID
+		get_currentuserinfo();
+		
+		$created_msg = NULL;
+		
+		// remove trailing slash at the end, if somebody use it
+		$galleryfolder = untrailingslashit($galleryfolder);
+		$gallerypath = WINABSPATH . $galleryfolder;
+		
+		if (!is_dir($gallerypath)) {
+			nggGallery::show_error(__('Directory', 'nggallery').' <strong>' . esc_html( $gallerypath ) .'</strong> '.__('doesn&#96;t exist!', 'nggallery'));
+			return ;
+		}
+		
+		$test_images = nggAdmin::scandir($gallerypath);
+
+		if (empty($test_images)) {
+			nggGallery::show_message(__('Directory', 'nggallery').' <strong>' . esc_html( $gallerypath ) . '</strong> '.__('contains no pictures', 'nggallery'));
+			return;
+		}
+		
+		//save orginals
+		$old_galleryfolder = $galleryfolder;
+		$old_gallerypath = $gallerypath;
+		
+		//sanitize name
+		$new_name = sanitize_file_name( sanitize_title( basename( $galleryfolder ) ) );
+		
+		//set new names
+		$galleryfolder = dirname( $galleryfolder ) . "/" . sanitize_file_name( sanitize_title( basename( $galleryfolder ) ) );
+		$gallerypath = WINABSPATH . $galleryfolder;
+			
+		//rename existing folder
+		if ( !($old_galleryfolder == $galleryfolder)) {
+			//check if it exists
+			$increment = ''; //start with no suffix
+
+			while(file_exists($gallerypath . $increment)) {
+				$increment++;
+			}
+			$galleryfolder = dirname( $galleryfolder ) . "/" . basename( $galleryfolder ) . $increment;
+			$gallerypath = WINABSPATH . $galleryfolder;
+			
+			if ( !rename( $old_gallerypath , $gallerypath ) )
+				nggGallery::show_message(__('Something went wrong when renaming', 'nggallery').' <strong>' . esc_html( $old_galleryfolder ) .'</strong>! ' .__('Importing was aborted.', 'nggallery'));
+		}
+
+		// check & create thumbnail folder
+		if ( !nggGallery::get_thumbnail_folder($gallerypath) )
+			return;
+		
+		// take folder name as gallery name		
+		$galleryname = basename($galleryfolder);
+		$galleryname = apply_filters('ngg_gallery_name', $galleryname);
+		
+		// check for existing gallery folder
+		$gallery_id = $wpdb->get_var("SELECT gid FROM $wpdb->nggallery WHERE path = '$old_galleryfolder' ");
+
+		if (!$gallery_id) {
+            // now add the gallery to the database
+            $gallery_id = nggdb::add_gallery( $galleryname, $galleryfolder, '', 0, 0, $user_ID );
+			if (!$gallery_id) {
+				nggGallery::show_error(__('Database error. Could not add gallery!','nggallery'));
+				return;
+			}
+			$created_msg = __( 'Gallery', 'nggallery' ) . ' <strong>' . esc_html( $galleryname ) . '</strong> ' . __('successfully created!','nggallery') . '<br />';
+		} else {
+			//if the gallery path has changed, update the database
+			if ( !($old_galleryfolder == $galleryfolder )) {
+				$wpdb->query( $wpdb->prepare ("UPDATE $wpdb->nggallery SET path= '%s' WHERE gid = %d", $galleryfolder, $gallery_id ) );
+			}
+		}
+		
+		// Look for existing image list and sanitize file names before scanning for new images
+		$db_images = nggdb::get_gallery($gallery_id);
+		$updated = array();
+
+		foreach( $db_images as $image ){
+
+			//save old values
+			$old_name = $image->filename;
+			$old_path = $gallerypath . '/' . $old_name;
+			
+			//get new name
+			$filepart = nggGallery::fileinfo( $old_name );
+
+			//only rename if necessary
+			if ( !($old_name == $filepart['basename']) ) {
+			
+				//check if the sanitized name already exists
+				$increment = ''; //start with no suffix
+
+				while(file_exists($gallerypath . '/' . $filepart['filename'] . $increment . '.' . $filepart['extension'])) {
+					$increment++;
+				}
+				
+				//define new values
+				$name = $filepart['filename'] . $increment . '.' . $filepart['extension'];
+				$new_path = $gallerypath . "/" . $name;
+
+				//rename the file and update alttext
+				rename($old_path, $new_path);
+				$alttext = sanitize_file_name( $image->alttext );
+				
+				// update the database
+				nggdb::update_image($image->pid, false, $name, false, $alttext);
+
+				$updated[] = $image->pid;
+			}
+		}
+
+		// read list of images
+		$new_imageslist = nggAdmin::scandir($gallerypath);
+		$old_imageslist = $wpdb->get_col("SELECT filename FROM $wpdb->nggpictures WHERE galleryid = '$gallery_id' ");
+
+		// if no images are there, create empty array
+		if ($old_imageslist == NULL) 
+			$old_imageslist = array();
+			
+		// check difference
+		$new_images = array_diff($new_imageslist, $old_imageslist);
+		
+		// all images must be valid files
+		foreach($new_images as $key => $picture) {
+
+			//rename images with the cleaned filename
+			$old_path = $gallerypath . '/' . $picture;
+			$filepart = nggGallery::fileinfo( $picture );
+			
+			//check if the sanitized name already exists
+			$increment = ''; //start with no suffix
+
+			while(file_exists($gallerypath . '/' . $filepart['filename'] . $increment . '.' . $filepart['extension'])) {
+				$increment++;
+			}
+
+			//define new values
+			$picture = $filepart['filename'] . $increment . '.' . $filepart['extension'];
+			$new_path = $gallerypath . "/" . $picture;
+
+			rename($old_path, $new_path); 
+
+            // filter function to rename/change/modify image before
+			$picture = apply_filters('ngg_pre_add_new_image', $picture, $gallery_id);
+            $new_images[$key] = $picture;
+            
+			if (!@getimagesize($gallerypath . '/' . $picture) ) {
+				unset($new_images[$key]);
+				@unlink($gallerypath . '/' . $picture);				
+			}
+		}
+				
+		// add images to database		
+		$image_ids = nggAdmin::add_Images($gallery_id, $new_images);
+		
+		//add the preview image if needed
+		nggAdmin::set_gallery_preview ( $gallery_id );
+
+		// now create thumbnails
+		nggAdmin::do_ajax_operation( 'create_thumbnail' , array_merge($image_ids, $updated), __('Create new thumbnails','nggallery') );
+
+		//TODO:Message will not shown, because AJAX routine require more time, message should be passed to AJAX
+		$message  = $created_msg;
+		if ( count($updated) > 0)
+			$message .= $c . __(' picture(s) successfully renamed','nggallery') . '<br />';
+		if ( count($image_ids) > 0 )
+			$message .= count($image_ids) .__(' picture(s) successfully added','nggallery') . '<br />';
+		if ($created_msg) {
+		$message .= ' [<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $gallery_id . '" >';
+		$message .=  __('Edit gallery','nggallery');
+		$message .= '</a>]';
+		}
+		if (!$message)
+		$message  = __('No images were added.','nggallery');
+
+		nggGallery::show_message($message); 
+		
+		return;
+
+	}
+	
+	/**
+	 * nggAdmin::old_import_gallery()
+	 * TODO: Check permission of existing thumb folder & images
+	 * Use is not recommended!
+	 * 
+	 * @class nggAdmin
+	 * @param string $galleryfolder contains relative path to the gallery itself
+	 * @return void
+	 */
+	static function old_import_gallery($galleryfolder) {
 		
 		global $wpdb, $user_ID;
 
@@ -176,7 +372,7 @@ class nggAdmin{
 				nggGallery::show_error(__('Database error. Could not add gallery!','nggallery'));
 				return;
 			}
-			$created_msg = _n( 'Gallery', 'Galleries', 1, 'nggallery' ) . ' <strong>' . esc_html( $galleryname ) . '</strong> ' . __('successfully created!','nggallery') . '<br />';
+			$created_msg = __( 'Gallery', 'nggallery' ) . ' <strong>' . esc_html( $galleryname ) . '</strong> ' . __('successfully created!','nggallery') . '<br />';
 		}
 		
 		// Look for existing image list
