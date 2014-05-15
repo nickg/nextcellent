@@ -29,6 +29,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // Stop direct call
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
+/**
+ * Indicates that a clean exit occured. Handled by set_exception_handler
+ */
+if (!class_exists('E_Clean_Exit')) {
+    class E_Clean_Exit extends RuntimeException
+    {
+
+    }
+}
+
 //If NextGEN is activated, deactivate this plugin, and warn about it!
 check_nextgen::nextgen_activated();
 

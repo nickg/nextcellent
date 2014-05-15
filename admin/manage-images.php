@@ -501,10 +501,11 @@ if($picturelist) {
 						<?php
 					break;
 					case 'alt_title_desc' :
+                        //FZSM
 						?>
 						<td <?php echo $attributes ?>>
-							<input placeholder="<?php _e("Alt & title text",'nggallery'); ?>" name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo sanitize_text_field (stripslashes($picture->alttext)); ?>" /><br/>
-							<textarea placeholder="<?php _e("Description",'nggallery'); ?>" name="description[<?php echo $pid ?>]" style="width:95%; margin: 1px;" rows="2" ><?php echo sanitize_text_field (stripslashes($picture->description)); ?></textarea>
+							<input placeholder="<?php _e("Alt & title text",'nggallery'); ?>" name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo esc_html (stripslashes($picture->alttext)); ?>" /><br/>
+							<textarea placeholder="<?php _e("Description",'nggallery'); ?>" name="description[<?php echo $pid ?>]" style="width:95%; margin: 1px;" rows="2" ><?php echo esc_html (stripslashes($picture->description)); ?></textarea>
 						</td>
 						<?php
 					break;
