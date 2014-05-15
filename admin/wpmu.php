@@ -34,10 +34,12 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 	}		
 
     // Show donation message only one time.
+        /*
     if (isset ( $_GET['hideSupportInfo']) ) {
     	$ngg_options['hideSupportInfo'] = true;
     	update_site_option('ngg_options', $ngg_options);			
     }
+        */
 	
 	// message windows
 	if( !empty($messagetext) ) { echo '<!-- Last Action --><div id="message" class="updated fade"><p>'.$messagetext.'</p></div>'; }

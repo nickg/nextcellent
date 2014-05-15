@@ -5,7 +5,7 @@ Plugin URI: http://www.wpgetready.com/nextcellent-gallery
 Description: A Photo Gallery for WordPress providing NextGEN legacy compatibility from version 1.9.13
 Author: WPGReady based on Alex Rabe & PhotoCrati work.
 Author URI: http://www.wpgetready.com
-Version: 1.9.18
+Version: 1.9.19
 
 Copyright (c) 2007-2011 by Alex Rabe & NextGEN DEV-Team
 Copyright (c) 2012 Photocrati Media
@@ -29,16 +29,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // Stop direct call
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
-/**
- * Indicates that a clean exit occured. Handled by set_exception_handler
- */
-if (!class_exists('E_Clean_Exit')) {
-	class E_Clean_Exit extends RuntimeException
-	{
-
-	}
-}
-
 //If NextGEN is activated, deactivate this plugin, and warn about it!
 check_nextgen::nextgen_activated();
 
@@ -51,8 +41,6 @@ if (!class_exists('nggLoader')) {
 		var $version     = '1.9.19';
 		var $dbversion   = '1.8.1';
 		var $minimum_WP  = '3.5';
-        //TODO: to be removed next iterations, since Photocrati disabled
-		var $donators    = 'http://www.nextgen-gallery.com/donators.php';
 		var $options     = '';
 		var $manage_page;
 		var $add_PHP5_notice = false;
@@ -188,7 +176,6 @@ if (!class_exists('nggLoader')) {
 				);
 				return false;
 			}
-
 			return true;
 
 		}
