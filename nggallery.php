@@ -48,7 +48,7 @@ check_nextgen::nextgen_activated();
 if (!class_exists('nggLoader')) {
 	class nggLoader {
 
-		var $version     = '1.9.18';
+		var $version     = '1.9.19';
 		var $dbversion   = '1.8.1';
 		var $minimum_WP  = '3.5';
         //TODO: to be removed next iterations, since Photocrati disabled
