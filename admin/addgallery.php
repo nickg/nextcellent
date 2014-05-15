@@ -148,9 +148,8 @@ class nggAddGallery {
 	<?php screen_icon( 'nextgen-gallery' ); ?>
 	<h2><?php _e('Add Gallery / Images', 'nggallery') ?></h2>
 	</div>
-
-	<?php if($ngg->options['swfUpload'] && !empty ($this->gallerylist) ) { ?>
-    <?php if ( defined('IS_WP_3_3') ) { ?>
+	<?php if( !empty ($this->gallerylist) ) { ?>
+	<?php if( $ngg->options['swfUpload'] ) { ?>
     <!-- plupload script -->
     <script type="text/javascript">
     //<![CDATA[
@@ -162,13 +161,15 @@ class nggAddGallery {
     		container: 'plupload-upload-ui',
     		drop_element: 'uploadimage',
     		file_data_name: 'Filedata',
-    		max_file_size: '<?php echo round( (int) wp_max_upload_size() / 1024 ); ?>kb',
     		url: '<?php echo esc_js( $swf_upload_link ); ?>',
     		flash_swf_url: '<?php echo esc_js( includes_url('js/plupload/plupload.flash.swf') ); ?>',
     		silverlight_xap_url: '<?php echo esc_js( includes_url('js/plupload/plupload.silverlight.xap') ); ?>',
-    		filters: [
-    			{title: '<?php echo esc_js( __('Image Files', 'nggallery') ); ?>', extensions: '<?php echo esc_js( str_replace( array('*.', ';'), array('', ','), $file_types)  ); ?>'}
-    		],
+    		filters: {
+				mime_types : [
+					{title: '<?php echo esc_js( __('Image Files', 'nggallery') ); ?>', extensions: '<?php echo esc_js( str_replace( array('*.', ';'), array('', ','), $file_types)  ); ?>'}
+				],
+				max_file_size: '<?php echo round( (int) wp_max_upload_size() / 1024 ); ?>kb',
+			},
     		multipart: true,
     		urlstream_upload: true,
     		multipart_params : {
@@ -239,84 +240,39 @@ class nggAddGallery {
     });
     //]]>
     </script>
-    <?php } else { ?>
-	<!-- SWFUpload script -->
-	<script type="text/javascript">
-		var ngg_swf_upload;
-
-		window.onload = function () {
-			ngg_swf_upload = new SWFUpload({
-				// Backend settings
-				upload_url : "<?php echo esc_js( $swf_upload_link ); ?>",
-				flash_url : "<?php echo esc_js( includes_url('js/swfupload/swfupload.swf') ); ?>",
-
-				// Button Settings
-				button_placeholder_id : "spanButtonPlaceholder",
-				button_width: 300,
-				button_height: 27,
-			  button_text_top_padding: 3,
-				button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
-				button_cursor: SWFUpload.CURSOR.HAND,
-
-				// File Upload Settings
-				file_size_limit : "<?php echo wp_max_upload_size(); ?>b",
-				file_types : "<?php echo $file_types; ?>",
-				file_types_description : "<?php _e('Image Files', 'nggallery') ;?>",
-
-				// Queue handler
-				file_queued_handler : fileQueued,
-
-				// Upload handler
-				upload_start_handler : uploadStart,
-				upload_progress_handler : uploadProgress,
-				upload_error_handler : uploadError,
-				upload_success_handler : uploadSuccess,
-				upload_complete_handler : uploadComplete,
-
-				post_params : {
-					"auth_cookie" : "<?php echo (is_ssl() ? $_COOKIE[SECURE_AUTH_COOKIE] : $_COOKIE[AUTH_COOKIE]); ?>",
-                    "logged_in_cookie": "<?php echo $_COOKIE[LOGGED_IN_COOKIE]; ?>",
-                    "_wpnonce" : "<?php echo wp_create_nonce('ngg_swfupload'); ?>",
-					"galleryselect" : "0"
-				},
-
-				// i18names
-				custom_settings : {
-					"remove" : "<?php _e('remove', 'nggallery') ;?>",
-					"browse" : "<?php _e('Browse...', 'nggallery') ;?>",
-					"upload" : "<?php _e('Upload images', 'nggallery') ;?>"
-				},
-
-				// Debug settings
-				debug: false
-
-			});
-
-			// on load change the upload to swfupload
-			initSWFUpload();
-
-			nggAjaxOptions = {
-			  	header: "<?php _e('Upload images', 'nggallery') ;?>",
-			  	maxStep: 100
-			};
-
-		};
-	</script>
-    <?php } ?>
 	<?php } else { ?>
-	<!-- MultiFile script -->
+	<!-- Browser upload script -->
 	<script type="text/javascript">
 	/* <![CDATA[ */
-		jQuery(document).ready(function(){
-			jQuery('#imagefiles').MultiFile({
-				STRING: {
-			    	remove:'[<?php _e('remove', 'nggallery') ;?>]'
-  				}
-		 	});
-		});
+	var selDiv = "";
+
+	document.addEventListener("DOMContentLoaded", init, false);
+
+	function init() {
+		document.querySelector('#imagefiles').addEventListener('change', handleFileSelect, false);
+		selDiv = document.querySelector("#uploadQueue");
+	}
+		
+	function handleFileSelect(e) {
+		if(!e.target.files) return;
+		selDiv.innerHTML = "";
+		var files = e.target.files;
+		for(var i=0; i<files.length; i++) {
+			var f = files[i];	
+			selDiv.innerHTML += f.name + "<br/>";
+		}	
+	}
+	function checkform() {
+		var e = document.getElementById("galleryselect");
+		var strUser = e.options[e.selectedIndex].value;
+		if (strUser == "0") {
+			alert("<?php _e('You didn\'t select a gallery!','nggallery')?>");
+			event.preventDefault();
+		}
+	}
 	/* ]]> */
 	</script>
-	<?php } ?>
+	<?php } }	?>
 	<!-- jQuery Tabs script -->
 	<script type="text/javascript">
 	/* <![CDATA[ */
@@ -470,7 +426,7 @@ class nggAddGallery {
 				<?php if (SAFE_MODE) {?><p class="description"><?php _e('Please note: If safe-mode is ON, you need to add the subfolder with thumbs manually', 'nggallery') ;?></p><?php }; ?></td>
 			</tr>
 			</table>
-			<div class="submit"><input class="button-primary" type="submit" name= "importfolder" value="<?php _e('Import folder', 'nggallery') ;?>"/></div>
+			<div class="submit"><input onclick="return confirm('<?php _e("This will change folder and file names (e.g. remove spaces, special characters, ...)","nggallery")?>\n\n<?php _e("You will need to update your URLs if you link directly to the images.","nggallery")?>\n\n<?php _e("Press OK to proceed, and Cancel to stop.","nggallery")?>')" class="button-primary" type="submit" name= "importfolder" value="<?php _e('Import folder', 'nggallery') ;?>"/></div>
 		</form>
     <?php
     }
@@ -478,34 +434,15 @@ class nggAddGallery {
     function tab_uploadimage() {
         global $ngg;
         // check the cookie for the current setting
-        $checked = get_user_setting('ngg_upload_resize') ? ' checked="true"' : '';
+        //$checked = get_user_setting('ngg_upload_resize') ? ' checked="true"' : '';
     ?>
     	<!-- upload images -->
     	<h3><?php _e('Upload images', 'nggallery') ;?></h3>
 		<form name="uploadimage" id="uploadimage_form" method="POST" enctype="multipart/form-data" action="<?php echo $this->filepath.'#uploadimage'; ?>" accept-charset="utf-8" >
 		<?php wp_nonce_field('ngg_addgallery') ?>
 			<table class="form-table">
-
 			<tr valign="top">
-				<th scope="row"><?php _e('Upload image', 'nggallery') ;?></th>
-                <?php if ($ngg->options['swfUpload'] && defined('IS_WP_3_3') ) { ?>
-				<td>
-                <div id="plupload-upload-ui">
-                	<div>
-                    	<?php _e( 'Choose files to upload' ); ?>
-                    	<input id="plupload-browse-button" type="button" value="<?php esc_attr_e('Select Files'); ?>" class="button" />
-                	</div>
-                	<p class="ngg-dragdrop-info howto" style="display:none;" ><?php _e('Or you can drop the files into this window.'); ?></p>
-                    <div id='uploadQueue'></div>
-                 </div>
-                </td>
-                <?php } else { ?>
-				<td><span id='spanButtonPlaceholder'></span><input type="file" name="imagefiles[]" id="imagefiles" size="35" class="imagefiles"/></td>
-                <?php } ?>
-            </tr>
-			<tr valign="top">
-				<th scope="row"><?php _e('in to', 'nggallery') ;?></th>
-				<td><select name="galleryselect" id="galleryselect">
+				<td scope="row" style="padding: 0;" colspan="2"><?php _e('in to', 'nggallery') ;?><select style="margin-left:10px;" name="galleryselect" id="galleryselect">
 				<option value="0" ><?php _e('Choose gallery', 'nggallery') ?></option>
 				<?php
 					foreach($this->gallerylist as $gallery) {
@@ -521,14 +458,37 @@ class nggAddGallery {
 				<br /><?php echo $this->maxsize; ?>
 				<br /><?php if ((is_multisite()) && wpmu_enable_function('wpmuQuotaCheck')) display_space_usage(); ?></td>
 			</tr>
+			<tr valign="top">
+                <?php if ($ngg->options['swfUpload'] ) { ?>
+				<td colspan="2" style="padding: 0;">
+                <div id="plupload-upload-ui">
+				<div id="drag-drop-area" style="border: 4px dashed #bbb;height: 150px; padding:20px;">
+				<div class="drag-drop-inside" style="margin:auto; text-align:center; width: 250px;">
+					<p class="ngg-dragdrop-info drag-drop-info" style="font-size:20px;" >
+					<?php _e('Drop your files in this window', 'nggallery'); ?><br/><span style="font-size:14px;"><?php _e('Or', 'nggallery'); ?></p>
+                    <input style="margin:auto; text-align:center;" id="plupload-browse-button" type="button" value="<?php esc_attr_e('Select Files', 'nggallery'); ?>" class="button" />
+					</div>
+					</div>
+					</div>
+                </td>
+                <?php } else { ?>
+				<td><span id='spanButtonPlaceholder'></span>
+				<input type="file" name="imagefiles[]" id="imagefiles" size="35" class="imagefiles" multiple/></td>
+                <?php } ?>
+				</tr>
+				<tr><td><div id='uploadQueue' style="margin-top: 10px;"><td></div>
+            </tr>
 			</table>
 			<div class="submit">
 				<?php if ($ngg->options['swfUpload']) { ?>
-				<input class="button action" type="submit" name="disable_flash" id="disable_flash" title="<?php _e('The batch upload requires Adobe Flash 10, disable it if you have problems','nggallery') ?>" value="<?php _e('Disable flash upload', 'nggallery') ;?>" />
+				<input class="button action" type="submit" name="disable_flash" id="disable_flash" title="<?php _e('Click here to use the browser upload instead','nggallery') ?>" value="<?php _e('Use basic uploader', 'nggallery') ;?>" />
 				<?php } else { ?>
-				<input class="button action" type="submit" name="enable_flash" id="enable_flash" title="<?php _e('Upload multiple files at once by ctrl/shift-selecting in dialog','nggallery') ?>" value="<?php _e('Enable flash based upload', 'nggallery') ;?>" />
+				<input class="button action" type="submit" name="enable_flash" id="enable_flash" title="<?php _e('Advanced uploading','nggallery') ?>" value="<?php _e('Use advanced uploader', 'nggallery') ;?>" />
 				<?php } ?>
-				<input class="button-primary" type="submit" name="uploadimage" id="uploadimage_btn" value="<?php _e('Upload images', 'nggallery') ;?>" />
+				<input <?php if (!($ngg->options['swfUpload'])) { ?> onclick="checkform()" <?php } ?> class="button-primary" type="submit" name="uploadimage" id="uploadimage_btn" value="<?php _e('Upload images', 'nggallery') ;?>" />
+				<?php if ($ngg->options['imgAutoResize'] == 1) { ?>
+				<span class="description" style="margin-left: 10px;"><?php printf( __( 'Your images will be rescaled to max width %1$dpx or max height %2$dpx.', 'nggallery' ), (int) $ngg->options['imgWidth' ], (int) $ngg->options[ 'imgHeight' ] ); ?></span>
+				<?php } ?>
 			</div>
 		</form>
     <?php
