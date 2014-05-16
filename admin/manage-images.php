@@ -502,14 +502,9 @@ if($picturelist) {
 					break;
 					case 'alt_title_desc' :
                         //FZSM Vulnerability fix, second attempt
-                        $img_alt_text = apply_filters("ngg_img_title",$picture->alttext);
-                        $img_description = apply_filters("ngg_img_description", $picture->description);
-                        if (empty($img_alt_text)) {
-                            $img_alt_text = esc_html (stripslashes($picture->alttext));
-                        }
-                        if (empty($img_description)) {
-                            $img_description = esc_html (stripslashes($picture->description));
-                        }
+                        global $allowedposttags;
+                        $img_alt_text = wp_kses($picture->alttext,$allowedposttags));
+                        $img_description = wp_kses($picture->description,$allowedposttags));
 						?>
 						<td <?php echo $attributes ?>>
 							<input placeholder="<?php _e("Alt & title text",'nggallery'); ?>" name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo $img_alt_text; ?>" /><br/>
