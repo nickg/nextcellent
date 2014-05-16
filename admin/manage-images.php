@@ -501,11 +501,19 @@ if($picturelist) {
 						<?php
 					break;
 					case 'alt_title_desc' :
-                        //FZSM
+                        //FZSM Vulnerability fix, second attempt
+                        $img_alt_text = apply_filters("ngg_img_title",$picture->alttext);
+                        $img_description = apply_filters("ngg_img_description", $picture->description);
+                        if (empty($img_alt_text)) {
+                            $img_alt_text = esc_html (stripslashes($picture->alttext));
+                        }
+                        if (empty($img_description)) {
+                            $img_description = esc_html (stripslashes($picture->description));
+                        }
 						?>
 						<td <?php echo $attributes ?>>
-							<input placeholder="<?php _e("Alt & title text",'nggallery'); ?>" name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo esc_html (stripslashes($picture->alttext)); ?>" /><br/>
-							<textarea placeholder="<?php _e("Description",'nggallery'); ?>" name="description[<?php echo $pid ?>]" style="width:95%; margin: 1px;" rows="2" ><?php echo esc_html (stripslashes($picture->description)); ?></textarea>
+							<input placeholder="<?php _e("Alt & title text",'nggallery'); ?>" name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo $img_alt_text; ?>" /><br/>
+							<textarea placeholder="<?php _e("Description",'nggallery'); ?>" name="description[<?php echo $pid ?>]" style="width:95%; margin: 1px;" rows="2" ><?php echo $img_description; ?></textarea>
 						</td>
 						<?php
 					break;
