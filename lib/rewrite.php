@@ -8,7 +8,8 @@
 *
 * @package NextGEN Gallery
 * @author Alex Rabe
-* 
+*
+ * 20140518 FZSM Moved initialization to this class. Don't need to spread the code everywhere.
 */
 class nggRewrite {
 
@@ -416,10 +417,16 @@ class nggRewrite {
             $rewrite_rules = array_merge($rewrite_rules, array($final_match => $final_query));
 
         }
-
-		return $rewrite_rules;        
+		return $rewrite_rules;
     }
 	
 }  // of nggRewrite CLASS
+
+    global $nggRewrite;
+
+    if ( class_exists('nggRewrite') ){
+        $nggRewrite = new nggRewrite();
+    }
+
 
 ?>

@@ -10,7 +10,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
  */
 function nggallery_install () {
 
-   	global $wpdb , $wp_roles, $wp_version;
+   	global $wpdb;
 
 	// Check for capability
 	if ( !current_user_can('activate_plugins') )
