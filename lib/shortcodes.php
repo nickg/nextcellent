@@ -262,19 +262,23 @@ class NextGEN_shortcodes {
         global $wpdb;
 
         extract(shortcode_atts(array(
-            'id'        => 0,
+            'id'        => '0',
             'w'         => '',
-            'h'         => ''
+            'h'         => '',
+			'class'		=> 'ngg-slideshow',
+			'controls'	=> '',
+			'number'	=> '10',
+			'shuffle'	=> 'false'
         ), $atts ));
 
-        if( !is_numeric($id) )
+        if( !is_numeric($id) && !(($id == 'random') || ($id =='recent')) )
             $id = $wpdb->get_var( $wpdb->prepare ("SELECT gid FROM $wpdb->nggallery WHERE name = '%s' ", $id) );
 
         if( !empty( $id ) )
-            $out = nggShowSlideshow($id, $w, $h);
-        else
+            $out = nggShowSlideshow($id, $w, $h, $class, $controls, $number, $shuffle);
+        else 
             $out = __('[Gallery not found]','nggallery');
-
+		
         return $out;
     }
 

@@ -362,9 +362,7 @@ if (!class_exists('nggLoader')) {
 			if ( NGGALLERY_IREXIST == true && $this->options['enableIR'] == '1' && nggGallery::detect_mobile_phone() === false )
 				wp_enqueue_script('swfobject');
 			else {
-				wp_register_script('jquery-cycle', NGGALLERY_URLPATH .'js/jquery.cycle.all.min.js', array('jquery'), '2.9995');
-				wp_enqueue_script('ngg-slideshow', NGGALLERY_URLPATH .'js/ngg.slideshow.min.js', array('jquery-cycle'), '1.06');
-
+				wp_enqueue_script('rs-slideshow', NGGALLERY_URLPATH .'js/jquery.rs.slideshow.min.js', array('jquery'), '1.4.13');
 			}
 
 			// Load AJAX navigation script, works only with shutter script as we need to add the listener

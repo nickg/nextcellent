@@ -28,7 +28,7 @@ class nggSlideshowWidget extends WP_Widget {
 			
 		$title = apply_filters('widget_title', empty( $instance['title'] ) ? __('Slideshow', 'nggallery') : $instance['title'], $instance, $this->id_base);
 
-		$out = $this->render_slideshow($instance['galleryid'] , $instance['width'] , $instance['height']);
+		$out = $this->render_slideshow($instance['galleryid'] , $instance['width'] , $instance['height'], $instance['number']);
 
 		if ( !empty( $out ) ) {
 			echo $before_widget;
@@ -44,15 +44,15 @@ class nggSlideshowWidget extends WP_Widget {
   
 	}
 
-	function render_slideshow($galleryID, $irWidth = '', $irHeight = '') {
+	function render_slideshow($galleryID, $irWidth = '', $irHeight = '', $number) {
 		
 		require_once ( dirname (__FILE__) . '/../lib/swfobject.php' );
 	
 		$ngg_options = get_option('ngg_options');
 
         //Redirect all calls to the JavaScript slideshow if wanted
-        if ( $ngg_options['enableIR'] !== '1' || nggGallery::detect_mobile_phone() === true || NGGALLERY_IREXIST == false )
-            return nggShow_JS_Slideshow($galleryID, $irWidth, $irHeight, 'ngg-widget-slideshow');
+        if ( $ngg_options['enableIR'] !== '1' || NGGALLERY_IREXIST == false )
+            return nggShow_JS_Slideshow($galleryID, $irWidth, $irHeight, 'ngg-widget-slideshow', 'none', $number);
 	
 		if (empty($irWidth) ) $irWidth = (int) $ngg_options['irWidth'];
 		if (empty($irHeight)) $irHeight = (int) $ngg_options['irHeight'];
@@ -100,9 +100,10 @@ class nggSlideshowWidget extends WP_Widget {
 		$instance = $old_instance;
 		
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['galleryid'] = (int) $new_instance['galleryid'];
+		$instance['galleryid'] = $new_instance['galleryid'];
 		$instance['height'] = (int) $new_instance['height'];
 		$instance['width'] = (int) $new_instance['width'];
+		$instance['number'] = (int) $new_instance['number'];
 
 		return $instance;
 	}
@@ -112,10 +113,11 @@ class nggSlideshowWidget extends WP_Widget {
 		global $wpdb;
 
 		//Defaults
-		$instance = wp_parse_args( (array) $instance, array( 'title' => 'Slideshow', 'galleryid' => '0', 'height' => '120', 'width' => '160') );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => 'Slideshow', 'galleryid' => 'random', 'height' => '120', 'width' => '160', 'number' => '20') );
 		$title  = esc_attr( $instance['title'] );
 		$height = esc_attr( $instance['height'] );
 		$width  = esc_attr( $instance['width'] );
+		$number  = esc_attr( $instance['number'] );
 		$tables = $wpdb->get_results("SELECT * FROM $wpdb->nggallery ORDER BY 'name' ASC ");
 ?>
 		<p>
@@ -124,8 +126,10 @@ class nggSlideshowWidget extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id('galleryid'); ?>"><?php _e('Select Gallery:', 'nggallery'); ?></label>
+
 			<select size="1" name="<?php echo $this->get_field_name('galleryid'); ?>" id="<?php echo $this->get_field_id('galleryid'); ?>" class="widefat">
-				<option value="0" <?php if (0 == $instance['galleryid']) echo "selected='selected' "; ?> ><?php _e('All images', 'nggallery'); ?></option>
+				<option value="random" <?php if ($instance['galleryid'] == 'random') { echo "selected='selected' ";} ?> ><?php _e('All images', 'nggallery'); ?></option>
+				<option value="recent" <?php if ($instance['galleryid'] == 'recent') {echo "selected='selected' "; }?> ><?php _e('Recent images', 'nggallery'); ?></option>
 <?php
 				if($tables) {
 					foreach($tables as $table) {
@@ -146,6 +150,11 @@ class nggSlideshowWidget extends WP_Widget {
 				<td><input id="<?php echo $this->get_field_id('height'); ?>" name="<?php echo $this->get_field_name('height'); ?>" type="number" min="0" style="padding: 3px; width: 60px;" value="<?php echo $height; ?>" /> px</td>
 			</tr>
 		</table>
+		<p>
+			<label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of images:', 'nggallery'); ?></label>
+			<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" min="0" style="padding: 3px; width: 60px;" value="<?php echo $number; ?>" /><br/>
+			<span class="description"><?php _e('If you select a gallery, all images will be shown.', 'nggallery'); ?></span>
+		</p>
 <?php	
 	}
 

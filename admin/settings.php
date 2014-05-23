@@ -710,15 +710,13 @@ class nggOptions {
 					<td>
 					<select size="1" name="slideFx">
 						<option value="fade" <?php selected('fade', $ngg->options['slideFx']); ?> ><?php _e('fade', 'nggallery') ;?></option>
-						<option value="blindX" <?php selected('blindX', $ngg->options['slideFx']); ?> ><?php _e('blindX', 'nggallery') ;?></option>
-						<option value="cover" <?php selected('cover', $ngg->options['slideFx']); ?> ><?php _e('cover', 'nggallery') ;?></option>
-						<option value="scrollUp" <?php selected('scrollUp', $ngg->options['slideFx']); ?> ><?php _e('scrollUp', 'nggallery') ;?></option>
-						<option value="scrollDown" <?php selected('scrollDown', $ngg->options['slideFx']); ?> ><?php _e('scrollDown', 'nggallery') ;?></option>
-						<option value="shuffle" <?php selected('shuffle', $ngg->options['slideFx']); ?> ><?php _e('shuffle', 'nggallery') ;?></option>
-						<option value="toss" <?php selected('toss', $ngg->options['slideFx']); ?> ><?php _e('toss', 'nggallery') ;?></option>
-						<option value="wipe" <?php selected('wipe', $ngg->options['slideFx']); ?> ><?php _e('wipe', 'nggallery') ;?></option>
+						<option value="slideLeft" <?php selected('slideLeft', $ngg->options['slideFx']); ?> ><?php _e('slideLeft', 'nggallery') ;?></option>
+						<option value="slideRight" <?php selected('slideRight', $ngg->options['slideFx']); ?> ><?php _e('slideRight', 'nggallery') ;?></option>
+						<option value="slideUp" <?php selected('slideUp', $ngg->options['slideFx']); ?> ><?php _e('slideUp', 'nggallery') ;?></option>
+						<option value="slideDown" <?php selected('slideDown', $ngg->options['slideFx']); ?> ><?php _e('slideDown', 'nggallery') ;?></option>
+						<option value="random" <?php selected('random', $ngg->options['slideFx']); ?> ><?php _e('random', 'nggallery') ;?></option>
+						<option value="none" <?php selected('none', $ngg->options['slideFx']); ?> ><?php _e('none', 'nggallery') ;?></option>
 					</select>
-                    <p class="description"><?php _e('See here for more information about the effects :', 'nggallery') ?> <a href="http://jquery.malsup.com/cycle/browser.html" target="_blank" >jQuery Cycle</a></p>
                     </td>
 				</tr>
  			    </table>

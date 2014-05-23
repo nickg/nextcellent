@@ -12,7 +12,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
  * @param integer $irHeight Height of the flash container
  * @return the content
  */
-function nggShowSlideshow($galleryID, $width, $height) {
+function nggShowSlideshow($galleryID, $width, $height, $class = 'ngg-slideshow', $controls = 'none', $number = 10, $shuffle = 'false') {
 
     require_once (dirname (__FILE__).'/lib/swfobject.php');
 
@@ -23,10 +23,10 @@ function nggShowSlideshow($galleryID, $width, $height) {
         $out = '[' . nggGallery::i18n($ngg_options['galTextSlide']) . ']';
         return $out;
     }
-
+	
     //Redirect all calls to the JavaScript slideshow if wanted
     if ( $ngg_options['enableIR'] !== '1' || nggGallery::detect_mobile_phone() === true )
-        return nggShow_JS_Slideshow($galleryID, $width, $height);
+        return nggShow_JS_Slideshow($galleryID, $width, $height, $class, $controls, $number, $shuffle);
 
     // If the Imagerotator didn't exist, skip the output
     if ( NGGALLERY_IREXIST == false )
@@ -88,17 +88,18 @@ function nggShowSlideshow($galleryID, $width, $height) {
  * Return a script for the jQuery based slideshow. Can be used in any template with <?php echo nggShow_JS_Slideshow($galleryID, $width, $height) ?>
  * Require the script jquery.cycle.all.js
  *
- * @since 1.6.0
+ * @since 1.9.19
  * @access public
  * @param integer $galleryID ID of the gallery
  * @param integer $width Width of the slideshow container
  * @param integer $height Height of the slideshow container
  * @param string $class Classname of the div container
+ * @param string $controls Add controls to the slideshow or not
  * @return the content
  */
-function nggShow_JS_Slideshow($galleryID, $width, $height, $class = 'ngg-slideshow') {
+function nggShow_JS_Slideshow($galleryID, $width, $height, $class = 'ngg-slideshow', $controls = 'none', $number = 20, $shuffle = 'false') {
 
-    global $slideCounter;
+    global $slideCounter, $nggdb;
 
     $ngg_options = nggGallery::get_option('ngg_options');
 
@@ -116,22 +117,45 @@ function nggShow_JS_Slideshow($galleryID, $width, $height, $class = 'ngg-slidesh
     list($width, $height) = apply_filters('ngg_slideshow_size', array( $width, $height ) );
 
     $width  = (int) $width;
+	$left = ($width / 2) - 20;
+	$top = ($height / 2) - 20;
     $height = (int) $height;
+	if ($galleryID == 'random') {
+		$images = nggdb::get_random_images($number);
+	} elseif ($galleryID == 'recent') {
+		$images = nggdb::find_last_images(0 , $number);
+	} else {
+		$images = $nggdb->get_gallery($galleryID);
+	}
 
-    $out  = '<div id="' . $anchor . '" class="' . $class . '" style="height:' . $height . 'px;width:' . $width . 'px;">';
-    $out .= "\n". '<div id="' . $anchor . '-loader" class="ngg-slideshow-loader" style="height:' . $height . 'px;width:' . $width . 'px;">';
-    $out .= "\n". '<img src="'. NGGALLERY_URLPATH . 'images/loader.gif" alt="" />';
+    $out  = '<div id="' . $anchor . '" class="' . $class . ' rs-slideshow" style="height:' . $height . 'px;width:' . $width . 'px;" onclick="jQuery('. "'#" . $anchor . "').rsfSlideshow('nextSlide')" . '";><div class="slide-container">';
+	$out .= "\n". '<img src="'. NGGALLERY_URLPATH . 'images/loader.gif" alt="" style="left:' . $left . 'px; top:' . $top . 'px"/>';
     $out .= "\n". '</div>';
-    $out .= '</div>'."\n";
+	$out .= "\n". '<ol class="slides">';
+	foreach ( $images as $image ) {
+		$out .= '<li><a href="' . $image->imageURL .'">' . $image->alttext . '</a>';
+	}
+    $out .= '</ol></div>'."\n";
     $out .= "\n".'<script type="text/javascript" defer="defer">';
-    $out .= "\n" . 'jQuery(document).ready(function(){ ' . "\n" . 'jQuery("#' . $anchor . '").nggSlideshow( {' .
-            'id: '      . $galleryID    . ',' .
-            'fx:"'      . $ngg_options['slideFx'] . '",' .
-            'width:'    . $width        . ',' .
-            'height:'   . $height       . ',' .
-            'domain: "' . trailingslashit ( home_url() ) . '",' .
-            'timeout:'  . $ngg_options['irRotatetime'] * 1000 .
-            '});' . "\n" . '});';
+    $out .= "\n" . 'jQuery(document).ready(function(){ ' . "\n" . 'jQuery("#' . $anchor . '").rsfSlideshow( {' .
+			'interval: '	. $ngg_options['irRotatetime'] . ',';
+			if ($ngg_options['slideFx'] == 'random') {
+				$out .= "effect: {
+							effects: Array('fade', 'slideLeft', 'slideRight', 'slideUp', 'slideDown'),
+							iteration: 'random'
+					},"; 
+			} else {
+				$out .= 'effect: "' . $ngg_options['slideFx'] . '",';
+			}
+	$out .=	'random: '		. $shuffle . ',' .
+			'controls: { ';
+	if ($controls == 'all') {
+	$out .=	'playPause: {auto: true},' .
+			'previousSlide: {auto: true},' .
+			'index: {auto: true},' .
+			'nextSlide: {auto: true}';
+	}
+	$out .= '}});;' . "\n" . '});';
     $out .= "\n".'</script>';
 
     return $out;
