@@ -169,6 +169,7 @@ class nggAddGallery {
 					{title: '<?php echo esc_js( __('Image Files', 'nggallery') ); ?>', extensions: '<?php echo esc_js( str_replace( array('*.', ';'), array('', ','), $file_types)  ); ?>'}
 				],
 				max_file_size: '<?php echo round( (int) wp_max_upload_size() / 1024 ); ?>kb',
+				prevent_duplicates: true
 			},
     		multipart: true,
     		urlstream_upload: true,
