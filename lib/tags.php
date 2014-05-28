@@ -317,7 +317,8 @@ class nggTags {
 		$sluglist=str_replace("%","%%",$sluglist);
 
 		// first get all $term_ids with this tag
-		$term_ids = $wpdb->get_col( $wpdb->prepare("SELECT term_id FROM $wpdb->terms WHERE slug IN ($sluglist) ORDER BY term_id ASC ", NULL));
+        //Fix for WP 3.9 . See http://make.wordpress.org/core/2012/12/12/php-warning-missing-argument-2-for-wpdb-prepare/
+		$term_ids = $wpdb->get_col( $wpdb->prepare("SELECT term_id FROM $wpdb->terms WHERE slug IN (%s) ORDER BY term_id ASC ", $sluglist));
 		$picids = get_objects_in_term($term_ids, 'ngg_tag');
 
 		//Now lookup in the database

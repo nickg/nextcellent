@@ -10,15 +10,16 @@ License: GPLv2
 
 = WordPress Gallery Plugin =
 
-= V1.9.19 - 17.05.2014
+= V1.9.19 - 22.05.2014
 
  What's in it for you?
 
 * New uploader. Flash uploader deprecated (credits to Niko Strijbol)
 * Improved image folder importer. Now fixes folder & files with spaces (credits to Niko Strijbol)
 * Removed dead code
-* First wikipedia docs http://wpgetready.com/wiki/nextcellent-plugin/ Be free to contribute! (contact us to request
+* Wikipedia docs in progress http://wpgetready.com/wiki/nextcellent-plugin/ Be free to contribute! (contact us to request
 permission to edit it)
+* Re-fix vuln (previous fix also filtered html data, now fixed)
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -327,12 +328,13 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
-= V1.9.19 - 17.05.2014
+= V1.9.19 - 22.05.2014
 * New uploader. Flash uploader deprecated (credits to Niko Strijbol)
 * Improved image folder importer. Now fixes folder & files with spaces (credits to Niko Strijbol)
 * Removed dead code
-* First wikipedia docs http://wpgetready.com/wiki/nextcellent-plugin/ Be free to contribute! (contact us to request
-permission to edit it)
+* Wikipedia docs in progress http://wpgetready.com/wiki/nextcellent-plugin/ Be free to contribute! (contact us to request permission to edit it)
+* Re-fix vuln (previous fix also filtered html data, now fixed)
+
 
 = V1.9.18 - 23.04.2014 =
 * Fixes compatibility with TinyMCE 1.4, for WordPress 3.9. (credits to Niko Strijbol)

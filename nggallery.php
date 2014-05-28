@@ -181,7 +181,7 @@ if (!class_exists('nggLoader')) {
 
         /**
          * Check WP version . Return false if not supported, otherwise true
-         * Also show a msg in case not supported
+         * Display msg in case not supported
          * @return bool
          */
         function required_version() {

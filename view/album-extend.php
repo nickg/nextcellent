@@ -27,7 +27,7 @@ Follow variables are useable :
 				<div class="ngg-description">
 				<p><?php echo $gallery->galdesc ?></p>
 				<?php if ($gallery->counter > 0) : ?>
-				<p><strong><?php echo $gallery->counter ?></strong> <?php _e('Photos', 'nggallery') ?></p>
+				<p><strong><?php echo $gallery->counter ?></strong> <?php esc_html_e('Photos', 'nggallery') ?></p>
 				<?php endif; ?>
 			</div>
 		</div>
