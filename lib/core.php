@@ -276,7 +276,9 @@ class nggGallery {
             echo "<p>Rendering of template $template_name.php failed</p>";
 		} else {
             //test without the "-template" name one time more
-            $template_name = array_shift( explode('-', $template_name , 2) );
+
+            $explode = explode('-', $template_name, 2);
+            $template_name = array_shift($explode);
             nggGallery::render ($template_name, $vars , true);
 		}
 	}

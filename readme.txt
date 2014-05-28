@@ -2,7 +2,7 @@
 Contributors: WPGetReady
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 3.5
-Tested up to: 3.9
+Tested up to: 3.9.1
 Stable tag: trunk
 License: GPLv2
 
@@ -10,16 +10,16 @@ License: GPLv2
 
 = WordPress Gallery Plugin =
 
-= V1.9.18 - 23.04.2014 =
+= V1.9.19 - 22.05.2014
 
  What's in it for you?
 
-* Fixes compatibility with TinyMCE 1.4, for WordPress 3.9. (credits to Niko Strijbol)
-* Fixes use of mysql_*(), which isn't allowed anymore. (credits to Niko Strijbol)
-* Fixes some style stuff from the datepicker interfering with the style of the tabs. (credits to Niko Strijbol)
-* Fixes "flash" upload. This does remove the resize option, but it wasn't working anyway. (credits to Niko Strijbol)
-* Vulnerability fix: data isn't properly sanitized before being printed ona Alt & Title (credits to Larry W. Cashdollar)
-* Changing date for uploaded images improved (credits to Richard Bale)
+* New uploader. Flash uploader deprecated (credits to Niko Strijbol)
+* Improved image folder importer. Now fixes folder & files with spaces (credits to Niko Strijbol)
+* Removed dead code
+* Wikipedia docs in progress http://wpgetready.com/wiki/nextcellent-plugin/ Be free to contribute! (contact us to request
+permission to edit it)
+* Re-fix vuln (previous fix also filtered html data, now fixed)
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -43,7 +43,7 @@ VERY IMPORTANT: Read ON!
 
 - Site managers handling several sites using specialized software as InfiniteWP or ManageWP, wanting to keep their sites running with automatic updates.
 
-- Users prefering an alternative development path with backward compatibility.
+- Users preferring an alternative development path with backward compatibility.
 
 - Developers wanting to suggest or colaborate improving the code.
 
@@ -60,7 +60,7 @@ VERY IMPORTANT: Read ON!
 
 - Alternative path preserving backward compatibility (while possible).
 
-- **Development on Bitbucket open to developers suggestions**. (https://bitbucket.org/wpgetready/nextcellent). You are free to download , test and make suggestions and request.
+- **Development on Bitbucket open to developers suggestions**. (https://bitbucket.org/wpgetready/nextcellent). You are free to download , test and make suggestions and requests.
 
 Being said that, here are the usual classic features:
 
@@ -327,6 +327,14 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 
 == Changelog ==
+
+= V1.9.19 - 22.05.2014
+* New uploader. Flash uploader deprecated (credits to Niko Strijbol)
+* Improved image folder importer. Now fixes folder & files with spaces (credits to Niko Strijbol)
+* Removed dead code
+* Wikipedia docs in progress http://wpgetready.com/wiki/nextcellent-plugin/ Be free to contribute! (contact us to request permission to edit it)
+* Re-fix vuln (previous fix also filtered html data, now fixed)
+
 
 = V1.9.18 - 23.04.2014 =
 * Fixes compatibility with TinyMCE 1.4, for WordPress 3.9. (credits to Niko Strijbol)

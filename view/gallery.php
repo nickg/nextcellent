@@ -29,7 +29,7 @@ Follow variables are useable :
 	<!-- Piclense link -->
 	<div class="piclenselink">
 		<a class="piclenselink" href="<?php echo $gallery->piclens_link ?>">
-			<?php _e('[View with PicLens]','nggallery'); ?>
+			<?php esc_html_e('[View with PicLens]','nggallery'); ?>
 		</a>
 	</div>
 <?php } ?>

@@ -677,6 +677,7 @@ function nggCreateImageBrowser($picturelist, $template = '') {
     $current_page = (get_the_ID() == false) ? 0 : get_the_ID();
 
     // create a array with id's for better walk inside
+    $picarray = array();
     foreach ($picturelist as $picture)
         $picarray[] = $picture->pid;
 

@@ -206,10 +206,6 @@ function ngg_ajax_dashboard() {
 
     switch ( $_GET['jax'] ) {
 
-    case 'ngg_lastdonators' :
-    	ngg_overview_donators();
-    	break;
-
     case 'dashboard_primary' :
     	ngg_overview_news();
     	break;

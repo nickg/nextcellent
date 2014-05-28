@@ -5,7 +5,7 @@ Plugin URI: http://www.wpgetready.com/nextcellent-gallery
 Description: A Photo Gallery for WordPress providing NextGEN legacy compatibility from version 1.9.13
 Author: WPGReady based on Alex Rabe & PhotoCrati work.
 Author URI: http://www.wpgetready.com
-Version: 1.9.18
+Version: 1.9.19
 
 Copyright (c) 2007-2011 by Alex Rabe & NextGEN DEV-Team
 Copyright (c) 2012 Photocrati Media
@@ -33,10 +33,10 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
  * Indicates that a clean exit occured. Handled by set_exception_handler
  */
 if (!class_exists('E_Clean_Exit')) {
-	class E_Clean_Exit extends RuntimeException
-	{
+    class E_Clean_Exit extends RuntimeException
+    {
 
-	}
+    }
 }
 
 //If NextGEN is activated, deactivate this plugin, and warn about it!
@@ -46,18 +46,23 @@ check_nextgen::nextgen_activated();
  * Loads the NextGEN plugin
  */
 if (!class_exists('nggLoader')) {
-	class nggLoader {
 
-		var $version     = '1.9.18';
+    /**
+     * Class nggLoader
+     */
+    class nggLoader {
+
+		var $version     = '1.9.19';
 		var $dbversion   = '1.8.1';
 		var $minimum_WP  = '3.5';
-        //TODO: to be removed next iterations, since Photocrati disabled
-		var $donators    = 'http://www.nextgen-gallery.com/donators.php';
 		var $options     = '';
 		var $manage_page;
 		var $add_PHP5_notice = false;
 
-		function nggLoader() {
+        /**
+         * class constructor
+         */
+        function nggLoader() {
 
 			// Stop the plugin if we missed the requirements
 			if ( ( !$this->required_version() ) || ( !$this->check_memory_limit() )  )
@@ -71,7 +76,6 @@ if (!class_exists('nggLoader')) {
 			$this->define_constant();
 			$this->define_tables();
 			$this->load_dependencies();
-			$this->start_rewrite_module();
 
 			$this->plugin_name = basename(dirname(__FILE__)).'/'.basename(__FILE__);
 
@@ -106,14 +110,15 @@ if (!class_exists('nggLoader')) {
 			add_action('init', array(&$this, 'handle_upload_request'));
 		}
 
-		function start_plugin() {
-
-			global $nggRewrite;
+        /**
+         * Main start invoked after all plugins are loaded.
+         */
+        function start_plugin() {
 
 			// Load the language file
-			$this->load_textdomain();
+            load_plugin_textdomain('nggallery', false, NGGFOLDER . '/lang');
 
-			// All credits to the tranlator
+			// All credits to the translator
 			$this->translator  = '<p class="hint">'. __('<strong>Translation by : </strong><a target="_blank" href="http://alexrabe.de/wordpress-plugins/nextgen-gallery/languages/">See here</a>', 'nggallery') . '</p>';
 			$this->translator .= '<p class="hint">'. __('<strong>This translation is not yet updated for Version 1.9.0</strong>. If you would like to help with translation, download the current po from the plugin folder and read <a href="http://alexrabe.de/wordpress-plugins/wordtube/translation-of-plugins/">here</a> how you can translate the plugin.', 'nggallery') . '</p>';
 
@@ -143,7 +148,11 @@ if (!class_exists('nggLoader')) {
 			}
 		}
 
-		function check_request( $wp ) {
+        /**
+         * Look for XML request
+         * @param $wp
+         */
+        function check_request( $wp ) {
 
 			if ( !array_key_exists('callback', $wp->query_vars) )
 				return;
@@ -168,11 +177,14 @@ if (!class_exists('nggLoader')) {
 				require_once (dirname (__FILE__) . '/xml/ajax.php');
 				exit();
 			}
-
 		}
 
-		function required_version() {
-
+        /**
+         * Check WP version . Return false if not supported, otherwise true
+         * Display msg in case not supported
+         * @return bool
+         */
+        function required_version() {
 			global $wp_version;
 
 			// Check for WP version installation
@@ -188,12 +200,17 @@ if (!class_exists('nggLoader')) {
 				);
 				return false;
 			}
-
 			return true;
-
 		}
 
-		function check_memory_limit() {
+        /**
+         * Checks if there is enough memory to perform the plugin
+         * Inner working: get memory value from memory_limit. If -1 there is no memory limit
+         * If there is 16MB or less, send msg
+         * Returns false if there is enough memory, otherwise false.
+         * @return bool
+         */
+        function check_memory_limit() {
 
 			// get the real memory limit before some increase it
 			$this->memory_limit = ini_get('memory_limit');
@@ -218,13 +235,14 @@ if (!class_exists('nggLoader')) {
 					return false;
 				}
 			}
-
 			return true;
-
 		}
 
+        /**
+         * add dynamic properties to global wpdb object.
+         */
 
-		function define_tables() {
+        function define_tables() {
 			global $wpdb;
 
 			// add database pointer
@@ -233,6 +251,7 @@ if (!class_exists('nggLoader')) {
 			$wpdb->nggalbum						= $wpdb->prefix . 'ngg_album';
 
 		}
+
 
 		function register_taxonomy() {
 			global $wp_rewrite;
@@ -249,12 +268,14 @@ if (!class_exists('nggLoader')) {
 			register_taxonomy( 'ngg_tag', 'nggallery', $args );
 		}
 
-		function define_constant() {
+        /**
+         * Define several constants
+         * 20140517 - Suppressed unused constant
+         */
+        function define_constant() {
 
 			global $wp_version;
 
-			//TODO:SHOULD BE REMOVED LATER
-			define('NGGVERSION', $this->version);
 			// Minimum required database version
 			define('NGG_DBVERSION', $this->dbversion);
 
@@ -283,7 +304,10 @@ if (!class_exists('nggLoader')) {
 
 		}
 
-		function load_dependencies() {
+        /**
+         * Load libraries
+         */
+        function load_dependencies() {
 
 			// Load global libraries												// average memory usage (in bytes)
 			require_once (dirname (__FILE__) . '/lib/core.php');					//  94.840
@@ -322,13 +346,10 @@ if (!class_exists('nggLoader')) {
 			}
 		}
 
-		function load_textdomain() {
-
-			load_plugin_textdomain('nggallery', false, NGGFOLDER . '/lang');
-
-		}
-
-		function load_scripts() {
+        /**
+         * Load scripts depending options defined
+         */
+        function load_scripts() {
 
 			// if you don't want that NGG load the scripts, add this constant
 			if ( defined('NGG_SKIP_LOAD_SCRIPTS') )
@@ -412,14 +433,6 @@ if (!class_exists('nggLoader')) {
 			$this->options = get_option('ngg_options');
 		}
 
-		// Add rewrite rules
-		function start_rewrite_module() {
-			global $nggRewrite;
-
-			if ( class_exists('nggRewrite') )
-				$nggRewrite = new nggRewrite();
-		}
-
 		// THX to Shiba for the code
 		// See: http://shibashake.com/wordpress-theme/write-a-plugin-for-wordpress-multi-site
 		function multisite_new_blog($blog_id, $user_id, $domain, $path, $site_id, $meta ) {
@@ -466,7 +479,13 @@ if (!class_exists('nggLoader')) {
 			}
 		}
 
-		function activate() {
+        /**
+         * Activation hook
+         * register_activation_hook( $this->plugin_name, array(&$this, 'activate') );
+         * Disable Plugin if PHP version is lower than 5.2
+         * However, why the plugin spread initial validation over so different places? Not need to do that...
+         */
+        function activate() {
 			global $wpdb;
 			//Starting from version 1.8.0 it's works only with PHP5.2
 			if (version_compare(PHP_VERSION, '5.2.0', '<')) {
@@ -505,7 +524,10 @@ if (!class_exists('nggLoader')) {
 
 		}
 
-		function deactivate() {
+        /**
+         * delete init options and transients
+         */
+        function deactivate() {
 
 			// remove & reset the init check option
 			delete_option( 'ngg_init_check' );
@@ -515,7 +537,11 @@ if (!class_exists('nggLoader')) {
 			self::remove_transients();
 		}
 
-		function uninstall() {
+        /**
+         * Uninstall procedure. Pay attention this method is static on the class
+         * See register_uninstall_hook( $this->plugin_name, array(__CLASS__, 'uninstall') );
+         */
+        static function uninstall() {
 			// Clean up transients
 			self::remove_transients();
 
@@ -523,7 +549,11 @@ if (!class_exists('nggLoader')) {
 			nggallery_uninstall();
 		}
 
-		function disable_upgrade($option){
+        /**
+         * @param $option
+         * @return mixed
+         */
+        function disable_upgrade($option){
 
 			// PHP5.2 is required for NGG V1.4.0
 			if ( version_compare($option->response[ $this->plugin_name ]->new_version, '1.4.0', '>=') )
@@ -618,7 +648,7 @@ class check_nextgen {
         foreach ($plugin_list as $plugin_file=>$plugin_data) {
             //If we found nextcellent, skip it
             if ($plugin_file==$nextcellent_plugin) continue;
-            //If the plugin is deactivate it ignore it.
+            //If the plugin is deactivated ignore it.
             if (!is_plugin_active($plugin_file)) continue;
             if (strpos($plugin_file,'nggallery.php')!==FALSE) {
                 $version = $plugin_data['Version'];
@@ -631,8 +661,6 @@ class check_nextgen {
                         create_function(
                             '',
                             'echo \'<div id="message" class="error"><p><strong>' . __('Sorry, NextCellent Gallery is deactivated: NextGEN version ' . $version . ' was detected. Deactivate it before running NextCellent!', 'nggallery') . '</strong></p></div>\';'
-
-                         //sprintf( __('Client error when retrieving file:(%d) - %s'  , 'statcomm'),$code,$errMsg)
                         )
                     );
                     //Deactivate this plugin
