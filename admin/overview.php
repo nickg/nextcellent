@@ -36,7 +36,6 @@ function nggallery_admin_overview()  {
         jQuery(document).ready( function($) {
         	// These widgets are sometimes populated via ajax
         	ajaxWidgets = [
-        		'ngg_lastdonators',
         		'dashboard_primary',
         		'ngg_locale',
         		'dashboard_plugins'
@@ -89,7 +88,6 @@ add_meta_box('ngg_meta_box', __('Help me help YOU!', 'nggallery'), 'nextcellent_
 if ( !(get_locale() == 'en_US') )
 	add_meta_box('ngg_locale', __('Translation', 'nggallery'), 'ngg_widget_locale', 'ngg_overview', 'right', 'core');
 add_meta_box('dashboard_primary', __('Latest News', 'nggallery'), 'ngg_widget_overview_news', 'ngg_overview', 'left', 'core');
-//add_meta_box('ngg_lastdonators', __('Recent donators', 'nggallery'), 'ngg_widget_overview_donators', 'ngg_overview', 'right', 'core');
 if ( !is_multisite() || is_super_admin() ) {
     add_meta_box('ngg_plugin_check', __('Plugin Check', 'nggallery'), 'ngg_plugin_check', 'ngg_overview', 'right', 'core');
     add_meta_box('ngg_server', __('Server Settings', 'nggallery'), 'ngg_overview_server', 'ngg_overview', 'right', 'core');
@@ -325,54 +323,6 @@ function ngg_overview_server() {
 <?php
 }
 
-/**
- * Show the most recent donators
- *
- * @return void
- */
-function ngg_widget_overview_donators() {
-    echo '<p class="widget-loading hide-if-no-js">' . __( 'Loading&#8230;' ) . '</p><p class="describe hide-if-js">' . __('This widget requires JavaScript.') . '</p>';
-}
-
-function ngg_overview_donators() {
-	global $ngg;
-
-	$i = 0;
-	$list = '';
-
-	$supporter = nggAdminPanel::get_remote_array($ngg->donators);
-
-	// Ensure that this is a array
-	if ( !is_array($supporter) )
-		return _e('Thanks to all donators...', 'nggallery');
-
-	$supporter = array_reverse($supporter);
-
-	foreach ($supporter as $name => $url) {
-		$i++;
-		if ($url)
-			$list .= "<li><a href=\"$url\">$name</a></li>\n";
-		else
-			$list .= "<li>$name</li>";
-		if ($i > 4)
-			break;
-	}
-
-?>
-<div id="dashboard_server_settings" class="dashboard-widget-holder">
-	<div class="ngg-dashboard-widget">
-	  	<div class="dashboard-widget-content">
-	  		<ul class="settings">
-			<?php echo $list; ?>
-			</ul>
-			<p class="textright">
-				<a class="button" href="admin.php?page=nggallery-about#donators"><?php _e('View all', 'nggallery'); ?></a>
-			</p>
-		</div>
-    </div>
-</div>
-<?php
-}
 
 /**
  * Show the latest NextGEN Gallery news

@@ -115,7 +115,7 @@ if (!$error && filesize($real_file) > 0) {
 	</div>
 	<br style="clear: both;"/>
 	
-<?php if (!is_multisite() || wpmu_site_admin() ) { ?>
+<?php if (!is_multisite() || is_super_admin() ) { ?>
 	<div class="tablenav"> 
 	  <?php
 		if ( is_writeable($real_file) ) {
