@@ -164,7 +164,7 @@ class nggOptions {
     		if ( $old_state != $ngg->options['usePermalinks'] || $old_slug != $ngg->options['permalinkSlug'] )
     			$nggRewrite->flush();
 
-    	 	nggGallery::show_message(__('Update Successfully','nggallery'));
+    	 	nggGallery::show_message(__('Settings updated successfully','nggallery'));
     	}
 
     	if ( isset($_POST['clearcache']) ) {
