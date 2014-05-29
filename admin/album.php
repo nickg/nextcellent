@@ -94,7 +94,7 @@ class nggManageAlbum {
             do_action('ngg_add_album', $this->currentID);
 
 			if ($result)
-				nggGallery::show_message(__('Update Successfully','nggallery'));
+				nggGallery::show_message(__('Updated successfully','nggallery'));
 		}
 
 		if ( isset($_POST['update']) && ($this->currentID > 0) ) {
@@ -113,7 +113,7 @@ class nggManageAlbum {
             //hook for other plugins
             do_action('ngg_update_album_sortorder', $this->currentID);
 
-			nggGallery::show_message(__('Update Successfully','nggallery'));
+			nggGallery::show_message(__('Updated successfully','nggallery'));
 
 		}
 
@@ -158,7 +158,7 @@ class nggManageAlbum {
 		do_action('ngg_update_album', $this->currentID, $_POST);
 
 		if ($result)
-			nggGallery::show_message(__('Update Successfully','nggallery'));
+			nggGallery::show_message(__('Updated successfully','nggallery'));
 	}
 
 	function output() {
@@ -539,7 +539,7 @@ function showDialog() {
 		echo '<div id="gid-' . $prefix . $obj['id'] . '" class="groupItem' . $used . '">
 				<div class="innerhandle">
 					<div class="item_top ' . $class . '">
-						<a href="#" class="min" title="close">[-]</a>
+						<a href="#" class="min" title="close">&#9473;</a>
 						ID: ' . $obj['id'] . ' | ' . wp_html_excerpt( esc_html ( nggGallery::i18n( $obj['title'] ) ) , 25) . '
 					</div>
 					<div class="itemContent">

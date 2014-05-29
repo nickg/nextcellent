@@ -12,14 +12,14 @@ class nggGallery {
 	* Show a error messages
 	*/
 	static function show_error($message) {
-		echo '<div class="wrap"><h2></h2><div class="error" id="error"><p>' . $message . '</p></div></div>' . "\n";
+		echo '<div class="error" id="error"><p>' . $message . '</p></div></div>';
 	}
 
 	/**
 	* Show a system messages
 	*/
 	static function show_message($message) {
-		echo '<div class="wrap"><h2></h2><div class="updated fade" id="message"><p>' . $message . '</p></div></div>' . "\n";
+		echo '<div class="updated fade" id="message"><p>' . $message . '</p></div></div>';
 	}
 
 	/**
