@@ -129,9 +129,6 @@ function uploadError(fileObj, errorCode, message) {
 		case plupload.IMAGE_DIMENSIONS_ERROR:
 			message = pluploadL10n.image_dimensions_exceeded;
 			break;
-		case plupload.FILE_DUPLICATE_ERROR:
-			message = pluploadL10n.image_duplicate;
-			break;
 		case plupload.GENERIC_ERROR:
 			message = pluploadL10n.upload_failed;
 			break;
