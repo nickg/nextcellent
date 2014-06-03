@@ -311,7 +311,7 @@ class nggTags {
 
 		$taglist = array_map('trim', $taglist);
 		$new_slugarray = array_map('sanitize_title', $taglist);
-		$sluglist   = "'" . implode("', '", $new_slugarray) . "'";
+		$sluglist   = implode("', '", $new_slugarray);
 
 		//Treat % as a litteral in the database, for unicode support
 		$sluglist=str_replace("%","%%",$sluglist);
