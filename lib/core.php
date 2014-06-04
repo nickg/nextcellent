@@ -589,5 +589,15 @@ class nggGallery {
         global $ngg;
         echo apply_filters('show_nextgen_version', '<!-- <meta name="NextGEN" version="'. $ngg->version . '" /> -->' . "\n");
     }
+
+    /**
+     * Prevents injection filtering HTML Code
+     * 20140604: Improved based on suggestions of jayque9
+     * http://wordpress.org/support/topic/prevent-removal-of-html-code-from-image-descriptions
+     */
+    static function suppress_injection($html_text) {
+        global $allowedposttags;
+        return wp_kses(stripslashes($html_text),$allowedposttags);
+    }
 }
 ?>
