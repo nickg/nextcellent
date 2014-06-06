@@ -5,11 +5,18 @@ function nggallery_admin_style()  {
 
 global $ngg;
 
-if ( $theme_css_exists = file_exists (TEMPLATEPATH . "/nggallery.css") ) {
+if ($theme_css_exists = file_exists (WP_CONTENT_DIR . "/ngg_styles/nggallery.css") ) {
 
-	$real_file = TEMPLATEPATH . "/nggallery.css";
-	$file_show = 'nggallery.css ' . __('(From the theme folder)','nggallery');
-	
+	$real_file = WP_CONTENT_DIR . "/ngg_styles/nggallery.css";
+	$file_show = 'nggallery.css ' . __('(from the ngg_styles folder)','nggallery');
+	$theme_css_safe = true;
+
+} elseif ( $theme_css_exists = file_exists (get_stylesheet_directory() . "/nggallery.css") ) {
+
+	$real_file = get_stylesheet_directory() . "/nggallery.css";
+	$file_show = 'nggallery.css ' . __('(from the theme folder)','nggallery');
+	$theme_css_safe = false;
+
 } else {
 
 	if (isset($_POST['css'])) {
@@ -33,6 +40,7 @@ if ( $theme_css_exists = file_exists (TEMPLATEPATH . "/nggallery.css") ) {
 	
 	// set the path
 	$real_file = NGGALLERY_ABSPATH . "css/" . $act_cssfile;
+	$theme_css_safe = false;
 }
 
 if (isset($_POST['updatecss'])) {
@@ -86,7 +94,9 @@ if (!$error && filesize($real_file) > 0) {
 	<div class="bordertitle">
         <?php screen_icon( 'nextgen-gallery' ); ?>
 		<h2><?php _e('Style Editor','nggallery') ?></h2>
+		<div class="fileedit-sub">
 		<?php if (!$theme_css_exists) : ?>
+		<div class="alignright">
 		<form id="themeselector" name="cssfiles" method="post">
 		<?php wp_nonce_field('ngg_style') ?>
 		<strong><?php _e('Activate and use style sheet:','nggallery') ?></strong>
@@ -111,21 +121,21 @@ if (!$error && filesize($real_file) > 0) {
 			</select>
 			<input class="button" type="submit" name="activate" value="<?php _e('Activate','nggallery') ?> &raquo;" class="button" />
 		</form>
+		</div>
 		<?php endif; ?>
-	</div>
-	<br style="clear: both;"/>
-	
+
 <?php if (!is_multisite() || is_super_admin() ) { ?>
-	<div class="tablenav"> 
+	<div class="alignleft"> 
 	  <?php
 		if ( is_writeable($real_file) ) {
-			echo '<big>' . sprintf(__('Editing <strong>%s</strong>','nggallery'), $file_show) . '</big>';
+			echo '<h3>' . sprintf(__('Editing %s','nggallery'), $file_show) . '</h3>';
 		} else {
-			echo '<big>' . sprintf(__('Browsing <strong>%s</strong>','nggallery'), $file_show) . '</big>';
+			echo '<h3>' . sprintf(__('Browsing %s','nggallery'), $file_show) . '</h3>';
 		}
 		?>
 	</div>
-	<br style="clear: both;"/>
+	<br class="clear" />
+	</div> <!-- fileedit-sub -->
 	
 	<div id="templateside">
 	<?php if (!$theme_css_exists) : ?>
@@ -134,11 +144,16 @@ if (!$error && filesize($real_file) > 0) {
 			<li><strong><?php _e('Version','nggallery') ?> :</strong> <?php echo $act_css_version ?></li>
 			<li><strong><?php _e('Description','nggallery') ?> :<br /></strong> <?php echo $act_css_description ?></li>
 		</ul>
-		<p><?php _e('Tip: Copy your stylesheet (nggallery.css) to your theme folder, so it will be not lost during a upgrade','nggallery') ?></p>
-	<?php else: ?>
-		<p><?php _e('Your theme contain a NextCellent Gallery stylesheet (nggallery.css), this file will be used','nggallery') ?></p>
 	<?php endif; ?>
-    	<p><?php _e('Tip No. 2: Use the color picker below to help you find the right color scheme for your gallery!','nggallery') ?></p>
+	<?php if (!$theme_css_safe) : ?>
+		<p><?php _e('If you do not want to lose your edits during an update, copy your css file (nggalery.css) to the "/wp-content/ngg_styles" folder.','nggallery') ?></p>
+		<p><?php _e('Your current file is located here:','nggallery') ?></p>
+		<p class="description"><?php echo $real_file; ?></p>
+	<?php else: ?>
+		<p><?php _e('There is a NextCellent theme file, this file will be used. It\'s located in:','nggallery') ?></p>
+		<p class="description"><?php echo $real_file; ?></p>
+	<?php endif; ?>
+    	<p><?php _e('Tip 2: use the color picker below to help you find the right color scheme for your gallery!','nggallery') ?></p>
     	<div id="colorSelector">
         	<div></div>
         </div>
