@@ -595,7 +595,8 @@ class nggGallery {
      * 20140604: Improved based on suggestions of jayque9
      * http://wordpress.org/support/topic/prevent-removal-of-html-code-from-image-descriptions
      */
-    static function suppress_injection($html_text) {
+    static function suppress_injection
+    ($html_text) {
         global $allowedposttags;
         return wp_kses(stripslashes($html_text),$allowedposttags);
     }
