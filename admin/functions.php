@@ -266,16 +266,9 @@ class nggAdmin{
 			//rename images with the cleaned filename
 			$old_path = $gallerypath . '/' . $picture;
 			$filepart = nggGallery::fileinfo( $picture );
-			
-			//check if the sanitized name already exists
-			$increment = ''; //start with no suffix
-
-			while(file_exists($gallerypath . '/' . $filepart['filename'] . $increment . '.' . $filepart['extension'])) {
-				$increment++;
-			}
 
 			//define new values
-			$picture = $filepart['filename'] . $increment . '.' . $filepart['extension'];
+			$picture = $filepart['basename'];
 			$new_path = $gallerypath . "/" . $picture;
 
 			rename($old_path, $new_path); 
