@@ -253,7 +253,7 @@ class nggTags {
      * with unicode support.
      * 20140605: '%' character does not pass through sanitize_title
      * Note: this list cannot be handled with wpdb->prepare since single quotes
-     * will be scaped(!)
+     * will be escaped(!)
      */
     public static function sanitize_taglist($taglist)
     {
