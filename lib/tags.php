@@ -268,7 +268,7 @@ class nggTags {
         $new_slugarray = array_map('sanitize_title', $taglist);
         //recompose list of terms and make one simple string
         $sluglist = implode("', '", $new_slugarray);
-
+        if (empty($sluglist)) return "";
         //Treat % as a literal in the database, for unicode support
       //  $sluglist = str_replace("%", "%%", $sluglist);
         return "'" . $sluglist . "'";
