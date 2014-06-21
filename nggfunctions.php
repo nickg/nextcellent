@@ -851,7 +851,6 @@ function nggSinglePicture($imageID, $width = 250, $height = 250, $mode = '', $fl
 
     return $out;
 }
-
 /**
  * nggShowGalleryTags() - create a gallery based on the tags
  *
@@ -886,6 +885,7 @@ function nggShowGalleryTags($taglist, $template = '',  $sorting = 'ASC') {
     $out = apply_filters('ngg_show_gallery_tags_content', $out, $taglist);
     return $out;
 }
+
 
 /**
  * nggShowRelatedGallery() - create a gallery based on the tags

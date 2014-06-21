@@ -109,33 +109,34 @@ function cancelUpload() {
 
 function uploadError(fileObj, errorCode, message) {
     debug('[uploadError]', errorCode, message);
+	error_name = fileObj.name + ': ';
 	switch (errorCode) {
 		case plupload.FAILED:
-			error_name = fileObj.name + " : " + pluploadL10n.upload_failed;
+			message = pluploadL10n.upload_failed;
 			break;
 		case plupload.FILE_EXTENSION_ERROR:
-			error_name = fileObj.name + " : " + pluploadL10n.invalid_filetype;
+			message = pluploadL10n.invalid_filetype;
 			break;
 		case plupload.FILE_SIZE_ERROR:
-			error_name = fileObj.name + " : " + pluploadL10n.upload_limit_exceeded;
+			message = pluploadL10n.file_exceeds_size_limit;
 			break;
 		case plupload.IMAGE_FORMAT_ERROR:
-			error_name = fileObj.name + " : " + pluploadL10n.not_an_image;
+			message = pluploadL10n.not_an_image;
 			break;
 		case plupload.IMAGE_MEMORY_ERROR:
-			error_name = fileObj.name + " : " + pluploadL10n.image_memory_exceeded;
+			message = pluploadL10n.image_memory_exceeded;
 			break;
 		case plupload.IMAGE_DIMENSIONS_ERROR:
-			error_name = fileObj.name + " : " + pluploadL10n.image_dimensions_exceeded;
+			message = pluploadL10n.image_dimensions_exceeded;
 			break;
 		case plupload.GENERIC_ERROR:
-			error_name = pluploadL10n.upload_failed;
+			message = pluploadL10n.upload_failed;
 			break;
 		case plupload.IO_ERROR:
-			error_name = pluploadL10n.io_error;
+			message = pluploadL10n.io_error;
 			break;
 		case plupload.HTTP_ERROR:
-			error_name = pluploadL10n.http_error;
+			message = pluploadL10n.http_error;
 			break;
 		case plupload.INIT_ERROR:
             /* what should we do in this case ? */
@@ -143,7 +144,7 @@ function uploadError(fileObj, errorCode, message) {
 			//jQuery('.upload-html-bypass').hide();
 			break;
 		case plupload.SECURITY_ERROR:
-			error_name = pluploadL10n.security_error;
+			message = pluploadL10n.security_error;
 			break;
 		case plupload.UPLOAD_ERROR.UPLOAD_STOPPED:
 		case plupload.UPLOAD_ERROR.FILE_CANCELLED:
@@ -151,7 +152,8 @@ function uploadError(fileObj, errorCode, message) {
 		default:
 			FileError(fileObj, pluploadL10n.default_error);
 	}
-	nggProgressBar.addNote("<strong>ERROR " + error_name + " </strong>: " + message);
+	//nggProgressBar.addNote("<strong>ERROR " + error_name + " </strong>: " + message);
+	jQuery('#plupload-upload-ui').prepend('<div id="file-' + fileObj.id + '" class="error"><p style="margin: auto;">' + error_name + message + '</p></div>');
 	jQuery("#" + fileObj.id).hide("slow");
 	jQuery("#" + fileObj.id).remove();
 }
