@@ -179,7 +179,7 @@ class nggAddGallery {
 			resize: {
 				width: <?php echo esc_js( $ngg->options['imgWidth'] ); ?>,
 				height: <?php echo esc_js( $ngg->options['imgHeight'] ); ?>,
-				quality: 100
+				quality: <?php echo esc_js( $ngg->options['imgQuality'] ); ?>
 			},
 			<?php } ?>
             debug: false,
