@@ -262,14 +262,6 @@ class nggAddGallery {
 			selDiv.innerHTML += f.name + "<br/>";
 		}	
 	}
-	function checkform() {
-		var e = document.getElementById("galleryselect");
-		var strUser = e.options[e.selectedIndex].value;
-		if (strUser == "0") {
-			alert("<?php _e('You didn\'t select a gallery!','nggallery')?>");
-			event.preventDefault();
-		}
-	}
 	/* ]]> */
 	</script>
 	<?php } }	?>
@@ -278,7 +270,7 @@ class nggAddGallery {
 	/* <![CDATA[ */
 		jQuery(document).ready(function(){
             jQuery('html,body').scrollTop(0);
-			jQuery('#slider').tabs({ fxFade: true, fxSpeed: 'fast' }).css({ 'display': 'block', 'margin': '4px 15px 0 0' });
+			jQuery('#slider').tabs({ fxFade: true, fxSpeed: 'fast' }).css({ 'display': 'block' });
 		});
 
 		// File Tree implementation
@@ -293,6 +285,32 @@ class nggAddGallery {
 		    	jQuery("#file_browser").show('slide');
 		    });
 		});
+	
+	//Check for a selected gallery on basic uploader and zip upload
+	function checkForm(buttonID) {
+		var e = document.getElementById(buttonID);
+		var strUser = e.options[e.selectedIndex].value;
+		if (strUser == "0") {
+			alert("<?php _e('You didn\'t select a gallery!','nggallery')?>");
+			event.preventDefault();
+		}
+	}
+	
+	//Check if the user has selected a zip file
+	function checkZipFile() {
+		 if( !(document.getElementById('zipfile').value || document.getElementById("zipurl").value) ) { 
+			alert("<?php _e('You didn\'t select a file!','nggallery')?>");
+			event.preventDefault();
+		}
+	}
+	
+	//Check if the user has selected an image file
+	function checkImgFile() {
+		 if( !document.getElementById('imagefiles').value ) { 
+			alert("<?php _e('You didn\'t select a file!','nggallery')?>");
+			event.preventDefault();
+		}
+	}
 	/* ]]> */
 	</script>
 	<div id="slider" class="wrap" style="display: none;">
@@ -389,7 +407,7 @@ class nggAddGallery {
 			<?php endif; ?>
 			<tr valign="top">
 				<th scope="row"><?php _e('in to', 'nggallery') ;?></th>
-				<td><select name="zipgalselect">
+				<td><select name="zipgalselect" id="zipgalselect">
 				<option value="0" ><?php _e('a new gallery', 'nggallery') ?></option>
 				<?php
 					foreach($this->gallerylist as $gallery) {
@@ -405,7 +423,7 @@ class nggAddGallery {
 				<br /><?php if ( (is_multisite()) && wpmu_enable_function('wpmuQuotaCheck') ) display_space_usage(); ?></td>
 			</tr>
 			</table>
-			<div class="submit"><input class="button-primary" type="submit" name= "zipupload" value="<?php _e('Start upload', 'nggallery') ;?>"/></div>
+			<div class="submit"><input class="button-primary" onclick="checkForm('zipgalselect'); checkZipFile()" type="submit" name= "zipupload" value="<?php _e('Start upload', 'nggallery') ;?>"/></div>
 		</form>
     <?php
     }
@@ -485,7 +503,7 @@ class nggAddGallery {
 				<?php } else { ?>
 				<input class="button action" type="submit" name="enable_flash" id="enable_flash" title="<?php _e('Advanced uploading','nggallery') ?>" value="<?php _e('Use advanced uploader', 'nggallery') ;?>" />
 				<?php } ?>
-				<input <?php if (!($ngg->options['swfUpload'])) { ?> onclick="checkform()" <?php } ?> class="button-primary" type="submit" name="uploadimage" id="uploadimage_btn" value="<?php _e('Upload images', 'nggallery') ;?>" />
+				<input <?php if ( !($ngg->options['swfUpload']) ) { ?> onclick="checkForm('galleryselect'); checkImgFile()" <?php } ?> class="button-primary" type="submit" name="uploadimage" id="uploadimage_btn" value="<?php _e('Upload images', 'nggallery') ;?>" />
 				<?php if ($ngg->options['imgAutoResize'] == 1) { ?>
 				<span class="description" style="margin-left: 10px;"><?php printf( __( 'Your images will be rescaled to max width %1$dpx or max height %2$dpx.', 'nggallery' ), (int) $ngg->options['imgWidth' ], (int) $ngg->options[ 'imgHeight' ] ); ?></span>
 				<?php } ?>
