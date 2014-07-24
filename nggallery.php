@@ -362,7 +362,7 @@ if (!class_exists('nggLoader')) {
 			if ( NGGALLERY_IREXIST == true && $this->options['enableIR'] == '1' && nggGallery::detect_mobile_phone() === false )
 				wp_enqueue_script('swfobject');
 			else {
-				wp_enqueue_script('rs-slideshow', NGGALLERY_URLPATH .'js/jquery.rs.slideshow.min.js', array('jquery'), '1.4.13');
+				wp_enqueue_script('owl', NGGALLERY_URLPATH .'js/owl.carousel.min.js', array('jquery'), '2');
 			}
 
 			// Load AJAX navigation script, works only with shutter script as we need to add the listener

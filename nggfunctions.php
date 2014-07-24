@@ -12,7 +12,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
  * @param integer $irHeight Height of the flash container
  * @return the content
  */
-function nggShowSlideshow($galleryID, $width, $height, $class = 'ngg-slideshow', $controls = 'none', $number = 10, $shuffle = 'false') {
+function nggShowSlideshow($galleryID, $width, $height, $class = 'ngg-slideshow', $controls = 'none', $number = 20, $shuffle = 'false') {
 
     require_once (dirname (__FILE__).'/lib/swfobject.php');
 
@@ -97,7 +97,7 @@ function nggShowSlideshow($galleryID, $width, $height, $class = 'ngg-slideshow',
  * @param string $controls Add controls to the slideshow or not
  * @return the content
  */
-function nggShow_JS_Slideshow($galleryID, $width, $height, $class = 'ngg-slideshow', $controls = 'none', $number = 20, $shuffle = 'false') {
+function nggShow_JS_Slideshow($galleryID, $width, $height, $class = 'ngg-slideshow', $controls = 'false', $number = 20, $shuffle = 'false') {
 
     global $slideCounter, $nggdb;
 
@@ -117,46 +117,49 @@ function nggShow_JS_Slideshow($galleryID, $width, $height, $class = 'ngg-slidesh
     list($width, $height) = apply_filters('ngg_slideshow_size', array( $width, $height ) );
 
     $width  = (int) $width;
-	$left = ($width / 2) - 20;
-	$top = ($height / 2) - 20;
     $height = (int) $height;
+	$time = $ngg_options['irRotatetime'] * 1000; //set to milliseconds
+	
+	//Get the images
 	if ($galleryID == 'random') {
-		$images = nggdb::get_random_images($number);
+		$images = nggdb::get_random_images($number); //random images
 	} elseif ($galleryID == 'recent') {
-		$images = nggdb::find_last_images(0 , $number);
+		$images = nggdb::find_last_images(0 , $number); //the last images
 	} else {
-		$images = $nggdb->get_gallery($galleryID);
+		$images = $nggdb->get_gallery($galleryID); //a gallery
 	}
 
-    $out  = '<div id="' . $anchor . '" class="' . $class . ' rs-slideshow" style="height:' . $height . 'px;width:' . $width . 'px;" onclick="jQuery('. "'#" . $anchor . "').rsfSlideshow('nextSlide')" . '";><div class="slide-container">';
-	$out .= "\n". '<img src="'. NGGALLERY_URLPATH . 'images/loader.gif" alt="" style="left:' . $left . 'px; top:' . $top . 'px"/>';
-    $out .= "\n". '</div>';
-	$out .= "\n". '<ol class="slides">';
+    $out  = '<div class="slideshow" style="display: none"><div id="' . $anchor . '" class="' . $class . ' owl-carousel" style="max-width: ' .  $width . 'px; max-height: ' . $height . ';">';
+	
 	foreach ( $images as $image ) {
-		$out .= '<li><a href="' . $image->imageURL .'">' . $image->alttext . '</a>';
+		$out .= '<img src="' . $image->imageURL .'" >';
 	}
-    $out .= '</ol></div>'."\n";
-    $out .= "\n".'<script type="text/javascript" defer="defer">';
-    $out .= "\n" . 'jQuery(document).ready(function(){ ' . "\n" . 'jQuery("#' . $anchor . '").rsfSlideshow( {' .
-			'interval: '	. $ngg_options['irRotatetime'] . ',';
-			if ($ngg_options['slideFx'] == 'random') {
-				$out .= "effect: {
-							effects: Array('fade', 'slideLeft', 'slideRight', 'slideUp', 'slideDown'),
-							iteration: 'random'
-					},"; 
-			} else {
-				$out .= 'effect: "' . $ngg_options['slideFx'] . '",';
-			}
-	$out .=	'random: '		. $shuffle . ',' .
-			'controls: { ';
-	if ($controls == 'all') {
-	$out .=	'playPause: {auto: true},' .
-			'previousSlide: {auto: true},' .
-			'index: {auto: true},' .
-			'nextSlide: {auto: true}';
-	}
-	$out .= '}});;' . "\n" . '});';
-    $out .= "\n".'</script>';
+	
+    $out .= '</div></div>'."\n";
+    $out .= "\n".'<script type="text/javascript">';
+	$out .= "jQuery(document).ready(function($) {
+			$('.owl-carousel').owlCarousel({
+				onInitialize: display, //too prevent flickering
+				items: 1,
+				autoHeight: true,
+				animateOut: 'fadeOut',";
+		if ($controls) {
+		$out .= "nav: true,
+				navText: ['" . __('previous', 'nggallery') ."','" . __('next', 'nggallery') ."'],";
+		}
+	$out .=    "autoplay: true,
+				autoplayTimeout: " . $time . ",
+				autoplayHoverPause: true,
+				animateOut: '" . $ngg_options['slideFx'] . "', //anything from animate.css
+				loop: true
+			});
+		//display the slideshow once it's loaded
+		function display() {
+			$('.slideshow').css({ 'display': 'initial' });
+		}
+		});
+	";
+    $out .= "\n" . '</script>';
 
     return $out;
 }
