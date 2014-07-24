@@ -390,10 +390,14 @@ if (!class_exists('nggLoader')) {
 		function load_styles() {
 
 			// check first the theme folder for a nggallery.css
-			if ( nggGallery::get_theme_css_file() )
+			if ( nggGallery::get_theme_css_file() ) {
+				//load the css framework
+				wp_enqueue_style('NextCellent Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.0', 'screen');
 				wp_enqueue_style('NextGEN', nggGallery::get_theme_css_file() , false, '1.0.0', 'screen');
-			else if ($this->options['activateCSS'])
+			} elseif ($this->options['activateCSS']) {
+				wp_enqueue_style('NextCellent Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.0', 'screen');
 				wp_enqueue_style('NextGEN', NGGALLERY_URLPATH . 'css/' . $this->options['CSSfile'], false, '1.0.0', 'screen');
+			}
 
 			//	activate Thickbox
 			if ($this->options['thumbEffect'] == 'thickbox')
