@@ -54,39 +54,39 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 			<table class="form-table">
 				<tr valign="top">
 					<th align="left"><?php _e('Gallery path','nggallery') ?></th>
-					<td><input type="text" size="50" name="gallerypath" value="<?php echo $ngg_options['gallerypath']; ?>" /><br />
-					<?php _e('This is the default path for all blogs. With the placeholder %BLOG_ID% you can organize the folder structure better.','nggallery') ?>
-                    <?php echo str_replace('%s', '<code>wp-content/blogs.dir/%BLOG_ID%/files/</code>', __('The default setting should be %s', 'nggallery')); ?>
+					<td><input type="text" size="50" name="gallerypath" value="<?php echo $ngg_options['gallerypath']; ?>" />
+					<p class="description"><?php _e('This is the default path for all blogs. With the placeholder %BLOG_ID% you can organize the folder structure better.','nggallery') ?>
+                    <?php echo str_replace('%s', '<code>wp-content/blogs.dir/%BLOG_ID%/files/</code>', __('The default setting should be %s', 'nggallery')); ?>.</p>
                     </td>
 				</tr>
 				<tr>
 					<th valign="top"><?php _e('Enable upload quota check','nggallery') ?>:</th>
-					<td><input name="wpmuQuotaCheck" type="checkbox" value="1" <?php checked('1', $ngg_options['wpmuQuotaCheck']); ?> />
-					<?php _e('Should work if the gallery is bellow the blog.dir','nggallery') ?>
+					<td><input name="wpmuQuotaCheck" id="wpmuQuotaCheck" type="checkbox" value="1" <?php checked('1', $ngg_options['wpmuQuotaCheck']); ?> />
+					<label for="wpmuQuotaCheck"><?php _e('Should work if the gallery is bellow the blog.dir','nggallery') ?></label>
 					</td>
 				</tr>
 				<tr>
 					<th valign="top"><?php _e('Enable zip upload option','nggallery') ?>:</th>
-					<td><input name="wpmuZipUpload" type="checkbox" value="1" <?php checked('1', $ngg_options['wpmuZipUpload']); ?> />
-					<?php _e('Allow users to upload zip folders.','nggallery') ?>
+					<td><input name="wpmuZipUpload" id="wpmuZipUpload" type="checkbox" value="1" <?php checked('1', $ngg_options['wpmuZipUpload']); ?> />
+					<label for="wpmuZipUpload"><?php _e('Allow users to upload zip folders.','nggallery') ?></label>
 					</td>
 				</tr>
 				<tr>
 					<th valign="top"><?php _e('Enable import function','nggallery') ?>:</th>
-					<td><input name="wpmuImportFolder" type="checkbox" value="1" <?php checked('1', $ngg_options['wpmuImportFolder']); ?> />
-					<?php _e('Allow users to import images folders from the server.','nggallery') ?>
+					<td><input name="wpmuImportFolder" id="wpmuImportFolder" type="checkbox" value="1" <?php checked('1', $ngg_options['wpmuImportFolder']); ?> />
+					<label for="wpmuImportFolder"><?php _e('Allow users to import images folders from the server.','nggallery') ?></label>
 					</td>
 				</tr>
 				<tr>
 					<th valign="top"><?php _e('Enable style selection','nggallery') ?>:</th>
-					<td><input name="wpmuStyle" type="checkbox" value="1" <?php checked('1', $ngg_options['wpmuStyle']); ?> />
-					<?php _e('Allow users to choose a style for the gallery.','nggallery') ?>
+					<td><input name="wpmuStyle" id="wpmuStyle" type="checkbox" value="1" <?php checked('1', $ngg_options['wpmuStyle']); ?> />
+					<label for="wpmuStyle"><?php _e('Allow users to choose a style for the gallery.','nggallery') ?></label>
 					</td>
 				</tr>
 				<tr>
 					<th valign="top"><?php _e('Enable roles/capabilities','nggallery') ?>:</th>
-					<td><input name="wpmuRoles" type="checkbox" value="1" <?php checked('1', $ngg_options['wpmuRoles']); ?> />
-					<?php _e('Allow users to change the roles for other blog authors.','nggallery') ?>
+					<td><input name="wpmuRoles" id="wpmuRoles" type="checkbox" value="1" <?php checked('1', $ngg_options['wpmuRoles']); ?> />
+					<label for="wpmuRoles"><?php _e('Allow users to change the roles for other blog authors.','nggallery') ?></label>
 					</td>
 				</tr>
 				<tr>
@@ -106,12 +106,12 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 							echo "\n\t<option value=\"$key\" $selected>$css_name</option>";
 						}
 					?>
-					</select><br />
-					<?php _e('Choose the default style for the galleries.','nggallery') ?>
+					</select>
+					<p class="description"><?php _e('Choose the default style for the galleries.','nggallery') ?></p>
 					</td>
 				</tr>
 			</table> 				
-			<div class="submit"><input type="submit" name="updateoption" value="<?php _e('Update') ;?>"/></div>
+			<div class="submit"><input type="submit" name="updateoption" class="button button-primary" value="<?php _e('Save Changes') ;?>"/></div>
 		</form>	
 	</div>	
 

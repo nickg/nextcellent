@@ -187,10 +187,18 @@ class nggAdminPanel {
 	// integrate the network menu
 	function add_network_admin_menu() {
 
-		add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
-			&$this,
-			'show_network_settings'
-		), path_join( NGGALLERY_URLPATH, 'admin/images/nextgen_16_color.png' ) );
+		if ( get_bloginfo( 'version' ) >= 3.8 ) {
+			add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
+				&$this,
+				'show_network_settings'
+			), 'dashicons-format-gallery' );
+		} else {
+			add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
+				&$this,
+				'show_network_settings'
+			), path_join( NGGALLERY_URLPATH, 'admin/images/nextgen_16_color.png' ) );
+		}
+
 		add_submenu_page( NGGFOLDER, __( 'Network settings', 'nggallery' ), __( 'Network settings', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
 			&$this,
 			'show_network_settings'
