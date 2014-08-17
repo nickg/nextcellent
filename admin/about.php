@@ -24,6 +24,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 				<li><a href="http://wpgetready.com/" target="_blank">WPGetReady</a> <?php _e('for maintaining this fork of NextGen Gallery', 'nggallery') ;?></li>
 				<li><?php _e('The original translators for NextGen Gallery, who made the translations', 'nggallery') ;?></li>
 				</ul>
+				<div>Icons made by <a href="http://www.freepik.com" alt="Freepik.com" title="Freepik.com">Freepik</a> from i.a. <a href="http://www.flaticon.com/packs/layout-icons" title="Flaticon">www.flaticon.com</a></div>
 			</div>
 		</div>
         <div class="postbox">
