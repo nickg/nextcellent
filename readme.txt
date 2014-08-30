@@ -10,7 +10,7 @@ License: GPLv2
 
 = WordPress Gallery Plugin =
 
-= V1.9.20 - 20.06.2014
+= V1.9.20 - 20.06.2014 =
 
  What's in it for you?
 
@@ -330,7 +330,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
-= V1.9.19 - 20.06.2014
+= V1.9.19 - 20.06.2014 =
 * Fixes on uploader (credits to Niko Strijbol)
 * Fixes for nggtag shortcode (credits to Niko Strijbol)
 * Refactored code in few places
@@ -339,7 +339,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 * Improved injections prevention (credits to jayque9)
 * Improve spelling & error message (credits to Niko Strijbol)
 
-= V1.9.19 - 22.05.2014
+= V1.9.19 - 22.05.2014 =
 * New uploader. Flash uploader deprecated (credits to Niko Strijbol)
 * Improved image folder importer. Now fixes folder & files with spaces (credits to Niko Strijbol)
 * Removed dead code
