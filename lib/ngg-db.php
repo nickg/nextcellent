@@ -293,7 +293,7 @@ class nggdb {
      * @id The gallery ID
      */
     static function delete_gallery( $id ) {
-        global $wpdb;
+        global $wpdb, $nggdb;
 
         $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->nggpictures WHERE galleryid = %d", $id) );
         $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->nggallery WHERE gid = %d", $id) );
@@ -301,6 +301,22 @@ class nggdb {
         wp_cache_delete($id, 'ngg_gallery');
 
         //TODO:Remove all tag relationship
+		
+		//Update the galleries to remove the deleted ID's
+		$albums = $nggdb->find_all_album();
+		
+		foreach ($albums as $album) {
+			$albumid = $album->id;
+			$galleries = $album->galleries;
+			$deleted = array_search($id, $galleries);
+			
+			unset($galleries[$deleted]);
+			
+			$new_galleries = serialize($galleries);
+			
+			nggdb::update_album($albumid, false, false, false, $new_galleries);
+		}
+		
         return true;
     }
 
