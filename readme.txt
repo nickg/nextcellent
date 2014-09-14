@@ -8,9 +8,14 @@ License: GPLv2
 
 == Description ==
 
-= 1.9.20 - 20/06/2014 =
+= 1.9.21 - 14/09/2014 =
 
  What's in it for you?
+
+* The uploader did not use the quality set in the options. Now it does (credits to Niko Strijbol)
+* Fix: When a gallery is deleted, the ID is removed from albums. (credits to Niko Strijbol)
+* Small changes readme.txt to look better (Matthew's Random Stuff)
+* Support for the ngg_styles folder (introduced in NextGEN 2.x), solving issues with updates (credits to Niko Strijbol)
 
 * Fixes on uploader (credits to Niko Strijbol)
 * Fixes for nggtag shortcode (credits to Niko Strijbol)
