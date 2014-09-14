@@ -281,6 +281,7 @@ if (!class_exists('nggLoader')) {
 
 			// required for Windows & XAMPP
 			define('WINABSPATH', str_replace("\\", "/", ABSPATH) );
+			define('NGG_CONTENT_DIR', str_replace("\\","/", WP_CONTENT_DIR) );
 
 			// define URL
 			define('NGGFOLDER', basename( dirname(__FILE__) ) );
@@ -413,10 +414,14 @@ if (!class_exists('nggLoader')) {
 		function load_styles() {
 
 			// check first the theme folder for a nggallery.css
-			if ( nggGallery::get_theme_css_file() )
-				wp_enqueue_style('NextGEN', nggGallery::get_theme_css_file() , false, '1.0.0', 'screen');
-			else if ($this->options['activateCSS'])
-				wp_enqueue_style('NextGEN', NGGALLERY_URLPATH . 'css/' . $this->options['CSSfile'], false, '1.0.0', 'screen');
+			if ( $css_file = nggGallery::get_theme_css_file() ) {
+				wp_enqueue_style('NextGEN', $css_file , false, '1.0.0', 'screen');
+			} elseif ($this->options['activateCSS']) {
+				//convert the path to an URL
+				$replace = content_url();
+				$path = str_replace( NGG_CONTENT_DIR , $replace, $this->options['CSSfile']); 
+				wp_enqueue_style('NextGEN', $path, false, '1.0.0', 'screen');
+			}
 
 			//	activate Thickbox
 			if ($this->options['thumbEffect'] == 'thickbox')
