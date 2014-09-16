@@ -1,5 +1,5 @@
 === NextCellent Gallery - NextGEN Legacy ===
-Contributors: WPGetReady
+Contributors: wpready
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 3.5
 Tested up to: 3.9.1
@@ -8,19 +8,14 @@ License: GPLv2
 
 == Description ==
 
-= WordPress Gallery Plugin =
-
-= V1.9.20 - 20.06.2014
+= 1.9.21 - 14/09/2014 =
 
  What's in it for you?
 
-* Fixes on uploader (credits to Niko Strijbol)
-* Fixes for nggtag shortcode (credits to Niko Strijbol)
-* Refactored code in few places
-* Fix vulnerability which disallowed html text & santitize_taglist function (credits to NS & FZ)
-* Fix for 3.9 and typos for strict warning
-* Improved injections prevention (credits to jayque9)
-* Improve spelling & error message (credits to Niko Strijbol)
+* The uploader did not use the quality set in the options. Now it does (credits to Niko Strijbol)
+* Fix: When a gallery is deleted, the ID is removed from albums. (credits to Niko Strijbol)
+* Small changes readme.txt to look better (Matthew's Random Stuff)
+* Support for the ngg_styles folder (introduced in NextGEN 2.x), solving issues with updates (credits to Niko Strijbol)
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -330,23 +325,29 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
-= V1.9.19 - 20.06.2014
+= 1.9.21 - 14/09/2014 =
+* The uploader did not use the quality set in the options. Now it does (credits to Niko Strijbol)
+* Fix: When a gallery is deleted, the ID is removed from albums. (credits to Niko Strijbol)
+* Small changes readme.txt to look better (Matthew's Random Stuff)
+* Support for the ngg_styles folder (introduced in NextGEN 2.x), solving issues with updates (credits to Niko Strijbol)
+
+= 1.9.20 - 20/06/2014 =
 * Fixes on uploader (credits to Niko Strijbol)
 * Fixes for nggtag shortcode (credits to Niko Strijbol)
 * Refactored code in few places
-* Fix vulnerability which disallowed html text & santitize_taglist function (credits to NS & FZ)
+* Fix vulnerability which disallowed html text & sanitize_taglist function (credits to NS & FZ)
 * Fix for 3.9 and typos for strict warning
 * Improved injections prevention (credits to jayque9)
 * Improve spelling & error message (credits to Niko Strijbol)
 
-= V1.9.19 - 22.05.2014
+= 1.9.19 - 22/05/2014 =
 * New uploader. Flash uploader deprecated (credits to Niko Strijbol)
 * Improved image folder importer. Now fixes folder & files with spaces (credits to Niko Strijbol)
 * Removed dead code
 * Wikipedia docs in progress http://wpgetready.com/wiki/nextcellent-plugin/ Be free to contribute! (contact us to request permission to edit it)
 * Re-fix vuln (previous fix also filtered html data, now fixed)
 
-= V1.9.18 - 23.04.2014 =
+= 1.9.18 - 23/04/2014 =
 * Fixes compatibility with TinyMCE 1.4, for WordPress 3.9. (credits to Niko Strijbol)
 * Fixes use of mysql_*(), which isn't allowed anymore. (credits to Niko Strijbol)
 * Fixes some style stuff from the datepicker interfering with the style of the tabs. (credits to Niko Strijbol)
@@ -354,7 +355,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 * Vulnerability fix: data isn't properly sanitized before being printed ona Alt & Title (credits to Larry W. Cashdollar)
 * Changing date for uploaded images improved (credits to Richard Bale)
 
-= V1.9.17 - 17.03.2014 =
+= 1.9.17 - 17/03/2014 =
 * Fixes to layout and more (credits to Niko Strijbol)
 * Added ability to change image upload + Ajax  (credits to Richard Bale)
 * Russian translation (credits to Vladimir Vasilenko)
@@ -363,19 +364,19 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 * Improved nggtags shortcode implementing Tony Howden's suggestions (see http://howden.net.au/thowden/2012/12/nextgen-gallery-wordpress-nggtags-template-caption-option/)
   added modes ASC,DESC and RAND
 
-= V1.9.16 - 08.01.2014 =
+= 1.9.16 - 08/01/2014 =
 * Folder and Image Management improved (credits to Niko Strijbol)
 * German translation (credits to Niko Strijbol)
 * Improved style for WP 3.8 (credits to Niko Strijbol)
 * Improper call to method as static when method belongs to instance. Fixed
 * Code cleaning, proper call to static method fixed
 
-= V1.9.15 - 03.10.2013 =
+= 1.9.15 - 03/10/2013 =
 * Code simplification: code supporting PHP4 has no use. Deprecated.
 * Plugin should work with PHP strict standard enabled.
 * Improper call to static functions corrected all over the code
 * Disabled donator metabox since link is dead
 
-= V1.9.14 - 01.09.2013 =
+= 1.9.14 - 01/09/2013 =
 * The plugin will deactivate if NextGEN (all versions) plugin is installed & activated
 * text messages were adjusted to this plugin, to avoid user confusion.

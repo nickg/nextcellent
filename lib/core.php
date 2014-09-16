@@ -268,11 +268,16 @@ class nggGallery {
 
 		if ( ( $custom_template != false ) &&  file_exists ($custom_template) ) {
 			include ( $custom_template );
-		} else if (file_exists (STYLESHEETPATH . "/nggallery/$template_name.php")) {
-			include (STYLESHEETPATH . "/nggallery/$template_name.php");
-		} else if (file_exists (NGGALLERY_ABSPATH . "/view/$template_name.php")) {
+		//search in theme folder
+		} elseif (file_exists (get_stylesheet_directory() . "/nggallery/$template_name.php")) {
+			include (get_stylesheet_directory() . "/nggallery/$template_name.php");
+		//search in WP_CONTENT_DIR
+		} elseif (file_exists (WP_CONTENT_DIR . "/ngg_styles/$template_name.php")) {
+			include (WP_CONTENT_DIR . "/ngg_styles/$template_name.php");
+		//use defaults
+		} elseif (file_exists (NGGALLERY_ABSPATH . "/view/$template_name.php")) {
 			include (NGGALLERY_ABSPATH . "/view/$template_name.php");
-		} else if ( $callback === true ) {
+		} elseif ( $callback === true ) {
             echo "<p>Rendering of template $template_name.php failed</p>";
 		} else {
             //test without the "-template" name one time more
@@ -328,7 +333,9 @@ class nggGallery {
 
 		if ( $stylesheet !== false )
 			return ( $stylesheet );
-		elseif ( file_exists (STYLESHEETPATH . '/nggallery.css') )
+		elseif ( file_exists (WP_CONTENT_DIR . '/ngg_styles/nggallery.css') )
+			return content_url() . '/ngg_styles/nggallery.css';
+		elseif ( file_exists (get_stylesheet_directory() . '/nggallery.css') )
 			return get_stylesheet_directory_uri() . '/nggallery.css';
 		else
 			return false;

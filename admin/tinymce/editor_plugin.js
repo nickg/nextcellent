@@ -16,13 +16,18 @@
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
 
 			ed.addCommand('mceNextGEN', function() {
+				vp = tinymce.DOM.getViewPort();
+				H = vp.h-150; //580 < (vp.h - 70) ? 580 : vp.h - 70;
+				W = vp.w-200; //650 < vp.w ? 650 : vp.w;
+				
 				ed.windowManager.open({
 				    // call content via admin-ajax, no need to know the full plugin path
-					url : ajaxurl + '?action=ngg_tinymce',
-					width : 360 + ed.getLang('NextGEN.delta_width', 0),
-					height : 210 + ed.getLang('NextGEN.delta_height', 0),
+					file : ajaxurl + '?action=ngg_tinymce',
+					width : W + 'px',
+					height : H + 'px',
 					inline : 1
 				}, {
+					ajax_url: ajaxurl, //wp ajaxurl
 					plugin_url : url // Plugin absolute URL
 				});
 			});
@@ -32,13 +37,7 @@
 				title : 'NextCellent',
 				cmd : 'mceNextGEN',
 				image : url + '/nextgen.gif',
-				stateSelector: 'img'
 			});
-
-			// Add a node change handler, selects the button in the UI when a image is selected
-			//ed.onNodeChange.add(function(ed, cm, n) {
-			//	cm.setActive('NextGEN', n.nodeName == 'IMG');
-			//});
 		},
 
 		/**
@@ -63,11 +62,11 @@
 		 */
 		getInfo : function() {
 			return {
-					longname  : 'NextGEN',
-					author 	  : 'Photocrati',
-					authorurl : 'http://www.photocrati.com/',
-					infourl   : 'http://www.nextgen-gallery.com/',
-					version   : "2.0"
+					longname  : 'NextCellent',
+					author 	  : '',
+					authorurl : '',
+					infourl   : '',
+					version   : "1.9.21"
 			};
 		}
 	});
