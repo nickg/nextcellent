@@ -235,7 +235,8 @@ class nggAdminPanel{
 				break;
 			case "nggallery-style" :
 				include_once ( dirname (__FILE__) . '/style.php' );		// nggallery_admin_style
-				nggallery_admin_style();
+				$ngg->nggallery_style = new NGG_Style ();
+				$ngg->nggallery_style->controller();
 				break;
 			case "nggallery-setup" :
 				include_once ( dirname (__FILE__) . '/setup.php' );		// nggallery_admin_setup
@@ -346,7 +347,6 @@ class nggAdminPanel{
 			break;
 			case "nggallery-style" :
 				wp_enqueue_script( 'codepress' );
-				wp_enqueue_script( 'ngg-colorpicker', NGGALLERY_URLPATH .'admin/js/colorpicker/js/colorpicker.js', array('jquery'), '1.0');
 			break;
 
 		}
@@ -374,6 +374,7 @@ class nggAdminPanel{
 			case "nggallery-add-gallery" :
 				wp_enqueue_style( 'ngg-jqueryui' );
 				wp_enqueue_style( 'jqueryFileTree', NGGALLERY_URLPATH .'admin/js/jqueryFileTree/jqueryFileTree.css', false, '1.0.1', 'screen' );
+			break;
 			case "nggallery-options" :
 				wp_enqueue_style( 'nggtabs', NGGALLERY_URLPATH .'admin/css/jquery.ui.tabs.css', false, '2.5.0', 'screen' );
 				wp_enqueue_style( 'nggadmin' );
@@ -382,6 +383,7 @@ class nggAdminPanel{
                 wp_enqueue_style('shutter', NGGALLERY_URLPATH .'shutter/shutter-reloaded.css', false, '1.3.2', 'screen');
                 wp_enqueue_style( 'datepicker', NGGALLERY_URLPATH .'admin/css/jquery.ui.datepicker.css', false, '1.8.2', 'screen' );
 			case "nggallery-roles" :
+			break;
 			case "nggallery-manage-album" :
 				wp_enqueue_style( 'ngg-jqueryui' );
 				wp_enqueue_style( 'nggadmin' );
@@ -390,9 +392,6 @@ class nggAdminPanel{
 				wp_enqueue_style( 'nggtags', NGGALLERY_URLPATH .'admin/css/tags-admin.css', false, '2.6.1', 'screen' );
 				break;
 			case "nggallery-style" :
-				wp_admin_css( 'css/theme-editor' );
-				wp_enqueue_style('nggcolorpicker', NGGALLERY_URLPATH.'admin/js/colorpicker/css/colorpicker.css', false, '1.0', 'screen');
-				wp_enqueue_style('nggadmincp', NGGALLERY_URLPATH.'admin/css/nggColorPicker.css', false, '1.0', 'screen');
 			break;
 		}
 	}
