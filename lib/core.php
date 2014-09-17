@@ -333,8 +333,6 @@ class nggGallery {
 
 		if ( $stylesheet !== false )
 			return ( $stylesheet );
-		elseif ( file_exists (WP_CONTENT_DIR . '/ngg_styles/nggallery.css') )
-			return content_url() . '/ngg_styles/nggallery.css';
 		elseif ( file_exists (get_stylesheet_directory() . '/nggallery.css') )
 			return get_stylesheet_directory_uri() . '/nggallery.css';
 		else

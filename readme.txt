@@ -331,7 +331,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 * Additional added from previous version: improved TinyMCE window (credits to Niko Strijbol)
 * Fixed readme.txt
 
-= 1.9.21 - 14/09/2014
+= 1.9.21 - 14/09/2014 =
 * The uploader did not use the quality set in the options. Now it does (credits to Niko Strijbol)
 * Fix: When a gallery is deleted, the ID is removed from albums. (credits to Niko Strijbol)
 * Small changes readme.txt to look better (Matthew's Random Stuff)
@@ -341,7 +341,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 * Fixes on uploader (credits to Niko Strijbol)
 * Fixes for nggtag shortcode (credits to Niko Strijbol)
 * Refactored code in few places
-* Fix vulnerability which disallowed html text & santitize_taglist function (credits to NS & FZ)
+* Fix vulnerability which disallowed html text & sanitize_taglist function (credits to NS & FZ)
 * Fix for 3.9 and typos for strict warning
 * Improved injections prevention (credits to jayque9)
 * Improve spelling & error message (credits to Niko Strijbol)
