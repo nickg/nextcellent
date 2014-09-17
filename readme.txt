@@ -329,6 +329,9 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 * Fix: Correction on overview.php in order to make the file/s translatable (credits to Balázs Németh)
 * Hungarian translation (credits to  Balázs Németh)
 * Additional added from previous version: improved TinyMCE window (credits to Niko Strijbol)
+* Readded missed translated files.*
+* Rewritten style management (credits to Niko Strijbol)
+* Fix AJAX in TinyMCE window (credits to Niko Strijbol)
 * Fixed readme.txt
 
 = 1.9.21 - 14/09/2014 =
