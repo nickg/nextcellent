@@ -739,7 +739,7 @@ class nextcellent_overview {
             set_transient( 'ngg_related_plugins', $api, 60*60*24 ); //enable to check within a day.
         }
 
-        echo '<div style="margin-bottom:10px;padding:8px;font-size:110%;background:#eebbaa;"><b>'; _e('Pay attention','nggallery'); echo '</b>:'; _e('third parties plugins that are compatible with NGG may not be 100% compatible with NextCellent Gallery!','nggallery'); echo '</div>';
+        echo '<div style="margin-bottom:10px;padding:8px;font-size:110%;background:#eebbaa;"><b>'; _e('Pay attention','nggallery'); echo '</b>:'; _e('third parties plugins that are compatible with NGG may not be 100&#37; compatible with NextCellent Gallery!','nggallery'); echo '</div>';
         //List of suppressed plugin on the list.
         $blacklist = array('nextgen-gallery','nextcellent-gallery-nextgen-legacy');
 
