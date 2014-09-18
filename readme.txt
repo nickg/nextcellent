@@ -1,4 +1,4 @@
-=== NextCellent Gallery - NextGEN Legacy ===
+﻿=== NextCellent Gallery - NextGEN Legacy ===
 Contributors: wpready
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 3.5
@@ -12,6 +12,8 @@ License: GPLv2
 
  What's in it for you?
 
+* Javascript validation before uploading (credits to Niko Strijbol)
+* Fixed issue with style tabs (credits to Niko Strijbol)
 * Fix: Correction on overview.php in order to make the file/s translatable (credits to Balázs Németh)
 * Hungarian translation (credits to  Balázs Németh)
 * Additional added from previous version: improved TinyMCE window (credits to Niko Strijbol)
