@@ -2,7 +2,7 @@
 Contributors: wpready
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 3.5
-Tested up to: 3.9.1
+Tested up to: 4.0
 Stable tag: trunk
 License: GPLv2
 
@@ -121,12 +121,12 @@ That's it ... have fun!
 
 == Screenshots ==
 
-1. Screenshot Admin Area
-2. Screenshot Album Selection
-3. Screenshot Shutter Effect
-4. Screenshot Watermark function
-5. Screenshot Flexible template layout
-6. Screenshot Show Exif data
+1. Screenshot - Admin Area
+2. Screenshot - Album Selection
+3. Screenshot - Shutter Effect
+4. Screenshot - Watermark function
+5. Screenshot - Flexible template layout
+6. Screenshot - Shows Exif data
 
 == Shortcode ==
 
@@ -325,19 +325,20 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
-= 1.9.22 - 22/09/2014
-* Fix: Correction on overview.php in order to make the file/s translatable (credits to Balázs Németh)
-* Hungarian translation (credits to  Balázs Németh)
+= 1.9.22 - 22/09/2014 =
+* Capable with WordPress 4.0.
+* Fix: Correction on overview.php in order to make the files translatable (credits to Balázs Németh)
+* Hungarian translation added (credits to  Balázs Németh)
 * Additional added from previous version: improved TinyMCE window (credits to Niko Strijbol)
-* Readded missed translated files.*
-* Rewritten style management (credits to Niko Strijbol)
-* Fix AJAX in TinyMCE window (credits to Niko Strijbol)
+* Readded missed translated files*
+* Rewrote the style management (credits to Niko Strijbol)
+* Fixed AJAX in the TinyMCE window (credits to Niko Strijbol)
 * Fixed readme.txt
 
 = 1.9.21 - 14/09/2014 =
 * The uploader did not use the quality set in the options. Now it does (credits to Niko Strijbol)
 * Fix: When a gallery is deleted, the ID is removed from albums. (credits to Niko Strijbol)
-* Small changes readme.txt to look better (Matthew's Random Stuff)
+* Small changes to the readme.txt to make it look better (credits to Matthew)
 * Support for the ngg_styles folder (introduced in NextGEN 2.x), solving issues with updates (credits to Niko Strijbol)
 
 = 1.9.20 - 20/06/2014 =
