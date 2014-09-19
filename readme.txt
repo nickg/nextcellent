@@ -327,28 +327,28 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 = 1.9.22 - 22/09/2014 =
 * Capable with WordPress 4.0.
-* Fix: Correction on overview.php in order to make the files translatable (credits to Balázs Németh)
-* Hungarian translation added (credits to  Balázs Németh)
-* Additional added from previous version: improved TinyMCE window (credits to Niko Strijbol)
-* Readded missed translated files*
-* Rewrote the style management (credits to Niko Strijbol)
-* Fixed AJAX in the TinyMCE window (credits to Niko Strijbol)
-* Fixed readme.txt
+* Fix: Correction on overview.php in order to make the files translatable. (credits to Balázs Németh)
+* Hungarian translation added. (credits to  Balázs Németh)
+* Additional added from previous version: improved TinyMCE window. (credits to Niko Strijbol)
+* Readded missed translated files.
+* Rewrote the style management. (credits to Niko Strijbol)
+* Fixed AJAX in the TinyMCE window. (credits to Niko Strijbol)
+* Fixed readme.txt.
 
 = 1.9.21 - 14/09/2014 =
-* The uploader did not use the quality set in the options. Now it does (credits to Niko Strijbol)
+* The uploader did not use the quality set in the options. Now it does. (credits to Niko Strijbol)
 * Fix: When a gallery is deleted, the ID is removed from albums. (credits to Niko Strijbol)
-* Small changes to the readme.txt to make it look better (credits to Matthew)
-* Support for the ngg_styles folder (introduced in NextGEN 2.x), solving issues with updates (credits to Niko Strijbol)
+* Small changes to the readme.txt to make it look better. (credits to Matthew)
+* Support for the ngg_styles folder (introduced in NextGEN 2.x), solving issues with updates. (credits to Niko Strijbol)
 
 = 1.9.20 - 20/06/2014 =
-* Fixes on uploader (credits to Niko Strijbol)
-* Fixes for nggtag shortcode (credits to Niko Strijbol)
-* Refactored code in few places
-* Fix vulnerability which disallowed html text & sanitize_taglist function (credits to NS & FZ)
-* Fix for 3.9 and typos for strict warning
-* Improved injections prevention (credits to jayque9)
-* Improve spelling & error message (credits to Niko Strijbol)
+* Fixes on uploader. (credits to Niko Strijbol)
+* Fixes for nggtag shortcode. (credits to Niko Strijbol)
+* Refactored code in few places.
+* Fix vulnerability which disallowed html text & sanitize_taglist function. (credits to NS & FZ)
+* Fix for 3.9 and typos for strict warning.
+* Improved injections prevention. (credits to jayque9)
+* Improve spelling & error message. (credits to Niko Strijbol)
 
 = 1.9.19 - 22/05/2014 =
 * New uploader. Flash uploader deprecated (credits to Niko Strijbol)
