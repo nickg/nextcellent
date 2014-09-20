@@ -555,11 +555,106 @@ class nggOptions {
 					<td>
 					<select size="1" id="thumbEffect" name="thumbEffect" onchange="insertcode(this.value)">
 						<option value="none" <?php selected('none', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('None', 'nggallery') ;?></option>
-						<option value="thickbox" <?php selected('thickbox', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('Thickbox', 'nggallery') ;?></option>
-						<option value="lightbox" <?php selected('lightbox', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('Lightbox', 'nggallery') ;?></option>
-						<option value="highslide" <?php selected('highslide', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('Highslide', 'nggallery') ;?></option>
-						<option value="shutter" <?php selected('shutter', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('Shutter', 'nggallery') ;?></option>
-						<option value="custom" <?php selected('custom', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('Custom', 'nggallery') ;?></option>
+						<optgroup label="<?php _e('Attention Seekers', 'nggallery'); ?>">
+							<option <?php selected('bounce', $ngg->options['thumbEffect']); ?> value="bounce">bounce</option>
+							<option <?php selected('flash', $ngg->options['thumbEffect']); ?> value="flash">flash</option>
+							<option <?php selected('pulse', $ngg->options['thumbEffect']); ?> value="pulse">pulse</option>
+							<option <?php selected('rubberBand', $ngg->options['thumbEffect']); ?> value="rubberBand">rubberBand</option>
+							<option <?php selected('shake', $ngg->options['thumbEffect']); ?> value="shake">shake</option>
+							<option <?php selected('swing', $ngg->options['thumbEffect']); ?> value="swing">swing</option>
+							<option <?php selected('tada', $ngg->options['thumbEffect']); ?> value="tada">tada</option>
+							<option <?php selected('wobble', $ngg->options['thumbEffect']); ?> value="wobble">wobble</option>
+						</optgroup>
+						<optgroup label="Bouncing Entrances">
+							<option value="bounceIn">bounceIn</option>
+							<option value="bounceInDown">bounceInDown</option>
+							<option value="bounceInLeft">bounceInLeft</option>
+							<option value="bounceInRight">bounceInRight</option>
+							<option value="bounceInUp">bounceInUp</option>
+						</optgroup>
+
+							<optgroup label="Bouncing Exits">
+							  <option value="bounceOut">bounceOut</option>
+							  <option value="bounceOutDown">bounceOutDown</option>
+							  <option value="bounceOutLeft">bounceOutLeft</option>
+							  <option value="bounceOutRight">bounceOutRight</option>
+							  <option value="bounceOutUp">bounceOutUp</option>
+							</optgroup>
+
+							<optgroup label="Fading Entrances">
+							  <option value="fadeIn">fadeIn</option>
+							  <option value="fadeInDown">fadeInDown</option>
+							  <option value="fadeInDownBig">fadeInDownBig</option>
+							  <option value="fadeInLeft">fadeInLeft</option>
+							  <option value="fadeInLeftBig">fadeInLeftBig</option>
+							  <option value="fadeInRight">fadeInRight</option>
+							  <option value="fadeInRightBig">fadeInRightBig</option>
+							  <option value="fadeInUp">fadeInUp</option>
+							  <option value="fadeInUpBig">fadeInUpBig</option>
+							</optgroup>
+
+							<optgroup label="Fading Exits">
+							  <option value="fadeOut">fadeOut</option>
+							  <option value="fadeOutDown">fadeOutDown</option>
+							  <option value="fadeOutDownBig">fadeOutDownBig</option>
+							  <option value="fadeOutLeft">fadeOutLeft</option>
+							  <option value="fadeOutLeftBig">fadeOutLeftBig</option>
+							  <option value="fadeOutRight">fadeOutRight</option>
+							  <option value="fadeOutRightBig">fadeOutRightBig</option>
+							  <option value="fadeOutUp">fadeOutUp</option>
+							  <option value="fadeOutUpBig">fadeOutUpBig</option>
+							</optgroup>
+
+							<optgroup label="Flippers">
+							  <option value="flip">flip</option>
+							  <option value="flipInX">flipInX</option>
+							  <option value="flipInY">flipInY</option>
+							  <option value="flipOutX">flipOutX</option>
+							  <option value="flipOutY">flipOutY</option>
+							</optgroup>
+
+							<optgroup label="Lightspeed">
+							  <option value="lightSpeedIn">lightSpeedIn</option>
+							  <option value="lightSpeedOut">lightSpeedOut</option>
+							</optgroup>
+
+							<optgroup label="Rotating Entrances">
+							  <option value="rotateIn">rotateIn</option>
+							  <option value="rotateInDownLeft">rotateInDownLeft</option>
+							  <option value="rotateInDownRight">rotateInDownRight</option>
+							  <option value="rotateInUpLeft">rotateInUpLeft</option>
+							  <option value="rotateInUpRight">rotateInUpRight</option>
+							</optgroup>
+
+							<optgroup label="Rotating Exits">
+							  <option value="rotateOut">rotateOut</option>
+							  <option value="rotateOutDownLeft">rotateOutDownLeft</option>
+							  <option value="rotateOutDownRight">rotateOutDownRight</option>
+							  <option value="rotateOutUpLeft">rotateOutUpLeft</option>
+							  <option value="rotateOutUpRight">rotateOutUpRight</option>
+							</optgroup>
+
+							<optgroup label="Specials">
+							  <option value="hinge">hinge</option>
+							  <option value="rollIn">rollIn</option>
+							  <option value="rollOut">rollOut</option>
+							</optgroup>
+
+							<optgroup label="Zoom Entrances">
+							  <option value="zoomIn">zoomIn</option>
+							  <option value="zoomInDown">zoomInDown</option>
+							  <option value="zoomInLeft">zoomInLeft</option>
+							  <option value="zoomInRight">zoomInRight</option>
+							  <option value="zoomInUp">zoomInUp</option>
+							</optgroup>
+
+							<optgroup label="Zoom Exits">
+							  <option value="zoomOut">zoomOut</option>
+							  <option value="zoomOutDown">zoomOutDown</option>
+							  <option value="zoomOutLeft">zoomOutLeft</option>
+							  <option value="zoomOutRight">zoomOutRight</option>
+							  <option value="zoomOutUp">zoomOutUp</option>
+							</optgroup>
 					</select>
 					</td>
 				</tr>
