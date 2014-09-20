@@ -1,5 +1,0 @@
-NextCellent Gallery
-by WPReady
-
-= V1.9.14 - 01.09.2013 =
-* NEW:     Deactivate if NextGen is installed and activated
