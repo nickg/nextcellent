@@ -328,7 +328,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 == Changelog ==
 
 = 1.9.22 - 22/09/2014 =
-* Capable with WordPress 4.0.
+* Tested up to WordPress 4.0.
 * Fix: Correction on overview.php in order to make the files translatable. (credits to Balázs Németh)
 * Hungarian translation added. (credits to  Balázs Németh)
 * Additional added from previous version: improved TinyMCE window. (credits to Niko Strijbol)
