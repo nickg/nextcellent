@@ -135,11 +135,11 @@ class nggAdminPanel{
 	    add_submenu_page( NGGFOLDER , __('Settings', 'nggallery'), __('Settings', 'nggallery'), 'NextGEN Change options', 'nggallery-options', array (&$this, 'show_menu'));
 	    if ( wpmu_enable_function('wpmuStyle') )
 			add_submenu_page( NGGFOLDER , __('Style', 'nggallery'), __('Style', 'nggallery'), 'NextGEN Change style', 'nggallery-style', array (&$this, 'show_menu'));
-	    if ( wpmu_enable_function('wpmuRoles') || wpmu_site_admin() )
+	    if ( wpmu_enable_function('wpmuRoles') || is_super_admin() )
 			add_submenu_page( NGGFOLDER , __('Roles', 'nggallery'), __('Roles', 'nggallery'), 'activate_plugins', 'nggallery-roles', array (&$this, 'show_menu'));
 	    add_submenu_page( NGGFOLDER , __('About this Gallery', 'nggallery'), __('About', 'nggallery'), 'NextGEN Gallery overview', 'nggallery-about', array (&$this, 'show_menu'));
 
-	    if ( !is_multisite() || wpmu_site_admin() )
+	    if ( !is_multisite() || is_super_admin() )
             add_submenu_page( NGGFOLDER , __('Reset / Uninstall', 'nggallery'), __('Reset / Uninstall', 'nggallery'), 'activate_plugins', 'nggallery-setup', array (&$this, 'show_menu'));
 
 		//register the column fields
@@ -194,6 +194,7 @@ class nggAdminPanel{
     }
 
 	// load the script for the defined page and load only this code
+    //20140515: removed donation code (not in use)
 	function show_menu() {
 
 		global $ngg;
@@ -201,12 +202,6 @@ class nggAdminPanel{
 		// Set installation date
 		if( empty($ngg->options['installDate']) ) {
 			$ngg->options['installDate'] = time();
-			update_option('ngg_options', $ngg->options);
-		}
-
-		// Show donation message only one time.
-		if (isset ( $_GET['hide_donation']) ) {
-			$ngg->options['hideDonation'] = true;
 			update_option('ngg_options', $ngg->options);
 		}
 
@@ -240,7 +235,8 @@ class nggAdminPanel{
 				break;
 			case "nggallery-style" :
 				include_once ( dirname (__FILE__) . '/style.php' );		// nggallery_admin_style
-				nggallery_admin_style();
+				$ngg->nggallery_style = new NGG_Style ();
+				$ngg->nggallery_style->controller();
 				break;
 			case "nggallery-setup" :
 				include_once ( dirname (__FILE__) . '/setup.php' );		// nggallery_admin_setup
@@ -351,7 +347,6 @@ class nggAdminPanel{
 			break;
 			case "nggallery-style" :
 				wp_enqueue_script( 'codepress' );
-				wp_enqueue_script( 'ngg-colorpicker', NGGALLERY_URLPATH .'admin/js/colorpicker/js/colorpicker.js', array('jquery'), '1.0');
 			break;
 
 		}
@@ -379,6 +374,7 @@ class nggAdminPanel{
 			case "nggallery-add-gallery" :
 				wp_enqueue_style( 'ngg-jqueryui' );
 				wp_enqueue_style( 'jqueryFileTree', NGGALLERY_URLPATH .'admin/js/jqueryFileTree/jqueryFileTree.css', false, '1.0.1', 'screen' );
+			break;
 			case "nggallery-options" :
 				wp_enqueue_style( 'nggtabs', NGGALLERY_URLPATH .'admin/css/jquery.ui.tabs.css', false, '2.5.0', 'screen' );
 				wp_enqueue_style( 'nggadmin' );
@@ -387,6 +383,7 @@ class nggAdminPanel{
                 wp_enqueue_style('shutter', NGGALLERY_URLPATH .'shutter/shutter-reloaded.css', false, '1.3.2', 'screen');
                 wp_enqueue_style( 'datepicker', NGGALLERY_URLPATH .'admin/css/jquery.ui.datepicker.css', false, '1.8.2', 'screen' );
 			case "nggallery-roles" :
+			break;
 			case "nggallery-manage-album" :
 				wp_enqueue_style( 'ngg-jqueryui' );
 				wp_enqueue_style( 'nggadmin' );
@@ -395,9 +392,6 @@ class nggAdminPanel{
 				wp_enqueue_style( 'nggtags', NGGALLERY_URLPATH .'admin/css/tags-admin.css', false, '2.6.1', 'screen' );
 				break;
 			case "nggallery-style" :
-				wp_admin_css( 'css/theme-editor' );
-				wp_enqueue_style('nggcolorpicker', NGGALLERY_URLPATH.'admin/js/colorpicker/css/colorpicker.css', false, '1.0', 'screen');
-				wp_enqueue_style('nggadmincp', NGGALLERY_URLPATH.'admin/css/nggColorPicker.css', false, '1.0', 'screen');
 			break;
 		}
 	}
@@ -499,54 +493,6 @@ class nggAdminPanel{
 
 		$wp_list_table = new _NGG_Galleries_List_Table('nggallery-manage-gallery');
 	}
-
-	/**
-	 * Read an array from a remote url
-	 *
-	 * @param string $url
-	 * @return array of the content
-	 */
-	static function get_remote_array($url) {
-
-        if ( function_exists('wp_remote_request') ) {
-
-            if ( false === ( $content = get_transient( 'ngg_request_' . md5($url) ) ) ) {
-
-    			$options = array();
-    			$options['headers'] = array(
-    				'User-Agent' => 'NextGEN Gallery Information Reader V' . NGGVERSION . '; (' . get_bloginfo('url') .')'
-    			 );
-
-    			$response = wp_remote_request($url, $options);
-
-    			if ( is_wp_error( $response ) )
-    				return false;
-
-    			if ( 200 != $response['response']['code'] )
-    				return false;
-
-                $content = $response['body'];
-                set_transient( 'ngg_request_' . md5($url), $content, 60*60*48 );
-            }
-
-			$content = unserialize($content);
-
-			if (is_array($content))
-				return $content;
-		}
-
-		return false;
-	}
-
-}
-
-function wpmu_site_admin() {
-	// Check for site admin
-	if ( function_exists('is_super_admin') )
-		if ( is_super_admin() )
-			return true;
-
-	return false;
 }
 
 function wpmu_enable_function($value) {

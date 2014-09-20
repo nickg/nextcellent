@@ -12,14 +12,14 @@ class nggGallery {
 	* Show a error messages
 	*/
 	static function show_error($message) {
-		echo '<div class="wrap"><h2></h2><div class="error" id="error"><p>' . $message . '</p></div></div>' . "\n";
+		echo '<div class="error" id="error"><p>' . $message . '</p></div>';
 	}
 
 	/**
 	* Show a system messages
 	*/
 	static function show_message($message) {
-		echo '<div class="wrap"><h2></h2><div class="updated fade" id="message"><p>' . $message . '</p></div></div>' . "\n";
+		echo '<div class="updated fade" id="message"><p>' . $message . '</p></div>';
 	}
 
 	/**
@@ -268,15 +268,22 @@ class nggGallery {
 
 		if ( ( $custom_template != false ) &&  file_exists ($custom_template) ) {
 			include ( $custom_template );
-		} else if (file_exists (STYLESHEETPATH . "/nggallery/$template_name.php")) {
-			include (STYLESHEETPATH . "/nggallery/$template_name.php");
-		} else if (file_exists (NGGALLERY_ABSPATH . "/view/$template_name.php")) {
+		//search in theme folder
+		} elseif (file_exists (get_stylesheet_directory() . "/nggallery/$template_name.php")) {
+			include (get_stylesheet_directory() . "/nggallery/$template_name.php");
+		//search in WP_CONTENT_DIR
+		} elseif (file_exists (WP_CONTENT_DIR . "/ngg_styles/$template_name.php")) {
+			include (WP_CONTENT_DIR . "/ngg_styles/$template_name.php");
+		//use defaults
+		} elseif (file_exists (NGGALLERY_ABSPATH . "/view/$template_name.php")) {
 			include (NGGALLERY_ABSPATH . "/view/$template_name.php");
-		} else if ( $callback === true ) {
+		} elseif ( $callback === true ) {
             echo "<p>Rendering of template $template_name.php failed</p>";
 		} else {
             //test without the "-template" name one time more
-            $template_name = array_shift( explode('-', $template_name , 2) );
+
+            $explode = explode('-', $template_name, 2);
+            $template_name = array_shift($explode);
             nggGallery::render ($template_name, $vars , true);
 		}
 	}
@@ -326,7 +333,7 @@ class nggGallery {
 
 		if ( $stylesheet !== false )
 			return ( $stylesheet );
-		elseif ( file_exists (STYLESHEETPATH . '/nggallery.css') )
+		elseif ( file_exists (get_stylesheet_directory() . '/nggallery.css') )
 			return get_stylesheet_directory_uri() . '/nggallery.css';
 		else
 			return false;
@@ -586,6 +593,17 @@ class nggGallery {
     static function nextgen_version() {
         global $ngg;
         echo apply_filters('show_nextgen_version', '<!-- <meta name="NextGEN" version="'. $ngg->version . '" /> -->' . "\n");
+    }
+
+    /**
+     * Prevents injection filtering HTML Code
+     * 20140604: Improved based on suggestions of jayque9
+     * http://wordpress.org/support/topic/prevent-removal-of-html-code-from-image-descriptions
+     */
+    static function suppress_injection
+    ($html_text) {
+        global $allowedposttags;
+        return wp_kses(stripslashes($html_text),$allowedposttags);
     }
 }
 ?>

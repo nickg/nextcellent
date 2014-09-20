@@ -1,25 +1,23 @@
-=== NextCellent Gallery - NextGEN Legacy ===
-Contributors: WPGetReady
+﻿=== NextCellent Gallery - NextGEN Legacy ===
+Contributors: wpready
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 3.5
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: trunk
 License: GPLv2
 
 == Description ==
 
-= WordPress Gallery Plugin =
-
-= V1.9.18 - 23.04.2014 =
+= 1.9.22 - 22/09/2014 =
 
  What's in it for you?
 
-* Fixes compatibility with TinyMCE 1.4, for WordPress 3.9. (credits to Niko Strijbol)
-* Fixes use of mysql_*(), which isn't allowed anymore. (credits to Niko Strijbol)
-* Fixes some style stuff from the datepicker interfering with the style of the tabs. (credits to Niko Strijbol)
-* Fixes "flash" upload. This does remove the resize option, but it wasn't working anyway. (credits to Niko Strijbol)
-* Vulnerability fix: data isn't properly sanitized before being printed ona Alt & Title (credits to Larry W. Cashdollar)
-* Changing date for uploaded images improved (credits to Richard Bale)
+* Javascript validation before uploading (credits to Niko Strijbol)
+* Fixed issue with style tabs (credits to Niko Strijbol)
+* Fix: Correction on overview.php in order to make the file/s translatable (credits to Balázs Németh)
+* Hungarian translation (credits to  Balázs Németh)
+* Additional added from previous version: improved TinyMCE window (credits to Niko Strijbol)
+* Fixed readme.txt
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -32,20 +30,18 @@ VERY IMPORTANT: Read ON!
 
 - If you like it, please spread the word and rate it accordingly. I guess a lot of annoyed users can take advantage of NextCellent. Thank you!
 
+- WE APPRECIATE YOUR FEEDBACK. Be our voice and comment it!!!!
 
-= So, who is going to use this plugin? =
 
-- The aim of NextCellent is to provide an alternative for traditional NextGEN users to keep their sites updated without breaking compatibility.  Older subplugins will be also compatible (those which were compatible with version 1.9.13 or earlier).
+= What is Nextcellent? =
 
-- Users who wants to stay working with older NextGEN version (1.9.13 or older) until they're confident enough to make the jump to newest 2.x.x version
+- NextCellent is a image gallery plugin, based on older NextGen gallery code
 
-- Users wishing avoid NextGEN 2.x.x and beyond for the moment.
+- NextCellent provides an alternative for traditional NextGEN users to keep their sites updated without breaking compatibility.
 
-- Site managers handling several sites using specialized software as InfiniteWP or ManageWP, wanting to keep their sites running with automatic updates.
+- Older subplugins NextGen-compatible will be compatible (prior NextGen 1.9.13 or earlier).
 
-- Users prefering an alternative development path with backward compatibility.
-
-- Developers wanting to suggest or colaborate improving the code.
+- Compatibility issues? Please check NextCellent Wiki (in construction) http://wpgetready.com/wiki/nextcellent-plugin/
 
 
 = What do you get with NextCellent Gallery? =
@@ -60,7 +56,7 @@ VERY IMPORTANT: Read ON!
 
 - Alternative path preserving backward compatibility (while possible).
 
-- **Development on Bitbucket open to developers suggestions**. (https://bitbucket.org/wpgetready/nextcellent). You are free to download , test and make suggestions and request.
+- **Development on Bitbucket open to developers suggestions**. (https://bitbucket.org/wpgetready/nextcellent). You are free to download , test and make suggestions and requests.
 
 Being said that, here are the usual classic features:
 
@@ -127,12 +123,12 @@ That's it ... have fun!
 
 == Screenshots ==
 
-1. Screenshot Admin Area
-2. Screenshot Album Selection
-3. Screenshot Shutter Effect
-4. Screenshot Watermark function
-5. Screenshot Flexible template layout
-6. Screenshot Show Exif data
+1. Screenshot - Admin Area
+2. Screenshot - Album Selection
+3. Screenshot - Shutter Effect
+4. Screenshot - Watermark function
+5. Screenshot - Flexible template layout
+6. Screenshot - Shows Exif data
 
 == Shortcode ==
 
@@ -140,7 +136,7 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 
 = Examples =
 
-*Use Image Tags to Create Galleries/Albums* - [ nggtags album=WordPress,Cologne,Ireland ]
+*Use Image Tags to Create Galleries/Albums* - [ nggtags album="WordPress,Cologne,Ireland" ]
 
 *Display Captions in Thumbnail Galleries* - [ nggallery id=1 template=caption ]
 
@@ -148,7 +144,7 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 
 *Display Exif Data* - [ imagebrowser id=28 template=exif ]
 
-*Sort Images in a Gallery Based on Their Tags* - [ nggtags gallery=cologne,wordpress,.. ]
+*Sort Images in a Gallery Based on Their Tags* - [ nggtags gallery="cologne,wordpress,.." ]
 
 *Add Tag Clouds* - [ tagcloud]
 
@@ -182,7 +178,7 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 
 = I'm going to install the plugin on a fresh site. Any recommendations? = 
 
-- None than usual. Follow the installation procedure!
+- None than usual. NextCellent is a FULL plugin which works with Wordpress. Follow the installation procedure!
 
 = I'm currently using NextGEN. How can I switch from NextGEN to NextCellent? =
 
@@ -231,11 +227,12 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 - If you are getting performance problems, go with NextCellent.
 - If you need peace of mind right now, go with NextCellent.
 - If you are managing large amounts of sites, and you need update-and-forget without FTP (like InfiniteWP or ManageWP), go with NextCellent.
+- if you need a STABLE plugin codebase without suprising code changes choose NextCellent.
 - NextCellent is a place where you can download and install currently an older, stable version. And when I say 'older' is completely different of saying obsolete. We (the users an me) are taking a different development path, picking up the old, good code and working from there.  
 
 = I am a developer , would be wise to create plugins based on NextCellent? =
 
-- That is another good question. Since NextCellent is a branch from NextGEN 1.9.13, I will do my best to keep it stable. I can assure the code will lack of dramatic changes over the time, unless there is a big need to do that.
+- YES. NextCellent is a branch from NextGEN 1.9.13, I will do my best to keep it stable. I can assure the code will lack of dramatic changes over the time, unless there is a big need to do that.
 
 = Are you related with Alex Rabe or PhotoCrati? =
 
@@ -243,11 +240,12 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 
 = Will NextCellent continue evolving? =
 
-- **Absolutely**. Current version has many things to be improved. Versions will be numbered as 1.9.x avoiding conflicting NextGEN numbering. However NextCellent will respect current configuration and database table format, so you can switch to NextGEN version (theoretically) without effort.
+- **YES**. Current version has many things to be improved. Versions will be numbered as 1.9.x avoiding conflicting NextGEN numbering. NextCellent will respect current configuration and database table format, so you can switch to NextGEN version (theoretically) safely.
 
 = Will NextCellent Gallery work with my theme? =
 
 - NextCellent uses the same codebase and tries to mimic older NextGEN as much as possible. In short, it should!
+- There is a NextCellent Wiki addressing some common questions http://wpgetready.com/wiki/nextcellent-plugin/
 
 = Will NextCellent work with my NextGEN Galleries? =
 
@@ -269,7 +267,9 @@ Why then the name NextCellent instead NextGEN Legacy for example? =
 
 = Will NextCellent work with NextGEN plugins and subplugins? =
 
-- Since the code is based on the older version, it will work with all plugins which worked for NextGEN version 1.9.13 or earlier. However be warned many developers already started (and finished)  making the migration to new NextGEN version.
+- Nextcellent will work with all plugins which worked for NextGEN version 1.9.13 or earlier. However be warned many developers already started (and finished)  making the migration to new NextGEN version.
+
+- We are testing case by case on the compatibility list for plugins http://wpgetready.com/wiki/nextcellent-plugin/compatibility-list/
 
 = Wait, I'm using flash gallery along imagerotator.swf but I cannot find it in this plugin!
 
@@ -325,10 +325,41 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 - You should go to original NextGEN plugin to check this out. <a href="http://www.NextGEN-gallery.com/languages/" target="_blank">click here to find out more.</a>
 - Many users are creating their respective translations and they will be included, along respective credits. Thanks to them!!!
 
-
 == Changelog ==
 
-= V1.9.18 - 23.04.2014 =
+= 1.9.22 - 22/09/2014 =
+* Tested up to WordPress 4.0.
+* Fix: Correction on overview.php in order to make the files translatable. (credits to Balázs Németh)
+* Hungarian translation added. (credits to  Balázs Németh)
+* Additional added from previous version: improved TinyMCE window. (credits to Niko Strijbol)
+* Readded missed translated files.
+* Rewrote the style management. (credits to Niko Strijbol)
+* Fixed AJAX in the TinyMCE window. (credits to Niko Strijbol)
+* Fixed readme.txt.
+
+= 1.9.21 - 14/09/2014 =
+* The uploader did not use the quality set in the options. Now it does. (credits to Niko Strijbol)
+* Fix: When a gallery is deleted, the ID is removed from albums. (credits to Niko Strijbol)
+* Small changes to the readme.txt to make it look better. (credits to Matthew)
+* Support for the ngg_styles folder (introduced in NextGEN 2.x), solving issues with updates. (credits to Niko Strijbol)
+
+= 1.9.20 - 20/06/2014 =
+* Fixes on uploader. (credits to Niko Strijbol)
+* Fixes for nggtag shortcode. (credits to Niko Strijbol)
+* Refactored code in few places.
+* Fix vulnerability which disallowed html text & sanitize_taglist function. (credits to NS & FZ)
+* Fix for 3.9 and typos for strict warning.
+* Improved injections prevention. (credits to jayque9)
+* Improve spelling & error message. (credits to Niko Strijbol)
+
+= 1.9.19 - 22/05/2014 =
+* New uploader. Flash uploader deprecated (credits to Niko Strijbol)
+* Improved image folder importer. Now fixes folder & files with spaces (credits to Niko Strijbol)
+* Removed dead code
+* Wikipedia docs in progress http://wpgetready.com/wiki/nextcellent-plugin/ Be free to contribute! (contact us to request permission to edit it)
+* Re-fix vuln (previous fix also filtered html data, now fixed)
+
+= 1.9.18 - 23/04/2014 =
 * Fixes compatibility with TinyMCE 1.4, for WordPress 3.9. (credits to Niko Strijbol)
 * Fixes use of mysql_*(), which isn't allowed anymore. (credits to Niko Strijbol)
 * Fixes some style stuff from the datepicker interfering with the style of the tabs. (credits to Niko Strijbol)
@@ -336,7 +367,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 * Vulnerability fix: data isn't properly sanitized before being printed ona Alt & Title (credits to Larry W. Cashdollar)
 * Changing date for uploaded images improved (credits to Richard Bale)
 
-= V1.9.17 - 17.03.2014 =
+= 1.9.17 - 17/03/2014 =
 * Fixes to layout and more (credits to Niko Strijbol)
 * Added ability to change image upload + Ajax  (credits to Richard Bale)
 * Russian translation (credits to Vladimir Vasilenko)
@@ -345,19 +376,19 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 * Improved nggtags shortcode implementing Tony Howden's suggestions (see http://howden.net.au/thowden/2012/12/nextgen-gallery-wordpress-nggtags-template-caption-option/)
   added modes ASC,DESC and RAND
 
-= V1.9.16 - 08.01.2014 =
+= 1.9.16 - 08/01/2014 =
 * Folder and Image Management improved (credits to Niko Strijbol)
 * German translation (credits to Niko Strijbol)
 * Improved style for WP 3.8 (credits to Niko Strijbol)
 * Improper call to method as static when method belongs to instance. Fixed
 * Code cleaning, proper call to static method fixed
 
-= V1.9.15 - 03.10.2013 =
+= 1.9.15 - 03/10/2013 =
 * Code simplification: code supporting PHP4 has no use. Deprecated.
 * Plugin should work with PHP strict standard enabled.
 * Improper call to static functions corrected all over the code
 * Disabled donator metabox since link is dead
 
-= V1.9.14 - 01.09.2013 =
+= 1.9.14 - 01/09/2013 =
 * The plugin will deactivate if NextGEN (all versions) plugin is installed & activated
 * text messages were adjusted to this plugin, to avoid user confusion.

@@ -293,7 +293,7 @@ class nggdb {
      * @id The gallery ID
      */
     static function delete_gallery( $id ) {
-        global $wpdb;
+        global $wpdb, $nggdb;
 
         $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->nggpictures WHERE galleryid = %d", $id) );
         $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->nggallery WHERE gid = %d", $id) );
@@ -301,6 +301,22 @@ class nggdb {
         wp_cache_delete($id, 'ngg_gallery');
 
         //TODO:Remove all tag relationship
+		
+		//Update the galleries to remove the deleted ID's
+		$albums = $nggdb->find_all_album();
+		
+		foreach ($albums as $album) {
+			$albumid = $album->id;
+			$galleries = $album->galleries;
+			$deleted = array_search($id, $galleries);
+			
+			unset($galleries[$deleted]);
+			
+			$new_galleries = serialize($galleries);
+			
+			nggdb::update_album($albumid, false, false, false, $new_galleries);
+		}
+		
         return true;
     }
 
@@ -855,7 +871,7 @@ class nggdb {
                 $searchand = ' AND ';
             }
 
-            $term = $wpdb->escape($request);
+            $term = esc_sql($request);
             if (count($search_terms) > 1 && $search_terms[0] != $request )
                 $search .= " OR (tt.description LIKE '{$n}{$term}{$n}') OR (tt.alttext LIKE '{$n}{$term}{$n}') OR (tt.filename LIKE '{$n}{$term}{$n}')";
 
@@ -915,7 +931,7 @@ class nggdb {
                 $searchand = ' AND ';
             }
 
-            $term = $wpdb->escape($request);
+            $term = esc_sql($request);
             if (count($search_terms) > 1 && $search_terms[0] != $request )
                 $search .= " OR (title LIKE '{$n}{$term}{$n}') OR (name LIKE '{$n}{$term}{$n}')";
 
@@ -963,7 +979,7 @@ class nggdb {
                 $searchand = ' AND ';
             }
 
-            $term = $wpdb->escape($request);
+            $term = esc_sql($request);
             if (count($search_terms) > 1 && $search_terms[0] != $request )
                 $search .= " OR (name LIKE '{$n}{$term}{$n}')";
 
@@ -995,7 +1011,7 @@ class nggdb {
         // If a search pattern is specified, load the posts that match
         if ( !empty($filename) ) {
             // added slashes screw with quote grouping when done early, so done later
-            $term = $wpdb->escape($filename);
+            $term = esc_sql($filename);
 
            	$where_clause = '';
             if ( is_numeric($galleryID) ) {

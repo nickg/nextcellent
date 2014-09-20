@@ -501,10 +501,12 @@ if($picturelist) {
 						<?php
 					break;
 					case 'alt_title_desc' :
+                        $img_alt_text =    nggGallery::suppress_injection($picture->alttext);
+                        $img_description = nggGallery::suppress_injection($picture->description)
 						?>
 						<td <?php echo $attributes ?>>
-							<input placeholder="<?php _e("Alt & title text",'nggallery'); ?>" name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo sanitize_text_field (stripslashes($picture->alttext)); ?>" /><br/>
-							<textarea placeholder="<?php _e("Description",'nggallery'); ?>" name="description[<?php echo $pid ?>]" style="width:95%; margin: 1px;" rows="2" ><?php echo sanitize_text_field (stripslashes($picture->description)); ?></textarea>
+							<input placeholder="<?php _e("Alt & title text",'nggallery'); ?>" name="alttext[<?php echo $pid ?>]" type="text" style="width:95%; margin-bottom: 2px;" value="<?php echo $img_alt_text; ?>" /><br/>
+							<textarea placeholder="<?php _e("Description",'nggallery'); ?>" name="description[<?php echo $pid ?>]" style="width:95%; margin: 1px;" rows="2" ><?php echo $img_description; ?></textarea>
 						</td>
 						<?php
 					break;

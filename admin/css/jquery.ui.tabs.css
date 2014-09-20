@@ -50,6 +50,11 @@
 	border-color: #ccc;
 	background: #e4e4e4;
 }
+
+#slider ul.ui-tabs-nav li a:focus {
+	box-shadow: none;
+}
+
 #slider ul.ui-tabs-nav li a:hover{
 	background-color: #fff;
 	color: #464646;

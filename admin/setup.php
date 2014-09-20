@@ -34,7 +34,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 			<div align="center"><input type="submit" class="button" name="resetdefault" value="<?php _e('Reset settings', 'nggallery') ;?>" onclick="javascript:check=confirm('<?php _e('Reset all options to default settings ?\n\nChoose [Cancel] to Stop, [OK] to proceed.\n','nggallery'); ?>');if(check==false) return false;" /></div>
 		</form>
 	</div>
-	<?php if ( !is_multisite() || wpmu_site_admin() ) : ?>
+	<?php if ( !is_multisite() || is_super_admin() ) : ?>
 	<div class="wrap">
 	<h2><?php _e('Uninstall plugin tables', 'nggallery') ;?></h2>
 		

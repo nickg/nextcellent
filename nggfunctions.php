@@ -704,6 +704,7 @@ function nggCreateImageBrowser($picturelist, $template = '') {
     $current_page = (get_the_ID() == false) ? 0 : get_the_ID();
 
     // create a array with id's for better walk inside
+    $picarray = array();
     foreach ($picturelist as $picture)
         $picarray[] = $picture->pid;
 
@@ -877,7 +878,6 @@ function nggSinglePicture($imageID, $width = 250, $height = 250, $mode = '', $fl
 
     return $out;
 }
-
 /**
  * nggShowGalleryTags() - create a gallery based on the tags
  *
@@ -912,6 +912,7 @@ function nggShowGalleryTags($taglist, $template = '',  $sorting = 'ASC') {
     $out = apply_filters('ngg_show_gallery_tags_content', $out, $taglist);
     return $out;
 }
+
 
 /**
  * nggShowRelatedGallery() - create a gallery based on the tags

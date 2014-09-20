@@ -26,19 +26,6 @@ class nggWPMU{
 			return false;
 	}
     
-    /**
-     * Check for site admin
-     * 
-     * @return
-     */
-    function wpmu_site_admin() {
-
-    	if ( function_exists('is_super_admin') )
-    		if ( is_super_admin() )
-    			return true;
-    			
-    	return false;
-    }
 
     /**
      * Check for site wide options

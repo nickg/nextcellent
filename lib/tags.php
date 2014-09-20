@@ -246,7 +246,35 @@ class nggTags {
 		return $return_value;
 	}
 
-	/**
+    /**
+     * @param $taglist
+     * @return mixed|string
+     * Sanitize tag list suppressing spaces, sanitizing every tag and solving issues
+     * with unicode support.
+     * 20140605: '%' character does not pass through sanitize_title
+     * Note: this list cannot be handled with wpdb->prepare since single quotes
+     * will be escaped(!)
+     */
+    public static function sanitize_taglist($taglist)
+    {
+        // extract it into a array
+        $taglist = explode(",", $taglist);
+        //if we don't have a list, make an array with one item
+        if (!is_array($taglist))
+            $taglist = array($taglist);
+        //suppress spaces in all terms on the list.
+        $taglist = array_map('trim', $taglist);
+        //and sanitize every term
+        $new_slugarray = array_map('sanitize_title', $taglist);
+        //recompose list of terms and make one simple string
+        $sluglist = implode("', '", $new_slugarray);
+        if (empty($sluglist)) return "";
+        //Treat % as a literal in the database, for unicode support
+      //  $sluglist = str_replace("%", "%%", $sluglist);
+        return "'" . $sluglist . "'";
+    }
+
+    /**
 	 * Get a list of the tags used by the images
 	 */
 	function find_all_tags() {
@@ -293,7 +321,7 @@ class nggTags {
 	/**
 	 * nggTags::find_images_for_tags()
 	 * 20140120: Mode DESC added.
-     *
+     * 20140611:Dropped use of wpdb->prepare since singel quotes are scaped.
 	 * @param mixed $taglist
 	 * @param string $sorting could be 'ASC' or 'RAND' or 'DESC'
 	 * @return array of images
@@ -302,28 +330,19 @@ class nggTags {
 		// return the images based on the tag
 		global $wpdb;
         $modes = array ('ASC','DESC','RAND');
+        //Sanitize & standarize list
+        $sluglist = self::sanitize_taglist($taglist);
 
-		// extract it into a array
-		$taglist = explode(",", $taglist);
-
-		if ( !is_array($taglist) )
-			$taglist = array($taglist);
-
-		$taglist = array_map('trim', $taglist);
-		$new_slugarray = array_map('sanitize_title', $taglist);
-		$sluglist   = "'" . implode("', '", $new_slugarray) . "'";
-
-		//Treat % as a litteral in the database, for unicode support
-		$sluglist=str_replace("%","%%",$sluglist);
-
-		// first get all $term_ids with this tag
-		$term_ids = $wpdb->get_col( $wpdb->prepare("SELECT term_id FROM $wpdb->terms WHERE slug IN ($sluglist) ORDER BY term_id ASC ", NULL));
-		$picids = get_objects_in_term($term_ids, 'ngg_tag');
+        // first get all $term_ids with this tag
+        //Fix for WP 3.9 . See http://make.wordpress.org/core/2012/12/12/php-warning-missing-argument-2-for-wpdb-prepare/
+        $prepared = "SELECT term_id FROM $wpdb->terms WHERE slug IN ($sluglist) ORDER BY term_id ASC ";
+        $term_ids = $wpdb->get_col( $prepared );
+		//Get the objects related with the taxonomy defined by NextCellent
+        $picids = get_objects_in_term($term_ids, 'ngg_tag');
 
 		//Now lookup in the database
         $sorting = in_array($sorting,$modes)?$sorting:'ASC';
         $pictures = nggdb::find_images_in_list($picids, true, $sorting );
-
 		return $pictures;
 	}
 
