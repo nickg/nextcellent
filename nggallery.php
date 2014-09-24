@@ -413,7 +413,11 @@ if (!class_exists('nggLoader')) {
 
 		function load_styles() {
 
-			// check first the theme folder for a nggallery.css
+            //Notice stylesheet selection has this priority:
+            //1-sytlesheet loaded from filter ngg_load_stylesheet
+            //2-nggalery.css on folder's current theme
+            //3-active stylesheet defined on styles.
+
 			if ( $css_file = nggGallery::get_theme_css_file() ) {
 				wp_enqueue_style('NextGEN', $css_file , false, '1.0.0', 'screen');
 			} elseif ($this->options['activateCSS']) {
