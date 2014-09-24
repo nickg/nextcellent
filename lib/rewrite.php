@@ -87,7 +87,9 @@ class nggRewrite {
 
 		//TODO: Watch out for ticket http://trac.wordpress.org/ticket/6627
 		if ($wp_rewrite->using_permalinks() && $this->options['usePermalinks'] ) {
-			$post = &get_post(get_the_ID());
+
+            $gID  = get_the_ID();
+            $post = get_post($gID);
 
 			// If the album is not set before get it from the wp_query ($_GET) 
             if ( !isset ($args['album'] ) )
