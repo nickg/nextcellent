@@ -423,7 +423,7 @@ class nggAddGallery {
 				<br /><?php if ( (is_multisite()) && wpmu_enable_function('wpmuQuotaCheck') ) display_space_usage(); ?></td>
 			</tr>
 			</table>
-			<div class="submit"><input class="button-primary" onclick="checkForm('zipgalselect'); checkZipFile()" type="submit" name= "zipupload" value="<?php _e('Start upload', 'nggallery') ;?>"/></div>
+			<div class="submit"><input class="button-primary" onclick="checkZipFile()" type="submit" name= "zipupload" value="<?php _e('Start upload', 'nggallery') ;?>"/></div>
 		</form>
     <?php
     }
