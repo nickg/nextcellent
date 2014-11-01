@@ -13,9 +13,8 @@ class nggAdminPanel{
 	function __construct() {
 
 		// Add the admin menu
-		add_action( 'admin_menu', array (&$this, 'add_menu') );
-        add_action( 'admin_bar_menu', array(&$this, 'admin_bar_menu'), 99 );
-		add_action( 'network_admin_menu', array (&$this, 'add_network_admin_menu') );
+		add_action( 'admin_menu', array( &$this, 'add_menu' ) );
+		add_action( 'network_admin_menu', array( &$this, 'add_network_admin_menu' ) );
 
 		// Add the script and style files
 		add_action('admin_print_scripts', array(&$this, 'load_scripts') );
@@ -153,38 +152,6 @@ class nggAdminPanel{
 		add_submenu_page( NGGFOLDER , __('Network settings', 'nggallery'), __('Network settings', 'nggallery'), 'nggallery-wpmu', NGGFOLDER,  array (&$this, 'show_network_settings'));
         add_submenu_page( NGGFOLDER , __('Reset / Uninstall', 'nggallery'), __('Reset / Uninstall', 'nggallery'), 'activate_plugins', 'nggallery-setup', array (&$this, 'show_menu'));
 	}
-	
-    /**
-     * Adding NextGEN Gallery to the Admin bar
-     *
-     * @since 1.9.0
-     *
-     * @return void
-     */
-	
-    function admin_bar_menu() {
-    	// If the current user can't write posts, this is all of no use, so let's not output an admin menu
-    	if ( !current_user_can('NextGEN Gallery overview') )
-    		return;
-
-    	global $wp_admin_bar;
-
-    	$wp_admin_bar->add_menu( array( 'id' => 'ngg-menu', 'title' => __( 'Gallery' ), 'href' => admin_url('admin.php?page='. NGGFOLDER) ) );
-        $wp_admin_bar->add_menu( array( 'parent' => 'ngg-menu', 'id' => 'ngg-menu-overview', 'title' => __('Overview', 'nggallery'), 'href' => admin_url('admin.php?page='. NGGFOLDER) ) );
-        if ( current_user_can('NextGEN Upload images') )
-            $wp_admin_bar->add_menu( array( 'parent' => 'ngg-menu', 'id' => 'ngg-menu-add-gallery', 'title' => __('Add Gallery / Images', 'nggallery'), 'href' => admin_url('admin.php?page=nggallery-add-gallery') ) );
-        if ( current_user_can('NextGEN Manage gallery') )
-            $wp_admin_bar->add_menu( array( 'parent' => 'ngg-menu', 'id' => 'ngg-menu-manage-gallery', 'title' => __('Gallery', 'nggallery'), 'href' => admin_url('admin.php?page=nggallery-manage-gallery') ) );
-        if ( current_user_can('NextGEN Edit album') )
-            $wp_admin_bar->add_menu( array( 'parent' => 'ngg-menu', 'id' => 'ngg-menu-manage-album', 'title' => __( 'Albums', 'nggallery' ), 'href' => admin_url('admin.php?page=nggallery-manage-album') ) );
-        if ( current_user_can('NextGEN Manage tags') )
-            $wp_admin_bar->add_menu( array( 'parent' => 'ngg-menu', 'id' => 'ngg-menu-tags', 'title' => __('Tags', 'nggallery'), 'href' => admin_url('admin.php?page=nggallery-tags') ) );
-        if ( current_user_can('NextGEN Change options') )
-            $wp_admin_bar->add_menu( array( 'parent' => 'ngg-menu', 'id' => 'ngg-menu-options', 'title' => __('Settings', 'nggallery'), 'href' => admin_url('admin.php?page=nggallery-options') ) );
-        if ( wpmu_enable_function('wpmuStyle') && ( current_user_can('NextGEN Change style') ))
-            $wp_admin_bar->add_menu( array( 'parent' => 'ngg-menu', 'id' => 'ngg-menu-style', 'title' => __('Style', 'nggallery'), 'href' => admin_url('admin.php?page=nggallery-style') ) );
-        $wp_admin_bar->add_menu( array( 'parent' => 'ngg-menu', 'id' => 'ngg-menu-about', 'title' => __('About', 'nggallery'), 'href' => admin_url('admin.php?page=nggallery-about') ) );
-    }
 
     // show the network page
     function show_network_settings() {
