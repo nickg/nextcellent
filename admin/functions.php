@@ -13,15 +13,19 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 class nggAdmin{
 
 	/**
-	 * create a new gallery & folder
-	 * 
-	 * @class nggAdmin
-	 * @param string $name of the gallery
-	 * @param string $defaultpath
-	 * @param bool $output if the function should show an error messsage or not
-	 * @return 
+	 * Create a new gallery in a new folder
+	 *
+	 *
+	 * @param string $title The galery name.
+	 * @param string $defaultpath The path where the gallery should be added.
+	 * @param bool $output (optional) If the function should show an error messsage or not.
+	 * @param string $description (optional) The gallery description.
+	 *
+	 * @since 1.9.24 Added the description parameter.
+	 *
+	 * @return bool True if succesful, otherwhise false.
 	 */
-	static function create_gallery($title, $defaultpath, $output = true) {
+	static function create_gallery($title, $defaultpath, $output = true, $description = '') {
 
 		global $user_ID;
  
@@ -102,9 +106,11 @@ class nggAdmin{
 			if ($output) nggGallery::show_error($txt);
 			return false;
 		}
-        
+
+		//clean the description
+		$description = nggGallery::suppress_injection($description);
         // now add the gallery to the database
-        $galleryID = nggdb::add_gallery($title, $nggpath, '', 0, 0, $user_ID );
+        $galleryID = nggdb::add_gallery($title, $nggpath, $description, 0, 0, $user_ID );
 		// here you can inject a custom function
 		do_action('ngg_created_new_gallery', $galleryID);
 
