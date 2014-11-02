@@ -16,7 +16,7 @@ class nggAdmin{
 	 * Create a new gallery in a new folder
 	 *
 	 *
-	 * @param string $title The galery name.
+	 * @param string $title The gallery name.
 	 * @param string $defaultpath The path where the gallery should be added.
 	 * @param bool $output (optional) If the function should show an error messsage or not.
 	 * @param string $description (optional) The gallery description.
