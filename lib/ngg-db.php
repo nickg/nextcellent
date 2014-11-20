@@ -579,8 +579,8 @@ class nggdb {
 
         // Check for the order setting
         $column = ($order == "SORTORDER") ? "sortorder" : "pid";
-		$order = ($order == "SORTORDER") ? "ASC" : $order;
-		$order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.$column $order ";
+        $order = ($order == "SORTORDER") ? "ASC" : $order;
+        $order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.$column $order ";
 
         if ( is_array($pids) ) {
             $id_list = "'" . implode("', '", $pids) . "'";
