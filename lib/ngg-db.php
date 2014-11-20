@@ -577,8 +577,10 @@ class nggdb {
         // Check for the exclude setting
         $exclude_clause = ($exclude) ? ' AND t.exclude <> 1 ' : '';
 
-        // Check for the exclude setting
-        $order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.pid $order " ;
+        // Check for the order setting
+		$column = ($order == "SORTORDER") ? "sortorder" : "pid";
+		$order = ($order == "SORTORDER") ? "ASC" : $order;
+		$order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.$column $order ";
 
         if ( is_array($pids) ) {
             $id_list = "'" . implode("', '", $pids) . "'";
