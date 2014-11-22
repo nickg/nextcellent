@@ -570,7 +570,7 @@ class nggdb {
      * @return An array of nggImage objects representing the images
      */
     static function find_images_in_list( $pids, $exclude = false, $order = 'ASC' ) {
-        global $wpdb;
+        global $ngg, $wpdb;
 
         $result = array();
 
@@ -578,7 +578,9 @@ class nggdb {
         $exclude_clause = ($exclude) ? ' AND t.exclude <> 1 ' : '';
 
         // Check for the order setting
-        $order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.sortorder $order ";
+        $column = $ngg->options['galSort'];
+        $order = ($column == 'sortorder') ? $order : $ngg->options['galSortDir'];
+        $order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.$column $order ";
 
         if ( is_array($pids) ) {
             $id_list = "'" . implode("', '", $pids) . "'";
