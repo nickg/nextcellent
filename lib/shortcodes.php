@@ -304,7 +304,7 @@ class NextGEN_shortcodes {
         $sorting = strtoupper($sort);
 
         if (!in_array(strtoupper($sorting), $modes)) {
-            $sorting = 'ASC';
+            $sorting = 'NOTSET';
         }
 
         if ( !empty($album) )
