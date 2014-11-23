@@ -569,7 +569,7 @@ class nggdb {
      * @param $pids array of picture_ids
      * @return An array of nggImage objects representing the images
      */
-    static function find_images_in_list( $pids, $exclude = false, $sortdir = 'NOTSET' ) {
+    static function find_images_in_list( $pids, $exclude = false, $order = 'NOTSET' ) {
         global $ngg, $wpdb;
 
         $result = array();
@@ -579,7 +579,7 @@ class nggdb {
 
         // Check for the order setting
         $column = $ngg->options['galSort'];
-        $order = ($order == 'RAND') ? $order : $ngg->options['galSortDir'];
+        $order = ($order == 'NOTSET') ? $ngg->options['galSortDir'] : $order;
         $order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.$column $order ";
 
         if ( is_array($pids) ) {
