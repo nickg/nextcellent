@@ -579,7 +579,7 @@ class nggdb {
 
         // Check for the order setting
         $column = $ngg->options['galSort'];
-        $order = ($column == 'sortorder') ? $order : $ngg->options['galSortDir'];
+        $order = ($order == 'RAND') ? $order : $ngg->options['galSortDir'];
         $order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.$column $order ";
 
         if ( is_array($pids) ) {
