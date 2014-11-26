@@ -729,7 +729,7 @@ class ngg_Thumbnail {
 		
 		if ( function_exists('imagerotate') ) {
 	        $transparency = imagecolorallocatealpha($this->oldImage, 255, 255, 255, 127);
-			$this->workingImage = imagerotate($this->oldImage, 360 - $angle, $transparency); // imagerotate() rotates CCW
+		    $this->workingImage = imagerotate($this->oldImage, 360 - $angle, $transparency); // imagerotate() rotates CCW
 	        imagealphablending($this->workingImage, true);
 	        imagesavealpha($this->workingImage, true);
 	        $this->currentDimensions['width']  = imagesx($this->workingImage);
