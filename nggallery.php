@@ -99,7 +99,7 @@ if (!class_exists('nggLoader')) {
 
 	        if( get_option( 'ngg_db_version' ) != NGG_DBVERSION && isset($_GET['page']) != "nextcellent" ) {
 		        add_action( 'admin_notices', create_function( '',
-				        'echo \'<div id="message" class="update-nag"><p><strong>' . __('NextCellent Gallery requires a database upgrade.', "nggallery") . ' <a href="' . admin_url() . 'admin.php?page=nextcellent" >' . __('Upgrade now', 'nggallery') . '</a></strong></p></div>\';'
+				        'echo \'<div id="message" class="update-nag"><p><strong>' . __('NextCellent Gallery requires a database upgrade.', "nggallery") . ' <a href="' . admin_url() . 'admin.php?page=nextcellent-gallery-nextgen-legacy" >' . __('Upgrade now', 'nggallery') . '</a></strong></p></div>\';'
 			        )
 		        );
 	        }
