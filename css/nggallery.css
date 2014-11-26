@@ -75,11 +75,12 @@ html>body .ngg-album {
 /* ----------- Album Styles Compact -------------*/
 
 .ngg-album-compact {
-	float:left;
 	padding-right:6px !important;
 	margin:0px !important;
 	text-align:left;
 	width:120px;
+	display:inline-block;
+	vertical-align:top;
 }
 
 .ngg-album-compactbox {

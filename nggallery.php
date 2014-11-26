@@ -97,6 +97,13 @@ if (!class_exists('nggLoader')) {
 			if (version_compare(PHP_VERSION, '5.0.0', '<'))
 				add_filter('transient_update_plugins', array(&$this, 'disable_upgrade'));
 
+	        if( get_option( 'ngg_db_version' ) != NGG_DBVERSION && isset($_GET['page']) != "nextcellent" ) {
+		        add_action( 'admin_notices', create_function( '',
+				        'echo \'<div id="message" class="update-nag"><p><strong>' . __('NextCellent Gallery requires a database upgrade.', "nggallery") . ' <a href="' . admin_url() . 'admin.php?page=nextcellent" >' . __('Upgrade now', 'nggallery') . '</a></strong></p></div>\';'
+			        )
+		        );
+	        }
+
 			//Add some links on the plugin page
 			add_filter('plugin_row_meta', array(&$this, 'add_plugin_links'), 10, 2);
 
@@ -302,7 +309,6 @@ if (!class_exists('nggLoader')) {
 
 			if ( version_compare($wp_version, '3.2.999', '>') )
 				define('IS_WP_3_3', TRUE);
-
 		}
 
         /**
@@ -325,6 +331,9 @@ if (!class_exists('nggLoader')) {
 			require_once (dirname (__FILE__) . '/nggfunctions.php');		        // n.a.
 			require_once (dirname (__FILE__) . '/lib/shortcodes.php'); 		        // 92.664
 
+			// Add to the toolbar
+			add_action( 'admin_bar_menu', array( &$this, 'admin_bar_menu' ), 999 );
+
 			//Just needed if you access remote to WordPress
 			if ( defined('XMLRPC_REQUEST') )
 				require_once (dirname (__FILE__) . '/lib/xmlrpc.php');
@@ -343,6 +352,79 @@ if (!class_exists('nggLoader')) {
 					require_once (dirname (__FILE__) . '/admin/admin.php');
 					require_once (dirname (__FILE__) . '/admin/media-upload.php');
 					$this->nggAdminPanel = new nggAdminPanel();
+				}
+			}
+		}
+
+		/**
+		 * Add NextCellent to the WordPress toolbar.
+		 *
+		 * @since 1.9.24 Moved from admin.php
+		 */
+		function admin_bar_menu() {
+			// If the current user can't write posts, this is all of no use, so let's not output an admin menu
+			if ( ! current_user_can( 'NextGEN Gallery overview' ) ) {
+				return;
+			}
+
+			global $wp_admin_bar;
+
+			if ( current_user_can( 'NextGEN Upload images' ) ) {
+				$wp_admin_bar->add_node( array(
+					'parent' => 'new-content',
+					'id'     => 'ngg-menu-add-gallery',
+					'title'  => __( 'NextCellent Gallery / Images', 'nggallery' ),
+					'href'   => admin_url( 'admin.php?page=nggallery-add-gallery' )
+				) );
+			}
+
+			//If the user is in the admin screen, there is no need to display this.
+			if ( !is_admin() ) {
+				$wp_admin_bar->add_node( array(
+					'parent' => 'site-name',
+					'id'     => 'ngg-menu-overview',
+					'title'  => __( 'NextCellent', 'nggallery' ),
+					'href'   => admin_url( 'admin.php?page=' . NGGFOLDER )
+				) );
+				if ( current_user_can( 'NextGEN Manage gallery' ) ) {
+					$wp_admin_bar->add_node( array(
+						'parent' => 'ngg-menu-overview',
+						'id'     => 'ngg-menu-manage-gallery',
+						'title'  => __( 'Gallery', 'nggallery' ),
+						'href'   => admin_url( 'admin.php?page=nggallery-manage-gallery' )
+					) );
+				}
+				if ( current_user_can( 'NextGEN Edit album' ) ) {
+					$wp_admin_bar->add_node( array(
+						'parent' => 'ngg-menu-overview',
+						'id'     => 'ngg-menu-manage-album',
+						'title'  => __( 'Albums', 'nggallery' ),
+						'href'   => admin_url( 'admin.php?page=nggallery-manage-album' )
+					) );
+				}
+				if ( current_user_can( 'NextGEN Manage tags' ) ) {
+					$wp_admin_bar->add_node( array(
+						'parent' => 'ngg-menu-overview',
+						'id'     => 'ngg-menu-tags',
+						'title'  => __( 'Tags', 'nggallery' ),
+						'href'   => admin_url( 'admin.php?page=nggallery-tags' )
+					) );
+				}
+				if ( current_user_can( 'NextGEN Change options' ) ) {
+					$wp_admin_bar->add_node( array(
+						'parent' => 'ngg-menu-overview',
+						'id'     => 'ngg-menu-options',
+						'title'  => __( 'Settings', 'nggallery' ),
+						'href'   => admin_url( 'admin.php?page=nggallery-options' )
+					) );
+				}
+				if ( current_user_can( 'NextGEN Change style' ) ) {
+					$wp_admin_bar->add_node( array(
+						'parent' => 'ngg-menu-overview',
+						'id'     => 'ngg-menu-style',
+						'title'  => __( 'Style', 'nggallery' ),
+						'href'   => admin_url( 'admin.php?page=nggallery-style' )
+					) );
 				}
 			}
 		}
