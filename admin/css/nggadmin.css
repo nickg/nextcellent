@@ -344,6 +344,8 @@ div .innerhandle {
 	border: 0;
 	margin: 0;
 	padding: 0;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
 }
 
 .inlinepicture
