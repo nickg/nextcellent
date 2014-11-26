@@ -569,16 +569,18 @@ class nggdb {
      * @param $pids array of picture_ids
      * @return An array of nggImage objects representing the images
      */
-    static function find_images_in_list( $pids, $exclude = false, $order = 'ASC' ) {
-        global $wpdb;
+    static function find_images_in_list( $pids, $exclude = false, $order = 'NOTSET' ) {
+        global $ngg, $wpdb;
 
         $result = array();
 
         // Check for the exclude setting
         $exclude_clause = ($exclude) ? ' AND t.exclude <> 1 ' : '';
 
-        // Check for the exclude setting
-        $order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.pid $order " ;
+        // Check for the order setting
+        $column = $ngg->options['galSort'];
+        $order = ($order == 'NOTSET') ? $ngg->options['galSortDir'] : $order;
+        $order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.$column $order ";
 
         if ( is_array($pids) ) {
             $id_list = "'" . implode("', '", $pids) . "'";
