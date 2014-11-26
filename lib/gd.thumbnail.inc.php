@@ -741,8 +741,8 @@ class ngg_Thumbnail {
 		
 		$this->workingImage = imagecreatetruecolor( $this->currentDimensions['height'], $this->currentDimensions['width'] ); 
 		
-	    imagealphablending($this->workingImage, false); 
-	    imagesavealpha($this->workingImage, true); 
+		imagealphablending($this->workingImage, false); 
+		imagesavealpha($this->workingImage, true); 
 
 		switch ($angle) {
 			
