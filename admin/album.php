@@ -377,7 +377,7 @@ function showDialog() {
 				$album = $this->albums[$this->currentID];
 				?>
 				<div class="widget-top">
-					<h3><?php esc_html_e('Album ID', 'nggallery');  ?> <?php echo $album->id . ' : ' . esc_html( $album->name ); ?> </h3>
+					<h3><?php esc_html_e('Album ID', 'nggallery');  ?> <?php echo $album->id . ': ' . esc_html( $album->name ); ?> </h3>
 				</div>
 				<div id="galleryContainer" class="widget-holder target">
 				<?php
@@ -544,9 +544,9 @@ function showDialog() {
 					</div>
 					<div class="itemContent">
 							' . $preview_image . '
-							<p><strong>' . __('Name', 'nggallery') . ' : </strong>' . esc_html ( nggGallery::i18n( $obj['name'] ) ). '</p>
-							<p><strong>' . __('Title', 'nggallery') . ' : </strong>' . esc_html ( nggGallery::i18n( $obj['title'] ) ) . '</p>
-							<p><strong>' . __('Page', 'nggallery'). ' : </strong>' . esc_html ( nggGallery::i18n( $obj['pagenname'] ) ) . '</p>
+							<p><strong>' . __('Name', 'nggallery') . ': </strong>' . esc_html ( nggGallery::i18n( $obj['name'] ) ). '</p>
+							<p><strong>' . __('Title', 'nggallery') . ': </strong>' . esc_html ( nggGallery::i18n( $obj['title'] ) ) . '</p>
+							<p><strong>' . __('Page', 'nggallery'). ': </strong>' . esc_html ( nggGallery::i18n( $obj['pagenname'] ) ) . '</p>
 							' . apply_filters('ngg_display_album_item_content', '', $obj) . '
 						</div>
 				</div>
