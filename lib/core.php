@@ -321,22 +321,40 @@ class nggGallery {
 
 	}
 
-	/**
-	 * Look for the stylesheet in the theme folder
-	 *
-	 * @return string path to stylesheet
-	 */
+
+    /**
+     * Find where is the gallery stylesheet located.
+     *
+     * Combines several techniques to find out where is the current
+     * gallery stylesheet located.
+     * 20140924: Simplification & Documentation
+     * 20140924: included
+     *
+     * @since 1.9.13
+     * @access static
+     *
+     * @see (none)
+     * @link Filter List http://wpgetready.com/wiki/nextcellent-plugin/nextcellent-filter-list/
+     * @global type $varname Short description.
+     *
+     * @param (none)
+     *
+     * @return bool|mixed|string|void
+     */
+
 	static function get_theme_css_file() {
-
-  		// allow other plugins to include a custom stylesheet
+  		//Allow to include a custom stylesheet, return stylesheet uri
 		$stylesheet = apply_filters( 'ngg_load_stylesheet', false );
-
-		if ( $stylesheet !== false )
-			return ( $stylesheet );
-		elseif ( file_exists (get_stylesheet_directory() . '/nggallery.css') )
-			return get_stylesheet_directory_uri() . '/nggallery.css';
-		else
-			return false;
+        //Is there a stylsheet customization?
+		if ( $stylesheet !== false ) {
+            return ($stylesheet); //Yes, return it
+        }
+        //No filter customization. Is the user putting a custom stylesheet on his/her theme?
+        if ( file_exists (get_stylesheet_directory() . '/nggallery.css') ) {
+            return get_stylesheet_directory_uri() . '/nggallery.css'; //Yes, return uri to the custom style
+        }
+        //No filter and no custom style. Bye bye
+		return false;
 	}
 
 	/**

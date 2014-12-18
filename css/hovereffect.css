@@ -71,12 +71,12 @@ This is a template stylesheet which doesn't support description below the thumbn
 /* ----------- Album Styles Compact -------------*/
 
 .ngg-album-compact {
-	float:left;
-	height:180px;
 	padding-right:6px !important;
-	margin:0px !important; 
+	margin:0px !important;
 	text-align:left;
-	width:120px;	
+	width:120px;
+	display:inline-block;
+	vertical-align:top;
 }
 
 .ngg-album-compactbox {

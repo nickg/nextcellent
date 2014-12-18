@@ -35,8 +35,9 @@ class nggAddGallery {
     			wp_die(__('Cheatin&#8217; uh?'));
 
     		$newgallery = esc_attr( $_POST['galleryname']);
+		    $description = esc_attr( $_POST['gallerydesc']);
     		if ( !empty($newgallery) )
-    			nggAdmin::create_gallery($newgallery, $defaultpath);
+    			nggAdmin::create_gallery($newgallery, $defaultpath, true, $description);
     	}
 
     	if ( isset($_POST['zipupload']) ){
@@ -379,6 +380,11 @@ class nggAddGallery {
 				<?php } ?>
 				<p class="description"><?php _e('Allowed characters for file and folder names are', 'nggallery') ;?>: a-z, A-Z, 0-9, -, _</p></td>
 			</tr>
+			<tr>
+				<th scope="row"><?php _e('Description', 'nggallery') ;?>:</th>
+				<td><textarea name="gallerydesc" id="gallerydesc" cols="50" rows="3"></textarea>
+					<p class="description"><?php _e('Add a description. This is optional and can be changed later.', 'nggallery') ;?></p></td>
+			</tr>
 			<?php do_action('ngg_add_new_gallery_form'); ?>
 			</table>
 			<div class="submit"><input class="button-primary" type="submit" name= "addgallery" value="<?php _e('Add gallery', 'nggallery') ;?>"/></div>
@@ -423,7 +429,7 @@ class nggAddGallery {
 				<br /><?php if ( (is_multisite()) && wpmu_enable_function('wpmuQuotaCheck') ) display_space_usage(); ?></td>
 			</tr>
 			</table>
-			<div class="submit"><input class="button-primary" onclick="checkForm('zipgalselect'); checkZipFile()" type="submit" name= "zipupload" value="<?php _e('Start upload', 'nggallery') ;?>"/></div>
+			<div class="submit"><input class="button-primary" onclick="checkZipFile()" type="submit" name= "zipupload" value="<?php _e('Start upload', 'nggallery') ;?>"/></div>
 		</form>
     <?php
     }

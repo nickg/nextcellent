@@ -8,16 +8,11 @@ License: GPLv2
 
 == Description ==
 
-= 1.9.22 - 22/09/2014 =
+= 1.9.23 - 24/09/2014 =
 
  What's in it for you?
 
-* Javascript validation before uploading (credits to Niko Strijbol)
-* Fixed issue with style tabs (credits to Niko Strijbol)
-* Fix: Correction on overview.php in order to make the file/s translatable (credits to Balázs Németh)
-* Hungarian translation (credits to  Balázs Németh)
-* Additional added from previous version: improved TinyMCE window (credits to Niko Strijbol)
-* Fixed readme.txt
+* Fix for missing gallery stylesheets
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -327,15 +322,21 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
+= 1.9.23 - 24/09/2014 =
+* Fix for missing gallery stylesheets
+
 = 1.9.22 - 22/09/2014 =
 * Tested up to WordPress 4.0.
+* Javascript validation before uploading. (credits to Niko Strijbol)
+* Fixed issue with style tabs. (credits to Niko Strijbol)
 * Fix: Correction on overview.php in order to make the files translatable. (credits to Balázs Németh)
 * Hungarian translation added. (credits to  Balázs Németh)
 * Additional added from previous version: improved TinyMCE window. (credits to Niko Strijbol)
-* Readded missed translated files.
+* Re-added missed translated files.
 * Rewrote the style management. (credits to Niko Strijbol)
 * Fixed AJAX in the TinyMCE window. (credits to Niko Strijbol)
 * Fixed readme.txt.
+* A typo was preventing the slideshow from functioning correctly when the dimensions are changed. (credits to Niko Strijbol)
 
 = 1.9.21 - 14/09/2014 =
 * The uploader did not use the quality set in the options. Now it does. (credits to Niko Strijbol)
