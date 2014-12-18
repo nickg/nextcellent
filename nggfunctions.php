@@ -14,94 +14,14 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
  */
 function nggShowSlideshow($galleryID, $width, $height, $class = 'ngg-slideshow', $controls = 'none', $number = 20, $shuffle = 'false') {
 
-    require_once (dirname (__FILE__).'/lib/swfobject.php');
-
     $ngg_options = nggGallery::get_option('ngg_options');
+    global $slideCounter, $nggdb;
 
     // remove media file from RSS feed
     if ( is_feed() ) {
         $out = '[' . nggGallery::i18n($ngg_options['galTextSlide']) . ']';
         return $out;
     }
-	
-    //Redirect all calls to the JavaScript slideshow if wanted
-    if ( $ngg_options['enableIR'] !== '1' || nggGallery::detect_mobile_phone() === true )
-        return nggShow_JS_Slideshow($galleryID, $width, $height, $class, $controls, $number, $shuffle);
-
-    // If the Imagerotator didn't exist, skip the output
-    if ( NGGALLERY_IREXIST == false )
-        return;
-
-    if (empty($width) ) $width  = (int) $ngg_options['irWidth'];
-    if (empty($height)) $height = (int) $ngg_options['irHeight'];
-    // Doesn't work fine with zero
-    $ngg_options['irRotatetime'] = ($ngg_options['irRotatetime'] == 0) ? 5 : $ngg_options['irRotatetime'];
-    // init the flash output
-    $swfobject = new swfobject( $ngg_options['irURL'] , 'so' . $galleryID, $width, $height, '7.0.0', 'false');
-
-    $swfobject->message = '<p>'. __('The <a href="http://www.macromedia.com/go/getflashplayer">Flash Player</a> and <a href="http://www.mozilla.com/firefox/">a browser with Javascript support</a> are needed.', 'nggallery').'</p>';
-    $swfobject->add_params('wmode', 'opaque');
-    $swfobject->add_params('allowfullscreen', 'true');
-    $swfobject->add_params('bgcolor', $ngg_options['irScreencolor'], 'FFFFFF', 'string', '#');
-    $swfobject->add_attributes('styleclass', 'slideshow');
-    $swfobject->add_attributes('name', 'so' . $galleryID);
-
-    // adding the flash parameter
-    $swfobject->add_flashvars( 'file', urlencode ( trailingslashit ( home_url() ) . 'index.php?callback=imagerotator&gid=' . $galleryID ) );
-    $swfobject->add_flashvars( 'shuffle', $ngg_options['irShuffle'], 'true', 'bool');
-    // option has oposite meaning : true should switch to next image
-    $swfobject->add_flashvars( 'linkfromdisplay', !$ngg_options['irLinkfromdisplay'], 'false', 'bool');
-    $swfobject->add_flashvars( 'shownavigation', $ngg_options['irShownavigation'], 'true', 'bool');
-    $swfobject->add_flashvars( 'showicons', $ngg_options['irShowicons'], 'true', 'bool');
-    $swfobject->add_flashvars( 'kenburns', $ngg_options['irKenburns'], 'false', 'bool');
-    $swfobject->add_flashvars( 'overstretch', $ngg_options['irOverstretch'], 'false', 'string');
-    $swfobject->add_flashvars( 'rotatetime', $ngg_options['irRotatetime'], 5, 'int');
-    $swfobject->add_flashvars( 'transition', $ngg_options['irTransition'], 'random', 'string');
-    $swfobject->add_flashvars( 'backcolor', $ngg_options['irBackcolor'], 'FFFFFF', 'string', '0x');
-    $swfobject->add_flashvars( 'frontcolor', $ngg_options['irFrontcolor'], '000000', 'string', '0x');
-    $swfobject->add_flashvars( 'lightcolor', $ngg_options['irLightcolor'], '000000', 'string', '0x');
-    $swfobject->add_flashvars( 'screencolor', $ngg_options['irScreencolor'], '000000', 'string', '0x');
-    if ($ngg_options['irWatermark'])
-        $swfobject->add_flashvars( 'logo', $ngg_options['wmPath'], '', 'string');
-    $swfobject->add_flashvars( 'audio', $ngg_options['irAudio'], '', 'string');
-    $swfobject->add_flashvars( 'width', $width, '260');
-    $swfobject->add_flashvars( 'height', $height, '320');
-    // create the output
-    $out  = '<div class="slideshow">' . $swfobject->output() . '</div>';
-    // add now the script code
-    $out .= "\n".'<script type="text/javascript" defer="defer">';
-    // load script via jQuery afterwards
-    // $out .= "\n".'jQuery.getScript( "' . esc_js( includes_url('js/swfobject.js') ) . '", function() {} );';
-    if ($ngg_options['irXHTMLvalid']) $out .= "\n".'<!--';
-    if ($ngg_options['irXHTMLvalid']) $out .= "\n".'//<![CDATA[';
-    $out .= $swfobject->javascript();
-    if ($ngg_options['irXHTMLvalid']) $out .= "\n".'//]]>';
-    if ($ngg_options['irXHTMLvalid']) $out .= "\n".'-->';
-    $out .= "\n".'</script>';
-
-    $out = apply_filters('ngg_show_slideshow_content', $out, $galleryID, $width, $height);
-
-    return $out;
-}
-
-/**
- * Return a script for the jQuery based slideshow. Can be used in any template with <?php echo nggShow_JS_Slideshow($galleryID, $width, $height) ?>
- * Require the script jquery.cycle.all.js
- *
- * @since 1.9.19
- * @access public
- * @param integer $galleryID ID of the gallery
- * @param integer $width Width of the slideshow container
- * @param integer $height Height of the slideshow container
- * @param string $class Classname of the div container
- * @param string $controls Add controls to the slideshow or not
- * @return the content
- */
-function nggShow_JS_Slideshow($galleryID, $width, $height, $class = 'ngg-slideshow', $controls = 'false', $number = 20, $shuffle = 'false') {
-
-    global $slideCounter, $nggdb;
-
-    $ngg_options = nggGallery::get_option('ngg_options');
 
     // we need to know the current page id
     $current_page = (get_the_ID() == false) ? rand(5, 15) : get_the_ID();

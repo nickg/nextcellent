@@ -218,7 +218,7 @@ class nggAdminPanel {
 		if ( get_option( 'ngg_db_version' ) != NGG_DBVERSION ) {
 			include_once( dirname( __FILE__ ) . '/functions.php' );
 			include_once( dirname( __FILE__ ) . '/upgrade.php' );
-			nggallery_upgrade_page();
+			output();
 
 			return;
 		}

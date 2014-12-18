@@ -126,12 +126,6 @@ class nggOptions {
     	$old_state = $ngg->options['usePermalinks'];
         $old_slug  = $ngg->options['permalinkSlug'];
 
-    	if ( isset($_POST['irDetect']) ) {
-    		check_admin_referer('ngg_settings');
-    		$ngg->options['irURL'] = ngg_search_imagerotator();
-    		update_option('ngg_options', $ngg->options);
-    	}
-
     	if ( isset($_POST['updateoption']) ) {
     		check_admin_referer('ngg_settings');
     		// get the hidden option fields, taken from WP core
@@ -141,7 +135,19 @@ class nggOptions {
     		if ($options) {
     			foreach ($options as $option) {
     				$option = trim($option);
-    				$value = isset($_POST[$option]) ? trim($_POST[$option]) : false;
+				    if ( isset( $_POST[ $option ] ) ) {
+					    $value = trim( $_POST[ $option ] );
+				    } else {
+					    $value = false;
+				    }
+
+				    if ($value === "true") {
+					    $value = true;
+				    }
+
+				    if ( is_numeric( $value ) ) {
+					    $value = (int) $value;
+				    }
     		//		$value = sanitize_option($option, $value); // This does stripslashes on those that need it
     				$ngg->options[$option] = $value;
     			}
@@ -303,16 +309,21 @@ class nggOptions {
 		<h3><?php esc_html_e('General settings','nggallery'); ?></h3>
 		<form name="generaloptions" method="post" action="<?php echo $this->filepath; ?>">
 		<?php wp_nonce_field('ngg_settings') ?>
-		<input type="hidden" name="page_options" value="gallerypath,deleteImg,useMediaRSS,usePicLens,usePermalinks,permalinkSlug,graphicLibrary,imageMagickDir,activateTags,appendType,maxImages" />
+		<input type="hidden" name="page_options" value="gallerypath,silentUpgrade,deleteImg,useMediaRSS,usePicLens,usePermalinks,permalinkSlug,graphicLibrary,imageMagickDir,activateTags,appendType,maxImages" />
 			<table class="form-table ngg-options">
 				<tr valign="top">
 					<th align="left"><?php esc_html_e('Gallery path','nggallery'); ?></th>
 					<td><input <?php if (is_multisite()) echo 'readonly = "readonly"'; ?> type="text" class="regular-text code" name="gallerypath" value="<?php echo $ngg->options['gallerypath']; ?>" />
 					<p class="description"><?php esc_html_e('This is the default path for all galleries','nggallery') ?></p></td>
 				</tr>
+				<tr>
+					<th align="left"><?php esc_html_e('Silent database upgrade','nggallery'); ?></th>
+					<td><input type="checkbox" name="silentUpgrade" value="true" <?php checked( true, $ngg->options['silentUpgrade']); ?> />
+						<label for="silentUpgrade"><?php esc_html_e('Update the database without notice.','nggallery') ?></label></td>
+				</tr>
 				<tr valign="top">
 					<th align="left"><?php esc_html_e('Image files','nggallery'); ?></th>
-					<td><input <?php if (is_multisite()) echo 'readonly = "readonly"'; ?> type="checkbox" name="deleteImg" value="1" <?php checked('1', $ngg->options['deleteImg']); ?> />
+					<td><input <?php if (is_multisite()) echo 'readonly = "readonly"'; ?> type="checkbox" name="deleteImg" value="true" <?php checked(true, $ngg->options['deleteImg']); ?> />
 					<?php esc_html_e('Delete files when removing a gallery from the database','nggallery'); ?></td>
 				</tr>
 				<tr>
@@ -325,12 +336,12 @@ class nggOptions {
 				</tr>
 				<tr>
 					<th align="left"><?php esc_html_e('Media RSS feed','nggallery'); ?></th>
-					<td><input type="checkbox" name="useMediaRSS" value="1" <?php checked('1', $ngg->options['useMediaRSS']); ?> />
+					<td><input type="checkbox" name="useMediaRSS" value="true" <?php checked(true, $ngg->options['useMediaRSS']); ?> />
 					<span><?php esc_html_e('Add a RSS feed to you blog header. Useful for CoolIris/PicLens','nggallery') ?></span></td>
 				</tr>
 				<tr>
 					<th align="left"><?php esc_html_e('PicLens/CoolIris','nggallery'); ?> (<a href="http://www.cooliris.com">CoolIris</a>)</th>
-					<td><input type="checkbox" name="usePicLens" value="1" <?php checked('1', $ngg->options['usePicLens']); ?> />
+					<td><input type="checkbox" name="usePicLens" value="true" <?php checked(true, $ngg->options['usePicLens']); ?> />
 					<?php esc_html_e('Include support for PicLens and CoolIris','nggallery') ?>
 					<p class="description"><?php esc_html_e('When activated, JavaScript is added to your site footer. Make sure that wp_footer is called in your theme.','nggallery') ?></p></td>
 					</td>
@@ -340,7 +351,7 @@ class nggOptions {
 				<table class="form-table ngg-options">
 				<tr valign="top">
 					<th align="left"><?php esc_html_e('Use permalinks','nggallery'); ?></th>
-					<td><input type="checkbox" name="usePermalinks" value="1" <?php checked('1', $ngg->options['usePermalinks']); ?> />
+					<td><input type="checkbox" name="usePermalinks" value="true" <?php checked(true, $ngg->options['usePermalinks']); ?> />
 					<?php esc_html_e('Adds a static link to all images','nggallery'); ?>
 					<p class="description"><?php esc_html_e('When activating this option, you need to update your permalink structure once','nggallery'); ?></p></td>
 				</tr>
@@ -359,7 +370,7 @@ class nggOptions {
 			<table class="form-table ngg-options">
 				<tr>
 					<th valign="top"><?php esc_html_e('Add related images','nggallery'); ?></th>
-					<td><input name="activateTags" type="checkbox" value="1" <?php checked('1', $ngg->options['activateTags']); ?> />
+					<td><input name="activateTags" type="checkbox" value="true" <?php checked(true, $ngg->options['activateTags']); ?> />
 					<?php esc_html_e('This will add related images to every post','nggallery'); ?>
 					</td>
 				</tr>
@@ -405,12 +416,12 @@ class nggOptions {
 				</tr>
 				<tr>
 					<th valign="top"><?php esc_html_e('Backup original','nggallery'); ?></th>
-					<td><input type="checkbox" name="imgBackup" value="1"<?php echo ($ngg->options['imgBackup'] == 1) ? ' checked ="chechked"' : ''; ?>/>
+					<td><input type="checkbox" name="imgBackup" value="true" <?php checked(true, $ngg->options['imgBackup']); ?> />
 					<span><?php esc_html_e('Create a backup for the resized images','nggallery'); ?></span></td>
 				</tr>
 				<tr>
 					<th valign="top"><?php esc_html_e('Automatically resize','nggallery'); ?></th>
-					<td><input type="checkbox" name="imgAutoResize" value="1"<?php echo ($ngg->options['imgAutoResize'] == 1) ? ' checked ="chechked"' : ''; ?>/>
+					<td><input type="checkbox" name="imgAutoResize" value="1" <?php checked(true, $ngg->options['imgAutoResize']); ?> />
 					<span><?php esc_html_e('Automatically resize images on upload.','nggallery') ?></span></td>
 				</tr>
 			</table>
@@ -429,7 +440,7 @@ class nggOptions {
 				</tr>
 				<tr valign="top">
 					<th align="left"><?php esc_html_e('Fixed size','nggallery'); ?></th>
-					<td><input type="checkbox" name="thumbfix" value="1" <?php checked('1', $ngg->options['thumbfix']); ?> />
+					<td><input type="checkbox" name="thumbfix" value="true" <?php checked(true, $ngg->options['thumbfix']); ?> />
 					<?php esc_html_e('This will ignore the aspect ratio, so no portrait thumbnails','nggallery') ?></td>
 				</tr>
 				<tr valign="top">
@@ -461,7 +472,7 @@ class nggOptions {
 			<table class="form-table ngg-options">
 				<tr>
 					<th valign="top"><?php esc_html_e('Inline gallery','nggallery') ?></th>
-					<td><input name="galNoPages" type="checkbox" value="1" <?php checked('1', $ngg->options['galNoPages']); ?> />
+					<td><input name="galNoPages" type="checkbox" value="true" <?php checked(true, $ngg->options['galNoPages']); ?> />
 					<?php esc_html_e('Galleries will not be shown on a subpage, but on the same page.','nggallery') ?>
 					</td>
 				</tr>
@@ -481,7 +492,7 @@ class nggOptions {
 				</tr>
 				<tr>
 					<th valign="top"><?php esc_html_e('Slideshow','nggallery'); ?></th>
-					<td><input name="galShowSlide" type="checkbox" value="1" <?php checked('1', $ngg->options['galShowSlide']); ?> /> <?php esc_html_e('Enable slideshow','nggallery'); ?><br/><?php esc_html_e('Text to show:','nggallery'); ?>
+					<td><input name="galShowSlide" type="checkbox" value="true" <?php checked(true, $ngg->options['galShowSlide']); ?> /> <?php esc_html_e('Enable slideshow','nggallery'); ?><br/><?php esc_html_e('Text to show:','nggallery'); ?>
 						<input type="text" class="regular-text" name="galTextSlide" value="<?php echo $ngg->options['galTextSlide'] ?>" />
 						<input type="text" name="galTextGallery" value="<?php echo $ngg->options['galTextGallery'] ?>" class="regular-text"/>
 						<p class="description"> <?php esc_html_e('This is the text the visitors will have to click to switch between display modes.','nggallery'); ?></p>
@@ -496,20 +507,20 @@ class nggOptions {
 				</tr>
 				<tr>
 					<th valign="top"><?php esc_html_e('ImageBrowser','nggallery'); ?></th>
-					<td><input name="galImgBrowser" type="checkbox" value="1" <?php checked('1', $ngg->options['galImgBrowser']); ?> />
+					<td><input name="galImgBrowser" type="checkbox" value="true" <?php checked(true, $ngg->options['galImgBrowser']); ?> />
 					<?php esc_html_e('Use ImageBrowser instead of another effect.', 'nggallery'); ?>
 					</td>
 				</tr>
 				<tr>
 					<th valign="top"><?php esc_html_e('Hidden images','nggallery'); ?></th>
-					<td><input name="galHiddenImg" type="checkbox" value="1" <?php checked('1', $ngg->options['galHiddenImg']); ?> />
+					<td><input name="galHiddenImg" type="checkbox" value="true" <?php checked(true, $ngg->options['galHiddenImg']); ?> />
 					<?php esc_html_e('Loads all images for the modal window, when pagination is used (like Thickbox, Lightbox etc.).','nggallery'); ?>
 					<p class="description"> <?php esc_html_e('Note: this increases the page load (possibly a lot)', 'nggallery'); ?>
 					</td>
 				</tr>
 				<tr>
 					<th valign="top"><?php esc_html_e('AJAX pagination','nggallery'); ?></th>
-					<td><input name="galAjaxNav" type="checkbox" value="1" <?php checked('1', $ngg->options['galAjaxNav']); ?> />
+					<td><input name="galAjaxNav" type="checkbox" value="true" <?php checked(true, $ngg->options['galAjaxNav']); ?> />
 					<?php esc_html_e('Use AJAX pagination to browse images without reloading the page.','nggallery'); ?> 
 					<p class="description"><?php esc_html_e('Note: works only in combination with the Shutter effect.', 'nggallery'); ?> </p>
 					</td>
@@ -555,106 +566,11 @@ class nggOptions {
 					<td>
 					<select size="1" id="thumbEffect" name="thumbEffect" onchange="insertcode(this.value)">
 						<option value="none" <?php selected('none', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('None', 'nggallery') ;?></option>
-						<optgroup label="<?php _e('Attention Seekers', 'nggallery'); ?>">
-							<option <?php selected('bounce', $ngg->options['thumbEffect']); ?> value="bounce">bounce</option>
-							<option <?php selected('flash', $ngg->options['thumbEffect']); ?> value="flash">flash</option>
-							<option <?php selected('pulse', $ngg->options['thumbEffect']); ?> value="pulse">pulse</option>
-							<option <?php selected('rubberBand', $ngg->options['thumbEffect']); ?> value="rubberBand">rubberBand</option>
-							<option <?php selected('shake', $ngg->options['thumbEffect']); ?> value="shake">shake</option>
-							<option <?php selected('swing', $ngg->options['thumbEffect']); ?> value="swing">swing</option>
-							<option <?php selected('tada', $ngg->options['thumbEffect']); ?> value="tada">tada</option>
-							<option <?php selected('wobble', $ngg->options['thumbEffect']); ?> value="wobble">wobble</option>
-						</optgroup>
-						<optgroup label="Bouncing Entrances">
-							<option value="bounceIn">bounceIn</option>
-							<option value="bounceInDown">bounceInDown</option>
-							<option value="bounceInLeft">bounceInLeft</option>
-							<option value="bounceInRight">bounceInRight</option>
-							<option value="bounceInUp">bounceInUp</option>
-						</optgroup>
-
-							<optgroup label="Bouncing Exits">
-							  <option value="bounceOut">bounceOut</option>
-							  <option value="bounceOutDown">bounceOutDown</option>
-							  <option value="bounceOutLeft">bounceOutLeft</option>
-							  <option value="bounceOutRight">bounceOutRight</option>
-							  <option value="bounceOutUp">bounceOutUp</option>
-							</optgroup>
-
-							<optgroup label="Fading Entrances">
-							  <option value="fadeIn">fadeIn</option>
-							  <option value="fadeInDown">fadeInDown</option>
-							  <option value="fadeInDownBig">fadeInDownBig</option>
-							  <option value="fadeInLeft">fadeInLeft</option>
-							  <option value="fadeInLeftBig">fadeInLeftBig</option>
-							  <option value="fadeInRight">fadeInRight</option>
-							  <option value="fadeInRightBig">fadeInRightBig</option>
-							  <option value="fadeInUp">fadeInUp</option>
-							  <option value="fadeInUpBig">fadeInUpBig</option>
-							</optgroup>
-
-							<optgroup label="Fading Exits">
-							  <option value="fadeOut">fadeOut</option>
-							  <option value="fadeOutDown">fadeOutDown</option>
-							  <option value="fadeOutDownBig">fadeOutDownBig</option>
-							  <option value="fadeOutLeft">fadeOutLeft</option>
-							  <option value="fadeOutLeftBig">fadeOutLeftBig</option>
-							  <option value="fadeOutRight">fadeOutRight</option>
-							  <option value="fadeOutRightBig">fadeOutRightBig</option>
-							  <option value="fadeOutUp">fadeOutUp</option>
-							  <option value="fadeOutUpBig">fadeOutUpBig</option>
-							</optgroup>
-
-							<optgroup label="Flippers">
-							  <option value="flip">flip</option>
-							  <option value="flipInX">flipInX</option>
-							  <option value="flipInY">flipInY</option>
-							  <option value="flipOutX">flipOutX</option>
-							  <option value="flipOutY">flipOutY</option>
-							</optgroup>
-
-							<optgroup label="Lightspeed">
-							  <option value="lightSpeedIn">lightSpeedIn</option>
-							  <option value="lightSpeedOut">lightSpeedOut</option>
-							</optgroup>
-
-							<optgroup label="Rotating Entrances">
-							  <option value="rotateIn">rotateIn</option>
-							  <option value="rotateInDownLeft">rotateInDownLeft</option>
-							  <option value="rotateInDownRight">rotateInDownRight</option>
-							  <option value="rotateInUpLeft">rotateInUpLeft</option>
-							  <option value="rotateInUpRight">rotateInUpRight</option>
-							</optgroup>
-
-							<optgroup label="Rotating Exits">
-							  <option value="rotateOut">rotateOut</option>
-							  <option value="rotateOutDownLeft">rotateOutDownLeft</option>
-							  <option value="rotateOutDownRight">rotateOutDownRight</option>
-							  <option value="rotateOutUpLeft">rotateOutUpLeft</option>
-							  <option value="rotateOutUpRight">rotateOutUpRight</option>
-							</optgroup>
-
-							<optgroup label="Specials">
-							  <option value="hinge">hinge</option>
-							  <option value="rollIn">rollIn</option>
-							  <option value="rollOut">rollOut</option>
-							</optgroup>
-
-							<optgroup label="Zoom Entrances">
-							  <option value="zoomIn">zoomIn</option>
-							  <option value="zoomInDown">zoomInDown</option>
-							  <option value="zoomInLeft">zoomInLeft</option>
-							  <option value="zoomInRight">zoomInRight</option>
-							  <option value="zoomInUp">zoomInUp</option>
-							</optgroup>
-
-							<optgroup label="Zoom Exits">
-							  <option value="zoomOut">zoomOut</option>
-							  <option value="zoomOutDown">zoomOutDown</option>
-							  <option value="zoomOutLeft">zoomOutLeft</option>
-							  <option value="zoomOutRight">zoomOutRight</option>
-							  <option value="zoomOutUp">zoomOutUp</option>
-							</optgroup>
+						<option value="thickbox" <?php selected('thickbox', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('Thickbox', 'nggallery') ;?></option>
+						<option value="lightbox" <?php selected('lightbox', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('Lightbox', 'nggallery') ;?></option>
+						<option value="highslide" <?php selected('highslide', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('Highslide', 'nggallery') ;?></option>
+						<option value="shutter" <?php selected('shutter', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('Shutter', 'nggallery') ;?></option>
+						<option value="custom" <?php selected('custom', $ngg->options['thumbEffect']); ?> ><?php esc_html_e('Custom', 'nggallery') ;?></option>
 					</select>
 					</td>
 				</tr>
@@ -671,11 +587,11 @@ class nggOptions {
 
     function tab_watermark() {
 
-        global $wpdb, $ngg;
+        global $ngg;
 
         // take the first image as sample
-        $imageID  = $wpdb->get_var("SELECT MIN(pid) FROM $wpdb->nggpictures");
-        $imageURL = ($imageID) ? $imageURL = '<img src="'. home_url('index.php') . '?callback=image&amp;pid=' . intval ($imageID) . '&amp;mode=watermark&amp;width=300&amp;height=250" />' : '';
+        $imageID  = nggdb::find_last_images(0, 1)[0]->pid;
+	    $imageURL = $imageURL = '<img src="' . home_url( 'index.php' ) . '?callback=image&amp;pid=' . intval( $imageID ) . '&amp;mode=watermark&amp;width=300&amp;height=250" />';
 
 	?>
 	<!-- Watermark settings -->
@@ -785,7 +701,7 @@ class nggOptions {
     	<!-- Slideshow settings -->
     	<form name="player_options" method="POST" action="<?php echo $this->filepath.'#slideshow'; ?>" >
     	<?php wp_nonce_field('ngg_settings'); ?>
-    	<input type="hidden" name="page_options" value="slideFx,enableIR,irURL,irWidth,irHeight,irShuffle,irLinkfromdisplay,irShownavigation,irShowicons,irWatermark,irOverstretch,irRotatetime,irTransition,irKenburns,irBackcolor,irFrontcolor,irLightcolor,irScreencolor,irAudio,irXHTMLvalid" />
+    	<input type="hidden" name="page_options" value="slideFx,irWidth,irHeight,irRotatetime,irLoop,irDrag,irNavigation,irNavigationDots,irAutoplay,irAutoplayTimeout,irAutoplayHover" />
     	<h3><?php esc_html_e('Slideshow','nggallery'); ?></h3>
 			<table class="form-table ngg-options">
 				<tr>
@@ -803,128 +719,62 @@ class nggOptions {
 				<tr>
 				    <th><?php esc_html_e('Transition / Fade effect','nggallery') ?></th>
 					<td>
-					<select size="1" name="slideFx">
-						<option value="fade" <?php selected('fade', $ngg->options['slideFx']); ?> ><?php esc_html_e('fade', 'nggallery') ;?></option>
-						<option value="blindX" <?php selected('blindX', $ngg->options['slideFx']); ?> ><?php esc_html_e('blindX', 'nggallery') ;?></option>
-						<option value="cover" <?php selected('cover', $ngg->options['slideFx']); ?> ><?php esc_html_e('cover', 'nggallery') ;?></option>
-						<option value="scrollUp" <?php selected('scrollUp', $ngg->options['slideFx']); ?> ><?php esc_html_e('scrollUp', 'nggallery') ;?></option>
-						<option value="scrollDown" <?php selected('scrollDown', $ngg->options['slideFx']); ?> ><?php esc_html_e('scrollDown', 'nggallery') ;?></option>
-						<option value="shuffle" <?php selected('shuffle', $ngg->options['slideFx']); ?> ><?php esc_html_e('shuffle', 'nggallery') ;?></option>
-						<option value="toss" <?php selected('toss', $ngg->options['slideFx']); ?> ><?php esc_html_e('toss', 'nggallery') ;?></option>
-						<option value="wipe" <?php selected('wipe', $ngg->options['slideFx']); ?> ><?php esc_html_e('wipe', 'nggallery') ;?></option>
-					</select>
+						<select size="1" name="slideFx"><?php
+
+							$options = array(
+								__( 'Attention Seekers', 'nggallery' )  => array( "bounce", "flash", "pulse", "rubberBand", "shake", "swing", "tada", "wobble"),
+								__( 'Bouncing Entrances', 'nggallery' ) => array( "bounceIn", "bounceInDown", "bounceInLeft", "bounceInRight", "bounceInUp" ),
+								__( 'Fading Entrances', 'nggallery' )   => array( "fadeIn", "fadeInDown", "fadeInDownBig", "fadeInLeft", "fadeInLeftBig", "fadeInRight", "fadeInRightBig", "fadeInUp", "fadeInUpBig"),
+								__( 'Fading Exits', 'nggallery' )       => array( "fadeOut", "fadeOutDown", "fadeOutDownBig", "fadeOutLeft", "fadeOutLeftBig", "fadeOutRight", "fadeOutRightBig", "fadeOutUp", "fadeOutUpBig"),
+								__( 'Flippers', 'nggallery' )           => array( "flip", "flipInX", "flipInY", "flipOutX", "flipOutY" ),
+								__( 'Lightspeed', 'nggallery' )         => array( "lightSpeedIn", "lightSpeedOut"),
+								__( 'Rotating Entrances', 'nggallery' )	=> array( "rotateIn", "rotateInDownLeft", "rotateInDownRight", "rotateInUpLeft", "rotateInUpRight" ),
+								__( 'Rotating Exits', 'nggallery' )     => array( "rotateOut", "rotateOutDownLeft", "rotateOutDownRight", "rotateOutUpLeft", "rotateOutUpRight" ),
+								__( 'Specials', 'nggallery' )           => array( "hinge", "rollIn", "rollOut" ),
+								__( 'Zoom Entrances', 'nggallery' )     => array( "zoomIn", "zoomInDown", "zoomInLeft", "zoomInRight", "zoomInUp" )
+							);
+
+							foreach( $options as $option => $val ) {
+								echo convert_to_optgroup( $val, $option );
+							}
+							?>
+						</select>
+						<p class="description"><?php _e("These effects are powered by"); ?> <strong>animate.css</strong>. <a target="_blank" href="http://daneden.github.io/animate.css/"><?php _e("Click here for examples of all effects and to learn more."); ?></a></p>
                     </td>
+				</tr>
+				<!-- NEW ONES; TO ADD -->
+				<tr>
+					<th><?php esc_html_e('Loop','nggallery') ?></th>
+					<td><input type="checkbox" name="irLoop" value="true" <?php checked( true, $ngg->options['irLoop']); ?>" /><label for="irLoop"><?php _e( "Infinity loop. Duplicate last and first items to get loop illusion.", 'nggallery'); ?></label></td>
+				</tr>
+				<tr>
+					<th><?php esc_html_e('Mouse/touch drag','nggallery') ?></th>
+					<td><input type="checkbox" name="irDrag" value="true" <?php checked( true, $ngg->options['irDrag']); ?>" /><label for="irDrag"><?php _e( "Enable dragging with the mouse (or touch).", 'nggallery'); ?></label></td>
+				</tr>
+				<tr>
+					<th><?php esc_html_e('Previous / Next','nggallery') ?></th>
+					<td><input type="checkbox" name="irNavigation" value="true" <?php checked( true, $ngg->options['irNavigation']); ?> /><label for="irNavigation"><?php _e( "Show next/previous buttons.", 'nggallery'); ?></label></td>
+				</tr>
+				<tr>
+					<th><?php esc_html_e('Show dots','nggallery') ?></th>
+					<td><input type="checkbox" name="irNavigationDots" value="true" <?php checked( true, $ngg->options['irNavigationDots']); ?> /><label for="irNavigationDots"><?php _e( "Show dots for each image.", 'nggallery'); ?></label></td>
+				</tr>
+				<tr>
+					<th><?php esc_html_e('Autoplay','nggallery') ?></th>
+					<td><input type="checkbox" name="irAutoplay" value="true" <?php checked( true, $ngg->options['irAutoplay']); ?> /><label for="irAutoplay"><?php _e( "Show dots for each image.", 'nggallery'); ?></label></td>
+				</tr>
+				<tr>
+					<th><?php esc_html_e('Autoplay timeout','nggallery') ?></th>
+					<td><input type="number" type="number" step="1" min="0" class="small-text" name="irAutoplayTimeout" value="<?php echo $ngg->options['irAutoplayTimeout'] ?>" /> <label for="irAutoplayTimeout"><?php esc_html_e('sec.', 'nggallery') ;?></label></td>
+				</tr>
+				<tr>
+					<th><?php esc_html_e('Pause on hover','nggallery') ?></th>
+					<td><input type="checkbox" name="irAutoplayHover" value="true" <?php checked( true, $ngg->options['irAutoplayHover']); ?> /><label for="irAutoplayHover"><?php _e( "Pause when hovering over the slideshow..", 'nggallery'); ?></label></td>
 				</tr>
  			    </table>
-    			<h3><?php esc_html_e('Settings for the JW Image Rotator','nggallery') ?></h3>
-				<p><?php esc_html_e('NextCellent Gallery flash slideshows use the JW Image Rotator Version 3.17 by', 'nggallery') ;?> <a target='_blank' href='http://www.longtailvideo.com/players/jw-image-rotator/'>Long Tail Video</a>.
-					 <?php esc_html_e('Press the button below to search for it automatically. For earlier versions of NextCellent Gallery, you\'ll need to
-					upload the file manually to the', 'nggallery') ;?> <a href='http://codex.wordpress.org/Uploading_Files' target='_blank'>WordPress Uploads directory</a>.</p>
-            	<?php if (empty($ngg->options['irURL']) && ($ngg->options['enableIR'] == '1')) { ?>
-        			<div id="message" class="error inline">
-        			<p>
-        				<?php esc_html_e('The path to JW Image Rotator is not defined, the slideshow will not work.','nggallery'); ?><br />
-        				 <?php esc_html_e('Press the button below to search for the file.','nggallery'); ?></p>
-        			</div>
-            	<?php }?>
-    			<table class="form-table ngg-options">
-				<tr>
-					<th><?php esc_html_e('Enable flash slideshow','nggallery') ?></th>
-					<td><input name="enableIR" type="checkbox" value="1" <?php checked('1', $ngg->options['enableIR']); ?> />
-                    <span><?php esc_html_e('Integrate the flash based slideshow for all flash supported devices','nggallery') ?></span></td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Path to the JW Image Rotator (URL)','nggallery') ?></th>
-					<td>
-						<input type="text" class="regular-text code" id="irURL" name="irURL" value="<?php echo $ngg->options['irURL']; ?>" />
-						<input type="submit" name="irDetect" class="button-secondary"  value="<?php esc_html_e('Search now','nggallery') ;?> &raquo;"/>
-						<br /><span><?php esc_html_e('Press the button below to search for the JW Image Rotator','nggallery') ?></span>
-					</td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Shuffle mode','nggallery') ?></th>
-					<td><input name="irShuffle" type="checkbox" value="1" <?php checked('1', $ngg->options['irShuffle']); ?> /></td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Show next image on click','nggallery') ?></th>
-					<td><input name="irLinkfromdisplay" type="checkbox" value="1" <?php checked('1', $ngg->options['irLinkfromdisplay']); ?> /></td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Show navigation bar','nggallery') ?></th>
-					<td><input name="irShownavigation" type="checkbox" value="1" <?php checked('1', $ngg->options['irShownavigation']); ?> /></td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Show loading icon','nggallery') ?></th>
-					<td><input name="irShowicons" type="checkbox" value="1" <?php checked('1', $ngg->options['irShowicons']); ?> /></td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Use watermark logo','nggallery') ?></th>
-					<td><input name="irWatermark" type="checkbox" value="1" <?php checked('1', $ngg->options['irWatermark']); ?> />
-					<span><?php esc_html_e('You can change the logo at the watermark settings','nggallery') ?></span></td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Stretch image','nggallery') ?></th>
-					<td>
-					<select size="1" name="irOverstretch">
-						<option value="true" <?php selected('true', $ngg->options['irOverstretch']); ?> ><?php esc_html_e('true', 'nggallery') ;?></option>
-						<option value="false" <?php selected('false', $ngg->options['irOverstretch']); ?> ><?php esc_html_e('false', 'nggallery') ;?></option>
-						<option value="fit" <?php selected('fit', $ngg->options['irOverstretch']); ?> ><?php esc_html_e('fit', 'nggallery') ;?></option>
-						<option value="none" <?php selected('none', $ngg->options['irOverstretch']); ?> ><?php esc_html_e('none', 'nggallery') ;?></option>
-					</select>
-					</td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Transition / Fade effect','nggallery') ?></th>
-					<td>
-					<select size="1" name="irTransition">
-						<option value="fade" <?php selected('fade', $ngg->options['irTransition']); ?> ><?php esc_html_e('fade', 'nggallery') ;?></option>
-						<option value="bgfade" <?php selected('bgfade', $ngg->options['irTransition']); ?> ><?php esc_html_e('bgfade', 'nggallery') ;?></option>
-						<option value="slowfade" <?php selected('slowfade', $ngg->options['irTransition']); ?> ><?php esc_html_e('slowfade', 'nggallery') ;?></option>
-						<option value="circles" <?php selected('circles', $ngg->options['irTransition']); ?> ><?php esc_html_e('circles', 'nggallery') ;?></option>
-						<option value="bubbles" <?php selected('bubbles', $ngg->options['irTransition']); ?> ><?php esc_html_e('bubbles', 'nggallery') ;?></option>
-						<option value="blocks" <?php selected('blocks', $ngg->options['irTransition']); ?> ><?php esc_html_e('blocks', 'nggallery') ;?></option>
-						<option value="fluids" <?php selected('fluids', $ngg->options['irTransition']); ?> ><?php esc_html_e('fluids', 'nggallery') ;?></option>
-						<option value="flash" <?php selected('flash', $ngg->options['irTransition']); ?> ><?php esc_html_e('flash', 'nggallery') ;?></option>
-						<option value="lines" <?php selected('lines', $ngg->options['irTransition']); ?> ><?php esc_html_e('lines', 'nggallery') ;?></option>
-						<option value="random" <?php selected('random', $ngg->options['irTransition']); ?> ><?php esc_html_e('random', 'nggallery') ;?></option>
-					</select>
-                    </td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Use slow zooming effect','nggallery') ?></th>
-					<td><input name="irKenburns" type="checkbox" value="1" <?php checked('1', $ngg->options['irKenburns']); ?> /></td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Background Color','nggallery') ?></th>
-					<td><input class="picker" type="text" size="6" maxlength="6" id="irBackcolor" name="irBackcolor" onchange="setcolor('#previewBack', this.value)" value="<?php echo $ngg->options['irBackcolor'] ?>" />
-					<input type="text" size="1" readonly="readonly" id="previewBack" style="background-color: #<?php echo $ngg->options['irBackcolor'] ?>" /></td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Texts / Buttons Color','nggallery') ?></th>
-					<td><input class="picker" type="text" size="6" maxlength="6" id="irFrontcolor" name="irFrontcolor" onchange="setcolor('#previewFront', this.value)" value="<?php echo $ngg->options['irFrontcolor'] ?>" />
-					<input type="text" size="1" readonly="readonly" id="previewFront" style="background-color: #<?php echo $ngg->options['irFrontcolor'] ?>" /></td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Rollover / Active Color','nggallery') ?></th>
-					<td><input class="picker" type="text" size="6" maxlength="6" id="irLightcolor" name="irLightcolor" onchange="setcolor('#previewLight', this.value)" value="<?php echo $ngg->options['irLightcolor'] ?>" />
-					<input type="text" size="1" readonly="readonly" id="previewLight" style="background-color: #<?php echo $ngg->options['irLightcolor'] ?>" /></td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Screen Color','nggallery') ?></th>
-					<td><input class="picker" type="text" size="6" maxlength="6" id="irScreencolor" name="irScreencolor" onchange="setcolor('#previewScreen', this.value)" value="<?php echo $ngg->options['irScreencolor'] ?>" />
-					<input type="text" size="1" readonly="readonly" id="previewScreen" style="background-color: #<?php echo $ngg->options['irScreencolor'] ?>" /></td>
-				</tr>
-				<tr>
-					<th><?php esc_html_e('Background music (URL)','nggallery') ?></th>
-					<td><input type="text" class="regular-text code" id="irAudio" name="irAudio" value="<?php echo $ngg->options['irAudio'] ?>" /></td>
-				</tr>
-				<tr>
-					<th ><?php esc_html_e('Try XHTML validation (with CDATA)','nggallery') ?></th>
-					<td><input name="irXHTMLvalid" type="checkbox" value="1" <?php checked('1', $ngg->options['irXHTMLvalid']); ?> />
-					<span><?php esc_html_e('Important : Could causes problem with some browser. Please recheck your page.','nggallery') ?></span></td>
-				</tr>
-				</table>
 			<div class="submit"><input class="button-primary" type="submit" name="updateoption" value="<?php esc_attr_e('Save Changes') ;?>"/></div>
+
+		    <?php var_dump($ngg->options);?>
 	</form>
     <?php
     }
@@ -962,36 +812,33 @@ function ngg_get_TTFfont() {
 	return $ttf_fonts;
 }
 
-function ngg_search_imagerotator() {
-	global $wpdb;
+/**
+ * Convert an array of options to a html dropdown group.
+ *
+ * @param $data array The option values (and display).
+ * @param $title string (optional) The label of the optgroup.
+ *
+ * @return string The output.
+ */
+function convert_to_optgroup( $data, $title = null) {
 
-	$upload = wp_upload_dir();
+	global $ngg;
 
-	// look first at the old place and move it to wp-content/uploads
-	if ( file_exists( NGGALLERY_ABSPATH . 'imagerotator.swf' ) )
-		@rename(NGGALLERY_ABSPATH . 'imagerotator.swf', $upload['basedir'] . '/imagerotator.swf');
+	if ( is_null($title) ) {
+		$out = null;
+	} else {
+		$out = '<optgroup label="' . $title . '">';
+	}
 
-	// This should be the new place
-	if ( file_exists( $upload['basedir'] . '/imagerotator.swf' ) )
-		return $upload['baseurl'] . '/imagerotator.swf';
+	foreach( $data as $option) {
+		$out .= '<option value="' . $option . '" ' . selected( $option, $ngg->options['slideFx'] ) . '>' . $option . '</option>';
+	}
 
-	// Find the path to the imagerotator via the media library
-	if ( $path = $wpdb->get_var( "SELECT guid FROM {$wpdb->posts} WHERE guid LIKE '%imagerotator.swf%'" ) )
-		return $path;
+	if ( !is_null( $title ) ) {
+		$out .= '</optgroup>';
+	}
 
-	// maybe it's located at wp-content
-	if ( file_exists( WP_CONTENT_DIR . '/imagerotator.swf' ) )
-		return WP_CONTENT_URL . '/imagerotator.swf';
-
-	// or in the plugin folder
-	if ( file_exists( WP_PLUGIN_DIR . '/imagerotator.swf' ) )
-		return WP_PLUGIN_URL . '/imagerotator.swf';
-
-	// this is deprecated and will be ereased during a automatic upgrade
-	if ( file_exists( NGGALLERY_ABSPATH . 'imagerotator.swf' ) )
-		return NGGALLERY_URLPATH . 'imagerotator.swf';
-
-	return '';
+	return $out;
 }
 
 /**********************************************************/
