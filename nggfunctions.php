@@ -184,7 +184,7 @@ function nggShowGallery( $galleryID, $template = '', $images = false ) {
             $args['show'] = "gallery";
             $out  = '<div class="ngg-galleryoverview">';
             $out .= '<div class="slideshowlink"><a class="slideshowlink" href="' . $nggRewrite->get_permalink($args) . '">'.nggGallery::i18n($ngg_options['galTextGallery']).'</a></div>';
-            $out .= nggShowSlideshow($galleryID, $ngg_options['irWidth'], $ngg_options['irHeight']);
+            $out .= nggShowSlideshow($galleryID);
             $out .= '</div>'."\n";
             $out .= '<div class="ngg-clear"></div>'."\n";
             return $out;
