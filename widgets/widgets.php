@@ -28,7 +28,7 @@ class nggSlideshowWidget extends WP_Widget {
 			
 		$title = apply_filters('widget_title', empty( $instance['title'] ) ? __('Slideshow', 'nggallery') : $instance['title'], $instance, $this->id_base);
 
-		$out = $this->render_slideshow($instance['galleryid'] , $instance['width'] , $instance['height'], $instance['number']);
+		$out = nggShowSlideshow( $instance['galleryid'], $instance['width'], $instance['height'], 'ngg-widget-slideshow', null, $instance['number'], null, null, false, false);
 
 		if ( !empty( $out ) ) {
 			echo $before_widget;
@@ -45,55 +45,7 @@ class nggSlideshowWidget extends WP_Widget {
 	}
 
 	function render_slideshow($galleryID, $irWidth = '', $irHeight = '', $number) {
-		
-		require_once ( dirname (__FILE__) . '/../lib/swfobject.php' );
-	
-		$ngg_options = get_option('ngg_options');
-
-        //Redirect all calls to the JavaScript slideshow if wanted
-        if ( $ngg_options['enableIR'] !== '1' || NGGALLERY_IREXIST == false )
-            return nggShow_JS_Slideshow($galleryID, $irWidth, $irHeight, 'ngg-widget-slideshow', 'none', $number);
-	
-		if (empty($irWidth) ) $irWidth = (int) $ngg_options['irWidth'];
-		if (empty($irHeight)) $irHeight = (int) $ngg_options['irHeight'];
-	
-		// init the flash output
-		$swfobject = new swfobject( $ngg_options['irURL'], 'sbsl' . $galleryID, $irWidth, $irHeight, '7.0.0', 'false');
-		
-		$swfobject->classname = 'ngg-widget-slideshow';
-		$swfobject->message =  __('<a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see the slideshow.', 'nggallery');
-		$swfobject->add_params('wmode', 'opaque');
-		$swfobject->add_params('bgcolor', $ngg_options['irScreencolor'], 'FFFFFF', 'string', '#');
-		$swfobject->add_attributes('styleclass', 'slideshow-widget');
-	
-		// adding the flash parameter	
-		$swfobject->add_flashvars( 'file', urlencode( trailingslashit( home_url() ) . 'index.php?callback=imagerotator&gid=' . $galleryID ) );
-		$swfobject->add_flashvars( 'shownavigation', 'false', 'true', 'bool');
-		$swfobject->add_flashvars( 'shuffle', $ngg_options['irShuffle'], 'true', 'bool');
-		$swfobject->add_flashvars( 'showicons', $ngg_options['irShowicons'], 'true', 'bool');
-		$swfobject->add_flashvars( 'overstretch', $ngg_options['irOverstretch'], 'false', 'string');
-		$swfobject->add_flashvars( 'rotatetime', $ngg_options['irRotatetime'], 5, 'int');
-		$swfobject->add_flashvars( 'transition', $ngg_options['irTransition'], 'random', 'string');
-		$swfobject->add_flashvars( 'backcolor', $ngg_options['irBackcolor'], 'FFFFFF', 'string', '0x');
-		$swfobject->add_flashvars( 'frontcolor', $ngg_options['irFrontcolor'], '000000', 'string', '0x');
-		$swfobject->add_flashvars( 'lightcolor', $ngg_options['irLightcolor'], '000000', 'string', '0x');
-		$swfobject->add_flashvars( 'screencolor', $ngg_options['irScreencolor'], '000000', 'string', '0x');
-		$swfobject->add_flashvars( 'width', $irWidth, '260');
-		$swfobject->add_flashvars( 'height', $irHeight, '320');	
-		// create the output
-		$out  = $swfobject->output();
-		// add now the script code
-	    $out .= "\n".'<script type="text/javascript" defer="defer">';
-		$out .= "\n".'<!--';
-		$out .= "\n".'//<![CDATA[';
-		$out .= $swfobject->javascript();
-		$out .= "\n".'//]]>';
-		$out .= "\n".'-->';
-		$out .= "\n".'</script>';
-		
-        $out = apply_filters('ngg_show_slideshow_widget_content', $out, $galleryID, $irWidth, $irHeight);
-        		
-		return $out;
+            return nggShow_Slideshow($galleryID, $irWidth, $irHeight, 'ngg-widget-slideshow', null, $number, null, null, false, false);
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -353,64 +305,4 @@ class nggWidget extends WP_Widget {
 
 // register it
 add_action('widgets_init', create_function('', 'return register_widget("nggWidget");'));
-
-/**
- * nggSlideshowWidget($galleryID, $width, $height)
- * Function for templates without widget support
- * 
- * @param integer $galleryID 
- * @param string $width
- * @param string $height
- * @return echo the widget content
- */
-function nggSlideshowWidget($galleryID, $width = '', $height = '') {
-
-	echo nggSlideshowWidget::render_slideshow($galleryID, $width, $height);
-	
-}
-
-/**
- * nggDisplayRandomImages($number,$width,$height,$exclude,$list,$show)
- * Function for templates without widget support
- *
- * @return echo the widget content
- */
-function nggDisplayRandomImages($number, $width = '75', $height = '50', $exclude = 'all', $list = '', $show = 'thumbnail') {
-	
-	$options = array(   'title'    => false, 
-						'items'    => $number,
-						'show'     => $show ,
-						'type'     => 'random',
-						'width'    => $width, 
-						'height'   => $height, 
-						'exclude'  => $exclude,
-						'list'     => $list,
-                        'webslice' => false );
-                        
-	$ngg_widget = new nggWidget();
-	$ngg_widget->widget($args = array( 'widget_id'=> 'sidebar_1' ), $options);
-}
-
-/**
- * nggDisplayRecentImages($number,$width,$height,$exclude,$list,$show)
- * Function for templates without widget support
- *
- * @return echo the widget content
- */
-function nggDisplayRecentImages($number, $width = '75', $height = '50', $exclude = 'all', $list = '', $show = 'thumbnail') {
-
-	$options = array(   'title'    => false, 
-						'items'    => $number,
-						'show'     => $show ,
-						'type'     => 'recent',
-						'width'    => $width, 
-						'height'   => $height, 
-						'exclude'  => $exclude,
-						'list'     => $list,
-                        'webslice' => false );
-                        
-	$ngg_widget = new nggWidget();
-	$ngg_widget->widget($args = array( 'widget_id'=> 'sidebar_1' ), $options);
-}
-
 ?>

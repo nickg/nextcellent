@@ -37,7 +37,7 @@ $nav = null, $nav_dots = null, $autoplay = null, $hover_pause = null, $effect = 
 	if ( !isset( $slideCounter ) ) $slideCounter = 0;
 
     // create unique anchor
-    $anchor = 'ngg-slideshow-' . $galleryID . '-' . $current_page . '-' . $slideCounter++;
+    $anchor = 'ngg_slideshow' . $galleryID . $current_page . $slideCounter++;
 
     //Get default options
     if (  $ngg_options['irAutoDim'] && empty($width) && empty($height) ) {
@@ -86,7 +86,7 @@ $nav = null, $nav_dots = null, $autoplay = null, $hover_pause = null, $effect = 
     $out .= '</div></div>'."\n";
     $out .= "\n".'<script type="text/javascript">';
 	$out .= "jQuery(document).ready(function($) {
-			var owl = $('.owl-carousel');
+			var owl = $('#" . $anchor . "');
 			owl.owlCarousel({
 				items: 1,
 				autoHeight: true,";
@@ -105,8 +105,8 @@ $nav = null, $nav_dots = null, $autoplay = null, $hover_pause = null, $effect = 
 				touchDrag: " . var_export($drag, true) . "
 			});";
     if ( $click ) {
-        $out .= "$('#" . $anchor . "') . click( function () {
-                    owl . trigger( 'next.owl.carousel' );
+        $out .= "\n" . "owl.click( function () {
+                    owl.trigger( 'next.owl.carousel' );
                 } );";
     }
 	$out .= "});";
