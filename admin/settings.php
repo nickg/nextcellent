@@ -701,20 +701,21 @@ class nggOptions {
     	<!-- Slideshow settings -->
     	<form name="player_options" method="POST" action="<?php echo $this->filepath.'#slideshow'; ?>" >
     	<?php wp_nonce_field('ngg_settings'); ?>
-    	<input type="hidden" name="page_options" value="slideFx,irWidth,irHeight,irRotatetime,irLoop,irDrag,irNavigation,irNavigationDots,irAutoplay,irAutoplayTimeout,irAutoplayHover" />
+    	<input type="hidden" name="page_options" value="irAutoDim,slideFx,irWidth,irHeight,irRotatetime,irLoop,irDrag,irNavigation,irNavigationDots,irAutoplay,irAutoplayTimeout,irAutoplayHover,irNumber,irClick" />
     	<h3><?php esc_html_e('Slideshow','nggallery'); ?></h3>
 			<table class="form-table ngg-options">
 				<tr>
-					<th><?php esc_html_e('Default size','nggallery') ?></th>
-					 <td><label for="irWidth"><?php esc_html_e('Width','nggallery') ?></label>
-					<input type="number" step="1" min="0" class="small-text" name="irWidth" value="<?php echo $ngg->options['irWidth']; ?>" />
-					<label for="irHeight"><?php esc_html_e('Height','nggallery') ?></label>
-					<input type="number" step="1" min="0" class="small-text" name="irHeight" value="<?php echo $ngg->options['irHeight']; ?>" />
-					</td>
+					<th><?php esc_html_e('Fit to space','nggallery') ?></th>
+					<td><input type="checkbox" name="irAutoDim" value="true" <?php checked( true, $ngg->options['irAutoDim']); ?>" /><label for="irAutoDim"><?php _e( "Let the slideshow fit in the available space.", 'nggallery'); ?></label></td>
 				</tr>
 				<tr>
-					<th><?php esc_html_e('Duration','nggallery') ?></th>
-					<td><input type="number" type="number" step="1" min="0" class="small-text" name="irRotatetime" value="<?php echo $ngg->options['irRotatetime'] ?>" /> <label for="irRotatetime"><?php esc_html_e('sec.', 'nggallery') ;?></label></td>
+					<th><?php esc_html_e('Default size','nggallery') ?></th>
+					<td>
+						<label for="irWidth"><?php esc_html_e('Width','nggallery') ?></label>
+						<input <?php if($ngg->options['irAutoDim']) echo "readonly"; ?> type="number" step="1" min="0" class="small-text" name="irWidth" value="<?php echo $ngg->options['irWidth']; ?>" />
+						<label for="irHeight"><?php esc_html_e('Height','nggallery') ?></label>
+						<input <?php if($ngg->options['irAutoDim']) echo "readonly"; ?> type="number" step="1" min="0" class="small-text" name="irHeight" value="<?php echo $ngg->options['irHeight']; ?>" />
+					</td>
 				</tr>
 				<tr>
 				    <th><?php esc_html_e('Transition / Fade effect','nggallery') ?></th>
@@ -761,20 +762,29 @@ class nggOptions {
 				</tr>
 				<tr>
 					<th><?php esc_html_e('Autoplay','nggallery') ?></th>
-					<td><input type="checkbox" name="irAutoplay" value="true" <?php checked( true, $ngg->options['irAutoplay']); ?> /><label for="irAutoplay"><?php _e( "Show dots for each image.", 'nggallery'); ?></label></td>
+					<td><input type="checkbox" name="irAutoplay" value="true" <?php checked( true, $ngg->options['irAutoplay']); ?> /><label for="irAutoplay"><?php _e( "Automatically play the images.", 'nggallery'); ?></label></td>
 				</tr>
 				<tr>
-					<th><?php esc_html_e('Autoplay timeout','nggallery') ?></th>
-					<td><input type="number" type="number" step="1" min="0" class="small-text" name="irAutoplayTimeout" value="<?php echo $ngg->options['irAutoplayTimeout'] ?>" /> <label for="irAutoplayTimeout"><?php esc_html_e('sec.', 'nggallery') ;?></label></td>
+					<th><?php esc_html_e('Duration','nggallery') ?></th>
+					<td><input <?php if(!$ngg->options['irAutoplay']) echo "readonly"; ?> type="number" type="number" step="1" min="0" class="small-text" name="irRotatetime" value="<?php echo $ngg->options['irRotatetime'] ?>" /> <label for="irRotatetime"><?php esc_html_e('sec.', 'nggallery') ;?></label></td>
 				</tr>
 				<tr>
 					<th><?php esc_html_e('Pause on hover','nggallery') ?></th>
-					<td><input type="checkbox" name="irAutoplayHover" value="true" <?php checked( true, $ngg->options['irAutoplayHover']); ?> /><label for="irAutoplayHover"><?php _e( "Pause when hovering over the slideshow..", 'nggallery'); ?></label></td>
+					<td><input <?php if(!$ngg->options['irAutoplay']) echo "readonly"; ?> type="checkbox" name="irAutoplayHover" value="true" <?php checked( true, $ngg->options['irAutoplayHover']); ?> /><label for="irAutoplayHover"><?php _e( "Pause when hovering over the slideshow.", 'nggallery'); ?></label></td>
+				</tr>
+				<tr>
+					<th><?php esc_html_e('Click for next','nggallery') ?></th>
+					<td><input type="checkbox" name="irClick" value="true" <?php checked( true, $ngg->options['irClick']); ?> /><label for="irClick"><?php _e( "Click to go to the next image.", 'nggallery'); ?></label></td>
+				</tr>
+				<tr>
+					<th><?php esc_html_e('Number of images','nggallery') ?></th>
+					<td>
+						<input type="number" type="number" step="1" min="1" class="small-text" name="irNumber" value="<?php echo $ngg->options['irNumber'] ?>" /> <label for="irNumber"><?php esc_html_e('images', 'nggallery') ;?></label>
+						<p class="description"><?php _e( "Number of images to display when using random or latest.", 'nggallery'); ?></p>
+					</td>
 				</tr>
  			    </table>
 			<div class="submit"><input class="button-primary" type="submit" name="updateoption" value="<?php esc_attr_e('Save Changes') ;?>"/></div>
-
-		    <?php var_dump($ngg->options);?>
 	</form>
     <?php
     }

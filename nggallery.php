@@ -97,13 +97,6 @@ if (!class_exists('nggLoader')) {
 			if (version_compare(PHP_VERSION, '5.0.0', '<'))
 				add_filter('transient_update_plugins', array(&$this, 'disable_upgrade'));
 
-	        if( get_option( 'ngg_db_version' ) != NGG_DBVERSION && isset($_GET['page']) != "nextcellent" ) {
-		        add_action( 'admin_notices', create_function( '',
-				        'echo \'<div id="message" class="update-nag"><p><strong>' . __('NextCellent Gallery requires a database upgrade.', "nggallery") . ' <a href="' . admin_url() . 'admin.php?page=nextcellent" >' . __('Upgrade now', 'nggallery') . '</a></strong></p></div>\';'
-			        )
-		        );
-	        }
-
 			//Add some links on the plugin page
 			add_filter('plugin_row_meta', array(&$this, 'add_plugin_links'), 10, 2);
 
@@ -153,6 +146,23 @@ if (!class_exists('nggLoader')) {
 				add_action('wp_enqueue_scripts', array(&$this, 'load_styles') );
 
 			}
+
+	        if( get_option( 'ngg_db_version' ) != NGG_DBVERSION && isset($_GET['page']) != "nextcellent" ) {
+
+		        global $ngg;
+		        include_once( dirname( __FILE__ ) . '/admin/functions.php' );
+		        include_once( dirname( __FILE__ ) . '/admin/upgrade.php' );
+
+		        if ( !empty($ngg->options['silentUpgrade'] &&  $ngg->options['silentUpgrade'] == true) ) {
+			        try {
+				        ngg_upgrade();
+			        } catch (Exception $e) {
+				        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="error"><p><strong>' . __( 'Something went wrong while upgrading NextCellent Gallery.', "nggallery" ) . '</strong></p></div>\';' ) );
+			        }
+		        } else {
+			        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="update-nag"><p><strong>' . __( 'NextCellent Gallery requires a database upgrade.', "nggallery" ) . ' <a href="' . admin_url() . 'admin.php?page=nextcellent" >' . __( 'Upgrade now', 'nggallery' ) . '</a></strong></p></div>\';' ) );
+		        }
+	        }
 		}
 
         /**

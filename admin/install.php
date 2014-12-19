@@ -188,14 +188,16 @@ function ngg_default_options() {
     $ngg_options['slideFx']		        = 'fadeIn';                     //The effect
 	$ngg_options['irWidth']				= 320;                          //Width (in px)
 	$ngg_options['irHeight']			= 240;                          //Height (in px)
+	$ngg_options['irAutoDim']           = true;                         //Automatically set the dimensions.
 	$ngg_options['irRotatetime']        = 3;                            //Duration (in seconds)
 	$ngg_options['irLoop']              = true;                         //Loop or not
 	$ngg_options['irDrag']              = true;                         //Enable drag or not
 	$ngg_options['irNavigation']        = false;                        //Show navigation
 	$ngg_options['irNavigationDots']    = false;                        //Show navigation dots
 	$ngg_options['irAutoplay']          = true;                         //Autoplay
-	$ngg_options['irAutoplayTimeout']   = 0;                            //Time before start
 	$ngg_options['irAutoplayHover']     = true;                         //Pause on hover
+	$ngg_options['irNumber']            = 20;                           //Number of images when random or latest
+	$ngg_options['irClick']             = true;                         //Go to next on click.
 
 	// CSS Style
 	$ngg_options['activateCSS']			= true;							// activate the CSS file

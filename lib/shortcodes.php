@@ -257,29 +257,40 @@ class NextGEN_shortcodes {
         return $out;
     }
 
+    /**
+     * Render a slideshow.
+     *
+     * @since 1.9.25 Don't use extract anymore. @see https://core.trac.wordpress.org/ticket/22400
+     * @param $atts array The shortcode attributes.
+     *
+     * @return string The output that will be displayed on the page.
+     */
     function show_slideshow( $atts ) {
 
-        global $wpdb;
-
-        extract(shortcode_atts(array(
-            'id'        => '0',
-            'w'         => '',
-            'h'         => '',
+        $data = shortcode_atts( array(
+            'id'        => 0,
+            'w'         => null,
+            'h'         => null,
 			'class'		=> 'ngg-slideshow',
-			'controls'	=> '',
-			'number'	=> '10',
-			'shuffle'	=> 'false'
-        ), $atts ));
+			'time'      => null,
+			'number'	=> null,
+			'loop'      => null,
+            'drag'      => null,
+            'nav'       => null,
+            'dots'      => null,
+            'autoplay'  => null,
+            'pause'     => null,
+            'effect'    => null
+        ), $atts );
 
-        if( !is_numeric($id) && !(($id == 'random') || ($id =='recent')) )
-            $id = $wpdb->get_var( $wpdb->prepare ("SELECT gid FROM $wpdb->nggallery WHERE name = '%s' ", $id) );
+        array_map( 'esc_attr', $data );
 
-        if( !empty( $id ) )
-            $out = nggShowSlideshow($id, $w, $h, $class, $controls, $number, $shuffle);
-        else 
-            $out = __('[Gallery not found]','nggallery');
-		
-        return $out;
+        try {
+            return nggShowSlideshow( $data['id'], $data['w'], $data['h'], $data['class'], $data['time'], $data['number'], $data['loop'],
+                $data['drag'], $data['nav'], $data['dots'], $data['autoplay'], $data['pause'], $data['effect'] );
+        } catch (NGG_Not_Found $e) {
+            return $e->getMessage();
+        }
     }
 
     /**

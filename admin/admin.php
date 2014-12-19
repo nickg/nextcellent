@@ -218,7 +218,16 @@ class nggAdminPanel {
 		if ( get_option( 'ngg_db_version' ) != NGG_DBVERSION ) {
 			include_once( dirname( __FILE__ ) . '/functions.php' );
 			include_once( dirname( __FILE__ ) . '/upgrade.php' );
-			output();
+
+			if ( empty($ngg->options['silentUpgrade'] ) ) {
+				output();
+			} else {
+				try {
+					ngg_upgrade();
+				} catch (Exception $e) {
+					add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="error"><p><strong>' . __( 'Something went wrong while upgrading NextCellent Gallery.', "nggallery" ) . '</strong></p></div>\';' ) );
+				}
+			}
 
 			return;
 		}

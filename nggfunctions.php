@@ -1,10 +1,13 @@
 <?php
 
+class NGG_Not_Found extends Exception {
+
+}
+
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
 /**
- * Return a script for the Imagerotator flash slideshow. Can be used in any template with <?php echo nggShowSlideshow($galleryID, $width, $height) ?>
- * Require the script swfobject.js in the header or footer
+ * Return a slideshow.
  *
  * @access public
  * @param integer $galleryID ID of the gallery
@@ -12,10 +15,11 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
  * @param integer $irHeight Height of the flash container
  * @return the content
  */
-function nggShowSlideshow($galleryID, $width, $height, $class = 'ngg-slideshow', $controls = 'none', $number = 20, $shuffle = 'false') {
+function nggShowSlideshow( $galleryID, $width = null, $height = null, $class = 'ngg-slideshow', $time = null, $number = null, $loop = null, $drag = null,
+$nav = null, $nav_dots = null, $autoplay = null, $hover_pause = null, $effect = null, $click = null) {
 
-    $ngg_options = nggGallery::get_option('ngg_options');
-    global $slideCounter, $nggdb;
+    global $slideCounter, $nggdb, $ngg;
+    $ngg_options = $ngg->options;
 
     // remove media file from RSS feed
     if ( is_feed() ) {
@@ -24,61 +28,89 @@ function nggShowSlideshow($galleryID, $width, $height, $class = 'ngg-slideshow',
     }
 
     // we need to know the current page id
-    $current_page = (get_the_ID() == false) ? rand(5, 15) : get_the_ID();
+    if ( !get_the_ID() ) {
+        $current_page = rand( 5, 15 );
+    } else {
+        $current_page = get_the_ID();
+    }
 	// look for a other slideshow instance
-	if ( !isset($slideCounter) ) $slideCounter = 1;
+	if ( !isset( $slideCounter ) ) $slideCounter = 0;
+
     // create unique anchor
     $anchor = 'ngg-slideshow-' . $galleryID . '-' . $current_page . '-' . $slideCounter++;
 
-    if (empty($width) ) $width  = (int) $ngg_options['irWidth'];
-    if (empty($height)) $height = (int) $ngg_options['irHeight'];
+    //Get default options
+    if (  $ngg_options['irAutoDim'] && empty($width) && empty($height) ) {
+        $autodim = true;
+    }
+    if ( empty($width) ) $width  = $ngg_options['irWidth'];
+    if ( empty($height) ) $height = $ngg_options['irHeight'];
+    if ( empty($time) ) $time = $ngg_options['irRotatetime']*1000;
+    if ( empty($loop) ) $loop = $ngg_options['irLoop'];
+    if ( empty($drag) ) $drag = $ngg_options['irDrag'];
+    if ( empty($nav) ) $nav = $ngg_options['irNavigation'];
+    if ( empty($nav_dots) ) $nav_dots = $ngg_options['irNavigationDots'];
+    if ( empty($autoplay) ) $autoplay = $ngg_options['irAutoplay'];
+    if ( empty($hover_pause) ) $hover_pause = $ngg_options['irAutoplayHover'];
+    if ( empty($effetc) ) $effect = $ngg_options['slideFx'];
+    if ( empty($click) ) $click = $ngg_options['irClick'];
 
     //filter to resize images for mobile browser
     list($width, $height) = apply_filters('ngg_slideshow_size', array( $width, $height ) );
-
-    $width  = (int) $width;
-    $height = (int) $height;
-	$time = $ngg_options['irRotatetime'] * 1000; //set to milliseconds
 	
 	//Get the images
 	if ($galleryID == 'random') {
 		$images = nggdb::get_random_images($number); //random images
+        if ( empty($number) ) $number = $ngg_options['irNumber'];
 	} elseif ($galleryID == 'recent') {
 		$images = nggdb::find_last_images(0 , $number); //the last images
+        if ( empty($number) ) $number = $ngg_options['irNumber'];
 	} else {
 		$images = $nggdb->get_gallery($galleryID); //a gallery
 	}
 
-    $out  = '<div class="slideshow" style="display: none"><div id="' . $anchor . '" class="' . $class . ' owl-carousel" style="max-width: ' .  $width . 'px; max-height: ' . $height . ';">';
+    if( empty($images) ) {
+        throw new NGG_Not_Found( __( "The gallery was not found.", 'nggallery' ) );
+    }
+
+    $out  = '<div class="slideshow"><div id="' . $anchor . '" class="' . $class . ' owl-carousel" ';
+    if(empty($autodim)) {
+        $out .=  'style="max-width: ' .  $width . 'px; max-height: ' . $height . 'px;"';
+    }
+    $out .= '>';
 	
 	foreach ( $images as $image ) {
-		$out .= '<img src="' . $image->imageURL .'" >';
+        $out .= '<img src="' . $image->imageURL .'" alt="' . $image->alttext . '" >';
 	}
 	
     $out .= '</div></div>'."\n";
     $out .= "\n".'<script type="text/javascript">';
 	$out .= "jQuery(document).ready(function($) {
-			$('.owl-carousel').owlCarousel({
-				onInitialize: display, //too prevent flickering
+			var owl = $('.owl-carousel');
+			owl.owlCarousel({
 				items: 1,
-				autoHeight: true,
-				animateOut: 'fadeOut',";
-		if ($controls) {
+				autoHeight: true,";
+	if ( $nav ) {
 		$out .= "nav: true,
 				navText: ['" . __('previous', 'nggallery') ."','" . __('next', 'nggallery') ."'],";
-		}
-	$out .=    "autoplay: true,
-				autoplayTimeout: " . $time . ",
-				autoplayHoverPause: true,
-				animateOut: '" . $ngg_options['slideFx'] . "', //anything from animate.css
-				loop: true
-			});
-		//display the slideshow once it's loaded
-		function display() {
-			$('.slideshow').css({ 'display': 'initial' });
-		}
-		});
-	";
+	}
+	$out .=    "
+	            dots: " .  var_export($nav_dots, true) .",
+	            autoplay: ". var_export($autoplay, true) .",
+				autoplayTimeout: " . var_export($time, true) . ",
+				autoplayHoverPause: " . var_export($hover_pause, true) . ",
+				animateOut: " . var_export($effect, true) . ",
+				loop: " . var_export($loop, true) . ",
+				mouseDrag: " . var_export($drag, true) .",
+				touchDrag: " . var_export($drag, true) . "
+			});";
+    if ( $click ) {
+        $out .= "$('#" . $anchor . "') . click( function () {
+                    owl . trigger( 'next.owl.carousel' );
+                } );";
+    }
+	$out .= "});";
+
     $out .= "\n" . '</script>';
 
     return $out;
