@@ -153,7 +153,7 @@ if (!class_exists('nggLoader')) {
 		        include_once( dirname( __FILE__ ) . '/admin/functions.php' );
 		        include_once( dirname( __FILE__ ) . '/admin/upgrade.php' );
 
-		        if ( !empty($ngg->options['silentUpgrade'] &&  $ngg->options['silentUpgrade'] == true) ) {
+		        if ( !empty( $ngg->options['silentUpgrade'] ) ) {
 			        try {
 				        ngg_upgrade();
 			        } catch (Exception $e) {
