@@ -268,26 +268,29 @@ class NextGEN_shortcodes {
     function show_slideshow( $atts ) {
 
         $data = shortcode_atts( array(
-            'id'        => 0,
+            'id'        => 'random',
             'w'         => null,
             'h'         => null,
-			'class'		=> 'ngg-slideshow',
-			'time'      => null,
-			'number'	=> null,
-			'loop'      => null,
-            'drag'      => null,
-            'nav'       => null,
-            'dots'      => null,
-            'autoplay'  => null,
-            'pause'     => null,
-            'effect'    => null
+            'dots'      => null
         ), $atts );
 
         array_map( 'esc_attr', $data );
 
+        if( isset($data['w']) || isset($data['h'])) {
+            $data['autodim'] = false;
+            $data['width'] = $data['w'];
+            $data['height']= $data['h'];
+        } else {
+            unset($data['w'],$data['h']);
+        }
+
+        if($data['dots'] == null) {
+            unset($data['dots']);
+        } else {
+            $data['nav_dots'] = $data['dots'];
+        }
         try {
-            return nggShowSlideshow( $data['id'], $data['w'], $data['h'], $data['class'], $data['time'], $data['number'], $data['loop'],
-                $data['drag'], $data['nav'], $data['dots'], $data['autoplay'], $data['pause'], $data['effect'] );
+            return nggShowSlideshow( $data['id'], $data );
         } catch (NGG_Not_Found $e) {
             return $e->getMessage();
         }

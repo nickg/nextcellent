@@ -332,7 +332,9 @@ if (!class_exists('nggLoader')) {
 			require_once (dirname (__FILE__) . '/lib/image.php');					//  59.424
 			require_once (dirname (__FILE__) . '/lib/tags.php');				    // 117.136
 			require_once (dirname (__FILE__) . '/lib/post-thumbnail.php');			//  n.a.
-			require_once (dirname (__FILE__) . '/widgets/widgets.php');				// 298.792
+	        require_once (dirname (__FILE__) . '/widgets/NGG_Slideshow_Widget.php');
+	        require_once (dirname (__FILE__) . '/widgets/NGG_Media_RSS_Widget.php');
+	        require_once (dirname (__FILE__) . '/widgets/NGG_Gallery_Widget.php');
 			require_once (dirname (__FILE__) . '/lib/multisite.php');
 			require_once (dirname (__FILE__) . '/lib/sitemap.php');
 

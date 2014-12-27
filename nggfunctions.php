@@ -9,14 +9,13 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 /**
  * Return a slideshow.
  *
- * @access public
- * @param integer $galleryID ID of the gallery
- * @param integer $irWidth Width of the flash container
- * @param integer $irHeight Height of the flash container
- * @return the content
+ * @param int $galleryID ID of the gallery.
+ * @param array $args (optional) An array of options.
+ *
+ * @return string The HTML code for the slideshow.
+ * @throws NGG_Not_Found
  */
-function nggShowSlideshow( $galleryID, $width = null, $height = null, $class = 'ngg-slideshow', $time = null, $number = null, $loop = null, $drag = null,
-$nav = null, $nav_dots = null, $autoplay = null, $hover_pause = null, $effect = null, $click = null) {
+function nggShowSlideshow( $galleryID, $args = null) {
 
     global $slideCounter, $nggdb, $ngg;
     $ngg_options = $ngg->options;
@@ -39,32 +38,58 @@ $nav = null, $nav_dots = null, $autoplay = null, $hover_pause = null, $effect = 
     // create unique anchor
     $anchor = 'ngg_slideshow' . $galleryID . $current_page . $slideCounter++;
 
-    //Get default options
-    if (  $ngg_options['irAutoDim'] && empty($width) && empty($height) ) {
-        $autodim = true;
-    }
-    if ( empty($width) ) $width  = $ngg_options['irWidth'];
-    if ( empty($height) ) $height = $ngg_options['irHeight'];
-    if ( empty($time) ) $time = $ngg_options['irRotatetime']*1000;
-    if ( empty($loop) ) $loop = $ngg_options['irLoop'];
-    if ( empty($drag) ) $drag = $ngg_options['irDrag'];
-    if ( empty($nav) ) $nav = $ngg_options['irNavigation'];
-    if ( empty($nav_dots) ) $nav_dots = $ngg_options['irNavigationDots'];
-    if ( empty($autoplay) ) $autoplay = $ngg_options['irAutoplay'];
-    if ( empty($hover_pause) ) $hover_pause = $ngg_options['irAutoplayHover'];
-    if ( empty($effetc) ) $effect = $ngg_options['slideFx'];
-    if ( empty($click) ) $click = $ngg_options['irClick'];
+    $param = wp_parse_args( $args, array(
+        'width'     => $ngg_options['irWidth'],
+        'height'    => $ngg_options['irHeight'],
+        'class'     => 'ngg-slideshow',
+        'anchor'    => 'ngg_slideshow' . $galleryID . $current_page . $slideCounter++,
+        'time'      => $ngg_options['irRotatetime']*1000,
+        'loop'      => $ngg_options['irLoop'],
+        'drag'      => $ngg_options['irDrag'],
+        'nav'       => $ngg_options['irNavigation'],
+        'nav_dots'  => $ngg_options['irNavigationDots'],
+        'autoplay'  => $ngg_options['irAutoplay'],
+        'hover'     => $ngg_options['irAutoplayHover'],
+        'effect'    => $ngg_options['slideFx'],
+        'click'     => $ngg_options['irClick'],
+        'autodim'   => $ngg_options['irAutoDim'],
+        'number'    => $ngg_options['irNumber']
+    ));
 
-    //filter to resize images for mobile browser
-    list($width, $height) = apply_filters('ngg_slideshow_size', array( $width, $height ) );
-	
+    /**
+     * Edit the args for a NextCellent slideshow.
+     *
+     * @since 1.9.25beta2
+     *
+     * @param array $args {
+     *     All the arguments.
+     *
+     *     @var int $width The width of the slideshow. Will be ignored if $autodim is true.
+     *     @var int $height The height of the slideshow. Will be ignored if $autodim is set.
+     *     @var string $class The class that will be assigned to the div containing the slideshow.
+     *     @var string $anchor The id that will be assigned to the div containing the slideshow.
+     *     @var int $time The duration of a slide in milliseconds.
+     *     @var bool $loop If the slideshow should loop.
+     *     @var bool $drag If the user can drag through the images.
+     *     @var bool $nav If the navigation elements (next/previous) should be shown.
+     *     @var bool $nav_dots If the navigation dots should be shown.
+     *     @var bool $autoplay If the slideshow should automatically start.
+     *     @var bool $hover If the slideshow should pause when hovering over it.
+     *     @var string $effect With which effect the slideshow should use.
+     *     @var bool $click If the slideshow should go to the next image on click.
+     *     @var bool $autodim If the slideshow should automatically fit (responsive). When true, this will
+     *                        ignore the $width and $height.
+     *     @var int $number The number of images that should be displayed. Only works when the gallery ID
+     *                      is set to random or recent.
+     * }
+     */
+    $param = apply_filters( 'ngg_slideshow_args', $param );
+
 	//Get the images
 	if ($galleryID == 'random') {
-		$images = nggdb::get_random_images($number); //random images
-        if ( empty($number) ) $number = $ngg_options['irNumber'];
+		$images = nggdb::get_random_images( $param['number'] ); //random images
 	} elseif ($galleryID == 'recent') {
-		$images = nggdb::find_last_images(0 , $number); //the last images
-        if ( empty($number) ) $number = $ngg_options['irNumber'];
+		$images = nggdb::find_last_images(0 , $param['number'] ); //the last images
 	} else {
 		$images = $nggdb->get_gallery($galleryID); //a gallery
 	}
@@ -73,9 +98,10 @@ $nav = null, $nav_dots = null, $autoplay = null, $hover_pause = null, $effect = 
         throw new NGG_Not_Found( __( "The gallery was not found.", 'nggallery' ) );
     }
 
-    $out  = '<div class="slideshow"><div id="' . $anchor . '" class="' . $class . ' owl-carousel" ';
-    if(empty($autodim)) {
-        $out .=  'style="max-width: ' .  $width . 'px; max-height: ' . $height . 'px;"';
+    $out  = '<div class="slideshow"><div id="' . $param['anchor'] . '" class="' . $param['class'] . ' owl-carousel" ';
+
+    if( !$param['autodim'] ) {
+        $out .=  'style="max-width: ' .  $param['width'] . 'px; max-height: ' . $param['height'] . 'px;"';
     }
     $out .= '>';
 	
@@ -86,25 +112,25 @@ $nav = null, $nav_dots = null, $autoplay = null, $hover_pause = null, $effect = 
     $out .= '</div></div>'."\n";
     $out .= "\n".'<script type="text/javascript">';
 	$out .= "jQuery(document).ready(function($) {
-			var owl = $('#" . $anchor . "');
+			var owl = $('#" . $param['anchor'] . "');
 			owl.owlCarousel({
 				items: 1,
 				autoHeight: true,";
-	if ( $nav ) {
+	if ( $param['nav'] ) {
 		$out .= "nav: true,
 				navText: ['" . __('previous', 'nggallery') ."','" . __('next', 'nggallery') ."'],";
 	}
 	$out .=    "
-	            dots: " .  var_export($nav_dots, true) .",
-	            autoplay: ". var_export($autoplay, true) .",
-				autoplayTimeout: " . var_export($time, true) . ",
-				autoplayHoverPause: " . var_export($hover_pause, true) . ",
-				animateOut: " . var_export($effect, true) . ",
-				loop: " . var_export($loop, true) . ",
-				mouseDrag: " . var_export($drag, true) .",
-				touchDrag: " . var_export($drag, true) . "
+	            dots: " .  var_export($param['nav_dots'], true) .",
+	            autoplay: ". var_export($param['autoplay'], true) .",
+				autoplayTimeout: " . $param['time'] . ",
+				autoplayHoverPause: " . var_export($param['hover'], true) . ",
+				animateOut: '" . $param['effect'] . "',
+				loop: " . var_export($param['loop'], true) . ",
+				mouseDrag: " . var_export($param['drag'], true) .",
+				touchDrag: " . var_export($param['drag'], true) . "
 			});";
-    if ( $click ) {
+    if ( $param['click'] ) {
         $out .= "\n" . "owl.click( function () {
                     owl.trigger( 'next.owl.carousel' );
                 } );";
