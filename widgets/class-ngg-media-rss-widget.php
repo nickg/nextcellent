@@ -84,7 +84,6 @@ class NGG_Media_RSS_Widget extends WP_Widget {
 			'show_icon'        => true
 		) );
 
-		var_dump($instance);
 		// The widget form
 		?>
 		<p>

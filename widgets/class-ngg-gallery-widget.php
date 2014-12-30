@@ -9,13 +9,23 @@ class NGG_Gallery_Widget extends WP_Widget {
 	 * Register the widget.
 	 */
 	public function __construct() {
-		parent::WP_Widget( 'ngg-images', __( 'NextCellent Widget', 'nggallery' ), array(
+		parent::WP_Widget( 'ngg-images', __( 'NextCellent Gallery Widget', 'nggallery' ), array(
 			'classname'   => 'ngg_images',
 			'description' => __( 'Add recent or random images from the galleries', 'nggallery' )
 		) );
 	}
 
-	function update( $new_instance, $old_instance ) {
+	/**
+	 * Sanitize widget form values as they are saved.
+	 *
+	 * @see WP_Widget::update()
+	 *
+	 * @param array $new_instance Values just sent to be saved.
+	 * @param array $old_instance Previously saved values from database.
+	 *
+	 * @return array Updated safe values to be saved.
+	 */
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
@@ -53,7 +63,16 @@ class NGG_Gallery_Widget extends WP_Widget {
 		return $instance;
 	}
 
-	function form( $instance ) {
+	/**
+	 * Back-end widget form.
+	 *
+	 * @see WP_Widget::form()
+	 *
+	 * @param array $instance Previously saved values from database.
+	 *
+	 * @return string Default return is 'noform'.
+	 */
+	public function form( $instance ) {
 
 		//Defaults
 		$instance = wp_parse_args( (array) $instance, array(
@@ -151,27 +170,32 @@ class NGG_Gallery_Widget extends WP_Widget {
 
 	}
 
-	function widget( $args, $instance ) {
-		extract( $args );
+	/**
+	 * Front-end display of widget.
+	 *
+	 * @see WP_Widget::widget()
+	 *
+	 * @todo Needs to be better, without the mess to call to the database, but this requires a better database API.
+	 *
+	 * @param array $args Widget arguments.
+	 * @param array $instance Saved values from the database.
+	 */
+	public function widget( $args, $instance ) {
 
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '&nbsp;' : $instance['title'], $instance, $this->id_base );
 
-		global $wpdb;
+		var_dump($instance);
 
-		$items    = $instance['items'];
+		global $wpdb, $nggdb;
+
+		$items    = min( $instance['items'], $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->nggpictures WHERE exclude != 1 " ) );
 		$exclude  = $instance['exclude'];
 		$list     = $instance['list'];
-		$webslice = $instance['webslice'];
-
-		$count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->nggpictures WHERE exclude != 1 " );
-		if ( $count < $instance['items'] ) {
-			$instance['items'] = $count;
-		}
 
 		$exclude_list = '';
 
 		// THX to Kay Germer for the idea & addon code
-		if ( ( ! empty( $list ) ) && ( $exclude != 'all' ) ) {
+		if ( !empty( $list ) && $exclude != 'all' ) {
 			$list = explode( ',', $list );
 			// Prepare for SQL
 			$list = "'" . implode( "', '", $list ) . "'";
@@ -183,11 +207,6 @@ class NGG_Gallery_Widget extends WP_Widget {
 			if ( $exclude == 'allow' ) {
 				$exclude_list = "AND t.gid IN ($list)";
 			}
-
-			// Limit the output to the current author, can be used on author template pages
-			if ( $exclude == 'user_id' ) {
-				$exclude_list = "AND t.author IN ($list)";
-			}
 		}
 
 		if ( $instance['type'] == 'random' ) {
@@ -196,15 +215,7 @@ class NGG_Gallery_Widget extends WP_Widget {
 			$imageList = $wpdb->get_results( "SELECT t.*, tt.* FROM $wpdb->nggallery AS t INNER JOIN $wpdb->nggpictures AS tt ON t.gid = tt.galleryid WHERE tt.exclude != 1 $exclude_list ORDER by pid DESC limit 0,$items" );
 		}
 
-		// IE8 webslice support if needed
-		if ( $webslice ) {
-			$before_widget .= "\n" . '<div class="hslice" id="ngg-webslice" >' . "\n";
-			//the headline needs to have the class enty-title
-			$before_title = str_replace( 'class="', 'class="entry-title ', $before_title );
-			$after_widget = '</div>' . "\n" . $after_widget;
-		}
-
-		echo $before_widget . $before_title . $title . $after_title;
+		echo $args['before_widget'] . $args['before_title'] . $title . $args['after_title'];
 		echo "\n" . '<div class="ngg-widget entry-content">' . "\n";
 
 		if ( is_array( $imageList ) ) {
@@ -213,7 +224,7 @@ class NGG_Gallery_Widget extends WP_Widget {
 				$image = new nggImage( $image );
 
 				// get the effect code
-				$thumbcode = $image->get_thumbcode( $widget_id );
+				$thumbcode = $image->get_thumbcode( $args['widget_id'] );
 
 				// enable i18n support for alttext and description
 				$alttext     = htmlspecialchars( stripslashes( nggGallery::i18n( $image->alttext, 'pic_' . $image->pid . '_alttext' ) ) );
@@ -236,7 +247,10 @@ class NGG_Gallery_Widget extends WP_Widget {
 		}
 
 		echo '</div>' . "\n";
-		echo $after_widget;
+		echo $args['after_widget'];
 
 	}
 }
+add_action( 'widgets_init', function () {
+	register_widget( 'NGG_Gallery_Widget' );
+} );
