@@ -204,18 +204,16 @@ function ngg_ajax_dashboard() {
     @header( 'Content-Type: ' . get_option( 'html_type' ) . '; charset=' . get_option( 'blog_charset' ) );
     @header( 'X-Content-Type-Options: nosniff' );
 
+	$output = new Overview_Display();
+
     switch ( $_GET['jax'] ) {
 
     case 'dashboard_primary' :
-    	ngg_overview_news();
-    	break;
-
-    case 'ngg_locale' :
-    	ngg_locale();
+    	$output->ngg_overview_news();
     	break;
 
     case 'dashboard_plugins' :
-    	ngg_related_plugins();
+    	$output->ngg_related_plugins();
     	break;
 
     }

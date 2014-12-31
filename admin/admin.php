@@ -281,7 +281,8 @@ class nggAdminPanel {
 			case "nggallery" :
 			default :
 				include_once( dirname( __FILE__ ) . '/overview.php' );    // nggallery_admin_overview
-				//nggallery_admin_overview();
+				$output = new Overview_Display();
+				$output->display();
 				break;
 		}
 	}
