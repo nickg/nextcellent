@@ -1,9 +1,186 @@
 <?php
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
+class Overview_Display {
+
+	public function __construct() {
+		if (version_compare(PHP_VERSION, '5.0.0', '<')) ngg_check_for_PHP5();
+		//add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+		add_meta_box( 'dashboard_overview', __('Welcome to NextCellent Gallery !', 'nggallery'), array( $this, 'stats' ), 'ngg_overview', 'left', 'core');
+		add_meta_box('ngg_meta_box', __('Help me help YOU!', 'nggallery'), array( $this, 'likeThisMetaBox'), 'ngg_overview', 'right', 'core');
+		add_meta_box('dashboard_primary', __('Latest News', 'nggallery'), array( $this, 'ngg_widget_overview_news'), 'ngg_overview', 'left', 'core');
+		if ( !is_multisite() || is_super_admin() ) {
+			add_meta_box( 'ngg_plugin_check', __( 'Plugin Check', 'nggallery' ), array( $this, 'ngg_plugin_check'), 'ngg_overview', 'right', 'core' );
+			add_meta_box( 'ngg_server', __( 'Server Settings', 'nggallery' ), array( $this, 'ngg_overview_server'), 'ngg_overview', 'right', 'core' );
+			add_meta_box( 'dashboard_plugins', __( 'Related plugins', 'nggallery' ), array( $this, 'ngg_widget_related_plugins'), 'ngg_overview', 'left', 'core' );
+		}
+	}
+
+	/**
+	 * Show a summary of the used images
+	 *
+	 * @return void
+	 */
+	public function stats() {
+		global $wpdb;
+		//TODO: Move to database.
+		$images    = intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggpictures") );
+		$galleries = intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggallery") );
+		$albums    = intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggalbum") );
+		?>
+		<div class="table table_content">
+			<h4><?php _e('At a Glance', 'nggallery'); ?></h4>
+			<table>
+				<tbody>
+				<tr class="first">
+					<td class="first b"><a href="admin.php?page=nggallery-add-gallery"><?php echo $images; ?></a></td>
+					<td class="t"><a href="admin.php?page=nggallery-add-gallery"><?php echo _n( 'Image', 'Images', $images, 'nggallery' ); ?></a></td>
+					<td class="b"></td>
+					<td class="last"></td>
+				</tr>
+				<tr>
+					<td class="first b"><a href="admin.php?page=nggallery-manage-gallery"><?php echo $galleries; ?></a></td>
+					<td class="t"><a href="admin.php?page=nggallery-manage-gallery"><?php echo _n( 'Gallery', 'Galleries', $galleries, 'nggallery' ); ?></a></td>
+					<td class="b"></td>
+					<td class="last"></td>
+				</tr>
+				<tr>
+					<td class="first b"><a href="admin.php?page=nggallery-manage-album"><?php echo $albums; ?></a></td>
+					<td class="t"><a href="admin.php?page=nggallery-manage-album"><?php echo _n( 'Album', 'Albums', $albums, 'nggallery' ); ?></a></td>
+					<td class="b"></td>
+					<td class="last"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="versions" style="padding-top:14px">
+			<p>
+				<?php if(current_user_can('NextGEN Upload images')): ?><a class="button rbutton" href="admin.php?page=nggallery-add-gallery"><?php _e('Upload pictures', 'nggallery') ?></a><?php endif; ?>
+				<?php _e('Here you can control your images, galleries and albums.', 'nggallery') ?>
+			</p>
+			<br class="clear" />
+		</div>
+		<?php
+		if ( is_multisite() )
+			ngg_dashboard_quota();
+	}
+
+	// Display File upload quota on dashboard
+	function ngg_dashboard_quota() {
+
+		if ( get_site_option( 'upload_space_check_disabled' ) )
+			return;
+
+		if ( !wpmu_enable_function('wpmuQuotaCheck') )
+			return;
+
+		$quota = get_space_allowed();
+		$used = get_dirsize( BLOGUPLOADDIR ) / 1024 / 1024;
+
+		if ( $used > $quota )
+			$percentused = '100';
+		else
+			$percentused = ( $used / $quota ) * 100;
+		$used_color = ( $percentused < 70 ) ? ( ( $percentused >= 40 ) ? 'waiting' : 'approved' ) : 'spam';
+		$used = round( $used, 2 );
+		$percentused = number_format( $percentused );
+
+		?>
+		<p class="sub musub" style="position:static" ><?php _e( 'Storage Space' ); ?></p>
+		<div class="table table_content musubtable">
+			<table>
+				<tr class="first">
+					<td class="first b b-posts"><?php printf( __( '<a href="%1$s" title="Manage Uploads" class="musublink">%2$sMB</a>' ), esc_url( admin_url( 'admin.php?page=nggallery-manage-gallery' ) ), $quota ); ?></td>
+					<td class="t posts"><?php _e( 'Space Allowed' ); ?></td>
+				</tr>
+			</table>
+		</div>
+		<div class="table table_discussion musubtable">
+			<table>
+				<tr class="first">
+					<td class="b b-comments"><?php printf( __( '<a href="%1$s" title="Manage Uploads" class="musublink">%2$sMB (%3$s%%)</a>' ), esc_url( admin_url( 'admin.php?page=nggallery-manage-gallery' ) ), $used, $percentused ); ?></td>
+					<td class="last t comments <?php echo $used_color;?>"><?php _e( 'Space Used' );?></td>
+				</tr>
+			</table>
+		</div>
+		<br class="clear" />
+	<?php
+	}
+
+	public function output() {
+	?>
+		<div class="wrap">
+		<h2><?php _e('NextCellent Gallery Overview', 'nggallery') ?></h2>
+			<div id="poststuff">
+				<div id="post-body" class="metabox-holder columns-2">
+					<div id="post-body-content" class="postbox-container">
+						<?php do_meta_boxes('ngg_overview', 'left', 'Overview_Display'); ?>
+					</div>
+			    	<div class="postbox-container" id="postbox-container-1">
+						<?php do_meta_boxes('ngg_overview', 'right', 'Overview_Display'); ?>
+					</div>
+		        </div>
+			</div>
+		</div>
+	<script type="text/javascript">
+		//<![CDATA[
+        var ajaxWidgets, ajaxPopulateWidgets;
+
+        jQuery(document).ready( function($) {
+        	// These widgets are sometimes populated via ajax
+        	ajaxWidgets = [
+        		'dashboard_primary',
+        		'dashboard_plugins'
+        	];
+
+        	ajaxPopulateWidgets = function(el) {
+        		show = function(id, i) {
+        			var p, e = $('#' + id + ' div.inside:visible').find('.widget-loading');
+        			if ( e.length ) {
+        				p = e.parent();
+        				setTimeout( function(){
+        					p.load('admin-ajax.php?action=ngg_dashboard&jax=' + id, '', function() {
+        						p.hide().slideDown('normal', function(){
+        							$(this).css('display', '');
+        							if ( 'dashboard_plugins' == id && $.isFunction(tb_init) )
+        								tb_init('#dashboard_plugins a.thickbox');
+        						});
+        					});
+        				}, i * 500 );
+        			}
+        		};
+		        if ( el ) {
+        			el = el.toString();
+        			if ( $.inArray(el, ajaxWidgets) != -1 )
+        				show(el, 0);
+        		} else {
+        			$.each( ajaxWidgets, function(i) {
+        				show(this, i);
+        			});
+        		}
+        	};
+        	ajaxPopulateWidgets();
+        } );
+
+		jQuery(document).ready( function($) {
+			// postboxes setup
+			postboxes.add_postbox_toggles('ngg-overview');
+		});
+		//]]>
+	</script>
+	<?php
+	}
+
+}
+
+$output = new Overview_Display();
+$output->output();
+
+
+
 /**
  * nggallery_admin_overview()
- * 20130410: FZSM: as part of initiative, avoid implementing spaghuetti code.
+ * 20130410: FZSM: as part of initiative, avoid implementing spaghetti code.
  *                 Introducing class to deal with code and functions to provide backward compatibility 100%
  * Add the admin overview the dashboard style
  * @return mixed content
@@ -77,6 +254,386 @@ function nggallery_admin_overview()  {
 		//]]>
 	</script>
 	<?php
+	function ngg_plugin_check() {
+
+		global $ngg;
+		?>
+		<script type="text/javascript">
+			(function($) {
+				nggPluginCheck = {
+
+					settings: {
+						img_run:  '<img src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" class="icon" alt="started"/>',
+						img_ok:   '<img src="<?php echo esc_url( admin_url( 'images/yes.png' ) ); ?>" class="icon" alt="ok"/>',
+						img_fail: '<img src="<?php echo esc_url( admin_url( 'images/no.png' ) ); ?>" class="icon" alt="failed" />',
+						domain:   '<?php echo esc_url( home_url('index.php', is_ssl() ? 'https' : 'http') ); ?>'
+					},
+
+					run: function( index, state ) {
+						ul = $('#plugin_check');
+						s = this.settings;
+						var step = 1;
+						switch ( index ) {
+							case 1:
+								this.check1();
+								break;
+							case 2:
+								this.check2( step );
+								break;
+							case 3:
+								this.check3();
+								break;
+						}
+					},
+
+					// this function check if the json API will work with your theme & plugins
+					check1 : function() {
+						this.start(1);
+						var req = $.ajax({
+							dataType: 'json',
+							url: s.domain,
+							data:'callback=json&format=json&method=version',
+							cache: false,
+							timeout: 10000,
+							success: function(msg){
+								if (msg.version == '<?php echo $ngg->version; ?>')
+									nggPluginCheck.success(1);
+								else
+									nggPluginCheck.failed(1);
+							},
+							error: function (msg) {
+								nggPluginCheck.failed(1);
+							},
+							complete: function () {
+								nggPluginCheck.run(2);
+							}
+						});
+
+					},
+
+					// this function check if GD lib can create images & thumbnails
+					check2 : function( step ) {
+						if (step == 1) this.start(2);
+						var stop = false;
+						var req = $.ajax({
+							type: "POST",
+							url: ajaxurl,
+							data:"action=ngg_image_check&step=" + step,
+							cache: false,
+							timeout: 10000,
+							success: function(msg){
+								if (msg.stat == 'ok') {
+									nggPluginCheck.success(2, msg.message);
+								} else {
+									if (step == 1)
+										nggPluginCheck.failed(2);
+									stop = true;
+								}
+
+							},
+							error: function (msg) {
+								if (step == 1)
+									nggPluginCheck.failed(2);
+								stop = true;
+							},
+							complete: function () {
+								step++;
+								if (step <= 11 && stop == false)
+									nggPluginCheck.check2(step);
+								else
+									nggPluginCheck.run(3);
+							}
+						});
+					},
+
+					// this function check if wp_head / wp_footer is avaiable
+					check3 : function() {
+						this.start(3);
+						var req = $.ajax({
+							type: "POST",
+							url: ajaxurl,
+							data:"action=ngg_test_head_footer",
+							cache: false,
+							timeout: 10000,
+							success: function(msg){
+								if (msg == 'success')
+									nggPluginCheck.success(3);
+								else
+									nggPluginCheck.failed(3, msg);
+							},
+							error: function (msg) {
+								nggPluginCheck.failed(3);
+							}
+						});
+					},
+
+					start: function( id ) {
+
+						s = this.settings;
+						var field = "#check" + id;
+
+						if ( ul.find(field + " img").length == 0)
+							$(field).prepend( s.img_run );
+						else
+							$(field + " img").replaceWith( s.img_run );
+
+						$(field + " .success").hide();
+						$(field + " .failed").hide();
+						$(field + " .default").replaceWith('<p class="default message"><?php echo esc_js( __('Running...', 'nggallery') ); ?></p> ');
+					},
+
+					success: function( id, msg ) {
+
+						s = this.settings;
+						var field = "#check" + id;
+
+						if ( ul.find(field + " img").length == 0)
+							$(field).prepend( s.img_ok );
+						else
+							$(field + " img").replaceWith( s.img_ok );
+
+						$(field + " .default").hide();
+						if (msg)
+							$(field + " .success").replaceWith('<p class="success message">' + msg +' </p> ');
+						else
+							$(field + " .success").show();
+
+					},
+
+					failed: function( id, msg ) {
+
+						s = this.settings;
+						var field = "#check" + id;
+
+						if ( ul.find(field + " img").length == 0)
+							$(field).prepend( s.img_fail );
+						else
+							$(field + " img").replaceWith( s.img_fail );
+
+						$(field + " .default").hide();
+						if (msg)
+							$(field + " .failed").replaceWith('<p class="failed message">' + msg +' </p> ');
+						else
+							$(field + " .failed").show();
+
+					}
+
+				};
+			})(jQuery);
+		</script>
+		<div class="dashboard-widget-holder wp_dashboard_empty">
+			<div class="ngg-dashboard-widget">
+				<div class="dashboard-widget-content">
+					<ul id="plugin_check" class="settings">
+						<li id="check1">
+							<strong><?php _e('Check plugin/theme conflict', 'nggallery'); ?></strong>
+							<p class="default message"><?php _e('Not tested', 'nggallery'); ?></p>
+							<p class="success message" style="display: none;"><?php _e('No conflict could be detected', 'nggallery'); ?></p>
+							<p class="failed message" style="display: none;"><?php _e('Test failed, disable other plugins & switch to default theme', 'nggallery'); ?></p>
+						</li>
+						<li id="check2">
+							<strong><?php _e('Test image function', 'nggallery'); ?></strong>
+							<p class="default message"><?php _e('Not tested', 'nggallery'); ?></p>
+							<p class="success message" style="display: none;"><?php _e('The plugin could create images', 'nggallery'); ?></p>
+							<p class="failed message" style="display: none;"><?php _e('Couldn\'t create image, check your memory limit', 'nggallery'); ?></p>
+						</li>
+						<li id="check3">
+							<strong><?php _e('Check theme compatibility', 'nggallery'); ?></strong>
+							<p class="default message"><?php _e('Not tested', 'nggallery'); ?></p>
+							<p class="success message" style="display: none;"><?php _e('Your theme should work fine with NextCellent Gallery', 'nggallery'); ?></p>
+							<p class="failed message" style="display: none;"><?php _e('wp_head()/wp_footer() is missing, contact the theme author', 'nggallery'); ?></p>
+						</li>
+					</ul>
+					<p class="textright">
+						<input type="button" name="update" value="<?php _e('Check plugin', 'nggallery'); ?>" onclick="nggPluginCheck.run(1);" class="button-secondary" />
+					</p>
+				</div>
+			</div>
+		</div>
+	<?php
+	}
+
+	/**
+	 * Show the server settings in a dashboard widget
+	 *
+	 * @return void
+	 */
+	function ngg_overview_server() {
+		?>
+		<div id="dashboard_server_settings" class="dashboard-widget-holder wp_dashboard_empty">
+			<div class="ngg-dashboard-widget">
+				<div class="dashboard-widget-content">
+					<ul class="settings">
+						<?php ngg_get_serverinfo(); ?>
+					</ul>
+					<p><strong><?php _e('Graphic Library', 'nggallery'); ?></strong></p>
+					<ul class="settings">
+						<?php ngg_gd_info(); ?>
+					</ul>
+				</div>
+			</div>
+		</div>
+	<?php
+	}
+
+
+	/**
+	 * Show the latest NextGEN Gallery news
+	 *
+	 * @return void
+	 */
+	function ngg_widget_overview_news() {
+		echo '<p class="widget-loading hide-if-no-js">' . __( 'Loading&#8230;' ) . '</p><p class="describe hide-if-js">' . __('This widget requires JavaScript.') . '</p>';
+	}
+	function ngg_overview_news(){
+
+		?>
+		<div class="rss-widget">
+			<?php
+			$rss = @fetch_feed( 'http://wpgetready.com/feed/' );
+
+			if ( is_object($rss) ) {
+
+				if ( is_wp_error($rss) ) {
+					echo '<p>' . sprintf(__('Newsfeed could not be loaded.  Check the <a href="%s">front page</a> to check for updates.', 'nggallery'), 'http://www.nextgen-gallery.com/') . '</p>';
+					return;
+				}
+
+				echo '<ul>';
+				foreach ( $rss->get_items(0, 3) as $item ) {
+					$link = $item->get_link();
+					while ( stristr($link, 'http') != $link )
+						$link = substr($link, 1);
+					$link = esc_url(strip_tags($link));
+					$title = esc_attr(strip_tags($item->get_title()));
+					if ( empty($title) )
+						$title = __('Untitled');
+
+					$desc = str_replace( array("\n", "\r"), ' ', esc_attr( strip_tags( @html_entity_decode( $item->get_description(), ENT_QUOTES, get_option('blog_charset') ) ) ) );
+					$desc = wp_html_excerpt( $desc, 360 );
+
+					// Append ellipsis. Change existing [...] to [&hellip;].
+					if ( '[...]' == substr( $desc, -5 ) )
+						$desc = substr( $desc, 0, -5 ) . '[&hellip;]';
+					elseif ( '[&hellip;]' != substr( $desc, -10 ) )
+						$desc .= ' [&hellip;]';
+
+					$desc = esc_html( $desc );
+
+					$date = $item->get_date();
+					$diff = '';
+
+					if ( $date ) {
+
+						$diff = human_time_diff( strtotime($date, time()) );
+
+						if ( $date_stamp = strtotime( $date ) )
+							$date = ' <span class="rss-date">' . date_i18n( get_option( 'date_format' ), $date_stamp ) . '</span>';
+						else
+							$date = '';
+					}
+					?>
+					<li><a class="rsswidget" title="" target="_blank" href='<?php echo $link; ?>'><?php echo $title; ?></a>
+						<span class="rss-date"><?php echo $date; ?></span>
+						<div class="rssSummary"><strong><?php echo $diff; ?></strong> - <?php echo $desc; ?></div></li>
+				<?php
+				}
+				echo '</ul>';
+			}
+			?>
+		</div>
+	<?php
+	}
+
+	/**
+	 * Show a summary of the used images
+	 *
+	 * @return void
+	 */
+	function ngg_overview_right_now() {
+		global $wpdb;
+		$images    = intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggpictures") );
+		$galleries = intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggallery") );
+		$albums    = intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggalbum") );
+		?>
+		<div class="table table_content">
+			<h4><?php _e('At a Glance', 'nggallery'); ?></h4>
+			<table>
+				<tbody>
+				<tr class="first">
+					<td class="first b"><a href="admin.php?page=nggallery-add-gallery"><?php echo $images; ?></a></td>
+					<td class="t"><a href="admin.php?page=nggallery-add-gallery"><?php echo _n( 'Image', 'Images', $images, 'nggallery' ); ?></a></td>
+					<td class="b"></td>
+					<td class="last"></td>
+				</tr>
+				<tr>
+					<td class="first b"><a href="admin.php?page=nggallery-manage-gallery"><?php echo $galleries; ?></a></td>
+					<td class="t"><a href="admin.php?page=nggallery-manage-gallery"><?php echo _n( 'Gallery', 'Galleries', $galleries, 'nggallery' ); ?></a></td>
+					<td class="b"></td>
+					<td class="last"></td>
+				</tr>
+				<tr>
+					<td class="first b"><a href="admin.php?page=nggallery-manage-album"><?php echo $albums; ?></a></td>
+					<td class="t"><a href="admin.php?page=nggallery-manage-album"><?php echo _n( 'Album', 'Albums', $albums, 'nggallery' ); ?></a></td>
+					<td class="b"></td>
+					<td class="last"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="versions" style="padding-top:14px">
+			<p>
+				<?php if(current_user_can('NextGEN Upload images')): ?><a class="button rbutton" href="admin.php?page=nggallery-add-gallery"><?php _e('Upload pictures', 'nggallery') ?></a><?php endif; ?>
+				<?php _e('Here you can control your images, galleries and albums.', 'nggallery') ?>
+			</p>
+			<br class="clear" />
+		</div>
+		<?php
+		if ( is_multisite() )
+			ngg_dashboard_quota();
+	}
+
+	// Display File upload quota on dashboard
+	function ngg_dashboard_quota() {
+
+		if ( get_site_option( 'upload_space_check_disabled' ) )
+			return;
+
+		if ( !wpmu_enable_function('wpmuQuotaCheck') )
+			return;
+
+		$quota = get_space_allowed();
+		$used = get_dirsize( BLOGUPLOADDIR ) / 1024 / 1024;
+
+		if ( $used > $quota )
+			$percentused = '100';
+		else
+			$percentused = ( $used / $quota ) * 100;
+		$used_color = ( $percentused < 70 ) ? ( ( $percentused >= 40 ) ? 'waiting' : 'approved' ) : 'spam';
+		$used = round( $used, 2 );
+		$percentused = number_format( $percentused );
+
+		?>
+		<p class="sub musub" style="position:static" ><?php _e( 'Storage Space' ); ?></p>
+		<div class="table table_content musubtable">
+			<table>
+				<tr class="first">
+					<td class="first b b-posts"><?php printf( __( '<a href="%1$s" title="Manage Uploads" class="musublink">%2$sMB</a>' ), esc_url( admin_url( 'admin.php?page=nggallery-manage-gallery' ) ), $quota ); ?></td>
+					<td class="t posts"><?php _e( 'Space Allowed' ); ?></td>
+				</tr>
+			</table>
+		</div>
+		<div class="table table_discussion musubtable">
+			<table>
+				<tr class="first">
+					<td class="b b-comments"><?php printf( __( '<a href="%1$s" title="Manage Uploads" class="musublink">%2$sMB (%3$s%%)</a>' ), esc_url( admin_url( 'admin.php?page=nggallery-manage-gallery' ) ), $used, $percentused ); ?></td>
+					<td class="last t comments <?php echo $used_color;?>"><?php _e( 'Space Used' );?></td>
+				</tr>
+			</table>
+		</div>
+		<br class="clear" />
+	<?php
+	}
 }
 
 /**
