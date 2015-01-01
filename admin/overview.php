@@ -11,32 +11,33 @@ class Overview_Display {
 
 	public function __construct() {
 		//add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
-		add_meta_box( 'overview', __( 'Welcome to NextCellent Gallery !', 'nggallery' ), array(
+		add_meta_box( 'overview', __( 'At a Glance', 'nggallery' ), array(
 			$this,
 			'stats'
-		), 'ngg_overview', 'left', 'core' );
+		), 'ngg_overview', 'normal', 'core' );
 		add_meta_box( 'ngg_meta_box', __( 'Help me help YOU!', 'nggallery' ), array(
 			$this,
 			'like_this'
-		), 'ngg_overview', 'right', 'core' );
+		), 'ngg_overview', 'side', 'core' );
 		add_meta_box( 'dashboard_primary', __( 'Latest News', 'nggallery' ), array(
 			$this,
 			'ngg_widget_overview_news'
-		), 'ngg_overview', 'left', 'core' );
+		), 'ngg_overview', 'normal', 'core' );
 		if ( ! is_multisite() || is_super_admin() ) {
 			add_meta_box( 'ngg_plugin_check', __( 'Plugin Check', 'nggallery' ), array(
 				$this,
 				'ngg_plugin_check'
-			), 'ngg_overview', 'right', 'core' );
+			), 'ngg_overview', 'side', 'core' );
 			add_meta_box( 'ngg_server', __( 'Server Settings', 'nggallery' ), array(
 				$this,
 				'ngg_overview_server'
-			), 'ngg_overview', 'right', 'core' );
+			), 'ngg_overview', 'side', 'core' );
 			add_meta_box( 'dashboard_plugins', __( 'Related plugins', 'nggallery' ), array(
 				$this,
 				'ngg_widget_related_plugins'
-			), 'ngg_overview', 'left', 'core' );
+			), 'ngg_overview', 'normal', 'core' );
 		}
+		add_meta_box( 'dashboard_contributors', __( 'Contributors', 'nggallery' ), array( $this, 'contributors' ), 'ngg_overview', 'normal', 'core' );
 	}
 
 	/**
@@ -49,37 +50,22 @@ class Overview_Display {
 		$galleries = intval( $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->nggallery" ) );
 		$albums    = intval( $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->nggalbum" ) );
 		?>
-		<h4><?php _e( 'At a Glance', 'nggallery' ); ?></h4>
-		<ul>
-			<li>
-				<a href="admin.php?page=nggallery-add-gallery">
-					<span style="color: #888" class="dashicons dashicons-format-image"></span>
-					<?php echo $images; ?>
-					<?php echo _n( 'Image', 'Images', $images, 'nggallery' ); ?>
-				</a>
-			</li>
-			<li>
-				<a href="admin.php?page=nggallery-manage-gallery">
-					<span style="color: #888" class="dashicons dashicons-format-gallery"></span>
-					<?php echo $galleries; ?>
-					<?php echo _n( 'Gallery', 'Galleries', $galleries, 'nggallery' ); ?>
-				</a>
-			</li>
-			<li>
-				<a href="admin.php?page=nggallery-manage-album">
-					<span style="color: #888" class="dashicons dashicons-images-alt"></span>
-					<?php echo $albums; ?>
-					<?php echo _n( 'Album', 'Albums', $albums, 'nggallery' ); ?>
-				</a>
-			</li>
-		</ul>
-		<div class="versions">
-			<p>
-				<?php if ( current_user_can( 'NextGEN Upload images' ) ): ?><a class="button rbutton"
-				                                                               href="admin.php?page=nggallery-add-gallery"><?php _e( 'Upload', 'nggallery' ) ?></a><?php endif; ?>
-				<?php _e( 'Add new images and galleries.', 'nggallery' ) ?>
-			</p>
+		<div id="overview_right_now" class="main">
+			<p><?php _e( 'Here you can control your images, galleries and albums.', 'nggallery' ) ?></p>
+			<ul>
+				<li class="image-count"><a
+						href="admin.php?page=nggallery-add-gallery"><?php echo $images; ?> <?php /* translators: this is preceded by a number, ex. 5 Images. In some langugaes, this is better without capital */
+						echo _n( 'Image', 'Images', $images, 'nggallery' ); ?></a></li>
+				<li class="gallery-count"><a
+						href="admin.php?page=nggallery-manage-gallery"><?php echo $galleries; ?> <?php /* translators: this is preceded by a number, ex. 5 Images. In some langugaes, this is better without capital */
+						echo _n( 'Gallery', 'Galleries', $galleries, 'nggallery' ); ?></a></li>
+				<li class="album-count"><a
+						href="admin.php?page=nggallery-manage-album"><?php echo $albums; ?> <?php /* translators: this is preceded by a number, ex. 5 Images. In some langugaes, this is better without capital */
+						echo _n( 'Album', 'Albums', $albums, 'nggallery' ); ?></a></li>
+			</ul>
 		</div>
+		<?php if ( current_user_can( 'NextGEN Upload images' ) ): ?><a class="button button-primary"
+		                                                               href="admin.php?page=nggallery-add-gallery"><?php _e( 'Add new pictures', 'nggallery' ) ?></a><?php endif; ?>
 		<?php
 		if ( is_multisite() ) {
 			$this->ngg_dashboard_quota();
@@ -127,6 +113,40 @@ class Overview_Display {
 				<td><?php printf( __( '<a href="%1$s" title="Manage Uploads">%2$s MB (%3$s%%)</a>' ), esc_url( admin_url( 'admin.php?page=nggallery-manage-gallery' ) ), $used, $percent_used ); ?></td>
 			</tr>
 		</table>
+	<?php
+	}
+
+	public function contributors() {
+		?>
+		<div class="ngg-dashboard-widget">
+			<p><?php _e( 'This plugin is made possible by the great work of a lot of people. A special thanks to the following people for contributing to the original NextGen Gallery:', 'nggallery' ); ?></p>
+			<ul class="ngg-list">
+				<li>
+					<a href="http://www.lesterchan.net/" target="_blank">GaMerZ</a> <?php _e( 'for a lot of very useful plugins and ideas', 'nggallery' ); ?>
+				</li>
+				<li><?php _e( 'All others who contributed: ', 'nggallery' ); ?>
+					<br><?php $this->list_contributors( 'old' ); ?></li>
+			</ul>
+			<p><?php _e( 'All people who contributed to NextCellent Gallery: ', 'nggallery' ); ?></p>
+			<ul class="ngg-list">
+				<li><a href="http://wpgetready.com/"
+				       target="_blank">WPGetReady</a> <?php _e( 'for maintaining this fork of NextGen Gallery', 'nggallery' ); ?>
+				</li>
+				<li><a href="https://plus.google.com/u/0/+NikoStrijbol/posts" target="_blank">Niko
+						Strijbol</a> <?php _e( 'for various blabla - small stuff', 'nggallery' ); ?></li>
+				<li><a href="https://bitbucket.org/leap_dev" target="_blank">Richard
+						Bale</a> <?php _e( 'for his implementation of changing file the upload date using jQuery', 'nggallery' ); ?>
+				</li>
+				<li><a href="http://howden.net.au/thowden/" target="_blank">Tony
+						Howden</a> <?php _e( 'for his his code suggestions regarding nggtags shortcodes', 'nggallery' ); ?>
+				</li>
+				<li><a href="http://gfxproductions.com/" target="_blank">Stefano
+						Sudati</a> <?php _e( 'for his his suggestions on templates', 'nggallery' ); ?></li>
+				<li><p><?php _e( 'Also a big thank you to the new translators: ', 'nggallery' ); ?>
+						<br><?php $this->list_contributors( 'new' ); ?></p>
+				</li>
+			</ul>
+		</div>
 	<?php
 	}
 
@@ -552,7 +572,8 @@ class Overview_Display {
 		}
 
 		?>
-		<li><?php _e( 'Operating System', 'nggallery' ); ?>: <span><?php echo PHP_OS; ?> (<?php echo( PHP_INT_SIZE * 8 ) ?> Bit)</span></li>
+		<li><?php _e( 'Operating System', 'nggallery' ); ?>: <span><?php echo PHP_OS; ?>
+				(<?php echo( PHP_INT_SIZE * 8 ) ?> Bit)</span></li>
 		<li><?php _e( 'Server', 'nggallery' ); ?>: <span><?php echo $_SERVER["SERVER_SOFTWARE"]; ?></span></li>
 		<li><?php _e( 'Memory Usage', 'nggallery' ); ?>: <span><?php echo $memory_usage; ?></span></li>
 		<li><?php _e( 'MYSQL Version', 'nggallery' ); ?>: <span><?php echo $sqlversion; ?></span></li>
@@ -580,61 +601,189 @@ class Overview_Display {
 
 	/**
 	 * Show related plugins.
+	 * Based on class-wp-plugin-install-list-table.php
 	 */
-	public static function ngg_related_plugins() {
+	static public function ngg_related_plugins() {
 		include( ABSPATH . 'wp-admin/includes/plugin-install.php' );
-		//If transient vaporized, refresh it
-		if ( false === ( $api = get_transient( 'ngg_related_plugins' ) ) ) {
+
+		//Check for the transient.
+		if ( ! $plugins = get_transient( 'ngg_related_plugins' ) ) {
+
 			// Additional info http://dd32.id.au/projects/wordpressorg-plugin-information-api-docs/
-			$api = plugins_api( 'query_plugins', array( 'search' => 'nextgen' ) );
-			if ( is_wp_error( $api ) ) {
+			if ( is_wp_error( $api = plugins_api( 'query_plugins', array( 'search' => 'nextgen' ) ) ) ) {
 				return;
 			}
-			set_transient( 'ngg_related_plugins', $api, 60 * 60 * 24 ); //enable to check within a day.
+			$plugins = (array) $api->plugins;
+			shuffle( $plugins );
+			set_transient( 'ngg_related_plugins', $plugins, 60 * 60 * 24 ); //enable to check within a day.
 		}
 
-		$out  = '<div class="error form-invalid"><p>';
-		$out .= __( '<strong>Pay attention</strong>: third parties plugins that are compatible with NGG may not be 100&#37; compatible with NextCellent Gallery!', 'nggallery' );
-		$out .= '</p></div>';
+		echo '<div class="error form-invalid"><p>';
+		_e( '<strong>Pay attention</strong>: third parties plugins that are compatible with NGG may not be 100&#37; compatible with NextCellent Gallery!', 'nggallery' );
+		echo '</p></div><div id="the-list" style="overflow: auto">';
+
 		//List of suppressed plugin on the list.
 		$blacklist = array( 'nextgen-gallery', 'nextcellent-gallery-nextgen-legacy' );
 
-		$i = 0;
-		while ( $i < $how_many = 4 ) {
+		$plugins_allowedtags = array(
+			'a'       => array( 'href' => array(), 'title' => array(), 'target' => array() ),
+			'abbr'    => array( 'title' => array() ),
+			'acronym' => array( 'title' => array() ),
+			'code'    => array(),
+			'pre'     => array(),
+			'em'      => array(),
+			'strong'  => array(),
+			'ul'      => array(),
+			'ol'      => array(),
+			'li'      => array(),
+			'p'       => array(),
+			'br'      => array()
+		);
 
-			// pick them randomly
-			if ( 0 == count( $api->plugins ) ) {
-				return;
-			}
+		for ( $i = 0; $i < 3; $i ++ ) {
 
-			$key    = array_rand( $api->plugins );
-			$plugin = $api->plugins[ $key ];
+			$plugin = (array) $plugins[ $i ];
 
-			// don't forget to remove them
-			unset( $api->plugins[ $key ] );
-
-			if ( ! isset( $plugin->name ) ) {
+			if ( in_array( $plugin['slug'], $blacklist ) ) {
 				continue;
 			}
 
-			if ( in_array( $plugin->slug, $blacklist ) ) {
-				continue;
+			$title = wp_kses( $plugin['name'], $plugins_allowedtags );
+
+			// Remove any HTML from the description.
+			$description = strip_tags( $plugin['short_description'] );
+			$version     = wp_kses( $plugin['version'], $plugins_allowedtags );
+
+			$name = strip_tags( $title . ' ' . $version );
+
+			$author = wp_kses( $plugin['author'], $plugins_allowedtags );
+			if ( ! empty( $author ) ) {
+				$author = ' <cite>' . sprintf( __( 'By %s' ), $author ) . '</cite>';
 			}
 
-			$link  = esc_url( $plugin->homepage );
-			$title = esc_html( $plugin->name );
+			$action_links = array();
 
-			$description = esc_html( strip_tags( @html_entity_decode( $plugin->short_description, ENT_QUOTES, get_option( 'blog_charset' ) ) ) );
+			if ( current_user_can( 'install_plugins' ) || current_user_can( 'update_plugins' ) ) {
+				$status = install_plugin_install_status( $plugin );
 
-			$ilink = wp_nonce_url( 'plugin-install.php?tab=plugin-information&plugin=' . $plugin->slug, 'install-plugin_' . $plugin->slug ) . '&amp;TB_iframe=true&amp;width=600&amp;height=800';
+				switch ( $status['status'] ) {
+					case 'install':
+						if ( $status['url'] ) {
+							/* translators: 1: Plugin name and version. */
+							$action_links[] = '<a class="install-now button" href="' . $status['url'] . '" aria-label="' . esc_attr( sprintf( __( 'Install %s now' ), $name ) ) . '">' . __( 'Install Now' ) . '</a>';
+						}
 
-			$out .= "<h5><a href='{$link}' target='_blank'>{$title}</a></h5>&nbsp;<span>(<a href='$ilink' class='thickbox' title='$title'>" . __( 'Install' ) . "</a>)</span>\n";
-			$out .= "<p>$description<strong> " . __( 'Author' ) . " : </strong>$plugin->author</p>\n";
+						break;
+					case 'update_available':
+						if ( $status['url'] ) {
+							/* translators: 1: Plugin name and version */
+							$action_links[] = '<a class="button" href="' . $status['url'] . '" aria-label="' . esc_attr( sprintf( __( 'Update %s now' ), $name ) ) . '">' . __( 'Update Now' ) . '</a>';
+						}
 
-			$i ++;
+						break;
+					case 'latest_installed':
+					case 'newer_installed':
+						$action_links[] = '<span class="button button-disabled" title="' . esc_attr__( 'This plugin is already installed and is up to date' ) . ' ">' . _x( 'Installed', 'plugin' ) . '</span>';
+						break;
+				}
+			}
+
+			$details_link = self_admin_url( 'plugin-install.php?tab=plugin-information&amp;plugin=' . $plugin['slug'] . '&amp;TB_iframe=true&amp;width=600&amp;height=550' );
+
+			/* translators: 1: Plugin name and version. */
+			$action_links[] = '<a href="' . esc_url( $details_link ) . '" class="thickbox" aria-label="' . esc_attr( sprintf( __( 'More information about %s' ), $name ) ) . '" data-title="' . esc_attr( $name ) . '">' . __( 'More Details' ) . '</a>';
+
+
+			?>
+			<div class="plugin-card">
+				<div class="plugin-card-top">
+					<div class="name column-name">
+						<h4><a href="<?php echo esc_url( $details_link ); ?>" class="thickbox"><?php echo $title; ?></a>
+						</h4>
+					</div>
+					<div class="action-links">
+						<?php
+						if ( $action_links ) {
+							echo '<ul class="plugin-action-buttons"><li>' . implode( '</li><li>', $action_links ) . '</li></ul>';
+						}
+						?>
+					</div>
+					<div class="desc column-description">
+						<p><?php echo $description; ?></p>
+
+						<p class="authors"><?php echo $author; ?></p>
+					</div>
+				</div>
+				<div class="plugin-card-bottom">
+					<div class="vers column-rating">
+						<?php wp_star_rating( array(
+							'rating' => $plugin['rating'],
+							'type'   => 'percent',
+							'number' => $plugin['num_ratings']
+						) ); ?>
+						<span class="num-ratings">(<?php echo number_format_i18n( $plugin['num_ratings'] ); ?>)</span>
+					</div>
+					<div class="column-compatibility">
+						<?php
+						if ( ! empty( $plugin['tested'] ) && version_compare( substr( $GLOBALS['wp_version'], 0, strlen( $plugin['tested'] ) ), $plugin['tested'], '>' ) ) {
+							echo '<span class="compatibility-untested">' . __( 'Untested with your version of WordPress' ) . '</span>';
+						} elseif ( ! empty( $plugin['requires'] ) && version_compare( substr( $GLOBALS['wp_version'], 0, strlen( $plugin['requires'] ) ), $plugin['requires'], '<' ) ) {
+							echo '<span class="compatibility-incompatible">' . __( '<strong>Incompatible</strong> with your version of WordPress' ) . '</span>';
+						} else {
+							echo '<span class="compatibility-compatible">' . __( '<strong>Compatible</strong> with your version of WordPress' ) . '</span>';
+						}
+						?>
+					</div>
+				</div>
+			</div>
+		<?php
 		}
 
-		echo $out;
+		echo "<script>var tb_position;
+jQuery( document ).ready( function( $ ) {
+    tb_position = function() {
+        var tbWindow = $( '#TB_window' ),
+            width = $( window ).width(),
+            H = $( window ).height() - ( ( 792 < width ) ? 60 : 20 ),
+            W = ( 792 < width ) ? 772 : width - 20;
+
+        if ( tbWindow.size() ) {
+            tbWindow.width( W ).height( H );
+            $( '#TB_iframeContent' ).width( W ).height( H );
+            tbWindow.css({
+                'margin-left': '-' + parseInt( ( W / 2 ), 10 ) + 'px'
+            });
+            if ( typeof document.body.style.maxWidth !== 'undefined' ) {
+                tbWindow.css({
+                    'top': '30px',
+                    'margin-top': '0'
+                });
+            }
+        }
+
+        return $( 'a.thickbox' ).each( function() {
+            var href = $( this ).attr( 'href' );
+            if ( ! href ) {
+                return;
+            }
+            href = href.replace( /&width=[0-9]+/g, '' );
+            href = href.replace( /&height=[0-9]+/g, '' );
+            $(this).attr( 'href', href + '&width=' + W + '&height=' + ( H ) );
+        });
+    };
+
+    jQuery( window ).resize( function() {
+        tb_position();
+    });
+
+    jQuery( '.install-now' ).click( function() {
+        return confirm( '" . __( "Are you sure you want to install this?", "nggallery" ) . "' );
+    });
+});
+
+		</script>";
+
+		echo '</div>';
 	}
 
 	/**
@@ -665,17 +814,15 @@ class Overview_Display {
 	public function display() {
 		?>
 		<div class="wrap">
-			<h2><?php _e( 'NextCellent Gallery Overview', 'nggallery' ) ?></h2>
+			<h2><?php _e( 'Welcome to NextCellent Gallery!', 'nggallery' ) ?></h2>
 
 			<div id="poststuff">
-				<div id="dashboard-widgets">
-					<div id="post-body" class="metabox-holder columns-2">
-						<div id="post-body-content" class="postbox-container">
-							<?php do_meta_boxes( 'ngg_overview', 'left', 'Overview_Display' ); ?>
-						</div>
-						<div class="postbox-container" id="postbox-container-1">
-							<?php do_meta_boxes( 'ngg_overview', 'right', 'Overview_Display' ); ?>
-						</div>
+				<div id="post-body" class="metabox-holder columns-2">
+					<div class="postbox-container" id="postbox-container-2"> <!--style="width:75%;"-->
+						<?php do_meta_boxes( 'ngg_overview', 'normal', '' ); ?>
+					</div>
+					<div class="postbox-container" id="postbox-container-1"> <!--style="width:24%;"-->
+						<?php do_meta_boxes( 'ngg_overview', 'side', '' ); ?>
 					</div>
 				</div>
 			</div>
@@ -727,5 +874,103 @@ class Overview_Display {
 			//]]>
 		</script>
 	<?php
+	}
+
+	private function list_contributors( $type ) {
+
+		if( $type == 'old' ) {
+			$contributors = $this->old_contributors();
+		} else {
+			$contributors = $this->new_contributors();
+		}
+
+		ksort( $contributors );
+		$i = count( $contributors );
+		foreach ( $contributors as $name => $url ) {
+			if ( $url ) {
+				echo "<a href=\"$url\" target=\"_blank\">$name</a>";
+			} else {
+				echo $name;
+			}
+			$i --;
+			if ( $i == 1 ) {
+				echo " & ";
+			} elseif ( $i ) {
+				echo ", ";
+			}
+		}
+	}
+
+	/* New contributors. */
+	private function new_contributors() {
+		return array(
+			'Vladimir Vasilenko (Russian translation)' => 'http://shumbely.com/',
+			'Niko Strijbol (Dutch translation)'        => 'https://plus.google.com/u/0/+NikoStrijbol/posts',
+			'Vesa Tiirikainen (Finnish translation)'   => 'mailto:vesa@tiirikainen.fi'
+		);
+	}
+
+	/* Original contributors. */
+	private function old_contributors() {
+		return array(
+			'Anty (Code contributor)'                                   => 'http://www.anty.at/',
+			'Bjoern von Prollius (Code contributor)'                    => 'http://www.prollius.de/',
+			'Simone Fumagalli (Code contributor)'                       => 'http://www.iliveinperego.com/',
+			'Vincent Prat (Code contributor)'                           => 'http://www.vincentprat.info',
+			'Frederic De Ranter (AJAX code contributor)'                => 'http://li.deranter.com/',
+			'Christian Arnold (Code contributor)'                       => 'http://blog.arctic-media.de/',
+			'Thomas Matzke (Album code contributor)'                    => 'http://mufuschnu.mu.funpic.de/',
+			'KeViN (Sidebar Widget developer)'                          => 'http://www.kev.hu/',
+			'Lazy (German Translation)'                                 => 'http://www.lazychris.de/',
+			'Lise (French Translation)'                                 => 'http://liseweb.fr/',
+			'Anja (Dutch Translation)'                                  => 'http://www.werkgroepen.net/wordpress',
+			'Adrian (Indonesian Translation)'                           => 'http://adrian.web.id/',
+			'Gaspard Tseng / SillyCCSmile (Chinese Translation)'        => '',
+			'Mika Pennanen (Finnish Translation)'                       => 'http://kapsi.fi/~penni',
+			'Wojciech Owczarek (Polish Translation)'                    => 'http://www.owczi.net',
+			'Dilip Ramirez (Spanish Translation)'                       => 'http://jmtd.110mb.com/blog',
+			'Oleinikov Vedmak Evgeny (Russian Translation)'             => 'http://ka-2-03.mirea.org/',
+			'Sebastien MALHERBE	(Logo design)'                       => 'http://www.7vision.com/',
+			'Claudia (German documentation)'                            => 'http://www.blog-werkstatt.de/',
+			'Robert (German documentation)'                             => 'http://www.curlyrob.de/',
+			'Pierpaolo Mannone (Italian Translation)'                   => 'http://www.interscambiocasa.com/',
+			'Mattias Tengblad (Swedish Translation)'                    => 'http://wp-support.se/',
+			'M&uuml;fit Kiper (Swedish Translation)'                    => 'http://www.kiper.se/',
+			'Gil Yaker (Documentation)'                                 => 'http://bamboosoup.com/',
+			'Morten Johansen (Danish Translation)'                      => 'http://www.fr3ak.dk/',
+			'Vidar Seland (Norwegian Translation)'                      => 'http://www.viidar.net/',
+			'Emre G&uuml;ler (Turkish Translation)'                     => 'http://www.emreguler.com/',
+			'Emilio Lauretti (Italian Translation)'                     => '',
+			'Jan Angelovic (Czech Translation)'                         => 'http://www.angelovic.cz/',
+			'Laki (Slovak Translation)'                                 => 'http://www.laki.sk/',
+			'Rowan Crane (WPMU support)'                                => 'http://blog.rowancrane.com/',
+			'Kuba Zwolinski (Polish Translation)'                       => 'http://kubazwolinski.com/',
+			'Rina Jiang (Chinese Translation)'                          => 'http://http://mysticecho.net/',
+			'Anthony (Chinese Translation)'                             => 'http://www.angryouth.com/',
+			'Milan Vasicek (Czech Translation)'                         => 'http://www.NoWorkTeam.cz/',
+			'Joo Gi-young (Korean Translation)'                         => 'http://lombric.linuxstudy.pe.kr/wp/',
+			'Oleg A. Safonov (Russian Translation)'                     => 'http://blog.olart.ru',
+			'AleXander Kirichev (Bulgarian Translation)'                => 'http://xsakex.art-bg.org/',
+			'Richer Yang (Chinese Translation)'                         => 'http://fantasyworld.idv.tw/',
+			'Bill Jones (Forums contributor)'                           => 'http://jonesphoto.bluehorizoninternet.com/',
+			'TheDonSansone (Forums contributor)'                        => 'http://abseiling.200blogs.co.uk/',
+			'Komyshov (Russian Translation)'                            => 'http://kf-web.ru/',
+			'aleX Zhang (Chinese Translation)'                          => 'http://zhangfei.info/',
+			'TheSoloist (Chinese Translation)'                          => 'http://www.soloist-ic.cn/',
+			'Nica Luigi Cristian (Romanian Translation)'                => 'http://www.cristiannica.com/',
+			'Zdenek Hatas (Czech Translation)'                          => '',
+			'David Potter (Documentation and Help)'                     => 'http://dpotter.net/',
+			'Carlale Chen (Chinese Translation)'                        => 'http://0-o-0.cc/',
+			'Igor Shevkoplyas (Russian Translation)'                    => 'http://www.russian-translation-matters.com',
+			'Alexandr Kindras (Code contributor)'                       => 'http://www.fixdev.com',
+			'Manabu Togawa (Japanese Translation)'                      => 'http://www.churadesign.com/',
+			'Serhiy Tretyak (Ukrainian Translation)'                    => 'http://designpoint.com.ua/',
+			'Janis Grinvalds (Latvian Translation)'                     => 'http://riga.bmxrace.lv/',
+			'Kristoffer Th&oslash;ring (Norwegian Translation)'         => '',
+			'Flactarus (Italian Translation)'                           => 'http://www.giroevago.it',
+			'Felip Alfred Galit&oacute; i Trilla (Catalan Translation)' => 'http://www.bratac.cat',
+			'Luka Komac (Slovenian Translation)'                        => 'http://www.komac.biz',
+			'Dimitris Ikonomou / Nikos Mouratidis (Greek Translation)'  => 'http://www.kepik.gr'
+		);
 	}
 }

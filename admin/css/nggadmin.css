@@ -16,6 +16,79 @@
 	color:#2583AD;
 	font-weight:bold;
 }
+#overview_right_now ul {
+ overflow: hidden;
+}
+
+#overview_right_now li {
+ width: 50%;
+ float: left;
+ margin-bottom: 10px;
+}
+
+#overview_right_now li a{
+text-decoration: none;
+}
+
+#overview_right_now .image-count a:before {
+ content: "\f128";
+ }
+
+#overview_right_now .album-count a:before {
+ content: "\f233";
+ }
+
+#overview_right_now .gallery-count a:before {
+ content: "\f161";
+ }
+
+#overview_right_now li a:before {
+ font: 400 20px/1 dashicons;
+ display: block;
+ float: left;
+ margin: 0 5px 0 0;
+ padding: 0;
+ text-indent: 0;
+ text-align: center;
+ position: relative;
+ -webkit-font-smoothing: antialiased;
+ text-decoration: none!important;
+ color: #888;
+ }
+
+.plugin-card .desc, .plugin-card .name {
+	margin-left: initial;
+}
+
+/* Thickbox settings for Overview */
+#TB_title {
+	float: left;
+	height: 1px;
+}
+
+#TB_ajaxWindowTitle {
+	display: none;
+}
+
+.tb-close-icon {
+	left: auto;
+	right: -30px;
+	color: #eee;
+	-webkit-transition: color .1s ease-in-out,background .1s ease-in-out;
+	transition: color .1s ease-in-out,background .1s ease-in-out;
+}
+
+.tb-close-icon:before {
+	content: "\f335";
+	font-size: 32px;
+}
+
+.tb-close-icon:hover {
+	color: #2ea2cc;
+	outline: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
 
 .ngg-overview .postbox .handlediv {
 	float:right;
