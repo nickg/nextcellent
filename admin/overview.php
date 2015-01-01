@@ -10,9 +10,6 @@ if ( preg_match( '#' . basename( __FILE__ ) . '#', $_SERVER['PHP_SELF'] ) ) {
 class Overview_Display {
 
 	public function __construct() {
-		if ( version_compare( PHP_VERSION, '5.0.0', '<' ) ) {
-			ngg_check_for_PHP5();
-		}
 		//add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 		add_meta_box( 'overview', __( 'Welcome to NextCellent Gallery !', 'nggallery' ), array(
 			$this,
@@ -144,81 +141,67 @@ class Overview_Display {
 	/**
 	 * Output the actual RSS news.
 	 */
-	public function ngg_overview_news() {
+	static public function ngg_overview_news() {
 
-		?>
-		<div class="rss-widget">
-			<?php
-			$rss = @fetch_feed( 'http://wpgetready.com/feed/' );
+		$rss = fetch_feed( 'http://wpgetready.com/feed/' );
 
-			if ( is_object( $rss ) ) {
-
-				if ( is_wp_error( $rss ) ) {
-					echo '<p>' . sprintf( __( 'Newsfeed could not be loaded.  Check the <a href="%s">front page</a> to check for updates.', 'nggallery' ), 'http://www.nextgen-gallery.com/' ) . '</p>';
-
-					return;
+		if ( is_wp_error( $rss ) ) {
+			$out = '<p>' . sprintf( __( 'The newsfeed could not be loaded.  Check the <a href="%s">front page</a> to check for updates.', 'nggallery' ), 'http://www.nextgen-gallery.com/' ) . '</p>';
+		} else {
+			$out = '<div class="rss-widget">';
+			foreach ( $rss->get_items( 0, 3 ) as $item ) {
+				$link = $item->get_link();
+				while ( stristr( $link, 'http' ) != $link ) {
+					$link = substr( $link, 1 );
+				}
+				$link  = esc_url( strip_tags( $link ) );
+				$title = esc_attr( strip_tags( $item->get_title() ) );
+				if ( empty( $title ) ) {
+					$title = __( 'Untitled' );
 				}
 
-				echo '<ul>';
-				foreach ( $rss->get_items( 0, 3 ) as $item ) {
-					$link = $item->get_link();
-					while ( stristr( $link, 'http' ) != $link ) {
-						$link = substr( $link, 1 );
-					}
-					$link  = esc_url( strip_tags( $link ) );
-					$title = esc_attr( strip_tags( $item->get_title() ) );
-					if ( empty( $title ) ) {
-						$title = __( 'Untitled' );
-					}
+				$desc = str_replace( array(
+					"\n",
+					"\r"
+				), ' ', esc_attr( strip_tags( @html_entity_decode( $item->get_description(), ENT_QUOTES, get_option( 'blog_charset' ) ) ) ) );
+				$desc = wp_html_excerpt( $desc, 360 );
 
-					$desc = str_replace( array(
-						"\n",
-						"\r"
-					), ' ', esc_attr( strip_tags( @html_entity_decode( $item->get_description(), ENT_QUOTES, get_option( 'blog_charset' ) ) ) ) );
-					$desc = wp_html_excerpt( $desc, 360 );
-
-					// Append ellipsis. Change existing [...] to [&hellip;].
-					if ( '[...]' == substr( $desc, - 5 ) ) {
-						$desc = substr( $desc, 0, - 5 ) . '[&hellip;]';
-					} elseif ( '[&hellip;]' != substr( $desc, - 10 ) ) {
-						$desc .= ' [&hellip;]';
-					}
-
-					$desc = esc_html( $desc );
-
-					$date = $item->get_date();
-					$diff = '';
-
-					if ( $date ) {
-
-						$diff = human_time_diff( strtotime( $date, time() ) );
-
-						if ( $date_stamp = strtotime( $date ) ) {
-							$date = ' <span class="rss-date">' . date_i18n( get_option( 'date_format' ), $date_stamp ) . '</span>';
-						} else {
-							$date = '';
-						}
-					}
-					?>
-					<li><a class="rsswidget" title="" target="_blank"
-					       href='<?php echo $link; ?>'><?php echo $title; ?></a>
-						<span class="rss-date"><?php echo $date; ?></span>
-
-						<div class="rssSummary"><strong><?php echo $diff; ?></strong> - <?php echo $desc; ?></div>
-					</li>
-				<?php
+				// Append ellipsis. Change existing [...] to [&hellip;].
+				if ( '[...]' == substr( $desc, - 5 ) ) {
+					$desc = substr( $desc, 0, - 5 ) . '[&hellip;]';
+				} elseif ( '[&hellip;]' != substr( $desc, - 10 ) ) {
+					$desc .= ' [&hellip;]';
 				}
-				echo '</ul>';
+
+				$desc = esc_html( $desc );
+
+				$date = $item->get_date();
+				$diff = '';
+
+				if ( $date ) {
+
+					$diff = human_time_diff( strtotime( $date, time() ) );
+
+					if ( $date_stamp = strtotime( $date ) ) {
+						$date = ' <span class="rss-date">' . date_i18n( get_option( 'date_format' ), $date_stamp ) . '</span>';
+					} else {
+						$date = '';
+					}
+				}
+				$out .= '<ul><li>';
+				$out .= '<a class="rsswidget" target="_blank" href="' . $link . '" >' . $title . '</a>';
+				$out .= '<span class="rss-date">' . $date . '</span>';
+				$out .= '<div class="rssSummary"><strong>' . $diff . '</strong> - ' . $desc . '</div></li></ul>';
 			}
-			?>
-		</div>
-	<?php
+			$out .= '</div>';
+		}
+		echo $out;
 	}
 
 	/**
 	 * Check for compatability.
 	 */
-	function ngg_plugin_check() {
+	public function ngg_plugin_check() {
 
 		global $ngg;
 		?>
@@ -457,20 +440,20 @@ class Overview_Display {
 	/**
 	 * Show GD Library version information.
 	 */
-	function ngg_gd_info() {
+	private function ngg_gd_info() {
 
 		if ( function_exists( "gd_info" ) ) {
 			$info = gd_info();
 			$keys = array_keys( $info );
 			for ( $i = 0; $i < count( $keys ); $i ++ ) {
 				if ( is_bool( $info[ $keys[ $i ] ] ) ) {
-					echo "<li> " . $keys[ $i ] . " : <span>" . $this->ngg_gd_yesNo( $info[ $keys[ $i ] ] ) . "</span></li>\n";
+					echo "<li> " . $keys[ $i ] . ": <span>" . $this->ngg_gd_yesNo( $info[ $keys[ $i ] ] ) . "</span></li>\n";
 				} else {
-					echo "<li> " . $keys[ $i ] . " : <span>" . $info[ $keys[ $i ] ] . "</span></li>\n";
+					echo "<li> " . $keys[ $i ] . ": <span>" . $info[ $keys[ $i ] ] . "</span></li>\n";
 				}
 			}
 		} else {
-			echo '<h4>' . __( 'No GD support', 'nggallery' ) . '!</h4>';
+			_e( 'There is no GD support', 'nggallery' );
 		}
 	}
 
@@ -481,7 +464,7 @@ class Overview_Display {
 	 *
 	 * @return string 'Yes'|'No'
 	 */
-	function ngg_gd_yesNo( $bool ) {
+	private function ngg_gd_yesNo( $bool ) {
 		if ( $bool ) {
 			return __( 'Yes', 'nggallery' );
 		} else {
@@ -494,7 +477,7 @@ class Overview_Display {
 	 *
 	 * @see GamerZ (http://www.lesterchan.net)
 	 */
-	function ngg_get_serverinfo() {
+	private function ngg_get_serverinfo() {
 
 		global $wpdb, $ngg;
 		// Get MYSQL Version
@@ -506,12 +489,6 @@ class Overview_Display {
 		}
 		if ( empty( $sql_mode ) ) {
 			$sql_mode = __( 'Not set', 'nggallery' );
-		}
-		// Get PHP Safe Mode
-		if ( ini_get( 'safe_mode' ) ) {
-			$safe_mode = __( 'On', 'nggallery' );
-		} else {
-			$safe_mode = __( 'Off', 'nggallery' );
 		}
 		// Get PHP allow_url_fopen
 		if ( ini_get( 'allow_url_fopen' ) ) {
@@ -551,13 +528,13 @@ class Overview_Display {
 		}
 		// Get actual memory_get_usage
 		if ( function_exists( 'memory_get_usage' ) ) {
-			$memory_usage = round( memory_get_usage() / 1024 / 1024, 2 ) . __( ' MByte', 'nggallery' );
+			$memory_usage = round( memory_get_usage() / 1024 / 1024, 2 ) . __( ' MB', 'nggallery' );
 		} else {
 			$memory_usage = __( 'N/A', 'nggallery' );
 		}
 		// required for EXIF read
 		if ( is_callable( 'exif_read_data' ) ) {
-			$exif = __( 'Yes', 'nggallery' ) . " ( V" . substr( phpversion( 'exif' ), 0, 4 ) . ")";
+			$exif = __( 'Yes', 'nggallery' ) . " ( v" . substr( phpversion( 'exif' ), 0, 4 ) . ")";
 		} else {
 			$exif = __( 'No', 'nggallery' );
 		}
@@ -575,83 +552,40 @@ class Overview_Display {
 		}
 
 		?>
-		<li><?php _e( 'Operating System', 'nggallery' ); ?> : <span><?php echo PHP_OS; ?>
-				&nbsp;(<?php echo( PHP_INT_SIZE * 8 ) ?>&nbsp;Bit)</span></li>
-		<li><?php _e( 'Server', 'nggallery' ); ?> : <span><?php echo $_SERVER["SERVER_SOFTWARE"]; ?></span></li>
-		<li><?php _e( 'Memory usage', 'nggallery' ); ?> : <span><?php echo $memory_usage; ?></span></li>
-		<li><?php _e( 'MYSQL Version', 'nggallery' ); ?> : <span><?php echo $sqlversion; ?></span></li>
-		<li><?php _e( 'SQL Mode', 'nggallery' ); ?> : <span><?php echo $sql_mode; ?></span></li>
-		<li><?php _e( 'PHP Version', 'nggallery' ); ?> : <span><?php echo PHP_VERSION; ?></span></li>
-		<li><?php _e( 'PHP Safe Mode', 'nggallery' ); ?> : <span><?php echo $safe_mode; ?></span></li>
-		<li><?php _e( 'PHP Allow URL fopen', 'nggallery' ); ?> : <span><?php echo $allow_url_fopen; ?></span></li>
-		<li><?php _e( 'PHP Memory Limit', 'nggallery' ); ?> : <span><?php echo $memory_limit; ?></span></li>
-		<li><?php _e( 'PHP Max Upload Size', 'nggallery' ); ?> : <span><?php echo $upload_max; ?></span></li>
-		<li><?php _e( 'PHP Max Post Size', 'nggallery' ); ?> : <span><?php echo $post_max; ?></span></li>
-		<li><?php _e( 'PCRE Backtracking Limit', 'nggallery' ); ?> : <span><?php echo $backtrack_limit; ?></span></li>
-		<li><?php _e( 'PHP Max Script Execute Time', 'nggallery' ); ?> : <span><?php echo $max_execute; ?>s</span></li>
-		<li><?php _e( 'PHP Exif support', 'nggallery' ); ?> : <span><?php echo $exif; ?></span></li>
-		<li><?php _e( 'PHP IPTC support', 'nggallery' ); ?> : <span><?php echo $iptc; ?></span></li>
-		<li><?php _e( 'PHP XML support', 'nggallery' ); ?> : <span><?php echo $xml; ?></span></li>
+		<li><?php _e( 'Operating System', 'nggallery' ); ?>: <span><?php echo PHP_OS; ?> (<?php echo( PHP_INT_SIZE * 8 ) ?> Bit)</span></li>
+		<li><?php _e( 'Server', 'nggallery' ); ?>: <span><?php echo $_SERVER["SERVER_SOFTWARE"]; ?></span></li>
+		<li><?php _e( 'Memory Usage', 'nggallery' ); ?>: <span><?php echo $memory_usage; ?></span></li>
+		<li><?php _e( 'MYSQL Version', 'nggallery' ); ?>: <span><?php echo $sqlversion; ?></span></li>
+		<li><?php _e( 'SQL Mode', 'nggallery' ); ?>: <span><?php echo $sql_mode; ?></span></li>
+		<li><?php _e( 'PHP Version', 'nggallery' ); ?>: <span><?php echo PHP_VERSION; ?></span></li>
+		<li><?php _e( 'PHP Allow URL fopen', 'nggallery' ); ?>: <span><?php echo $allow_url_fopen; ?></span></li>
+		<li><?php _e( 'PHP Memory Limit', 'nggallery' ); ?>: <span><?php echo $memory_limit; ?></span></li>
+		<li><?php _e( 'PHP Max Upload Size', 'nggallery' ); ?>: <span><?php echo $upload_max; ?></span></li>
+		<li><?php _e( 'PHP Max Post Size', 'nggallery' ); ?>: <span><?php echo $post_max; ?></span></li>
+		<li><?php _e( 'PCRE Backtracking Limit', 'nggallery' ); ?>: <span><?php echo $backtrack_limit; ?></span></li>
+		<li><?php _e( 'PHP Max Script Execute Time', 'nggallery' ); ?>: <span><?php echo $max_execute; ?>s</span></li>
+		<li><?php _e( 'PHP EXIF Support', 'nggallery' ); ?>: <span><?php echo $exif; ?></span></li>
+		<li><?php _e( 'PHP IPTC Support', 'nggallery' ); ?>: <span><?php echo $iptc; ?></span></li>
+		<li><?php _e( 'PHP XML Support', 'nggallery' ); ?>: <span><?php echo $xml; ?></span></li>
 	<?php
-	}
-
-	/**
-	 * Inform about the end of PHP4
-	 */
-	function ngg_check_for_PHP5() {
-		?>
-		<div class="updated">
-			<p><?php _e( 'NextCellent Gallery contains some functions which are only available under PHP 5.2. You are using the old PHP 4 version, upgrade now! It\'s no longer supported by the PHP group. Many shared hosting providers offer both PHP 4 and PHP 5, running simultaneously. Ask your provider if they can do this.', 'nggallery' ); ?></p>
-		</div>
-	<?php
-	}
-
-	/**
-	 * ngg_get_phpinfo() - Extract all of the data from phpinfo into a nested array
-	 *
-	 * @author jon@sitewizard.ca
-	 * @return array The information.
-	 */
-	function ngg_get_phpinfo() {
-
-		ob_start();
-		phpinfo();
-		$phpinfo = array( 'phpinfo' => array() );
-
-		if ( preg_match_all( '#(?:<h2>(?:<a name=".*?">)?(.*?)(?:</a>)?</h2>)|(?:<tr(?: class=".*?")?><t[hd](?: class=".*?")?>(.*?)\s*</t[hd]>(?:<t[hd](?: class=".*?")?>(.*?)\s*</t[hd]>(?:<t[hd](?: class=".*?")?>(.*?)\s*</t[hd]>)?)?</tr>)#s', ob_get_clean(), $matches, PREG_SET_ORDER ) ) {
-			foreach ( $matches as $match ) {
-				if ( strlen( $match[1] ) ) {
-					$phpinfo[ $match[1] ] = array();
-				} elseif ( isset( $match[3] ) ) {
-					$phpinfo[ end( array_keys( $phpinfo ) ) ][ $match[2] ] = isset( $match[4] ) ? array(
-						$match[3],
-						$match[4]
-					) : $match[3];
-				} else {
-					$phpinfo[ end( array_keys( $phpinfo ) ) ][] = $match[2];
-				}
-			}
-		}
-
-		return $phpinfo;
 	}
 
 	/**
 	 * Show NextGEN Gallery related plugins. Fetch plugins from wp.org which have added 'nextgen-gallery' as tag in
 	 * readme.txt. This is a placeholder that will be replaced by a AJAX-call to $this->ngg_related_plugins.
 	 */
-	function ngg_widget_related_plugins() {
+	public function ngg_widget_related_plugins() {
 		echo '<p class="widget-loading hide-if-no-js">' . __( 'Loading&#8230;' ) . '</p><p class="describe hide-if-js">' . __( 'This widget requires JavaScript.' ) . '</p>';
 	}
 
 	/**
 	 * Show related plugins.
 	 */
-	function ngg_related_plugins() {
+	public static function ngg_related_plugins() {
 		include( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 		//If transient vaporized, refresh it
 		if ( false === ( $api = get_transient( 'ngg_related_plugins' ) ) ) {
-			// Adittional info http://dd32.id.au/projects/wordpressorg-plugin-information-api-docs/
+			// Additional info http://dd32.id.au/projects/wordpressorg-plugin-information-api-docs/
 			$api = plugins_api( 'query_plugins', array( 'search' => 'nextgen' ) );
 			if ( is_wp_error( $api ) ) {
 				return;
@@ -659,11 +593,9 @@ class Overview_Display {
 			set_transient( 'ngg_related_plugins', $api, 60 * 60 * 24 ); //enable to check within a day.
 		}
 
-		echo '<div style="margin-bottom:10px;padding:8px;font-size:110%;background:#eebbaa;"><b>';
-		_e( 'Pay attention', 'nggallery' );
-		echo '</b>:';
-		_e( 'third parties plugins that are compatible with NGG may not be 100&#37; compatible with NextCellent Gallery!', 'nggallery' );
-		echo '</div>';
+		$out  = '<div class="error form-invalid"><p>';
+		$out .= __( '<strong>Pay attention</strong>: third parties plugins that are compatible with NGG may not be 100&#37; compatible with NextCellent Gallery!', 'nggallery' );
+		$out .= '</p></div>';
 		//List of suppressed plugin on the list.
 		$blacklist = array( 'nextgen-gallery', 'nextcellent-gallery-nextgen-legacy' );
 
@@ -696,17 +628,19 @@ class Overview_Display {
 
 			$ilink = wp_nonce_url( 'plugin-install.php?tab=plugin-information&plugin=' . $plugin->slug, 'install-plugin_' . $plugin->slug ) . '&amp;TB_iframe=true&amp;width=600&amp;height=800';
 
-			echo "<h5><a href='{$link}' target='_blank'>{$title}</a></h5>&nbsp;<span>(<a href='$ilink' class='thickbox' title='$title'>" . __( 'Install' ) . "</a>)</span>\n";
-			echo "<p>$description<strong> " . __( 'Author' ) . " : </strong>$plugin->author</p>\n";
+			$out .= "<h5><a href='{$link}' target='_blank'>{$title}</a></h5>&nbsp;<span>(<a href='$ilink' class='thickbox' title='$title'>" . __( 'Install' ) . "</a>)</span>\n";
+			$out .= "<p>$description<strong> " . __( 'Author' ) . " : </strong>$plugin->author</p>\n";
 
 			$i ++;
 		}
+
+		echo $out;
 	}
 
 	/**
 	 * Like me!
 	 */
-	function like_this() {
+	public function like_this() {
 
 		$url = 'http://www.wpgetready.com';
 		echo '<p>';
