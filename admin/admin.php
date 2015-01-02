@@ -168,11 +168,6 @@ class nggAdminPanel {
 				'show_menu'
 			) );
 		}
-		add_submenu_page( NGGFOLDER, __( 'About this Gallery', 'nggallery' ), __( 'About', 'nggallery' ), 'NextGEN Gallery overview', 'nggallery-about', array(
-			&$this,
-			'show_menu'
-		) );
-
 		if ( ! is_multisite() || is_super_admin() ) {
 			add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ), 'activate_plugins', 'nggallery-setup', array(
 				&$this,
@@ -273,10 +268,6 @@ class nggAdminPanel {
 			case "nggallery-import" :
 				include_once( dirname( __FILE__ ) . '/myimport.php' );    // nggallery_admin_import
 				nggallery_admin_import();
-				break;
-			case "nggallery-about" :
-				include_once( dirname( __FILE__ ) . '/about.php' );        // nggallery_admin_about
-				nggallery_admin_about();
 				break;
 			case "nggallery" :
 			default :
@@ -395,8 +386,6 @@ class nggAdminPanel {
 		switch ( $_GET['page'] ) {
 			case NGGFOLDER :
 				wp_enqueue_style( 'thickbox' );
-			case "nggallery-about" :
-				wp_enqueue_style( 'nggadmin' );
 				break;
 			case "nggallery-add-gallery" :
 				wp_enqueue_style( 'ngg-jqueryui' );
