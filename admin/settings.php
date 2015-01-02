@@ -676,7 +676,7 @@ class nggOptions {
 				</tr>
 				<tr>
 					<th><?php esc_html_e('Color','nggallery') ?></th>
-					<td><input class="picker" type="text" id="wmColor" name="wmColor" value="#<?php echo $ngg->options['wmColor'] ?>" />
+					<td><input class="picker" type="text" id="wmColor" name="wmColor" value="<?php echo $ngg->options['wmColor'] ?>" />
 				</tr>
 				<tr>
 					<th valign="top"><?php esc_html_e('Text','nggallery') ?></th>

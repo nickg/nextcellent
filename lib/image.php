@@ -70,7 +70,7 @@ class nggImage{
 		$this->thumbURL 	= site_url() . '/' . $this->path . '/thumbs/thumbs_' . $this->filename;
 		$this->imagePath	= WINABSPATH.$this->path . '/' . $this->filename;
 		$this->thumbPath	= WINABSPATH.$this->path . '/thumbs/thumbs_' . $this->filename;
-        $this->meta_data	= unserialize($this->meta_data);
+        $this->meta_data	= @unserialize($this->meta_data) ;
 		$this->imageHTML	= $this->get_href_link();
 		$this->thumbHTML	= $this->get_href_thumb_link();
 		

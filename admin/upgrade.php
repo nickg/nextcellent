@@ -76,6 +76,9 @@ function ngg_upgrade() {
 			$ngg_options['irClick']          = true;
 			$ngg_options['silentUpgrade']    = false;
 
+			//Convert color
+			$ngg_options['wmColor'] = '#' . $ngg_options['wmColor'];
+
 			//Delete the old ones
 			unset( $ngg_options['enableIR'], $ngg_options['irURL'], $ngg_options['irXHTMLvalid'], $ngg_options['irAudio'], $ngg_options['irShuffle'], $ngg_options['irLinkfromdisplay'], $ngg_options['irShownavigation'], $ngg_options['irShowicons'], $ngg_options['irWatermark'], $ngg_options['irOverstretch'], $ngg_options['irTransition'], $ngg_options['irKenburns'], $ngg_options['irBackcolor'], $ngg_options['irFrontcolor'], $ngg_options['irLightcolor'], $ngg_options['irScreencolor'] );
 
