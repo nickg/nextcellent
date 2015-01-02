@@ -723,22 +723,24 @@ class Overview_Display {
 	 */
 	public function like_this() {
 
-		$url = 'http://www.wpgetready.com';
-		echo '<p>';
-		_e( 'This plugin is a branch from NextGen Gallery, version 1.9.13.', 'nggallery' );
-		echo '<br>';
-		echo sprintf( __( 'Developed & maintained by <a href="%s" target="_blank">WPGetReady.com</a>', 'nggallery' ), $url );
-		echo '</p><ul>';
-
-		$url = 'http://www.wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/';
-		echo "<li style='padding-left: 38px; background:transparent url(" . NGGALLERY_URLPATH . "admin/images/icon-rating.png ) no-repeat scroll center left; background-position: 16px 50%; text-decoration: none;'><a href='{$url}' target='_blank'>";
-		_e( 'You can contribute by giving this plugin a good rating! Thanks a lot!', 'nggallery' );
-		echo "</a></li>";
-
-		$url = 'http://www.wpgetready.com';
-		echo "<li style='padding-left: 38px; background:transparent url(" . NGGALLERY_URLPATH . "admin/images/nextgen.png ) no-repeat scroll center left; background-position: 16px 50%; text-decoration: none;'><a href='{$url}' target='_blank'>";
-		_e( "Visit the plugin homepage", 'nggallery' );
-		echo '</a></li></ul>';
+		?>
+		<p>
+			<?php _e( 'This plugin is a branch from NextGen Gallery, version 1.9.13.', 'nggallery' ); ?><br>
+			<?php _e( 'Developed & maintained by <a href="http://www.wpgetready.com" target="_blank">WPGetReady.com</a>', 'nggallery' ); ?>
+		</p>
+		<table>
+			<tr>
+				<td><span class="dashicons dashicons-star-filled"></span></td>
+				<td><a href="http://www.wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/" target="_blank">
+					<?php _e( 'You can contribute by giving this plugin a good rating! Thanks a lot!', 'nggallery' ); ?></a>
+				</td>
+			</tr>
+			<tr>
+				<td><span class="dashicons dashicons-admin-home"></span></td>
+				<td><a href="http://www.wpgetready.com" target="_blank"><?php _e( "Visit the plugin homepage", 'nggallery' ); ?></a></td>
+			</tr>
+		</table>
+	<?php
 	}
 
 	/**
