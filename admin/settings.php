@@ -245,7 +245,7 @@ class nggOptions {
 			jQuery(fileid).css("background-color", '#' + color );
 		};
 	</script>
-	<div class="wrap ngg-wrap">
+	<div class="wrap">
 	<h2><?php esc_html_e('Settings', 'nggallery') ?></h2>
 	</div>
 	<div id="slider" class="wrap" style="display: none;">

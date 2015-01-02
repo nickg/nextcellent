@@ -145,7 +145,7 @@ class nggAddGallery {
 
         $post_params_str = implode( ',', $p ). "\n";
 	?>
-	<div class="wrap ngg-wrap">
+	<div class="wrap">
 	<h2><?php _e('Add Gallery / Images', 'nggallery') ?></h2>
 	</div>
 	<?php if( !empty ($this->gallerylist) ) { ?>
