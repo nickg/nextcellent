@@ -1,21 +1,5 @@
 <?php
 
-class NGG_Not_Found extends Exception {
-
-}
-
-class NGG_Database_Fail extends Exception {
-
-}
-
-class NGG_Input_Exception extends Exception {
-
-}
-
-class NGG_File_Exception extends Exception {
-
-}
-
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
 /**

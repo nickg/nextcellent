@@ -27,8 +27,6 @@ class nggAdmin{
 	 */
 	static function create_gallery($title, $defaultpath, $output = true, $description = '') {
 
-		require_once dirname(dirname(__FILE__)) . '/lib/class-ngg-gallery.php';
-
 		global $user_ID;
  
 		// get the current user ID
@@ -41,10 +39,9 @@ class nggAdmin{
 		$txt = '';
 		
 		// No gallery name ?
-		if ( empty($name) ) {
+		if ( empty($name) ) {	
 			if ($output) nggGallery::show_error( __('No valid gallery name!', 'nggallery') );
 			return false;
-			//throw new NGG_Input_Exception( __('No valid gallery name!', 'nggallery') );
 		}
 		
 		// check for main folder
@@ -54,7 +51,6 @@ class nggAdmin{
 				$txt .= __('Check this link, if you didn\'t know how to set the permission :', 'nggallery').' <a href="http://codex.wordpress.org/Changing_File_Permissions">http://codex.wordpress.org/Changing_File_Permissions</a> ';
 				if ($output) nggGallery::show_error($txt);
 				return false;
-				//throw new NGG_File_Exception($txt);
 			}
 		}
 
@@ -64,7 +60,6 @@ class nggAdmin{
 			$txt .= __('Check this link, if you didn\'t know how to set the permission :', 'nggallery').' <a href="http://codex.wordpress.org/Changing_File_Permissions">http://codex.wordpress.org/Changing_File_Permissions</a> ';
 			if ($output) nggGallery::show_error($txt);
 			return false;
-			//throw new NGG_File_Exception($txt);
 		}
 		
 		// 1. Check for existing folder
@@ -93,18 +88,29 @@ class nggAdmin{
 			if ( !wp_mkdir_p ( WINABSPATH . $nggpath . '/thumbs') ) 
 				$txt .= __('Unable to create directory ', 'nggallery').' <strong>' . esc_html( $nggpath ) . '/thumbs !</strong>';
 		}
-
-		// show a error message
+		
+		if (SAFE_MODE) {
+			$help  = __('The server setting Safe-Mode is on !', 'nggallery');	
+			$help .= '<br />'.__('If you have problems, please create directory', 'nggallery').' <strong>' . esc_html( $nggpath ) . '</strong> ';	
+			$help .= __('and the thumbnails directory', 'nggallery').' <strong>' . esc_html( $nggpath ) . '/thumbs</strong> '.__('with permission 777 manually !', 'nggallery');
+			if ($output) nggGallery::show_message($help);
+		}
+		
+		// show a error message			
 		if ( !empty($txt) ) {
+			if (SAFE_MODE) {
+			// for safe_mode , better delete folder, both folder must be created manually
+				@rmdir(WINABSPATH . $nggpath . '/thumbs');
+				@rmdir(WINABSPATH . $nggpath);
+			}
 			if ($output) nggGallery::show_error($txt);
 			return false;
-			//throw new NGG_File_Exception($txt);
 		}
 
 		//clean the description
 		$description = nggGallery::suppress_injection($description);
         // now add the gallery to the database
-        $galleryID = NGG_Gallery::add_gallery( $title, $nggpath, $description, 0, 0, $user_ID );
+        $galleryID = nggdb::add_gallery($title, $nggpath, $description, 0, 0, $user_ID );
 		// here you can inject a custom function
 		do_action('ngg_created_new_gallery', $galleryID);
 
