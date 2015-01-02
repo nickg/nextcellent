@@ -121,17 +121,10 @@ class nggAdminPanel {
 
 	// integrate the menu
 	function add_menu() {
-		if ( get_bloginfo( 'version' ) >= 3.8 ) {
-			add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'NextGEN Gallery overview', NGGFOLDER, array(
+		add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'NextGEN Gallery overview', NGGFOLDER, array(
 				&$this,
 				'show_menu'
-			), 'dashicons-format-gallery' );
-		} else {
-			add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'NextGEN Gallery overview', NGGFOLDER, array(
-				&$this,
-				'show_menu'
-			), path_join( NGGALLERY_URLPATH, 'admin/images/nextgen_16_color.png' ) );
-		}
+		), 'dashicons-format-gallery' );
 		add_submenu_page( NGGFOLDER, __( 'Overview', 'nggallery' ), __( 'Overview', 'nggallery' ), 'NextGEN Gallery overview', NGGFOLDER, array(
 			&$this,
 			'show_menu'
@@ -185,7 +178,7 @@ class nggAdminPanel {
 		add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
 			&$this,
 			'show_network_settings'
-		), path_join( NGGALLERY_URLPATH, 'admin/images/nextgen_16_color.png' ) );
+		), 'dashicons-format-gallery' );
 		add_submenu_page( NGGFOLDER, __( 'Network settings', 'nggallery' ), __( 'Network settings', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
 			&$this,
 			'show_network_settings'
@@ -372,8 +365,6 @@ class nggAdminPanel {
 	}
 
 	function load_styles() {
-		// load the icon for the navigation menu
-		wp_enqueue_style( 'nggmenu', NGGALLERY_URLPATH . 'admin/css/menu.css', array() );
 		wp_register_style( 'nggadmin', NGGALLERY_URLPATH . 'admin/css/nggadmin.css', false, '2.8.1', 'screen' );
 		wp_register_style( 'ngg-jqueryui', NGGALLERY_URLPATH . 'admin/css/jquery.ui.css', false, '1.8.5', 'screen' );
 
