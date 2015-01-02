@@ -10,7 +10,6 @@ if ( preg_match( '#' . basename( __FILE__ ) . '#', $_SERVER['PHP_SELF'] ) ) {
 class Overview_Display {
 
 	public function __construct() {
-		//add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 		add_meta_box( 'overview', __( 'At a Glance', 'nggallery' ), array(
 			$this,
 			'stats'
@@ -21,7 +20,7 @@ class Overview_Display {
 		), 'ngg_overview', 'side', 'core' );
 		add_meta_box( 'dashboard_primary', __( 'Latest News', 'nggallery' ), array(
 			$this,
-			'ngg_widget_overview_news'
+			'js_loading'
 		), 'ngg_overview', 'normal', 'core' );
 		if ( ! is_multisite() || is_super_admin() ) {
 			add_meta_box( 'ngg_plugin_check', __( 'Plugin Check', 'nggallery' ), array(
@@ -34,7 +33,7 @@ class Overview_Display {
 			), 'ngg_overview', 'side', 'core' );
 			add_meta_box( 'dashboard_plugins', __( 'Related plugins', 'nggallery' ), array(
 				$this,
-				'ngg_widget_related_plugins'
+				'js_loading'
 			), 'ngg_overview', 'normal', 'core' );
 		}
 		add_meta_box( 'dashboard_contributors', __( 'Contributors', 'nggallery' ), array( $this, 'contributors' ), 'ngg_overview', 'normal', 'core' );
@@ -53,20 +52,20 @@ class Overview_Display {
 		<div id="overview_right_now" class="main">
 			<p><?php _e( 'Here you can control your images, galleries and albums.', 'nggallery' ) ?></p>
 			<ul>
-				<li class="image-count"><a
-						href="admin.php?page=nggallery-add-gallery"><?php echo $images; ?> <?php /* translators: this is preceded by a number, ex. 5 Images. In some langugaes, this is better without capital */
-						echo _n( 'Image', 'Images', $images, 'nggallery' ); ?></a></li>
-				<li class="gallery-count"><a
-						href="admin.php?page=nggallery-manage-gallery"><?php echo $galleries; ?> <?php /* translators: this is preceded by a number, ex. 5 Images. In some langugaes, this is better without capital */
-						echo _n( 'Gallery', 'Galleries', $galleries, 'nggallery' ); ?></a></li>
-				<li class="album-count"><a
-						href="admin.php?page=nggallery-manage-album"><?php echo $albums; ?> <?php /* translators: this is preceded by a number, ex. 5 Images. In some langugaes, this is better without capital */
-						echo _n( 'Album', 'Albums', $albums, 'nggallery' ); ?></a></li>
+				<li class="image-count"><a href="admin.php?page=nggallery-add-gallery">
+					<?php echo $images . ' ' . _n( 'Image', 'Images', $images, 'nggallery' ); ?></a>
+				</li>
+				<li class="gallery-count"><a href="admin.php?page=nggallery-manage-gallery">
+					<?php echo $galleries . ' ' . _n( 'Gallery', 'Galleries', $galleries, 'nggallery' ); ?></a>
+				</li>
+				<li class="album-count"><a href="admin.php?page=nggallery-manage-album">
+					<?php echo $albums . ' ' . _n( 'Album', 'Albums', $albums, 'nggallery' ); ?></a>
+				</li>
 			</ul>
 		</div>
-		<?php if ( current_user_can( 'NextGEN Upload images' ) ): ?><a class="button button-primary"
-		                                                               href="admin.php?page=nggallery-add-gallery"><?php _e( 'Add new pictures', 'nggallery' ) ?></a><?php endif; ?>
-		<?php
+		<?php if ( current_user_can( 'NextGEN Upload images' ) ) {
+			echo '<a class="button button-primary" href="admin.php?page=nggallery-add-gallery">' . __( 'Add new pictures', 'nggallery' ) . '</a>';
+		}
 		if ( is_multisite() ) {
 			$this->ngg_dashboard_quota();
 		}
@@ -116,48 +115,6 @@ class Overview_Display {
 	<?php
 	}
 
-	public function contributors() {
-		?>
-		<div class="ngg-dashboard-widget">
-			<p><?php _e( 'This plugin is made possible by the great work of a lot of people. A special thanks to the following people for contributing to the original NextGen Gallery:', 'nggallery' ); ?></p>
-			<ul class="ngg-list">
-				<li>
-					<a href="http://www.lesterchan.net/" target="_blank">GaMerZ</a> <?php _e( 'for a lot of very useful plugins and ideas', 'nggallery' ); ?>
-				</li>
-				<li><?php _e( 'All others who contributed: ', 'nggallery' ); ?>
-					<br><?php $this->list_contributors( 'old' ); ?></li>
-			</ul>
-			<p><?php _e( 'All people who contributed to NextCellent Gallery: ', 'nggallery' ); ?></p>
-			<ul class="ngg-list">
-				<li><a href="http://wpgetready.com/"
-				       target="_blank">WPGetReady</a> <?php _e( 'for maintaining this fork of NextGen Gallery', 'nggallery' ); ?>
-				</li>
-				<li><a href="https://plus.google.com/u/0/+NikoStrijbol/posts" target="_blank">Niko
-						Strijbol</a> <?php _e( 'for various blabla - small stuff', 'nggallery' ); ?></li>
-				<li><a href="https://bitbucket.org/leap_dev" target="_blank">Richard
-						Bale</a> <?php _e( 'for his implementation of changing file the upload date using jQuery', 'nggallery' ); ?>
-				</li>
-				<li><a href="http://howden.net.au/thowden/" target="_blank">Tony
-						Howden</a> <?php _e( 'for his his code suggestions regarding nggtags shortcodes', 'nggallery' ); ?>
-				</li>
-				<li><a href="http://gfxproductions.com/" target="_blank">Stefano
-						Sudati</a> <?php _e( 'for his his suggestions on templates', 'nggallery' ); ?></li>
-				<li><p><?php _e( 'Also a big thank you to the new translators: ', 'nggallery' ); ?>
-						<br><?php $this->list_contributors( 'new' ); ?></p>
-				</li>
-			</ul>
-		</div>
-	<?php
-	}
-
-	/**
-	 * Show the latest news from the RSS feed. This is a placeholder that will be repaced
-	 * by a AJAX-call to $this->ngg_overview_news();
-	 */
-	public function ngg_widget_overview_news() {
-		echo '<p class="widget-loading hide-if-no-js">' . __( 'Loading&#8230;' ) . '</p><p class="describe hide-if-js">' . __( 'This widget requires JavaScript.' ) . '</p>';
-	}
-
 	/**
 	 * Output the actual RSS news.
 	 */
@@ -166,9 +123,9 @@ class Overview_Display {
 		$rss = fetch_feed( 'http://wpgetready.com/feed/' );
 
 		if ( is_wp_error( $rss ) ) {
-			$out = '<p>' . sprintf( __( 'The newsfeed could not be loaded.  Check the <a href="%s">front page</a> to check for updates.', 'nggallery' ), 'http://www.nextgen-gallery.com/' ) . '</p>';
+			echo '<p>' . sprintf( __( 'The newsfeed could not be loaded.  Check the <a href="%s">front page</a> to check for updates.', 'nggallery' ), 'http://www.nextgen-gallery.com/' ) . '</p>';
 		} else {
-			$out = '<div class="rss-widget">';
+			echo '<div class="rss-widget">';
 			foreach ( $rss->get_items( 0, 3 ) as $item ) {
 				$link = $item->get_link();
 				while ( stristr( $link, 'http' ) != $link ) {
@@ -208,14 +165,13 @@ class Overview_Display {
 						$date = '';
 					}
 				}
-				$out .= '<ul><li>';
-				$out .= '<a class="rsswidget" target="_blank" href="' . $link . '" >' . $title . '</a>';
-				$out .= '<span class="rss-date">' . $date . '</span>';
-				$out .= '<div class="rssSummary"><strong>' . $diff . '</strong> - ' . $desc . '</div></li></ul>';
+				echo '<ul><li>';
+				echo '<a class="rsswidget" target="_blank" href="' . $link . '" >' . $title . '</a>';
+				echo '<span class="rss-date">' . $date . '</span>';
+				echo '<div class="rssSummary"><strong>' . $diff . '</strong> - ' . $desc . '</div></li></ul>';
 			}
-			$out .= '</div>';
+			echo '</div>';
 		}
-		echo $out;
 	}
 
 	/**
@@ -230,7 +186,7 @@ class Overview_Display {
 				nggPluginCheck = {
 
 					settings: {
-						img_run: '<img src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" class="icon" alt="started"/>',
+						img_run:  '<img src="<?php echo esc_url( admin_url( 'images/spinner.gif' ) ); ?>" class="icon" alt="started"/>',
 						img_ok: '<img src="<?php echo esc_url( admin_url( 'images/yes.png' ) ); ?>" class="icon" alt="ok"/>',
 						img_fail: '<img src="<?php echo esc_url( admin_url( 'images/no.png' ) ); ?>" class="icon" alt="failed" />',
 						domain: '<?php echo esc_url( home_url('index.php', is_ssl() ? 'https' : 'http') ); ?>'
@@ -388,51 +344,29 @@ class Overview_Display {
 				};
 			})(jQuery);
 		</script>
-		<div class="dashboard-widget-holder wp_dashboard_empty">
-			<div class="ngg-dashboard-widget">
-				<div class="dashboard-widget-content">
-					<ul id="plugin_check" class="settings">
-						<li id="check1">
-							<strong><?php _e( 'Check plugin/theme conflict', 'nggallery' ); ?></strong>
-
-							<p class="default message"><?php _e( 'Not tested', 'nggallery' ); ?></p>
-
-							<p class="success message"
-							   style="display: none;"><?php _e( 'No conflict could be detected', 'nggallery' ); ?></p>
-
-							<p class="failed message"
-							   style="display: none;"><?php _e( 'Test failed, disable other plugins & switch to default theme', 'nggallery' ); ?></p>
-						</li>
-						<li id="check2">
-							<strong><?php _e( 'Test image function', 'nggallery' ); ?></strong>
-
-							<p class="default message"><?php _e( 'Not tested', 'nggallery' ); ?></p>
-
-							<p class="success message"
-							   style="display: none;"><?php _e( 'The plugin could create images', 'nggallery' ); ?></p>
-
-							<p class="failed message"
-							   style="display: none;"><?php _e( 'Couldn\'t create image, check your memory limit', 'nggallery' ); ?></p>
-						</li>
-						<li id="check3">
-							<strong><?php _e( 'Check theme compatibility', 'nggallery' ); ?></strong>
-
-							<p class="default message"><?php _e( 'Not tested', 'nggallery' ); ?></p>
-
-							<p class="success message"
-							   style="display: none;"><?php _e( 'Your theme should work fine with NextCellent Gallery', 'nggallery' ); ?></p>
-
-							<p class="failed message"
-							   style="display: none;"><?php _e( 'wp_head()/wp_footer() is missing, contact the theme author', 'nggallery' ); ?></p>
-						</li>
-					</ul>
-					<p class="textright">
-						<input type="button" name="update" value="<?php _e( 'Check plugin', 'nggallery' ); ?>"
-						       onclick="nggPluginCheck.run(1);" class="button-secondary"/>
-					</p>
-				</div>
-			</div>
-		</div>
+		<ul id="plugin_check" class="settings">
+			<li id="check1">
+				<strong><?php _e( 'Check plugin/theme conflict', 'nggallery' ); ?></strong>
+				<p class="default message"><?php _e( 'Not tested', 'nggallery' ); ?></p>
+				<p class="success message" style="display: none;"><?php _e( 'No conflict could be detected', 'nggallery' ); ?></p>
+				<p class="failed message"  style="display: none;"><?php _e( 'Test failed, disable other plugins & switch to default theme', 'nggallery' ); ?></p>
+			</li>
+			<li id="check2">
+				<strong><?php _e( 'Test image function', 'nggallery' ); ?></strong>
+				<p class="default message"><?php _e( 'Not tested', 'nggallery' ); ?></p>
+				<p class="success message" style="display: none;"><?php _e( 'The plugin could create images.', 'nggallery' ); ?></p>
+				<p class="failed message" style="display: none;"><?php _e( 'Could not create image, check your memory limit.', 'nggallery' ); ?></p>
+			</li>
+			<li id="check3">
+				<strong><?php _e( 'Check theme compatibility', 'nggallery' ); ?></strong>
+				<p class="default message"><?php _e( 'Not tested', 'nggallery' ); ?></p>
+				<p class="success message" style="display: none;"><?php _e( 'Your theme should work fine with NextCellent Gallery', 'nggallery' ); ?></p>
+				<p class="failed message" style="display: none;"><?php _e( 'wp_head()/wp_footer() is missing, contact the theme author', 'nggallery' ); ?></p>
+			</li>
+		</ul>
+		<p class="textright">
+			<input type="button" name="update" value="<?php _e( 'Check plugin', 'nggallery' ); ?>" onclick="nggPluginCheck.run(1);" class="button-secondary"/>
+		</p>
 	<?php
 	}
 
@@ -592,11 +526,10 @@ class Overview_Display {
 	}
 
 	/**
-	 * Show NextGEN Gallery related plugins. Fetch plugins from wp.org which have added 'nextgen-gallery' as tag in
-	 * readme.txt. This is a placeholder that will be replaced by a AJAX-call to $this->ngg_related_plugins.
+	 * Show the JS loading spinner.
 	 */
-	public function ngg_widget_related_plugins() {
-		echo '<p class="widget-loading hide-if-no-js">' . __( 'Loading&#8230;' ) . '</p><p class="describe hide-if-js">' . __( 'This widget requires JavaScript.' ) . '</p>';
+	public function js_loading() {
+		echo '<p class="widget-loading hide-if-no-js"><img style="vertical-align:middle; margin: 5px 10px 5px 5px;" src="' . admin_url( "images/spinner.gif" ) . '"/><span>' . __( 'Loading&#8230;' ) . '</span></p><p class="describe hide-if-js">' . __('This widget requires JavaScript.') . '</p>';
 	}
 
 	/**
@@ -619,8 +552,8 @@ class Overview_Display {
 		}
 
 		echo '<div class="error form-invalid"><p>';
-		_e( '<strong>Pay attention</strong>: third parties plugins that are compatible with NGG may not be 100&#37; compatible with NextCellent Gallery!', 'nggallery' );
-		echo '</p></div><div id="the-list" style="overflow: auto">';
+		_e( '<strong>Note</strong>: third parties plugins that are compatible with NGG may not be 100&#37; compatible with NextCellent Gallery!', 'nggallery' );
+		echo '</p></div><div id="the-list" class="widefat" style="overflow: auto">';
 
 		//List of suppressed plugin on the list.
 		$blacklist = array( 'nextgen-gallery', 'nextcellent-gallery-nextgen-legacy' );
@@ -683,6 +616,7 @@ class Overview_Display {
 						break;
 					case 'latest_installed':
 					case 'newer_installed':
+						$installed = true;
 						$action_links[] = '<span class="button button-disabled" title="' . esc_attr__( 'This plugin is already installed and is up to date' ) . ' ">' . _x( 'Installed', 'plugin' ) . '</span>';
 						break;
 				}
@@ -705,12 +639,10 @@ class Overview_Display {
 						<?php
 						if ( $action_links ) {
 							echo '<ul class="plugin-action-buttons"><li>' . implode( '</li><li>', $action_links ) . '</li></ul>';
-						}
-						?>
+						} ?>
 					</div>
 					<div class="desc column-description">
 						<p><?php echo $description; ?></p>
-
 						<p class="authors"><?php echo $author; ?></p>
 					</div>
 				</div>
@@ -731,59 +663,59 @@ class Overview_Display {
 							echo '<span class="compatibility-incompatible">' . __( '<strong>Incompatible</strong> with your version of WordPress' ) . '</span>';
 						} else {
 							echo '<span class="compatibility-compatible">' . __( '<strong>Compatible</strong> with your version of WordPress' ) . '</span>';
-						}
-						?>
+						} ?>
 					</div>
 				</div>
 			</div>
 		<?php
 		}
+		?>
+		</div>
+		<script type="text/javascript">
+			var tb_position;
+			jQuery( document ).ready( function( $ ) {
+				tb_position = function() {
+					var tbWindow = $( '#TB_window' ),
+						width = $( window ).width(),
+						H = $( window ).height() - ( ( 792 < width ) ? 60 : 20 ),
+						W = ( 792 < width ) ? 772 : width - 20;
 
-		echo "<script>var tb_position;
-jQuery( document ).ready( function( $ ) {
-    tb_position = function() {
-        var tbWindow = $( '#TB_window' ),
-            width = $( window ).width(),
-            H = $( window ).height() - ( ( 792 < width ) ? 60 : 20 ),
-            W = ( 792 < width ) ? 772 : width - 20;
+					if ( tbWindow.size() ) {
+						tbWindow.width( W ).height( H );
+						$( '#TB_iframeContent' ).width( W ).height( H );
+						tbWindow.css({
+							'margin-left': '-' + parseInt( ( W / 2 ), 10 ) + 'px'
+						});
+						if ( typeof document.body.style.maxWidth !== 'undefined' ) {
+							tbWindow.css({
+								'top': '30px',
+								'margin-top': '0'
+							});
+						}
+					}
 
-        if ( tbWindow.size() ) {
-            tbWindow.width( W ).height( H );
-            $( '#TB_iframeContent' ).width( W ).height( H );
-            tbWindow.css({
-                'margin-left': '-' + parseInt( ( W / 2 ), 10 ) + 'px'
-            });
-            if ( typeof document.body.style.maxWidth !== 'undefined' ) {
-                tbWindow.css({
-                    'top': '30px',
-                    'margin-top': '0'
-                });
-            }
-        }
+					return $( 'a.thickbox' ).each( function() {
+						var href = $( this ).attr( 'href' );
+						if ( ! href ) {
+							return;
+						}
+						href = href.replace( /&width=[0-9]+/g, '' );
+						href = href.replace( /&height=[0-9]+/g, '' );
+						$(this).attr( 'href', href + '&width=' + W + '&height=' + ( H ) );
+					});
+				};
 
-        return $( 'a.thickbox' ).each( function() {
-            var href = $( this ).attr( 'href' );
-            if ( ! href ) {
-                return;
-            }
-            href = href.replace( /&width=[0-9]+/g, '' );
-            href = href.replace( /&height=[0-9]+/g, '' );
-            $(this).attr( 'href', href + '&width=' + W + '&height=' + ( H ) );
-        });
-    };
+				jQuery( window ).resize( function() {
+					tb_position();
+				});
 
-    jQuery( window ).resize( function() {
-        tb_position();
-    });
+				jQuery( '.install-now' ).click( function() {
+					return confirm( '" . __( "Are you sure you want to install this?", "nggallery" ) . "' );
+				});
+			});
 
-    jQuery( '.install-now' ).click( function() {
-        return confirm( '" . __( "Are you sure you want to install this?", "nggallery" ) . "' );
-    });
-});
-
-		</script>";
-
-		echo '</div>';
+		</script>
+		<?php
 	}
 
 	/**
@@ -793,8 +725,9 @@ jQuery( document ).ready( function( $ ) {
 
 		$url = 'http://www.wpgetready.com';
 		echo '<p>';
-		echo sprintf( __( 'This plugin is a branch from NGG stable version 1.9.13.<br> Developed & maintained by <a href="%s" target="_blank">WPGetReady.com</a>', 'nggallery' ), $url );
-
+		_e( 'This plugin is a branch from NextGen Gallery, version 1.9.13.', 'nggallery' );
+		echo '<br>';
+		echo sprintf( __( 'Developed & maintained by <a href="%s" target="_blank">WPGetReady.com</a>', 'nggallery' ), $url );
 		echo '</p><ul>';
 
 		$url = 'http://www.wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/';
@@ -876,19 +809,42 @@ jQuery( document ).ready( function( $ ) {
 	<?php
 	}
 
-	private function list_contributors( $type ) {
+	public function contributors() {
+		?>
+		<div class="ngg-dashboard-widget">
+			<p><?php _e( 'This plugin is made possible by the great work of a lot of people:', 'nggallery' ); ?></p>
+			<ul class="ngg-list">
+				<li><?php _e('Alex Rabe and Photocrati for the original NextGen Gallery', 'nggallery')?></li>
+				<li><a href="http://wpgetready.com/"
+				       target="_blank">WPGetReady</a> <?php _e( 'for maintaining this fork of NextGen Gallery', 'nggallery' ); ?>
+				</li>
+				<li><a href="https://plus.google.com/u/0/+NikoStrijbol/posts" target="_blank">Niko
+						Strijbol</a> <?php _e( 'for helping maintain the plugin', 'nggallery' ); ?></li>
+				<li><a href="https://bitbucket.org/leap_dev" target="_blank">Richard
+						Bale</a> <?php _e( 'for his implementation of changing file the upload date using jQuery', 'nggallery' ); ?>
+				</li>
+				<li><a href="http://howden.net.au/thowden/" target="_blank">Tony
+						Howden</a> <?php _e( 'for his his code suggestions regarding nggtags shortcodes', 'nggallery' ); ?>
+				</li>
+				<li><a href="http://gfxproductions.com/" target="_blank">Stefano
+						Sudati</a> <?php _e( 'for his his suggestions on templates', 'nggallery' ); ?></li>
+				<li><p><?php _e( 'Also a big thank you to the new translators: ', 'nggallery' ); ?>
+						<br><?php $this->list_contributors( 'new' ); ?></p>
+				</li>
+			</ul>
+		</div>
+	<?php
+	}
 
-		if( $type == 'old' ) {
-			$contributors = $this->old_contributors();
-		} else {
-			$contributors = $this->new_contributors();
-		}
+	private function list_contributors() {
+
+		$contributors = $this->new_contributors();
 
 		ksort( $contributors );
 		$i = count( $contributors );
-		foreach ( $contributors as $name => $url ) {
-			if ( $url ) {
-				echo "<a href=\"$url\" target=\"_blank\">$name</a>";
+		foreach ( $contributors as $name => $data ) {
+			if ( $data[1] ) {
+				echo '<a href="' . $data[1] . '" target="_blank">' . $name . '</a> (' . $data[0] . ')';
 			} else {
 				echo $name;
 			}
@@ -904,73 +860,9 @@ jQuery( document ).ready( function( $ ) {
 	/* New contributors. */
 	private function new_contributors() {
 		return array(
-			'Vladimir Vasilenko (Russian translation)' => 'http://shumbely.com/',
-			'Niko Strijbol (Dutch translation)'        => 'https://plus.google.com/u/0/+NikoStrijbol/posts',
-			'Vesa Tiirikainen (Finnish translation)'   => 'mailto:vesa@tiirikainen.fi'
-		);
-	}
-
-	/* Original contributors. */
-	private function old_contributors() {
-		return array(
-			'Anty (Code contributor)'                                   => 'http://www.anty.at/',
-			'Bjoern von Prollius (Code contributor)'                    => 'http://www.prollius.de/',
-			'Simone Fumagalli (Code contributor)'                       => 'http://www.iliveinperego.com/',
-			'Vincent Prat (Code contributor)'                           => 'http://www.vincentprat.info',
-			'Frederic De Ranter (AJAX code contributor)'                => 'http://li.deranter.com/',
-			'Christian Arnold (Code contributor)'                       => 'http://blog.arctic-media.de/',
-			'Thomas Matzke (Album code contributor)'                    => 'http://mufuschnu.mu.funpic.de/',
-			'KeViN (Sidebar Widget developer)'                          => 'http://www.kev.hu/',
-			'Lazy (German Translation)'                                 => 'http://www.lazychris.de/',
-			'Lise (French Translation)'                                 => 'http://liseweb.fr/',
-			'Anja (Dutch Translation)'                                  => 'http://www.werkgroepen.net/wordpress',
-			'Adrian (Indonesian Translation)'                           => 'http://adrian.web.id/',
-			'Gaspard Tseng / SillyCCSmile (Chinese Translation)'        => '',
-			'Mika Pennanen (Finnish Translation)'                       => 'http://kapsi.fi/~penni',
-			'Wojciech Owczarek (Polish Translation)'                    => 'http://www.owczi.net',
-			'Dilip Ramirez (Spanish Translation)'                       => 'http://jmtd.110mb.com/blog',
-			'Oleinikov Vedmak Evgeny (Russian Translation)'             => 'http://ka-2-03.mirea.org/',
-			'Sebastien MALHERBE	(Logo design)'                       => 'http://www.7vision.com/',
-			'Claudia (German documentation)'                            => 'http://www.blog-werkstatt.de/',
-			'Robert (German documentation)'                             => 'http://www.curlyrob.de/',
-			'Pierpaolo Mannone (Italian Translation)'                   => 'http://www.interscambiocasa.com/',
-			'Mattias Tengblad (Swedish Translation)'                    => 'http://wp-support.se/',
-			'M&uuml;fit Kiper (Swedish Translation)'                    => 'http://www.kiper.se/',
-			'Gil Yaker (Documentation)'                                 => 'http://bamboosoup.com/',
-			'Morten Johansen (Danish Translation)'                      => 'http://www.fr3ak.dk/',
-			'Vidar Seland (Norwegian Translation)'                      => 'http://www.viidar.net/',
-			'Emre G&uuml;ler (Turkish Translation)'                     => 'http://www.emreguler.com/',
-			'Emilio Lauretti (Italian Translation)'                     => '',
-			'Jan Angelovic (Czech Translation)'                         => 'http://www.angelovic.cz/',
-			'Laki (Slovak Translation)'                                 => 'http://www.laki.sk/',
-			'Rowan Crane (WPMU support)'                                => 'http://blog.rowancrane.com/',
-			'Kuba Zwolinski (Polish Translation)'                       => 'http://kubazwolinski.com/',
-			'Rina Jiang (Chinese Translation)'                          => 'http://http://mysticecho.net/',
-			'Anthony (Chinese Translation)'                             => 'http://www.angryouth.com/',
-			'Milan Vasicek (Czech Translation)'                         => 'http://www.NoWorkTeam.cz/',
-			'Joo Gi-young (Korean Translation)'                         => 'http://lombric.linuxstudy.pe.kr/wp/',
-			'Oleg A. Safonov (Russian Translation)'                     => 'http://blog.olart.ru',
-			'AleXander Kirichev (Bulgarian Translation)'                => 'http://xsakex.art-bg.org/',
-			'Richer Yang (Chinese Translation)'                         => 'http://fantasyworld.idv.tw/',
-			'Bill Jones (Forums contributor)'                           => 'http://jonesphoto.bluehorizoninternet.com/',
-			'TheDonSansone (Forums contributor)'                        => 'http://abseiling.200blogs.co.uk/',
-			'Komyshov (Russian Translation)'                            => 'http://kf-web.ru/',
-			'aleX Zhang (Chinese Translation)'                          => 'http://zhangfei.info/',
-			'TheSoloist (Chinese Translation)'                          => 'http://www.soloist-ic.cn/',
-			'Nica Luigi Cristian (Romanian Translation)'                => 'http://www.cristiannica.com/',
-			'Zdenek Hatas (Czech Translation)'                          => '',
-			'David Potter (Documentation and Help)'                     => 'http://dpotter.net/',
-			'Carlale Chen (Chinese Translation)'                        => 'http://0-o-0.cc/',
-			'Igor Shevkoplyas (Russian Translation)'                    => 'http://www.russian-translation-matters.com',
-			'Alexandr Kindras (Code contributor)'                       => 'http://www.fixdev.com',
-			'Manabu Togawa (Japanese Translation)'                      => 'http://www.churadesign.com/',
-			'Serhiy Tretyak (Ukrainian Translation)'                    => 'http://designpoint.com.ua/',
-			'Janis Grinvalds (Latvian Translation)'                     => 'http://riga.bmxrace.lv/',
-			'Kristoffer Th&oslash;ring (Norwegian Translation)'         => '',
-			'Flactarus (Italian Translation)'                           => 'http://www.giroevago.it',
-			'Felip Alfred Galit&oacute; i Trilla (Catalan Translation)' => 'http://www.bratac.cat',
-			'Luka Komac (Slovenian Translation)'                        => 'http://www.komac.biz',
-			'Dimitris Ikonomou / Nikos Mouratidis (Greek Translation)'  => 'http://www.kepik.gr'
+			'Vladimir Vasilenko'    => array( 'Russian translation', 'http://shumbely.com/' ),
+			'Niko Strijbol'         => array( 'Dutch translation', 'https://plus.google.com/u/0/+NikoStrijbol' ),
+			'Vesa Tiirikainen'      => array( 'Finnish translation', 'mailto:vesa@tiirikainen.fi' )
 		);
 	}
 }
