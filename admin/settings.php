@@ -247,9 +247,9 @@ class nggOptions {
 			jQuery("#thumbCode").val(effectcode);
 		};
 
-		function setcolor(fileid, color) {
-			jQuery(fileid).css("background-color", '#' + color );
-		};
+		jQuery(document).ready(function($){
+			$('.picker').wpColorPicker();
+		});
 	</script>
 	<div class="wrap ngg-wrap">
 	<?php screen_icon( 'nextgen-gallery' ); ?>
@@ -676,8 +676,7 @@ class nggOptions {
 				</tr>
 				<tr>
 					<th><?php esc_html_e('Color','nggallery') ?></th>
-					<td><input class="picker" type="text" size="6" maxlength="6" id="wmColor" name="wmColor" onchange="setcolor('#previewText', this.value)" value="<?php echo $ngg->options['wmColor'] ?>" />
-					<input type="text" size="1" readonly="readonly" id="previewText" style="background-color: #<?php echo $ngg->options['wmColor']; ?>" /> <?php esc_html_e('(hex w/o #)','nggallery') ?></td>
+					<td><input class="picker" type="text" id="wmColor" name="wmColor" value="#<?php echo $ngg->options['wmColor'] ?>" />
 				</tr>
 				<tr>
 					<th valign="top"><?php esc_html_e('Text','nggallery') ?></th>
