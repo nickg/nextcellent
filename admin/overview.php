@@ -540,7 +540,7 @@ class Overview_Display {
 		include( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 
 		//Check for the transient.
-		if ( ! $plugins = get_transient( 'ngg_related_plugins' ) ) {
+		if ( ! $plugins = (array) get_transient( 'ngg_related_plugins' ) ) {
 
 			// Additional info http://dd32.id.au/projects/wordpressorg-plugin-information-api-docs/
 			if ( is_wp_error( $api = plugins_api( 'query_plugins', array( 'search' => 'nextgen' ) ) ) ) {

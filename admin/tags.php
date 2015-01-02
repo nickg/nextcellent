@@ -94,7 +94,6 @@ if ($nb_tags < $tag_count && $offset>0) {
 </style>
 
 <div class="wrap ngg_wrap">
-    <?php screen_icon( 'nextgen-gallery' ); ?>
 	<h2><?php _e('Tags', 'nggallery'); ?></h2>
 
 	<?php if ($action_status['message']!='') : ?>
