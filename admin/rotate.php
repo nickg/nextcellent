@@ -80,8 +80,8 @@ $preview_image		= trailingslashit( home_url() ) . 'index.php?callback=image&amp;
 		<td style="min-width: 160px;">
 			<input type="radio" name="ra" value="cw" /><?php esc_html_e('90&deg; clockwise', 'nggallery'); ?><br />
 			<input type="radio" name="ra" value="ccw" /><?php esc_html_e('90&deg; anticlockwise', 'nggallery'); ?><br />
-			<input type="radio" name="ra" value="fv" /><?php esc_html_e('Flip vertically', 'nggallery'); ?><br />
-			<input type="radio" name="ra" value="fh" /><?php esc_html_e('Flip horizontally', 'nggallery'); ?>
+			<input type="radio" name="ra" value="fv" /><?php esc_html_e('Flip horizontally', 'nggallery'); ?><br />
+			<input type="radio" name="ra" value="fh" /><?php esc_html_e('Flip vertically', 'nggallery'); ?>
 		</td>
 	</tr>
 	<tr>
