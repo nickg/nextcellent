@@ -160,7 +160,7 @@ if (!class_exists('nggLoader')) {
 				        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="error"><p><strong>' . __( 'Something went wrong while upgrading NextCellent Gallery.', "nggallery" ) . '</strong></p></div>\';' ) );
 			        }
 		        } else {
-			        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="update-nag"><p><strong>' . __( 'NextCellent Gallery requires a database upgrade.', "nggallery" ) . ' <a href="' . admin_url() . 'admin.php?page=nextcellent" >' . __( 'Upgrade now', 'nggallery' ) . '</a></strong></p></div>\';' ) );
+			        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="update-nag"><p><strong>' . __( 'NextCellent Gallery requires a database upgrade.', "nggallery" ) . ' <a href="' . admin_url() . 'admin.php?page=nextcellent-gallery-nextgen-legacy" >' . __( 'Upgrade now', 'nggallery' ) . '</a></strong></p></div>\';' ) );
 		        }
 	        }
 		}

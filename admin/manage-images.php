@@ -331,7 +331,8 @@ jQuery(document).ready( function() {
 				</tr>
 				<?php if(current_user_can( 'publish_pages' )) : ?>
 				<tr>
-					<td colspan="2"></td>
+					<td align="left"><?php _e('Gallery ID', 'nggallery') ?>:</td>
+					<td align="right"><?php echo $gallery->gid; ?></td>
 					<td align="right"><label for="parent_id"><?php _e('Create new page', 'nggallery') ?>:</label></td>
 					<td align="left">
 					<select name="parent_id" id="parent_id" style="width:95%">

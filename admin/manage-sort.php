@@ -14,10 +14,12 @@ function nggallery_sortorder($galleryID = 0){
 	
 	if (isset ($_POST['updateSortorder']))  {
 		check_admin_referer('ngg_updatesortorder');
-		// get variable new sortorder 
-		parse_str($_POST['sortorder']);
+
+		// get variable new sortorder
+		$sortArray = explode(",", $_POST['sortorder']);
 		if (is_array($sortArray)){ 
 			$neworder = array();
+
 			foreach($sortArray as $pid) {		
 				$pid = substr($pid, 4); // get id from "pid-x"
 				$neworder[] = (int) $pid;
@@ -58,19 +60,13 @@ function nggallery_sortorder($galleryID = 0){
 ?>
 	<script type="text/javascript">
 		// seralize the ImageOrder
-		function saveImageOrder()
-		{
-			var serial = "";
-			var objects = document.getElementsByTagName('div');
-			for(var no=0;no<objects.length;no++){
-				if(objects[no].className=='imageBox' || objects[no].className=='imageBoxHighlighted'){
-					if (serial.length > 0)	serial = serial + '&'
-					serial = serial + "sortArray[]=" + objects[no].id;
-				}			
+		function saveImageOrder() {
+			var objects = document.getElementsByClassName('imageBox');
+			var serial = objects[0].id;
+			for( var no=1; no < objects.length; no++) {
+				serial += "," + objects[no].id;
 			}
 			jQuery('input[name=sortorder]').val(serial);
-			// debug( 'This is the new order of the images(IDs) : <br>' + orderString );
-			
 		}
 		jQuery(document).ready(function($) {
 			$(".jqui-sortable").sortable({items: 'div.imageBox'});
