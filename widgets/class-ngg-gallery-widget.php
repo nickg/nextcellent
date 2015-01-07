@@ -184,9 +184,7 @@ class NGG_Gallery_Widget extends WP_Widget {
 
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '&nbsp;' : $instance['title'], $instance, $this->id_base );
 
-		var_dump($instance);
-
-		global $wpdb, $nggdb;
+		global $wpdb;
 
 		$items    = min( $instance['items'], $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->nggpictures WHERE exclude != 1 " ) );
 		$exclude  = $instance['exclude'];
