@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NextCellent Galéria magyar fordítás\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-16 11:26+0100\n"
-"PO-Revision-Date: 2014-09-16 11:26+0100\n"
-"Last-Translator: Németh Balázs <nb0000@gmail.com>\n"
+"POT-Creation-Date: 2015-01-09 16:11+0100\n"
+"PO-Revision-Date: 2015-01-09 17:01+0100\n"
+"Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: \n"
 "Language: hu_HU\n"
 "MIME-Version: 1.0\n"
@@ -15,10 +15,10 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.6\n"
+"X-Generator: Poedit 1.7.1\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../admin/about.php:9 ../admin/admin.php:140 ../admin/admin.php:186
+#: ../admin/about.php:9 ../admin/admin.php:171
 msgid "About"
 msgstr "Névjegy"
 
@@ -74,7 +74,7 @@ msgstr "a NextGen Gallery ezen ágának karbantartásáért."
 msgid "The original translators for NextGen Gallery, who made the translations"
 msgstr "A NextGen Gallery eredeti fordítói, akik a fordításokat készítették"
 
-#: ../admin/about.php:31
+#: ../admin/about.php:31 ../nggallery.php:386
 msgid "NextCellent"
 msgstr "NextCellent"
 
@@ -160,8 +160,8 @@ msgstr "Helyezzen el egy hivatkozást a bővítményre a blogján/weboldalán!"
 msgid "Yes, sharing and linking are also supportive and helpful."
 msgstr "Igen, a megosztás és hivatkozás is támogatás és segítség."
 
-#: ../admin/addgallery.php:35 ../admin/addgallery.php:46
-#: ../admin/addgallery.php:58 ../admin/addgallery.php:69 ../admin/album.php:88
+#: ../admin/addgallery.php:35 ../admin/addgallery.php:47
+#: ../admin/addgallery.php:59 ../admin/addgallery.php:70 ../admin/album.php:88
 #: ../admin/album.php:123 ../admin/album.php:145
 #: ../admin/edit-thumbnail.php:19 ../admin/edit-thumbnail.php:22
 #: ../admin/manage.php:188 ../admin/publish.php:7 ../admin/publish.php:10
@@ -170,127 +170,144 @@ msgstr "Igen, a megosztás és hivatkozás is támogatás és segítség."
 msgid "Cheatin&#8217; uh?"
 msgstr "Csalni próbálunk?"
 
-#: ../admin/addgallery.php:51 ../admin/addgallery.php:82
+#: ../admin/addgallery.php:52 ../admin/addgallery.php:83
 msgid "Upload failed!"
 msgstr "A feltöltés meghiúsult."
 
-#: ../admin/addgallery.php:74
+#: ../admin/addgallery.php:75
 msgid "Upload failed! "
 msgstr "A feltöltés meghiúsult."
 
-#: ../admin/addgallery.php:79 ../admin/addgallery.php:269
-#: ../admin/admin.php:304
+#: ../admin/addgallery.php:80 ../admin/addgallery.php:295
+#: ../admin/admin.php:330
 msgid "You didn't select a gallery!"
 msgstr "Nem választott ki galériát!"
 
-#: ../admin/addgallery.php:149 ../admin/admin.php:131 ../admin/admin.php:175
+#: ../admin/addgallery.php:150 ../admin/admin.php:139
 msgid "Add Gallery / Images"
 msgstr "Új galéria / képek"
 
-#: ../admin/addgallery.php:169
+#: ../admin/addgallery.php:170
 msgid "Image Files"
 msgstr "Képfájlok"
 
-#: ../admin/addgallery.php:196
+#: ../admin/addgallery.php:197
 msgid "remove"
 msgstr "eltávolítás"
 
-#: ../admin/addgallery.php:197 ../admin/addgallery.php:422
+#: ../admin/addgallery.php:198 ../admin/addgallery.php:446
 msgid "Browse..."
 msgstr "Tallóz..."
 
-#: ../admin/addgallery.php:198 ../admin/addgallery.php:236
-#: ../admin/addgallery.php:440 ../admin/addgallery.php:488
+#: ../admin/addgallery.php:199 ../admin/addgallery.php:237
+#: ../admin/addgallery.php:464 ../admin/addgallery.php:512
 msgid "Upload images"
 msgstr "Képek feltöltése"
 
-#: ../admin/addgallery.php:332
+#: ../admin/addgallery.php:303 ../admin/addgallery.php:311
+#, fuzzy
+msgid "You didn't select a file!"
+msgstr "Nem választott ki galériát!"
+
+#: ../admin/addgallery.php:351 ../admin/admin.php:477
 msgid "New gallery"
 msgstr "Új galéria"
 
-#: ../admin/addgallery.php:335 ../admin/manage-galleries.php:414
-#: ../admin/settings.php:286
+#: ../admin/addgallery.php:354 ../admin/admin.php:482 ../admin/admin.php:534
+#: ../admin/manage-galleries.php:414 ../admin/settings.php:286
 msgid "Images"
 msgstr "Képek"
 
-#: ../admin/addgallery.php:338
+#: ../admin/addgallery.php:357 ../admin/admin.php:485
 msgid "ZIP file"
 msgstr "ZIP fájl"
 
-#: ../admin/addgallery.php:341 ../admin/addgallery.php:429
+#: ../admin/addgallery.php:360 ../admin/addgallery.php:453
+#: ../admin/admin.php:488
 msgid "Import folder"
 msgstr "Importálási könyvtár"
 
-#: ../admin/addgallery.php:352
+#: ../admin/addgallery.php:371
 msgid "Add a new gallery"
 msgstr "Új galéria létrehozása"
 
-#: ../admin/addgallery.php:357 ../admin/album.php:547 ../admin/showmeta.php:33
+#: ../admin/addgallery.php:376 ../admin/album.php:547 ../admin/showmeta.php:33
 #: ../admin/showmeta.php:59 ../admin/showmeta.php:84 ../admin/showmeta.php:108
 msgid "Name"
 msgstr "Név"
 
-#: ../admin/addgallery.php:360
+#: ../admin/addgallery.php:379
 msgid "Create a new, empty gallery in the folder"
 msgstr "Új, üres galéria létrehozása ebben a könyvtárban"
 
-#: ../admin/addgallery.php:362 ../admin/manage-galleries.php:282
+#: ../admin/addgallery.php:381 ../admin/manage-galleries.php:282
 msgid "Allowed characters for file and folder names are"
 msgstr "A fájl- és könyvtárnevekben a következő karakterek használhatók"
 
-#: ../admin/addgallery.php:366
+#: ../admin/addgallery.php:384 ../admin/manage-galleries.php:411
+#: ../admin/manage-images.php:292 ../admin/manage-images.php:510
+#: ../admin/manage-images.php:732 ../admin/media-upload.php:225
+#: ../admin/style.php:298
+msgid "Description"
+msgstr "Leírás"
+
+#: ../admin/addgallery.php:386
+msgid "Add a description. This is optional and can be changed later."
+msgstr ""
+
+#: ../admin/addgallery.php:390
 msgid "Add gallery"
 msgstr "Új galéria létrehozása"
 
-#: ../admin/addgallery.php:374
+#: ../admin/addgallery.php:398
 msgid "Upload a ZIP File"
 msgstr "Egy ZIP fájl feltöltése."
 
-#: ../admin/addgallery.php:379
+#: ../admin/addgallery.php:403
 msgid "Select ZIP file"
 msgstr "ZIP fájl kiválasztása"
 
-#: ../admin/addgallery.php:381
+#: ../admin/addgallery.php:405
 msgid "Upload a ZIP file with images"
 msgstr "Egy képeket tartalmazó ZIP fájl feltöltése"
 
-#: ../admin/addgallery.php:385
+#: ../admin/addgallery.php:409
 msgid "or enter URL"
 msgstr "vagy URL megadása"
 
-#: ../admin/addgallery.php:387
+#: ../admin/addgallery.php:411
 msgid "Import a ZIP file from a URL"
 msgstr "ZIP fájl importálása adott URL-ről"
 
-#: ../admin/addgallery.php:391 ../admin/addgallery.php:445
+#: ../admin/addgallery.php:415 ../admin/addgallery.php:469
 msgid "in to"
 msgstr "ide:"
 
-#: ../admin/addgallery.php:393
+#: ../admin/addgallery.php:417
 msgid "a new gallery"
 msgstr "egy új galéria"
 
-#: ../admin/addgallery.php:404
+#: ../admin/addgallery.php:428
 msgid "Note: the upload limit on your server is "
 msgstr "Megjegyzés: a feltöltési korlát a szerveren "
 
-#: ../admin/addgallery.php:408
+#: ../admin/addgallery.php:432
 msgid "Start upload"
 msgstr "Feltöltés megkezdése"
 
-#: ../admin/addgallery.php:416
+#: ../admin/addgallery.php:440
 msgid "Import an image folder"
 msgstr "Importálás kép könyvtárból"
 
-#: ../admin/addgallery.php:421
+#: ../admin/addgallery.php:445
 msgid "Import from server:"
 msgstr "Importálás kiszolgálóról:"
 
-#: ../admin/addgallery.php:424
+#: ../admin/addgallery.php:448
 msgid "Note: you can change the default path in the gallery settings"
 msgstr "Megjegyzés: az alap elérési út a galéria beállításainál módosítható"
 
-#: ../admin/addgallery.php:426
+#: ../admin/addgallery.php:450
 msgid ""
 "Please note: If safe-mode is ON, you need to add the subfolder with thumbs "
 "manually"
@@ -298,7 +315,7 @@ msgstr ""
 "Megjegyzés: safe-mode esetén, a bélyegképek könyvtárát kézzel kell "
 "létrehozni."
 
-#: ../admin/addgallery.php:429 ../admin/manage-images.php:353
+#: ../admin/addgallery.php:453 ../admin/manage-images.php:354
 msgid ""
 "This will change folder and file names (e.g. remove spaces, special "
 "characters, ...)"
@@ -306,248 +323,459 @@ msgstr ""
 "Ez módosítja a mappák és fájlok neveit (pl.: törli a szóközöket, speciális "
 "karaktereket, ...)"
 
-#: ../admin/addgallery.php:429 ../admin/manage-images.php:353
+#: ../admin/addgallery.php:453 ../admin/manage-images.php:354
 msgid "You will need to update your URLs if you link directly to the images."
 msgstr "Frissíteni kell az URL-eket, ha közvetlenül akarja linkelni a képeket."
 
-#: ../admin/addgallery.php:429 ../admin/manage-images.php:353
+#: ../admin/addgallery.php:453 ../admin/manage-images.php:354
 msgid "Press OK to proceed, and Cancel to stop."
 msgstr "Nyomjon OK-t a folytatáshoz, Mégse-t a megállításhoz."
 
-#: ../admin/addgallery.php:446
+#: ../admin/addgallery.php:470
 msgid "Choose gallery"
 msgstr "Válasszon galériát."
 
-#: ../admin/addgallery.php:468
+#: ../admin/addgallery.php:492
 msgid "Drop your files in this window"
 msgstr "Dobjon fájlokat ide"
 
-#: ../admin/addgallery.php:468
+#: ../admin/addgallery.php:492
 msgid "Or"
 msgstr "Vagy"
 
-#: ../admin/addgallery.php:469
+#: ../admin/addgallery.php:493
 msgid "Select Files"
 msgstr "Fájlok kiválasztása"
 
-#: ../admin/addgallery.php:484
+#: ../admin/addgallery.php:508
 msgid "Click here to use the browser upload instead"
 msgstr "Kattintson ide a böngésző feltöltőjének használatához."
 
-#: ../admin/addgallery.php:484
+#: ../admin/addgallery.php:508
 msgid "Use basic uploader"
 msgstr "Alap feltöltő használata."
 
-#: ../admin/addgallery.php:486
+#: ../admin/addgallery.php:510
 msgid "Advanced uploading"
 msgstr "Korszerű feltöltés"
 
-#: ../admin/addgallery.php:486
+#: ../admin/addgallery.php:510
 msgid "Use advanced uploader"
 msgstr "Korszerű feltöltő használata"
 
-#: ../admin/addgallery.php:490
+#: ../admin/addgallery.php:514
 #, php-format
 msgid "Your images will be rescaled to max width %1$dpx or max height %2$dpx."
 msgstr ""
 "A képek át lesznek méretezve maximum %1$d képpont szélességre vagy maximum "
 "%2$d képpont magasságra."
 
-#: ../admin/admin.php:126 ../admin/admin.php:128 ../admin/admin.php:132
-#: ../admin/admin.php:152 ../admin/manage-galleries.php:126
+#: ../admin/admin.php:125 ../admin/admin.php:130 ../admin/admin.php:143
+#: ../admin/admin.php:190 ../admin/admin.php:435
+#: ../admin/manage-galleries.php:126
 msgid "Galleries"
 msgstr "Galériák"
 
-#: ../admin/admin.php:130 ../admin/admin.php:173 ../nggallery.php:580
-#: ../nggfunctions.php:953
+#: ../admin/admin.php:135 ../nggallery.php:671 ../nggfunctions.php:953
 msgid "Overview"
 msgstr "Áttekintés"
 
-#: ../admin/admin.php:133 ../admin/admin.php:179 ../admin/album.php:280
+#: ../admin/admin.php:147 ../admin/album.php:280 ../nggallery.php:401
 msgid "Albums"
 msgstr "Albumok"
 
-#: ../admin/admin.php:134 ../admin/admin.php:181
-#: ../admin/manage-images.php:732 ../admin/settings.php:369
-#: ../admin/tags.php:98 ../lib/meta.php:459
+#: ../admin/admin.php:151 ../admin/manage-images.php:733
+#: ../admin/settings.php:369 ../admin/tags.php:98 ../lib/meta.php:459
+#: ../nggallery.php:409
 msgid "Tags"
 msgstr "Címkék"
 
-#: ../admin/admin.php:135 ../admin/admin.php:183 ../admin/settings.php:250
+#: ../admin/admin.php:155 ../admin/settings.php:250 ../nggallery.php:417
 msgid "Settings"
 msgstr "Beállítások"
 
-#: ../admin/admin.php:137 ../admin/admin.php:185
+#: ../admin/admin.php:160 ../nggallery.php:425
 msgid "Style"
 msgstr "Stílus"
 
-#: ../admin/admin.php:139
+#: ../admin/admin.php:166
 msgid "Roles"
 msgstr "Szerepek"
 
-#: ../admin/admin.php:140
+#: ../admin/admin.php:171
 msgid "About this Gallery"
 msgstr "Erről a galériáról"
 
-#: ../admin/admin.php:143 ../admin/admin.php:154
+#: ../admin/admin.php:177 ../admin/admin.php:198
 msgid "Reset / Uninstall"
 msgstr "Alaphelyzetbe állítás / Eltávolítás"
 
-#: ../admin/admin.php:153
+#: ../admin/admin.php:194
 msgid "Network settings"
 msgstr "Hálózati beállítások"
 
-#: ../admin/admin.php:172 ../admin/admin.php:177 ../admin/admin.php:408
-#: ../admin/admin.php:461 ../admin/functions.php:206
-#: ../admin/functions.php:368 ../admin/manage-images.php:263
-#: ../admin/overview.php:418 ../admin/settings.php:287
-#: ../admin/tinymce/window.php:120 ../admin/tinymce/window.php:153
-#: ../admin/tinymce/window.php:277 ../admin/tinymce/window.php:398
-#: ../admin/tinymce/window.php:449 ../lib/rewrite.php:218
-#: ../lib/rewrite.php:227
-msgid "Gallery"
-msgid_plural "Galleries"
-msgstr[0] "Galéria"
-msgstr[1] "Galéria"
-
-#: ../admin/admin.php:278
+#: ../admin/admin.php:304
 msgid "You do not have the correct permission"
 msgstr "Nincs megfelelő jogosultság."
 
-#: ../admin/admin.php:279
+#: ../admin/admin.php:305
 msgid "Unexpected Error"
 msgstr "Váratlan hiba történt."
 
-#: ../admin/admin.php:280
+#: ../admin/admin.php:306
 msgid "A failure occurred"
 msgstr "Hiba történt"
 
-#: ../admin/admin.php:284
+#: ../admin/admin.php:310
 msgid "You have attempted to queue too many files."
 msgstr "Feltehetően túl sok fájl került a várakozási sorba."
 
-#: ../admin/admin.php:285
+#: ../admin/admin.php:311
 msgid "This file exceeds the maximum upload size for this site."
 msgstr ""
 "A fájl mérete meghaladja a webhelyen engedélyezett maximális feltöltési "
 "méretet."
 
-#: ../admin/admin.php:286
+#: ../admin/admin.php:312
 msgid "This file is empty. Please try another."
 msgstr "A fájl üres. Próbálkozzunk másikkal."
 
-#: ../admin/admin.php:287
+#: ../admin/admin.php:313
 msgid "This file type is not allowed. Please try another."
 msgstr "Ez a fájltípus nem engedélyezett. Próbálkozzunk másikkal."
 
-#: ../admin/admin.php:288
+#: ../admin/admin.php:314
 msgid "This file is not an image. Please try another."
 msgstr "A fájl nem képfájl. Próbálkozzunk másikkal."
 
-#: ../admin/admin.php:289
+#: ../admin/admin.php:315
 msgid "Memory exceeded. Please try another smaller file."
 msgstr "A memória betelt. Próbálkozzunk másik, kisebb fájllal."
 
-#: ../admin/admin.php:290
+#: ../admin/admin.php:316
 msgid "This is larger than the maximum size. Please try another."
 msgstr "A méret nagyobb a maximálisnál. Próbálkozzunk másikkal."
 
-#: ../admin/admin.php:291
+#: ../admin/admin.php:317
 msgid "An error occurred in the upload. Please try again later."
 msgstr "A feltöltéskor hiba történt. Próbáljuk újra."
 
-#: ../admin/admin.php:292
+#: ../admin/admin.php:318
 msgid ""
 "There was a configuration error. Please contact the server administrator."
 msgstr ""
 "Konfigurációs hiba történt. Fel kell venni a kapcsolatot a szerver "
 "adminisztrátorával."
 
-#: ../admin/admin.php:293
+#: ../admin/admin.php:319
 msgid "You may only upload 1 file."
 msgstr "Csak egy fájlt ajánlatos feltölteni egyszerre."
 
-#: ../admin/admin.php:294
+#: ../admin/admin.php:320
 msgid "HTTP error."
 msgstr "HTTP hiba merült fel."
 
-#: ../admin/admin.php:295
+#: ../admin/admin.php:321
 msgid "Upload failed."
 msgstr "A feltöltés meghiúsult."
 
-#: ../admin/admin.php:296
+#: ../admin/admin.php:322
 msgid "IO error."
 msgstr "IO hiba merült fel."
 
-#: ../admin/admin.php:297
+#: ../admin/admin.php:323
 msgid "Security error."
 msgstr "Biztonsági hiba merült fel."
 
-#: ../admin/admin.php:298
+#: ../admin/admin.php:324
 msgid "File canceled."
 msgstr "A fájl törlésre került."
 
-#: ../admin/admin.php:299
+#: ../admin/admin.php:325
 msgid "Upload stopped."
 msgstr "A feltöltés félbeszakadt."
 
-#: ../admin/admin.php:300
+#: ../admin/admin.php:326
 msgid "Dismiss"
 msgstr "Elvetés"
 
-#: ../admin/admin.php:301
+#: ../admin/admin.php:327
 msgid "Crunching&hellip;"
 msgstr "Roppantás&hellip;"
 
-#: ../admin/admin.php:302
+#: ../admin/admin.php:328
 msgid "moved to the trash."
 msgstr "áthelyezésre került a lomtárba."
 
-#: ../admin/admin.php:303
+#: ../admin/admin.php:329
 #, php-format
 msgid "&#8220;%s&#8221; has failed to upload due to an error"
 msgstr "&#8220;%s&#8221; feltöltése meghiúsult valamilyen hiba miatt."
 
-#: ../admin/admin.php:323 ../nggallery.php:375
+#: ../admin/admin.php:352 ../nggallery.php:458
 msgid "L O A D I N G"
 msgstr "B E T Ö L T É S"
 
-#: ../admin/admin.php:324 ../nggallery.php:376
+#: ../admin/admin.php:353 ../nggallery.php:459
 msgid "Click to Close"
 msgstr "Kattintás a bezáráshoz"
 
-#: ../admin/admin.php:412
+#: ../admin/admin.php:440
 msgid ""
-"<a href=\"http://www.wpgetready.com\" target=\"_blank\">Introduction</a>"
-msgstr "<a href=\"http://www.wpgetready.com\" target=\"_blank\">Bevezetés</a>"
-
-#: ../admin/admin.php:415
-msgid ""
-"<a href=\"http://www.nextgen-gallery.com/languages\" target=\"_blank"
-"\">Languages</a>"
+"Welcome to your NextCellent Dashboard! This screen gives you all kinds of "
+"information about NextCellent at glance. You can get help for any screen by "
+"clicking the Help tab in the upper corner."
 msgstr ""
-"<a href=\"http://www.nextgen-gallery.com/languages\" target=\"_blank"
-"\">Nyelvek</a>"
 
-#: ../admin/admin.php:420
-msgid "Get help with NextCellent Gallery"
-msgstr "Segítség a NextCellent Galériához"
-
-#: ../admin/admin.php:424
-msgid "More Help & Info"
-msgstr "További segítség és információ"
-
-#: ../admin/admin.php:426
-msgid ""
-"<a href=\"http://wordpress.org/tags/nextcellent-gallery-nextgen-legacy\" "
-"target=\"_blank\">Support Forums</a>"
+#: ../admin/admin.php:449
+msgid "The boxes on your overview screen are:"
 msgstr ""
-"<a href=\"http://wordpress.org/tags/nextcellent-gallery-nextgen-legacy\" "
-"target=\"_blank\">Támogató fórumok</a>"
 
-#: ../admin/admin.php:427
-msgid "Download latest version"
-msgstr "A legújabb verzió letöltése"
+#: ../admin/admin.php:450 ../admin/overview.php:407
+msgid "At a Glance"
+msgstr "Összefoglaló"
+
+#: ../admin/admin.php:450
+msgid ""
+"Shows some general information about your site, such as the number of "
+"pictures, albums and galleries."
+msgstr ""
+
+#: ../admin/admin.php:451 ../admin/overview.php:90
+msgid "Latest News"
+msgstr "Legújabb hírek"
+
+#: ../admin/admin.php:451
+#, fuzzy
+msgid "The latest NextCellent news."
+msgstr "Üdvözlet a NextCellent Galéria bővítményben."
+
+#: ../admin/admin.php:453 ../admin/overview.php:94
+msgid "Related plugins"
+msgstr "Kapcsolódó bővítmények"
+
+#: ../admin/admin.php:453
+msgid "Shows plugins that extend NextCellent."
+msgstr ""
+
+#: ../admin/admin.php:453 ../admin/overview.php:742
+msgid "Pay attention"
+msgstr "Figyelem"
+
+#: ../admin/admin.php:453
+#, fuzzy, php-format
+msgid ""
+"third parties plugins that are compatible with NGG may not be "
+"100% compatible with NextCellent Gallery!"
+msgstr ""
+"harmadik féltől származó bővítmények, amik működnek az NGG-vel, nem 100&#37; "
+"hogy a NextCellent Galériával is működnek!"
+
+#: ../admin/admin.php:455 ../admin/overview.php:87
+msgid "Help me help YOU!"
+msgstr "Segíts, hogy segíthessek!"
+
+#: ../admin/admin.php:455
+msgid "Shows general information about he plugin and some links."
+msgstr ""
+
+#: ../admin/admin.php:457 ../admin/overview.php:89
+msgid "Translation"
+msgstr "Fordítás"
+
+#: ../admin/admin.php:457
+msgid "View information about the current translation."
+msgstr ""
+
+#: ../admin/admin.php:460 ../admin/overview.php:93
+msgid "Server Settings"
+msgstr "Szerver beállítások"
+
+#: ../admin/admin.php:460
+#, fuzzy
+msgid "Show all the server settings!."
+msgstr "Szerver beállítások"
+
+#: ../admin/admin.php:461 ../admin/overview.php:92
+msgid "Plugin Check"
+msgstr "Bővítmény ellenőrzés"
+
+#: ../admin/admin.php:461
+msgid "Check if there are known errors in your installation."
+msgstr ""
+
+#: ../admin/admin.php:475
+msgid "On this page you can add galleries and pictures to those galleries."
+msgstr ""
+
+#: ../admin/admin.php:477
+msgid "Add new galleries to NextCellent."
+msgstr ""
+
+#: ../admin/admin.php:480
+msgid "You must add a gallery before adding images!"
+msgstr ""
+
+#: ../admin/admin.php:482
+#, fuzzy
+msgid "Add new images to a gallery."
+msgstr "Új galéria létrehozása"
+
+#: ../admin/admin.php:485
+msgid "Add images from a ZIP file."
+msgstr ""
+
+#: ../admin/admin.php:488
+#, fuzzy
+msgid "Import a folder from the server as a new gallery."
+msgstr "A felhasználók képeket importálhatnak a szerverről."
+
+#: ../admin/admin.php:505
+#, fuzzy
+msgid "Manage your images and galleries."
+msgstr "További galériák kezelése"
+
+#: ../admin/admin.php:514
+#, fuzzy
+msgid "Organize your galleries into albums."
+msgstr "Itt kezelheti a képeket, galériákat és albumokat."
+
+#: ../admin/admin.php:514
+msgid ""
+"First select an album from the dropdown and then drag the galleries you want "
+"to add or remove from the selected album."
+msgstr ""
+
+#: ../admin/admin.php:523
+#, fuzzy
+msgid "Organize your pictures with tags."
+msgstr "A kép címkéket vesszővel kell elválasztani."
+
+#: ../admin/admin.php:523
+msgid "Rename, delete and edit tags. Use the rename function to merge tags."
+msgstr ""
+
+#: ../admin/admin.php:532
+msgid ""
+"Edit all of NextCellent's options. The options are sorted in multiple "
+"categories."
+msgstr ""
+
+#: ../admin/admin.php:533 ../admin/settings.php:285
+msgid "General"
+msgstr "Általános"
+
+#: ../admin/admin.php:533
+msgid ""
+"General NextCellent options. Contains options for permalinks and related "
+"images."
+msgstr ""
+
+#: ../admin/admin.php:534
+msgid "All image-related options. Also contains options for thumbnails."
+msgstr ""
+
+#: ../admin/admin.php:535 ../admin/functions.php:212
+#: ../admin/functions.php:374 ../admin/manage-images.php:263
+#: ../admin/overview.php:418 ../admin/settings.php:287
+#: ../admin/tinymce/window.php:120 ../admin/tinymce/window.php:153
+#: ../admin/tinymce/window.php:277 ../admin/tinymce/window.php:398
+#: ../admin/tinymce/window.php:449 ../lib/rewrite.php:220
+#: ../lib/rewrite.php:229 ../nggallery.php:393
+#, fuzzy
+msgid "Gallery"
+msgstr "Galéria"
+
+#: ../admin/admin.php:535
+msgid ""
+"Everything about galleries. From sorting options to the number of images, "
+"it's all in here."
+msgstr ""
+
+#: ../admin/admin.php:536 ../admin/settings.php:288 ../admin/settings.php:546
+msgid "Effects"
+msgstr "Effektusok"
+
+#: ../admin/admin.php:536
+msgid "Make your gallery look beautiful."
+msgstr ""
+
+#: ../admin/admin.php:537 ../admin/settings.php:289 ../admin/settings.php:587
+#: ../admin/tinymce/window.php:329
+msgid "Watermark"
+msgstr "Vízjel"
+
+#: ../admin/admin.php:537
+msgid "Who doesn't want theft-proof images?"
+msgstr ""
+
+#: ../admin/admin.php:538 ../admin/settings.php:290 ../admin/settings.php:483
+#: ../admin/settings.php:493 ../admin/settings.php:694
+#: ../admin/tinymce/window.php:159 ../lib/rewrite.php:218
+#: ../widgets/widgets.php:29
+msgid "Slideshow"
+msgstr "Diavetítés"
+
+#: ../admin/admin.php:538
+msgid "Edit options for the slideshow."
+msgstr ""
+
+#: ../admin/admin.php:539
+msgid "Don't forget to press save!"
+msgstr ""
+
+#: ../admin/admin.php:548
+msgid "You can edit the css file to adjust how your gallery looks."
+msgstr ""
+
+#: ../admin/admin.php:549
+msgid ""
+"When you save an edited file, NextCellent automatically saves it as a copy "
+"in the folder ngg_styles. This protects your changes from upgrades."
+msgstr ""
+
+#: ../admin/admin.php:558
+msgid ""
+"You can assign the lowest user role that has access to a certain feature. "
+"Needless to say, all greater user roles will also have access to that "
+"feature."
+msgstr ""
+
+#: ../admin/admin.php:559
+msgid ""
+"NextCellent also works with various plugins that extend the default roles "
+"capabilities."
+msgstr ""
+
+#: ../admin/admin.php:568
+msgid ""
+"If 'someone' messed with your settings (yeah, definitely not you), you can "
+"reset them here."
+msgstr ""
+
+#: ../admin/admin.php:569
+#, fuzzy
+msgid "Attention!"
+msgstr "Figyelem"
+
+#: ../admin/admin.php:569
+msgid ""
+"You should not use the Uninstall Plugin button, unless you know what you're "
+"doing! It should never be necessary to press it."
+msgstr ""
+
+#: ../admin/admin.php:581
+msgid "For more information:"
+msgstr ""
+
+#: ../admin/admin.php:582
+msgid "Support Forums"
+msgstr ""
+
+#: ../admin/admin.php:583
+#, fuzzy
+msgid "Source Code"
+msgstr "Forrás"
 
 #: ../admin/ajax.php:291
 msgid "You are not allowed to be here"
@@ -559,7 +787,6 @@ msgid "Could create image with %s x %s pixel"
 msgstr "Nem hozható létre  %s x %s pixel méretű kép."
 
 #: ../admin/album.php:97 ../admin/album.php:116 ../admin/album.php:161
-#: ../admin/style.php:31
 msgid "Updated successfully"
 msgstr "A frissítés sikeresen befejeződött."
 
@@ -589,7 +816,7 @@ msgid "Edit album"
 msgstr "Album szerkesztése"
 
 #: ../admin/album.php:304 ../admin/manage-galleries.php:148
-#: ../admin/manage-images.php:480 ../admin/tags.php:225
+#: ../admin/manage-images.php:481 ../admin/tags.php:225
 msgid "Delete"
 msgstr "Törlés"
 
@@ -671,15 +898,15 @@ msgstr "Nincs hivatkozás"
 
 #: ../admin/album.php:458 ../admin/manage-galleries.php:288
 #: ../admin/manage-galleries.php:320 ../admin/manage-galleries.php:350
-#: ../admin/manage-images.php:567 ../admin/manage-images.php:602
-#: ../admin/manage-images.php:633 ../admin/manage-images.php:663
+#: ../admin/manage-images.php:568 ../admin/manage-images.php:603
+#: ../admin/manage-images.php:634 ../admin/manage-images.php:664
 msgid "OK"
 msgstr "OK"
 
 #: ../admin/album.php:460 ../admin/manage-galleries.php:290
 #: ../admin/manage-galleries.php:322 ../admin/manage-galleries.php:352
-#: ../admin/manage-images.php:568 ../admin/manage-images.php:603
-#: ../admin/manage-images.php:634 ../admin/manage-images.php:664
+#: ../admin/manage-images.php:569 ../admin/manage-images.php:604
+#: ../admin/manage-images.php:635 ../admin/manage-images.php:665
 #: ../admin/tinymce/window.php:472
 msgid "Cancel"
 msgstr "Mégsem"
@@ -689,7 +916,7 @@ msgstr "Mégsem"
 msgid "Title"
 msgstr "Cím"
 
-#: ../admin/album.php:549 ../lib/rewrite.php:230
+#: ../admin/album.php:549 ../lib/rewrite.php:232
 msgid "Page"
 msgstr "Oldal"
 
@@ -709,53 +936,53 @@ msgstr "Hiba történt a bélyegkép frissítésekor."
 msgid "Select the area for the thumbnail from the picture on the left."
 msgstr "Jelöljük ki a területet a bélyegkép számára a balra levő képről."
 
-#: ../admin/functions.php:39
+#: ../admin/functions.php:43
 msgid "No valid gallery name!"
 msgstr "A galéria neve érvénytelen."
 
-#: ../admin/functions.php:46 ../admin/functions.php:55
-#: ../admin/functions.php:80 ../admin/functions.php:151
-#: ../admin/functions.php:158 ../admin/functions.php:338
-#: ../admin/functions.php:346
+#: ../admin/functions.php:50 ../admin/functions.php:59
+#: ../admin/functions.php:84 ../admin/functions.php:157
+#: ../admin/functions.php:164 ../admin/functions.php:344
+#: ../admin/functions.php:352
 msgid "Directory"
 msgstr "Könyvtár"
 
-#: ../admin/functions.php:46
+#: ../admin/functions.php:50
 msgid "didn't exist. Please create first the main gallery folder "
 msgstr "nem létezik. Először hozzuk létre a főgaléria könyvtárat."
 
-#: ../admin/functions.php:47 ../admin/functions.php:56
+#: ../admin/functions.php:51 ../admin/functions.php:60
 msgid "Check this link, if you didn't know how to set the permission :"
 msgstr ""
 "Ha nem tudjuk, hogy kell a jogosultságokat beállítani, ellenőrizzük ezt a "
 "hivatkozást:"
 
-#: ../admin/functions.php:55 ../admin/functions.php:80
+#: ../admin/functions.php:59 ../admin/functions.php:84
 msgid "is not writeable !"
 msgstr "nem írható."
 
-#: ../admin/functions.php:76 ../admin/functions.php:85
-#: ../admin/functions.php:1096 ../lib/core.php:102
+#: ../admin/functions.php:80 ../admin/functions.php:89
+#: ../admin/functions.php:1102 ../lib/core.php:102
 msgid "Unable to create directory "
 msgstr "Könyvtár létrehozása sikertelen."
 
-#: ../admin/functions.php:89
+#: ../admin/functions.php:93
 msgid "The server setting Safe-Mode is on !"
 msgstr "A Safe mode szerverbeállítás aktív:"
 
-#: ../admin/functions.php:90
+#: ../admin/functions.php:94
 msgid "If you have problems, please create directory"
 msgstr "Ha probléma van, hozzuk létre a könyvtárat"
 
-#: ../admin/functions.php:91
+#: ../admin/functions.php:95
 msgid "and the thumbnails directory"
 msgstr "és a bélyegképek könyvtárát"
 
-#: ../admin/functions.php:91
+#: ../admin/functions.php:95
 msgid "with permission 777 manually !"
 msgstr "777 jogosultsággal, kézzel."
 
-#: ../admin/functions.php:116
+#: ../admin/functions.php:122
 #, php-format
 msgid ""
 "Gallery ID %1$s successfully created. You can show this gallery in your post "
@@ -764,107 +991,107 @@ msgstr ""
 "%1$s azonosítójú galéria elkészült. Ez a galéria a bejegyzésbe vagy oldalba "
 "a következő gyorskóddal illeszthető be: %2$s.<br/>"
 
-#: ../admin/functions.php:119 ../admin/functions.php:303
-#: ../admin/functions.php:406
+#: ../admin/functions.php:125 ../admin/functions.php:309
+#: ../admin/functions.php:412
 msgid "Edit gallery"
 msgstr "Galéria szerkesztése"
 
-#: ../admin/functions.php:151 ../admin/functions.php:338
+#: ../admin/functions.php:157 ../admin/functions.php:344
 msgid "doesn&#96;t exist!"
 msgstr "nem létezik!"
 
-#: ../admin/functions.php:158 ../admin/functions.php:346
+#: ../admin/functions.php:164 ../admin/functions.php:352
 msgid "contains no pictures"
 msgstr "nincs benn kép"
 
-#: ../admin/functions.php:185
+#: ../admin/functions.php:191
 msgid "Something went wrong when renaming"
 msgstr "Valami félresikerült átnevezés közben"
 
-#: ../admin/functions.php:185
+#: ../admin/functions.php:191
 msgid "Importing was aborted."
 msgstr "Importálás megszakítva."
 
-#: ../admin/functions.php:203 ../admin/functions.php:365
+#: ../admin/functions.php:209 ../admin/functions.php:371
 msgid "Database error. Could not add gallery!"
 msgstr "Adatbázis hiba. A galéria hozzáadása nem sikerült."
 
-#: ../admin/functions.php:206 ../admin/functions.php:368
+#: ../admin/functions.php:212 ../admin/functions.php:374
 msgid "successfully created!"
 msgstr "sikeresen létrehozva!"
 
-#: ../admin/functions.php:293 ../admin/functions.php:401
-#: ../admin/functions.php:1213 ../admin/manage-galleries.php:80
+#: ../admin/functions.php:299 ../admin/functions.php:407
+#: ../admin/functions.php:1219 ../admin/manage-galleries.php:80
 #: ../admin/manage-galleries.php:150 ../admin/manage-images.php:227
-#: ../admin/manage-images.php:371 ../admin/manage.php:227
+#: ../admin/manage-images.php:372 ../admin/manage.php:227
 #: ../admin/manage.php:304
 msgid "Create new thumbnails"
 msgstr "Új bélyegképek készítése"
 
-#: ../admin/functions.php:298
+#: ../admin/functions.php:304
 msgid " picture(s) successfully renamed"
 msgstr " kép sikeresen átnevezve."
 
-#: ../admin/functions.php:300 ../admin/functions.php:404
+#: ../admin/functions.php:306 ../admin/functions.php:410
 msgid " picture(s) successfully added"
 msgstr " kép sikeresen hozzáadva."
 
-#: ../admin/functions.php:307
+#: ../admin/functions.php:313
 msgid "No images were added."
 msgstr "Nem lett hozzáadva kép."
 
-#: ../admin/functions.php:459 ../admin/functions.php:539
-#: ../admin/functions.php:594 ../admin/functions.php:691
-#: ../admin/functions.php:745
+#: ../admin/functions.php:465 ../admin/functions.php:545
+#: ../admin/functions.php:600 ../admin/functions.php:697
+#: ../admin/functions.php:751
 msgid "Object didn't contain correct data"
 msgstr "Ez az objektum nem tartalmaz helyes adatot."
 
-#: ../admin/functions.php:467
+#: ../admin/functions.php:473
 msgid " is not writeable "
 msgstr " nem írható"
 
-#: ../admin/functions.php:549 ../admin/functions.php:597
-#: ../admin/functions.php:697 ../admin/functions.php:748
+#: ../admin/functions.php:555 ../admin/functions.php:603
+#: ../admin/functions.php:703 ../admin/functions.php:754
 msgid " is not writeable"
 msgstr " nem írható"
 
-#: ../admin/functions.php:751
+#: ../admin/functions.php:757
 msgid "File do not exists"
 msgstr "A fájl nem létezik."
 
-#: ../admin/functions.php:755
+#: ../admin/functions.php:761
 msgid "Couldn't restore original image"
 msgstr "Nem állítható vissza az eredeti kép."
 
-#: ../admin/functions.php:871
+#: ../admin/functions.php:877
 msgid "(Error : Couldn't not update data base)"
 msgstr "(Hiba : nem frissíthető az adatbázis)"
 
-#: ../admin/functions.php:878
+#: ../admin/functions.php:884
 msgid "(Error : Couldn't not update meta data)"
 msgstr "(Hiba : nem frissíthető a metaadat)"
 
-#: ../admin/functions.php:887
+#: ../admin/functions.php:893
 msgid "(Error : Couldn't not find image)"
 msgstr "(Hiba : a kép nem található)"
 
-#: ../admin/functions.php:1030
+#: ../admin/functions.php:1036
 msgid "No valid URL path "
 msgstr "Nem érvényes az URL"
 
-#: ../admin/functions.php:1046
+#: ../admin/functions.php:1052
 msgid "Import via cURL failed."
 msgstr "A cURL importálás meghiúsult."
 
-#: ../admin/functions.php:1063
+#: ../admin/functions.php:1069
 msgid "Uploaded file was no or a faulty zip file ! The server recognized : "
 msgstr "A feltöltött állomány nem vagy hibás zip fájl. A szerver válasza :"
 
-#: ../admin/functions.php:1080
+#: ../admin/functions.php:1086
 msgid "Could not get a valid foldername"
 msgstr "Nem megfelelő a könyvtárnév."
 
-#: ../admin/functions.php:1091
+#: ../admin/functions.php:1097
 #, php-format
 msgid ""
 "Unable to create directory %s. Is its parent directory writable by the "
@@ -873,46 +1100,46 @@ msgstr ""
 "A %s könyvtár létrehozása sikertelen. Ellenőrizzük, hogy a szerver "
 "rendelkezik írási jogokkal a szülőkönyvtárra!"
 
-#: ../admin/functions.php:1106
+#: ../admin/functions.php:1112
 msgid "Zip-File successfully unpacked"
 msgstr "A tömörített állomány sikeresen kicsomagolásra került."
 
-#: ../admin/functions.php:1137 ../admin/functions.php:1237
+#: ../admin/functions.php:1143 ../admin/functions.php:1243
 msgid "No gallery selected !"
 msgstr "Nem választottuk ki azt a galériát, ahová a képet fel lehet tölteni."
 
-#: ../admin/functions.php:1145 ../admin/functions.php:1262
+#: ../admin/functions.php:1151 ../admin/functions.php:1268
 msgid "Failure in database, no gallery path set !"
 msgstr "Adatbázishiba történt. Nincs a galéria útvonal beállítva."
 
-#: ../admin/functions.php:1169 ../admin/functions.php:1256
+#: ../admin/functions.php:1175 ../admin/functions.php:1262
 msgid "is no valid image file!"
 msgstr "érvénytelen képfájl."
 
-#: ../admin/functions.php:1183 ../admin/functions.php:1381
-#: ../admin/functions.php:1458
+#: ../admin/functions.php:1189 ../admin/functions.php:1387
+#: ../admin/functions.php:1464
 #, php-format
 msgid ""
 "Unable to write to directory %s. Is this directory writable by the server?"
 msgstr "%s könyvtárba nem lehet írni. A szerver írhatja ezt a könyvtárat?"
 
-#: ../admin/functions.php:1190 ../admin/functions.php:1279
+#: ../admin/functions.php:1196 ../admin/functions.php:1285
 msgid "Error, the file could not be moved to : "
 msgstr "Hiba történt, a fájlt nem lehetett áthelyezni:"
 
-#: ../admin/functions.php:1195 ../admin/functions.php:1283
+#: ../admin/functions.php:1201 ../admin/functions.php:1289
 msgid "Error, the file permissions could not be set"
 msgstr "Hiba történt,  a fájl-jogosultságokat nem lehet beállítani."
 
-#: ../admin/functions.php:1218
+#: ../admin/functions.php:1224
 msgid " Image(s) successfully added"
 msgstr "A képek sikerese hozzáadásara kerültek."
 
-#: ../admin/functions.php:1245
+#: ../admin/functions.php:1251
 msgid "Invalid upload. Error Code : "
 msgstr "Hibás a feltöltés. Hibakód:"
 
-#: ../admin/functions.php:1321
+#: ../admin/functions.php:1327
 #, php-format
 msgid ""
 "SAFE MODE Restriction in effect! You need to create the folder <strong>%s</"
@@ -921,7 +1148,7 @@ msgstr ""
 "A Safe mode korlátozás be van kapcsolva. Manuálisan kell létrehozni a "
 "könyvtárat: <strong>%s</strong>"
 
-#: ../admin/functions.php:1322
+#: ../admin/functions.php:1328
 #, php-format
 msgid ""
 "When safe_mode is on, PHP checks to see if the owner (%s) of the current "
@@ -933,33 +1160,33 @@ msgstr ""
 "(%s) megegyezik-e az állomány tulajdonosával (%s) azért, hogy a fájlfüggvény "
 "végrehajtható-e."
 
-#: ../admin/functions.php:1375 ../admin/functions.php:1452
+#: ../admin/functions.php:1381 ../admin/functions.php:1458
 msgid "The destination gallery does not exist"
 msgstr "A célgaléria nem létezik."
 
-#: ../admin/functions.php:1406 ../lib/xmlrpc.php:222
+#: ../admin/functions.php:1412 ../lib/xmlrpc.php:222
 #, php-format
 msgid "Failed to move image %1$s to %2$s"
 msgstr "Nem lehet a képeket áthelyezni: %1$s -> %2$s"
 
-#: ../admin/functions.php:1426
+#: ../admin/functions.php:1432
 #, php-format
 msgid "Moved %1$s picture(s) to gallery : %2$s ."
 msgstr "%1$s képet került át ebbe a galériába: %2$s"
 
-#: ../admin/functions.php:1485
+#: ../admin/functions.php:1491
 #, php-format
 msgid "Failed to copy image %1$s to %2$s"
 msgstr ""
 "Nem lehet a képeket átmásolni a(z) <strong>%1$s</strong> könyvtárból a(z) "
 "<strong>%2$s</strong> könyvtárba."
 
-#: ../admin/functions.php:1499
+#: ../admin/functions.php:1505
 #, php-format
 msgid "Failed to copy database row for picture %s"
 msgstr "%s képhez tartozó adatbázis sort nem lehet átmásolni."
 
-#: ../admin/functions.php:1511
+#: ../admin/functions.php:1517
 #, php-format
 msgid ""
 "Image %1$s (%2$s) copied as image %3$s (%4$s) &raquo; The file already "
@@ -968,23 +1195,23 @@ msgstr ""
 "%1$s (%2$s) képet átmásoltunk mint %3$s (%4$s) &raquo; A célkönyvtárban már "
 "lézetett ez a fájl."
 
-#: ../admin/functions.php:1514
+#: ../admin/functions.php:1520
 #, php-format
 msgid "Image %1$s (%2$s) copied as image %3$s (%4$s)"
 msgstr "%1$s (%2$s) képet átmásoltunk mint %3$s (%4$s) "
 
-#: ../admin/functions.php:1523
+#: ../admin/functions.php:1529
 #, php-format
 msgid "Copied %1$s picture(s) to gallery: %2$s ."
 msgstr "%1$s kép került másolásra %2$s galériába."
 
-#: ../admin/functions.php:1631
+#: ../admin/functions.php:1637
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
 "A feltöltött fájl mérete meghaladja a php.ini fájlban levő "
 "upload_max_filesize direktiva értékét"
 
-#: ../admin/functions.php:1634
+#: ../admin/functions.php:1640
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
@@ -992,27 +1219,27 @@ msgstr ""
 "A feltöltött fájl mérete meghaladja a HTML űrlapban beállított MAX_FILE_SIZE "
 "direktiva értékét"
 
-#: ../admin/functions.php:1637
+#: ../admin/functions.php:1643
 msgid "The uploaded file was only partially uploaded"
 msgstr "A fájl csak részlegesen lett feltöltve"
 
-#: ../admin/functions.php:1640
+#: ../admin/functions.php:1646
 msgid "No file was uploaded"
 msgstr "Nem lett feltöltve fájl."
 
-#: ../admin/functions.php:1643
+#: ../admin/functions.php:1649
 msgid "Missing a temporary folder"
 msgstr "Hiányzik az átmeneti könyvtár."
 
-#: ../admin/functions.php:1646
+#: ../admin/functions.php:1652
 msgid "Failed to write file to disk"
 msgstr "A fájl mentése nem sikerült."
 
-#: ../admin/functions.php:1649
+#: ../admin/functions.php:1655
 msgid "File upload stopped by extension"
 msgstr "A bővítmény leállította a fájl feltöltést"
 
-#: ../admin/functions.php:1652
+#: ../admin/functions.php:1658
 msgid "Unknown upload error"
 msgstr "Ismeretlen feltöltési hiba történt."
 
@@ -1041,7 +1268,7 @@ msgid "No images selected"
 msgstr "Nem lett kép kiválasztva."
 
 #: ../admin/manage-galleries.php:76 ../admin/manage-galleries.php:151
-#: ../admin/manage-images.php:223 ../admin/manage-images.php:372
+#: ../admin/manage-images.php:223 ../admin/manage-images.php:373
 #: ../admin/manage.php:211 ../admin/manage.php:290 ../admin/settings.php:394
 msgid "Resize images"
 msgstr "Képek átméretezése"
@@ -1066,26 +1293,26 @@ msgstr "Új galéria létrehozása"
 msgid "Search Images"
 msgstr "Képek keresése"
 
-#: ../admin/manage-galleries.php:147 ../admin/manage-images.php:369
+#: ../admin/manage-galleries.php:147 ../admin/manage-images.php:370
 msgid "Actions"
 msgstr "Műveletek"
 
-#: ../admin/manage-galleries.php:149 ../admin/manage-images.php:370
+#: ../admin/manage-galleries.php:149 ../admin/manage-images.php:371
 #: ../admin/manage.php:141 ../admin/manage.php:253
 msgid "Set watermark"
 msgstr "Vízjel elhelyezése"
 
-#: ../admin/manage-galleries.php:152 ../admin/manage-images.php:375
+#: ../admin/manage-galleries.php:152 ../admin/manage-images.php:376
 #: ../admin/manage.php:146 ../admin/manage.php:274
 msgid "Import metadata"
 msgstr "Metaadat importálása"
 
-#: ../admin/manage-galleries.php:153 ../admin/manage-images.php:373
+#: ../admin/manage-galleries.php:153 ../admin/manage-images.php:374
 #: ../admin/manage.php:136 ../admin/manage.php:250
 msgid "Recover from backup"
 msgstr "Visszaállítás biztonsági másolatból"
 
-#: ../admin/manage-galleries.php:155 ../admin/manage-images.php:384
+#: ../admin/manage-galleries.php:155 ../admin/manage-images.php:385
 msgid "Apply"
 msgstr "Alkalmazás"
 
@@ -1093,7 +1320,7 @@ msgstr "Alkalmazás"
 msgid "Edit"
 msgstr "Szerkesztés"
 
-#: ../admin/manage-galleries.php:260 ../admin/manage-images.php:540
+#: ../admin/manage-galleries.php:260 ../admin/manage-images.php:541
 msgid "No entries found"
 msgstr "Nincs elem."
 
@@ -1105,12 +1332,12 @@ msgstr "Új galéria"
 msgid "Create a new , empty gallery below the folder"
 msgstr "Új, üres galéria létrehozása ebben a könyvtárban"
 
-#: ../admin/manage-galleries.php:308 ../admin/manage-images.php:621
+#: ../admin/manage-galleries.php:308 ../admin/manage-images.php:622
 msgid "Resize Images to"
 msgstr "Képek átméretezése:"
 
 #: ../admin/manage-galleries.php:311 ../admin/manage-galleries.php:340
-#: ../admin/manage-images.php:624 ../admin/manage-images.php:652
+#: ../admin/manage-images.php:625 ../admin/manage-images.php:653
 #: ../admin/settings.php:395 ../admin/settings.php:424
 #: ../admin/settings.php:698 ../admin/tinymce/window.php:210
 #: ../admin/tinymce/window.php:318
@@ -1118,14 +1345,14 @@ msgid "Width"
 msgstr "Szélesség"
 
 #: ../admin/manage-galleries.php:313 ../admin/manage-galleries.php:340
-#: ../admin/manage-images.php:626 ../admin/manage-images.php:653
+#: ../admin/manage-images.php:627 ../admin/manage-images.php:654
 #: ../admin/settings.php:397 ../admin/settings.php:426
 #: ../admin/settings.php:700 ../admin/tinymce/window.php:211
 #: ../admin/tinymce/window.php:320
 msgid "Height"
 msgstr "Magasság"
 
-#: ../admin/manage-galleries.php:315 ../admin/manage-images.php:628
+#: ../admin/manage-galleries.php:315 ../admin/manage-images.php:629
 #: ../admin/settings.php:399
 msgid ""
 "Width and height (in pixels). NextCellent Gallery will keep the ratio size."
@@ -1133,38 +1360,32 @@ msgstr ""
 "szélesség x magasság (képpontban). A NextCellent Galéria megtartja a "
 "képarányokat."
 
-#: ../admin/manage-galleries.php:339 ../admin/manage-images.php:651
+#: ../admin/manage-galleries.php:339 ../admin/manage-images.php:652
 #: ../admin/media-upload.php:242 ../admin/settings.php:663
 msgid "Size"
 msgstr "Méret"
 
-#: ../admin/manage-galleries.php:341 ../admin/manage-images.php:654
+#: ../admin/manage-galleries.php:341 ../admin/manage-images.php:655
 #: ../admin/settings.php:428
 msgid "These values are maximum values "
 msgstr "Ezek a maximális értékek."
 
-#: ../admin/manage-galleries.php:344 ../admin/manage-images.php:657
+#: ../admin/manage-galleries.php:344 ../admin/manage-images.php:658
 #: ../admin/settings.php:431
 msgid "Fixed size"
 msgstr "Fix méret"
 
-#: ../admin/manage-galleries.php:346 ../admin/manage-images.php:659
+#: ../admin/manage-galleries.php:346 ../admin/manage-images.php:660
 #: ../admin/settings.php:433
 msgid "This will ignore the aspect ratio, so no portrait thumbnails"
 msgstr "A képarány figyelmen kívül hagyása, így nem lesznek álló bélyegképek."
 
-#: ../admin/manage-galleries.php:409 ../admin/manage-images.php:728
+#: ../admin/manage-galleries.php:409 ../admin/manage-images.php:729
 msgid "ID"
 msgstr "AZ"
 
-#: ../admin/manage-galleries.php:411 ../admin/manage-images.php:292
-#: ../admin/manage-images.php:509 ../admin/manage-images.php:731
-#: ../admin/media-upload.php:225 ../admin/style.php:145
-msgid "Description"
-msgstr "Leírás"
-
 #: ../admin/manage-galleries.php:412 ../admin/manage-images.php:321
-#: ../admin/overview.php:771 ../admin/style.php:143 ../lib/meta.php:458
+#: ../admin/overview.php:771 ../admin/style.php:295 ../lib/meta.php:458
 msgid "Author"
 msgstr "Szerző"
 
@@ -1192,7 +1413,7 @@ msgstr "Kép áthelyezése ide..."
 msgid "Add new tags"
 msgstr "Új címkék hozzáadása"
 
-#: ../admin/manage-images.php:215 ../admin/manage-images.php:381
+#: ../admin/manage-images.php:215 ../admin/manage-images.php:382
 msgid "Delete tags"
 msgstr "Címkék törlése"
 
@@ -1236,202 +1457,207 @@ msgstr "Nincs kép"
 msgid "Path"
 msgstr "Elérési út"
 
-#: ../admin/manage-images.php:335
+#: ../admin/manage-images.php:334
+#, fuzzy
+msgid "Gallery ID"
+msgstr "Galéria az.:"
+
+#: ../admin/manage-images.php:336
 msgid "Create new page"
 msgstr "Új oldal létrehozása"
 
-#: ../admin/manage-images.php:338
+#: ../admin/manage-images.php:339
 msgid "Main page (No parent)"
 msgstr "Kezdőoldal (nincs szülője)"
 
-#: ../admin/manage-images.php:343
+#: ../admin/manage-images.php:344
 msgid "Add page"
 msgstr "Oldal hozzáadása"
 
-#: ../admin/manage-images.php:353
+#: ../admin/manage-images.php:354
 msgid "Scan folder for new images"
 msgstr "Új képek keresése a könyvtárban"
 
-#: ../admin/manage-images.php:354
+#: ../admin/manage-images.php:355
 msgid "Old scanning"
 msgstr "Régi szkennelés"
 
-#: ../admin/manage-images.php:355 ../admin/manage-images.php:390
-#: ../admin/manage-images.php:547 ../admin/settings.php:379
+#: ../admin/manage-images.php:356 ../admin/manage-images.php:391
+#: ../admin/manage-images.php:548 ../admin/settings.php:379
 #: ../admin/settings.php:447 ../admin/settings.php:537
 #: ../admin/settings.php:571 ../admin/settings.php:681
 #: ../admin/settings.php:833
 msgid "Save Changes"
 msgstr "Változások mentése"
 
-#: ../admin/manage-images.php:374
+#: ../admin/manage-images.php:375
 msgid "Delete images"
 msgstr "Képek törlése"
 
-#: ../admin/manage-images.php:376
+#: ../admin/manage-images.php:377
 msgid "Rotate images clockwise"
 msgstr "Képek forgatása az óramutató járásának irányában"
 
-#: ../admin/manage-images.php:377
+#: ../admin/manage-images.php:378
 msgid "Rotate images counter-clockwise"
 msgstr "Képek forgatása az óramutató járásával ellentétesen"
 
-#: ../admin/manage-images.php:378
+#: ../admin/manage-images.php:379
 msgid "Copy to..."
 msgstr "Másolás ide..."
 
-#: ../admin/manage-images.php:379
+#: ../admin/manage-images.php:380
 msgid "Move to..."
 msgstr "Áthelyezés ide..."
 
-#: ../admin/manage-images.php:380
+#: ../admin/manage-images.php:381
 msgid "Add tags"
 msgstr "Címkék hozzáadása"
 
-#: ../admin/manage-images.php:382
+#: ../admin/manage-images.php:383
 msgid "Overwrite tags"
 msgstr "Címke felülírása"
 
-#: ../admin/manage-images.php:387
+#: ../admin/manage-images.php:388
 msgid "Sort gallery"
 msgstr "Galéria rendezése"
 
-#: ../admin/manage-images.php:462
+#: ../admin/manage-images.php:463
 msgid "Change Date"
 msgstr "Dátum módosítása"
 
-#: ../admin/manage-images.php:466
+#: ../admin/manage-images.php:467
 msgid "pixel"
 msgstr "képpont"
 
-#: ../admin/manage-images.php:472
+#: ../admin/manage-images.php:473
 #, php-format
 msgid "View \"%s\""
 msgstr "Megtekintés „%s”"
 
-#: ../admin/manage-images.php:472
+#: ../admin/manage-images.php:473
 msgid "View"
 msgstr "Nézet"
 
-#: ../admin/manage-images.php:473
+#: ../admin/manage-images.php:474
 msgid "Show Meta data"
 msgstr "Metaadatok megjelenítése"
 
-#: ../admin/manage-images.php:473
+#: ../admin/manage-images.php:474
 msgid "Meta"
 msgstr "EXIF"
 
-#: ../admin/manage-images.php:474
+#: ../admin/manage-images.php:475
 msgid "Customize thumbnail"
 msgstr "Bélyegkép testreszabása"
 
-#: ../admin/manage-images.php:474
+#: ../admin/manage-images.php:475
 msgid "Edit thumb"
 msgstr "Bélyegkép szerkesztése"
 
-#: ../admin/manage-images.php:475
+#: ../admin/manage-images.php:476
 msgid "Rotate"
 msgstr "Forgatás"
 
-#: ../admin/manage-images.php:477
+#: ../admin/manage-images.php:478
 msgid "Publish this image"
 msgstr "Kép publikálása"
 
-#: ../admin/manage-images.php:477 ../admin/publish.php:58
+#: ../admin/manage-images.php:478 ../admin/publish.php:58
 msgid "Publish"
 msgstr "Publikálás"
 
-#: ../admin/manage-images.php:479
+#: ../admin/manage-images.php:480
 msgid "Recover"
 msgstr "Visszaállítás"
 
-#: ../admin/manage-images.php:479
+#: ../admin/manage-images.php:480
 #, php-format
 msgid "Recover \"%s\" ?"
 msgstr "Visszaállítás „%s”?"
 
-#: ../admin/manage-images.php:480
+#: ../admin/manage-images.php:481
 #, php-format
 msgid "Delete \"%s\" ?"
 msgstr "Törlés „%s”?"
 
-#: ../admin/manage-images.php:508
+#: ../admin/manage-images.php:509
 msgid "Alt & title text"
 msgstr "Alternatív és Cím szöveg"
 
-#: ../admin/manage-images.php:522
+#: ../admin/manage-images.php:523
 msgid "Separated by commas"
 msgstr "Vesszővel elválasztva"
 
-#: ../admin/manage-images.php:563
+#: ../admin/manage-images.php:564
 msgid "Enter the tags"
 msgstr "Címkék megadása"
 
-#: ../admin/manage-images.php:586
+#: ../admin/manage-images.php:587
 msgid "Select the destination gallery:"
 msgstr "A célgaléria kiválasztása:"
 
-#: ../admin/manage-images.php:729 ../admin/media-upload.php:246
+#: ../admin/manage-images.php:730 ../admin/media-upload.php:246
 msgid "Thumbnail"
 msgstr "Bélyegkép"
 
-#: ../admin/manage-images.php:730 ../admin/manage-sort.php:96
+#: ../admin/manage-images.php:731 ../admin/manage-sort.php:92
 msgid "Filename"
 msgstr "Fájlnév"
 
-#: ../admin/manage-images.php:731
+#: ../admin/manage-images.php:732
 msgid "Alt &amp; Title Text"
 msgstr "Alternatív és címszöveg"
 
-#: ../admin/manage-images.php:733
+#: ../admin/manage-images.php:734
 msgid "Exclude"
 msgstr "Kizárás"
 
-#: ../admin/manage-sort.php:33
+#: ../admin/manage-sort.php:35
 msgid "Sort order changed"
 msgstr "A rendezési sorrend megváltozott."
 
-#: ../admin/manage-sort.php:81
+#: ../admin/manage-sort.php:77
 msgid "Sort Gallery"
 msgstr "Galériák rendezése"
 
-#: ../admin/manage-sort.php:85
+#: ../admin/manage-sort.php:81
 msgid "Update Sort Order"
 msgstr "Rendezési sorrend frissítése"
 
-#: ../admin/manage-sort.php:88
+#: ../admin/manage-sort.php:84
 msgid "Back to gallery"
 msgstr "Vissza a galériához"
 
-#: ../admin/manage-sort.php:93
+#: ../admin/manage-sort.php:89
 msgid "Presort"
 msgstr "Előrendezés"
 
-#: ../admin/manage-sort.php:94
+#: ../admin/manage-sort.php:90
 msgid "Unsorted"
 msgstr "Rendezetlen"
 
-#: ../admin/manage-sort.php:95 ../admin/settings.php:524
+#: ../admin/manage-sort.php:91 ../admin/settings.php:524
 msgid "Image ID"
 msgstr "Kép AZ"
 
-#: ../admin/manage-sort.php:97 ../admin/media-upload.php:221
+#: ../admin/manage-sort.php:93 ../admin/media-upload.php:221
 msgid "Alt/Title text"
 msgstr "Alternatív/Cím szöveg"
 
-#: ../admin/manage-sort.php:98 ../lib/meta.php:452
+#: ../admin/manage-sort.php:94 ../lib/meta.php:452
 msgid "Date/Time"
 msgstr "Dátum/Időpont"
 
-#: ../admin/manage-sort.php:99 ../admin/settings.php:532
+#: ../admin/manage-sort.php:95 ../admin/settings.php:532
 msgid "Ascending"
 msgstr "Növekvő"
 
-#: ../admin/manage-sort.php:100 ../admin/settings.php:533
+#: ../admin/manage-sort.php:96 ../admin/settings.php:533
 msgid "Descending"
 msgstr "Csökkenő"
 
-#: ../admin/manage.php:85 ../lib/rewrite.php:221
+#: ../admin/manage.php:85 ../lib/rewrite.php:223
 #: ../view/imagebrowser-caption.php:31 ../view/imagebrowser-exif.php:35
 #: ../view/imagebrowser.php:31
 msgid "Picture"
@@ -1478,37 +1704,9 @@ msgid "Published a new post"
 msgstr "Az új bejegyzés publikálásra került."
 
 #: ../admin/manage.php:598
-#, php-format
+#, fuzzy
 msgid "1 item"
-msgid_plural "%s items"
-msgstr[0] "1 elem"
-msgstr[1] "%s elem"
-
-#: ../admin/manage.php:614
-msgid "Go to the first page"
-msgstr "Ugrás az első oldalra"
-
-#: ../admin/manage.php:621
-msgid "Go to the previous page"
-msgstr "Ugrás az előző oldalra"
-
-#: ../admin/manage.php:630
-msgid "Current page"
-msgstr "Aktuális oldal"
-
-#: ../admin/manage.php:637
-#, php-format
-msgctxt "paging"
-msgid "%1$s of %2$s"
-msgstr "%1$s / %2$s"
-
-#: ../admin/manage.php:641
-msgid "Go to the next page"
-msgstr "Ugrás a következő oldalra"
-
-#: ../admin/manage.php:648
-msgid "Go to the last page"
-msgstr "Ugrás az utolsó oldalra"
+msgstr "1 elem"
 
 #: ../admin/media-upload.php:11
 msgid "NextCellent Gallery"
@@ -1567,10 +1765,6 @@ msgstr "Teljes méret"
 msgid "Singlepic"
 msgstr "Singlepic"
 
-#: ../admin/media-upload.php:261
-msgid "Use as featured image"
-msgstr "Használat kiemelt képként."
-
 #: ../admin/media-upload.php:263
 msgid "Insert into Post"
 msgstr "Bejegyzésbe illesztés"
@@ -1586,30 +1780,6 @@ msgstr "NextCellent Galéria áttekintés"
 #: ../admin/overview.php:86
 msgid "Welcome to NextCellent Gallery !"
 msgstr "Üdvözlet a NextCellent Galéria bővítményben."
-
-#: ../admin/overview.php:87
-msgid "Help me help YOU!"
-msgstr "Segíts, hogy segíthessek!"
-
-#: ../admin/overview.php:89
-msgid "Translation"
-msgstr "Fordítás"
-
-#: ../admin/overview.php:90
-msgid "Latest News"
-msgstr "Legújabb hírek"
-
-#: ../admin/overview.php:92
-msgid "Plugin Check"
-msgstr "Bővítmény ellenőrzés"
-
-#: ../admin/overview.php:93
-msgid "Server Settings"
-msgstr "Szerver beállítások"
-
-#: ../admin/overview.php:94
-msgid "Related plugins"
-msgstr "Kapcsolódó bővítmények"
 
 #: ../admin/overview.php:229
 msgid "Running..."
@@ -1689,22 +1859,16 @@ msgstr ""
 msgid "Untitled"
 msgstr "Cím nélküli"
 
-#: ../admin/overview.php:407
-msgid "At a Glance"
-msgstr "Összefoglaló"
-
 #: ../admin/overview.php:412
+#, fuzzy
 msgid "Image"
-msgid_plural "Images"
-msgstr[0] "kép"
-msgstr[1] "kép"
+msgstr "kép"
 
 #: ../admin/overview.php:424 ../admin/tinymce/window.php:121
-#: ../admin/tinymce/window.php:236 ../lib/rewrite.php:224
+#: ../admin/tinymce/window.php:236 ../lib/rewrite.php:226
+#, fuzzy
 msgid "Album"
-msgid_plural "Albums"
-msgstr[0] "Album"
-msgstr[1] "Album"
+msgstr "Album"
 
 #: ../admin/overview.php:433
 msgid "Upload pictures"
@@ -1874,10 +2038,6 @@ msgstr ""
 "megfelelő PHP szolgáltatás."
 
 #: ../admin/overview.php:742
-msgid "Pay attention"
-msgstr "Figyelem"
-
-#: ../admin/overview.php:742
 msgid ""
 "third parties plugins that are compatible with NGG may not be 100&#37; "
 "compatible with NextCellent Gallery!"
@@ -2004,12 +2164,12 @@ msgid "90&deg; anticlockwise"
 msgstr "90&deg; óramutatóval ellentétesen"
 
 #: ../admin/rotate.php:83
-msgid "Flip vertically"
-msgstr "Tükrözés függőlegesen"
-
-#: ../admin/rotate.php:84
 msgid "Flip horizontally"
 msgstr "Tükrözés vízszintesen"
+
+#: ../admin/rotate.php:84
+msgid "Flip vertically"
+msgstr "Tükrözés függőlegesen"
 
 #: ../admin/settings.php:22
 #, php-format
@@ -2037,26 +2197,6 @@ msgstr "Beállítások sikeresen frissítve."
 #: ../admin/settings.php:185
 msgid "Cache cleared"
 msgstr "Az gyorsítótár kiürítésre került."
-
-#: ../admin/settings.php:285
-msgid "General"
-msgstr "Általános"
-
-#: ../admin/settings.php:288 ../admin/settings.php:546
-msgid "Effects"
-msgstr "Effektusok"
-
-#: ../admin/settings.php:289 ../admin/settings.php:587
-#: ../admin/tinymce/window.php:329
-msgid "Watermark"
-msgstr "Vízjel"
-
-#: ../admin/settings.php:290 ../admin/settings.php:483
-#: ../admin/settings.php:493 ../admin/settings.php:694
-#: ../admin/tinymce/window.php:159 ../lib/rewrite.php:216
-#: ../widgets/widgets.php:29
-msgid "Slideshow"
-msgstr "Diavetítés"
 
 #: ../admin/settings.php:303
 msgid "General settings"
@@ -2800,84 +2940,109 @@ msgstr "IPTC adatok"
 msgid "XMP Data"
 msgstr "XMP adatok"
 
-#: ../admin/style.php:11
-msgid "(from the ngg_styles folder)"
-msgstr "(az ngg_styles könyvtárból)"
+#: ../admin/style.php:112
+#, fuzzy
+msgid "Successfully selected CSS file."
+msgstr "sikeresen létrehozva!"
 
-#: ../admin/style.php:17
-msgid "(from the theme folder)"
-msgstr "(a sablon könyvtárából)"
+#: ../admin/style.php:114
+msgid "No CSS file will be used."
+msgstr ""
 
-#: ../admin/style.php:51
+#: ../admin/style.php:123 ../admin/style.php:163
 msgid "You do not have sufficient permissions to edit templates for this blog."
 msgstr "Nem rendelkezünk a sablonok szerkesztéséhez szükséges jogosultsággal."
 
-#: ../admin/style.php:60
-msgid "CSS file successfully updated"
+#: ../admin/style.php:148
+#, fuzzy
+msgid "Could not move file."
+msgstr "Átmeneti fájl nem hozható létre."
+
+#: ../admin/style.php:154
+#, fuzzy
+msgid "CSS file successfully updated."
 msgstr "A CSS állomány sikeresen módosításra került."
 
-#: ../admin/style.php:96
+#: ../admin/style.php:156
+#, fuzzy
+msgid "Could not save file."
+msgstr "Átmeneti fájl nem hozható létre."
+
+#: ../admin/style.php:176
+#, fuzzy
+msgid "CSS file successfully moved."
+msgstr "A CSS állomány sikeresen módosításra került."
+
+#: ../admin/style.php:181
+#, fuzzy
+msgid "Could not move the CSS file."
+msgstr "Átmeneti fájl nem hozható létre."
+
+#: ../admin/style.php:209
+msgid "Your CSS file is set by a theme or another plugin."
+msgstr ""
+
+#: ../admin/style.php:209
+msgid "This CSS file will be applied:"
+msgstr ""
+
+#: ../admin/style.php:240
 msgid "Style Editor"
 msgstr "Stílus szerkesztő"
 
-#: ../admin/style.php:102
+#: ../admin/style.php:246
 msgid "Activate and use style sheet:"
 msgstr "A stíluslap aktiválása és használata: "
 
-#: ../admin/style.php:122
+#: ../admin/style.php:263
 msgid "Activate"
 msgstr "Aktiválás"
 
-#: ../admin/style.php:131
+#: ../admin/style.php:272
 #, php-format
 msgid "Editing %s"
 msgstr "Szerkesztés %s"
 
-#: ../admin/style.php:133
+#: ../admin/style.php:274
 #, php-format
 msgid "Browsing %s"
 msgstr "Tallózás %s"
 
-#: ../admin/style.php:144
+#: ../admin/style.php:277
+msgid "(from the theme folder)"
+msgstr "(a sablon könyvtárából)"
+
+#: ../admin/style.php:287
+msgid ""
+"To ensure your css file stays safe during upgrades, please move it to the "
+"right folder."
+msgstr ""
+
+#: ../admin/style.php:290
+#, fuzzy
+msgid "Move file"
+msgstr "Képfájlok"
+
+#: ../admin/style.php:296
 msgid "Version"
 msgstr "Verzió"
 
-#: ../admin/style.php:149
-msgid ""
-"If you do not want to lose your edits during an update, copy your css file "
-"(nggalery.css) to the \"/wp-content/ngg_styles\" folder."
-msgstr ""
-"Ha frissítéskor nem szeretné elveszíteni a módosításait, akkor másolja a css "
-"fájlt (nggalery.css) a „/wp-content/ngg_styles” mappába."
+#: ../admin/style.php:300
+#, fuzzy
+msgid "File location"
+msgstr "Hely"
 
-#: ../admin/style.php:150
-msgid "Your current file is located here:"
-msgstr "Az aktuális fájl itt van:"
-
-#: ../admin/style.php:153
-msgid ""
-"There is a NextCellent theme file, this file will be used. It's located in:"
-msgstr ""
-"Találtunk egy NextCellent stíluslapot, ezért azt fogjuk használni. Itt van:"
-
-#: ../admin/style.php:156
-msgid ""
-"Tip 2: use the color picker below to help you find the right color scheme "
-"for your gallery!"
-msgstr ""
-"2. tipp: Használjuk a színpipettát a galéria megfelelő színsémájának "
-"megtalálásához!"
-
-#: ../admin/style.php:172
+#: ../admin/style.php:313
 msgid "Update File"
 msgstr "Fájl frissítése"
 
-#: ../admin/style.php:175
+#: ../admin/style.php:315
 msgid "If this file were writable you could edit it."
 msgstr "Ha ez a fájl írható volt, akkor szerkeszthető."
 
-#: ../admin/style.php:180
-msgid "Oops, no such file exists! Double check the name and try again."
+#: ../admin/style.php:320
+#, fuzzy
+msgid "This file does not exist. Double check the name and try again."
 msgstr ""
 "Ilyen fájl nem létezik! Kétszer is ellenőrizzük a nevet és próbáljuk újra!"
 
@@ -3202,6 +3367,45 @@ msgstr "Ki kell választani egy képet."
 msgid "You need to select a number of images."
 msgstr "Ki kell választani a képek számát."
 
+#: ../admin/upgrade.php:22
+msgid "Upgrading database…"
+msgstr ""
+
+#: ../admin/upgrade.php:48
+msgid "Could not find NextCellent Gallery database tables, upgrade failed!"
+msgstr ""
+
+#: ../admin/upgrade.php:68 ../admin/upgrade.php:85
+#, fuzzy
+msgid "Upgrade NextCellent Gallery"
+msgstr "NextCellent Galéria"
+
+#: ../admin/upgrade.php:69
+msgid ""
+"You're upgrading from an older version. To enable the newest features, we "
+"sometimes need to do a database upgrade."
+msgstr ""
+
+#: ../admin/upgrade.php:70
+msgid ""
+"Normally you should be able to downgrade without any problems, but if you "
+"really want to play safe, you should make a backup of your database."
+msgstr ""
+
+#: ../admin/upgrade.php:71
+#, fuzzy
+msgid "Start upgrade now"
+msgstr "Kezdés most"
+
+#: ../admin/upgrade.php:87
+msgid "Upgrade complete."
+msgstr ""
+
+#: ../admin/upgrade.php:88
+#, fuzzy
+msgid "Continue to NextCellent"
+msgstr "NextCellent"
+
 #: ../admin/wpmu.php:33
 msgid "Update successfully"
 msgstr "A frissítés befejeződött."
@@ -3273,7 +3477,7 @@ msgstr "Alapértelmezett stílus"
 msgid "Choose the default style for the galleries."
 msgstr "Alapértelmezett stílus a galériákhoz."
 
-#: ../lib/core.php:416
+#: ../lib/core.php:432
 #, php-format
 msgid ""
 "Note : Based on your server memory limit you should not upload larger images "
@@ -3437,14 +3641,6 @@ msgstr ""
 #: ../lib/ngg-db.php:342 ../lib/ngg-db.php:343
 msgid "Album overview"
 msgstr "Album áttekintése"
-
-#: ../lib/post-thumbnail.php:171 ../lib/post-thumbnail.php:172
-msgid "Set featured image"
-msgstr "Kiemelt kép beállítása"
-
-#: ../lib/post-thumbnail.php:199
-msgid "Remove featured image"
-msgstr "Kiemelt képek eltávolítása"
 
 #: ../lib/shortcodes.php:276 ../nggfunctions.php:166 ../nggfunctions.php:651
 msgid "[Gallery not found]"
@@ -3619,7 +3815,16 @@ msgstr "Érvénytelen album azonosító."
 msgid "Sorry, could not update the album"
 msgstr "Bocsi, nem sikerült frissíteni az albumot"
 
-#: ../nggallery.php:122
+#: ../nggallery.php:102
+#, fuzzy
+msgid "NextCellent Gallery requires a database upgrade."
+msgstr "NextCellent Galéria áttekintés"
+
+#: ../nggallery.php:102
+msgid "Upgrade now"
+msgstr ""
+
+#: ../nggallery.php:129
 msgid ""
 "<strong>Translation by : </strong><a target=\"_blank\" href=\"http://"
 "alexrabe.de/wordpress-plugins/nextgen-gallery/languages/\">See here</a>"
@@ -3627,7 +3832,7 @@ msgstr ""
 "<strong>Fordította:</strong> <a target=\"_blank\" href=\"http://alexrabe.de/"
 "wordpress-plugins/nextgen-gallery/languages/\">lásd itt</a>"
 
-#: ../nggallery.php:123
+#: ../nggallery.php:130
 msgid ""
 "<strong>This translation is not yet updated for Version 1.9.0</strong>. If "
 "you would like to help with translation, download the current po from the "
@@ -3639,32 +3844,37 @@ msgstr ""
 "könyvtárából és olvassuk el <a href=\"http://alexrabe.de/wordpress-plugins/"
 "wordtube/translation-of-plugins\">itt</a> a fordítási útmutatókat!"
 
-#: ../nggallery.php:232
+#: ../nggallery.php:239
 msgid ""
 "Sorry, NextCellent Gallery works only with a Memory Limit of 16 MB or higher"
 msgstr "A NextCellent Gallery legalább 16MiB memóriával működik csak."
 
-#: ../nggallery.php:261
+#: ../nggallery.php:268
 msgid "Picture tag"
 msgstr "Kép címke"
 
-#: ../nggallery.php:262
+#: ../nggallery.php:269
 msgid "Picture tag: %2$l."
 msgstr "Kép címke: %2$l."
 
-#: ../nggallery.php:263
+#: ../nggallery.php:270
 msgid "Separate picture tags with commas."
 msgstr "A kép címkéket vesszővel kell elválasztani."
 
-#: ../nggallery.php:397
+#: ../nggallery.php:376
+#, fuzzy
+msgid "NextCellent Gallery / Images"
+msgstr "NextCellent Galéria"
+
+#: ../nggallery.php:480
 msgid "loading"
 msgstr "betöltés"
 
-#: ../nggallery.php:581
+#: ../nggallery.php:672
 msgid "Get help"
 msgstr "Segítségkérés"
 
-#: ../nggallery.php:663
+#: ../nggallery.php:754
 msgid "Sorry, NextCellent Gallery is deactivated: NextGEN version "
 msgstr ""
 "Bocsi, a NextCellent Galéria kikapcsolta magát, mert van fenn NextGEN is"
@@ -3866,3 +4076,86 @@ msgstr "Nem létező album: ID=%s"
 #: ../xml/media-rss.php:115
 msgid "Invalid MediaRSS command"
 msgstr "Hibás a Média RSS parancs"
+
+#~ msgid ""
+#~ "<a href=\"http://www.wpgetready.com\" target=\"_blank\">Introduction</a>"
+#~ msgstr ""
+#~ "<a href=\"http://www.wpgetready.com\" target=\"_blank\">Bevezetés</a>"
+
+#~ msgid ""
+#~ "<a href=\"http://www.nextgen-gallery.com/languages\" target=\"_blank"
+#~ "\">Languages</a>"
+#~ msgstr ""
+#~ "<a href=\"http://www.nextgen-gallery.com/languages\" target=\"_blank"
+#~ "\">Nyelvek</a>"
+
+#~ msgid "Get help with NextCellent Gallery"
+#~ msgstr "Segítség a NextCellent Galériához"
+
+#~ msgid "More Help & Info"
+#~ msgstr "További segítség és információ"
+
+#~ msgid ""
+#~ "<a href=\"http://wordpress.org/tags/nextcellent-gallery-nextgen-legacy\" "
+#~ "target=\"_blank\">Support Forums</a>"
+#~ msgstr ""
+#~ "<a href=\"http://wordpress.org/tags/nextcellent-gallery-nextgen-legacy\" "
+#~ "target=\"_blank\">Támogató fórumok</a>"
+
+#~ msgid "Download latest version"
+#~ msgstr "A legújabb verzió letöltése"
+
+#~ msgid "Go to the first page"
+#~ msgstr "Ugrás az első oldalra"
+
+#~ msgid "Go to the previous page"
+#~ msgstr "Ugrás az előző oldalra"
+
+#~ msgid "Current page"
+#~ msgstr "Aktuális oldal"
+
+#~ msgctxt "paging"
+#~ msgid "%1$s of %2$s"
+#~ msgstr "%1$s / %2$s"
+
+#~ msgid "Go to the next page"
+#~ msgstr "Ugrás a következő oldalra"
+
+#~ msgid "Go to the last page"
+#~ msgstr "Ugrás az utolsó oldalra"
+
+#~ msgid "Use as featured image"
+#~ msgstr "Használat kiemelt képként."
+
+#~ msgid "(from the ngg_styles folder)"
+#~ msgstr "(az ngg_styles könyvtárból)"
+
+#~ msgid ""
+#~ "If you do not want to lose your edits during an update, copy your css "
+#~ "file (nggalery.css) to the \"/wp-content/ngg_styles\" folder."
+#~ msgstr ""
+#~ "Ha frissítéskor nem szeretné elveszíteni a módosításait, akkor másolja a "
+#~ "css fájlt (nggalery.css) a „/wp-content/ngg_styles” mappába."
+
+#~ msgid "Your current file is located here:"
+#~ msgstr "Az aktuális fájl itt van:"
+
+#~ msgid ""
+#~ "There is a NextCellent theme file, this file will be used. It's located "
+#~ "in:"
+#~ msgstr ""
+#~ "Találtunk egy NextCellent stíluslapot, ezért azt fogjuk használni. Itt "
+#~ "van:"
+
+#~ msgid ""
+#~ "Tip 2: use the color picker below to help you find the right color scheme "
+#~ "for your gallery!"
+#~ msgstr ""
+#~ "2. tipp: Használjuk a színpipettát a galéria megfelelő színsémájának "
+#~ "megtalálásához!"
+
+#~ msgid "Set featured image"
+#~ msgstr "Kiemelt kép beállítása"
+
+#~ msgid "Remove featured image"
+#~ msgstr "Kiemelt képek eltávolítása"
