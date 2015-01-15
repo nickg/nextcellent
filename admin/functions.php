@@ -23,27 +23,25 @@ class nggAdmin{
 	 *
 	 * @since 1.9.24 Added the description parameter.
 	 *
-	 * @return bool True if succesful, otherwhise false.
+	 * @return bool|int True if successful, otherwise false.$galleryID if is successful and output = false)
 	 */
+
 	static function create_gallery($title, $defaultpath, $output = true, $description = '') {
 
 		global $user_ID;
  
-		// get the current user ID
-		get_currentuserinfo();
-
-		//cleanup pathname
-		$name = sanitize_file_name( sanitize_title($title)  );
+		get_currentuserinfo(); 		                            //get current user ID & sets global object $current_user
+		$name = sanitize_file_name( sanitize_title($title)  );  //cleanup pathname
 		$name = apply_filters('ngg_gallery_name', $name);
-		$nggRoot = WINABSPATH . $defaultpath;
-		$txt = '';
-		
-		// No gallery name ?
-		if ( empty($name) ) {	
+
+		if ( empty($name) ) { // No gallery name ?
 			if ($output) nggGallery::show_error( __('No valid gallery name!', 'nggallery') );
 			return false;
 		}
-		
+
+        $txt = '';
+        $nggRoot = WINABSPATH . $defaultpath;
+
 		// check for main folder
 		if ( !is_dir($nggRoot) ) {
 			if ( !wp_mkdir_p( $nggRoot ) ) {
@@ -62,30 +60,31 @@ class nggAdmin{
 			return false;
 		}
 		
-		// 1. Check for existing folder
-		if ( is_dir(WINABSPATH . $defaultpath . $name ) && !(SAFE_MODE) ) {
+		// 1. Check for existing folder, if it already exists, create new one with suffix
+		if ( is_dir($nggRoot . $name ) && !(SAFE_MODE) ) {
 			$suffix = 1;
 			do {
 				$alt_name = substr ($name, 0, 200 - ( strlen( $suffix ) + 1 ) ) . "_$suffix";
-				$dir_check = is_dir(WINABSPATH . $defaultpath . $alt_name );
+				$dir_check = is_dir($nggRoot . $alt_name );
 				$suffix++;
 			} while ( $dir_check );
 			$name = $alt_name;
 		}  
         // define relative path to gallery inside wp root folder
         $nggpath = $defaultpath . $name;
-		
+        $win_nggpath = WINABSPATH . $nggpath;
 		// 2. Create new gallery folder
-		if ( !wp_mkdir_p (WINABSPATH . $nggpath) ) 
+
+        if ( !wp_mkdir_p ($win_nggpath) )
 		  $txt  = __('Unable to create directory ', 'nggallery') . esc_html( $nggpath ) . '!<br />';
 		
 		// 3. Check folder permission
-		if ( !is_writeable(WINABSPATH . $nggpath ) )
+		if ( !is_writeable($win_nggpath) )
 			$txt .= __('Directory', 'nggallery').' <strong>' . esc_html( $nggpath ) . '</strong> '.__('is not writeable !', 'nggallery').'<br />';
 
 		// 4. Now create thumbnail folder inside
-		if ( !is_dir(WINABSPATH . $nggpath . '/thumbs') ) {				
-			if ( !wp_mkdir_p ( WINABSPATH . $nggpath . '/thumbs') ) 
+		if ( !is_dir($win_nggpath . '/thumbs') ) {
+			if ( !wp_mkdir_p ( $win_nggpath . '/thumbs') )
 				$txt .= __('Unable to create directory ', 'nggallery').' <strong>' . esc_html( $nggpath ) . '/thumbs !</strong>';
 		}
 		
@@ -100,16 +99,15 @@ class nggAdmin{
 		if ( !empty($txt) ) {
 			if (SAFE_MODE) {
 			// for safe_mode , better delete folder, both folder must be created manually
-				@rmdir(WINABSPATH . $nggpath . '/thumbs');
-				@rmdir(WINABSPATH . $nggpath);
+				@rmdir($win_nggpath . '/thumbs');
+				@rmdir($win_nggpath);
 			}
 			if ($output) nggGallery::show_error($txt);
 			return false;
 		}
 
-		//clean the description
+		//clean the description and add the gallery
 		$description = nggGallery::suppress_injection($description);
-        // now add the gallery to the database
         $galleryID = nggdb::add_gallery($title, $nggpath, $description, 0, 0, $user_ID );
 		// here you can inject a custom function
 		do_action('ngg_created_new_gallery', $galleryID);
@@ -125,7 +123,7 @@ class nggAdmin{
 			$message .= __('Edit gallery','nggallery');
 			$message .= '</a>';
 			
-			if ($output) nggGallery::show_message($message); 
+			nggGallery::show_message($message);
 		}
 		return true;
 	}

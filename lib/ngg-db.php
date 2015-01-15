@@ -569,33 +569,55 @@ class nggdb {
      * @param $pids array of picture_ids
      * @return An array of nggImage objects representing the images
      */
-    static function find_images_in_list( $pids, $exclude = false, $order = 'NOTSET' ) {
-        global $ngg, $wpdb;
+    static function find_images_in_list( $pids, $exclude, $order) {
+        global $wpdb;
 
-        $result = array();
+        $qry = nggdb::find_images_query( $pids, $exclude, $order); //Build query to get images
+        $images =$wpdb->get_results($qry,OBJECT_K);
 
-        // Check for the exclude setting
-        $exclude_clause = ($exclude) ? ' AND t.exclude <> 1 ' : '';
-
-        // Check for the order setting
-        $column = $ngg->options['galSort'];
-        $order = ($order == 'NOTSET') ? $ngg->options['galSortDir'] : $order;
-        $order_clause = ($order == "RAND") ? "ORDER BY rand() " : " ORDER BY t.$column $order ";
-
-        if ( is_array($pids) ) {
-            $id_list = "'" . implode("', '", $pids) . "'";
-
-            // Save Query database
-            $images = $wpdb->get_results("SELECT t.*, tt.* FROM $wpdb->nggpictures AS t INNER JOIN $wpdb->nggallery AS tt ON t.galleryid = tt.gid WHERE t.pid IN ($id_list) $exclude_clause $order_clause", OBJECT_K);
-
-            // Build the image objects from the query result
-            if ($images) {
-                foreach ($images as $key => $image)
-                    $result[$key] = new nggImage( $image );
-            }
+        $result = array(); // Build the image objects from the query result
+        if ($images) {
+            foreach ($images as $key => $image)
+                $result[$key] = new nggImage( $image );
         }
         return $result;
     }
+
+    /**
+     *
+     * Return sql query to get images
+     * 20150110: workarounded case if $pids is a string or numeric value. Makes function more flexible, yet there is no case where 
+     * this functions is called using string/numeric...
+     *
+     * @param $pids array of Picture Ids | id value (string or integer) which is converted to array.
+     * @param $exclude Boolean true to exclude images with field exclude set
+     * @param $sort_dir  String order direction. Options: ASC,DESC,RAND and NOTSET where natural sort is used.
+     *
+     */
+    static function find_images_query( $pids, $exclude = false , $sort_dir = 'NOTSET') {
+        global $ngg,$wpdb;
+
+        //Try to convert if there is one element.
+        //TODO: empty or invalid arrays should be avoided. (they will make an invalid query)
+        if (!is_array($pids)) {
+            $pids= array($pids); //create one-element array
+        }
+
+        $exclude_clause = ($exclude) ? " AND t.exclude <> 1" : ""; //exclude images if required (notice one  space before, none after)
+
+        if ($sort_dir =="RAND") {
+            $order_clause = " ORDER BY rand()"; //notice one space before, none after
+        } else {
+            //get Sort field and sort direction to make order by sentence
+            $sort_dir     = ($sort_dir == 'NOTSET') ? $ngg->options['galSortDir'] : $sort_dir;
+            $sort_field   = $ngg->options['galSort'];
+            $order_clause = " ORDER BY t.$sort_field $sort_dir"; //notice one space before,none after
+        }
+        $id_list = "'" . implode("', '", $pids) . "'";
+        //notice NO spaces between $exclude_clause and $order_clause on purpose
+        return "SELECT t.*, tt.* FROM $wpdb->nggpictures AS t INNER JOIN $wpdb->nggallery AS tt ON t.galleryid = tt.gid WHERE t.pid IN ($id_list)$exclude_clause$order_clause";
+    }
+
 
     /**
     * Add an image to the database
@@ -676,7 +698,7 @@ class nggdb {
     * @param (optional) int $pageid
     * @param (optional) int $previewpic
     * @param (optional) int $author
-    * @return bool result of the ID of the inserted gallery
+    * @return bool|int result of the ID of the inserted gallery
     */
     static function add_gallery( $title = '', $path = '', $description = '', $pageid = 0, $previewpic = 0, $author = 0  ) {
         global $wpdb;
