@@ -17,6 +17,12 @@ jQuery("document").ready(function(){
 	jQuery("a.ngg-browser-prev").click(function(e) {
 		return ngg_ajax_browser_navigation(e, this);
 	});
+	//Qunit conditional call
+	 if (ngg_get_url_vars().nextcellent) {
+	 	//Como invoco esto?
+        //edcal_test.runTests();
+    }
+
 });
 
 function ngg_ajax_navigation(e, obj) {

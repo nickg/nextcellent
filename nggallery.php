@@ -431,10 +431,12 @@ if (!class_exists('nggLoader')) {
 
         /**
          * Load scripts depending options defined
+         * 20150106: Added js for Qunit
+         * 20150107: jquery is almost mandatory... Should it be enqueued only when lightbox is activated?
          */
         function load_scripts() {
 
-			// if you don't want that NGG load the scripts, add this constant
+			// if you want to prevent Nextcellent load the scripts (for testing or development purposes), add this constant
 			if ( defined('NGG_SKIP_LOAD_SCRIPTS') )
 				return;
 
@@ -486,6 +488,14 @@ if (!class_exists('nggLoader')) {
 			if ( $this->options['usePicLens'] )
 				nggMediaRss::add_piclens_javascript();
 
+			// Added Qunit for javascript unit testing
+            $nxc=isset($_GET['nextcellent'])?$_GET['nextcellent']:"";
+			if ($nxc) {
+				wp_enqueue_script( "qunit-init"       , NGGALLERY_URLPATH . "js/nxc.main.js"        , array ('jquery')); //main q-unit call
+				wp_enqueue_script( "qunit"            , NGGALLERY_URLPATH . "js/qunit-1.16.0.js"    , array ('jquery')); //qunit core
+				wp_enqueue_script( "nextcellent-test" , NGGALLERY_URLPATH . "js/nxc.test.js", array ('jquery')); //unit testing specific for nextcellent
+			}
+
 		}
 
 		function load_thickbox_images() {
@@ -493,6 +503,10 @@ if (!class_exists('nggLoader')) {
 			echo "\n" . '<script type="text/javascript">tb_pathToImage = "' . site_url() . '/wp-includes/js/thickbox/loadingAnimation.gif";tb_closeImage = "' . site_url() . '/wp-includes/js/thickbox/tb-close.png";</script>'. "\n";
 		}
 
+		/**
+		* Load styles based on options defined
+		* 20150106: added style for Qunit
+		*/
 		function load_styles() {
 
             //Notice stylesheet selection has this priority:
@@ -516,6 +530,13 @@ if (!class_exists('nggLoader')) {
 			// activate modified Shutter reloaded if not use the Shutter plugin
 			if ( ($this->options['thumbEffect'] == 'shutter') && !function_exists('srel_makeshutter') )
 				wp_enqueue_style('shutter', NGGALLERY_URLPATH .'shutter/shutter-reloaded.css', false, '1.3.4', 'screen');
+
+			// add qunit style if activated. I put 1.0.0 as formula, but it would mean nothing.
+
+            $nxc=isset($_GET['nextcellent'])?$_GET['nextcellent']:"";
+			if ($nxc) {
+				wp_enqueue_style ( "qunit", NGGALLERY_URLPATH . "css/qunit-1.16.0.css" , false, '1.0.0' , 'screen' );
+			}
 
 		}
 
