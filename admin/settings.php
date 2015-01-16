@@ -590,7 +590,9 @@ class nggOptions {
         global $ngg;
 
         // take the first image as sample
-        $imageID  = nggdb::find_last_images(0, 1)[0]->pid;
+	    $image_array = nggdb::find_last_images(0, 1);
+	    $ngg_image = $image_array[0];
+        $imageID  = $ngg_image->pid;
 	    $imageURL = $imageURL = '<img src="' . home_url( 'index.php' ) . '?callback=image&amp;pid=' . intval( $imageID ) . '&amp;mode=watermark&amp;width=300&amp;height=250" />';
 
 	?>
