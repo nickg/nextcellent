@@ -341,7 +341,8 @@ function nggCreateGallery($picturelist, $galleryID = false, $template = '', $ima
 
 		if ($maxElement > 0 && $ngg_options['galHiddenImg']) {
 	  		if ( ($index < $start) || ($index > ($start + $maxElement -1)) ){
-				$picturelist[$key]->hidden = true;
+				//FZSM Check: dinamically created nggImage doesn't have this properties
+                $picturelist[$key]->hidden = true;
 				$picturelist[$key]->style  = ($gallery->columns > 0) ? 'style="width:' . floor(100/$gallery->columns) . '%;display: none;"' : 'style="display: none;"';
 			}
   			$index++;

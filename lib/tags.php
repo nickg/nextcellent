@@ -321,7 +321,7 @@ class nggTags {
 	/**
 	 * nggTags::find_images_for_tags()
 	 * 20140120: Mode DESC added.
-     * 20140611:Dropped use of wpdb->prepare since singel quotes are scaped.
+     * 20140611:Dropped use of wpdb->prepare since single quotes are scaped.
 	 * @param mixed $taglist
 	 * @param string $sorting could be 'ASC' or 'RAND' or 'DESC'
 	 * @return array of images
