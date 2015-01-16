@@ -384,8 +384,9 @@ jQuery(document).ready( function() {
 	</select>
 	<input class="button-secondary" type="submit" name="showThickbox" value="<?php _e('Apply', 'nggallery'); ?>" onclick="if ( !checkSelected() ) return false;" />
 
-	<?php if (($ngg->options['galSort'] == "sortorder") && (!$is_search) ) { ?>
-		<input class="button-secondary" type="submit" name="sortGallery" value="<?php _e('Sort gallery', 'nggallery');?>" />
+	<?php if ( !$is_search ) { ?>
+		<input <?php if($ngg->options['galSort'] != "sortorder") echo 'disabled style="cursor:help" title="' . __('Only works when the sort is set to Custom in the settings.', 'nggallery') . '"' ?>
+			class="button-secondary" type="submit" name="sortGallery" value="<?php _e('Sort gallery', 'nggallery');?>" />
 	<?php } ?>
 
 	<input type="submit" name="updatepictures" class="button-primary action"  value="<?php _e('Save Changes', 'nggallery');?>" />
