@@ -116,9 +116,9 @@ if (!class_exists('nggLoader')) {
 
 	    function show_upgrade_message() {
 		    if( is_network_admin() ) {
-			    $url = network_admin_url(NGGFOLDER);
+			    $url = network_admin_url('admin.php?page=' . NGGFOLDER);
 		    } else {
-			    $url = admin_url(NGGFOLDER);
+			    $url = admin_url('admin.php?page=' . NGGFOLDER);
 		    }
 		    ?>
 			<div id="message" class="update-nag">
