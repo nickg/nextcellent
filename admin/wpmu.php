@@ -40,6 +40,32 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
     	update_site_option('ngg_options', $ngg_options);			
     }
         */
+
+		global $ngg;
+
+		//the directions containing the css files
+		if ( file_exists(NGG_CONTENT_DIR . "/ngg_styles") ) {
+			$dir = array(NGGALLERY_ABSPATH . "css", NGG_CONTENT_DIR . "/ngg_styles");
+		} else {
+			$dir = array(NGGALLERY_ABSPATH . "css");
+		}
+
+		//support for legacy location (in theme folder)
+		if ( $theme_css_exists = file_exists (get_stylesheet_directory() . "/nggallery.css") ) {
+			$act_cssfile = get_stylesheet_directory() . "/nggallery.css";
+		}
+
+		//if someone uses the filter, don't display this page.
+		if ( !$theme_css_exists && $set_css_file = nggGallery::get_theme_css_file() ) {
+			nggGallery::show_error( __('Your CSS file is set by a theme or another plugin.','nggallery') . "<br><br>" . __('This CSS file will be applied:','nggallery') . "<br>" . $set_css_file);
+			return;
+		}
+
+		//load all files
+		if ( !isset($act_cssfile) ) {
+			$csslist = NGG_Style::ngg_get_cssfiles($dir);
+			$act_cssfile = $ngg->options['CSSfile'];
+		}
 	
 	// message windows
 	if( !empty($messagetext) ) { echo '<!-- Last Action --><div id="message" class="updated fade"><p>'.$messagetext.'</p></div>'; }
@@ -94,24 +120,25 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 					<td>
 					<select name="wpmuCSSfile">
 					<?php
-						$csslist = ngg_get_cssfiles();
-						foreach ($csslist as $key =>$a_cssfile) {
-							$css_name = $a_cssfile['Name'];
-							if ($key == $ngg_options['wpmuCSSfile']) {
-								$file_show = $key;
-								$selected = " selected='selected'";
-							}
-							else $selected = '';
-							$css_name = esc_attr($css_name);
-							echo "\n\t<option value=\"$key\" $selected>$css_name</option>";
+					foreach ($csslist as $file) {
+						$a_cssfile = NGG_Style::ngg_get_cssfiles_data($file);
+						$css_name = esc_attr( $a_cssfile['Name'] );
+						$css_folder = esc_attr( $a_cssfile['Folder'] );
+						if ($file == $act_cssfile) {
+							$selected = " selected='selected'";
+						} else {
+							$selected = '';
 						}
+						echo "\n\t<option value=\"$file\" $selected>$css_name ($css_folder)</option>";
+					}
 					?>
 					</select>
 					<p class="description"><?php _e('Choose the default style for the galleries.','nggallery') ?></p>
+						<p class="description"><?php _e('Note: between brackets is the folder in which the file is.','nggallery') ?></p>
 					</td>
 				</tr>
 			</table> 				
-			<div class="submit"><input type="submit" name="updateoption" class="button button-primary" value="<?php _e('Save Changes') ;?>"/></div>
+			<input class="button-primary button" type="submit" name="updateoption" value="<?php _e('Update') ;?>"/>
 		</form>	
 	</div>	
 
