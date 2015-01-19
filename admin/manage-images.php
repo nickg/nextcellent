@@ -384,9 +384,19 @@ jQuery(document).ready( function() {
 	</select>
 	<input class="button-secondary" type="submit" name="showThickbox" value="<?php _e('Apply', 'nggallery'); ?>" onclick="if ( !checkSelected() ) return false;" />
 
-	<?php if (($ngg->options['galSort'] == "sortorder") && (!$is_search) ) { ?>
-		<input class="button-secondary" type="submit" name="sortGallery" value="<?php _e('Sort gallery', 'nggallery');?>" />
-	<?php } ?>
+	<?php
+    if ((!$is_search)) {
+        $disabled ="";  $title="";
+
+        if ($ngg->options['galSort'] != "sortorder")  {
+            //Disable sort button and provide feedback why is disabled
+            $disabled ="disabled";
+            $title = "title='" . __('To enable manual Sort set Custom Order Sort.See Settings->Gallery Settings->Sort Options', 'nggallery') . "'";
+        }
+        $button="<input class='button-secondary' type='submit' $disabled $title name='sortGallery' value='" .  __('Sort gallery', 'nggallery') ."' />";
+        echo $button;
+    }
+    ?>
 
 	<input type="submit" name="updatepictures" class="button-primary action"  value="<?php _e('Save Changes', 'nggallery');?>" />
 	</div>
