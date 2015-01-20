@@ -187,10 +187,17 @@ class nggAdminPanel {
 	// integrate the network menu
 	function add_network_admin_menu() {
 
-		add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
-			&$this,
-			'show_network_settings'
-		), path_join( NGGALLERY_URLPATH, 'admin/images/nextgen_16_color.png' ) );
+		if ( get_bloginfo( 'version' ) >= 3.8 ) {
+			add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
+				&$this,
+				'show_network_settings'
+			), 'dashicons-format-gallery' );
+		} else {
+			add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
+				&$this,
+				'show_network_settings'
+			), path_join( NGGALLERY_URLPATH, 'admin/images/nextgen_16_color.png' ) );
+		}
 		add_submenu_page( NGGFOLDER, __( 'Network settings', 'nggallery' ), __( 'Network settings', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
 			&$this,
 			'show_network_settings'
@@ -201,8 +208,26 @@ class nggAdminPanel {
 		) );
 	}
 
+	/**
+	 * Maybe show an upgrade page.
+	 */
+	private function show_upgrade_page() {
+
+		global $ngg;
+
+		// check for upgrade and show upgrade screen
+		if ( get_option( 'ngg_db_version' ) != NGG_DBVERSION ) {
+			include_once( dirname( __FILE__ ) . '/functions.php' );
+			include_once( dirname( __FILE__ ) . '/upgrade.php' );
+			nggallery_upgrade_page();
+
+			exit;
+		}
+	}
+
 	// show the network page
 	function show_network_settings() {
+		$this->show_upgrade_page();
 		include_once( dirname( __FILE__ ) . '/style.php' );
 		include_once( dirname( __FILE__ ) . '/wpmu.php' );
 		nggallery_wpmu_setup();
@@ -214,23 +239,7 @@ class nggAdminPanel {
 
 		global $ngg;
 
-		// check for upgrade and show upgrade screen
-		if ( get_option( 'ngg_db_version' ) != NGG_DBVERSION ) {
-			include_once( dirname( __FILE__ ) . '/functions.php' );
-			include_once( dirname( __FILE__ ) . '/upgrade.php' );
-
-			if ( empty($ngg->options['silentUpgrade'] ) ) {
-				output();
-			} else {
-				try {
-					ngg_upgrade();
-				} catch (Exception $e) {
-					add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="error"><p><strong>' . __( 'Something went wrong while upgrading NextCellent Gallery.', "nggallery" ) . '</strong></p></div>\';' ) );
-				}
-			}
-
-			return;
-		}
+		$this->show_upgrade_page();
 
 		// Set installation date
 		if ( empty( $ngg->options['installDate'] ) ) {

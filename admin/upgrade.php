@@ -98,13 +98,16 @@ function ngg_upgrade() {
 /**
  * Show the first step to update the database.
  */
-function output() {
+function nggallery_upgrade_page()  {
 
-	$filepath = admin_url() . 'admin.php?page=' . $_GET['page'];
-
-	if ( isset( $_GET['upgrade'] ) && $_GET['upgrade'] == 'now' ) {
-		doing_update_output( $filepath );
-
+	if ( is_network_admin() ) {
+		$filepath = network_admin_url() . 'admin.php?page=' . $_GET['page'];
+	} else {
+		$filepath = admin_url() . 'admin.php?page=' . $_GET['page'];
+	}
+	
+	if ( isset($_GET['upgrade']) && $_GET['upgrade'] == 'now') {
+		nggallery_start_upgrade($filepath);
 		return;
 	}
 	?>
