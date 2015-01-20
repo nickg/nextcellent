@@ -98,10 +98,7 @@ if (!class_exists('nggLoader')) {
 				add_filter('transient_update_plugins', array(&$this, 'disable_upgrade'));
 
 	        if( get_option( 'ngg_db_version' ) != NGG_DBVERSION && isset($_GET['page']) != "nextcellent" ) {
-		        add_action( 'admin_notices', create_function( '',
-				        'echo \'<div id="message" class="update-nag"><p><strong>' . __('NextCellent Gallery requires a database upgrade.', "nggallery") . ' <a href="' . admin_url() . 'admin.php?page=nextcellent-gallery-nextgen-legacy" >' . __('Upgrade now', 'nggallery') . '</a></strong></p></div>\';'
-			        )
-		        );
+		        add_action( 'all_admin_notices', array($this,'show_upgrade_message') );
 	        }
 
 			//Add some links on the plugin page
@@ -116,6 +113,19 @@ if (!class_exists('nggLoader')) {
 			// Handle upload requests
 			add_action('init', array(&$this, 'handle_upload_request'));
 		}
+
+	    function show_upgrade_message() {
+		    if( is_network_admin() ) {
+			    $url = network_admin_url('admin.php?page=' . NGGFOLDER);
+		    } else {
+			    $url = admin_url('admin.php?page=' . NGGFOLDER);
+		    }
+		    ?>
+			<div id="message" class="update-nag">
+				<p><strong><?php _e('NextCellent Gallery requires a database upgrade.', "nggallery") ?> <a href="<?php echo $url ?>"><?php _e('Upgrade now.', 'nggallery'); ?></a></strong></p>
+			</div>
+			<?php
+	    }
 
         /**
          * Main start invoked after all plugins are loaded.

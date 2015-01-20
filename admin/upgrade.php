@@ -56,8 +56,12 @@ function ngg_upgrade() {
  * @return Upgrade Message
  */
 function nggallery_upgrade_page()  {
-    
-	$filepath    = admin_url() . 'admin.php?page=' . $_GET['page'];
+
+	if ( is_network_admin() ) {
+		$filepath = network_admin_url() . 'admin.php?page=' . $_GET['page'];
+	} else {
+		$filepath = admin_url() . 'admin.php?page=' . $_GET['page'];
+	}
 	
 	if ( isset($_GET['upgrade']) && $_GET['upgrade'] == 'now') {
 		nggallery_start_upgrade($filepath);
