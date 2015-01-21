@@ -52,7 +52,7 @@ if (!class_exists('nggLoader')) {
      */
     class nggLoader {
 
-		var $version     = '1.9.24-beta5';
+		var $version     = '1.9.24';
 		var $dbversion   = '1.8.3';
 		var $minimum_WP  = '3.5';
 		var $options     = '';
@@ -503,7 +503,6 @@ if (!class_exists('nggLoader')) {
 			// Load AJAX navigation script, works only with shutter script as we need to add the listener
 			if ( $this->options['galAjaxNav'] ) {
 				if ( ($this->options['thumbEffect'] == "shutter") || function_exists('srel_makeshutter') ) {
-					wp_enqueue_script ( 'ngg_script', NGGALLERY_URLPATH . 'js/ngg.js', array('jquery'), '2.1');
 					wp_localize_script( 'ngg_script', 'ngg_ajax', array('path'		=> NGGALLERY_URLPATH,
 																		'callback'  => trailingslashit( home_url() ) . 'index.php?callback=ngg-ajax',
 																		'loading'	=> __('loading', 'nggallery'),

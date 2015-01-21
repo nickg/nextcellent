@@ -100,12 +100,11 @@ function ngg_upgrade() {
  */
 function nggallery_upgrade_page()  {
 
-	if ( is_network_admin() ) {
+    $filepath = admin_url() . 'admin.php?page=' . $_GET['page']; //default upgrade path
+	if ( is_network_admin() ) {                                  //unless if it is network  administrator...
 		$filepath = network_admin_url() . 'admin.php?page=' . $_GET['page'];
-	} else {
-		$filepath = admin_url() . 'admin.php?page=' . $_GET['page'];
 	}
-	
+
 	if ( isset($_GET['upgrade']) && $_GET['upgrade'] == 'now') {
 		doing_update_output($filepath);
 		return;

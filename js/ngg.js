@@ -23,6 +23,14 @@ jQuery("document").ready(function(){
         //edcal_test.runTests();
     }
 
+    //Activate tooltip. Allow HTML content.
+    //See http://jqueryui.com/tooltip/ for examples.
+    //See http://stackoverflow.com/questions/15734105/jquery-ui-tooltip-does-not-support-html-content
+    jQuery(document).tooltip({
+        content: function () {
+            return jQuery.parseHTML(this.getAttribute("title"));
+        }
+    });
 });
 
 function ngg_ajax_navigation(e, obj) {
