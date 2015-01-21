@@ -107,7 +107,7 @@ function nggallery_upgrade_page()  {
 	}
 	
 	if ( isset($_GET['upgrade']) && $_GET['upgrade'] == 'now') {
-		nggallery_start_upgrade($filepath);
+		doing_update_output($filepath);
 		return;
 	}
 	?>
