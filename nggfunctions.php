@@ -1,22 +1,24 @@
 <?php
 
+class NGG_Not_Found extends Exception {
+
+}
+
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
 /**
- * Return a script for the Imagerotator flash slideshow. Can be used in any template with <?php echo nggShowSlideshow($galleryID, $width, $height) ?>
- * Require the script swfobject.js in the header or footer
+ * Return a slideshow.
  *
- * @access public
- * @param integer $galleryID ID of the gallery
- * @param integer $irWidth Width of the flash container
- * @param integer $irHeight Height of the flash container
- * @return the content
+ * @param int $galleryID ID of the gallery.
+ * @param array $args (optional) An array of options.
+ *
+ * @return string The HTML code for the slideshow.
+ * @throws NGG_Not_Found
  */
-function nggShowSlideshow($galleryID, $width, $height) {
+function nggShowSlideshow( $galleryID, $args = null) {
 
-    require_once (dirname (__FILE__).'/lib/swfobject.php');
-
-    $ngg_options = nggGallery::get_option('ngg_options');
+    global $slideCounter, $nggdb, $ngg;
+    $ngg_options = $ngg->options;
 
     // remove media file from RSS feed
     if ( is_feed() ) {
@@ -24,115 +26,118 @@ function nggShowSlideshow($galleryID, $width, $height) {
         return $out;
     }
 
-    //Redirect all calls to the JavaScript slideshow if wanted
-    if ( $ngg_options['enableIR'] !== '1' || nggGallery::detect_mobile_phone() === true )
-        return nggShow_JS_Slideshow($galleryID, $width, $height);
-
-    // If the Imagerotator didn't exist, skip the output
-    if ( NGGALLERY_IREXIST == false )
-        return;
-
-    if (empty($width) ) $width  = (int) $ngg_options['irWidth'];
-    if (empty($height)) $height = (int) $ngg_options['irHeight'];
-    // Doesn't work fine with zero
-    $ngg_options['irRotatetime'] = ($ngg_options['irRotatetime'] == 0) ? 5 : $ngg_options['irRotatetime'];
-    // init the flash output
-    $swfobject = new swfobject( $ngg_options['irURL'] , 'so' . $galleryID, $width, $height, '7.0.0', 'false');
-
-    $swfobject->message = '<p>'. __('The <a href="http://www.macromedia.com/go/getflashplayer">Flash Player</a> and <a href="http://www.mozilla.com/firefox/">a browser with Javascript support</a> are needed.', 'nggallery').'</p>';
-    $swfobject->add_params('wmode', 'opaque');
-    $swfobject->add_params('allowfullscreen', 'true');
-    $swfobject->add_params('bgcolor', $ngg_options['irScreencolor'], 'FFFFFF', 'string', '#');
-    $swfobject->add_attributes('styleclass', 'slideshow');
-    $swfobject->add_attributes('name', 'so' . $galleryID);
-
-    // adding the flash parameter
-    $swfobject->add_flashvars( 'file', urlencode ( trailingslashit ( home_url() ) . 'index.php?callback=imagerotator&gid=' . $galleryID ) );
-    $swfobject->add_flashvars( 'shuffle', $ngg_options['irShuffle'], 'true', 'bool');
-    // option has oposite meaning : true should switch to next image
-    $swfobject->add_flashvars( 'linkfromdisplay', !$ngg_options['irLinkfromdisplay'], 'false', 'bool');
-    $swfobject->add_flashvars( 'shownavigation', $ngg_options['irShownavigation'], 'true', 'bool');
-    $swfobject->add_flashvars( 'showicons', $ngg_options['irShowicons'], 'true', 'bool');
-    $swfobject->add_flashvars( 'kenburns', $ngg_options['irKenburns'], 'false', 'bool');
-    $swfobject->add_flashvars( 'overstretch', $ngg_options['irOverstretch'], 'false', 'string');
-    $swfobject->add_flashvars( 'rotatetime', $ngg_options['irRotatetime'], 5, 'int');
-    $swfobject->add_flashvars( 'transition', $ngg_options['irTransition'], 'random', 'string');
-    $swfobject->add_flashvars( 'backcolor', $ngg_options['irBackcolor'], 'FFFFFF', 'string', '0x');
-    $swfobject->add_flashvars( 'frontcolor', $ngg_options['irFrontcolor'], '000000', 'string', '0x');
-    $swfobject->add_flashvars( 'lightcolor', $ngg_options['irLightcolor'], '000000', 'string', '0x');
-    $swfobject->add_flashvars( 'screencolor', $ngg_options['irScreencolor'], '000000', 'string', '0x');
-    if ($ngg_options['irWatermark'])
-        $swfobject->add_flashvars( 'logo', $ngg_options['wmPath'], '', 'string');
-    $swfobject->add_flashvars( 'audio', $ngg_options['irAudio'], '', 'string');
-    $swfobject->add_flashvars( 'width', $width, '260');
-    $swfobject->add_flashvars( 'height', $height, '320');
-    // create the output
-    $out  = '<div class="slideshow">' . $swfobject->output() . '</div>';
-    // add now the script code
-    $out .= "\n".'<script type="text/javascript" defer="defer">';
-    // load script via jQuery afterwards
-    // $out .= "\n".'jQuery.getScript( "' . esc_js( includes_url('js/swfobject.js') ) . '", function() {} );';
-    if ($ngg_options['irXHTMLvalid']) $out .= "\n".'<!--';
-    if ($ngg_options['irXHTMLvalid']) $out .= "\n".'//<![CDATA[';
-    $out .= $swfobject->javascript();
-    if ($ngg_options['irXHTMLvalid']) $out .= "\n".'//]]>';
-    if ($ngg_options['irXHTMLvalid']) $out .= "\n".'-->';
-    $out .= "\n".'</script>';
-
-    $out = apply_filters('ngg_show_slideshow_content', $out, $galleryID, $width, $height);
-
-    return $out;
-}
-
-/**
- * Return a script for the jQuery based slideshow. Can be used in any template with <?php echo nggShow_JS_Slideshow($galleryID, $width, $height) ?>
- * Require the script jquery.cycle.all.js
- *
- * @since 1.6.0
- * @access public
- * @param integer $galleryID ID of the gallery
- * @param integer $width Width of the slideshow container
- * @param integer $height Height of the slideshow container
- * @param string $class Classname of the div container
- * @return the content
- */
-function nggShow_JS_Slideshow($galleryID, $width, $height, $class = 'ngg-slideshow') {
-
-    global $slideCounter;
-
-    $ngg_options = nggGallery::get_option('ngg_options');
-
     // we need to know the current page id
-    $current_page = (get_the_ID() == false) ? rand(5, 15) : get_the_ID();
+    if ( !get_the_ID() ) {
+        $current_page = rand( 5, 15 );
+    } else {
+        $current_page = get_the_ID();
+    }
 	// look for a other slideshow instance
-	if ( !isset($slideCounter) ) $slideCounter = 1;
+	if ( !isset( $slideCounter ) ) $slideCounter = 0;
+
     // create unique anchor
-    $anchor = 'ngg-slideshow-' . $galleryID . '-' . $current_page . '-' . $slideCounter++;
+    $anchor = 'ngg_slideshow' . $galleryID . $current_page . $slideCounter++;
 
-    if (empty($width) ) $width  = (int) $ngg_options['irWidth'];
-    if (empty($height)) $height = (int) $ngg_options['irHeight'];
+    $param = wp_parse_args( $args, array(
+        'width'     => $ngg_options['irWidth'],
+        'height'    => $ngg_options['irHeight'],
+        'class'     => 'ngg-slideshow',
+        'anchor'    => 'ngg_slideshow' . $galleryID . $current_page . $slideCounter++,
+        'time'      => $ngg_options['irRotatetime']*1000,
+        'loop'      => $ngg_options['irLoop'],
+        'drag'      => $ngg_options['irDrag'],
+        'nav'       => $ngg_options['irNavigation'],
+        'nav_dots'  => $ngg_options['irNavigationDots'],
+        'autoplay'  => $ngg_options['irAutoplay'],
+        'hover'     => $ngg_options['irAutoplayHover'],
+        'effect'    => $ngg_options['slideFx'],
+        'click'     => $ngg_options['irClick'],
+        'autodim'   => $ngg_options['irAutoDim'],
+        'number'    => $ngg_options['irNumber']
+    ));
 
-    //filter to resize images for mobile browser
-    list($width, $height) = apply_filters('ngg_slideshow_size', array( $width, $height ) );
+    /**
+     * Edit the args for a NextCellent slideshow.
+     *
+     * @since 1.9.25beta2
+     *
+     * @param array $args {
+     *     All the arguments.
+     *
+     *     @var int $width The width of the slideshow. Will be ignored if $autodim is true.
+     *     @var int $height The height of the slideshow. Will be ignored if $autodim is set.
+     *     @var string $class The class that will be assigned to the div containing the slideshow.
+     *     @var string $anchor The id that will be assigned to the div containing the slideshow.
+     *     @var int $time The duration of a slide in milliseconds.
+     *     @var bool $loop If the slideshow should loop.
+     *     @var bool $drag If the user can drag through the images.
+     *     @var bool $nav If the navigation elements (next/previous) should be shown.
+     *     @var bool $nav_dots If the navigation dots should be shown.
+     *     @var bool $autoplay If the slideshow should automatically start.
+     *     @var bool $hover If the slideshow should pause when hovering over it.
+     *     @var string $effect With which effect the slideshow should use.
+     *     @var bool $click If the slideshow should go to the next image on click.
+     *     @var bool $autodim If the slideshow should automatically fit (responsive). When true, this will
+     *                        ignore the $width and $height.
+     *     @var int $number The number of images that should be displayed. Only works when the gallery ID
+     *                      is set to random or recent.
+     * }
+     */
+    $param = apply_filters( 'ngg_slideshow_args', $param );
 
-    $width  = (int) $width;
-    $height = (int) $height;
+	//Get the images
+	if ($galleryID == 'random') {
+		$images = nggdb::get_random_images( $param['number'] ); //random images
+	} elseif ($galleryID == 'recent') {
+		$images = nggdb::find_last_images(0 , $param['number'] ); //the last images
+	} else {
+		$images = $nggdb->get_gallery($galleryID); //a gallery
+	}
 
-    $out  = '<div id="' . $anchor . '" class="' . $class . '" style="height:' . $height . 'px;width:' . $width . 'px;">';
-    $out .= "\n". '<div id="' . $anchor . '-loader" class="ngg-slideshow-loader" style="height:' . $height . 'px;width:' . $width . 'px;">';
-    $out .= "\n". '<img src="'. NGGALLERY_URLPATH . 'images/loader.gif" alt="" />';
-    $out .= "\n". '</div>';
-    $out .= '</div>'."\n";
-    $out .= "\n".'<script type="text/javascript" defer="defer">';
-    $out .= "\n" . 'jQuery(document).ready(function(){ ' . "\n" . 'jQuery("#' . $anchor . '").nggSlideshow( {' .
-            'id: '      . $galleryID    . ',' .
-            'fx:"'      . $ngg_options['slideFx'] . '",' .
-            'width:'    . $width        . ',' .
-            'height:'   . $height       . ',' .
-            'domain: "' . trailingslashit ( home_url() ) . '",' .
-            'timeout:'  . $ngg_options['irRotatetime'] * 1000 .
-            '});' . "\n" . '});';
-    $out .= "\n".'</script>';
+    if( empty($images) ) {
+        throw new NGG_Not_Found( __( "The gallery was not found.", 'nggallery' ) );
+    }
+
+    $out  = '<div class="slideshow"><div id="' . $param['anchor'] . '" class="' . $param['class'] . ' owl-carousel" ';
+
+    if( !$param['autodim'] ) {
+        $out .=  'style="max-width: ' .  $param['width'] . 'px; max-height: ' . $param['height'] . 'px;"';
+    }
+    $out .= '>';
+	
+	foreach ( $images as $image ) {
+        $out .= '<img src="' . $image->imageURL .'" alt="' . $image->alttext . '" >';
+	}
+	
+    $out .= '</div></div>'."\n";
+    $out .= "\n".'<script type="text/javascript">';
+	$out .= "jQuery(document).ready(function($) {
+			var owl = $('#" . $param['anchor'] . "');
+			owl.owlCarousel({
+				items: 1,
+				autoHeight: true,";
+	if ( $param['nav'] ) {
+		$out .= "nav: true,
+				navText: ['" . __('previous', 'nggallery') ."','" . __('next', 'nggallery') ."'],";
+	}
+	$out .=    "
+	            dots: " .  var_export($param['nav_dots'], true) .",
+	            autoplay: ". var_export($param['autoplay'], true) .",
+				autoplayTimeout: " . $param['time'] . ",
+				autoplayHoverPause: " . var_export($param['hover'], true) . ",
+				animateOut: '" . $param['effect'] . "',
+				loop: " . var_export($param['loop'], true) . ",
+				mouseDrag: " . var_export($param['drag'], true) .",
+				touchDrag: " . var_export($param['drag'], true) . "
+			});";
+    if ( $param['click'] ) {
+        $out .= "\n" . "owl.click( function () {
+                    owl.trigger( 'next.owl.carousel' );
+                } );";
+    }
+	$out .= "});";
+
+    $out .= "\n" . '</script>';
 
     return $out;
 }
@@ -205,7 +210,7 @@ function nggShowGallery( $galleryID, $template = '', $images = false ) {
             $args['show'] = "gallery";
             $out  = '<div class="ngg-galleryoverview">';
             $out .= '<div class="slideshowlink"><a class="slideshowlink" href="' . $nggRewrite->get_permalink($args) . '">'.nggGallery::i18n($ngg_options['galTextGallery']).'</a></div>';
-            $out .= nggShowSlideshow($galleryID, $ngg_options['irWidth'], $ngg_options['irHeight']);
+            $out .= nggShowSlideshow($galleryID);
             $out .= '</div>'."\n";
             $out .= '<div class="ngg-clear"></div>'."\n";
             return $out;

@@ -366,7 +366,7 @@ class nggAdminPanel {
 				break;
 			case "nggallery-options" :
 				wp_enqueue_script( 'jquery-ui-tabs' );
-				//wp_enqueue_script( 'ngg-colorpicker', NGGALLERY_URLPATH .'admin/js/colorpicker/js/colorpicker.js', array('jquery'), '1.0');
+				wp_enqueue_script( 'wp-color-picker' );
 				break;
 			case "nggallery-add-gallery" :
 				wp_enqueue_script( 'jquery-ui-tabs' );
@@ -408,6 +408,7 @@ class nggAdminPanel {
 			case "nggallery-options" :
 				wp_enqueue_style( 'nggtabs', NGGALLERY_URLPATH . 'admin/css/jquery.ui.tabs.css', false, '2.5.0', 'screen' );
 				wp_enqueue_style( 'nggadmin' );
+				wp_enqueue_style( 'wp-color-picker' );
 				break;
 			case "nggallery-manage-gallery" :
 				wp_enqueue_style( 'shutter', NGGALLERY_URLPATH . 'shutter/shutter-reloaded.css', false, '1.3.2', 'screen' );

@@ -10,7 +10,7 @@ class nggMediaRss {
 	/**
 	 * Function called by the wp_head action to output the RSS link for medias
 	 */
-	function add_mrss_alternate_link() {
+	static function add_mrss_alternate_link() {
 		echo "<link id='MediaRSS' rel='alternate' type='application/rss+xml' title='NextGEN Gallery RSS Feed' href='" . nggMediaRss::get_mrss_url() . "' />\n";		
 	}
 	
@@ -27,7 +27,7 @@ class nggMediaRss {
 	/**
 	 * Get the URL of the general media RSS
 	 */
-	function get_mrss_url() {	
+	static function get_mrss_url() {
 		return NGGALLERY_URLPATH . 'xml/media-rss.php';
 	}
 	
@@ -41,14 +41,14 @@ class nggMediaRss {
 	/**
 	 * Get the URL of an album media RSS
 	 */
-	function get_album_mrss_url($aid) {		
+	static function get_album_mrss_url($aid) {
 		return nggMediaRss::get_mrss_url() . '?' . ('aid=' . $aid . '&mode=album');
 	}
 	
 	/**
 	 * Get the URL of the media RSS for last pictures
 	 */
-	function get_last_pictures_mrss_url($page = 0, $show = 30) {		
+	static function get_last_pictures_mrss_url($page = 0, $show = 30) {
 		return nggMediaRss::get_mrss_url() . '?' . ('show=' . $show . '&page=' . $page . '&mode=last_pictures');
 	}
 	
@@ -58,7 +58,7 @@ class nggMediaRss {
 	 * @param page The current page (defaults to 0)
 	 * @param show The number of pictures to include in one field (default 30) 
 	 */
-	function get_last_pictures_mrss($page = 0, $show = 30) {
+	static function get_last_pictures_mrss($page = 0, $show = 30) {
 		$images = nggdb::find_last_images($page, $show);
 		
 		$title = stripslashes(get_option('blogname'));
@@ -77,7 +77,7 @@ class nggMediaRss {
 	 * @param $prev_gallery (object) The previous gallery to link in RSS (null if none)
 	 * @param $next_gallery (object) The next gallery to link in RSS (null if none)
 	 */
-	function get_gallery_mrss($gallery, $prev_gallery = null, $next_gallery = null) {
+	static function get_gallery_mrss($gallery, $prev_gallery = null, $next_gallery = null) {
 		global $nggdb;
 
 		$ngg_options = nggGallery::get_option('ngg_options');
@@ -102,7 +102,7 @@ class nggMediaRss {
 	 *
 	 * @param $album The album to include in RSS
 	 */
-	function get_album_mrss($album) {
+	static function get_album_mrss($album) {
 
 		$title = stripslashes(nggGallery::i18n($album->name));
 		$description = '';
@@ -117,7 +117,7 @@ class nggMediaRss {
 	/**
 	 * Get the XML <rss> node
 	 */
-	function get_mrss_root_node($title, $description, $link, $prev_link, $next_link, $images) {	
+	static function get_mrss_root_node($title, $description, $link, $prev_link, $next_link, $images) {
 		
 		if ($prev_link != '' || $next_link != '')
 			$out = "<rss version='2.0' xmlns:media='http://search.yahoo.com/mrss/' xmlns:atom='http://www.w3.org/2005/Atom'>\n" ;
@@ -153,49 +153,49 @@ class nggMediaRss {
 	/**
 	 * Get the XML <generator> node
 	 */
-	function get_generator_mrss_node($indent = "\t\t") {	
+	static function get_generator_mrss_node($indent = "\t\t") {
 		return $indent . "<generator><![CDATA[NextGEN Gallery [http://nextgen-gallery.com]]]></generator>\n";
 	}	
 	
 	/**
 	 * Get the XML <title> node
 	 */
-	function get_title_mrss_node($title, $indent = "\t\t") {	
+	static function get_title_mrss_node($title, $indent = "\t\t") {
 		return $indent . "<title>" . $title . "</title>\n";
 	}	
 	
 	/**
 	 * Get the XML <description> node
 	 */
-	function get_description_mrss_node($description, $indent = "\t\t") {	
+	static function get_description_mrss_node($description, $indent = "\t\t") {
 		return $indent . "<description>" . $description . "</description>\n";
 	}	
 	
 	/**
 	 * Get the XML <link> node
 	 */
-	function get_link_mrss_node($link, $indent = "\t\t") {	
+	static function get_link_mrss_node($link, $indent = "\t\t") {
 		return $indent . "<link><![CDATA[" . htmlspecialchars($link) . "]]></link>\n";
 	}	
 
 	/**
 	 * Get the XML <atom:link self> node
 	 */
-	function get_self_node($link, $indent = "\t\t") {
+	static function get_self_node($link, $indent = "\t\t") {
 		return $indent . "<atom:link rel='self' href='" . htmlspecialchars($link) . "' type='application/rss+xml' />\n";
 	}
 	
 	/**
 	 * Get the XML <atom:link previous> node
 	 */
-	function get_previous_link_mrss_node($link, $indent = "\t\t") {	
+	static function get_previous_link_mrss_node($link, $indent = "\t\t") {
 		return $indent . "<atom:link rel='previous' href='" . htmlspecialchars($link) . "' />\n";
 	}	
 	
 	/**
 	 * Get the XML <atom:link next> node
 	 */
-	function get_next_link_mrss_node($link, $indent = "\t\t") {	
+	static function get_next_link_mrss_node($link, $indent = "\t\t") {
 		return $indent . "<atom:link rel='next' href='" . htmlspecialchars($link) . "' />\n";
 	}	
 	
@@ -204,7 +204,7 @@ class nggMediaRss {
 	 *
 	 * @param $image The image object
 	 */
-	function get_image_mrss_node($image, $indent = "\t\t" ) {		
+	static function get_image_mrss_node($image, $indent = "\t\t" ) {
 		$ngg_options = nggGallery::get_option('ngg_options');
 		
 		$tags = $image->get_tags();
@@ -234,8 +234,8 @@ class nggMediaRss {
 
 		return $out;
 	}
-	
-	function get_permalink($page_id) {		 
+
+	static function get_permalink($page_id) {
 		if ($page_id == 0)	
 			$permalink = site_url();		 
 		else 
