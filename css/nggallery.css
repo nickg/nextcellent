@@ -1,8 +1,8 @@
 /*
 CSS Name: Default Styles
 Description: NextGEN Default Gallery Stylesheet
-Author: Alex Rabe
-Version: 2.11
+Author: NextCellent
+Version: 1.9.22
 
 This is a template stylesheet that can be used with NextGEN Gallery. I tested the
 styles with a default theme Kubrick. Modify it when your theme struggle with it,
@@ -271,21 +271,38 @@ html>body .ngg-album {
     margin-right: auto;
 }
 
-.ngg-slideshow * {
-    vertical-align:middle;
+.rs-slideshow {
+    position: relative;
+}
+ 
+.rs-slideshow .slide-container {
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+ 
+.rs-slideshow .slide-container img {
+    position: absolute;
 }
 
-/* See also : http://www.brunildo.org/test/img_center.html */
-.ngg-slideshow-loader{
-    display: table-cell;
-    text-align: center;
-    vertical-align:middle;
+.rs-controls a,
+.rs-index-list li  {
+	float: left;
 }
 
-.ngg-slideshow-loader img{
-    background: none !important;
-    border: 0 none !important;
-    margin:auto !important;
+.rs-controls ul{
+	float: left;
+	list-style: none;
+	width: auto;
+	margin: 0;
+}
+
+/*    Hide the slide data container    */
+.rs-slideshow .slides {
+    display: none;
 }
 
 /* ----------- Single picture -------------*/

@@ -1,9 +1,8 @@
 /*
 CSS Name: Hovereffect Styles
 Description: Hover Stylesheet based on the idea of Hoverbox from http://host.sonspring.com/hoverbox/
-Author: Alex Rabe - Orginal by Nathan Smith
-Version: 1.60
-
+Author: NextCellent and Nathan Smith
+Version: 1.9.22
 This is a template stylesheet which doesn't support description below the thumbnails. It's a experimental version.
 
 */
@@ -295,23 +294,42 @@ This is a template stylesheet which doesn't support description below the thumbn
 .ngg-slideshow {
     overflow:hidden;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.ngg-slideshow * {
-    vertical-align:middle;
+.rs-slideshow {
+    position: relative;
+}
+ 
+.rs-slideshow .slide-container {
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+ 
+.rs-slideshow .slide-container img {
+    position: absolute;
 }
 
-/* See also : http://www.brunildo.org/test/img_center.html */
-.ngg-slideshow-loader{
-    display: table-cell;
-    text-align: center;
-    vertical-align:middle;
+.rs-controls a,
+.rs-index-list li  {
+	float: left;
 }
 
-.ngg-slideshow-loader img{
-    background: none !important; 
-    border: 0 none !important;
-    margin:auto !important; 
+.rs-controls ul{
+	float: left;
+	list-style: none;
+	width: auto;
+	margin: 0;
+}
+
+/*    Hide the slide data container    */
+.rs-slideshow .slides {
+    display: none;
 }
 
 /* ----------- Single picture -------------*/

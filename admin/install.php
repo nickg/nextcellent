@@ -133,6 +133,7 @@ function ngg_default_options() {
 	$ngg_options['imageMagickDir']		= '/usr/local/bin/';			// default path to ImageMagick
 	$ngg_options['useMediaRSS']			= false;						// activate the global Media RSS file
 	$ngg_options['usePicLens']			= false;						// activate the PicLens Link for galleries
+	$ngg_options['silentUpdate']		= false;                        //If the database should be updated silently.
 
 	// Tags / categories
 	$ngg_options['activateTags']		= false;						// append related images
@@ -153,7 +154,7 @@ function ngg_default_options() {
 	$ngg_options['imgAutoResize']		= false;						// Resize after upload
 
 	// Gallery Settings
-	$ngg_options['galImages']			= '20';		  					// Number of images per page
+	$ngg_options['galImages']			= 20;		  					// Number of images per page
 	$ngg_options['galPagedGalleries']	= 0;		  					// Number of galleries per page (in a album)
 	$ngg_options['galColumns']			= 0;							// Number of columns for the gallery
 	$ngg_options['galShowSlide']		= true;							// Show slideshow
@@ -183,27 +184,20 @@ function ngg_default_options() {
 	$ngg_options['wmColor']				= '000000';  					// Font Color
 	$ngg_options['wmOpaque']			= '100';  						// Font Opaque
 
-	// Image Rotator settings
-	$ngg_options['enableIR']		    = false;
-    $ngg_options['slideFx']		        = 'fade';
-    $ngg_options['irURL']				= path_join(NGGALLERY_URLPATH, 'imagerotator.swf');
-	$ngg_options['irXHTMLvalid']		= false;
-	$ngg_options['irAudio']				= '';
-	$ngg_options['irWidth']				= 320;
-	$ngg_options['irHeight']			= 240;
- 	$ngg_options['irShuffle']			= true;
- 	$ngg_options['irLinkfromdisplay']	= true;
-	$ngg_options['irShownavigation']	= false;
-	$ngg_options['irShowicons']			= false;
-	$ngg_options['irWatermark']			= false;
-	$ngg_options['irOverstretch']		= 'true';
-	$ngg_options['irRotatetime']		= 10;
-	$ngg_options['irTransition']		= 'random';
-	$ngg_options['irKenburns']			= false;
-	$ngg_options['irBackcolor']			= '000000';
-	$ngg_options['irFrontcolor']		= 'FFFFFF';
-	$ngg_options['irLightcolor']		= 'CC0000';
-	$ngg_options['irScreencolor']		= '000000';
+	// Slideshow settings
+    $ngg_options['slideFx']		        = 'fadeIn';                     //The effect
+	$ngg_options['irWidth']				= 320;                          //Width (in px)
+	$ngg_options['irHeight']			= 240;                          //Height (in px)
+	$ngg_options['irAutoDim']           = true;                         //Automatically set the dimensions.
+	$ngg_options['irRotatetime']        = 3;                            //Duration (in seconds)
+	$ngg_options['irLoop']              = true;                         //Loop or not
+	$ngg_options['irDrag']              = true;                         //Enable drag or not
+	$ngg_options['irNavigation']        = false;                        //Show navigation
+	$ngg_options['irNavigationDots']    = false;                        //Show navigation dots
+	$ngg_options['irAutoplay']          = true;                         //Autoplay
+	$ngg_options['irAutoplayHover']     = true;                         //Pause on hover
+	$ngg_options['irNumber']            = 20;                           //Number of images when random or latest
+	$ngg_options['irClick']             = true;                         //Go to next on click.
 
 	// CSS Style
 	$ngg_options['activateCSS']			= true;							// activate the CSS file

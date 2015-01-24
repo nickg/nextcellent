@@ -188,7 +188,7 @@ var $imageMagickBefore;
      *
      * @param string $cmd an ImageMagick command (eg. "convert")
      * @param string $args the arguments which should be passed
-     * @param bool §passthru(optional) output the result to the webserver instead
+     * @param bool ï¿½passthru(optional) output the result to the webserver instead
      * @return void | if passthru return the image
      */
 	function execute( $cmd, $args, $passthru = false) {
@@ -489,7 +489,7 @@ var $imageMagickBefore;
 		$opacity = dechex( round( (100-$wmOpaque) * 256/100 ) );
 		if ($opacity == "0") {$opacity = "00";} 
 		
-		$cmd = "-size 800x500 xc:none -fill '#{$color}{$opacity}' -font {$wmFontPath} -pointsize {$wmSize} -gravity center -annotate 0 '{$this->watermarkText}' watermark_text.png";
+		$cmd = "-size 800x500 xc:none -fill '{$color}{$opacity}' -font {$wmFontPath} -pointsize {$wmSize} -gravity center -annotate 0 '{$this->watermarkText}' watermark_text.png";
 		$this->execute('convert', $cmd);
 		
 		$cmd = "-trim +repage watermark_text.png";		 
