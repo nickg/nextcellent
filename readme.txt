@@ -2,17 +2,31 @@
 Contributors: wpready
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 3.5
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: trunk
 License: GPLv2
 
 == Description ==
 
-= 1.9.24 - 28/11/2014 =
+= 1.9.25 - 2015-01-26 =
 
  What's in it for you?
 
-* Researching...
+* Fix for zup upload (Niko Strijbol)
+* More visual upgrade message (Niko Strijbol)
+* Preserve gallery's manual sort order in nggtags shortcode (Frank P. Walentynowicz) 
+* Add a description field when adding a gallery (Niko Strijbol)
+* Show ID when editing a gallery (Niko Strijbol)
+* Fix for long album names (Niko Strijbol)
+* Update and fix translations (Niko Strijbol)
+* Improved Wordpress Integration (Niko Strijbol)
+* Image manipulation corrections (Frank P. Walentynowicz)
+* Fix manual sort (Niko Strijbol)
+* Fixes for multiuser (Niko Strijbol)
+* Slideshow Flash retired, replaced with CSS slideshow (Niko Strijbol)
+* Code refactoring and optimization (Fernando Zorrilla S.M.)
+* Adding QUnit for Javascript Unit testing (Fernando Zorrilla S.M.)
+
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -321,6 +335,26 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 - Many users are creating their respective translations and they will be included, along respective credits. Thanks to them!!!
 
 == Changelog ==
+
+
+= 1.9.25 - 2015-01-26 =
+* Tested up to Wordpress 4.1.
+* Fix for zup upload (Niko Strijbol)
+* More visual upgrade message (Niko Strijbol)
+* Preserve gallery's manual sort order in nggtags shortcode (Frank P. Walentynowicz) 
+* Add a description field when adding a gallery (Niko Strijbol)
+* Show ID when editing a gallery (Niko Strijbol)
+* Fix for long album names (Niko Strijbol)
+* Update and fix translations (Niko Strijbol)
+* Improved Wordpress Integration (Niko Strijbol)
+* Image manipulation corrections (Frank P. Walentynowicz)
+* Fix manual sort (Niko Strijbol)
+* Fixes for multiuser (Niko Strijbol)
+* Slideshow Flash retired, replaced with CSS slideshow (Niko Strijbol)
+* Code refactoring and optimization (Fernando Zorrilla S.M.)
+* Adding QUnit for Javascript Unit testing (Fernando Zorrilla S.M.)
+
+= 1.9.24 - Skipped
 
 = 1.9.23 - 24/09/2014 =
 * Fix for missing gallery stylesheets

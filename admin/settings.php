@@ -3,7 +3,9 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 
 /**
  * Rebuild slugs for albums, galleries and images via AJAX request
- *
+ * 20150124 FZSM: A class only for one method (and is not the constructor) needs to be improved.
+ * 20150124 FZSM: suggested rule: One file, one class...
+ * 20150124: function called statically when is not...
  * @sine 1.7.0
  * @access internal
  */
@@ -97,6 +99,8 @@ jQuery(document).ready(function($) {
 	}
 }
 
+//20150124 FZSM: Suggested rule: no class should call a spaghuetti code directly...
+
 class nggOptions {
 
     /**
@@ -135,19 +139,18 @@ class nggOptions {
     		if ($options) {
     			foreach ($options as $option) {
     				$option = trim($option);
+                    $value = false;
 				    if ( isset( $_POST[ $option ] ) ) {
 					    $value = trim( $_POST[ $option ] );
-				    } else {
-					    $value = false;
+                        if ($value === "true") {
+                            $value = true;
+                        }
+
+                        if ( is_numeric( $value ) ) {
+                            $value = (int) $value;
+                        }
 				    }
 
-				    if ($value === "true") {
-					    $value = true;
-				    }
-
-				    if ( is_numeric( $value ) ) {
-					    $value = (int) $value;
-				    }
     		//		$value = sanitize_option($option, $value); // This does stripslashes on those that need it
     				$ngg->options[$option] = $value;
     			}
@@ -202,7 +205,7 @@ class nggOptions {
 
     /**
      * Render the page content
-     *
+     * 20150124:FZSM: there should be a cleaner way to handle this, instead making dynamic functions and actions.
      * @return void
      */
     function controller() {
@@ -825,7 +828,7 @@ function ngg_get_TTFfont() {
 
 /**
  * Convert an array of options to a html dropdown group.
- *
+ * 20150124: To improve: a class calling a function outside the class... should be fixed.
  * @param $data array The option values (and display).
  * @param $title string (optional) The label of the optgroup.
  *
