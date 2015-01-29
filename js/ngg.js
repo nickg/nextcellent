@@ -17,11 +17,12 @@ jQuery("document").ready(function(){
 	jQuery("a.ngg-browser-prev").click(function(e) {
 		return ngg_ajax_browser_navigation(e, this);
 	});
+	//29/01/2015: this prevents ajax from running.
 	//Qunit conditional call
-	 if (ngg_get_url_vars().nextcellent) {
+	/** if (ngg_get_url_vars().nextcellent) {
 	 	//Como invoco esto?
         //edcal_test.runTests();
-    }
+    } */
 
     //Activate tooltip. Allow HTML content.
     //See http://jqueryui.com/tooltip/ for examples.
