@@ -129,6 +129,6 @@ class NGG_Media_RSS_Widget extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', function () {
-	register_widget( 'NGG_Media_RSS_Widget' );
-} );
+add_action('widgets_init',
+	create_function('', 'return register_widget("NGG_Media_RSS_Widget");')
+);
