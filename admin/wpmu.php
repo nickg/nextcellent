@@ -18,17 +18,29 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 		if ( $_POST['page_options'] )	
 			$options = explode(',', stripslashes($_POST['page_options']));
 		if ($options) {
-			foreach ($options as $option) {
-				$option = trim($option);
-				$value = isset($_POST[$option]) ? trim($_POST[$option]) : false;
-		//		$value = sanitize_option($option, $value); // This does strip slashes on those that need it
-				$ngg_options[$option] = $value;
+			foreach ( $options as $option ) {
+				$option = trim( $option );
+				$value  = false;
+				if ( isset( $_POST[ $option ] ) ) {
+					$value = trim( $_POST[ $option ] );
+					if ( $value === "true" ) {
+						$value = true;
+					}
+
+					if ( is_numeric( $value ) ) {
+						$value = (int) $value;
+					}
+				}
+
+				//		$value = sanitize_option($option, $value); // This does stripslashes on those that need it
+				$ngg_options[ $option ] = $value;
 			}
 		}
 
         // the path should always end with a slash	
         $ngg_options['gallerypath']    = trailingslashit($ngg_options['gallerypath']);
 		update_site_option('ngg_options', $ngg_options);
+		var_dump($ngg_options);
         
 	 	$messagetext = __('Update successfully','nggallery');
 	}		
@@ -76,7 +88,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 		<h2><?php _e('Network Options','nggallery'); ?></h2>
 		<form name="generaloptions" method="post">
 		<?php wp_nonce_field('ngg_wpmu_settings') ?>
-		<input type="hidden" name="page_options" value="gallerypath,wpmuQuotaCheck,wpmuZipUpload,wpmuImportFolder,wpmuStyle,wpmuRoles,wpmuCSSfile" />
+		<input type="hidden" name="page_options" value="silentUpgrade,gallerypath,wpmuQuotaCheck,wpmuZipUpload,wpmuImportFolder,wpmuStyle,wpmuRoles,wpmuCSSfile" />
 			<table class="form-table">
 				<tr valign="top">
 					<th align="left"><?php _e('Gallery path','nggallery') ?></th>
@@ -84,6 +96,12 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 					<p class="description"><?php _e('This is the default path for all blogs. With the placeholder %BLOG_ID% you can organize the folder structure better.','nggallery') ?>
                     <?php echo str_replace('%s', '<code>wp-content/blogs.dir/%BLOG_ID%/files/</code>', __('The default setting should be %s', 'nggallery')); ?>.</p>
                     </td>
+				</tr>
+				<tr>
+					<th><?php _e('Silent database upgrade','nggallery'); ?></th>
+					<td>
+						<input type="checkbox" name="silentUpgrade" id="silentUpgrade" value="true" <?php checked( true, $ngg_options['silentUpgrade']); ?> />
+						<label for="silentUpgrade"><?php _e('Update the database without notice.','nggallery') ?></label></td>
 				</tr>
 				<tr>
 					<th valign="top"><?php _e('Enable upload quota check','nggallery') ?>:</th>

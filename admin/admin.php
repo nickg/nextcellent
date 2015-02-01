@@ -257,7 +257,7 @@ class nggAdminPanel {
 			case "nggallery-options" :
 				include_once( dirname( __FILE__ ) . '/settings.php' );    // nggallery_admin_options
 				$ngg->option_page = new nggOptions ();
-				$ngg->option_page->controller();
+				$ngg->option_page->show_page();
 				break;
 			case "nggallery-tags" :
 				include_once( dirname( __FILE__ ) . '/tags.php' );        // nggallery_admin_tags
