@@ -8,25 +8,14 @@ License: GPLv2
 
 == Description ==
 
-= 1.9.25 - 2015-01-26 =
+= 1.9.25.1 - 2015-02-01 - FIX =
 
  What's in it for you?
 
-* Fix for zup upload (Niko Strijbol)
-* More visual upgrade message (Niko Strijbol)
-* Preserve gallery's manual sort order in nggtags shortcode (Frank P. Walentynowicz) 
-* Add a description field when adding a gallery (Niko Strijbol)
-* Show ID when editing a gallery (Niko Strijbol)
-* Fix for long album names (Niko Strijbol)
-* Update and fix translations (Niko Strijbol)
-* Improved Wordpress Integration (Niko Strijbol)
-* Image manipulation corrections (Frank P. Walentynowicz)
-* Fix manual sort (Niko Strijbol)
-* Fixes for multiuser (Niko Strijbol)
-* Slideshow Flash retired, replaced with CSS slideshow (Niko Strijbol)
-* Code refactoring and optimization (Fernando Zorrilla S.M.)
-* Adding QUnit for Javascript Unit testing (Fernando Zorrilla S.M.)
-
+* Fix: nextcellent crash with an error on some sites with following error
+Parse error: syntax error, unexpected T_FUNCTION in /home/wpgetrea/public_html/wp-content/plugins/nextcellent-gallery-nextgen-legacy/widgets/class-ngg-slideshow-widget.php on line 174
+Even the problem seems to be related with some old installations using PHP 5.2, we found the same problem with PHP 5.4.x installed. So this is fix is a MUST.
+* Fix: AJAX pagination stopped working
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -336,6 +325,12 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
+= 1.9.25.1 - 2015-02-01 - FIX =
+
+* Fix: nextcellent crash with an error on some sites with following error:
+ Parse error: syntax error, unexpected T_FUNCTION in /home/wpgetrea/public_html/wp-content/plugins/nextcellent-gallery-nextgen-legacy/widgets/class-ngg-slideshow-widget.php on line 174
+ Even the problem seems to be related with some old installations using PHP 5.2, we found the same problem with PHP 5.4.x installed. So this is fix is a MUST.
+* Fix: AJAX pagination stopped working
 
 = 1.9.25 - 2015-01-26 =
 * Tested up to Wordpress 4.1.
