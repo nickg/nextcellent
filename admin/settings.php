@@ -248,10 +248,14 @@ class nggOptions {
 			    break;
 			}
 			jQuery("#thumbCode").val(effectcode);
-		};
+		}
 
 		jQuery(document).ready(function($){
 			$('.picker').wpColorPicker();
+
+			$('#wm-preview-select').on('change', function() {
+				$('#wm-preview-image').attr("src", '<?php echo home_url( 'index.php' ); ?>' + '?callback=image&pid=' + this.value + '&mode=watermark');
+			});
 		});
 	</script>
 	<div class="wrap ngg-wrap">
@@ -593,28 +597,35 @@ class nggOptions {
         global $ngg;
 
         // take the first image as sample
-	    $image_array = nggdb::find_last_images(0, 1);
+	    $image_array = nggdb::find_last_images(0, 15);
 	    $ngg_image = $image_array[0];
         $imageID  = $ngg_image->pid;
-	    $imageURL = $imageURL = '<img src="' . home_url( 'index.php' ) . '?callback=image&amp;pid=' . intval( $imageID ) . '&amp;mode=watermark&amp;width=300&amp;height=250" />';
+	    $imageURL = '<img id="wm-preview-image" src="' . home_url( 'index.php' ) . '?callback=image&amp;pid=' . intval( $imageID ) . '&amp;mode=watermark&amp;width=300&amp;height=250" />';
 
 	?>
 	<!-- Watermark settings -->
-		<h3><?php esc_html_e('Watermark','nggallery'); ?></h3>
-		<p><?php esc_html_e('Please note : you can only activate the watermark under -> Manage Galleries . This action cannot be undone.', 'nggallery') ?></p>
-		<form name="watermarkform" method="POST" action="<?php echo $this->filepath.'#watermark'; ?>" >
+		<h3><?php _e('Watermark','nggallery'); ?></h3>
+		<p><?php _e('Please note : you can only activate the watermark under -> Manage Galleries . This action cannot be undone.', 'nggallery') ?></p>
+		<form name="watermarkform" method="POST" action="<?php echo $this->filepath.'#watermark'; ?>">
 		<?php wp_nonce_field('ngg_settings') ?>
 		<input type="hidden" name="page_options" value="wmPos,wmXpos,wmYpos,wmType,wmPath,wmFont,wmSize,wmColor,wmText,wmOpaque" />
 		<div id="wm-preview">
 			<h3><?php esc_html_e('Preview','nggallery') ?></h3>
-			<p style="text-align:center;"><?php echo $imageURL; ?></p>
-			<h3><?php esc_html_e('Position','nggallery') ?></h3>
-			<div>
-			    <table id="wm-position">
+			<label for="wm-preview-select"><?php _e('Select an image','nggallery'); ?></label>
+			<select id="wm-preview-select" name="wm-preview-img" style="width: 200px">
+				<?php foreach( $image_array as $image ) {
+					echo '<option value="' . $image->pid . '">[' . $image->pid . '] ' . $image->name . '</option>';
+				} ?>
+			</select>
+			<div id="wm-preview-container">
+				<img id="wm-preview-image" src="<?php echo home_url( 'index.php' ); ?>?callback=image&pid=<?php echo intval( $imageID ); ?>&mode=watermark" />
+			</div>
+			<h3><?php _e('Position','nggallery') ?></h3>
+			<table id="wm-position">
 				<tr>
 					<td valign="top">
-						<strong><?php esc_html_e('Position','nggallery') ?></strong>
-						<table border="1">
+						<strong><?php _e('Position','nggallery') ?></strong>
+						<table>
 							<tr>
 								<td><input type="radio" name="wmPos" value="topLeft" <?php checked('topLeft', $ngg->options['wmPos']); ?> /></td>
 								<td><input type="radio" name="wmPos" value="topCenter" <?php checked('topCenter', $ngg->options['wmPos']); ?> /></td>
@@ -633,7 +644,7 @@ class nggOptions {
 						</table>
 					</td>
 					<td valign="top">
-						<strong><?php esc_html_e('Offset','nggallery') ?></strong>
+						<strong><?php _e('Offset','nggallery') ?></strong>
 						<table border="0">
 							<tr>
 								<td>x:</td>
@@ -648,19 +659,17 @@ class nggOptions {
 				</tr>
 				</table>
 			</div>
-		</div>
-			<h3><label><input type="radio" name="wmType" value="image" <?php checked('image', $ngg->options['wmType']); ?> /> <?php esc_html_e('Use image as watermark','nggallery') ?></label></h3>
+			<h3><label><input type="radio" name="wmType" value="image" <?php checked('image', $ngg->options['wmType']); ?>> <?php _e('Use image as watermark','nggallery') ?></label></h3>
 			<table class="wm-table form-table">
 				<tr>
 					<th><?php esc_html_e('URL to file','nggallery') ?></th>
-					<td><input type="text" size="40" name="wmPath" value="<?php echo $ngg->options['wmPath']; ?>" /><br />
-					<?php if(!ini_get('allow_url_fopen')) esc_html_e('The accessing of URL files is disabled at your server (allow_url_fopen)','nggallery') ?> </td>
+					<td><input type="text" size="40" name="wmPath" value="<?php echo $ngg->options['wmPath']; ?>"><br>
 				</tr>
 			</table>
-			<h3><label><input type="radio" name="wmType" value="text" <?php checked('text', $ngg->options['wmType']); ?> /> <?php esc_html_e('Use text as watermark','nggallery') ?></label></h3>
+			<h3><label><input type="radio" name="wmType" value="text" <?php checked('text', $ngg->options['wmType']); ?>> <?php esc_html_e('Use text as watermark','nggallery') ?></label></h3>
 			<table class="wm-table form-table">
 				<tr>
-					<th><?php esc_html_e('Font','nggallery') ?></th>
+					<th><?php _e('Font','nggallery') ?></th>
 					<td><select name="wmFont" size="1">	<?php
 							$fontlist = ngg_get_TTFfont();
 							foreach ( $fontlist as $fontfile ) {
@@ -676,11 +685,11 @@ class nggOptions {
 					</td>
 				</tr>
 				<tr>
-					<th><?php esc_html_e('Size','nggallery') ?></th>
+					<th><?php _e('Size','nggallery') ?></th>
 					<td><input type="number" step="1" min="0" class="small-text" name="wmSize" value="<?php echo $ngg->options['wmSize']; ?>"/><label for="wmSize">px</label></td>
 				</tr>
 				<tr>
-					<th><?php esc_html_e('Color','nggallery') ?></th>
+					<th><?php _e('Color','nggallery') ?></th>
 					<td><input class="picker" type="text" id="wmColor" name="wmColor" value="<?php echo $ngg->options['wmColor'] ?>" />
 				</tr>
 				<tr>
@@ -688,7 +697,7 @@ class nggOptions {
 					<td><textarea name="wmText" cols="40" rows="4"><?php echo $ngg->options['wmText'] ?></textarea></td>
 				</tr>
 				<tr>
-					<th><?php esc_html_e('Opaque','nggallery') ?></th>
+					<th><?php _e('Opaque','nggallery') ?></th>
 					<td><input type="number" step="1" min="0" max="100" class="small-text" name="wmOpaque" value="<?php echo $ngg->options['wmOpaque'] ?>"/><label for="wmOpaque">%</label></td>
 				</tr>
 			</table>

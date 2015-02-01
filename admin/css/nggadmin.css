@@ -93,6 +93,7 @@ a.switch-expert {
 	margin-right:8px;
 	background: white;
 }
+
 #wm-preview h3{
 	margin: 0;
 }
@@ -100,6 +101,18 @@ a.switch-expert {
 #wm-position {
 	width:100%;
 	margin-left:40px;
+}
+
+#wm-preview-container {
+	max-width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#wm-preview-image {
+	margin: auto;
+	display: block;
+	max-width: 100%;
 }
 
 .wm-table {
