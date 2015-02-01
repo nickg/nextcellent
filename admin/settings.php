@@ -426,7 +426,7 @@ class nggOptions {
 					</td>
 				</tr>
 			</table>
-			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ) ?>
+			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ); ?>
 		</form>
 	<?php
 	}
@@ -507,7 +507,7 @@ class nggOptions {
 					<td><input type="submit" name="clearcache" class="button-secondary"  value="<?php _e('Proceed now &raquo;','nggallery') ;?>"/></td>
 				</tr>
 			</table>
-			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ) ?>
+			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ); ?>
 		</form>
 
 	<?php
@@ -654,7 +654,7 @@ class nggOptions {
 					</td>
 				</tr>
 			</table>
-			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ) ?>
+			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ); ?>
 		</form>
 		<?php
 	}
@@ -812,7 +812,7 @@ class nggOptions {
 				</tr>
 			</table>
 			<div class="clear"></div>
-			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ) ?>
+			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ); ?>
 		</form>
 	<?php
 	}
@@ -973,7 +973,7 @@ class nggOptions {
 					</td>
 				</tr>
 			</table>
-			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ) ?>
+			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ); ?>
 	</form>
 	<?php
 	}
