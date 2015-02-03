@@ -544,14 +544,14 @@ if (!class_exists('nggLoader')) {
 			if ( $css_file = nggGallery::get_theme_css_file() ) {
 				wp_enqueue_style('NextGEN', $css_file , false, '1.0.0', 'screen');
 				//load the framework
-				wp_enqueue_style('NextCellent-Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.0', 'screen');
+				wp_enqueue_style('NextCellent-Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.1', 'screen');
 			} elseif ($this->options['activateCSS']) {
 				//convert the path to an URL
 				$replace = content_url();
 				$path = str_replace( NGG_CONTENT_DIR , $replace, $this->options['CSSfile']); 
 				wp_enqueue_style('NextGEN', $path, false, '1.0.0', 'screen');
 				//load the framework
-				wp_enqueue_style('NextCellent Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.0', 'screen');
+				wp_enqueue_style('NextCellent-Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.1', 'screen');
 			}
 
 			//	activate Thickbox
