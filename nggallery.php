@@ -5,7 +5,7 @@ Plugin URI: http://www.wpgetready.com/nextcellent-gallery
 Description: A Photo Gallery for WordPress providing NextGEN legacy compatibility from version 1.9.13
 Author: WPGReady based on Alex Rabe & PhotoCrati work.
 Author URI: http://www.wpgetready.com
-Version: 1.9.25.1
+Version: 1.9.25.2
 
 Copyright (c) 2007-2011 by Alex Rabe & NextGEN DEV-Team
 Copyright (c) 2012 Photocrati Media
@@ -52,7 +52,7 @@ if (!class_exists('nggLoader')) {
      */
     class nggLoader {
 
-		var $version     = '1.9.25.1';
+		var $version     = '1.9.25.2';
 		var $dbversion   = '1.8.3';
 		var $minimum_WP  = '3.5';
 		var $options     = '';
@@ -503,7 +503,7 @@ if (!class_exists('nggLoader')) {
 			// Load AJAX navigation script, works only with shutter script as we need to add the listener
 			if ( $this->options['galAjaxNav'] ) {
 				if ( ($this->options['thumbEffect'] == "shutter") || function_exists('srel_makeshutter') ) {
-					wp_enqueue_script ( 'ngg_script', NGGALLERY_URLPATH . 'js/ngg.js', array('jquery'), '2.1');
+					wp_enqueue_script ( 'ngg_script', NGGALLERY_URLPATH . 'js/ngg.js', array('jquery', 'jquery-ui'), '2.1');
 					wp_localize_script( 'ngg_script', 'ngg_ajax', array('path'		=> NGGALLERY_URLPATH,
 																		'callback'  => trailingslashit( home_url() ) . 'index.php?callback=ngg-ajax',
 																		'loading'	=> __('loading', 'nggallery'),
@@ -544,14 +544,14 @@ if (!class_exists('nggLoader')) {
 			if ( $css_file = nggGallery::get_theme_css_file() ) {
 				wp_enqueue_style('NextGEN', $css_file , false, '1.0.0', 'screen');
 				//load the framework
-				wp_enqueue_style('NextCellent-Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.0', 'screen');
+				wp_enqueue_style('NextCellent-Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.1', 'screen');
 			} elseif ($this->options['activateCSS']) {
 				//convert the path to an URL
 				$replace = content_url();
 				$path = str_replace( NGG_CONTENT_DIR , $replace, $this->options['CSSfile']); 
 				wp_enqueue_style('NextGEN', $path, false, '1.0.0', 'screen');
 				//load the framework
-				wp_enqueue_style('NextCellent Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.0', 'screen');
+				wp_enqueue_style('NextCellent-Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.1', 'screen');
 			}
 
 			//	activate Thickbox

@@ -125,7 +125,8 @@ function nggShowSlideshow( $galleryID, $args = null) {
 	            autoplay: ". var_export($param['autoplay'], true) .",
 				autoplayTimeout: " . $param['time'] . ",
 				autoplayHoverPause: " . var_export($param['hover'], true) . ",
-				animateOut: '" . $param['effect'] . "',
+				animateIn: '" . $param['effect'] . "',
+				animateOut: 'fadeOut',
 				loop: " . var_export($param['loop'], true) . ",
 				mouseDrag: " . var_export($param['drag'], true) .",
 				touchDrag: " . var_export($param['drag'], true) . "
