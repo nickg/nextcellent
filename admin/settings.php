@@ -272,9 +272,14 @@ class nggOptions {
 				$('.picker').wpColorPicker();
 
 				//Set preview for watermark.
-				$('#wm-preview-select').on('change', function() {
+				$('#wm-preview-select').on("nggAutocompleteDone", function() {
 					$('#wm-preview-image').attr("src", '<?php echo home_url( 'index.php' ); ?>' + '?callback=image&pid=' + this.value + '&mode=watermark');
+                    $('#wm-preview-image-url').attr("href", '<?php echo home_url( 'index.php' ); ?>' + '?callback=image&pid=' + this.value + '&mode=watermark');
 				});
+
+                jQuery("#wm-preview-select").nggAutocomplete( {
+                    type: 'image',domain: "<?php echo home_url('index.php', is_ssl() ? 'https' : 'http'); ?>"
+                });
 			});
 		</script>
 		<?php
@@ -705,7 +710,7 @@ class nggOptions {
 		global $ngg;
 
 		// take the first image as sample
-		$image_array = nggdb::find_last_images(0, 15);
+		$image_array = nggdb::find_last_images(0, 1);
 		$ngg_image = $image_array[0];
 		$imageID  = $ngg_image->pid;
 
@@ -719,12 +724,12 @@ class nggOptions {
 				<h3><?php esc_html_e('Preview','nggallery') ?></h3>
 				<label for="wm-preview-select"><?php _e('Select an image','nggallery'); ?></label>
 				<select id="wm-preview-select" name="wm-preview-img" style="width: 200px">
-					<?php foreach( $image_array as $image ) {
-						echo '<option value="' . $image->pid . '">[' . $image->pid . '] ' . $image->name . '</option>';
-					} ?>
+					<?php echo '<option value="' . $ngg_image->pid . '">' . $ngg_image->pid . ' - ' . $ngg_image->alttext . '</option>'; ?>
 				</select>
 				<div id="wm-preview-container">
-					<img id="wm-preview-image" src="<?php echo home_url( 'index.php' ); ?>?callback=image&pid=<?php echo intval( $imageID ); ?>&mode=watermark" />
+					<a id="wm-preview-image-url" href="<?php echo home_url( 'index.php' ); ?>?callback=image&pid=<?php echo intval( $imageID ); ?>&mode=watermark" target="_blank" title="<?php _e("View full image", 'nggallery'); ?>">
+                        <img id="wm-preview-image" src="<?php echo home_url( 'index.php' ); ?>?callback=image&pid=<?php echo intval( $imageID ); ?>&mode=watermark" />
+                    </a>
 				</div>
 				<h3><?php _e('Position','nggallery') ?></h3>
 				<table id="wm-position">

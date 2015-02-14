@@ -167,7 +167,7 @@ class nggAPI {
                         //TODO : need to rework save/load 
                         $name = stripslashes( htmlspecialchars_decode($name, ENT_QUOTES));
                         $obj->label = $image->pid . ' - ' . $name;
-                        $obj->value = $name;
+                        $obj->value = $image->pid . ' - ' . $name;
                         $this->result[] = $obj;
         			}
         		}
