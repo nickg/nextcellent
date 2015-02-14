@@ -39,7 +39,7 @@ class NGG_Gallery_Widget extends WP_Widget {
 		}
 
 		//Validate show
-		if ( $instance['show'] == "thumbnail" ) {
+		if ( $new_instance['show'] == "thumbnail" ) {
 			$instance['show'] = 'thumbnail';
 		} else {
 			$instance['show'] = 'original';
@@ -230,8 +230,6 @@ class NGG_Gallery_Widget extends WP_Widget {
 
 				//TODO:For mixed portrait/landscape it's better to use only the height setting, if widht is 0 or vice versa
 				$out = '<a href="' . $image->imageURL . '" title="' . $description . '" ' . $thumbcode . '>';
-				// Typo fix for the next updates (happend until 1.0.2)
-				$instance['show'] = ( $instance['show'] == 'orginal' ) ? 'original' : $instance['show'];
 
 				if ( $instance['show'] == 'original' ) {
 					$out .= '<img src="' . trailingslashit( home_url() ) . 'index.php?callback=image&amp;pid=' . $image->pid . '&amp;width=' . $instance['width'] . '&amp;height=' . $instance['height'] . '" title="' . $alttext . '" alt="' . $alttext . '" />';

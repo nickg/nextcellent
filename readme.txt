@@ -8,14 +8,14 @@ License: GPLv2
 
 == Description ==
 
-= 1.9.25.1 - 2015-02-01 - FIX =
+= 1.9.25.2 - 2015-02-06 - FIX =
 
  What's in it for you?
 
-* Fix: nextcellent crash with an error on some sites with following error
-Parse error: syntax error, unexpected T_FUNCTION in /home/wpgetrea/public_html/wp-content/plugins/nextcellent-gallery-nextgen-legacy/widgets/class-ngg-slideshow-widget.php on line 174
-Even the problem seems to be related with some old installations using PHP 5.2, we found the same problem with PHP 5.4.x installed. So this is fix is a MUST.
-* Fix: AJAX pagination stopped working
+* Missing jQuery UI, now included
+* Widgets not saving options
+* Animation glitches fix
+
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -325,14 +325,18 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
-= 1.9.25.1 - 2015-02-01 - FIX =
+= 1.9.25.2 - 06/02/2015 - FIX =
+* Missing jQuery UI, now included
+* Widgets not saving options
+* Animation glitches fix
 
+= 1.9.25.1 - 01/02/2015 - FIX =
 * Fix: nextcellent crash with an error on some sites with following error:
  Parse error: syntax error, unexpected T_FUNCTION in /home/wpgetrea/public_html/wp-content/plugins/nextcellent-gallery-nextgen-legacy/widgets/class-ngg-slideshow-widget.php on line 174
  Even the problem seems to be related with some old installations using PHP 5.2, we found the same problem with PHP 5.4.x installed. So this is fix is a MUST.
 * Fix: AJAX pagination stopped working
 
-= 1.9.25 - 2015-01-26 =
+= 1.9.25 - 26/01/2015 =
 * Tested up to Wordpress 4.1.
 * Fix for zup upload (Niko Strijbol)
 * More visual upgrade message (Niko Strijbol)

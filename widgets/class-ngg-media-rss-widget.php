@@ -55,7 +55,7 @@ class NGG_Media_RSS_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-		$instance['title']            = sanitize_text_field( $instance['title'] );
+		$instance['title']            = sanitize_text_field( $new_instance['title'] );
 		$instance['show_global_mrss'] = (bool) $new_instance['show_global_mrss'];
 		$instance['show_icon']        = (bool) $new_instance['show_icon'];
 		$instance['mrss_text']        = sanitize_text_field( $new_instance['mrss_text'] );
