@@ -569,7 +569,7 @@ class nggdb {
      * @param $pids array of picture_ids
      * @return An array of nggImage objects representing the images
      */
-    static function find_images_in_list( $pids, $exclude, $order) {
+    static function find_images_in_list( $pids, $exclude = false, $order = 'NOTSET') {
         global $wpdb;
 
         $qry = nggdb::find_images_query( $pids, $exclude, $order); //Build query to get images
