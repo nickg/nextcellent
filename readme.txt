@@ -8,13 +8,12 @@ License: GPLv2
 
 == Description ==
 
-= 1.9.25.2 - 2015-02-06 - FIX =
+= 1.9.25.3 - 2015-02-21 - FIX =
 
  What's in it for you?
 
-* Missing jQuery UI, now included
-* Widgets not saving options
-* Animation glitches fix
+* Missing jQuery UI (again), now included
+* find_images_in_list incorrect parameter call causing other plugins to break
 
 
 VERY IMPORTANT: Read ON!
@@ -325,6 +324,10 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
+= 1.9.25.3 - 06/02/2015 FIX (last round) =
+* Missing jQuery UI (again), now included
+* find_images_in_list incorrect parameter call causing other plugins to break
+
 = 1.9.25.2 - 06/02/2015 - FIX =
 * Missing jQuery UI, now included
 * Widgets not saving options
@@ -338,7 +341,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 = 1.9.25 - 26/01/2015 =
 * Tested up to Wordpress 4.1.
-* Fix for zup upload (Niko Strijbol)
+* Fix for zip upload (Niko Strijbol)
 * More visual upgrade message (Niko Strijbol)
 * Preserve gallery's manual sort order in nggtags shortcode (Frank P. Walentynowicz) 
 * Add a description field when adding a gallery (Niko Strijbol)
