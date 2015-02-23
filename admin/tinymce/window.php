@@ -11,20 +11,17 @@ wp_enqueue_script('jquery-ui-core');
 wp_enqueue_script('jquery-ui-widget');
 wp_enqueue_script('jquery-ui-position');
 wp_enqueue_style('wp-admin');
-if (!isset($wp_scripts->registered['jquery-ui-autocomplete'])) {
-	wp_register_script( 'jquery-ui-autocomplete', NGGALLERY_URLPATH .'admin/js/jquery.ui.autocomplete.min.js', array('jquery-ui-core'), '1.8.15');
-}
-wp_enqueue_script('jquery-ui-autocomplete');
+wp_enqueue_script( 'ngg-autocomplete', NGGALLERY_URLPATH . 'admin/js/ngg.autocomplete.js', array( 'jquery-ui-autocomplete' ), '1.1' );
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>NextCellent</title>
-		<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php echo get_option('blog_charset'); ?>" />
+		<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>" />
+        <meta charset="<?php echo get_option('blog_charset'); ?>">
 		<?php wp_print_scripts(); ?>
 		<script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
 		<script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
 		<script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
-		<script language="javascript" type="text/javascript" src="<?php echo NGGALLERY_URLPATH ?>admin/js/ngg.autocomplete.js"></script>
 		<script language="javascript" type="text/javascript" src="<?php echo NGGALLERY_URLPATH ?>admin/tinymce/tinymce.js"></script>
 		<?php wp_print_styles(); ?>
 		<style>

@@ -257,7 +257,7 @@ class nggAdminPanel {
 			case "nggallery-options" :
 				include_once( dirname( __FILE__ ) . '/settings.php' );    // nggallery_admin_options
 				$ngg->option_page = new nggOptions ();
-				$ngg->option_page->controller();
+				$ngg->option_page->show_page();
 				break;
 			case "nggallery-tags" :
 				include_once( dirname( __FILE__ ) . '/tags.php' );        // nggallery_admin_tags
@@ -335,8 +335,7 @@ class nggAdminPanel {
 			'no_gallery'                => __( 'You didn\'t select a gallery!', 'nggallery' )
 		) );
 		wp_register_script( 'ngg-progressbar', NGGALLERY_URLPATH . 'admin/js/ngg.progressbar.js', array( 'jquery' ), '2.0.1' );
-		wp_register_script( 'jquery-ui-autocomplete', NGGALLERY_URLPATH . 'admin/js/jquery.ui.autocomplete.min.js',
-                            array('jquery-ui-core','jquery-ui-widget'), '1.8.15' );
+        wp_register_script( 'ngg-autocomplete', NGGALLERY_URLPATH . 'admin/js/ngg.autocomplete.js', array( 'jquery-ui-autocomplete' ), '1.1' );
 
 		switch ( $_GET['page'] ) {
 			case NGGFOLDER :
@@ -359,14 +358,14 @@ class nggAdminPanel {
 				wp_enqueue_script( 'shutter' );
 				break;
 			case "nggallery-manage-album" :
-				wp_enqueue_script( 'jquery-ui-autocomplete' );
 				wp_enqueue_script( 'jquery-ui-dialog' );
 				wp_enqueue_script( 'jquery-ui-sortable' );
-				wp_enqueue_script( 'ngg-autocomplete', NGGALLERY_URLPATH . 'admin/js/ngg.autocomplete.js', array( 'jquery-ui-autocomplete' ), '1.0.1' );
+				wp_enqueue_script( 'ngg-autocomplete' );
 				break;
 			case "nggallery-options" :
 				wp_enqueue_script( 'jquery-ui-tabs' );
 				wp_enqueue_script( 'wp-color-picker' );
+                wp_enqueue_script( 'ngg-autocomplete');
 				break;
 			case "nggallery-add-gallery" :
 				wp_enqueue_script( 'jquery-ui-tabs' );
@@ -409,6 +408,7 @@ class nggAdminPanel {
 				wp_enqueue_style( 'nggtabs', NGGALLERY_URLPATH . 'admin/css/jquery.ui.tabs.css', false, '2.5.0', 'screen' );
 				wp_enqueue_style( 'nggadmin' );
 				wp_enqueue_style( 'wp-color-picker' );
+                wp_enqueue_style( 'ngg-jqueryui' );
 				break;
 			case "nggallery-manage-gallery" :
 				wp_enqueue_style( 'shutter', NGGALLERY_URLPATH . 'shutter/shutter-reloaded.css', false, '1.3.2', 'screen' );
