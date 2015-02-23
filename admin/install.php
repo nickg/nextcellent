@@ -210,8 +210,9 @@ function ngg_default_options() {
 
 		// get the default value during first installation
 		if (!is_array($ngg_wpmu_options)) {
-			$ngg_wpmu_options['gallerypath'] = 'wp-content/blogs.dir/%BLOG_ID%/files/';
-			$ngg_wpmu_options['wpmuCSSfile'] = 'nggallery.css';
+			$ngg_wpmu_options['gallerypath']    = 'wp-content/blogs.dir/%BLOG_ID%/files/';
+			$ngg_wpmu_options['wpmuCSSfile']    = 'nggallery.css';
+			$ngg_wpmu_options['silentUpdate']   = false;
 			update_site_option('ngg_options', $ngg_wpmu_options);
 		}
 

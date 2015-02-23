@@ -120,11 +120,10 @@
 
 /* jQuery Autocomplete */
 .ui-autocomplete { position: absolute; cursor: default; }
-.ui-autocomplete-start { background: white url('images/dropdown.png') right center no-repeat; }
 * html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
 .ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
 /* this limit the height of the result list*/
-.ui-autocomplete { max-height: 90px; overflow-y: auto; }
+.ui-autocomplete { max-height: 50%; overflow-y: auto; }
 * html .ui-autocomplete { height: 90px; }
 .ui-autocomplete .ui-state-hover, .ui-autocomplete .ui-widget-content .ui-state-hover { background: #1e90ff; color: #FFFFFF !important; }
 .ui-autocomplete, .ui-autocomplete .ui-corner-all { -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; }
