@@ -22,7 +22,8 @@ jQuery.fn.nggAutocomplete = function (args) {
         type: s.type,
         format: 'json',
         callback: 'json',
-        limit: s.limit
+        limit: s.limit,
+        term: s.term
     };
 
     var obj = this.selector;
@@ -57,17 +58,19 @@ jQuery.fn.nggAutocomplete = function (args) {
 
     /**
      * Initiate the autocomplete
+     * 20150305: only add term to request if term is not empty
      */
     obj_ac_selector.autocomplete({
         source: function (request, response) {
             var term = request.term;
             console.log(response);
             if (term in cache) {
-                response(cache[term]);
+                    response(cache[term]);
                 return;
             }
             // adding more $_GET parameter
-            request = jQuery.extend({}, settings, request);
+            //20150303: invert stetting and request to make term priority
+            request = jQuery.extend({}, request, settings);
             lastXhr = jQuery.getJSON(s.domain, request, function (data, status, xhr) {
                 // add term to cache
                 cache[term] = data;
