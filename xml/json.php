@@ -156,7 +156,8 @@ class nggAPI {
                 if ( empty($this->term) )
 				    $list = $nggdb->find_last_images(0, $this->limit, false);
                 else
-                    $list = $nggdb->search_for_images($this->term, $this->limit);
+                    //$list = $nggdb->search_for_images($this->term, $this->limit);
+                    $list = $nggdb->find_images_in_album($this->term);
                     
                 if( is_array($list) ) {
         			foreach($list as $image) {
@@ -167,7 +168,7 @@ class nggAPI {
                         //TODO : need to rework save/load 
                         $name = stripslashes( htmlspecialchars_decode($name, ENT_QUOTES));
                         $obj->label = $image->pid . ' - ' . $name;
-                        $obj->value = $name;
+                        $obj->value = $image->pid . ' - ' . $name;
                         $this->result[] = $obj;
         			}
         		}

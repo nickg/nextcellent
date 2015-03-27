@@ -3,11 +3,6 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 
 class NGG_Style {
 
-	/**
-     * nggAddGallery::__construct()
-     *
-     * @return void
-     */
     function __construct() {
 
        	// same as $_SERVER['REQUEST_URI'], but should work under IIS 6.0
@@ -23,17 +18,16 @@ class NGG_Style {
 	 *
 	 * @since 1.9.22
 	 * 
-	 * @param array Absolute paths to the folders that contain stylesheets.
+	 * @param array $directions Absolute paths to the folders that contain stylesheets.
 	 * @return array Absolute paths to the stylesheets.
 	 */
-	static function ngg_get_cssfiles($directions) {
+	static function ngg_get_cssfiles( $directions ) {
 
-		$cssfiles = array ();
+		$plugin_files = array ();
 
 		foreach ($directions as $direction) {
 			$plugins_dir = dir($direction);
-		
-			if ($plugins_dir) {
+					if ($plugins_dir) {
 				while (($file = $plugins_dir->read()) !== false) {
 					if (preg_match('|^\.+$|', $file))
 						continue;
@@ -63,7 +57,7 @@ class NGG_Style {
 	 *
 	 * @since 1.9.22
 	 * 
-	 * @param Absolute path to the stylesheet.
+	 * @param string $plugin_file Absolute path to the stylesheet.
 	 * @return array The information about the stylesheet.
 	 */
 	static function ngg_get_cssfiles_data($plugin_file) {
@@ -86,6 +80,25 @@ class NGG_Style {
 		$author = trim($author_name[1]);
 
 		return array ('Name' => $name, 'Description' => $description, 'Author' => $author, 'Version' => $version, 'Folder' => $folder );
+	}
+
+	/**
+	 * Output a set of options for a select element.
+	 *
+	 * @since 1.9.26
+	 *
+	 * @param array $css_list The paths to the stylesheets.
+	 * @param string $act_css_file The path to the current active stylesheet.
+	 */
+	static function output_css_files_dropdown( $css_list, $act_css_file ) {
+		foreach ( $css_list as $file) {
+			$a_cssfile = NGG_Style::ngg_get_cssfiles_data($file);
+			$css_name = esc_attr( $a_cssfile['Name'] );
+			$css_folder = esc_attr( $a_cssfile['Folder'] );
+			if ( $css_name != '' ) {
+				echo '<option value="' . $file . '" ' . selected( $file, $act_css_file ) . '>' . $css_name . ' (' . $css_folder . ')</option>';
+			}
+		}
 	}
 	
 	/**
@@ -246,19 +259,7 @@ class NGG_Style {
 							<strong><?php _e('Activate and use style sheet:','nggallery') ?></strong>
 							<input type="checkbox" name="activateCSS" value="1" <?php checked('1', $ngg->options['activateCSS']); ?> />							
 							<select name="css" id="theme" style="margin: 0pt; padding: 0pt;">
-								<?php
-									foreach ($csslist as $file) {
-										$a_cssfile = NGG_Style::ngg_get_cssfiles_data($file);
-										$css_name = esc_attr( $a_cssfile['Name'] );
-										$css_folder = esc_attr( $a_cssfile['Folder'] );
-										if ($file == $act_cssfile) {
-											$selected = " selected='selected'";
-										} else {
-											$selected = '';
-										}
-										echo "\n\t<option value=\"$file\" $selected>$css_name ($css_folder)</option>";
-									}
-								?>
+								<?php self::output_css_files_dropdown($csslist, $act_cssfile); ?>
 							</select>
 							<input class="button" type="submit" name="activate" value="<?php _e('Activate','nggallery') ?> &raquo;" class="button" />
 						</form>
