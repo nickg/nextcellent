@@ -166,6 +166,7 @@ function nggShowGallery( $galleryID, $template = '', $images = false ) {
     //TODO: Use pagination limits here to reduce memory needs
     //20130106:shouldn't call it statically if is not...
     //$picturelist = nggdb::get_gallery($galleryID, $ngg_options['galSort'], $ngg_options['galSortDir']);
+    //array of nggImage objects returned
     $picturelist = $nggdb->get_gallery($galleryID, $ngg_options['galSort'], $ngg_options['galSortDir']);
 
     if ( !$picturelist )
@@ -650,6 +651,7 @@ function nggShowImageBrowser($galleryID, $template = '') {
     // get the pictures
     //20140106:shouldn't call it statically if is not...
     //$picturelist = nggdb::get_gallery($galleryID, $ngg_options['galSort'], $ngg_options['galSortDir']);
+    //return array of nggImages
     $picturelist = $nggdb->get_gallery($galleryID, $ngg_options['galSort'], $ngg_options['galSortDir']);
 
     if ( is_array($picturelist) )
@@ -899,7 +901,7 @@ function nggShowGalleryTags($taglist, $template = '',  $sorting = 'ASC') {
  *
  * @access public
  * @param string $taglist list of tags as csv
- * @param integer $maxImages (optional) limit the number of images to show
+ * @param integer $maxImages (optional) limit the number of images to show. 0=no limit
  * @return the content
  */
 function nggShowRelatedGallery($taglist, $maxImages = 0) {
@@ -998,7 +1000,9 @@ function nggShowAlbumTags($taglist, $template='', $sorting = 'ASC') {
  * @access public
  * @param string $type could be 'tags' or 'category'
  * @param integer $maxImages of images
- * @return the content
+ * @return related gallery output or empty string if not tags/categories
+ * 20150309: fix: error when no tags in site.
+ * Few simplifications
  */
 function nggShowRelatedImages($type = '', $maxImages = 0) {
     $ngg_options = nggGallery::get_option('ngg_options');
@@ -1012,31 +1016,24 @@ function nggShowRelatedImages($type = '', $maxImages = 0) {
 
     switch ($type) {
         case 'tags':
-            if (function_exists('get_the_tags')) {
-                $taglist = get_the_tags();
-
-                if (is_array($taglist)) {
-                    foreach ($taglist as $tag) {
-                        $sluglist[] = $tag->slug;
-                    }
-                }
+            $taglist = get_the_tags(); //Return array of tag objects, false on failure or empty
+                                       //This is a tag list for posts non Nextcellent tag lists.
+            if (!$taglist) return "";
+            foreach ($taglist as $tag) {
+                $sluglist[] = $tag->slug;
             }
         break;
 
         case 'category':
-            $catlist = get_the_category();
-
-            if (is_array($catlist)) {
-                foreach ($catlist as $cat) {
-                    $sluglist[] = $cat->category_nicename;
-                }
+            $catlist = get_the_category(); //return array (empty if no categories)
+            if (empty ($catlist)) return "";
+            foreach ($catlist as $cat) {
+               $sluglist[] = $cat->category_nicename;
             }
-        break;
+            break;
     }
-
     $sluglist = implode(',', $sluglist);
     $out = nggShowRelatedGallery($sluglist, $maxImages);
-
     return $out;
 }
 

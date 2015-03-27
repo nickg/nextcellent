@@ -554,6 +554,7 @@ if (!class_exists('nggLoader')) {
 				wp_enqueue_style('NextCellent-Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.1', 'screen');
 			}
 
+
 			//	activate Thickbox
 			if ($this->options['thumbEffect'] == 'thickbox')
 				wp_enqueue_style( 'thickbox');
