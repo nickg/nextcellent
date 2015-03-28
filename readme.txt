@@ -8,13 +8,12 @@ License: GPLv2
 
 == Description ==
 
-= 1.9.25.3 - 2015-02-21 - FIX =
+= 1.9.26 - 2015-03-27 =
 
  What's in it for you?
 
-* Missing jQuery UI (again), now included
-* find_images_in_list incorrect parameter call causing other plugins to break
-
+* Improved Watermark with custom image selection (credits to Niko Strijbol)
+* fix: Albums preview image now correctly shows images from inside the album, not the last uploaded ones.
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -323,6 +322,9 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 - Many users are creating their respective translations and they will be included, along respective credits. Thanks to them!!!
 
 == Changelog ==
+= 1.9.26 - 27/03/2015 =
+* Improved Watermark (credits to Niko Strijbol)
+* fix: Albums: preview image now correctly shows images from inside the album, not the last uploaded ones.
 
 = 1.9.25.3 - 06/02/2015 FIX (last round) =
 * Missing jQuery UI (again), now included
