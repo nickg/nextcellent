@@ -171,8 +171,6 @@ class nggAdminPanel {
 			add_submenu_page( NGGFOLDER, __( 'Roles', 'nggallery' ), __( 'Roles', 'nggallery' ), 'activate_plugins', 'nggallery-roles',
                 array( &$this, 'show_menu' ) );
 		}
-		add_submenu_page( NGGFOLDER, __( 'About this Gallery', 'nggallery' )  , __( 'About', 'nggallery' )               , 'NextGEN Gallery overview', 'nggallery-about',
-            array(		&$this,		'show_menu'	) );
 
 		if ( ! is_multisite() || is_super_admin() ) {
 			add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ), 'activate_plugins', 'nggallery-setup',
@@ -383,7 +381,6 @@ class nggAdminPanel {
      * Load the icon for the navigation menu
      */
 	function load_styles() {
-		wp_enqueue_style ( 'nggmenu'     , NGGALLERY_URLPATH . 'admin/css/menu.css', array() );
 		wp_register_style( 'nggadmin'    , NGGALLERY_URLPATH . 'admin/css/nggadmin.css', false, '2.8.1', 'screen' );
 		wp_register_style( 'ngg-jqueryui', NGGALLERY_URLPATH . 'admin/css/jquery.ui.css', false, '1.8.5', 'screen' );
 

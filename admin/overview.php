@@ -123,7 +123,7 @@ class Overview_Display {
 		$rss = fetch_feed( 'http://wpgetready.com/feed/' );
 
 		if ( is_wp_error( $rss ) ) {
-			echo '<p>' . sprintf( __( 'The newsfeed could not be loaded.  Check the <a href="%s">front page</a> to check for updates.', 'nggallery' ), 'http://www.nextgen-gallery.com/' ) . '</p>';
+			echo '<p>' . sprintf( __( 'The newsfeed could not be loaded.  Check the <a href="%s">front page</a> to check for updates.', 'nggallery' ), 'http://www.wpgetready.com/' ) . '</p>';
 		} else {
 			echo '<div class="rss-widget">';
 			foreach ( $rss->get_items( 0, 3 ) as $item ) {
@@ -540,7 +540,8 @@ class Overview_Display {
 		include( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 
 		//Check for the transient.
-		if ( ! $plugins = (array) get_transient( 'ngg_related_plugins' ) ) {
+		$plugins = (array) get_transient( 'ngg_related_plugins' );
+		if ( !$plugins || count($plugins) <= 1 ) {
 
 			// Additional info http://dd32.id.au/projects/wordpressorg-plugin-information-api-docs/
 			if ( is_wp_error( $api = plugins_api( 'query_plugins', array( 'search' => 'nextgen' ) ) ) ) {
@@ -548,6 +549,7 @@ class Overview_Display {
 			}
 			$plugins = (array) $api->plugins;
 			shuffle( $plugins );
+			var_dump("ok");
 			set_transient( 'ngg_related_plugins', $plugins, 60 * 60 * 24 ); //enable to check within a day.
 		}
 
@@ -573,12 +575,15 @@ class Overview_Display {
 			'br'      => array()
 		);
 
-		for ( $i = 0; $i < 3; $i ++ ) {
+		$displayed = 0;
+		for( $i = 0; $displayed < 3; $i++ ) {
 
 			$plugin = (array) $plugins[ $i ];
 
 			if ( in_array( $plugin['slug'], $blacklist ) ) {
 				continue;
+			} else {
+				$displayed++;
 			}
 
 			$title = wp_kses( $plugin['name'], $plugins_allowedtags );
@@ -596,7 +601,7 @@ class Overview_Display {
 
 			$action_links = array();
 
-			if ( current_user_can( 'install_plugins' ) || current_user_can( 'update_plugins' ) ) {
+			if ( !is_multisite() && (current_user_can( 'install_plugins' ) || current_user_can( 'update_plugins' )) ) {
 				$status = install_plugin_install_status( $plugin );
 
 				switch ( $status['status'] ) {
@@ -622,17 +627,30 @@ class Overview_Display {
 				}
 			}
 
-			$details_link = self_admin_url( 'plugin-install.php?tab=plugin-information&amp;plugin=' . $plugin['slug'] . '&amp;TB_iframe=true&amp;width=600&amp;height=550' );
+			if( is_multisite() ) {
+				$details_link = "https://wordpress.org/plugins/" . $plugin['slug'] . "/";
+			} else {
+				$details_link = self_admin_url( 'plugin-install.php?tab=plugin-information&amp;plugin=' . $plugin['slug'] . '&amp;TB_iframe=true&amp;width=600&amp;height=550' );
+			}
 
 			/* translators: 1: Plugin name and version. */
-			$action_links[] = '<a href="' . esc_url( $details_link ) . '" class="thickbox" aria-label="' . esc_attr( sprintf( __( 'More information about %s' ), $name ) ) . '" data-title="' . esc_attr( $name ) . '">' . __( 'More Details' ) . '</a>';
+			if( is_multisite() ) {
+				$action_links[] = '<a href="' . esc_url( $details_link ) . '" target="_blank" aria-label="' . esc_attr( sprintf( __( 'More information about %s' ), $name ) ) . '" data-title="' . esc_attr( $name ) . '">' . __( 'More Details' ) . '</a>';
+			} else {
+				$action_links[] = '<a href="' . esc_url( $details_link ) . '" class="thickbox" aria-label="' . esc_attr( sprintf( __( 'More information about %s' ), $name ) ) . '" data-title="' . esc_attr( $name ) . '">' . __( 'More Details' ) . '</a>';
+			}
 
 
 			?>
 			<div class="plugin-card">
 				<div class="plugin-card-top">
 					<div class="name column-name">
-						<h4><a href="<?php echo esc_url( $details_link ); ?>" class="thickbox"><?php echo $title; ?></a>
+						<h4>
+						<?php if( is_multisite() ) {
+							echo("<a href='" . esc_url( $details_link ) . "' target='_blank'>" . $title . "</a>");
+						} else {
+							echo("<a href='" . esc_url( $details_link ) . "' class='thickbox'>" . $title . "</a>");
+						} ?>
 						</h4>
 					</div>
 					<div class="action-links">
@@ -831,7 +849,7 @@ class Overview_Display {
 				<li><a href="http://gfxproductions.com/" target="_blank">Stefano
 						Sudati</a> <?php _e( 'for his his suggestions on templates', 'nggallery' ); ?></li>
 				<li><p><?php _e( 'Also a big thank you to the new translators: ', 'nggallery' ); ?>
-						<br><?php $this->list_contributors( 'new' ); ?></p>
+						<br><?php $this->list_contributors(); ?></p>
 				</li>
 			</ul>
 		</div>
