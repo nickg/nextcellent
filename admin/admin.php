@@ -119,53 +119,64 @@ class nggAdminPanel {
 		}
 	}
 
-	// integrate the menu
+
+
+    /**
+     * Enable dash icons for WP latest versions. See https://developer.wordpress.org/resource/dashicons/#format-gallery
+     * @param $wp_version  defaults to current WP version
+     * @return string
+     */
+
+    function get_icon_gallery($wp_version='') {
+        if (empty($wp_version)) {
+            $wp_version= get_bloginfo( 'version' ) ; //get WP Version
+        }
+        if ( $wp_version >= 3.8 ) {
+            return 'dashicons-format-gallery'; //new style
+        }
+        //older style
+        return path_join( NGGALLERY_URLPATH, 'admin/images/nextgen_16_color.png' );
+    }
+    /**
+     * Integrate the menu
+     *
+     */
 	function add_menu() {
-		add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'NextGEN Gallery overview', NGGFOLDER, array(
-				&$this,
-				'show_menu'
-		), 'dashicons-format-gallery' );
-		add_submenu_page( NGGFOLDER, __( 'Overview', 'nggallery' ), __( 'Overview', 'nggallery' ), 'NextGEN Gallery overview', NGGFOLDER, array(
-			&$this,
-			'show_menu'
-		) );
-		add_submenu_page( NGGFOLDER, __( 'Add Gallery / Images', 'nggallery' ), __( 'Add Gallery / Images', 'nggallery' ), 'NextGEN Upload images', 'nggallery-add-gallery', array(
-			&$this,
-			'show_menu'
-		) );
-		add_submenu_page( NGGFOLDER, __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'NextGEN Manage gallery', 'nggallery-manage-gallery', array(
-			&$this,
-			'show_menu'
-		) );
-		add_submenu_page( NGGFOLDER, __( 'Albums', 'nggallery' ), __( 'Albums', 'nggallery' ), 'NextGEN Edit album', 'nggallery-manage-album', array(
-			&$this,
-			'show_menu'
-		) );
-		add_submenu_page( NGGFOLDER, __( 'Tags', 'nggallery' ), __( 'Tags', 'nggallery' ), 'NextGEN Manage tags', 'nggallery-tags', array(
-			&$this,
-			'show_menu'
-		) );
-		add_submenu_page( NGGFOLDER, __( 'Settings', 'nggallery' ), __( 'Settings', 'nggallery' ), 'NextGEN Change options', 'nggallery-options', array(
-			&$this,
-			'show_menu'
-		) );
+        add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ),
+                       'NextGEN Gallery overview', NGGFOLDER, array(&$this,'show_menu'),  $this->get_icon_gallery());
+
+		add_submenu_page( NGGFOLDER, __( 'Overview', 'nggallery' ), __( 'Overview', 'nggallery' ), 'NextGEN Gallery overview',
+            NGGFOLDER, array(&$this,'show_menu'		) );
+
+		add_submenu_page( NGGFOLDER, __( 'Add Gallery / Images', 'nggallery' ), __( 'Add Gallery / Images', 'nggallery' ), 'NextGEN Upload images' , 'nggallery-add-gallery',
+            array( &$this, 'show_menu' ) );
+
+		add_submenu_page( NGGFOLDER, __( 'Galleries', 'nggallery' )           , __( 'Galleries', 'nggallery' )           , 'NextGEN Manage gallery', 'nggallery-manage-gallery',
+            array( &$this, 'show_menu' ) );
+
+		add_submenu_page( NGGFOLDER, __( 'Albums', 'nggallery' )              , __( 'Albums', 'nggallery' )              , 'NextGEN Edit album'    , 'nggallery-manage-album',
+            array( &$this, 'show_menu' ) );
+
+		add_submenu_page( NGGFOLDER, __( 'Tags', 'nggallery' )                , __( 'Tags', 'nggallery' )                , 'NextGEN Manage tags'   , 'nggallery-tags',
+            array( &$this, 'show_menu' ) );
+
+		add_submenu_page( NGGFOLDER, __( 'Settings', 'nggallery' )            , __( 'Settings', 'nggallery' )            , 'NextGEN Change options', 'nggallery-options',
+            array( &$this, 'show_menu' ) );
+
 		if ( wpmu_enable_function( 'wpmuStyle' ) ) {
-			add_submenu_page( NGGFOLDER, __( 'Style', 'nggallery' ), __( 'Style', 'nggallery' ), 'NextGEN Change style', 'nggallery-style', array(
-				&$this,
-				'show_menu'
-			) );
+			add_submenu_page( NGGFOLDER, __( 'Style', 'nggallery' ), __( 'Style', 'nggallery' ), 'NextGEN Change style', 'nggallery-style',
+            array( &$this, 'show_menu'	) );
 		}
 		if ( wpmu_enable_function( 'wpmuRoles' ) || is_super_admin() ) {
-			add_submenu_page( NGGFOLDER, __( 'Roles', 'nggallery' ), __( 'Roles', 'nggallery' ), 'activate_plugins', 'nggallery-roles', array(
-				&$this,
-				'show_menu'
-			) );
+			add_submenu_page( NGGFOLDER, __( 'Roles', 'nggallery' ), __( 'Roles', 'nggallery' ), 'activate_plugins', 'nggallery-roles',
+                array( &$this, 'show_menu' ) );
 		}
+		add_submenu_page( NGGFOLDER, __( 'About this Gallery', 'nggallery' )  , __( 'About', 'nggallery' )               , 'NextGEN Gallery overview', 'nggallery-about',
+            array(		&$this,		'show_menu'	) );
+
 		if ( ! is_multisite() || is_super_admin() ) {
-			add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ), 'activate_plugins', 'nggallery-setup', array(
-				&$this,
-				'show_menu'
-			) );
+			add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ), 'activate_plugins', 'nggallery-setup',
+                array( &$this, 'show_menu' ) );
 		}
 
 		//register the column fields
@@ -174,23 +185,36 @@ class nggAdminPanel {
 
 	// integrate the network menu
 	function add_network_admin_menu() {
+        add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu',
+                       NGGFOLDER, array(&$this,'show_network_settings'), $this->get_icon_gallery() );
 
-		add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
-			&$this,
-			'show_network_settings'
-		), 'dashicons-format-gallery' );
-		add_submenu_page( NGGFOLDER, __( 'Network settings', 'nggallery' ), __( 'Network settings', 'nggallery' ), 'nggallery-wpmu', NGGFOLDER, array(
-			&$this,
-			'show_network_settings'
-		) );
-		add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ), 'activate_plugins', 'nggallery-setup', array(
-			&$this,
-			'show_menu'
-		) );
+		add_submenu_page( NGGFOLDER, __( 'Network settings', 'nggallery' ), __( 'Network settings', 'nggallery' ), 'nggallery-wpmu',
+                          NGGFOLDER, array(&$this, 'show_network_settings' ) );
+
+		add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ), 'activate_plugins',
+                        'nggallery-setup', array(&$this, 'show_menu') );
+	}
+
+	/**
+	 * Maybe show an upgrade page.
+	 */
+	private function show_upgrade_page() {
+
+		global $ngg;
+
+		// check for upgrade and show upgrade screen
+		if ( get_option( 'ngg_db_version' ) != NGG_DBVERSION ) {
+			include_once( dirname( __FILE__ ) . '/functions.php' );
+			include_once( dirname( __FILE__ ) . '/upgrade.php' );
+			nggallery_upgrade_page();
+
+			exit;
+		}
 	}
 
 	// show the network page
 	function show_network_settings() {
+		$this->show_upgrade_page();
 		include_once( dirname( __FILE__ ) . '/style.php' );
 		include_once( dirname( __FILE__ ) . '/wpmu.php' );
 		nggallery_wpmu_setup();
@@ -202,14 +226,7 @@ class nggAdminPanel {
 
 		global $ngg;
 
-		// check for upgrade and show upgrade screen
-		if ( get_option( 'ngg_db_version' ) != NGG_DBVERSION ) {
-			include_once( dirname( __FILE__ ) . '/functions.php' );
-			include_once( dirname( __FILE__ ) . '/upgrade.php' );
-			nggallery_upgrade_page();
-
-			return;
-		}
+		$this->show_upgrade_page();
 
 		// Set installation date
 		if ( empty( $ngg->options['installDate'] ) ) {
@@ -240,7 +257,7 @@ class nggAdminPanel {
 			case "nggallery-options" :
 				include_once( dirname( __FILE__ ) . '/settings.php' );    // nggallery_admin_options
 				$ngg->option_page = new nggOptions ();
-				$ngg->option_page->controller();
+				$ngg->option_page->show_page();
 				break;
 			case "nggallery-tags" :
 				include_once( dirname( __FILE__ ) . '/tags.php' );        // nggallery_admin_tags
@@ -315,10 +332,7 @@ class nggAdminPanel {
 			'no_gallery'                => __( 'You didn\'t select a gallery!', 'nggallery' )
 		) );
 		wp_register_script( 'ngg-progressbar', NGGALLERY_URLPATH . 'admin/js/ngg.progressbar.js', array( 'jquery' ), '2.0.1' );
-		wp_register_script( 'jquery-ui-autocomplete', NGGALLERY_URLPATH . 'admin/js/jquery.ui.autocomplete.min.js', array(
-			'jquery-ui-core',
-			'jquery-ui-widget'
-		), '1.8.15' );
+        wp_register_script( 'ngg-autocomplete', NGGALLERY_URLPATH . 'admin/js/ngg.autocomplete.js', array( 'jquery-ui-autocomplete' ), '1.1' );
 
 		switch ( $_GET['page'] ) {
 			case NGGFOLDER :
@@ -341,13 +355,14 @@ class nggAdminPanel {
 				wp_enqueue_script( 'shutter' );
 				break;
 			case "nggallery-manage-album" :
-				wp_enqueue_script( 'jquery-ui-autocomplete' );
 				wp_enqueue_script( 'jquery-ui-dialog' );
 				wp_enqueue_script( 'jquery-ui-sortable' );
-				wp_enqueue_script( 'ngg-autocomplete', NGGALLERY_URLPATH . 'admin/js/ngg.autocomplete.js', array( 'jquery-ui-autocomplete' ), '1.0.1' );
+				wp_enqueue_script( 'ngg-autocomplete' );
 				break;
 			case "nggallery-options" :
 				wp_enqueue_script( 'jquery-ui-tabs' );
+				wp_enqueue_script( 'wp-color-picker' );
+                wp_enqueue_script( 'ngg-autocomplete');
 				break;
 			case "nggallery-add-gallery" :
 				wp_enqueue_script( 'jquery-ui-tabs' );
@@ -364,8 +379,12 @@ class nggAdminPanel {
 		}
 	}
 
+    /**
+     * Load the icon for the navigation menu
+     */
 	function load_styles() {
-		wp_register_style( 'nggadmin', NGGALLERY_URLPATH . 'admin/css/nggadmin.css', false, '2.8.1', 'screen' );
+		wp_enqueue_style ( 'nggmenu'     , NGGALLERY_URLPATH . 'admin/css/menu.css', array() );
+		wp_register_style( 'nggadmin'    , NGGALLERY_URLPATH . 'admin/css/nggadmin.css', false, '2.8.1', 'screen' );
 		wp_register_style( 'ngg-jqueryui', NGGALLERY_URLPATH . 'admin/css/jquery.ui.css', false, '1.8.5', 'screen' );
 
 		// no need to go on if it's not a plugin page
@@ -384,6 +403,8 @@ class nggAdminPanel {
 			case "nggallery-options" :
 				wp_enqueue_style( 'nggtabs', NGGALLERY_URLPATH . 'admin/css/jquery.ui.tabs.css', false, '2.5.0', 'screen' );
 				wp_enqueue_style( 'nggadmin' );
+				wp_enqueue_style( 'wp-color-picker' );
+                wp_enqueue_style( 'ngg-jqueryui' );
 				break;
 			case "nggallery-manage-gallery" :
 				wp_enqueue_style( 'shutter', NGGALLERY_URLPATH . 'shutter/shutter-reloaded.css', false, '1.3.2', 'screen' );

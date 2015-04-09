@@ -155,6 +155,18 @@ a.switch-expert {
     margin-left: 40px;
 }
 
+#wm-preview-container {
+	max-width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#wm-preview-image {
+	margin: auto;
+	display: block;
+	max-width: 100%;
+}
+
 .wm-table {
     border-collapse: collapse;
     margin-top: 1em;

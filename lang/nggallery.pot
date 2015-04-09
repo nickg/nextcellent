@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NextCellent\n"
-"POT-Creation-Date: 2014-04-27 13:07+0100\n"
-"PO-Revision-Date: 2014-04-27 13:08+0100\n"
+"POT-Creation-Date: 2015-01-09 16:11+0100\n"
+"PO-Revision-Date: 2015-01-09 16:11+0100\n"
 "Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.7.1\n"
 "X-Poedit-KeywordsList: _n;__;_e;esc_attr_e;esc_html_e\n"
 "X-Poedit-Basepath: ./\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -17,9 +17,10 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../admin/about.php:9 ../admin/admin.php:140 ../admin/admin.php:186
+#: ../admin/about.php:9 ../admin/admin.php:171
+#, fuzzy
 msgid "About"
-msgstr ""
+msgstr "Informatie"
 
 #: ../admin/about.php:12
 msgid "Contributors"
@@ -32,8 +33,9 @@ msgid ""
 msgstr ""
 
 #: ../admin/about.php:16
+#, fuzzy
 msgid "for their great documented code"
-msgstr ""
+msgstr "Kopieer code naar het clipboard"
 
 #: ../admin/about.php:17
 msgid "for jQuery, which is the best Web2.0 framework"
@@ -56,8 +58,9 @@ msgid "for the best Media Flash Scripts on earth"
 msgstr ""
 
 #: ../admin/about.php:22
+#, fuzzy
 msgid "for the Gallery Icon"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
 #: ../admin/about.php:23
 msgid "for the Watermark plugin"
@@ -71,82 +74,82 @@ msgstr ""
 msgid "The original translators for NextGen Gallery, who made the translations"
 msgstr ""
 
-#: ../admin/about.php:30
+#: ../admin/about.php:31 ../nggallery.php:386
 msgid "NextCellent"
 msgstr ""
 
-#: ../admin/about.php:32
+#: ../admin/about.php:33
 msgid ""
 "NextCellent Gallery is based on the 1.9.13 version of the NextGen Gallery by "
 "Photocrati Media, which is the succesor to the work by Alex Rabe."
 msgstr ""
 
-#: ../admin/about.php:33
+#: ../admin/about.php:34
 msgid "What do you get with NextCellent Gallery?"
 msgstr ""
 
-#: ../admin/about.php:35
+#: ../admin/about.php:36
 msgid "Backward compatibility with NextGEN plugin version (1.9.13)"
 msgstr ""
 
-#: ../admin/about.php:36
+#: ../admin/about.php:37
 msgid ""
 "Slow evolving code path, made only by NextGEN user's suggestions. Yep, you "
 "read it right: slow in counterpart as fast. Older code is good enough to "
 "keep a community and it worked (and works) for most people."
 msgstr ""
 
-#: ../admin/about.php:37
+#: ../admin/about.php:38
 msgid "A reliable way to work with already installed NextGEN galleries."
 msgstr ""
 
-#: ../admin/about.php:38
+#: ../admin/about.php:39
 msgid ""
 "A place for updating the plugin without using FTP manual updates, but "
 "WordPress plugin repository."
 msgstr ""
 
-#: ../admin/about.php:39
+#: ../admin/about.php:40
 msgid "Alternative path preserving backward compatibility (while possible)."
 msgstr ""
 
-#: ../admin/about.php:45
+#: ../admin/about.php:46
 msgid "How to support us?"
 msgstr ""
 
-#: ../admin/about.php:47
+#: ../admin/about.php:48
 msgid "There are several ways to contribute:"
 msgstr ""
 
-#: ../admin/about.php:49
+#: ../admin/about.php:50
 msgid "Send us bugfixes / code changes"
 msgstr ""
 
-#: ../admin/about.php:49
+#: ../admin/about.php:50
 msgid ""
 "The most motivated support for this plugin are your ideas and brain work."
 msgstr ""
 
-#: ../admin/about.php:50
+#: ../admin/about.php:51
 msgid "Translate the plugin"
 msgstr ""
 
-#: ../admin/about.php:50
+#: ../admin/about.php:51
 msgid ""
 "To help people to work with this plugin, we would like to have it in all "
 "available languages."
 msgstr ""
 
-#: ../admin/about.php:51
+#: ../admin/about.php:52
 msgid "Place a link to the plugin in your blog/webpage"
 msgstr ""
 
-#: ../admin/about.php:51
+#: ../admin/about.php:52
 msgid "Yes, sharing and linking are also supportive and helpful."
 msgstr ""
 
-#: ../admin/addgallery.php:35 ../admin/addgallery.php:46
-#: ../admin/addgallery.php:58 ../admin/addgallery.php:69 ../admin/album.php:88
+#: ../admin/addgallery.php:35 ../admin/addgallery.php:47
+#: ../admin/addgallery.php:59 ../admin/addgallery.php:70 ../admin/album.php:88
 #: ../admin/album.php:123 ../admin/album.php:145
 #: ../admin/edit-thumbnail.php:19 ../admin/edit-thumbnail.php:22
 #: ../admin/manage.php:188 ../admin/publish.php:7 ../admin/publish.php:10
@@ -155,367 +158,641 @@ msgstr ""
 msgid "Cheatin&#8217; uh?"
 msgstr ""
 
-#: ../admin/addgallery.php:51 ../admin/addgallery.php:82
+#: ../admin/addgallery.php:52 ../admin/addgallery.php:83
 msgid "Upload failed!"
 msgstr ""
 
-#: ../admin/addgallery.php:74
+#: ../admin/addgallery.php:75
 msgid "Upload failed! "
 msgstr ""
 
-#: ../admin/addgallery.php:79
+#: ../admin/addgallery.php:80 ../admin/addgallery.php:295
+#: ../admin/admin.php:330
 msgid "You didn't select a gallery!"
 msgstr ""
 
-#: ../admin/addgallery.php:149 ../admin/admin.php:131 ../admin/admin.php:175
+#: ../admin/addgallery.php:150 ../admin/admin.php:139
+#, fuzzy
 msgid "Add Gallery / Images"
-msgstr ""
+msgstr "Voeg URL toe"
 
-#: ../admin/addgallery.php:170 ../admin/addgallery.php:264
+#: ../admin/addgallery.php:170
+#, fuzzy
 msgid "Image Files"
-msgstr ""
+msgstr "Bestanden"
 
-#: ../admin/addgallery.php:195 ../admin/addgallery.php:285
-#: ../admin/addgallery.php:313
+#: ../admin/addgallery.php:197
+#, fuzzy
 msgid "remove"
-msgstr ""
+msgstr "Verwijder overgeslagen files en fouten uit de ljist"
 
-#: ../admin/addgallery.php:196 ../admin/addgallery.php:286
-#: ../admin/addgallery.php:466
+#: ../admin/addgallery.php:198 ../admin/addgallery.php:446
 msgid "Browse..."
 msgstr ""
 
-#: ../admin/addgallery.php:197 ../admin/addgallery.php:235
-#: ../admin/addgallery.php:287 ../admin/addgallery.php:299
-#: ../admin/addgallery.php:484 ../admin/addgallery.php:531
+#: ../admin/addgallery.php:199 ../admin/addgallery.php:237
+#: ../admin/addgallery.php:464 ../admin/addgallery.php:512
+#, fuzzy
 msgid "Upload images"
+msgstr "Gevonden Afbeeldingen:"
+
+#: ../admin/addgallery.php:303 ../admin/addgallery.php:311
+msgid "You didn't select a file!"
 msgstr ""
 
-#: ../admin/addgallery.php:376
+#: ../admin/addgallery.php:351 ../admin/admin.php:477
+#, fuzzy
 msgid "New gallery"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
-#: ../admin/addgallery.php:379 ../admin/manage-galleries.php:414
-#: ../admin/settings.php:286
+#: ../admin/addgallery.php:354 ../admin/admin.php:482 ../admin/admin.php:534
+#: ../admin/manage-galleries.php:414 ../admin/settings.php:286
+#, fuzzy
 msgid "Images"
-msgstr ""
+msgstr "Scan URL op afbeeldingen"
 
-#: ../admin/addgallery.php:382
+#: ../admin/addgallery.php:357 ../admin/admin.php:485
+#, fuzzy
 msgid "ZIP file"
-msgstr ""
+msgstr "Bestand     : "
 
-#: ../admin/addgallery.php:385 ../admin/addgallery.php:473
+#: ../admin/addgallery.php:360 ../admin/addgallery.php:453
+#: ../admin/admin.php:488
+#, fuzzy
 msgid "Import folder"
-msgstr ""
+msgstr "Wachtrijmap:"
 
-#: ../admin/addgallery.php:396
+#: ../admin/addgallery.php:371
+#, fuzzy
 msgid "Add a new gallery"
-msgstr ""
+msgstr "Voeg URL toe"
 
-#: ../admin/addgallery.php:401 ../admin/album.php:547 ../admin/showmeta.php:33
+#: ../admin/addgallery.php:376 ../admin/album.php:547 ../admin/showmeta.php:33
 #: ../admin/showmeta.php:59 ../admin/showmeta.php:84 ../admin/showmeta.php:108
+#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "URL/Filename:"
 
-#: ../admin/addgallery.php:404
+#: ../admin/addgallery.php:379
 msgid "Create a new, empty gallery in the folder"
 msgstr ""
 
-#: ../admin/addgallery.php:406 ../admin/manage-galleries.php:282
+#: ../admin/addgallery.php:381 ../admin/manage-galleries.php:282
 msgid "Allowed characters for file and folder names are"
 msgstr ""
 
-#: ../admin/addgallery.php:410
+#: ../admin/addgallery.php:384 ../admin/manage-galleries.php:411
+#: ../admin/manage-images.php:292 ../admin/manage-images.php:510
+#: ../admin/manage-images.php:732 ../admin/media-upload.php:225
+#: ../admin/style.php:298
+msgid "Description"
+msgstr ""
+
+#: ../admin/addgallery.php:386
+msgid "Add a description. This is optional and can be changed later."
+msgstr ""
+
+#: ../admin/addgallery.php:390
+#, fuzzy
 msgid "Add gallery"
-msgstr ""
+msgstr "Voeg toe aan Wachtrij"
 
-#: ../admin/addgallery.php:418
+#: ../admin/addgallery.php:398
+#, fuzzy
 msgid "Upload a ZIP File"
-msgstr ""
+msgstr "Bestand     : "
 
-#: ../admin/addgallery.php:423
+#: ../admin/addgallery.php:403
+#, fuzzy
 msgid "Select ZIP file"
-msgstr ""
+msgstr "Bestand     : "
 
-#: ../admin/addgallery.php:425
+#: ../admin/addgallery.php:405
 msgid "Upload a ZIP file with images"
 msgstr ""
 
-#: ../admin/addgallery.php:429
+#: ../admin/addgallery.php:409
+#, fuzzy
 msgid "or enter URL"
-msgstr ""
+msgstr "URL             : "
 
-#: ../admin/addgallery.php:431
+#: ../admin/addgallery.php:411
 msgid "Import a ZIP file from a URL"
 msgstr ""
 
-#: ../admin/addgallery.php:435 ../admin/addgallery.php:507
+#: ../admin/addgallery.php:415 ../admin/addgallery.php:469
 msgid "in to"
 msgstr ""
 
-#: ../admin/addgallery.php:437
+#: ../admin/addgallery.php:417
+#, fuzzy
 msgid "a new gallery"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
-#: ../admin/addgallery.php:448
+#: ../admin/addgallery.php:428
 msgid "Note: the upload limit on your server is "
 msgstr ""
 
-#: ../admin/addgallery.php:452
+#: ../admin/addgallery.php:432
+#, fuzzy
 msgid "Start upload"
-msgstr ""
+msgstr "Starttijd          :"
 
-#: ../admin/addgallery.php:460
+#: ../admin/addgallery.php:440
+#, fuzzy
 msgid "Import an image folder"
-msgstr ""
+msgstr "Downloadmap      :"
 
-#: ../admin/addgallery.php:465
+#: ../admin/addgallery.php:445
+#, fuzzy
 msgid "Import from server:"
-msgstr ""
+msgstr "Verwijder overgeslagen files en fouten uit de ljist"
 
-#: ../admin/addgallery.php:468
+#: ../admin/addgallery.php:448
 msgid "Note: you can change the default path in the gallery settings"
 msgstr ""
 
-#: ../admin/addgallery.php:470
+#: ../admin/addgallery.php:450
 msgid ""
 "Please note: If safe-mode is ON, you need to add the subfolder with thumbs "
 "manually"
 msgstr ""
 
-#: ../admin/addgallery.php:490
-msgid "Upload image"
-msgstr ""
-
-#: ../admin/addgallery.php:495
-msgid "Choose files to upload"
-msgstr ""
-
-#: ../admin/addgallery.php:496
-msgid "Select Files"
-msgstr ""
-
-#: ../admin/addgallery.php:498
-msgid "Or you can drop the files into this window."
-msgstr ""
-
-#: ../admin/addgallery.php:509
-msgid "Choose gallery"
-msgstr ""
-
-#: ../admin/addgallery.php:527
+#: ../admin/addgallery.php:453 ../admin/manage-images.php:354
 msgid ""
-"The batch upload requires Adobe Flash 10, disable it if you have problems"
+"This will change folder and file names (e.g. remove spaces, special "
+"characters, ...)"
 msgstr ""
 
-#: ../admin/addgallery.php:527
-msgid "Disable flash upload"
+#: ../admin/addgallery.php:453 ../admin/manage-images.php:354
+msgid "You will need to update your URLs if you link directly to the images."
 msgstr ""
 
-#: ../admin/addgallery.php:529
-msgid "Upload multiple files at once by ctrl/shift-selecting in dialog"
+#: ../admin/addgallery.php:453 ../admin/manage-images.php:354
+msgid "Press OK to proceed, and Cancel to stop."
 msgstr ""
 
-#: ../admin/addgallery.php:529
-msgid "Enable flash based upload"
+#: ../admin/addgallery.php:470
+#, fuzzy
+msgid "Choose gallery"
+msgstr "Exporteer Gallerij"
+
+#: ../admin/addgallery.php:492
+msgid "Drop your files in this window"
 msgstr ""
 
-#: ../admin/admin.php:126 ../admin/admin.php:128 ../admin/admin.php:132
-#: ../admin/admin.php:152 ../admin/manage-galleries.php:126
+#: ../admin/addgallery.php:492
+msgid "Or"
+msgstr ""
+
+#: ../admin/addgallery.php:493
+#, fuzzy
+msgid "Select Files"
+msgstr "Selecteer"
+
+#: ../admin/addgallery.php:508
+msgid "Click here to use the browser upload instead"
+msgstr ""
+
+#: ../admin/addgallery.php:508
+#, fuzzy
+msgid "Use basic uploader"
+msgstr "dagen om BID te gebruiken."
+
+#: ../admin/addgallery.php:510
+#, fuzzy
+msgid "Advanced uploading"
+msgstr "Geavanceerde Configuratie"
+
+#: ../admin/addgallery.php:510
+#, fuzzy
+msgid "Use advanced uploader"
+msgstr "Geavanceerde Configuratie"
+
+#: ../admin/addgallery.php:514
+#, php-format
+msgid "Your images will be rescaled to max width %1$dpx or max height %2$dpx."
+msgstr ""
+
+#: ../admin/admin.php:125 ../admin/admin.php:130 ../admin/admin.php:143
+#: ../admin/admin.php:190 ../admin/admin.php:435
+#: ../admin/manage-galleries.php:126
 msgid "Galleries"
 msgstr ""
 
-#: ../admin/admin.php:130 ../admin/admin.php:173 ../nggallery.php:550
-#: ../nggfunctions.php:952
+#: ../admin/admin.php:135 ../nggallery.php:671 ../nggfunctions.php:953
 msgid "Overview"
 msgstr ""
 
-#: ../admin/admin.php:133 ../admin/admin.php:179 ../admin/album.php:280
+#: ../admin/admin.php:147 ../admin/album.php:280 ../nggallery.php:401
 msgid "Albums"
 msgstr ""
 
-#: ../admin/admin.php:134 ../admin/admin.php:181
-#: ../admin/manage-images.php:728 ../admin/settings.php:369
-#: ../admin/tags.php:98 ../lib/meta.php:459
+#: ../admin/admin.php:151 ../admin/manage-images.php:733
+#: ../admin/settings.php:369 ../admin/tags.php:98 ../lib/meta.php:459
+#: ../nggallery.php:409
 msgid "Tags"
 msgstr ""
 
-#: ../admin/admin.php:135 ../admin/admin.php:183 ../admin/settings.php:250
+#: ../admin/admin.php:155 ../admin/settings.php:250 ../nggallery.php:417
+#, fuzzy
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
-#: ../admin/admin.php:137 ../admin/admin.php:185
+#: ../admin/admin.php:160 ../nggallery.php:425
 msgid "Style"
 msgstr ""
 
-#: ../admin/admin.php:139
+#: ../admin/admin.php:166
 msgid "Roles"
 msgstr ""
 
-#: ../admin/admin.php:140
+#: ../admin/admin.php:171
+#, fuzzy
 msgid "About this Gallery"
-msgstr ""
+msgstr "Informatie"
 
-#: ../admin/admin.php:143 ../admin/admin.php:154
+#: ../admin/admin.php:177 ../admin/admin.php:198
 msgid "Reset / Uninstall"
 msgstr ""
 
-#: ../admin/admin.php:153
+#: ../admin/admin.php:194
+#, fuzzy
 msgid "Network settings"
-msgstr ""
+msgstr "Instellingen"
 
-#: ../admin/admin.php:172 ../admin/admin.php:177 ../admin/admin.php:416
-#: ../admin/admin.php:469 ../admin/functions.php:179
-#: ../admin/manage-images.php:263 ../admin/overview.php:468
-#: ../admin/settings.php:287 ../admin/tinymce/window.php:51
-#: ../admin/tinymce/window.php:63 ../lib/rewrite.php:217
-#: ../lib/rewrite.php:226
-msgid "Gallery"
-msgstr ""
-
-#: ../admin/admin.php:283
+#: ../admin/admin.php:304
 msgid "You do not have the correct permission"
 msgstr ""
 
-#: ../admin/admin.php:284
+#: ../admin/admin.php:305
+#, fuzzy
 msgid "Unexpected Error"
-msgstr ""
+msgstr "Fout laden pagina, fout:"
 
-#: ../admin/admin.php:285
+#: ../admin/admin.php:306
 msgid "A failure occurred"
 msgstr ""
 
-#: ../admin/admin.php:289
+#: ../admin/admin.php:310
 msgid "You have attempted to queue too many files."
 msgstr ""
 
-#: ../admin/admin.php:290
+#: ../admin/admin.php:311
 msgid "This file exceeds the maximum upload size for this site."
 msgstr ""
 
-#: ../admin/admin.php:291
+#: ../admin/admin.php:312
 msgid "This file is empty. Please try another."
 msgstr ""
 
-#: ../admin/admin.php:292
+#: ../admin/admin.php:313
 msgid "This file type is not allowed. Please try another."
 msgstr ""
 
-#: ../admin/admin.php:293
+#: ../admin/admin.php:314
 msgid "This file is not an image. Please try another."
 msgstr ""
 
-#: ../admin/admin.php:294
+#: ../admin/admin.php:315
 msgid "Memory exceeded. Please try another smaller file."
 msgstr ""
 
-#: ../admin/admin.php:295
+#: ../admin/admin.php:316
 msgid "This is larger than the maximum size. Please try another."
 msgstr ""
 
-#: ../admin/admin.php:296
+#: ../admin/admin.php:317
 msgid "An error occurred in the upload. Please try again later."
 msgstr ""
 
-#: ../admin/admin.php:297
+#: ../admin/admin.php:318
 msgid ""
 "There was a configuration error. Please contact the server administrator."
 msgstr ""
 
-#: ../admin/admin.php:298
+#: ../admin/admin.php:319
 msgid "You may only upload 1 file."
 msgstr ""
 
-#: ../admin/admin.php:299
+#: ../admin/admin.php:320
+#, fuzzy
 msgid "HTTP error."
-msgstr ""
+msgstr "Fout laden pagina, fout:"
 
-#: ../admin/admin.php:300
+#: ../admin/admin.php:321
 msgid "Upload failed."
 msgstr ""
 
-#: ../admin/admin.php:301
+#: ../admin/admin.php:322
+#, fuzzy
 msgid "IO error."
-msgstr ""
+msgstr "Fout"
 
-#: ../admin/admin.php:302
+#: ../admin/admin.php:323
+#, fuzzy
 msgid "Security error."
-msgstr ""
+msgstr "Fout laden pagina, fout:"
 
-#: ../admin/admin.php:303
+#: ../admin/admin.php:324
+#, fuzzy
 msgid "File canceled."
-msgstr ""
+msgstr "Bestand     : "
 
-#: ../admin/admin.php:304
+#: ../admin/admin.php:325
+#, fuzzy
 msgid "Upload stopped."
-msgstr ""
+msgstr "Planner: Wachtrij gestopt"
 
-#: ../admin/admin.php:305
+#: ../admin/admin.php:326
 msgid "Dismiss"
 msgstr ""
 
-#: ../admin/admin.php:306
+#: ../admin/admin.php:327
 msgid "Crunching&hellip;"
 msgstr ""
 
-#: ../admin/admin.php:307
+#: ../admin/admin.php:328
 msgid "moved to the trash."
 msgstr ""
 
-#: ../admin/admin.php:308
+#: ../admin/admin.php:329
 #, php-format
 msgid "&#8220;%s&#8221; has failed to upload due to an error"
 msgstr ""
 
-#: ../admin/admin.php:327 ../nggallery.php:354
+#: ../admin/admin.php:352 ../nggallery.php:458
 msgid "L O A D I N G"
 msgstr ""
 
-#: ../admin/admin.php:328 ../nggallery.php:355
+#: ../admin/admin.php:353 ../nggallery.php:459
+#, fuzzy
 msgid "Click to Close"
-msgstr ""
+msgstr "Sluit"
 
-#: ../admin/admin.php:420
+#: ../admin/admin.php:440
 msgid ""
-"<a href=\"http://www.wpgetready.com\" target=\"_blank\">Introduction</a>"
+"Welcome to your NextCellent Dashboard! This screen gives you all kinds of "
+"information about NextCellent at glance. You can get help for any screen by "
+"clicking the Help tab in the upper corner."
 msgstr ""
 
-#: ../admin/admin.php:423
+#: ../admin/admin.php:449
+msgid "The boxes on your overview screen are:"
+msgstr ""
+
+#: ../admin/admin.php:450 ../admin/overview.php:407
+msgid "At a Glance"
+msgstr ""
+
+#: ../admin/admin.php:450
 msgid ""
-"<a href=\"http://www.nextgen-gallery.com/languages\" target=\"_blank"
-"\">Languages</a>"
+"Shows some general information about your site, such as the number of "
+"pictures, albums and galleries."
 msgstr ""
 
-#: ../admin/admin.php:428
-msgid "Get help with NextCellent Gallery"
+#: ../admin/admin.php:451 ../admin/overview.php:90
+msgid "Latest News"
 msgstr ""
 
-#: ../admin/admin.php:432
-msgid "More Help & Info"
+#: ../admin/admin.php:451
+msgid "The latest NextCellent news."
 msgstr ""
 
-#: ../admin/admin.php:434
+#: ../admin/admin.php:453 ../admin/overview.php:94
+msgid "Related plugins"
+msgstr ""
+
+#: ../admin/admin.php:453
+msgid "Shows plugins that extend NextCellent."
+msgstr ""
+
+#: ../admin/admin.php:453 ../admin/overview.php:742
+msgid "Pay attention"
+msgstr ""
+
+#: ../admin/admin.php:453
+#, php-format
 msgid ""
-"<a href=\"http://wordpress.org/tags/nextcellent-gallery-nextgen-legacy\" "
-"target=\"_blank\">Support Forums</a>"
+"third parties plugins that are compatible with NGG may not be "
+"100% compatible with NextCellent Gallery!"
 msgstr ""
 
-#: ../admin/admin.php:435
-msgid "Download latest version"
+#: ../admin/admin.php:455 ../admin/overview.php:87
+msgid "Help me help YOU!"
 msgstr ""
 
-#: ../admin/ajax.php:295
+#: ../admin/admin.php:455
+msgid "Shows general information about he plugin and some links."
+msgstr ""
+
+#: ../admin/admin.php:457 ../admin/overview.php:89
+#, fuzzy
+msgid "Translation"
+msgstr "Nederlandse vertaling door © 2008 Harm, The Netherlands."
+
+#: ../admin/admin.php:457
+msgid "View information about the current translation."
+msgstr ""
+
+#: ../admin/admin.php:460 ../admin/overview.php:93
+#, fuzzy
+msgid "Server Settings"
+msgstr "Instellingen"
+
+#: ../admin/admin.php:460
+msgid "Show all the server settings!."
+msgstr ""
+
+#: ../admin/admin.php:461 ../admin/overview.php:92
+#, fuzzy
+msgid "Plugin Check"
+msgstr "Check automatisch voor updates"
+
+#: ../admin/admin.php:461
+msgid "Check if there are known errors in your installation."
+msgstr ""
+
+#: ../admin/admin.php:475
+msgid "On this page you can add galleries and pictures to those galleries."
+msgstr ""
+
+#: ../admin/admin.php:477
+msgid "Add new galleries to NextCellent."
+msgstr ""
+
+#: ../admin/admin.php:480
+msgid "You must add a gallery before adding images!"
+msgstr ""
+
+#: ../admin/admin.php:482
+msgid "Add new images to a gallery."
+msgstr ""
+
+#: ../admin/admin.php:485
+msgid "Add images from a ZIP file."
+msgstr ""
+
+#: ../admin/admin.php:488
+msgid "Import a folder from the server as a new gallery."
+msgstr ""
+
+#: ../admin/admin.php:505
+msgid "Manage your images and galleries."
+msgstr ""
+
+#: ../admin/admin.php:514
+msgid "Organize your galleries into albums."
+msgstr ""
+
+#: ../admin/admin.php:514
+msgid ""
+"First select an album from the dropdown and then drag the galleries you want "
+"to add or remove from the selected album."
+msgstr ""
+
+#: ../admin/admin.php:523
+msgid "Organize your pictures with tags."
+msgstr ""
+
+#: ../admin/admin.php:523
+msgid "Rename, delete and edit tags. Use the rename function to merge tags."
+msgstr ""
+
+#: ../admin/admin.php:532
+msgid ""
+"Edit all of NextCellent's options. The options are sorted in multiple "
+"categories."
+msgstr ""
+
+#: ../admin/admin.php:533 ../admin/settings.php:285
+msgid "General"
+msgstr ""
+
+#: ../admin/admin.php:533
+msgid ""
+"General NextCellent options. Contains options for permalinks and related "
+"images."
+msgstr ""
+
+#: ../admin/admin.php:534
+msgid "All image-related options. Also contains options for thumbnails."
+msgstr ""
+
+#: ../admin/admin.php:535 ../admin/functions.php:212
+#: ../admin/functions.php:374 ../admin/manage-images.php:263
+#: ../admin/overview.php:418 ../admin/settings.php:287
+#: ../admin/tinymce/window.php:120 ../admin/tinymce/window.php:153
+#: ../admin/tinymce/window.php:277 ../admin/tinymce/window.php:398
+#: ../admin/tinymce/window.php:449 ../lib/rewrite.php:220
+#: ../lib/rewrite.php:229 ../nggallery.php:393
+#, fuzzy
+msgid "Gallery"
+msgstr "Download deze gallerij met Bulk Image Downloader"
+
+#: ../admin/admin.php:535
+msgid ""
+"Everything about galleries. From sorting options to the number of images, "
+"it's all in here."
+msgstr ""
+
+#: ../admin/admin.php:536 ../admin/settings.php:288 ../admin/settings.php:546
+msgid "Effects"
+msgstr ""
+
+#: ../admin/admin.php:536
+msgid "Make your gallery look beautiful."
+msgstr ""
+
+#: ../admin/admin.php:537 ../admin/settings.php:289 ../admin/settings.php:587
+#: ../admin/tinymce/window.php:329
+msgid "Watermark"
+msgstr ""
+
+#: ../admin/admin.php:537
+msgid "Who doesn't want theft-proof images?"
+msgstr ""
+
+#: ../admin/admin.php:538 ../admin/settings.php:290 ../admin/settings.php:483
+#: ../admin/settings.php:493 ../admin/settings.php:694
+#: ../admin/tinymce/window.php:159 ../lib/rewrite.php:218
+#: ../widgets/widgets.php:29
+msgid "Slideshow"
+msgstr ""
+
+#: ../admin/admin.php:538
+msgid "Edit options for the slideshow."
+msgstr ""
+
+#: ../admin/admin.php:539
+msgid "Don't forget to press save!"
+msgstr ""
+
+#: ../admin/admin.php:548
+msgid "You can edit the css file to adjust how your gallery looks."
+msgstr ""
+
+#: ../admin/admin.php:549
+msgid ""
+"When you save an edited file, NextCellent automatically saves it as a copy "
+"in the folder ngg_styles. This protects your changes from upgrades."
+msgstr ""
+
+#: ../admin/admin.php:558
+msgid ""
+"You can assign the lowest user role that has access to a certain feature. "
+"Needless to say, all greater user roles will also have access to that "
+"feature."
+msgstr ""
+
+#: ../admin/admin.php:559
+msgid ""
+"NextCellent also works with various plugins that extend the default roles "
+"capabilities."
+msgstr ""
+
+#: ../admin/admin.php:568
+msgid ""
+"If 'someone' messed with your settings (yeah, definitely not you), you can "
+"reset them here."
+msgstr ""
+
+#: ../admin/admin.php:569
+msgid "Attention!"
+msgstr ""
+
+#: ../admin/admin.php:569
+msgid ""
+"You should not use the Uninstall Plugin button, unless you know what you're "
+"doing! It should never be necessary to press it."
+msgstr ""
+
+#: ../admin/admin.php:581
+#, fuzzy
+msgid "For more information:"
+msgstr "Klik voor meer informatie over \"regular expressions\"."
+
+#: ../admin/admin.php:582
+msgid "Support Forums"
+msgstr ""
+
+#: ../admin/admin.php:583
+#, fuzzy
+msgid "Source Code"
+msgstr "Genereer code"
+
+#: ../admin/ajax.php:291
+#, fuzzy
 msgid "You are not allowed to be here"
-msgstr ""
+msgstr "Klik hier om verder te doen in Trialmodus"
 
-#: ../admin/ajax.php:393
+#: ../admin/ajax.php:389
 #, php-format
 msgid "Could create image with %s x %s pixel"
 msgstr ""
 
 #: ../admin/album.php:97 ../admin/album.php:116 ../admin/album.php:161
-#: ../admin/settings.php:167 ../admin/style.php:24
-msgid "Update Successfully"
+msgid "Updated successfully"
 msgstr ""
 
 #: ../admin/album.php:134
@@ -527,42 +804,51 @@ msgid "Edit Album"
 msgstr ""
 
 #: ../admin/album.php:286 ../admin/album.php:335
+#, fuzzy
 msgid "Select album"
-msgstr ""
+msgstr "Selecteer"
 
 #: ../admin/album.php:288
+#, fuzzy
 msgid "No album selected"
-msgstr ""
+msgstr "Verwijder geselecteerde afbeeldingen"
 
 #: ../admin/album.php:299 ../admin/edit-thumbnail.php:150
-#: ../admin/overview.php:589 ../admin/rotate.php:89 ../admin/wpmu.php:112
+#: ../admin/overview.php:539 ../admin/rotate.php:89 ../admin/wpmu.php:114
+#, fuzzy
 msgid "Update"
 msgstr ""
+"Selecteer aub een andere download map of check en update uw "
+"veiligheidsconfiguratie."
 
 #: ../admin/album.php:301
 msgid "Edit album"
 msgstr ""
 
 #: ../admin/album.php:304 ../admin/manage-galleries.php:148
-#: ../admin/manage-images.php:478 ../admin/tags.php:225
+#: ../admin/manage-images.php:481 ../admin/tags.php:225
+#, fuzzy
 msgid "Delete"
-msgstr ""
+msgstr "Verwijder de logfile?"
 
 #: ../admin/album.php:308
+#, fuzzy
 msgid "Add new album"
-msgstr ""
+msgstr "Voeg toe aan Wachtrij"
 
 #: ../admin/album.php:310
+#, fuzzy
 msgid "Add"
-msgstr ""
+msgstr "Voeg URL toe"
 
 #: ../admin/album.php:321
 msgid "Show / hide used galleries"
 msgstr ""
 
 #: ../admin/album.php:321
+#, fuzzy
 msgid "[Show all]"
-msgstr ""
+msgstr "Alle berichten"
 
 #: ../admin/album.php:322
 msgid "Maximize the widget content"
@@ -587,36 +873,41 @@ msgid ""
 msgstr ""
 
 #: ../admin/album.php:351
+#, fuzzy
 msgid "Select gallery"
-msgstr ""
+msgstr "Selecteer"
 
 #: ../admin/album.php:380
 msgid "Album ID"
 msgstr ""
 
 #: ../admin/album.php:393
+#, fuzzy
 msgid "No album selected!"
-msgstr ""
+msgstr "Verwijder geselecteerde afbeeldingen"
 
 #: ../admin/album.php:414
+#, fuzzy
 msgid "Album name:"
-msgstr ""
+msgstr "Gebruikersnaam:"
 
 #: ../admin/album.php:420
 msgid "Album description:"
 msgstr ""
 
 #: ../admin/album.php:426
+#, fuzzy
 msgid "Select a preview image:"
-msgstr ""
+msgstr "Selecteer Afbeeldingen"
 
 #: ../admin/album.php:429 ../admin/album.php:432
 msgid "No picture"
 msgstr ""
 
 #: ../admin/album.php:443 ../admin/manage-images.php:281
+#, fuzzy
 msgid "Page Link to"
-msgstr ""
+msgstr "Huidige pagina"
 
 #: ../admin/album.php:445 ../admin/manage-images.php:284
 msgid "Not linked"
@@ -624,230 +915,268 @@ msgstr ""
 
 #: ../admin/album.php:458 ../admin/manage-galleries.php:288
 #: ../admin/manage-galleries.php:320 ../admin/manage-galleries.php:350
-#: ../admin/manage-images.php:563 ../admin/manage-images.php:598
-#: ../admin/manage-images.php:629 ../admin/manage-images.php:659
+#: ../admin/manage-images.php:568 ../admin/manage-images.php:603
+#: ../admin/manage-images.php:634 ../admin/manage-images.php:664
+#, fuzzy
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: ../admin/album.php:460 ../admin/manage-galleries.php:290
 #: ../admin/manage-galleries.php:322 ../admin/manage-galleries.php:352
-#: ../admin/manage-images.php:564 ../admin/manage-images.php:599
-#: ../admin/manage-images.php:630 ../admin/manage-images.php:660
-#: ../admin/tinymce/window.php:143
+#: ../admin/manage-images.php:569 ../admin/manage-images.php:604
+#: ../admin/manage-images.php:635 ../admin/manage-images.php:665
+#: ../admin/tinymce/window.php:472
+#, fuzzy
 msgid "Cancel"
-msgstr ""
+msgstr "Stoppen"
 
 #: ../admin/album.php:548 ../admin/manage-galleries.php:410
 #: ../admin/manage-images.php:279 ../lib/meta.php:457
+#, fuzzy
 msgid "Title"
-msgstr ""
+msgstr "Paginatitel:"
 
-#: ../admin/album.php:549 ../lib/rewrite.php:229
+#: ../admin/album.php:549 ../lib/rewrite.php:232
+#, fuzzy
 msgid "Page"
-msgstr ""
+msgstr "Kan webpagina niet downloaden:"
 
 #: ../admin/edit-thumbnail.php:105
 msgid "Select with the mouse the area for the new thumbnail"
 msgstr ""
 
 #: ../admin/edit-thumbnail.php:119
+#, fuzzy
 msgid "Thumbnail updated"
-msgstr ""
+msgstr "Thumbnail"
 
 #: ../admin/edit-thumbnail.php:124
+#, fuzzy
 msgid "Error updating thumbnail"
-msgstr ""
+msgstr "Register update fout:"
 
 #: ../admin/edit-thumbnail.php:133
 msgid "Select the area for the thumbnail from the picture on the left."
 msgstr ""
 
-#: ../admin/functions.php:39
+#: ../admin/functions.php:43
+#, fuzzy
 msgid "No valid gallery name!"
-msgstr ""
+msgstr "Geen geldige callback gevonden."
 
-#: ../admin/functions.php:46 ../admin/functions.php:55
-#: ../admin/functions.php:80 ../admin/functions.php:149
-#: ../admin/functions.php:157
+#: ../admin/functions.php:50 ../admin/functions.php:59
+#: ../admin/functions.php:84 ../admin/functions.php:157
+#: ../admin/functions.php:164 ../admin/functions.php:344
+#: ../admin/functions.php:352
+#, fuzzy
 msgid "Directory"
-msgstr ""
+msgstr "Deze map bestaat niet."
 
-#: ../admin/functions.php:46
+#: ../admin/functions.php:50
 msgid "didn't exist. Please create first the main gallery folder "
 msgstr ""
 
-#: ../admin/functions.php:47 ../admin/functions.php:56
+#: ../admin/functions.php:51 ../admin/functions.php:60
 msgid "Check this link, if you didn't know how to set the permission :"
 msgstr ""
 
-#: ../admin/functions.php:55 ../admin/functions.php:80
+#: ../admin/functions.php:59 ../admin/functions.php:84
 msgid "is not writeable !"
 msgstr ""
 
-#: ../admin/functions.php:76 ../admin/functions.php:85
-#: ../admin/functions.php:907 ../lib/core.php:102
+#: ../admin/functions.php:80 ../admin/functions.php:89
+#: ../admin/functions.php:1102 ../lib/core.php:102
+#, fuzzy
 msgid "Unable to create directory "
-msgstr ""
+msgstr "Deze map bestaat niet."
 
-#: ../admin/functions.php:89
+#: ../admin/functions.php:93
 msgid "The server setting Safe-Mode is on !"
 msgstr ""
 
-#: ../admin/functions.php:90
+#: ../admin/functions.php:94
 msgid "If you have problems, please create directory"
 msgstr ""
 
-#: ../admin/functions.php:91
+#: ../admin/functions.php:95
+#, fuzzy
 msgid "and the thumbnails directory"
-msgstr ""
+msgstr "Thumbnails"
 
-#: ../admin/functions.php:91
+#: ../admin/functions.php:95
 msgid "with permission 777 manually !"
 msgstr ""
 
-#: ../admin/functions.php:116
+#: ../admin/functions.php:122
 #, php-format
 msgid ""
 "Gallery ID %1$s successfully created. You can show this gallery in your post "
 "or page with the shortcode %2$s.<br/>"
 msgstr ""
 
-#: ../admin/functions.php:119 ../admin/functions.php:217
+#: ../admin/functions.php:125 ../admin/functions.php:309
+#: ../admin/functions.php:412
+#, fuzzy
 msgid "Edit gallery"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
-#: ../admin/functions.php:149
+#: ../admin/functions.php:157 ../admin/functions.php:344
 msgid "doesn&#96;t exist!"
 msgstr ""
 
-#: ../admin/functions.php:157
+#: ../admin/functions.php:164 ../admin/functions.php:352
 msgid "contains no pictures"
 msgstr ""
 
-#: ../admin/functions.php:176
+#: ../admin/functions.php:191
+msgid "Something went wrong when renaming"
+msgstr ""
+
+#: ../admin/functions.php:191
+msgid "Importing was aborted."
+msgstr ""
+
+#: ../admin/functions.php:209 ../admin/functions.php:371
 msgid "Database error. Could not add gallery!"
 msgstr ""
 
-#: ../admin/functions.php:179
+#: ../admin/functions.php:212 ../admin/functions.php:374
 msgid "successfully created!"
 msgstr ""
 
-#: ../admin/functions.php:212 ../admin/functions.php:1024
-#: ../admin/manage-galleries.php:80 ../admin/manage-galleries.php:150
-#: ../admin/manage-images.php:227 ../admin/manage-images.php:369
-#: ../admin/manage.php:227 ../admin/manage.php:304
+#: ../admin/functions.php:299 ../admin/functions.php:407
+#: ../admin/functions.php:1219 ../admin/manage-galleries.php:80
+#: ../admin/manage-galleries.php:150 ../admin/manage-images.php:227
+#: ../admin/manage-images.php:372 ../admin/manage.php:227
+#: ../admin/manage.php:304
+#, fuzzy
 msgid "Create new thumbnails"
+msgstr "Thumbnails"
+
+#: ../admin/functions.php:304
+msgid " picture(s) successfully renamed"
 msgstr ""
 
-#: ../admin/functions.php:215
+#: ../admin/functions.php:306 ../admin/functions.php:410
 msgid " picture(s) successfully added"
 msgstr ""
 
-#: ../admin/functions.php:270 ../admin/functions.php:350
-#: ../admin/functions.php:405 ../admin/functions.php:502
-#: ../admin/functions.php:556
+#: ../admin/functions.php:313
+#, fuzzy
+msgid "No images were added."
+msgstr "Gevonden Afbeeldingen:"
+
+#: ../admin/functions.php:465 ../admin/functions.php:545
+#: ../admin/functions.php:600 ../admin/functions.php:697
+#: ../admin/functions.php:751
 msgid "Object didn't contain correct data"
 msgstr ""
 
-#: ../admin/functions.php:278
+#: ../admin/functions.php:473
 msgid " is not writeable "
 msgstr ""
 
-#: ../admin/functions.php:360 ../admin/functions.php:408
-#: ../admin/functions.php:508 ../admin/functions.php:559
+#: ../admin/functions.php:555 ../admin/functions.php:603
+#: ../admin/functions.php:703 ../admin/functions.php:754
 msgid " is not writeable"
 msgstr ""
 
-#: ../admin/functions.php:562
+#: ../admin/functions.php:757
+#, fuzzy
 msgid "File do not exists"
-msgstr ""
+msgstr "Als het bestand al bestaat in de downloadmap:"
 
-#: ../admin/functions.php:566
+#: ../admin/functions.php:761
 msgid "Couldn't restore original image"
 msgstr ""
 
-#: ../admin/functions.php:682
+#: ../admin/functions.php:877
 msgid "(Error : Couldn't not update data base)"
 msgstr ""
 
-#: ../admin/functions.php:689
+#: ../admin/functions.php:884
 msgid "(Error : Couldn't not update meta data)"
 msgstr ""
 
-#: ../admin/functions.php:698
+#: ../admin/functions.php:893
+#, fuzzy
 msgid "(Error : Couldn't not find image)"
-msgstr ""
+msgstr "ERROR: Afbeelding niet gevonden"
 
-#: ../admin/functions.php:841
+#: ../admin/functions.php:1036
+#, fuzzy
 msgid "No valid URL path "
-msgstr ""
+msgstr "URL             : "
 
-#: ../admin/functions.php:857
+#: ../admin/functions.php:1052
 msgid "Import via cURL failed."
 msgstr ""
 
-#: ../admin/functions.php:874
+#: ../admin/functions.php:1069
 msgid "Uploaded file was no or a faulty zip file ! The server recognized : "
 msgstr ""
 
-#: ../admin/functions.php:891
+#: ../admin/functions.php:1086
 msgid "Could not get a valid foldername"
 msgstr ""
 
-#: ../admin/functions.php:902
+#: ../admin/functions.php:1097
 #, php-format
 msgid ""
 "Unable to create directory %s. Is its parent directory writable by the "
 "server?"
 msgstr ""
 
-#: ../admin/functions.php:917
+#: ../admin/functions.php:1112
 msgid "Zip-File successfully unpacked"
 msgstr ""
 
-#: ../admin/functions.php:948 ../admin/functions.php:1048
+#: ../admin/functions.php:1143 ../admin/functions.php:1243
+#, fuzzy
 msgid "No gallery selected !"
-msgstr ""
+msgstr "Verwijder geselecteerde afbeeldingen"
 
-#: ../admin/functions.php:956 ../admin/functions.php:1073
+#: ../admin/functions.php:1151 ../admin/functions.php:1268
 msgid "Failure in database, no gallery path set !"
 msgstr ""
 
-#: ../admin/functions.php:980 ../admin/functions.php:1067
+#: ../admin/functions.php:1175 ../admin/functions.php:1262
+#, fuzzy
 msgid "is no valid image file!"
-msgstr ""
+msgstr "Ongeldige afbeelding"
 
-#: ../admin/functions.php:994 ../admin/functions.php:1192
-#: ../admin/functions.php:1269
+#: ../admin/functions.php:1189 ../admin/functions.php:1387
+#: ../admin/functions.php:1464
 #, php-format
 msgid ""
 "Unable to write to directory %s. Is this directory writable by the server?"
 msgstr ""
 
-#: ../admin/functions.php:1001 ../admin/functions.php:1090
+#: ../admin/functions.php:1196 ../admin/functions.php:1285
 msgid "Error, the file could not be moved to : "
 msgstr ""
 
-#: ../admin/functions.php:1006 ../admin/functions.php:1094
+#: ../admin/functions.php:1201 ../admin/functions.php:1289
 msgid "Error, the file permissions could not be set"
 msgstr ""
 
-#: ../admin/functions.php:1029
+#: ../admin/functions.php:1224
 msgid " Image(s) successfully added"
 msgstr ""
 
-#: ../admin/functions.php:1056
+#: ../admin/functions.php:1251
+#, fuzzy
 msgid "Invalid upload. Error Code : "
-msgstr ""
+msgstr "Ongeldige regular expression opgegeven. Fout op positie"
 
-#: ../admin/functions.php:1132
+#: ../admin/functions.php:1327
 #, php-format
 msgid ""
 "SAFE MODE Restriction in effect! You need to create the folder <strong>%s</"
 "strong> manually"
 msgstr ""
 
-#: ../admin/functions.php:1133
+#: ../admin/functions.php:1328
 #, php-format
 msgid ""
 "When safe_mode is on, PHP checks to see if the owner (%s) of the current "
@@ -855,80 +1184,84 @@ msgid ""
 "function or its directory"
 msgstr ""
 
-#: ../admin/functions.php:1186 ../admin/functions.php:1263
+#: ../admin/functions.php:1381 ../admin/functions.php:1458
+#, fuzzy
 msgid "The destination gallery does not exist"
-msgstr ""
+msgstr "Deze map bestaat niet."
 
-#: ../admin/functions.php:1217 ../lib/xmlrpc.php:222
+#: ../admin/functions.php:1412 ../lib/xmlrpc.php:222
 #, php-format
 msgid "Failed to move image %1$s to %2$s"
 msgstr ""
 
-#: ../admin/functions.php:1237
+#: ../admin/functions.php:1432
 #, php-format
 msgid "Moved %1$s picture(s) to gallery : %2$s ."
 msgstr ""
 
-#: ../admin/functions.php:1296
+#: ../admin/functions.php:1491
 #, php-format
 msgid "Failed to copy image %1$s to %2$s"
 msgstr ""
 
-#: ../admin/functions.php:1310
+#: ../admin/functions.php:1505
 #, php-format
 msgid "Failed to copy database row for picture %s"
 msgstr ""
 
-#: ../admin/functions.php:1322
+#: ../admin/functions.php:1517
 #, php-format
 msgid ""
 "Image %1$s (%2$s) copied as image %3$s (%4$s) &raquo; The file already "
 "existed in the destination gallery."
 msgstr ""
 
-#: ../admin/functions.php:1325
+#: ../admin/functions.php:1520
 #, php-format
 msgid "Image %1$s (%2$s) copied as image %3$s (%4$s)"
 msgstr ""
 
-#: ../admin/functions.php:1334
+#: ../admin/functions.php:1529
 #, php-format
 msgid "Copied %1$s picture(s) to gallery: %2$s ."
 msgstr ""
 
-#: ../admin/functions.php:1442
+#: ../admin/functions.php:1637
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
 
-#: ../admin/functions.php:1445
+#: ../admin/functions.php:1640
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
 
-#: ../admin/functions.php:1448
+#: ../admin/functions.php:1643
 msgid "The uploaded file was only partially uploaded"
 msgstr ""
 
-#: ../admin/functions.php:1451
+#: ../admin/functions.php:1646
+#, fuzzy
 msgid "No file was uploaded"
-msgstr ""
+msgstr "Bestand     : "
 
-#: ../admin/functions.php:1454
+#: ../admin/functions.php:1649
+#, fuzzy
 msgid "Missing a temporary folder"
-msgstr ""
+msgstr "Probeer opnieuw verzamelmap:"
 
-#: ../admin/functions.php:1457
+#: ../admin/functions.php:1652
 msgid "Failed to write file to disk"
 msgstr ""
 
-#: ../admin/functions.php:1460
+#: ../admin/functions.php:1655
 msgid "File upload stopped by extension"
 msgstr ""
 
-#: ../admin/functions.php:1463
+#: ../admin/functions.php:1658
+#, fuzzy
 msgid "Unknown upload error"
-msgstr ""
+msgstr "Fout laden pagina, fout:"
 
 #: ../admin/install.php:23
 msgid "Sorry, NextCellent Gallery works only with a role called administrator"
@@ -941,22 +1274,26 @@ msgid ""
 msgstr ""
 
 #: ../admin/install.php:160
+#, fuzzy
 msgid "[Show as slideshow]"
-msgstr ""
+msgstr "Geschiedenis tonen"
 
 #: ../admin/install.php:161
+#, fuzzy
 msgid "[Show picture list]"
-msgstr ""
+msgstr "Schoon de Lijst op"
 
 #: ../admin/manage-galleries.php:68 ../admin/manage-images.php:195
+#, fuzzy
 msgid "No images selected"
-msgstr ""
+msgstr "Verwijder geselecteerde afbeeldingen"
 
 #: ../admin/manage-galleries.php:76 ../admin/manage-galleries.php:151
-#: ../admin/manage-images.php:223 ../admin/manage-images.php:370
+#: ../admin/manage-images.php:223 ../admin/manage-images.php:373
 #: ../admin/manage.php:211 ../admin/manage.php:290 ../admin/settings.php:394
+#, fuzzy
 msgid "Resize images"
-msgstr ""
+msgstr "Gevonden Afbeeldingen:"
 
 #: ../admin/manage-galleries.php:85
 #, php-format
@@ -967,143 +1304,156 @@ msgid ""
 msgstr ""
 
 #: ../admin/manage-galleries.php:118 ../admin/manage-galleries.php:128
+#, fuzzy
 msgid "Add new gallery"
-msgstr ""
+msgstr "Voeg URL toe"
 
 #: ../admin/manage-galleries.php:132 ../admin/manage-galleries.php:135
 #: ../admin/manage-images.php:249 ../admin/manage-images.php:252
+#, fuzzy
 msgid "Search Images"
-msgstr ""
+msgstr "Gevonden Afbeeldingen:"
 
-#: ../admin/manage-galleries.php:147 ../admin/manage-images.php:367
+#: ../admin/manage-galleries.php:147 ../admin/manage-images.php:370
 msgid "Actions"
 msgstr ""
 
-#: ../admin/manage-galleries.php:149 ../admin/manage-images.php:368
+#: ../admin/manage-galleries.php:149 ../admin/manage-images.php:371
 #: ../admin/manage.php:141 ../admin/manage.php:253
 msgid "Set watermark"
 msgstr ""
 
-#: ../admin/manage-galleries.php:152 ../admin/manage-images.php:373
+#: ../admin/manage-galleries.php:152 ../admin/manage-images.php:376
 #: ../admin/manage.php:146 ../admin/manage.php:274
 msgid "Import metadata"
 msgstr ""
 
-#: ../admin/manage-galleries.php:153 ../admin/manage-images.php:371
+#: ../admin/manage-galleries.php:153 ../admin/manage-images.php:374
 #: ../admin/manage.php:136 ../admin/manage.php:250
+#, fuzzy
 msgid "Recover from backup"
-msgstr ""
+msgstr "Verwijder overgeslagen files en fouten uit de ljist"
 
-#: ../admin/manage-galleries.php:155 ../admin/manage-images.php:382
+#: ../admin/manage-galleries.php:155 ../admin/manage-images.php:385
+#, fuzzy
 msgid "Apply"
 msgstr ""
+"Start IE, klik op Tools | Internet Opties | Geavanceerd, en neem de "
+"instellingen al dan niet over. Klik op Toepassen om de instellingen op te "
+"slaan."
 
 #: ../admin/manage-galleries.php:219 ../admin/tags.php:251
 msgid "Edit"
 msgstr ""
 
-#: ../admin/manage-galleries.php:260 ../admin/manage-images.php:536
+#: ../admin/manage-galleries.php:260 ../admin/manage-images.php:541
+#, fuzzy
 msgid "No entries found"
-msgstr ""
+msgstr "Afbeelding niet gevonden"
 
 #: ../admin/manage-galleries.php:278
+#, fuzzy
 msgid "New Gallery"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
 #: ../admin/manage-galleries.php:280
 msgid "Create a new , empty gallery below the folder"
 msgstr ""
 
-#: ../admin/manage-galleries.php:308 ../admin/manage-images.php:617
+#: ../admin/manage-galleries.php:308 ../admin/manage-images.php:622
+#, fuzzy
 msgid "Resize Images to"
-msgstr ""
+msgstr "Deselecteer Afbeeldingen"
 
 #: ../admin/manage-galleries.php:311 ../admin/manage-galleries.php:340
-#: ../admin/manage-images.php:620 ../admin/manage-images.php:648
+#: ../admin/manage-images.php:625 ../admin/manage-images.php:653
 #: ../admin/settings.php:395 ../admin/settings.php:424
-#: ../admin/settings.php:698
+#: ../admin/settings.php:698 ../admin/tinymce/window.php:210
+#: ../admin/tinymce/window.php:318
 msgid "Width"
 msgstr ""
 
 #: ../admin/manage-galleries.php:313 ../admin/manage-galleries.php:340
-#: ../admin/manage-images.php:622 ../admin/manage-images.php:649
+#: ../admin/manage-images.php:627 ../admin/manage-images.php:654
 #: ../admin/settings.php:397 ../admin/settings.php:426
-#: ../admin/settings.php:700
+#: ../admin/settings.php:700 ../admin/tinymce/window.php:211
+#: ../admin/tinymce/window.php:320
 msgid "Height"
 msgstr ""
 
-#: ../admin/manage-galleries.php:315 ../admin/manage-images.php:624
+#: ../admin/manage-galleries.php:315 ../admin/manage-images.php:629
 #: ../admin/settings.php:399
 msgid ""
 "Width and height (in pixels). NextCellent Gallery will keep the ratio size."
 msgstr ""
 
-#: ../admin/manage-galleries.php:339 ../admin/manage-images.php:647
+#: ../admin/manage-galleries.php:339 ../admin/manage-images.php:652
 #: ../admin/media-upload.php:242 ../admin/settings.php:663
 msgid "Size"
 msgstr ""
 
-#: ../admin/manage-galleries.php:341 ../admin/manage-images.php:650
+#: ../admin/manage-galleries.php:341 ../admin/manage-images.php:655
 #: ../admin/settings.php:428
 msgid "These values are maximum values "
 msgstr ""
 
-#: ../admin/manage-galleries.php:344 ../admin/manage-images.php:653
+#: ../admin/manage-galleries.php:344 ../admin/manage-images.php:658
 #: ../admin/settings.php:431
 msgid "Fixed size"
 msgstr ""
 
-#: ../admin/manage-galleries.php:346 ../admin/manage-images.php:655
+#: ../admin/manage-galleries.php:346 ../admin/manage-images.php:660
 #: ../admin/settings.php:433
 msgid "This will ignore the aspect ratio, so no portrait thumbnails"
 msgstr ""
 
-#: ../admin/manage-galleries.php:409 ../admin/manage-images.php:724
+#: ../admin/manage-galleries.php:409 ../admin/manage-images.php:729
 msgid "ID"
 msgstr ""
 
-#: ../admin/manage-galleries.php:411 ../admin/manage-images.php:292
-#: ../admin/manage-images.php:505 ../admin/manage-images.php:727
-#: ../admin/media-upload.php:225 ../admin/style.php:135
-msgid "Description"
-msgstr ""
-
 #: ../admin/manage-galleries.php:412 ../admin/manage-images.php:321
-#: ../admin/overview.php:821 ../admin/style.php:133 ../lib/meta.php:458
+#: ../admin/overview.php:771 ../admin/style.php:295 ../lib/meta.php:458
 msgid "Author"
 msgstr ""
 
 #: ../admin/manage-galleries.php:413
+#, fuzzy
 msgid "Page ID"
-msgstr ""
+msgstr "Kan webpagina niet downloaden:"
 
 #: ../admin/manage-images.php:34
+#, fuzzy
 msgid "Gallery not found."
-msgstr ""
+msgstr "Afbeelding niet gevonden"
 
 #: ../admin/manage-images.php:40
 msgid "Sorry, you have no access here"
 msgstr ""
 
 #: ../admin/manage-images.php:203
+#, fuzzy
 msgid "Copy image to..."
-msgstr ""
+msgstr "Kopieer afbeeldingslocatie naar clipboard"
 
 #: ../admin/manage-images.php:207
+#, fuzzy
 msgid "Move image to..."
-msgstr ""
+msgstr "Verplaats naar Beneden"
 
 #: ../admin/manage-images.php:211
+#, fuzzy
 msgid "Add new tags"
-msgstr ""
+msgstr "Voeg toe aan Wachtrij"
 
-#: ../admin/manage-images.php:215 ../admin/manage-images.php:379
+#: ../admin/manage-images.php:215 ../admin/manage-images.php:382
+#, fuzzy
 msgid "Delete tags"
-msgstr ""
+msgstr "Verwijder File"
 
 #: ../admin/manage-images.php:219
+#, fuzzy
 msgid "Overwrite"
-msgstr ""
+msgstr "Overschrijven"
 
 #: ../admin/manage-images.php:232
 #, php-format
@@ -1119,16 +1469,19 @@ msgid "Search results for &#8220;%s&#8221;"
 msgstr ""
 
 #: ../admin/manage-images.php:275 ../admin/settings.php:457
+#, fuzzy
 msgid "Gallery settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: ../admin/manage-images.php:275
+#, fuzzy
 msgid "Click here for more settings"
-msgstr ""
+msgstr "Klik voor meer informatie over \"regular expressions\"."
 
 #: ../admin/manage-images.php:294
+#, fuzzy
 msgid "Preview image"
-msgstr ""
+msgstr "Bekijk Afbeelding..."
 
 #: ../admin/manage-images.php:297
 msgid "No Picture"
@@ -1138,199 +1491,237 @@ msgstr ""
 msgid "Path"
 msgstr ""
 
-#: ../admin/manage-images.php:335
+#: ../admin/manage-images.php:334
+#, fuzzy
+msgid "Gallery ID"
+msgstr "Exporteer Gallerij"
+
+#: ../admin/manage-images.php:336
+#, fuzzy
 msgid "Create new page"
-msgstr ""
+msgstr "Huidige pagina"
 
-#: ../admin/manage-images.php:338
+#: ../admin/manage-images.php:339
+#, fuzzy
 msgid "Main page (No parent)"
-msgstr ""
+msgstr "Paginatitel      : "
 
-#: ../admin/manage-images.php:343
+#: ../admin/manage-images.php:344
+#, fuzzy
 msgid "Add page"
+msgstr "Voeg URL toe"
+
+#: ../admin/manage-images.php:354
+#, fuzzy
+msgid "Scan folder for new images"
+msgstr "Scan URL op afbeeldingen"
+
+#: ../admin/manage-images.php:355
+msgid "Old scanning"
 msgstr ""
 
-#: ../admin/manage-images.php:352
-msgid "Scan Folder for new images"
-msgstr ""
-
-#: ../admin/manage-images.php:353 ../admin/manage-images.php:388
-#: ../admin/manage-images.php:543 ../admin/settings.php:379
+#: ../admin/manage-images.php:356 ../admin/manage-images.php:391
+#: ../admin/manage-images.php:548 ../admin/settings.php:379
 #: ../admin/settings.php:447 ../admin/settings.php:537
 #: ../admin/settings.php:571 ../admin/settings.php:681
 #: ../admin/settings.php:833
+#, fuzzy
 msgid "Save Changes"
-msgstr ""
-
-#: ../admin/manage-images.php:372
-msgid "Delete images"
-msgstr ""
-
-#: ../admin/manage-images.php:374
-msgid "Rotate images clockwise"
-msgstr ""
+msgstr "Save Wijzigingen"
 
 #: ../admin/manage-images.php:375
+#, fuzzy
+msgid "Delete images"
+msgstr "Verwijder geselecteerde afbeeldingen"
+
+#: ../admin/manage-images.php:377
+#, fuzzy
+msgid "Rotate images clockwise"
+msgstr "Scan URL op afbeeldingen"
+
+#: ../admin/manage-images.php:378
 msgid "Rotate images counter-clockwise"
 msgstr ""
 
-#: ../admin/manage-images.php:376
+#: ../admin/manage-images.php:379
+#, fuzzy
 msgid "Copy to..."
-msgstr ""
-
-#: ../admin/manage-images.php:377
-msgid "Move to..."
-msgstr ""
-
-#: ../admin/manage-images.php:378
-msgid "Add tags"
-msgstr ""
+msgstr "Kopieer code naar het clipboard"
 
 #: ../admin/manage-images.php:380
+#, fuzzy
+msgid "Move to..."
+msgstr "Verplaats naar Boven"
+
+#: ../admin/manage-images.php:381
+#, fuzzy
+msgid "Add tags"
+msgstr "Voeg URL toe"
+
+#: ../admin/manage-images.php:383
+#, fuzzy
 msgid "Overwrite tags"
-msgstr ""
+msgstr "Overschrijven"
 
-#: ../admin/manage-images.php:385
+#: ../admin/manage-images.php:388
+#, fuzzy
 msgid "Sort gallery"
-msgstr ""
+msgstr "Sorteer Lijst"
 
-#: ../admin/manage-images.php:460
+#: ../admin/manage-images.php:463
+#, fuzzy
 msgid "Change Date"
-msgstr ""
+msgstr "Om deze instellingen te veranderen:"
 
-#: ../admin/manage-images.php:464
+#: ../admin/manage-images.php:467
 msgid "pixel"
 msgstr ""
 
-#: ../admin/manage-images.php:470
-#, php-format
+#: ../admin/manage-images.php:473
+#, fuzzy, php-format
 msgid "View \"%s\""
-msgstr ""
+msgstr "Bekijk Afbeelding..."
 
-#: ../admin/manage-images.php:470
+#: ../admin/manage-images.php:473
+#, fuzzy
 msgid "View"
-msgstr ""
+msgstr "Bekijk Logfile"
 
-#: ../admin/manage-images.php:471
+#: ../admin/manage-images.php:474
 msgid "Show Meta data"
 msgstr ""
 
-#: ../admin/manage-images.php:471
+#: ../admin/manage-images.php:474
+#, fuzzy
 msgid "Meta"
-msgstr ""
+msgstr "Dit is potentieel bruikbare metadata die de logger opgeslagen heeft."
 
-#: ../admin/manage-images.php:472
+#: ../admin/manage-images.php:475
+#, fuzzy
 msgid "Customize thumbnail"
-msgstr ""
+msgstr "Thumbnail"
 
-#: ../admin/manage-images.php:472
+#: ../admin/manage-images.php:475
 msgid "Edit thumb"
 msgstr ""
 
-#: ../admin/manage-images.php:473
+#: ../admin/manage-images.php:476
 msgid "Rotate"
 msgstr ""
 
-#: ../admin/manage-images.php:475
+#: ../admin/manage-images.php:478
+#, fuzzy
 msgid "Publish this image"
-msgstr ""
+msgstr "Laad afbeelding..."
 
-#: ../admin/manage-images.php:475 ../admin/publish.php:58
+#: ../admin/manage-images.php:478 ../admin/publish.php:58
 msgid "Publish"
 msgstr ""
 
-#: ../admin/manage-images.php:477
+#: ../admin/manage-images.php:480
 msgid "Recover"
 msgstr ""
 
-#: ../admin/manage-images.php:477
-#, php-format
+#: ../admin/manage-images.php:480
+#, fuzzy, php-format
 msgid "Recover \"%s\" ?"
-msgstr ""
+msgstr "Geschiedenis voor %s"
 
-#: ../admin/manage-images.php:478
-#, php-format
+#: ../admin/manage-images.php:481
+#, fuzzy, php-format
 msgid "Delete \"%s\" ?"
-msgstr ""
+msgstr "Verwijder de logfile?"
 
-#: ../admin/manage-images.php:504
+#: ../admin/manage-images.php:509
+#, fuzzy
 msgid "Alt & title text"
-msgstr ""
+msgstr "Paginatitel      : "
 
-#: ../admin/manage-images.php:518
+#: ../admin/manage-images.php:523
 msgid "Separated by commas"
 msgstr ""
 
-#: ../admin/manage-images.php:559
+#: ../admin/manage-images.php:564
+#, fuzzy
 msgid "Enter the tags"
-msgstr ""
+msgstr "Voer de registratiecode in:"
 
-#: ../admin/manage-images.php:582
+#: ../admin/manage-images.php:587
+#, fuzzy
 msgid "Select the destination gallery:"
-msgstr ""
+msgstr "Selecteer Afbeeldingen"
 
-#: ../admin/manage-images.php:725 ../admin/media-upload.php:246
+#: ../admin/manage-images.php:730 ../admin/media-upload.php:246
+#, fuzzy
 msgid "Thumbnail"
-msgstr ""
+msgstr "Thumbnail"
 
-#: ../admin/manage-images.php:726 ../admin/manage-sort.php:96
+#: ../admin/manage-images.php:731 ../admin/manage-sort.php:92
+#, fuzzy
 msgid "Filename"
-msgstr ""
+msgstr "Bestandsnaam"
 
-#: ../admin/manage-images.php:727
+#: ../admin/manage-images.php:732
 msgid "Alt &amp; Title Text"
 msgstr ""
 
-#: ../admin/manage-images.php:729
+#: ../admin/manage-images.php:734
 msgid "Exclude"
 msgstr ""
 
-#: ../admin/manage-sort.php:33
+#: ../admin/manage-sort.php:35
+#, fuzzy
 msgid "Sort order changed"
-msgstr ""
+msgstr "Sorteer Lijst"
+
+#: ../admin/manage-sort.php:77
+#, fuzzy
+msgid "Sort Gallery"
+msgstr "Sorteer Lijst"
 
 #: ../admin/manage-sort.php:81
-msgid "Sort Gallery"
-msgstr ""
-
-#: ../admin/manage-sort.php:85
+#, fuzzy
 msgid "Update Sort Order"
-msgstr ""
+msgstr "Sorteer Lijst"
 
-#: ../admin/manage-sort.php:88
+#: ../admin/manage-sort.php:84
+#, fuzzy
 msgid "Back to gallery"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
-#: ../admin/manage-sort.php:93
+#: ../admin/manage-sort.php:89
 msgid "Presort"
 msgstr ""
 
-#: ../admin/manage-sort.php:94
+#: ../admin/manage-sort.php:90
 msgid "Unsorted"
 msgstr ""
 
-#: ../admin/manage-sort.php:95 ../admin/settings.php:524
+#: ../admin/manage-sort.php:91 ../admin/settings.php:524
+#, fuzzy
 msgid "Image ID"
-msgstr ""
+msgstr "Totaal aantal afbeeldingenlinks:"
 
-#: ../admin/manage-sort.php:97 ../admin/media-upload.php:221
+#: ../admin/manage-sort.php:93 ../admin/media-upload.php:221
+#, fuzzy
 msgid "Alt/Title text"
-msgstr ""
+msgstr "Paginatitel:"
 
-#: ../admin/manage-sort.php:98 ../lib/meta.php:452
+#: ../admin/manage-sort.php:94 ../lib/meta.php:452
+#, fuzzy
 msgid "Date/Time"
 msgstr ""
+"Sla afbeeldingen op met originele datum/tijd van de server indien beschikbaar"
 
-#: ../admin/manage-sort.php:99 ../admin/settings.php:532
+#: ../admin/manage-sort.php:95 ../admin/settings.php:532
 msgid "Ascending"
 msgstr ""
 
-#: ../admin/manage-sort.php:100 ../admin/settings.php:533
+#: ../admin/manage-sort.php:96 ../admin/settings.php:533
 msgid "Descending"
 msgstr ""
 
-#: ../admin/manage.php:85 ../admin/tinymce/window.php:53
-#: ../admin/tinymce/window.php:104 ../lib/rewrite.php:220
+#: ../admin/manage.php:85 ../lib/rewrite.php:223
 #: ../view/imagebrowser-caption.php:31 ../view/imagebrowser-exif.php:35
 #: ../view/imagebrowser.php:31
 msgid "Picture"
@@ -1345,16 +1736,19 @@ msgid "Operation successful. Please clear your browser cache."
 msgstr ""
 
 #: ../admin/manage.php:176
+#, fuzzy
 msgid "Gallery deleted successfully "
-msgstr ""
+msgstr "...alleen als alle afbeeldingen succesvol gedownload zijn"
 
 #: ../admin/manage.php:244 ../admin/manage.php:247
+#, fuzzy
 msgid "Rotate images"
-msgstr ""
+msgstr "Gevonden Afbeeldingen:"
 
 #: ../admin/manage.php:270
+#, fuzzy
 msgid "Pictures deleted successfully "
-msgstr ""
+msgstr "...alleen als alle afbeeldingen succesvol gedownload zijn"
 
 #: ../admin/manage.php:366
 msgid "Tags changed"
@@ -1364,69 +1758,84 @@ msgstr ""
 msgid "Update successful"
 msgstr ""
 
-#: ../admin/manage.php:437
+#: ../admin/manage.php:445
 msgid "New gallery page ID"
 msgstr ""
 
-#: ../admin/manage.php:437
+#: ../admin/manage.php:445
+#, fuzzy
 msgid "created"
-msgstr ""
+msgstr "Maak nieuw geheim RSS-adres"
 
-#: ../admin/manage.php:475
+#: ../admin/manage.php:483
+#, fuzzy
 msgid "Published a new post"
-msgstr ""
+msgstr "Maak nieuw geheim RSS-adres"
 
-#: ../admin/manage.php:590
+#: ../admin/manage.php:598
+#, fuzzy
 msgid "1 item"
-msgstr ""
+msgstr "+%1$s meer"
 
 #: ../admin/media-upload.php:11
+#, fuzzy
 msgid "NextCellent Gallery"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
 #: ../admin/media-upload.php:166
+#, fuzzy
 msgid "No gallery"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
 #: ../admin/media-upload.php:178
+#, fuzzy
 msgid "Select &#187;"
-msgstr ""
+msgstr "Selecteer"
 
 #: ../admin/media-upload.php:209
+#, fuzzy
 msgid "Show"
-msgstr ""
+msgstr "Laat Taak zien"
 
 #: ../admin/media-upload.php:210
+#, fuzzy
 msgid "Hide"
-msgstr ""
+msgstr "Verberg Taak"
 
 #: ../admin/media-upload.php:215
+#, fuzzy
 msgid "Image ID:"
-msgstr ""
+msgstr "Afbeeldings Informatie"
 
 #: ../admin/media-upload.php:229 ../admin/publish.php:45
+#: ../admin/tinymce/window.php:335
 msgid "Alignment"
 msgstr ""
 
 #: ../admin/media-upload.php:232 ../admin/publish.php:47
 #: ../admin/settings.php:557
+#, fuzzy
 msgid "None"
-msgstr ""
+msgstr "(geen)"
 
 #: ../admin/media-upload.php:234 ../admin/publish.php:49
-#: ../admin/tinymce/window.php:129
+#: ../admin/tinymce/window.php:339
+#, fuzzy
 msgid "Left"
-msgstr ""
+msgstr "dagen om BID te gebruiken."
 
 #: ../admin/media-upload.php:236 ../admin/publish.php:51
-#: ../admin/tinymce/window.php:130
+#: ../admin/tinymce/window.php:340
 msgid "Center"
 msgstr ""
 
 #: ../admin/media-upload.php:238 ../admin/publish.php:53
-#: ../admin/tinymce/window.php:131
+#: ../admin/tinymce/window.php:341
+#, fuzzy
 msgid "Right"
 msgstr ""
+"Integreer met Internet Explorer (contextmenu wordt toegevoegd met "
+"rechtermuisklik)"
 
 #: ../admin/media-upload.php:248
 msgid "Full size"
@@ -1441,286 +1850,275 @@ msgid "Insert into Post"
 msgstr ""
 
 #: ../admin/media-upload.php:274
+#, fuzzy
 msgid "Save all changes"
-msgstr ""
+msgstr "Save Wijzigingen"
 
 #: ../admin/overview.php:15
+#, fuzzy
 msgid "NextCellent Gallery Overview"
-msgstr ""
+msgstr "Download deze gallerij met Bulk Image Downloader"
 
-#: ../admin/overview.php:87
+#: ../admin/overview.php:86
+#, fuzzy
 msgid "Welcome to NextCellent Gallery !"
-msgstr ""
+msgstr "Download deze gallerij met Bulk Image Downloader"
 
-#: ../admin/overview.php:88
-msgid "Help me help YOU!"
-msgstr ""
-
-#: ../admin/overview.php:90
-msgid "Translation"
-msgstr ""
-
-#: ../admin/overview.php:91
-msgid "Latest News"
-msgstr ""
-
-#: ../admin/overview.php:94
-msgid "Plugin Check"
-msgstr ""
-
-#: ../admin/overview.php:95
-msgid "Server Settings"
-msgstr ""
-
-#: ../admin/overview.php:96
-msgid "Related plugins"
-msgstr ""
-
-#: ../admin/overview.php:231
+#: ../admin/overview.php:229
+#, fuzzy
 msgid "Running..."
-msgstr ""
+msgstr "Weergave BID Instantie bij deze taak"
 
-#: ../admin/overview.php:278
+#: ../admin/overview.php:276
 msgid "Check plugin/theme conflict"
 msgstr ""
 
-#: ../admin/overview.php:279 ../admin/overview.php:285
-#: ../admin/overview.php:291
+#: ../admin/overview.php:277 ../admin/overview.php:283
+#: ../admin/overview.php:289
 msgid "Not tested"
 msgstr ""
 
-#: ../admin/overview.php:280
+#: ../admin/overview.php:278
+#, fuzzy
 msgid "No conflict could be detected"
-msgstr ""
+msgstr "Kon de map niet aanmaken:"
 
-#: ../admin/overview.php:281
+#: ../admin/overview.php:279
 msgid "Test failed, disable other plugins & switch to default theme"
 msgstr ""
 
-#: ../admin/overview.php:284
+#: ../admin/overview.php:282
+#, fuzzy
 msgid "Test image function"
-msgstr ""
+msgstr "Totaal aantal afbeeldingenlinks:"
 
-#: ../admin/overview.php:286
+#: ../admin/overview.php:284
+#, fuzzy
 msgid "The plugin could create images"
-msgstr ""
+msgstr "Kon de map niet aanmaken:"
 
-#: ../admin/overview.php:287
+#: ../admin/overview.php:285
 msgid "Couldn't create image, check your memory limit"
 msgstr ""
 
-#: ../admin/overview.php:290
+#: ../admin/overview.php:288
+#, fuzzy
 msgid "Check theme compatibility"
-msgstr ""
+msgstr "Check automatisch voor updates"
 
-#: ../admin/overview.php:292
+#: ../admin/overview.php:290
 msgid "Your theme should work fine with NextCellent Gallery"
 msgstr ""
 
-#: ../admin/overview.php:293
+#: ../admin/overview.php:291
 msgid "wp_head()/wp_footer() is missing, contact the theme author"
 msgstr ""
 
-#: ../admin/overview.php:297
+#: ../admin/overview.php:295
+#, fuzzy
 msgid "Check plugin"
-msgstr ""
+msgstr "Check automatisch voor updates"
 
-#: ../admin/overview.php:318
+#: ../admin/overview.php:316
 msgid "Graphic Library"
 msgstr ""
 
-#: ../admin/overview.php:334 ../admin/overview.php:383
-#: ../admin/overview.php:570 ../admin/overview.php:760
+#: ../admin/overview.php:333 ../admin/overview.php:520
+#: ../admin/overview.php:710
+#, fuzzy
 msgid "Loading&#8230;"
-msgstr ""
+msgstr "Laden…"
 
-#: ../admin/overview.php:334 ../admin/overview.php:383
-#: ../admin/overview.php:570 ../admin/overview.php:760
+#: ../admin/overview.php:333 ../admin/overview.php:520
+#: ../admin/overview.php:710
 msgid "This widget requires JavaScript."
 msgstr ""
 
-#: ../admin/overview.php:347
-msgid "Thanks to all donators..."
-msgstr ""
-
-#: ../admin/overview.php:369
-msgid "View all"
-msgstr ""
-
-#: ../admin/overview.php:395
+#: ../admin/overview.php:345
 #, php-format
 msgid ""
 "Newsfeed could not be loaded.  Check the <a href=\"%s\">front page</a> to "
 "check for updates."
 msgstr ""
 
-#: ../admin/overview.php:407
+#: ../admin/overview.php:357
 msgid "Untitled"
 msgstr ""
 
-#: ../admin/overview.php:457
-msgid "At a Glance"
-msgstr ""
-
-#: ../admin/overview.php:462
+#: ../admin/overview.php:412
+#, fuzzy
 msgid "Image"
-msgstr ""
+msgstr "Totaal aantal afbeeldingenlinks:"
 
-#: ../admin/overview.php:474 ../admin/tinymce/window.php:52
-#: ../admin/tinymce/window.php:84 ../lib/rewrite.php:223
+#: ../admin/overview.php:424 ../admin/tinymce/window.php:121
+#: ../admin/tinymce/window.php:236 ../lib/rewrite.php:226
 msgid "Album"
 msgstr ""
 
-#: ../admin/overview.php:483
+#: ../admin/overview.php:433
 msgid "Upload pictures"
 msgstr ""
 
-#: ../admin/overview.php:484
+#: ../admin/overview.php:434
 msgid "Here you can control your images, galleries and albums."
 msgstr ""
 
-#: ../admin/overview.php:514
+#: ../admin/overview.php:464
+#, fuzzy
 msgid "Storage Space"
-msgstr ""
+msgstr "Zeer weinig diskruimte"
 
-#: ../admin/overview.php:518
+#: ../admin/overview.php:468
 #, php-format
 msgid ""
 "<a href=\"%1$s\" title=\"Manage Uploads\" class=\"musublink\">%2$sMB</a>"
 msgstr ""
 
-#: ../admin/overview.php:519
+#: ../admin/overview.php:469
+#, fuzzy
 msgid "Space Allowed"
-msgstr ""
+msgstr "Zeer weinig diskruimte"
 
-#: ../admin/overview.php:526
+#: ../admin/overview.php:476
 #, php-format
 msgid ""
 "<a href=\"%1$s\" title=\"Manage Uploads\" class=\"musublink\">%2$sMB (%3$s"
 "%%)</a>"
 msgstr ""
 
-#: ../admin/overview.php:527
+#: ../admin/overview.php:477
+#, fuzzy
 msgid "Space Used"
-msgstr ""
+msgstr "Zeer weinig diskruimte"
 
-#: ../admin/overview.php:556
+#: ../admin/overview.php:506
 msgid "Translation file successful updated. Please reload page."
 msgstr ""
 
-#: ../admin/overview.php:558
+#: ../admin/overview.php:508
+#, fuzzy
 msgid "Reload page"
-msgstr ""
+msgstr "Paginatitel:"
 
-#: ../admin/overview.php:563
+#: ../admin/overview.php:513
 msgid "Translation file couldn't be updated"
 msgstr ""
 
-#: ../admin/overview.php:600
+#: ../admin/overview.php:550
+#, fuzzy
 msgid "Download"
-msgstr ""
+msgstr "Selecteer a.u.b. een download map."
 
-#: ../admin/overview.php:629
+#: ../admin/overview.php:579
 msgid "No GD support"
 msgstr ""
 
-#: ../admin/overview.php:641 ../admin/overview.php:687
-#: ../admin/overview.php:690 ../admin/overview.php:693
+#: ../admin/overview.php:591 ../admin/overview.php:637
+#: ../admin/overview.php:640 ../admin/overview.php:643
 msgid "Yes"
 msgstr ""
 
-#: ../admin/overview.php:643 ../admin/overview.php:688
-#: ../admin/overview.php:691 ../admin/overview.php:694
+#: ../admin/overview.php:593 ../admin/overview.php:638
+#: ../admin/overview.php:641 ../admin/overview.php:644
 msgid "No"
 msgstr ""
 
-#: ../admin/overview.php:661
+#: ../admin/overview.php:611
+#, fuzzy
 msgid "Not set"
 msgstr ""
+"Voer in \"netsh interface tcp set global autotuninglevel=disabled\" (zonder "
+"accolades) en druk op Enter"
 
-#: ../admin/overview.php:663 ../admin/overview.php:666
+#: ../admin/overview.php:613 ../admin/overview.php:616
 msgid "On"
 msgstr ""
 
-#: ../admin/overview.php:664 ../admin/overview.php:667
+#: ../admin/overview.php:614 ../admin/overview.php:617
 msgid "Off"
 msgstr ""
 
-#: ../admin/overview.php:670 ../admin/overview.php:673
-#: ../admin/overview.php:676 ../admin/overview.php:679
-#: ../admin/overview.php:682 ../admin/overview.php:685
+#: ../admin/overview.php:620 ../admin/overview.php:623
+#: ../admin/overview.php:626 ../admin/overview.php:629
+#: ../admin/overview.php:632 ../admin/overview.php:635
 msgid "N/A"
 msgstr ""
 
-#: ../admin/overview.php:684
+#: ../admin/overview.php:634
 msgid " MByte"
 msgstr ""
 
-#: ../admin/overview.php:697
+#: ../admin/overview.php:647
 msgid "Operating System"
 msgstr ""
 
-#: ../admin/overview.php:698
+#: ../admin/overview.php:648
+#, fuzzy
 msgid "Server"
 msgstr ""
+"Sla afbeeldingen op met originele datum/tijd van de server indien beschikbaar"
 
-#: ../admin/overview.php:699
+#: ../admin/overview.php:649
 msgid "Memory usage"
 msgstr ""
 
-#: ../admin/overview.php:700
+#: ../admin/overview.php:650
+#, fuzzy
 msgid "MYSQL Version"
-msgstr ""
+msgstr "Datum versie"
 
-#: ../admin/overview.php:701
+#: ../admin/overview.php:651
+#, fuzzy
 msgid "SQL Mode"
-msgstr ""
+msgstr "AUTO MODE"
 
-#: ../admin/overview.php:702
+#: ../admin/overview.php:652
+#, fuzzy
 msgid "PHP Version"
-msgstr ""
+msgstr "Datum versie"
 
-#: ../admin/overview.php:703
+#: ../admin/overview.php:653
+#, fuzzy
 msgid "PHP Safe Mode"
-msgstr ""
+msgstr "AUTO MODE"
 
-#: ../admin/overview.php:704
+#: ../admin/overview.php:654
 msgid "PHP Allow URL fopen"
 msgstr ""
 
-#: ../admin/overview.php:705
+#: ../admin/overview.php:655
 msgid "PHP Memory Limit"
 msgstr ""
 
-#: ../admin/overview.php:706
+#: ../admin/overview.php:656
 msgid "PHP Max Upload Size"
 msgstr ""
 
-#: ../admin/overview.php:707
+#: ../admin/overview.php:657
 msgid "PHP Max Post Size"
 msgstr ""
 
-#: ../admin/overview.php:708
+#: ../admin/overview.php:658
 msgid "PCRE Backtracking Limit"
 msgstr ""
 
-#: ../admin/overview.php:709
+#: ../admin/overview.php:659
 msgid "PHP Max Script Execute Time"
 msgstr ""
 
-#: ../admin/overview.php:710
+#: ../admin/overview.php:660
 msgid "PHP Exif support"
 msgstr ""
 
-#: ../admin/overview.php:711
+#: ../admin/overview.php:661
 msgid "PHP IPTC support"
 msgstr ""
 
-#: ../admin/overview.php:712
+#: ../admin/overview.php:662
 msgid "PHP XML support"
 msgstr ""
 
-#: ../admin/overview.php:724
+#: ../admin/overview.php:674
 msgid ""
 "NextCellent Gallery contains some functions which are only available under "
 "PHP 5.2. You are using the old PHP 4 version, upgrade now! It's no longer "
@@ -1728,51 +2126,52 @@ msgid ""
 "and PHP 5, running simultaneously. Ask your provider if they can do this."
 msgstr ""
 
-#: ../admin/overview.php:792
-msgid "Pay attention"
-msgstr ""
-
-#: ../admin/overview.php:792
-#, php-format
+#: ../admin/overview.php:742
 msgid ""
-"third parties plugins that are compatible with NGG may not be "
-"100% compatible with NextCellent Gallery!"
+"third parties plugins that are compatible with NGG may not be 100&#37; "
+"compatible with NextCellent Gallery!"
 msgstr ""
 
-#: ../admin/overview.php:820
+#: ../admin/overview.php:770
+#, fuzzy
 msgid "Install"
 msgstr ""
+"Installeer de BID extentie voor Mozilla Firefox, deze is te vinden in de "
+"[BID]/Firefox Extentie map."
 
-#: ../admin/overview.php:834
+#: ../admin/overview.php:784
 #, php-format
 msgid ""
 "This plugin is a branch from NGG stable version 1.9.13.<br> Developed & "
 "maintained by <a href=\"%s\" target=\"_blank\">WPGetReady.com</a>"
 msgstr ""
 
-#: ../admin/overview.php:840
+#: ../admin/overview.php:790
 msgid "You can contribute by giving this plugin a good rating! Thanks a lot!"
 msgstr ""
 
-#: ../admin/overview.php:845
+#: ../admin/overview.php:795
 msgid "Visit the plugin homepage"
 msgstr ""
 
 #: ../admin/publish.php:35
+#, fuzzy
 msgid "Post title"
-msgstr ""
+msgstr "Paginatitel:"
 
 #: ../admin/publish.php:37
+#, fuzzy
 msgid "Enter the post title "
-msgstr ""
+msgstr "Voer de registratiecode in:"
 
 #: ../admin/publish.php:40
 msgid "Width x height (in pixel)"
 msgstr ""
 
 #: ../admin/publish.php:42
+#, fuzzy
 msgid "Size of the image"
-msgstr ""
+msgstr "Laad afbeelding..."
 
 #: ../admin/publish.php:60
 msgid "Draft"
@@ -1797,11 +2196,12 @@ msgid "For a more flexible user management you can use the"
 msgstr ""
 
 #: ../admin/roles.php:35
-msgid "Main NextCellent Gallery overview"
-msgstr ""
+#, fuzzy
+msgid "NextCellent Gallery overview"
+msgstr "Download deze gallerij met Bulk Image Downloader"
 
 #: ../admin/roles.php:39
-msgid "Use TinyMCE Button / Upload tab"
+msgid "Use TinyMCE Button / Add Media"
 msgstr ""
 
 #: ../admin/roles.php:43
@@ -1809,36 +2209,42 @@ msgid "Add gallery / Upload images"
 msgstr ""
 
 #: ../admin/roles.php:47
+#, fuzzy
 msgid "Manage gallery"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
 #: ../admin/roles.php:51
+#, fuzzy
 msgid "Manage others gallery"
-msgstr ""
+msgstr "Download deze gallerij met Bulk Image Downloader"
 
 #: ../admin/roles.php:55
 msgid "Manage tags"
 msgstr ""
 
 #: ../admin/roles.php:63
+#, fuzzy
 msgid "Change style"
-msgstr ""
+msgstr "Om deze instellingen te veranderen:"
 
 #: ../admin/roles.php:67
+#, fuzzy
 msgid "Change options"
-msgstr ""
+msgstr "Om deze instellingen te veranderen:"
 
 #: ../admin/roles.php:71
 msgid "Update capabilities"
 msgstr ""
 
 #: ../admin/rotate.php:55
+#, fuzzy
 msgid "Image rotated"
-msgstr ""
+msgstr "Bekijk Afbeelding..."
 
 #: ../admin/rotate.php:56
+#, fuzzy
 msgid "Error rotating thumbnail"
-msgstr ""
+msgstr "Fout"
 
 #: ../admin/rotate.php:74
 msgid "Select how you would like to rotate the image on the left."
@@ -1853,11 +2259,11 @@ msgid "90&deg; anticlockwise"
 msgstr ""
 
 #: ../admin/rotate.php:83
-msgid "Flip vertically"
+msgid "Flip horizontally"
 msgstr ""
 
 #: ../admin/rotate.php:84
-msgid "Flip horizontally"
+msgid "Flip vertically"
 msgstr ""
 
 #: ../admin/settings.php:22
@@ -1879,53 +2285,43 @@ msgstr ""
 msgid "Done."
 msgstr ""
 
+#: ../admin/settings.php:167
+#, fuzzy
+msgid "Settings updated successfully"
+msgstr "Om deze instellingen te veranderen:"
+
 #: ../admin/settings.php:185
+#, fuzzy
 msgid "Cache cleared"
-msgstr ""
-
-#: ../admin/settings.php:285
-msgid "General"
-msgstr ""
-
-#: ../admin/settings.php:288 ../admin/settings.php:546
-msgid "Effects"
-msgstr ""
-
-#: ../admin/settings.php:289 ../admin/settings.php:587
-#: ../admin/tinymce/window.php:119
-msgid "Watermark"
-msgstr ""
-
-#: ../admin/settings.php:290 ../admin/settings.php:483
-#: ../admin/settings.php:493 ../admin/settings.php:694
-#: ../admin/tinymce/window.php:72 ../lib/rewrite.php:215
-#: ../widgets/widgets.php:29
-msgid "Slideshow"
-msgstr ""
+msgstr "Database leeggemaakt"
 
 #: ../admin/settings.php:303
+#, fuzzy
 msgid "General settings"
-msgstr ""
+msgstr "Instellingen"
 
-#: ../admin/settings.php:309 ../admin/wpmu.php:54
+#: ../admin/settings.php:309 ../admin/wpmu.php:56
+#, fuzzy
 msgid "Gallery path"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
 #: ../admin/settings.php:311
 msgid "This is the default path for all galleries"
 msgstr ""
 
 #: ../admin/settings.php:314
+#, fuzzy
 msgid "Image files"
-msgstr ""
+msgstr "Bestanden"
 
 #: ../admin/settings.php:316
 msgid "Delete files when removing a gallery from the database"
 msgstr ""
 
 #: ../admin/settings.php:319
+#, fuzzy
 msgid "Select graphic library"
-msgstr ""
+msgstr "Selecteer Afbeeldingen"
 
 #: ../admin/settings.php:320
 msgid "GD Library"
@@ -1940,8 +2336,9 @@ msgid "Path to the library:"
 msgstr ""
 
 #: ../admin/settings.php:327
+#, fuzzy
 msgid "Media RSS feed"
-msgstr ""
+msgstr "Maak nieuw geheim RSS-adres"
 
 #: ../admin/settings.php:329
 msgid "Add a RSS feed to you blog header. Useful for CoolIris/PicLens"
@@ -1966,8 +2363,9 @@ msgid "Permalinks"
 msgstr ""
 
 #: ../admin/settings.php:342
+#, fuzzy
 msgid "Use permalinks"
-msgstr ""
+msgstr "Gebruik deze proxy"
 
 #: ../admin/settings.php:344
 msgid "Adds a static link to all images"
@@ -1979,36 +2377,41 @@ msgid ""
 msgstr ""
 
 #: ../admin/settings.php:349
+#, fuzzy
 msgid "Gallery slug:"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
 #: ../admin/settings.php:353
 msgid "Recreate URLs"
 msgstr ""
 
 #: ../admin/settings.php:354
+#, fuzzy
 msgid "Start now"
-msgstr ""
+msgstr "Log nu wissen"
 
 #: ../admin/settings.php:355
 msgid "If you've changed these settings, you'll have to recreate the URLs."
 msgstr ""
 
 #: ../admin/settings.php:358
+#, fuzzy
 msgid "Related images"
-msgstr ""
+msgstr "Geladen Afbeeldingen:"
 
 #: ../admin/settings.php:361
+#, fuzzy
 msgid "Add related images"
-msgstr ""
+msgstr "Voeg URL toe"
 
 #: ../admin/settings.php:363
 msgid "This will add related images to every post"
 msgstr ""
 
 #: ../admin/settings.php:367
+#, fuzzy
 msgid "Match with"
-msgstr ""
+msgstr "Corrigeer de Afbeelding link"
 
 #: ../admin/settings.php:368
 msgid "Categories"
@@ -2019,16 +2422,19 @@ msgid "Max. number of images"
 msgstr ""
 
 #: ../admin/settings.php:375
+#, fuzzy
 msgid "0 will show all images"
-msgstr ""
+msgstr "...alleen als alle afbeeldingen succesvol gedownload zijn"
 
 #: ../admin/settings.php:388
+#, fuzzy
 msgid "Image settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: ../admin/settings.php:402
+#, fuzzy
 msgid "Image quality"
-msgstr ""
+msgstr "Bekijk Afbeelding..."
 
 #: ../admin/settings.php:407
 msgid "Backup original"
@@ -2039,16 +2445,18 @@ msgid "Create a backup for the resized images"
 msgstr ""
 
 #: ../admin/settings.php:412
+#, fuzzy
 msgid "Automatically resize"
-msgstr ""
+msgstr "Check automatisch voor updates"
 
 #: ../admin/settings.php:414
 msgid "Automatically resize images on upload."
 msgstr ""
 
 #: ../admin/settings.php:418
+#, fuzzy
 msgid "Thumbnail settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: ../admin/settings.php:419
 msgid ""
@@ -2057,36 +2465,42 @@ msgid ""
 msgstr ""
 
 #: ../admin/settings.php:422
+#, fuzzy
 msgid "Thumbnail size"
-msgstr ""
+msgstr "Thumbnail"
 
 #: ../admin/settings.php:436
+#, fuzzy
 msgid "Thumbnail quality"
-msgstr ""
+msgstr "Thumbnail"
 
 #: ../admin/settings.php:440
 msgid "Single picture"
 msgstr ""
 
 #: ../admin/settings.php:443
+#, fuzzy
 msgid "Clear cache folder"
-msgstr ""
+msgstr "Leeg Cache"
 
 #: ../admin/settings.php:444
+#, fuzzy
 msgid "Proceed now"
-msgstr ""
+msgstr "Log nu wissen"
 
 #: ../admin/settings.php:463
+#, fuzzy
 msgid "Inline gallery"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
 #: ../admin/settings.php:465
 msgid "Galleries will not be shown on a subpage, but on the same page."
 msgstr ""
 
 #: ../admin/settings.php:469
+#, fuzzy
 msgid "Images per page"
-msgstr ""
+msgstr "Aantal items per pagina"
 
 #: ../admin/settings.php:472
 msgid "0 will disable pagination, all images on one page"
@@ -2103,12 +2517,14 @@ msgid ""
 msgstr ""
 
 #: ../admin/settings.php:484
+#, fuzzy
 msgid "Enable slideshow"
-msgstr ""
+msgstr "Activeer logging"
 
 #: ../admin/settings.php:484
+#, fuzzy
 msgid "Text to show:"
-msgstr ""
+msgstr "Geschiedenis tonen"
 
 #: ../admin/settings.php:487
 msgid ""
@@ -2117,12 +2533,14 @@ msgid ""
 msgstr ""
 
 #: ../admin/settings.php:491
+#, fuzzy
 msgid "Show first"
-msgstr ""
+msgstr "Geschiedenis tonen"
 
 #: ../admin/settings.php:492 ../widgets/widgets.php:218
+#, fuzzy
 msgid "Thumbnails"
-msgstr ""
+msgstr "Thumbnails"
 
 #: ../admin/settings.php:498
 msgid "ImageBrowser"
@@ -2133,8 +2551,9 @@ msgid "Use ImageBrowser instead of another effect."
 msgstr ""
 
 #: ../admin/settings.php:504
+#, fuzzy
 msgid "Hidden images"
-msgstr ""
+msgstr "Gevonden Afbeeldingen:"
 
 #: ../admin/settings.php:506
 msgid ""
@@ -2159,32 +2578,39 @@ msgid "Note: works only in combination with the Shutter effect."
 msgstr ""
 
 #: ../admin/settings.php:518
+#, fuzzy
 msgid "Sort options"
-msgstr ""
+msgstr "Sorteer Lijst"
 
 #: ../admin/settings.php:521
+#, fuzzy
 msgid "Sort thumbnails"
-msgstr ""
+msgstr "Thumbnails"
 
 #: ../admin/settings.php:523
 msgid "Custom order"
 msgstr ""
 
 #: ../admin/settings.php:525
+#, fuzzy
 msgid "File name"
-msgstr ""
+msgstr "URL/Filename:"
 
 #: ../admin/settings.php:526
+#, fuzzy
 msgid "Alt / Title text"
-msgstr ""
+msgstr "Paginatitel      : "
 
 #: ../admin/settings.php:527 ../view/imagebrowser-exif.php:58
+#, fuzzy
 msgid "Date / Time"
 msgstr ""
+"Sla afbeeldingen op met originele datum/tijd van de server indien beschikbaar"
 
 #: ../admin/settings.php:531
+#, fuzzy
 msgid "Sort direction"
-msgstr ""
+msgstr "Sorteer Lijst"
 
 #: ../admin/settings.php:550
 msgid ""
@@ -2205,8 +2631,9 @@ msgid ""
 msgstr ""
 
 #: ../admin/settings.php:554
+#, fuzzy
 msgid "JavaScript Thumbnail effect"
-msgstr ""
+msgstr "Thumbnail URL"
 
 #: ../admin/settings.php:558
 msgid "Thickbox"
@@ -2224,7 +2651,7 @@ msgstr ""
 msgid "Shutter"
 msgstr ""
 
-#: ../admin/settings.php:562
+#: ../admin/settings.php:562 ../admin/tinymce/window.php:184
 msgid "Custom"
 msgstr ""
 
@@ -2243,28 +2670,32 @@ msgid "Preview"
 msgstr ""
 
 #: ../admin/settings.php:595 ../admin/settings.php:600
+#, fuzzy
 msgid "Position"
-msgstr ""
+msgstr "Ongeldige regular expression opgegeven. Fout op positie"
 
 #: ../admin/settings.php:620
 msgid "Offset"
 msgstr ""
 
 #: ../admin/settings.php:636
+#, fuzzy
 msgid "Use image as watermark"
-msgstr ""
+msgstr "dagen om BID te gebruiken."
 
 #: ../admin/settings.php:639
+#, fuzzy
 msgid "URL to file"
-msgstr ""
+msgstr "URL/Filename:"
 
 #: ../admin/settings.php:641
 msgid "The accessing of URL files is disabled at your server (allow_url_fopen)"
 msgstr ""
 
 #: ../admin/settings.php:644
+#, fuzzy
 msgid "Use text as watermark"
-msgstr ""
+msgstr "dagen om BID te gebruiken."
 
 #: ../admin/settings.php:647
 msgid "Font"
@@ -2373,8 +2804,9 @@ msgid "Press the button below to search for the file."
 msgstr ""
 
 #: ../admin/settings.php:738
+#, fuzzy
 msgid "Enable flash slideshow"
-msgstr ""
+msgstr "Activeer logging"
 
 #: ../admin/settings.php:740
 msgid "Integrate the flash based slideshow for all flash supported devices"
@@ -2385,40 +2817,46 @@ msgid "Path to the JW Image Rotator (URL)"
 msgstr ""
 
 #: ../admin/settings.php:746
+#, fuzzy
 msgid "Search now"
-msgstr ""
+msgstr "Log nu wissen"
 
 #: ../admin/settings.php:747
 msgid "Press the button below to search for the JW Image Rotator"
 msgstr ""
 
 #: ../admin/settings.php:751
+#, fuzzy
 msgid "Shuffle mode"
-msgstr ""
+msgstr "AUTO MODE"
 
 #: ../admin/settings.php:755
 msgid "Show next image on click"
 msgstr ""
 
 #: ../admin/settings.php:759
+#, fuzzy
 msgid "Show navigation bar"
-msgstr ""
+msgstr "Weergave BID Instantie bij deze taak"
 
 #: ../admin/settings.php:763
+#, fuzzy
 msgid "Show loading icon"
-msgstr ""
+msgstr "Laden…"
 
 #: ../admin/settings.php:767
+#, fuzzy
 msgid "Use watermark logo"
-msgstr ""
+msgstr "dagen om BID te gebruiken."
 
 #: ../admin/settings.php:769
 msgid "You can change the logo at the watermark settings"
 msgstr ""
 
 #: ../admin/settings.php:772
+#, fuzzy
 msgid "Stretch image"
-msgstr ""
+msgstr "Bekijk Afbeelding..."
 
 #: ../admin/settings.php:775
 msgid "true"
@@ -2433,8 +2871,9 @@ msgid "fit"
 msgstr ""
 
 #: ../admin/settings.php:778
+#, fuzzy
 msgid "none"
-msgstr ""
+msgstr "(geen)"
 
 #: ../admin/settings.php:787
 msgid "bgfade"
@@ -2485,16 +2924,18 @@ msgid "Texts / Buttons Color"
 msgstr ""
 
 #: ../admin/settings.php:814
+#, fuzzy
 msgid "Rollover / Active Color"
-msgstr ""
+msgstr "Stop actieve verbindingen..."
 
 #: ../admin/settings.php:819
 msgid "Screen Color"
 msgstr ""
 
 #: ../admin/settings.php:824
+#, fuzzy
 msgid "Background music (URL)"
-msgstr ""
+msgstr "URL             : "
 
 #: ../admin/settings.php:828
 msgid "Try XHTML validation (with CDATA)"
@@ -2523,8 +2964,9 @@ msgid "Reset all options/settings to the default installation."
 msgstr ""
 
 #: ../admin/setup.php:34
+#, fuzzy
 msgid "Reset settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: ../admin/setup.php:34
 msgid ""
@@ -2548,8 +2990,9 @@ msgid ""
 msgstr ""
 
 #: ../admin/setup.php:47
+#, fuzzy
 msgid "WARNING:"
-msgstr ""
+msgstr "Waarschuwing"
 
 #: ../admin/setup.php:48
 msgid ""
@@ -2582,87 +3025,128 @@ msgid "No meta data saved"
 msgstr ""
 
 #: ../admin/showmeta.php:54
+#, fuzzy
 msgid "EXIF Data"
-msgstr ""
+msgstr "Contextdata"
 
 #: ../admin/showmeta.php:73
+#, fuzzy
 msgid "No exif data"
-msgstr ""
+msgstr "Contextdata"
 
 #: ../admin/showmeta.php:80
+#, fuzzy
 msgid "IPTC Data"
-msgstr ""
+msgstr "Contextdata"
 
 #: ../admin/showmeta.php:104
+#, fuzzy
 msgid "XMP Data"
+msgstr "Contextdata"
+
+#: ../admin/style.php:112
+msgid "Successfully selected CSS file."
 msgstr ""
 
-#: ../admin/style.php:11
-msgid "(From the theme folder)"
-msgstr ""
+#: ../admin/style.php:114
+#, fuzzy
+msgid "No CSS file will be used."
+msgstr "Bestand     : "
 
-#: ../admin/style.php:43
+#: ../admin/style.php:123 ../admin/style.php:163
 msgid "You do not have sufficient permissions to edit templates for this blog."
 msgstr ""
 
-#: ../admin/style.php:52
-msgid "CSS file successfully updated"
+#: ../admin/style.php:148
+#, fuzzy
+msgid "Could not move file."
+msgstr "Verplaats naar Boven"
+
+#: ../admin/style.php:154
+msgid "CSS file successfully updated."
 msgstr ""
 
-#: ../admin/style.php:88
+#: ../admin/style.php:156
+#, fuzzy
+msgid "Could not save file."
+msgstr "Save wachtwoord:"
+
+#: ../admin/style.php:176
+msgid "CSS file successfully moved."
+msgstr ""
+
+#: ../admin/style.php:181
+msgid "Could not move the CSS file."
+msgstr ""
+
+#: ../admin/style.php:209
+msgid "Your CSS file is set by a theme or another plugin."
+msgstr ""
+
+#: ../admin/style.php:209
+#, fuzzy
+msgid "This CSS file will be applied:"
+msgstr "Bestand     : "
+
+#: ../admin/style.php:240
 msgid "Style Editor"
 msgstr ""
 
-#: ../admin/style.php:92
+#: ../admin/style.php:246
 msgid "Activate and use style sheet:"
 msgstr ""
 
-#: ../admin/style.php:112
+#: ../admin/style.php:263
 msgid "Activate"
 msgstr ""
 
-#: ../admin/style.php:122
-#, php-format
-msgid "Editing <strong>%s</strong>"
+#: ../admin/style.php:272
+#, fuzzy, php-format
+msgid "Editing %s"
+msgstr "+%1$s meer"
+
+#: ../admin/style.php:274
+#, fuzzy, php-format
+msgid "Browsing %s"
+msgstr "Geschiedenis voor %s"
+
+#: ../admin/style.php:277
+#, fuzzy
+msgid "(from the theme folder)"
+msgstr "Probeer opnieuw verzamelmap:"
+
+#: ../admin/style.php:287
+msgid ""
+"To ensure your css file stays safe during upgrades, please move it to the "
+"right folder."
 msgstr ""
 
-#: ../admin/style.php:124
-#, php-format
-msgid "Browsing <strong>%s</strong>"
-msgstr ""
+#: ../admin/style.php:290
+#, fuzzy
+msgid "Move file"
+msgstr "Verplaats naar Boven"
 
-#: ../admin/style.php:134
+#: ../admin/style.php:296
+#, fuzzy
 msgid "Version"
-msgstr ""
+msgstr "Datum versie"
 
-#: ../admin/style.php:137
-msgid ""
-"Tip: Copy your stylesheet (nggallery.css) to your theme folder, so it will "
-"be not lost during a upgrade"
-msgstr ""
+#: ../admin/style.php:300
+#, fuzzy
+msgid "File location"
+msgstr "Kopieer afbeeldingslocatie naar clipboard"
 
-#: ../admin/style.php:139
-msgid ""
-"Your theme contain a NextCellent Gallery stylesheet (nggallery.css), this "
-"file will be used"
-msgstr ""
-
-#: ../admin/style.php:141
-msgid ""
-"Tip No. 2: Use the color picker below to help you find the right color "
-"scheme for your gallery!"
-msgstr ""
-
-#: ../admin/style.php:157
+#: ../admin/style.php:313
+#, fuzzy
 msgid "Update File"
-msgstr ""
+msgstr "Bestand     : "
 
-#: ../admin/style.php:160
+#: ../admin/style.php:315
 msgid "If this file were writable you could edit it."
 msgstr ""
 
-#: ../admin/style.php:165
-msgid "Oops, no such file exists! Double check the name and try again."
+#: ../admin/style.php:320
+msgid "This file does not exist. Double check the name and try again."
 msgstr ""
 
 #: ../admin/tags.php:40
@@ -2678,32 +3162,38 @@ msgid "Alphabetical"
 msgstr ""
 
 #: ../admin/tags.php:110
+#, fuzzy
 msgid "Existing Tags"
-msgstr ""
+msgstr "Pas toe op bestaande links"
 
 #: ../admin/tags.php:114
 msgid "Search tags"
 msgstr ""
 
 #: ../admin/tags.php:118
+#, fuzzy
 msgid "Go"
-msgstr ""
+msgstr "Ga naar de volgende pagina"
 
 #: ../admin/tags.php:123
+#, fuzzy
 msgid "Sort Order:"
-msgstr ""
+msgstr "Sorteer Lijst"
 
 #: ../admin/tags.php:158 ../admin/tags.php:162 ../admin/tags.php:175
+#, fuzzy
 msgid "Previous tags"
-msgstr ""
+msgstr "Ga naar de vorige pagina"
 
 #: ../admin/tags.php:171
+#, fuzzy
 msgid "Next tags"
-msgstr ""
+msgstr "Ga naar de volgende pagina"
 
 #: ../admin/tags.php:183
+#, fuzzy
 msgid "Rename Tag"
-msgstr ""
+msgstr "Hernoem"
 
 #: ../admin/tags.php:191
 msgid ""
@@ -2717,20 +3207,23 @@ msgid "You can specify multiple tags to rename by separating them with commas."
 msgstr ""
 
 #: ../admin/tags.php:196
+#, fuzzy
 msgid "Tag(s) to rename:"
-msgstr ""
+msgstr "Hernoem"
 
 #: ../admin/tags.php:200
 msgid "New tag name(s):"
 msgstr ""
 
 #: ../admin/tags.php:203
+#, fuzzy
 msgid "Rename"
-msgstr ""
+msgstr "Hernoem"
 
 #: ../admin/tags.php:209
+#, fuzzy
 msgid "Delete Tag"
-msgstr ""
+msgstr "Verwijder alles"
 
 #: ../admin/tags.php:217
 msgid ""
@@ -2743,8 +3236,9 @@ msgid "You can specify multiple tags to delete by separating them with commas"
 msgstr ""
 
 #: ../admin/tags.php:222
+#, fuzzy
 msgid "Tag(s) to delete:"
-msgstr ""
+msgstr "Verwijder de logfile?"
 
 #: ../admin/tags.php:231
 msgid "Edit Tag Slug"
@@ -2757,141 +3251,358 @@ msgid ""
 msgstr ""
 
 #: ../admin/tags.php:244
+#, fuzzy
 msgid "Tag(s) to match:"
-msgstr ""
+msgstr "Corrigeer de Afbeelding link"
 
 #: ../admin/tags.php:248
+#, fuzzy
 msgid "Slug(s) to set:"
+msgstr "Geschiedenis voor %s"
+
+#: ../admin/tinymce/window.php:118
+msgid "To add something, select what you would want to display"
 msgstr ""
 
-#: ../admin/tinymce/window.php:65
-msgid "Select or enter gallery"
+#: ../admin/tinymce/window.php:122
+msgid "One picture"
 msgstr ""
 
-#: ../admin/tinymce/window.php:70 ../admin/tinymce/window.php:91
-msgid "Show as"
+#: ../admin/tinymce/window.php:123
+#, fuzzy
+msgid "Recent pictures"
+msgstr "Recente mappen"
+
+#: ../admin/tinymce/window.php:124
+msgid "Random pictures"
 msgstr ""
 
-#: ../admin/tinymce/window.php:71
-msgid "Image list"
+#: ../admin/tinymce/window.php:132 ../admin/tinymce/window.php:233
+#: ../admin/tinymce/window.php:300 ../admin/tinymce/window.php:358
+#: ../admin/tinymce/window.php:420
+msgid "Basics"
 msgstr ""
 
-#: ../admin/tinymce/window.php:73
+#: ../admin/tinymce/window.php:135 ../admin/tinymce/window.php:379
+#: ../admin/tinymce/window.php:430
+#, fuzzy
+msgid "Select a gallery:"
+msgstr "Selecteer Afbeeldingen"
+
+#: ../admin/tinymce/window.php:138 ../admin/tinymce/window.php:382
+#: ../admin/tinymce/window.php:433
+#, fuzzy
+msgid "Select or search for a gallery"
+msgstr "Selecteer Afbeeldingen"
+
+#: ../admin/tinymce/window.php:143
+msgid "Display types"
+msgstr ""
+
+#: ../admin/tinymce/window.php:146
+msgid "Select how you want to display your gallery"
+msgstr ""
+
+#: ../admin/tinymce/window.php:165
 msgid "Imagebrowser"
 msgstr ""
 
-#: ../admin/tinymce/window.php:86
+#: ../admin/tinymce/window.php:171 ../admin/tinymce/window.php:283
+#: ../admin/tinymce/window.php:404 ../admin/tinymce/window.php:455
+msgid "Carousel"
+msgstr ""
+
+#: ../admin/tinymce/window.php:177 ../admin/tinymce/window.php:289
+#: ../admin/tinymce/window.php:350 ../admin/tinymce/window.php:410
+#: ../admin/tinymce/window.php:461 ../lib/meta.php:451
+msgid "Caption"
+msgstr ""
+
+#: ../admin/tinymce/window.php:190
+#, fuzzy
+msgid "Type options"
+msgstr "Licensietype:"
+
+#: ../admin/tinymce/window.php:197 ../admin/tinymce/window.php:361
+#: ../admin/tinymce/window.php:423
+#, fuzzy
+msgid "Number of images"
+msgstr ""
+"Breng het aantal afbeeldingen uit de lijst terug tot 60 en probeer opnieuw "
+"of registreer uw versie om deze limiet te verwijderen."
+
+#: ../admin/tinymce/window.php:200
+msgid ""
+"The number of images before pagination is applied. Leave empty for the "
+"default from the settings."
+msgstr ""
+
+#: ../admin/tinymce/window.php:208
+msgid "Slideshow dimensions"
+msgstr ""
+
+#: ../admin/tinymce/window.php:219
+#, fuzzy
+msgid "Template name"
+msgstr "Gebruikersnaam:"
+
+#: ../admin/tinymce/window.php:239
+#, fuzzy
 msgid "Select or enter album"
+msgstr "Voer de registratiecode in:"
+
+#: ../admin/tinymce/window.php:241
+msgid "Leave this empty to display all galleries."
 msgstr ""
 
-#: ../admin/tinymce/window.php:92
-msgid "Extended version"
+#: ../admin/tinymce/window.php:245
+msgid "Album display types"
 msgstr ""
 
-#: ../admin/tinymce/window.php:93
+#: ../admin/tinymce/window.php:248
+msgid "Select how you want to display the albums"
+msgstr ""
+
+#: ../admin/tinymce/window.php:255
+#, fuzzy
 msgid "Compact version"
+msgstr "Datum versie"
+
+#: ../admin/tinymce/window.php:261
+#, fuzzy
+msgid "Extended version"
+msgstr "Datum versie"
+
+#: ../admin/tinymce/window.php:267
+#, fuzzy
+msgid "Gallery display types"
+msgstr "Exporteer Gallerij"
+
+#: ../admin/tinymce/window.php:270
+msgid ""
+"Select a template for the galleries (displayed after you click on an album)"
 msgstr ""
 
-#: ../admin/tinymce/window.php:106
+#: ../admin/tinymce/window.php:304
+#, fuzzy
+msgid "Select a picture"
+msgstr "Selecteer"
+
+#: ../admin/tinymce/window.php:308
+#, fuzzy
 msgid "Select or enter picture"
+msgstr "Voer de registratiecode in:"
+
+#: ../admin/tinymce/window.php:313 ../admin/tinymce/window.php:388
+#: ../admin/tinymce/window.php:439
+#, fuzzy
+msgid "Options"
+msgstr ""
+"Start IE, klik op Tools | Internet Opties | Geavanceerd, en neem de "
+"instellingen al dan niet over. Klik op Toepassen om de instellingen op te "
+"slaan."
+
+#: ../admin/tinymce/window.php:316
+msgid "Dimensions"
 msgstr ""
 
-#: ../admin/tinymce/window.php:111
-msgid "Width x Height"
-msgstr ""
-
-#: ../admin/tinymce/window.php:115
+#: ../admin/tinymce/window.php:325
 msgid "Effect"
 msgstr ""
 
-#: ../admin/tinymce/window.php:118
+#: ../admin/tinymce/window.php:328
 msgid "No effect"
 msgstr ""
 
-#: ../admin/tinymce/window.php:120
+#: ../admin/tinymce/window.php:330
+#, fuzzy
 msgid "Web 2.0"
-msgstr ""
+msgstr "Kan webpagina niet downloaden:"
 
-#: ../admin/tinymce/window.php:125
-msgid "Float"
-msgstr ""
-
-#: ../admin/tinymce/window.php:128
+#: ../admin/tinymce/window.php:338
 msgid "No float"
 msgstr ""
 
-#: ../admin/tinymce/window.php:147
+#: ../admin/tinymce/window.php:346
+#, fuzzy
+msgid "Link"
+msgstr "Open doel met Bulk Image Downloader"
+
+#: ../admin/tinymce/window.php:347
+msgid "Add an optional link to the image. Leave blank for no link."
+msgstr ""
+
+#: ../admin/tinymce/window.php:351
+msgid "Add an optional caption to the image. Leave blank for no caption."
+msgstr ""
+
+#: ../admin/tinymce/window.php:364 ../admin/tinymce/window.php:426
+#, fuzzy
+msgid "The number of images that should be displayed."
+msgstr "Aantal keren opnieuw te proberen (t.a.v. afbeeldingen):"
+
+#: ../admin/tinymce/window.php:368
+#, fuzzy
+msgid "Sort the images"
+msgstr "Sorteer Lijst"
+
+#: ../admin/tinymce/window.php:371
+msgid "Upload order"
+msgstr ""
+
+#: ../admin/tinymce/window.php:372
+#, fuzzy
+msgid "Date taken"
+msgstr "Datum File"
+
+#: ../admin/tinymce/window.php:373
+#, fuzzy
+msgid "User defined"
+msgstr "Gebruikersnaam:"
+
+#: ../admin/tinymce/window.php:375
+msgid ""
+"In what order the images are shown. Upload order uses the ID's, date taken "
+"uses the EXIF data and user defined is the sort mode from the settings."
+msgstr ""
+
+#: ../admin/tinymce/window.php:384 ../admin/tinymce/window.php:435
+msgid "If a gallery is selected, only images from that gallery will be shown."
+msgstr ""
+
+#: ../admin/tinymce/window.php:391 ../admin/tinymce/window.php:442
+#, fuzzy
+msgid "Select a template to display the images"
+msgstr "Selecteer dezelfde afbeeldingen"
+
+#: ../admin/tinymce/window.php:475
 msgid "Insert"
 msgstr ""
+
+#: ../admin/tinymce/window.php:511
+msgid "You need to select a gallery."
+msgstr ""
+
+#: ../admin/tinymce/window.php:515
+msgid "You need to select a picture."
+msgstr ""
+
+#: ../admin/tinymce/window.php:519 ../admin/tinymce/window.php:523
+msgid "You need to select a number of images."
+msgstr ""
+
+#: ../admin/upgrade.php:22
+#, fuzzy
+msgid "Upgrading database…"
+msgstr "Database leeggemaakt"
+
+#: ../admin/upgrade.php:48
+msgid "Could not find NextCellent Gallery database tables, upgrade failed!"
+msgstr ""
+
+#: ../admin/upgrade.php:68 ../admin/upgrade.php:85
+#, fuzzy
+msgid "Upgrade NextCellent Gallery"
+msgstr "BID Upgradeperiode is verlopen"
+
+#: ../admin/upgrade.php:69
+msgid ""
+"You're upgrading from an older version. To enable the newest features, we "
+"sometimes need to do a database upgrade."
+msgstr ""
+
+#: ../admin/upgrade.php:70
+msgid ""
+"Normally you should be able to downgrade without any problems, but if you "
+"really want to play safe, you should make a backup of your database."
+msgstr ""
+
+#: ../admin/upgrade.php:71
+#, fuzzy
+msgid "Start upgrade now"
+msgstr "Upgradeperiode verlengen"
+
+#: ../admin/upgrade.php:87
+#, fuzzy
+msgid "Upgrade complete."
+msgstr "Sluit wanneer het downloaden klaar is"
+
+#: ../admin/upgrade.php:88
+#, fuzzy
+msgid "Continue to NextCellent"
+msgstr "De huidige taak wordt gestopt - doorgaan?"
 
 #: ../admin/wpmu.php:33
 msgid "Update successfully"
 msgstr ""
 
-#: ../admin/wpmu.php:48
+#: ../admin/wpmu.php:50
 msgid "Network Options"
 msgstr ""
 
-#: ../admin/wpmu.php:56
+#: ../admin/wpmu.php:58
 msgid ""
 "This is the default path for all blogs. With the placeholder %BLOG_ID% you "
 "can organize the folder structure better."
 msgstr ""
 
-#: ../admin/wpmu.php:57
+#: ../admin/wpmu.php:59
 #, php-format
 msgid "The default setting should be %s"
 msgstr ""
 
-#: ../admin/wpmu.php:61
+#: ../admin/wpmu.php:63
 msgid "Enable upload quota check"
 msgstr ""
 
-#: ../admin/wpmu.php:63
+#: ../admin/wpmu.php:65
 msgid "Should work if the gallery is bellow the blog.dir"
 msgstr ""
 
-#: ../admin/wpmu.php:67
+#: ../admin/wpmu.php:69
 msgid "Enable zip upload option"
 msgstr ""
 
-#: ../admin/wpmu.php:69
+#: ../admin/wpmu.php:71
 msgid "Allow users to upload zip folders."
 msgstr ""
 
-#: ../admin/wpmu.php:73
-msgid "Enable import function"
-msgstr ""
-
 #: ../admin/wpmu.php:75
+#, fuzzy
+msgid "Enable import function"
+msgstr "Activeer logging"
+
+#: ../admin/wpmu.php:77
 msgid "Allow users to import images folders from the server."
 msgstr ""
 
-#: ../admin/wpmu.php:79
-msgid "Enable style selection"
-msgstr ""
-
 #: ../admin/wpmu.php:81
+#, fuzzy
+msgid "Enable style selection"
+msgstr "Keer Selectie om"
+
+#: ../admin/wpmu.php:83
 msgid "Allow users to choose a style for the gallery."
 msgstr ""
 
-#: ../admin/wpmu.php:85
-msgid "Enable roles/capabilities"
-msgstr ""
-
 #: ../admin/wpmu.php:87
+#, fuzzy
+msgid "Enable roles/capabilities"
+msgstr "<< Activeer de wachtrij om de downloadtaken te starten"
+
+#: ../admin/wpmu.php:89
 msgid "Allow users to change the roles for other blog authors."
 msgstr ""
 
-#: ../admin/wpmu.php:91
+#: ../admin/wpmu.php:93
 msgid "Default style"
 msgstr ""
 
-#: ../admin/wpmu.php:108
+#: ../admin/wpmu.php:110
 msgid "Choose the default style for the galleries."
 msgstr ""
 
-#: ../lib/core.php:407
+#: ../lib/core.php:432
 #, php-format
 msgid ""
 "Note : Based on your server memory limit you should not upload larger images "
@@ -2899,12 +3610,14 @@ msgid ""
 msgstr ""
 
 #: ../lib/locale.php:112
+#, fuzzy
 msgid "Invalid URL Provided."
-msgstr ""
+msgstr "URL             : "
 
 #: ../lib/locale.php:116 ../lib/locale.php:120
+#, fuzzy
 msgid "Could not create Temporary file."
-msgstr ""
+msgstr "Kon de map niet aanmaken:"
 
 #: ../lib/meta.php:131
 msgid " mm"
@@ -2934,10 +3647,6 @@ msgstr ""
 msgid "Camera"
 msgstr ""
 
-#: ../lib/meta.php:451
-msgid "Caption"
-msgstr ""
-
 #: ../lib/meta.php:453
 msgid "Copyright"
 msgstr ""
@@ -2959,12 +3668,15 @@ msgid "Subject"
 msgstr ""
 
 #: ../lib/meta.php:461
+#, fuzzy
 msgid "Make"
 msgstr ""
+"Maak de downloadmapnamen uniek (de paginatitel wordt als mapnaam gebruikt)"
 
 #: ../lib/meta.php:462
+#, fuzzy
 msgid "Edit Status"
-msgstr ""
+msgstr "Status"
 
 #: ../lib/meta.php:463
 msgid "Category"
@@ -2975,12 +3687,14 @@ msgid "Keywords"
 msgstr ""
 
 #: ../lib/meta.php:465
+#, fuzzy
 msgid "Date Created"
-msgstr ""
+msgstr "Datum versie"
 
 #: ../lib/meta.php:466
+#, fuzzy
 msgid "Time Created"
-msgstr ""
+msgstr "Starttijd          :"
 
 #: ../lib/meta.php:467
 msgid "Author Position"
@@ -2991,16 +3705,18 @@ msgid "City"
 msgstr ""
 
 #: ../lib/meta.php:469
+#, fuzzy
 msgid "Location"
-msgstr ""
+msgstr "Kopieer afbeeldingslocatie naar clipboard"
 
 #: ../lib/meta.php:470
 msgid "Province/State"
 msgstr ""
 
 #: ../lib/meta.php:471
+#, fuzzy
 msgid "Country code"
-msgstr ""
+msgstr "Genereer code"
 
 #: ../lib/meta.php:472
 msgid "Country"
@@ -3023,8 +3739,9 @@ msgid "Contact"
 msgstr ""
 
 #: ../lib/meta.php:478
+#, fuzzy
 msgid "Last modified"
-msgstr ""
+msgstr "Datum gewijzigd"
 
 #: ../lib/meta.php:479
 msgid "Program tool"
@@ -3035,12 +3752,14 @@ msgid "Format"
 msgstr ""
 
 #: ../lib/meta.php:481
+#, fuzzy
 msgid "Image Width"
-msgstr ""
+msgstr "Aantal Afbeeldingen"
 
 #: ../lib/meta.php:482
+#, fuzzy
 msgid "Image Height"
-msgstr ""
+msgstr "Bekijk Afbeelding..."
 
 #: ../lib/meta.php:483
 msgid "Flash"
@@ -3052,21 +3771,24 @@ msgid ""
 "upload more files."
 msgstr ""
 
-#: ../lib/ngg-db.php:326 ../lib/ngg-db.php:327
+#: ../lib/ngg-db.php:342 ../lib/ngg-db.php:343
 msgid "Album overview"
 msgstr ""
 
 #: ../lib/shortcodes.php:276 ../nggfunctions.php:166 ../nggfunctions.php:651
+#, fuzzy
 msgid "[Gallery not found]"
-msgstr ""
+msgstr "Afbeelding niet gevonden"
 
 #: ../lib/shortcodes.php:340
+#, fuzzy
 msgid "[Pictures not found]"
-msgstr ""
+msgstr "Afbeelding niet gevonden"
 
 #: ../lib/tags.php:35
+#, fuzzy
 msgid "No new tag specified!"
-msgstr ""
+msgstr "Maak nieuw geheim RSS-adres"
 
 #: ../lib/tags.php:50
 msgid "No new/old valid tag specified!"
@@ -3082,8 +3804,9 @@ msgid "Renamed tag(s) &laquo;%1$s&raquo; to &laquo;%2$s&raquo;"
 msgstr ""
 
 #: ../lib/tags.php:95
+#, fuzzy
 msgid "No valid new tag."
-msgstr ""
+msgstr "Geen geldige callback gevonden."
 
 #: ../lib/tags.php:112
 msgid "No objects (post/page) found for specified old tags."
@@ -3129,9 +3852,9 @@ msgid "No slug edited."
 msgstr ""
 
 #: ../lib/tags.php:243
-#, php-format
+#, fuzzy, php-format
 msgid "%s slug(s) edited."
-msgstr ""
+msgstr "Geschiedenis voor %s"
 
 #: ../lib/xmlrpc.php:93
 #, php-format
@@ -3149,16 +3872,18 @@ msgid "You are not allowed to upload files to this site."
 msgstr ""
 
 #: ../lib/xmlrpc.php:163 ../lib/xmlrpc.php:777 ../lib/xmlrpc.php:829
+#, fuzzy
 msgid "Could not find gallery "
-msgstr ""
+msgstr "Kon de map niet aanmaken:"
 
 #: ../lib/xmlrpc.php:168 ../lib/xmlrpc.php:782 ../lib/xmlrpc.php:834
 msgid "You are not allowed to upload files to this gallery."
 msgstr ""
 
 #: ../lib/xmlrpc.php:180
+#, fuzzy
 msgid "This is no valid image file."
-msgstr ""
+msgstr "Ongeldige afbeelding"
 
 #: ../lib/xmlrpc.php:192
 msgid "Could not find image id "
@@ -3175,8 +3900,9 @@ msgid "Could not write file %1$s (%2$s)"
 msgstr ""
 
 #: ../lib/xmlrpc.php:275 ../lib/xmlrpc.php:327
+#, fuzzy
 msgid "Invalid image ID"
-msgstr ""
+msgstr "Ongeldige afbeelding"
 
 #: ../lib/xmlrpc.php:278 ../lib/xmlrpc.php:330
 msgid "Sorry, you must be able to edit this image"
@@ -3192,12 +3918,14 @@ msgid "Sorry, you must be able to manage galleries"
 msgstr ""
 
 #: ../lib/xmlrpc.php:378
+#, fuzzy
 msgid "Sorry, could not create the gallery"
-msgstr ""
+msgstr "Kon de map niet aanmaken:"
 
 #: ../lib/xmlrpc.php:421 ../lib/xmlrpc.php:601
+#, fuzzy
 msgid "Invalid gallery ID"
-msgstr ""
+msgstr "Ongeldige afbeelding"
 
 #: ../lib/xmlrpc.php:424
 msgid "Sorry, you must be able to manage this gallery"
@@ -3213,24 +3941,35 @@ msgid "Sorry, you must be able to manage albums"
 msgstr ""
 
 #: ../lib/xmlrpc.php:476
+#, fuzzy
 msgid "Sorry, could not create the album"
-msgstr ""
+msgstr "Kon de map niet aanmaken:"
 
 #: ../lib/xmlrpc.php:519 ../lib/xmlrpc.php:561
+#, fuzzy
 msgid "Invalid album ID"
-msgstr ""
+msgstr "Ongeldige afbeelding"
 
 #: ../lib/xmlrpc.php:528
 msgid "Sorry, could not update the album"
 msgstr ""
 
-#: ../nggallery.php:117
+#: ../nggallery.php:102
+msgid "NextCellent Gallery requires a database upgrade."
+msgstr ""
+
+#: ../nggallery.php:102
+#, fuzzy
+msgid "Upgrade now"
+msgstr "Log nu wissen"
+
+#: ../nggallery.php:129
 msgid ""
 "<strong>Translation by : </strong><a target=\"_blank\" href=\"http://"
 "alexrabe.de/wordpress-plugins/nextgen-gallery/languages/\">See here</a>"
 msgstr ""
 
-#: ../nggallery.php:118
+#: ../nggallery.php:130
 msgid ""
 "<strong>This translation is not yet updated for Version 1.9.0</strong>. If "
 "you would like to help with translation, download the current po from the "
@@ -3238,32 +3977,38 @@ msgid ""
 "wordtube/translation-of-plugins/\">here</a> how you can translate the plugin."
 msgstr ""
 
-#: ../nggallery.php:215
+#: ../nggallery.php:239
 msgid ""
 "Sorry, NextCellent Gallery works only with a Memory Limit of 16 MB or higher"
 msgstr ""
 
-#: ../nggallery.php:242
+#: ../nggallery.php:268
 msgid "Picture tag"
 msgstr ""
 
-#: ../nggallery.php:243
+#: ../nggallery.php:269
 msgid "Picture tag: %2$l."
 msgstr ""
 
-#: ../nggallery.php:244
+#: ../nggallery.php:270
 msgid "Separate picture tags with commas."
 msgstr ""
 
 #: ../nggallery.php:376
-msgid "loading"
-msgstr ""
+#, fuzzy
+msgid "NextCellent Gallery / Images"
+msgstr "Scan URL op afbeeldingen"
 
-#: ../nggallery.php:551
+#: ../nggallery.php:480
+#, fuzzy
+msgid "loading"
+msgstr "Laden…"
+
+#: ../nggallery.php:672
 msgid "Get help"
 msgstr ""
 
-#: ../nggallery.php:633
+#: ../nggallery.php:754
 msgid "Sorry, NextCellent Gallery is deactivated: NextGEN version "
 msgstr ""
 
@@ -3275,16 +4020,19 @@ msgid ""
 msgstr ""
 
 #: ../nggfunctions.php:453
+#, fuzzy
 msgid "[Album not found]"
-msgstr ""
+msgstr "Afbeelding niet gevonden"
 
-#: ../nggfunctions.php:781
+#: ../nggfunctions.php:782
+#, fuzzy
 msgid "[SinglePic not found]"
-msgstr ""
+msgstr "Geen geldige callback gevonden."
 
-#: ../nggfunctions.php:917
+#: ../nggfunctions.php:918
+#, fuzzy
 msgid "Related images for"
-msgstr ""
+msgstr "Deselecteer Afbeeldingen"
 
 #: ../view/album-compact.php:32 ../view/album-extend.php:30
 msgid "Photos"
@@ -3292,8 +4040,9 @@ msgstr ""
 
 #: ../view/gallery-caption.php:32 ../view/gallery.php:32
 #: ../widgets/media-rss-widget.php:112
+#, fuzzy
 msgid "[View with PicLens]"
-msgstr ""
+msgstr "Bekijk Thumbnail..."
 
 #: ../view/imagebrowser-caption.php:26 ../view/imagebrowser-exif.php:30
 #: ../view/imagebrowser.php:26
@@ -3302,8 +4051,9 @@ msgstr ""
 
 #: ../view/imagebrowser-caption.php:29 ../view/imagebrowser-exif.php:33
 #: ../view/imagebrowser.php:29
+#, fuzzy
 msgid "Next"
-msgstr ""
+msgstr "Ga naar de volgende pagina"
 
 #: ../view/imagebrowser-caption.php:31 ../view/imagebrowser-exif.php:35
 #: ../view/imagebrowser.php:31
@@ -3311,12 +4061,14 @@ msgid "of"
 msgstr ""
 
 #: ../view/imagebrowser-exif.php:38
+#, fuzzy
 msgid "Meta data"
-msgstr ""
+msgstr "Dit is potentieel bruikbare metadata die de logger opgeslagen heeft."
 
 #: ../view/imagebrowser-exif.php:42
+#, fuzzy
 msgid "Camera / Type"
-msgstr ""
+msgstr "Licensietype:"
 
 #: ../view/imagebrowser-exif.php:50
 msgid "Focal Length"
@@ -3327,21 +4079,24 @@ msgid "Widget that displays Media RSS links for NextCellent Gallery."
 msgstr ""
 
 #: ../widgets/media-rss-widget.php:20
+#, fuzzy
 msgid "NextCellent Media RSS"
-msgstr ""
+msgstr "Maak nieuw geheim RSS-adres"
 
 #: ../widgets/media-rss-widget.php:68
 msgid "Media RSS"
 msgstr ""
 
 #: ../widgets/media-rss-widget.php:69
+#, fuzzy
 msgid "Link to the main image feed"
-msgstr ""
+msgstr "Open doel met Bulk Image Downloader"
 
 #: ../widgets/media-rss-widget.php:79 ../widgets/widgets.php:122
 #: ../widgets/widgets.php:211
+#, fuzzy
 msgid "Title:"
-msgstr ""
+msgstr "Paginatitel:"
 
 #: ../widgets/media-rss-widget.php:84
 msgid "Show Media RSS icon"
@@ -3374,12 +4129,14 @@ msgid ""
 msgstr ""
 
 #: ../widgets/widgets.php:126
+#, fuzzy
 msgid "Select Gallery:"
-msgstr ""
+msgstr "Selecteer"
 
 #: ../widgets/widgets.php:128
+#, fuzzy
 msgid "All images"
-msgstr ""
+msgstr "...alleen als alle afbeeldingen succesvol gedownload zijn"
 
 #: ../widgets/widgets.php:142 ../widgets/widgets.php:235
 msgid "Width:"
@@ -3398,28 +4155,32 @@ msgid "NextCellent Widget"
 msgstr ""
 
 #: ../widgets/widgets.php:215
+#, fuzzy
 msgid "Show:"
-msgstr ""
+msgstr "Laat Taak zien"
 
 #: ../widgets/widgets.php:219
 msgid "Original images"
 msgstr ""
 
 #: ../widgets/widgets.php:227
+#, fuzzy
 msgid "recent added "
-msgstr ""
+msgstr "Recente mappen"
 
 #: ../widgets/widgets.php:231
 msgid "Enable IE8 Web Slices"
 msgstr ""
 
 #: ../widgets/widgets.php:243
+#, fuzzy
 msgid "Select:"
-msgstr ""
+msgstr "Selecteer"
 
 #: ../widgets/widgets.php:245
+#, fuzzy
 msgid "All galleries"
-msgstr ""
+msgstr "Alle berichten"
 
 #: ../widgets/widgets.php:246
 msgid "Only which are not listed"
@@ -3430,8 +4191,9 @@ msgid "Only which are listed"
 msgstr ""
 
 #: ../widgets/widgets.php:251
+#, fuzzy
 msgid "Gallery ID:"
-msgstr ""
+msgstr "Exporteer Gallerij"
 
 #: ../widgets/widgets.php:253
 msgid "Gallery IDs, separated by commas."
@@ -3456,5 +4218,6 @@ msgid "The album ID=%s does not exist."
 msgstr ""
 
 #: ../xml/media-rss.php:115
+#, fuzzy
 msgid "Invalid MediaRSS command"
-msgstr ""
+msgstr "Aantal keren opnieuw te proberen (t.a.v. ongeldige pagina's):"

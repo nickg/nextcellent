@@ -57,6 +57,9 @@ class nggManageAlbum {
 		return true;
 	}
 
+    /**
+     * FZSM: small tweak to pas current Album Id to output.
+     */
 	function controller() {
 		global $nggdb;
 
@@ -73,7 +76,7 @@ class nggManageAlbum {
 		$this->galleries  = $nggdb->find_all_galleries();
 		$this->num_albums  = count( $this->albums );
 		$this->num_galleries  = count( $this->galleries );
-		$this->output();
+        $this->output($this->currentID);
 
 	}
 
@@ -161,7 +164,11 @@ class nggManageAlbum {
 			nggGallery::show_message(__('Updated successfully','nggallery'));
 	}
 
-	function output() {
+    /**
+     * FZSM: Added Album to autocomplete
+     * @param $currentAlbum
+     */
+	function output($currentAlbum) {
 
 	global $wpdb, $nggdb;
 
@@ -176,7 +183,7 @@ jQuery(document).ready(
 	function()
 	{
         jQuery("#previewpic").nggAutocomplete( {
-            type: 'image',domain: "<?php echo home_url('index.php', is_ssl() ? 'https' : 'http'); ?>",width: "95%"
+            type: 'image',domain: "<?php echo home_url('index.php', is_ssl() ? 'https' : 'http'); ?>",width: "95%", term: <?php echo $currentAlbum; ?>
         });
 
 		jQuery('#selectContainer').sortable( {

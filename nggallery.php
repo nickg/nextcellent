@@ -5,7 +5,7 @@ Plugin URI: http://www.wpgetready.com/nextcellent-gallery
 Description: A Photo Gallery for WordPress providing NextGEN legacy compatibility from version 1.9.13
 Author: WPGReady based on Alex Rabe & PhotoCrati work.
 Author URI: http://www.wpgetready.com
-Version: 1.9.23
+Version: 1.9.26
 
 Copyright (c) 2007-2011 by Alex Rabe & NextGEN DEV-Team
 Copyright (c) 2012 Photocrati Media
@@ -52,8 +52,8 @@ if (!class_exists('nggLoader')) {
      */
     class nggLoader {
 
-		var $version     = '1.9.23';
-		var $dbversion   = '1.8.2';
+		var $version = '1.9.26';
+		var $dbversion   = '1.8.3';
 		var $minimum_WP  = '3.5';
 		var $options     = '';
 		var $manage_page;
@@ -98,10 +98,7 @@ if (!class_exists('nggLoader')) {
 				add_filter('transient_update_plugins', array(&$this, 'disable_upgrade'));
 
 	        if( get_option( 'ngg_db_version' ) != NGG_DBVERSION && isset($_GET['page']) != "nextcellent" ) {
-		        add_action( 'admin_notices', create_function( '',
-				        'echo \'<div id="message" class="update-nag"><p><strong>' . __('NextCellent Gallery requires a database upgrade.', "nggallery") . ' <a href="' . admin_url() . 'admin.php?page=nextcellent-gallery-nextgen-legacy" >' . __('Upgrade now', 'nggallery') . '</a></strong></p></div>\';'
-			        )
-		        );
+		        add_action( 'all_admin_notices', array($this,'show_upgrade_message') );
 	        }
 
 			//Add some links on the plugin page
@@ -116,6 +113,19 @@ if (!class_exists('nggLoader')) {
 			// Handle upload requests
 			add_action('init', array(&$this, 'handle_upload_request'));
 		}
+
+	    function show_upgrade_message() {
+		    if( is_network_admin() ) {
+			    $url = network_admin_url('admin.php?page=' . NGGFOLDER);
+		    } else {
+			    $url = admin_url('admin.php?page=' . NGGFOLDER);
+		    }
+		    ?>
+			<div id="message" class="update-nag">
+				<p><strong><?php _e('NextCellent Gallery requires a database upgrade.', "nggallery") ?> <a href="<?php echo $url ?>"><?php _e('Upgrade now.', 'nggallery'); ?></a></strong></p>
+			</div>
+			<?php
+	    }
 
         /**
          * Main start invoked after all plugins are loaded.
@@ -153,6 +163,23 @@ if (!class_exists('nggLoader')) {
 				add_action('wp_enqueue_scripts', array(&$this, 'load_styles') );
 
 			}
+
+	        if( get_option( 'ngg_db_version' ) != NGG_DBVERSION && isset($_GET['page']) != "nextcellent" ) {
+
+		        global $ngg;
+		        include_once( dirname( __FILE__ ) . '/admin/functions.php' );
+		        include_once( dirname( __FILE__ ) . '/admin/upgrade.php' );
+
+		        if ( !empty( $ngg->options['silentUpgrade'] ) ) {
+			        try {
+				        ngg_upgrade();
+			        } catch (Exception $e) {
+				        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="error"><p><strong>' . __( 'Something went wrong while upgrading NextCellent Gallery.', "nggallery" ) . '</strong></p></div>\';' ) );
+			        }
+		        } else {
+			        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="update-nag"><p><strong>' . __( 'NextCellent Gallery requires a database upgrade.', "nggallery" ) . ' <a href="' . admin_url() . 'admin.php?page=nextcellent-gallery-nextgen-legacy" >' . __( 'Upgrade now', 'nggallery' ) . '</a></strong></p></div>\';' ) );
+		        }
+	        }
 		}
 
         /**
@@ -322,7 +349,9 @@ if (!class_exists('nggLoader')) {
 			require_once (dirname (__FILE__) . '/lib/image.php');					//  59.424
 			require_once (dirname (__FILE__) . '/lib/tags.php');				    // 117.136
 			require_once (dirname (__FILE__) . '/lib/post-thumbnail.php');			//  n.a.
-			require_once (dirname (__FILE__) . '/widgets/widgets.php');				// 298.792
+	        require_once( dirname( __FILE__ ) . '/widgets/class-ngg-slideshow-widget.php' );
+	        require_once( dirname( __FILE__ ) . '/widgets/class-ngg-media-rss-widget.php' );
+	        require_once( dirname( __FILE__ ) . '/widgets/class-ngg-gallery-widget.php' );
 			require_once (dirname (__FILE__) . '/lib/multisite.php');
 			require_once (dirname (__FILE__) . '/lib/sitemap.php');
 
@@ -431,10 +460,12 @@ if (!class_exists('nggLoader')) {
 
         /**
          * Load scripts depending options defined
+         * 20150106: Added js for Qunit
+         * 20150107: jquery is almost mandatory... Should it be enqueued only when lightbox is activated?
          */
         function load_scripts() {
 
-			// if you don't want that NGG load the scripts, add this constant
+			// if you want to prevent Nextcellent load the scripts (for testing or development purposes), add this constant
 			if ( defined('NGG_SKIP_LOAD_SCRIPTS') )
 				return;
 
@@ -466,15 +497,13 @@ if (!class_exists('nggLoader')) {
 			if ( NGGALLERY_IREXIST == true && $this->options['enableIR'] == '1' && nggGallery::detect_mobile_phone() === false )
 				wp_enqueue_script('swfobject');
 			else {
-				wp_register_script('jquery-cycle', NGGALLERY_URLPATH .'js/jquery.cycle.all.min.js', array('jquery'), '2.9995');
-				wp_enqueue_script('ngg-slideshow', NGGALLERY_URLPATH .'js/ngg.slideshow.min.js', array('jquery-cycle'), '1.06');
-
+				wp_enqueue_script('owl', NGGALLERY_URLPATH .'js/owl.carousel.min.js', array('jquery'), '2');
 			}
 
 			// Load AJAX navigation script, works only with shutter script as we need to add the listener
 			if ( $this->options['galAjaxNav'] ) {
 				if ( ($this->options['thumbEffect'] == "shutter") || function_exists('srel_makeshutter') ) {
-					wp_enqueue_script ( 'ngg_script', NGGALLERY_URLPATH . 'js/ngg.js', array('jquery'), '2.1');
+					wp_enqueue_script ( 'ngg_script', NGGALLERY_URLPATH . 'js/ngg.js', array('jquery', 'jquery-ui-tooltip'), '2.1');
 					wp_localize_script( 'ngg_script', 'ngg_ajax', array('path'		=> NGGALLERY_URLPATH,
 																		'callback'  => trailingslashit( home_url() ) . 'index.php?callback=ngg-ajax',
 																		'loading'	=> __('loading', 'nggallery'),
@@ -486,6 +515,14 @@ if (!class_exists('nggLoader')) {
 			if ( $this->options['usePicLens'] )
 				nggMediaRss::add_piclens_javascript();
 
+			// Added Qunit for javascript unit testing
+            $nxc=isset($_GET['nextcellent'])?$_GET['nextcellent']:"";
+			if ($nxc) {
+				wp_enqueue_script( "qunit-init"       , NGGALLERY_URLPATH . "js/nxc.main.js"        , array ('jquery')); //main q-unit call
+				wp_enqueue_script( "qunit"            , NGGALLERY_URLPATH . "js/qunit-1.16.0.js"    , array ('jquery')); //qunit core
+				wp_enqueue_script( "nextcellent-test" , NGGALLERY_URLPATH . "js/nxc.test.js", array ('jquery')); //unit testing specific for nextcellent
+			}
+
 		}
 
 		function load_thickbox_images() {
@@ -493,6 +530,10 @@ if (!class_exists('nggLoader')) {
 			echo "\n" . '<script type="text/javascript">tb_pathToImage = "' . site_url() . '/wp-includes/js/thickbox/loadingAnimation.gif";tb_closeImage = "' . site_url() . '/wp-includes/js/thickbox/tb-close.png";</script>'. "\n";
 		}
 
+		/**
+		* Load styles based on options defined
+		* 20150106: added style for Qunit
+		*/
 		function load_styles() {
 
             //Notice stylesheet selection has this priority:
@@ -502,12 +543,17 @@ if (!class_exists('nggLoader')) {
 
 			if ( $css_file = nggGallery::get_theme_css_file() ) {
 				wp_enqueue_style('NextGEN', $css_file , false, '1.0.0', 'screen');
+				//load the framework
+				wp_enqueue_style('NextCellent-Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.1', 'screen');
 			} elseif ($this->options['activateCSS']) {
 				//convert the path to an URL
 				$replace = content_url();
 				$path = str_replace( NGG_CONTENT_DIR , $replace, $this->options['CSSfile']); 
 				wp_enqueue_style('NextGEN', $path, false, '1.0.0', 'screen');
+				//load the framework
+				wp_enqueue_style('NextCellent-Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.1', 'screen');
 			}
+
 
 			//	activate Thickbox
 			if ($this->options['thumbEffect'] == 'thickbox')
@@ -516,6 +562,13 @@ if (!class_exists('nggLoader')) {
 			// activate modified Shutter reloaded if not use the Shutter plugin
 			if ( ($this->options['thumbEffect'] == 'shutter') && !function_exists('srel_makeshutter') )
 				wp_enqueue_style('shutter', NGGALLERY_URLPATH .'shutter/shutter-reloaded.css', false, '1.3.4', 'screen');
+
+			// add qunit style if activated. I put 1.0.0 as formula, but it would mean nothing.
+
+            $nxc=isset($_GET['nextcellent'])?$_GET['nextcellent']:"";
+			if ($nxc) {
+				wp_enqueue_style ( "qunit", NGGALLERY_URLPATH . "css/qunit-1.16.0.css" , false, '1.0.0' , 'screen' );
+			}
 
 		}
 

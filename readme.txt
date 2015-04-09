@@ -2,17 +2,18 @@
 Contributors: wpready
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 3.5
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: trunk
 License: GPLv2
 
 == Description ==
 
-= 1.9.23 - 24/09/2014 =
+= 1.9.26 - 2015-03-27 =
 
  What's in it for you?
 
-* Fix for missing gallery stylesheets
+* Improved Watermark with custom image selection (credits to Niko Strijbol)
+* fix: Albums preview image now correctly shows images from inside the album, not the last uploaded ones.
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -82,10 +83,9 @@ NextCellent  Gallery provides a powerful engine for uploading and managing galle
 
 = NextCellent WordPress Gallery Plugin Community & Extensions =
 
-NextGEN has been the dominant WordPress gallery plugin for years. 
-Being said that, NextCellent will provide backward compatibility for NextGEN 1.9.13 and it will evolve according user requirements.
+NextCellent will provide backward compatibility for NextGEN 1.9.13 and it will evolve according user requirements.
 
-As a result, there is large and great community of users and developers, as well as a large number of dedicated extension plugins. For a list of extension plugins, just search for NextGEN in the WordPress.org plugin repository, or visit our <a href="http://www.NextGEN-gallery.com/NextGEN-gallery-extension-plugins/">Complete List of NextGEN Extension Plugins</a>.
+As a result, there is large and great community of users and developers, as well as a large number of dedicated extension plugins. For a list of extension plugins, just search for NextGEN in the WordPress.org plugin repository, or visit  <a href="http://www.NextGEN-gallery.com/NextGEN-gallery-extension-plugins/">Complete List of NextGEN Extension Plugins</a>.
 
 == Credits ==
 
@@ -165,7 +165,8 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 
 - Plugin will detect if NextGEN is installed and it will deativate itself. You'll need to deactivate NextGEN in order to properly use NextCellent.
 - Plugin will deactivate if you install and activate any NextGEN version (any version).
-- Minimal text changes to let the user know what plugin is running. This would affect translated texts in some cases. 
+- Minimal text changes to let the user know what plugin is running. This would affect translated texts in some cases.
+- Lot of fixes
 
 = What are the SIGNIFICATIVE differences between this NextCellent and NextGEN 2.x.x? =
 
@@ -206,7 +207,7 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 
 = I have NextGEN 1.9.13 or older, should I install NextCellent? =
 
-- Good question. NextCellent makes no significatives differences at this current stage, except minimal text changes and NextGEN detection to avoid user confusion. Aside that, it should be identical, handling your galleries without problems. This is a starting point to anyone using older NextGEN version.
+- **YES** if you want an improved version in the similar fashion (but improved) in comparison with older NextGEN.
 
 = If I have NextGEN 2.x.x, should I install NextCellent? =
 
@@ -227,7 +228,7 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 
 = I am a developer , would be wise to create plugins based on NextCellent? =
 
-- YES. NextCellent is a branch from NextGEN 1.9.13, I will do my best to keep it stable. I can assure the code will lack of dramatic changes over the time, unless there is a big need to do that.
+- **YES**. NextCellent is a branch from NextGEN 1.9.13, I will do my best to keep it stable. I can assure the code will lack of dramatic changes over the time, unless there is a big need to do that.
 
 = Are you related with Alex Rabe or PhotoCrati? =
 
@@ -250,7 +251,7 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 
 - NextGEN and NextCellent came from the same root. However, NextGEN 2.x born from a completely different code. It is thought for the future. This has generated some discussion on the forums and with every developer I talked about, aside a growing list of things to be fixed. NextCellent is a mitigation to the situation. Can't be comparable at this point.
 
-- NextCellent will inherit all the code from version 1.9.13 which is both good and bad.  
+- NextCellent inherited all the code from version 1.9.13 which is both good and bad.
 
 Why then the name NextCellent instead NextGEN Legacy for example? =
 
@@ -321,6 +322,43 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 - Many users are creating their respective translations and they will be included, along respective credits. Thanks to them!!!
 
 == Changelog ==
+= 1.9.26 - 27/03/2015 =
+* Improved Watermark (credits to Niko Strijbol)
+* fix: Albums: preview image now correctly shows images from inside the album, not the last uploaded ones.
+
+= 1.9.25.3 - 06/02/2015 FIX (last round) =
+* Missing jQuery UI (again), now included
+* find_images_in_list incorrect parameter call causing other plugins to break
+
+= 1.9.25.2 - 06/02/2015 - FIX =
+* Missing jQuery UI, now included
+* Widgets not saving options
+* Animation glitches fix
+
+= 1.9.25.1 - 01/02/2015 - FIX =
+* Fix: nextcellent crash with an error on some sites with following error:
+ Parse error: syntax error, unexpected T_FUNCTION in /home/wpgetrea/public_html/wp-content/plugins/nextcellent-gallery-nextgen-legacy/widgets/class-ngg-slideshow-widget.php on line 174
+ Even the problem seems to be related with some old installations using PHP 5.2, we found the same problem with PHP 5.4.x installed. So this is fix is a MUST.
+* Fix: AJAX pagination stopped working
+
+= 1.9.25 - 26/01/2015 =
+* Tested up to Wordpress 4.1.
+* Fix for zip upload (Niko Strijbol)
+* More visual upgrade message (Niko Strijbol)
+* Preserve gallery's manual sort order in nggtags shortcode (Frank P. Walentynowicz) 
+* Add a description field when adding a gallery (Niko Strijbol)
+* Show ID when editing a gallery (Niko Strijbol)
+* Fix for long album names (Niko Strijbol)
+* Update and fix translations (Niko Strijbol)
+* Improved Wordpress Integration (Niko Strijbol)
+* Image manipulation corrections (Frank P. Walentynowicz)
+* Fix manual sort (Niko Strijbol)
+* Fixes for multiuser (Niko Strijbol)
+* Slideshow Flash retired, replaced with CSS slideshow (Niko Strijbol)
+* Code refactoring and optimization (Fernando Zorrilla S.M.)
+* Adding QUnit for Javascript Unit testing (Fernando Zorrilla S.M.)
+
+= 1.9.24 - Skipped
 
 = 1.9.23 - 24/09/2014 =
 * Fix for missing gallery stylesheets
