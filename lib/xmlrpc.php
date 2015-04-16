@@ -102,7 +102,7 @@ class nggXMLRPC{
 			return false;
 		}
 
-		set_current_user( $user->ID );
+		wp_set_current_user( $user->ID );
 		return $user;
 	}
 
@@ -146,14 +146,14 @@ class nggXMLRPC{
 		$pid  	= (int) $data['image_id']; // optional but more foolproof of overwrite
 		$image	= false; // container for the image object
 
-		logIO('O', '(NGG) Received '.strlen($bits).' bytes');
+		error_log('O', '(NGG) Received '.strlen($bits).' bytes');
 
 		if ( !$user = $this->login($username, $password) )
 			return $this->error;
 
 		// Check if you have the correct capability for upload
 		if ( !current_user_can('NextGEN Upload images') ) {
-			logIO('O', '(NGG) User does not have upload_files capability');
+			error_log('O', '(NGG) User does not have upload_files capability');
 			$this->error = new IXR_Error(401, __('You are not allowed to upload files to this site.'));
 			return $this->error;
 		}
@@ -164,7 +164,7 @@ class nggXMLRPC{
 
 		// Now check if you have the correct capability for this gallery
 		if ( !nggAdmin::can_manage_this_gallery($gallery->author) ) {
-			logIO('O', '(NGG) User does not have upload_files capability');
+			error_log('O', '(NGG) User does not have upload_files capability');
 			$this->error = new IXR_Error(401, __('You are not allowed to upload files to this gallery.'));
 			return $this->error;
 		}
@@ -176,7 +176,7 @@ class nggXMLRPC{
 		// check for allowed extension and if it's an image file
 		$ext = array('jpg', 'png', 'gif');
 		if ( !in_array($filepart['extension'], $ext) ){
-			logIO('O', '(NGG) Not allowed file type');
+			error_log('O', '(NGG) Not allowed file type');
 			$this->error = new IXR_Error(401, __('This is no valid image file.','nggallery'));
 			return $this->error;
 		}
@@ -197,7 +197,7 @@ class nggXMLRPC{
 			// delete now the image
 			if ( !@unlink( $image->imagePath ) ) {
 				$errorString = sprintf(__('Failed to delete image %1$s ','nggallery'), $image->imagePath);
-				logIO('O', '(NGG) ' . $errorString);
+				error_log('O', '(NGG) ' . $errorString);
 				return new IXR_Error(500, $errorString);
 			}
 		}
@@ -206,7 +206,7 @@ class nggXMLRPC{
 		$upload = wp_upload_bits($name, $type, $bits);
 		if ( ! empty($upload['error']) ) {
 			$errorString = sprintf(__('Could not write file %1$s (%2$s)'), $name, $upload['error']);
-			logIO('O', '(NGG) ' . $errorString);
+			error_log('O', '(NGG) ' . $errorString);
 			return new IXR_Error(500, $errorString);
 		}
 
@@ -220,7 +220,7 @@ class nggXMLRPC{
 		// Move files to gallery folder
 		if ( !@rename($upload['file'], $destination ) ) {
 			$errorString = sprintf(__('Failed to move image %1$s to %2$s','nggallery'), '<strong>' . $upload['file'] . '</strong>', $destination);
-			logIO('O', '(NGG) ' . $errorString);
+			error_log('O', '(NGG) ' . $errorString);
 			return new IXR_Error(500, $errorString);
 		}
 
@@ -778,7 +778,7 @@ class nggXMLRPC{
 
 		// Now check if you have the correct capability for this gallery
 		if ( !nggAdmin::can_manage_this_gallery($gallery->author) ) {
-			logIO('O', '(NGG) User does not have upload_files capability');
+			error_log('O', '(NGG) User does not have upload_files capability');
 			$this->error = new IXR_Error(401, __('You are not allowed to upload files to this gallery.'));
 			return $this->error;
 		}
@@ -830,7 +830,7 @@ class nggXMLRPC{
 
 			// Now check if you have the correct capability for this gallery
 			if ( !nggAdmin::can_manage_this_gallery($gallery->author) ) {
-				logIO('O', '(NGG) User does not have upload_files capability');
+				error_log('O', '(NGG) User does not have upload_files capability');
 				$this->error = new IXR_Error(401, __('You are not allowed to upload files to this gallery.'));
 				return $this->error;
 			}

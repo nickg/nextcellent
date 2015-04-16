@@ -18,13 +18,13 @@ class nggAdminPanel {
 		add_action( 'network_admin_menu', array( &$this, 'add_network_admin_menu' ) );
 
 		// Add the script and style files
-		add_action( 'admin_print_scripts', array( &$this, 'load_scripts' ) );
-		add_action( 'admin_print_styles', array( &$this, 'load_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( &$this, 'load_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( &$this, 'load_styles' ) );
 
 		// Try to detect plugins that embed their own jQuery and jQuery UI
 		// libraries and load them in NGG's admin pages
 		add_action( 'admin_enqueue_scripts', array( &$this, 'buffer_scripts' ), 0 );
-		add_action( 'admin_print_scripts', array( &$this, 'output_scripts' ), PHP_INT_MAX );
+		add_action( 'admin_enqueue_scripts', array( &$this, 'output_scripts' ), PHP_INT_MAX );
 
 		add_filter( 'current_screen', array( &$this, 'edit_current_screen' ) );
 
@@ -171,8 +171,6 @@ class nggAdminPanel {
 			add_submenu_page( NGGFOLDER, __( 'Roles', 'nggallery' ), __( 'Roles', 'nggallery' ), 'activate_plugins', 'nggallery-roles',
                 array( &$this, 'show_menu' ) );
 		}
-		add_submenu_page( NGGFOLDER, __( 'About this Gallery', 'nggallery' )  , __( 'About', 'nggallery' )               , 'NextGEN Gallery overview', 'nggallery-about',
-            array(		&$this,		'show_menu'	) );
 
 		if ( ! is_multisite() || is_super_admin() ) {
 			add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ), 'activate_plugins', 'nggallery-setup',
@@ -279,14 +277,11 @@ class nggAdminPanel {
 				include_once( dirname( __FILE__ ) . '/myimport.php' );    // nggallery_admin_import
 				nggallery_admin_import();
 				break;
-			case "nggallery-about" :
-				include_once( dirname( __FILE__ ) . '/about.php' );        // nggallery_admin_about
-				nggallery_admin_about();
-				break;
 			case "nggallery" :
 			default :
 				include_once( dirname( __FILE__ ) . '/overview.php' );    // nggallery_admin_overview
-				nggallery_admin_overview();
+				$output = new Overview_Display();
+				$output->display();
 				break;
 		}
 	}
@@ -339,8 +334,8 @@ class nggAdminPanel {
 
 		switch ( $_GET['page'] ) {
 			case NGGFOLDER :
-				wp_enqueue_script( 'postbox' );
 				add_thickbox();
+				wp_enqueue_script( 'postbox' );
 				break;
 			case "nggallery-manage-gallery" :
 				wp_enqueue_script( 'postbox' );
@@ -386,7 +381,6 @@ class nggAdminPanel {
      * Load the icon for the navigation menu
      */
 	function load_styles() {
-		wp_enqueue_style ( 'nggmenu'     , NGGALLERY_URLPATH . 'admin/css/menu.css', array() );
 		wp_register_style( 'nggadmin'    , NGGALLERY_URLPATH . 'admin/css/nggadmin.css', false, '2.8.1', 'screen' );
 		wp_register_style( 'ngg-jqueryui', NGGALLERY_URLPATH . 'admin/css/jquery.ui.css', false, '1.8.5', 'screen' );
 
@@ -397,9 +391,8 @@ class nggAdminPanel {
 
 		switch ( $_GET['page'] ) {
 			case NGGFOLDER :
-				wp_enqueue_style( 'thickbox' );
-			case "nggallery-about" :
 				wp_enqueue_style( 'nggadmin' );
+				wp_enqueue_style( 'thickbox' );
 				break;
 			case "nggallery-add-gallery" :
 				wp_enqueue_style( 'ngg-jqueryui' );

@@ -249,7 +249,6 @@ class NGG_Style {
 		?>
 		<div class="wrap">
 			<div class="bordertitle">
-				<?php screen_icon( 'nextgen-gallery' ); ?>
 				<h2><?php _e('Style Editor','nggallery') ?></h2>
 				<div class="fileedit-sub">
 				<?php if(!$theme_css_exists): //no need if there is a theme css?>
