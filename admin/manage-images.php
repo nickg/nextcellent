@@ -241,7 +241,6 @@ jQuery(document).ready( function() {
 //-->
 </script>
 <div class="wrap">
-<?php screen_icon( 'nextgen-gallery' ); ?>
 <?php if ($is_search) :?>
 <h2><?php printf( __('Search results for &#8220;%s&#8221;', 'nggallery'), esc_html( get_search_query() ) ); ?></h2>
 <form class="search-form" action="" method="get">

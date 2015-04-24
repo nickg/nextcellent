@@ -106,7 +106,11 @@ function nggShowSlideshow( $galleryID, $args = null) {
     $out .= '>';
 	
 	foreach ( $images as $image ) {
-        $out .= '<img src="' . $image->imageURL .'" alt="' . $image->alttext . '" >';
+        if( !$param['autodim'] ) {
+            $out .=  '<img src="' . $image->imageURL .'" alt="' . $image->alttext . '" style="max-width: ' .  $param['width'] . 'px; max-height: ' . $param['height'] . 'px; width: auto; height:auto; margin:auto">';
+        } else {
+            $out .= '<img src="' . $image->imageURL .'" alt="' . $image->alttext . '" >';
+        }
 	}
 	
     $out .= '</div></div>'."\n";
@@ -115,7 +119,7 @@ function nggShowSlideshow( $galleryID, $args = null) {
 			var owl = $('#" . $param['anchor'] . "');
 			owl.owlCarousel({
 				items: 1,
-				autoHeight: true,";
+				autoHeight: " . var_export($param['autodim'], true) . ",";
 	if ( $param['nav'] ) {
 		$out .= "nav: true,
 				navText: ['" . __('previous', 'nggallery') ."','" . __('next', 'nggallery') ."'],";

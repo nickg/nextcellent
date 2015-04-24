@@ -1991,6 +1991,14 @@
 
 		// register event handlers
 		this._core.$element.on(this._handlers);
+
+		var refThis = this;
+
+		$(window).load(function() {
+			if (refThis._core.settings.autoHeight) {
+				refThis.update();
+			}
+		});
 	};
 
 	/**

@@ -283,7 +283,6 @@ function showDialog() {
 
 </script>
 <div class="wrap album" id="wrap" >
-    <?php screen_icon( 'nextgen-gallery' ); ?>
 	<h2><?php _e('Albums', 'nggallery') ?></h2>
 	<form id="selectalbum" method="POST" onsubmit="ngg_serialize()" accept-charset="utf-8">
 		<?php wp_nonce_field('ngg_album') ?>

@@ -207,15 +207,11 @@ function ngg_ajax_dashboard() {
     switch ( $_GET['jax'] ) {
 
     case 'dashboard_primary' :
-    	ngg_overview_news();
-    	break;
-
-    case 'ngg_locale' :
-    	ngg_locale();
+    	Overview_Display::ngg_overview_news();
     	break;
 
     case 'dashboard_plugins' :
-    	ngg_related_plugins();
+    	Overview_Display::ngg_related_plugins();
     	break;
 
     }
