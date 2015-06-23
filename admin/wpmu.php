@@ -40,7 +40,6 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 		// the path should always end with a slash
 		$ngg_options['gallerypath']    = trailingslashit($ngg_options['gallerypath']);
 		update_site_option('ngg_options', $ngg_options);
-		var_dump($ngg_options);
 
 		$messagetext = __('Update successfully','nggallery');
 	}
