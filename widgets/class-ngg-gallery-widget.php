@@ -50,7 +50,7 @@ class NGG_Gallery_Widget extends WP_Widget {
 
 		if( $new_instance['exclude'] == 'denied' ) {
 			$instance['exclude'] = 'denied';
-		} elseif ( $new_instance['allow'] ) {
+		} elseif ( $new_instance['exclude'] == 'allow' ) {
 			$instance['exclude'] = 'allow';
 		} else {
 			$instance['exclude'] = 'all';
