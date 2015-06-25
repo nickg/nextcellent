@@ -100,6 +100,82 @@ class nggdb {
         return $this->albums;
     }
 
+    static function count_galleries() {
+
+	    global $wpdb;
+
+	    return $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggallery");
+    }
+
+	/**
+	 * A cleaner (?) version of find_all_galleries().
+	 *
+	 * @param array $vars {
+	 *
+	 *      @type string $order_by On which column to sort.
+	 *      @type string $order_dir Which sort order. Kan be ASC or DESC.
+	 *      @type int $start On which row to start.
+	 *      @type int $limit How many rows to show. If 0, everything will be shown.
+	 *      @type bool $count If you need to count the images in each gallery.
+	 *      @type bool $exclude Whether to adhere to the exclude or not. This should only be false in the admin area.
+	 * }
+	 *
+	 * @since 1.9.28
+	 *
+	 * @return array The results.
+	 */
+	public static function get_galleries($vars = array()) {
+
+		global $wpdb;
+
+		$vars = wp_parse_args($vars, array(
+			'order_by'  => 'gid',
+			'order_dir' => 'ASC',
+			'start'     => 0,
+			'limit'     => 0,
+			'count'     => false,
+			'exclude'   => true,
+		));
+
+
+		if($vars['limit'] !== 0) {
+			$query = $wpdb->prepare("SELECT * FROM $wpdb->nggallery ORDER BY %s %s LIMIT %d,%d", $vars['order_by'], $vars['order_dir'], $vars['start'], $vars['limit']);
+		} else {
+			$query = $wpdb->prepare("SELECT * FROM $wpdb->nggallery ORDER BY %s %s", $vars['order_by'], $vars['order_dir']);
+		}
+
+		var_dump($query);
+		$result = $wpdb->get_results( $query );
+		$ids = array();
+
+		/**
+		 * Add the objects to the cache
+		 */
+		foreach($result as $key => $gallery) {
+			array_push($ids, $key);
+			wp_cache_add($key, $gallery, 'ngg_gallery');
+		}
+
+
+		if(!$vars['count']) {
+			return $result;
+		} else {
+			if($vars['exclude']) {
+				$exclude = " AND exclude IS NOT 1";
+			} else {
+				$exclude = "";
+			}
+			$count = "SELECT galleryid, COUNT(*) as counter FROM $wpdb->nggpictures WHERE galleryid IN (" .  implode(',', $ids) . ")" . $exclude . ' GROUP BY galleryid';
+			$counts = $wpdb->get_results($count, OBJECT_K);
+			foreach ($counts as $key => $value) {
+				$result[$value->galleryid]->counter = $value->counter;
+				wp_cache_set($value->galleryid, $result[$value->galleryid], 'ngg_gallery');
+			}
+			return $result;
+		}
+
+	}
+
     /**
      * Get all the galleries
      *
@@ -301,22 +377,22 @@ class nggdb {
         wp_cache_delete($id, 'ngg_gallery');
 
         //TODO:Remove all tag relationship
-		
+
 		//Update the galleries to remove the deleted ID's
 		$albums = $nggdb->find_all_album();
-		
+
 		foreach ($albums as $album) {
 			$albumid = $album->id;
 			$galleries = $album->galleries;
 			$deleted = array_search($id, $galleries);
-			
+
 			unset($galleries[$deleted]);
-			
+
 			$new_galleries = serialize($galleries);
-			
+
 			nggdb::update_album($albumid, false, false, false, $new_galleries);
 		}
-		
+
         return true;
     }
 
@@ -586,7 +662,7 @@ class nggdb {
     /**
      *
      * Return sql query to get images
-     * 20150110: workarounded case if $pids is a string or numeric value. Makes function more flexible, yet there is no case where 
+     * 20150110: workarounded case if $pids is a string or numeric value. Makes function more flexible, yet there is no case where
      * this functions is called using string/numeric...
      *
      * @param $pids array of Picture Ids | id value (string or integer) which is converted to array.

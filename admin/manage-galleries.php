@@ -10,7 +10,7 @@ function nggallery_manage_gallery_main() {
 	//Build the pagination for more than 25 galleries
     $_GET['paged'] = isset($_GET['paged']) && ($_GET['paged'] > 0) ? absint($_GET['paged']) : 1;
 
-    $items_per_page = 25;
+    $items_per_page = 5;
 
 	$start = ( $_GET['paged'] - 1 ) * $items_per_page;
 
@@ -117,7 +117,7 @@ function nggallery_manage_gallery_main() {
     		modal: true,
             title: '<?php echo esc_js(__('Add new gallery','nggallery')); ?>'
     	});
-        jQuery("#addGallery .dialog-cancel").click(function() { jQuery( "#addGallery" ).dialog("close"); });
+        jQuery("#addGallery").find(".dialog-cancel").click(function() { jQuery( "#addGallery" ).dialog("close"); });
 	}
 	//-->
 	</script>

@@ -1550,13 +1550,17 @@ class nggAdmin{
 		if ( !is_array($image_array) || empty($image_array) )
 			return;
 
-		$js_array  = implode('","', $image_array);
+		$js_array  = implode(',', $image_array);
 		
 		// send out some JavaScript, which initate the ajax operation
 		?>
 		<script type="text/javascript">
 
+
 			Images = new Array("<?php echo $js_array; ?>");
+
+			console.log(Images);
+			console.log("<?php echo $operation; ?>");
 
 			nggAjaxOptions = {
 				operation: "<?php echo $operation; ?>",
