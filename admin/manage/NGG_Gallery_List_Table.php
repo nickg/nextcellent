@@ -18,7 +18,7 @@ class NGG_Gallery_List_Table extends WP_List_Table {
 
 	public function __construct( $base, $screen = null ) {
 
-		parent::__construct( array( 'screen' => $screen, 'plural' => 'ngg-gallery-manager' ) );
+		parent::__construct( array( 'screen' => $screen, 'plural' => 'ngg-manager' ) );
 
 		$this->base = $base;
 
