@@ -220,12 +220,10 @@ class NGG_Image_List_Table extends WP_List_Table {
 	private function get_row_actions($item) {
 		$actions = array(
 			'view'          => '<a class="shutter" href="' . esc_url( $item->imageURL ) . '" title="' . esc_attr( sprintf(__('View "%s"'), sanitize_title($item->filename) )) . '">' . __('View', 'nggallery') . '</a>',
-			'meta'          => '<a class="ngg-dialog" href="' . NGGALLERY_URLPATH . 'admin/showmeta.php?id=' . $item->pid . '" title="' . __('Show Meta data','nggallery') . '">' . __('Meta', 'nggallery') . '</a>',
-			'custom_thumb'  => '<a class="ngg-dialog" href="' . NGGALLERY_URLPATH . 'admin/edit-thumbnail.php?id=' . $item->pid . '" title="' . __('Customize thumbnail','nggallery') . '">' . __('Edit thumb', 'nggallery') . '</a>',
-			'rotate'        => '<a class="ngg-dialog" href="' . NGGALLERY_URLPATH . 'admin/rotate.php?id=' . $item->pid . '" title="' . __('Rotate','nggallery') . '">' . __('Rotate', 'nggallery') . '</a>',
+			'meta'          => '<a class="ngg-dialog" data-action="show_meta" data-id="' . $item->pid . '" href="#" title="' . __('Show Meta data','nggallery') . '">' . __('Meta', 'nggallery') . '</a>',
+			'custom_thumb'  => '<a class="ngg-dialog" data-action="edit_thumb" data-id="' . $item->pid . '" href="#" title="' . __('Customize thumbnail','nggallery') . '">' . __('Edit thumb', 'nggallery') . '</a>',
+			'rotate'        => '<a class="ngg-dialog" data-action="rotate" data-id="' . $item->pid . '" href="#" title="' . __('Rotate','nggallery') . '">' . __('Rotate', 'nggallery') . '</a>',
 		);
-		if ( current_user_can( 'publish_posts' ) )
-			$actions['publish'] = '<a class="ngg-dialog" href="' . NGGALLERY_URLPATH . 'admin/publish.php?id=' . $item->pid . '&h=230" title="' . __('Publish this image','nggallery') . '">' . __('Publish', 'nggallery') . '</a>';
 		if ( file_exists( $item->imagePath . '_backup' ) )
 			$actions['recover']   = '<a class="confirmrecover" href="' .wp_nonce_url("admin.php?page=nggallery-manage-gallery&amp;mode=recoverpic&amp;gid=" . $item->galleryid . "&amp;pid=" . $item->pid, 'ngg_recoverpicture'). '" title="' . __('Recover','nggallery') . '" onclick="javascript:check=confirm( \'' . esc_attr(sprintf(__('Recover "%s" ?' , 'nggallery'), $item->filename)). '\');if(check==false) return false;">' . __('Recover', 'nggallery') . '</a>';
 		$actions['delete'] = '<a class="submitdelete" href="' . wp_nonce_url("admin.php?page=nggallery-manage-gallery&amp;mode=delpic&amp;gid=" . $item->galleryid . "&amp;pid=" . $item->pid, 'ngg_delpicture'). '" class="delete column-delete" onclick="javascript:check=confirm( \'' . esc_attr(sprintf(__('Delete "%s" ?' , 'nggallery'), $item->filename)). '\');if(check==false) return false;">' . __('Delete') . '</a>';

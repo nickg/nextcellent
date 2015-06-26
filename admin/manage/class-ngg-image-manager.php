@@ -43,7 +43,6 @@ class NGG_Image_Manager extends NGG_Manager {
 		$table->prepare_items();
 		?>
 		<div class="wrap">
-
 			<form id="updategallery" class="nggform" method="POST" action="<?php echo self::BASE . '&mode=image&gid=' . $this->id . '&paged=' . $_GET['paged']; ?>" accept-charset="utf-8">
 				<?php wp_nonce_field('ngg-update-gallery', '_ngg_nonce_gallery'); ?>
 				<?php $this->print_gallery_overview($table->items) ?>
@@ -64,43 +63,65 @@ class NGG_Image_Manager extends NGG_Manager {
 		parent::print_scripts();
 		?>
 		<script type="text/javascript">
-			jQuery(function () {
-				// load a content via ajax
-				jQuery('a.ngg-dialog').click(function () {
-					var $spinner = jQuery("#spinner");
-					if ($spinner.length == 0)
-						jQuery("body").append('<div id="spinner"></div>');
-					var $this = jQuery(this);
-					$spinner.fadeIn();
-					var dialog = jQuery('<div style="display:none"></div>').appendTo('body');
-					// load the remote content
-					dialog.load(
-						this.href,
-						{},
-						function () {
-							jQuery('#spinner').hide();
-							dialog.dialog({
-								title: ($this.attr('title')) ? $this.attr('title') : '',
-								width: 'auto',
-								height: 'auto',
-								modal: true,
-								resizable: true,
-								position: {my: "center", at: "center", of: window},
-								close: function () {
-									dialog.remove();
-								}
-							});
-						}
-					);
-					//prevent the browser to follow the link
-					return false;
-				});
+
+			var doAction = function(dialog) {
+				jQuery(dialog).dialog('close');
+			};
+
+			/**
+			 * Load the content with AJAX.
+			 */
+			jQuery('a.ngg-dialog').click(function () {
+				//Get the spinner.
+				var $spinner = jQuery("#spinner");
+				var $this = jQuery(this);
+				var action = $this.data("action");
+				var id = $this.data("id");
+				var base_url = "<?php echo esc_js(NGGALLERY_URLPATH) . "admin/manage/actions.php?cmd=" ?>";
+
+				if (!$spinner.length) {
+					jQuery("body").append('<div id="spinner"></div>');
+				}
+
+				$spinner.fadeIn();
+
+				var dialog = jQuery('<div style="display:none"></div>').appendTo('body');
+				// load the remote content
+				dialog.load(
+					base_url + action + "&id=" + id,
+					{},
+					function () {
+						jQuery('#spinner').hide();
+						//The doAction function must be defined in the actions.php file.
+						showDialog(dialog, ($this.attr('title')) ? $this.attr('title') : '', doAction);
+					}
+				);
+				//prevent the browser to follow the link
+				return false;
 			});
+
+			/**
+			 * Show a message on the image action modal window.
+			 *
+			 * @param message string The message.
+			 */
+			function showMessage(message) {
+				jQuery('#thumbMsg').html(message).css({'display':'block'});
+				setTimeout(function(){ jQuery('#thumbMsg').fadeOut('slow'); }, 1500);
+
+				var d = new Date();
+				var $image = jQuery("#imageToEdit");
+				var newUrl = $image.attr("src") + "?" + d.getTime();
+				$image.attr("src" , newUrl);
+			}
 		</script>
 
 		<?php
 	}
 
+	/**
+	 * @todo Make a real DAO system for NextCellent.
+	 */
 	private function handle_update_images() {
 
 		if(wp_verify_nonce($_POST['_ngg_nonce_gallery'], 'ngg-update-gallery') === false) {
@@ -274,7 +295,6 @@ class NGG_Image_Manager extends NGG_Manager {
                     <?php do_action('ngg_manage_gallery_settings', $this->id); ?>
 				</table>
 				<div class="submit">
-					<!-- To remove in future versions -->
 					<input type="submit" onclick="return confirm('<?php _e("This will change folder and file names (e.g. remove spaces, special characters, ...)","nggallery")?>\n\n<?php _e("You will need to update your URLs if you link directly to the images.","nggallery")?>\n\n<?php _e("Press OK to proceed, and Cancel to stop.","nggallery")?>')" class="button-secondary" name="scanfolder" value="<?php _e("Scan folder for new images",'nggallery'); ?> " />
 					<input type="submit" class="button-primary action" name="update_images" value="<?php _e("Save Changes",'nggallery'); ?>" />
 				</div>

@@ -116,79 +116,10 @@ class nggdb {
 
         global $wpdb;
 
-	    $query = $wpdb->prepare("SELECT COUNT(*) FROM $wpdb->nggpictures WHERE gid IS %d", $id);
+	    $query = $wpdb->prepare("SELECT COUNT(*) FROM $wpdb->nggpictures WHERE gid = %d", $id);
 
         return $wpdb->get_var($query);
     }
-
-	/**
-	 * A cleaner (?) version of find_all_galleries().
-	 *
-	 * @param array $vars {
-	 *
-	 *      @type string $order_by On which column to sort.
-	 *      @type string $order_dir Which sort order. Kan be ASC or DESC.
-	 *      @type int $start On which row to start.
-	 *      @type int $limit How many rows to show. If 0, everything will be shown.
-	 *      @type bool $count If you need to count the images in each gallery.
-	 *      @type bool $exclude Whether to adhere to the exclude or not. This should only be false in the admin area.
-	 * }
-	 *
-	 * @since 1.9.28
-	 *
-	 * @return array The results.
-	 */
-	public static function get_galleries($vars = array()) {
-
-		global $wpdb;
-
-		$vars = wp_parse_args($vars, array(
-			'order_by'  => 'gid',
-			'order_dir' => 'ASC',
-			'start'     => 0,
-			'limit'     => 0,
-			'count'     => false,
-			'exclude'   => true,
-		));
-
-
-		if($vars['limit'] !== 0) {
-			$query = $wpdb->prepare("SELECT * FROM $wpdb->nggallery ORDER BY %s %s LIMIT %d,%d", $vars['order_by'], $vars['order_dir'], $vars['start'], $vars['limit']);
-		} else {
-			$query = $wpdb->prepare("SELECT * FROM $wpdb->nggallery ORDER BY %s %s", $vars['order_by'], $vars['order_dir']);
-		}
-
-		var_dump($query);
-		$result = $wpdb->get_results( $query );
-		$ids = array();
-
-		/**
-		 * Add the objects to the cache
-		 */
-		foreach($result as $key => $gallery) {
-			array_push($ids, $key);
-			wp_cache_add($key, $gallery, 'ngg_gallery');
-		}
-
-
-		if(!$vars['count']) {
-			return $result;
-		} else {
-			if($vars['exclude']) {
-				$exclude = " AND exclude IS NOT 1";
-			} else {
-				$exclude = "";
-			}
-			$count = "SELECT galleryid, COUNT(*) as counter FROM $wpdb->nggpictures WHERE galleryid IN (" .  implode(',', $ids) . ")" . $exclude . ' GROUP BY galleryid';
-			$counts = $wpdb->get_results($count, OBJECT_K);
-			foreach ($counts as $key => $value) {
-				$result[$value->galleryid]->counter = $value->counter;
-				wp_cache_set($value->galleryid, $result[$value->galleryid], 'ngg_gallery');
-			}
-			return $result;
-		}
-
-	}
 
     /**
      * Get all the galleries

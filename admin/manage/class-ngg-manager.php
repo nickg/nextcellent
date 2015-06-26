@@ -268,10 +268,17 @@ abstract class NGG_Manager {
 				showDialog('#' + id + "_dialog", title);
 			}
 
-			function showDialog(id, title) {
+			function showDialog(id, title, onSubmit) {
+
+				if(typeof onSubmit === 'undefined' || onSubmit === null) {
+					onSubmit = function(dialog) {
+						jQuery(dialog).submit();
+					}
+				}
+
 				jQuery(id).dialog({
 					width: '50%',
-					resizable: false,
+					resizable: true,
 					modal: true,
 					title: title,
 					buttons: [
@@ -287,8 +294,8 @@ abstract class NGG_Manager {
 							text: "<?php echo esc_js(__('OK','nggallery')); ?>",
 							'class': "button-primary",
 							'type': "submit",
-							click: function () {
-								jQuery(this).submit();
+							click: function() {
+								onSubmit(this);
 							}
 						}
 					]
