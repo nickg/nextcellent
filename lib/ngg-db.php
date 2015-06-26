@@ -108,6 +108,20 @@ class nggdb {
     }
 
 	/**
+	 * @param $id int The gallery ID.
+	 *
+	 * @return null|string
+	 */
+    static function count_images_in_gallery($id) {
+
+        global $wpdb;
+
+	    $query = $wpdb->prepare("SELECT COUNT(*) FROM $wpdb->nggpictures WHERE gid IS %d", $id);
+
+        return $wpdb->get_var($query);
+    }
+
+	/**
 	 * A cleaner (?) version of find_all_galleries().
 	 *
 	 * @param array $vars {

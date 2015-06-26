@@ -156,8 +156,8 @@ class nggAdminPanel {
 		add_submenu_page( NGGFOLDER, __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ),
 			'NextGEN Manage gallery', 'nggallery-manage-gallery',
 			array( &$this, 'show_menu' ) );
-		add_submenu_page( NGGFOLDER, __( 'Galleries2', 'nggallery' ), __( 'Galleries', 'nggallery' ),
-			'NextGEN Manage gallery', 'nggallery-manage-gallery2',
+		add_submenu_page( NGGFOLDER, __( 'Galleries2', 'nggallery' ), __( 'Galleries2', 'nggallery' ),
+			'NextGEN Manage gallery', 'nggallery-manage',
 			array( &$this, 'show_menu' ) );
 
 		add_submenu_page( NGGFOLDER, __( 'Albums', 'nggallery' ), __( 'Albums', 'nggallery' ), 'NextGEN Edit album',
@@ -259,15 +259,9 @@ class nggAdminPanel {
 				// Render the output now, because you cannot access a object during the constructor is not finished
 				$ngg->manage_page->controller();
 				break;
-			case "nggallery-manage-gallery2" :
+			case "nggallery-manage":
 				include_once( dirname( __FILE__ ) . '/functions.php' );    // admin functions
-				include_once( dirname( __FILE__ ) . '/manage/class-ngg-gallery-manager.php' );    // nggallery_admin_manage_gallery
-				// Initate the Manage Gallery page
-
-				$ngg->manage_page = new NGG_Gallery_Manager();
-				$ngg->manage_page->display();
-				// Render the output now, because you cannot access a object during the constructor is not finished
-				//$ngg->manage_page->controller();
+				include_once( dirname( __FILE__ ) . '/manage/manage.php' );
 				break;
 			case "nggallery-manage-album" :
 				include_once( dirname( __FILE__ ) . '/album.php' );        // nggallery_admin_manage_album
@@ -374,6 +368,8 @@ class nggAdminPanel {
 				) );
 				wp_enqueue_script( 'shutter' );
 				break;
+			case "nggallery-manage":
+			case "nggallery-manage-images":
 			case "nggallery-manage-gallery2" :
 				wp_enqueue_script( 'postbox' );
 				wp_enqueue_script( 'ngg-ajax' );
@@ -440,6 +436,8 @@ class nggAdminPanel {
 				wp_enqueue_style( 'wp-color-picker' );
                 wp_enqueue_style( 'ngg-jqueryui' );
 				break;
+			case "nggallery-manage":
+			case "nggallery-manage-images":
 			case "nggallery-manage-gallery2":
 			case "nggallery-manage-gallery" :
 				wp_enqueue_style( 'shutter', NGGALLERY_URLPATH . 'shutter/shutter-reloaded.css', false, '1.3.2', 'screen' );

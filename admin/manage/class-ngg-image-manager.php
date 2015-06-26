@@ -1,15 +1,28 @@
 <?php
-include_once( 'NGG_Gallery_List_Table.php' );
+include_once( 'NGG_Image_List_Table.php' );
 
 /**
  * Class NGG_Gallery_Manager
  *
  * Display the gallery managing page.
  */
-class NGG_Gallery_Manager {
+class NGG_Image_Manager {
 
 
-	const BASE = 'admin.php?page=nggallery-manage';
+	const BASE = 'admin.php?page=nggallery-manage-gallery';
+
+	private $gallery;
+	private $id;
+
+	public function __construct() {
+		$this->id = (int) $_GET['gid'];
+		/**
+		 * @global $nggdb nggdb
+		 */
+		global $nggdb;
+
+		$this->gallery = $nggdb->find_gallery($this->id);
+	}
 
 	/**
 	 * Display the page.
@@ -40,19 +53,13 @@ class NGG_Gallery_Manager {
 		/**
 		 * Display the actual table.
 		 */
-		$table = new NGG_Gallery_List_Table( self::BASE );
+		$table = new NGG_Image_List_Table( self::BASE );
 		$table->prepare_items();
 		?>
 		<div class="wrap">
-			<h2><?php _e( 'Galleries', 'nggallery' ); ?>
-				<?php if ( current_user_can( 'NextGEN Upload images' ) && nggGallery::current_user_can( 'NextGEN Add new gallery' ) ) { ?>
-					<a class="add-new-h2" id="new-gallery" href="#"><?php _e( 'Add new gallery', 'nggallery' ) ?></a>
-				<?php }; ?>
-			</h2>
-
+			<?php $this->print_gallery_overview($table->items) ?>
 			<form method="post">
 				<input type="hidden" id="page-name" name="page" value="nggallery-manage-gallery2"/>
-				<?php $table->search_box( 'Search images', 'nggallery' ); ?>
 				<?php $table->display(); ?>
 			</form>
 		</div>
@@ -60,6 +67,97 @@ class NGG_Gallery_Manager {
 		$this->print_dialogs();
 		$this->print_scripts();
 	}
+
+	private function print_gallery_overview($images) {
+		/**
+		 * @global $nggdb nggdb
+		 */
+		global $nggdb;
+		?>
+		<h2><?php _e( 'Gallery', 'nggallery' ) ?> <?php esc_html_e($this->gallery->title) ?></h2>
+
+		<form id="updategallery" class="nggform" method="POST" action="<?php echo self::BASE . '&mode=image&gid=' . $this->id . '&paged=' . $_GET['paged']; ?>" accept-charset="utf-8">
+			<?php wp_nonce_field('ngg_update_gallery') ?>
+			<?php if ( nggGallery::current_user_can( 'NextGEN Edit gallery options' )) { ?>
+			<div id="poststuff">
+				<div id="gallerydiv" class="postbox <?php echo postbox_classes('gallery_div', 'ngg-manage'); ?>" >
+				<h3 class="hndle"><?php _e('Gallery settings', 'nggallery') ?></h3>
+				<div class="inside">
+					<table class="form-table" id="gallery-properties">
+						<tr>
+							<td align="left"><label for="title"><?php _e('Title') ?></label></td>
+							<td align="left"><input type="text" id="title" name="title" class="regular-text" value="<?php esc_attr_e($this->gallery->title) ?>"/></td>
+							<td align="right"><label for="pageid"><?php _e('Page Link', 'nggallery') ?></label></td>
+							<td align="left">
+								<select id="pageid" name="pageid">
+									<option value="0" ><?php _e('Not linked', 'nggallery') ?></option>
+									<?php parent_dropdown(intval($this->gallery->pageid)); ?>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td align="left"><label for="gallery_desc"><?php _e('Description') ?></label></td>
+							<td align="left"><textarea name="gallery_desc" id="gallery_desc" cols="46" rows="3" ><?php echo $this->gallery->galdesc; ?></textarea></td>
+							<td align="right"><label for="preview_pic"><?php _e('Preview image', 'nggallery') ?></label></td>
+							<td align="left">
+								<select name="preview_pic" id="preview_pic">
+									<option value="0" ><?php _e('No Picture', 'nggallery') ?></option>
+									<?php
+		                                // ensure that a preview pic from a other page is still shown here
+		                                if ( intval($this->gallery->previewpic) != 0) {
+		                                    if ( !array_key_exists ($this->gallery->previewpic, $images )){
+		                                        $previewpic = $nggdb->find_image($this->gallery->previewpic);
+		                                        if ($previewpic)
+		                                            echo '<option value="'.$previewpic->pid.'" selected>'.$previewpic->pid.' - ' . esc_attr( $previewpic->filename ) . '</option>'."\n";
+		                                    }
+		                                }
+										if(is_array($images)) {
+											foreach($images as $picture) {
+		                                        if ($picture->exclude) continue;
+												$selected = ($picture->pid == $this->gallery->previewpic) ? 'selected' : '';
+												echo '<option value="'.$picture->pid.'" '.$selected.' >'.$picture->pid.' - ' . esc_attr( $picture->filename ) . '</option>'."\n";
+											}
+										}
+									?>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td align="left"><label for="path"><?php _e('Path', 'nggallery') ?></label></td>
+							<td align="left">
+								<input <?php if ( is_multisite() ) echo 'readonly = "readonly"'; ?> type="text" name="path" class="regular-text code" id="path" value="<?php echo $this->gallery->path; ?>"/>
+							</td>
+							<td align="right"><label for="author"><?php _e('Author', 'nggallery'); ?></label></td>
+							<td align="left"><?php echo get_userdata( (int) $this->gallery->author )->display_name ?></td>
+						</tr>
+						<tr>
+							<td align="left"><?php _e('Gallery ID', 'nggallery') ?>:</td>
+							<td align="right"><?php echo $this->gallery->gid; ?></td>
+							<?php if(current_user_can( 'publish_pages' )) { ?>
+							<td align="right"><label for="parent_id"><?php _e('Create new page', 'nggallery') ?></label></td>
+							<td align="left">
+							<select name="parent_id" id="parent_id">
+								<option value="0"><?php _e ('Main page (No parent)', 'nggallery'); ?></option>
+								<?php if (get_post()) {
+									parent_dropdown();
+								 } ?>
+							</select>
+							<input class="button-secondary action" type="submit" name="addnewpage" value="<?php _e ('Add page', 'nggallery'); ?>" id="group"/>
+							</td>
+							<?php } ?>
+						</tr>
+                        <?php do_action('ngg_manage_gallery_settings', $this->id); ?>
+					</table>
+					<div class="submit">
+						<!-- To remove in future versions -->
+						<input type="submit" onclick="return confirm('<?php _e("This will change folder and file names (e.g. remove spaces, special characters, ...)","nggallery")?>\n\n<?php _e("You will need to update your URLs if you link directly to the images.","nggallery")?>\n\n<?php _e("Press OK to proceed, and Cancel to stop.","nggallery")?>')" class="button-secondary" name="scanfolder" value="<?php _e("Scan folder for new images",'nggallery'); ?> " />
+						<input type="submit" class="button-primary action" name="updatepictures" value="<?php _e("Save Changes",'nggallery'); ?>" />
+					</div>
+				</div>
+			</div>
+		</div> <!-- poststuff -->
+	<?php }
+    }
 
 	/**
 	 * Print the HTML for the dialogs.
