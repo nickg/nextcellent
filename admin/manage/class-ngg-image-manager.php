@@ -85,7 +85,7 @@ class NGG_Image_Manager extends NGG_Manager {
 
 				$spinner.fadeIn();
 
-				var dialog = jQuery('<div style="display:none"></div>').appendTo('body');
+				var dialog = jQuery('<div style="display:none" class="ngg-load-dialog"></div>').appendTo('body');
 				// load the remote content
 				dialog.load(
 					base_url + action + "&id=" + id,

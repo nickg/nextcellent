@@ -261,7 +261,7 @@ class nggAdminPanel {
 				break;
 			case "nggallery-manage":
 				include_once( dirname( __FILE__ ) . '/functions.php' );    // admin functions
-				include_once( dirname( __FILE__ ) . '/manage/manage.php' );
+				$this->show_manager();
 				break;
 			case "nggallery-manage-album" :
 				include_once( dirname( __FILE__ ) . '/album.php' );        // nggallery_admin_manage_album
@@ -299,6 +299,33 @@ class nggAdminPanel {
 				$output = new Overview_Display();
 				$output->display();
 				break;
+		}
+	}
+
+	private function show_manager() {
+		if(isset($_GET['mode']) && $_GET['mode'] == 'image') {
+			/**
+			 * Display an overview for a specific gallery. Which gallery should be passed in the $_GET['gid']
+			 * parameter.
+			 *
+			 * @access private
+			 */
+
+			include_once( 'manage/class-ngg-image-manager.php' );
+
+			$manager = new NGG_Image_Manager();
+			$manager->display();
+		} else {
+			/**
+			 * Display the gallery overview page. This is a list of all galleries.
+			 *
+			 * @access private
+			 */
+
+			include_once( 'manage/class-ngg-gallery-manager.php' );
+
+			$manager = new NGG_Gallery_Manager();
+			$manager->display();
 		}
 	}
 
@@ -378,6 +405,7 @@ class nggAdminPanel {
 				wp_enqueue_script( 'jquery-ui-sortable' );
 				wp_enqueue_script( 'jquery-ui-datepicker' );
 				wp_enqueue_script( 'ngg-autocomplete');
+				wp_enqueue_script('ngg-cropper', NGGALLERY_URLPATH . 'admin/js/cropper/cropper.js', '0.10.0');
 				wp_register_script( 'shutter', NGGALLERY_URLPATH . 'shutter/shutter-reloaded.js', false, '1.3.2' );
 				wp_localize_script( 'shutter', 'shutterSettings', array(
 					'msgLoading' => __( 'L O A D I N G', 'nggallery' ),
@@ -441,6 +469,7 @@ class nggAdminPanel {
 			case "nggallery-manage-images":
 			case "nggallery-manage-gallery2":
 			case "nggallery-manage-gallery" :
+				wp_enqueue_style('ngg-cropper', NGGALLERY_URLPATH . 'admin/js/cropper/cropper.min.css', '0.10.0');
 				wp_enqueue_style( 'shutter', NGGALLERY_URLPATH . 'shutter/shutter-reloaded.css', false, '1.3.2', 'screen' );
 				wp_enqueue_style( 'datepicker', NGGALLERY_URLPATH . 'admin/css/jquery.ui.datepicker.css', false, '1.8.2', 'screen' );
 			case "nggallery-roles" :

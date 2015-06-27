@@ -281,6 +281,9 @@ abstract class NGG_Manager {
 					resizable: true,
 					modal: true,
 					title: title,
+					close: function() {
+						jQuery(this).dialog('destroy').remove();
+					},
 					buttons: [
 						{
 							text: "<?php echo esc_js(__('Annuleren','nggallery')); ?>",

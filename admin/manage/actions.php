@@ -5,27 +5,29 @@
  * @access private
  */
 
-require_once( '../../ngg-config.php');
+require_once( '../../ngg-config.php' );
 require_once( NGGALLERY_ABSPATH . '/lib/image.php' );
 
-if ( !is_user_logged_in() || !current_user_can('NextGEN Manage gallery')) {
+if ( ! is_user_logged_in() || ! current_user_can( 'NextGEN Manage gallery' ) ) {
 	wp_die( __( 'Cheatin&#8217; uh?' ) );
 }
 
 $id = (int) $_GET['id'];
 
+
 /**
  * Change the output based on which action the user wants to do.
+ * If you need scripts, you should register them with the parent page.
  */
-switch($_GET['cmd']) {
+switch ( $_GET['cmd'] ) {
 	case "rotate":
-		ngg_rotate($id);
+		ngg_rotate( $id );
 		break;
 	case "edit_thumb":
-		ngg_edit_thumbnail($id);
+		ngg_edit_thumbnail( $id );
 		break;
 	case "show_meta":
-		ngg_show_meta($id);
+		ngg_show_meta( $id );
 		break;
 	default:
 		//Do nothing.
@@ -37,14 +39,14 @@ switch($_GET['cmd']) {
  *
  * @param $id int The ID of the image.
  */
-function ngg_rotate($id) {
+function ngg_rotate( $id ) {
 	//Include the graphics library
 	include_once( nggGallery::graphic_library() );
 
 	//Get the image data
-	$picture = nggdb::find_image($id);
-	$thumb = new ngg_Thumbnail($picture->imagePath, TRUE);
-	$thumb->resize(350,350);
+	$picture = nggdb::find_image( $id );
+	$thumb   = new ngg_Thumbnail( $picture->imagePath, true );
+	$thumb->resize( 350, 350 );
 
 	// we need the new dimension
 	$resizedPreviewInfo = $thumb->newDimensions;
@@ -53,24 +55,6 @@ function ngg_rotate($id) {
 	$preview_image = trailingslashit( home_url() ) . 'index.php?callback=image&pid=' . $picture->pid . '&width=500&height=500';
 
 	?>
-
-	<script type="text/javascript">
-		/**
-		 * When pressed, send an AJAX request to rotate the image.
-		 */
-		doAction = function() {
-			var rotate_angle = jQuery('input[name=ra]:checked').val();
-
-			jQuery.ajax({
-				url: ajaxurl,
-				type : "POST",
-				data:  {action: 'rotateImage', id: <?php echo $id ?>, ra: rotate_angle},
-				cache: false,
-				success: function (msg) { showMessage('<?php _e('Image rotated', 'nggallery'); ?>') },
-				error: function (msg, status, errorThrown) { showMessage('<?php _e('Error rotating thumbnail', 'nggallery'); ?>') }
-			});
-		};
-	</script>
 	<p><?php _e('Select how you would like to rotate the image on the left.', 'nggallery'); ?></p>
 	<table align="center" width="90%">
 		<tr>
@@ -90,6 +74,27 @@ function ngg_rotate($id) {
 			</td>
 		</tr>
 	</table>
+	<script type="text/javascript">
+		/**
+		 * When pressed, send an AJAX request to rotate the image.
+		 */
+		doAction = function() {
+			var rotate_angle = jQuery('input[name=ra]:checked').val();
+
+			jQuery.ajax({
+				url: ajaxurl,
+				type: "POST",
+				data: {action: 'rotateImage', id: <?php echo $id ?>, ra: rotate_angle},
+				cache: false,
+				success: function() {
+					showMessage('<?php _e('Image rotated', 'nggallery'); ?>')
+				},
+				error: function() {
+					showMessage('<?php _e('Error rotating thumbnail', 'nggallery'); ?>')
+				}
+			});
+		};
+	</script>
 <?php
 }
 
@@ -98,17 +103,17 @@ function ngg_rotate($id) {
  *
  * @param $id int The ID of the image.
  */
-function ngg_show_meta($id) {
-	include_once(NGGALLERY_ABSPATH . '/lib/meta.php');
+function ngg_show_meta( $id ) {
+	include_once( NGGALLERY_ABSPATH . '/lib/meta.php' );
 
 
 	// let's get the meta data'
-	$meta = new nggMeta($id);
-	$dbdata = $meta->get_saved_meta();
+	$meta     = new nggMeta( $id );
+	$dbdata   = $meta->get_saved_meta();
 	$exifdata = $meta->get_EXIF();
 	$iptcdata = $meta->get_IPTC();
-	$xmpdata = $meta->get_XMP();
-	$class = '';
+	$xmpdata  = $meta->get_XMP();
+	$class    = '';
 
 	?>
 	<!-- META DATA -->
@@ -208,133 +213,211 @@ function ngg_show_meta($id) {
  *
  * @param $id int The ID of the image.
  *
- * @todo This needs to be remade with a new JavaScript plugin.
+ * @since 1.9.27 Totally remade with Fengyuan Chen's Cropper plugin.
+ * @see   https://github.com/fengyuanchen/cropper
  */
-function ngg_edit_thumbnail($id) {
-// let's get the image data
-$picture = nggdb::find_image($id);
+function ngg_edit_thumbnail( $id ) {
 
-include_once( nggGallery::graphic_library() );
-$ngg_options=get_option('ngg_options');
+	/**
+	 * @var $picture nggImage
+	 */
+	$picture = nggdb::find_image( $id );
 
-$thumb = new ngg_Thumbnail($picture->imagePath, TRUE);
-$thumb->resize(350,350);
-// we need the new dimension
-$resizedPreviewInfo = $thumb->newDimensions;
-$thumb->destruct();
+	$width  = $picture->meta_data['width'];
+	$height = $picture->meta_data['height'];
 
-$preview_image		= NGGALLERY_URLPATH . 'nggshow.php?pid=' . $picture->pid . '&amp;width=350&amp;height=350';
-$imageInfo			= @getimagesize($picture->imagePath);
-$rr = round($imageInfo[0] / $resizedPreviewInfo['newWidth'], 2);
+	?>
+	<table style="width: 100%">
+		<tr>
+			<td style="text-align: center; vertical-align: middle; width: 60%">
+				<div style="padding: 10px">
+					<button class="crop-action button button-small" data-method="zoom" data-option="0.1" type="button" title="<?php _e('Zoom In', 'nggallery'); ?>">
+						<span class="dashicons dashicons-plus"></span>
+					</button>
+					<button class="crop-action button button-small" data-method="zoom" data-option="-0.1" type="button" title="<?php _e('Zoom Out', 'nggallery'); ?>">
+						<span class="dashicons dashicons-minus"></span>
+					</button>
+					<button class="crop-action button button-small" data-method="rotate" data-option="-90" type="button" title="<?php _e('Rotate Left', 'nggallery'); ?>">
+						<span class="dashicons dashicons-image-rotate-left"></span>
+					</button>
+					<button class="crop-action button button-small" data-method="rotate" data-option="90" type="button" title="<?php _e('Rotate Right', 'nggallery'); ?>">
+						<span class="dashicons dashicons-image-rotate-right"></span>
+					</button>
+					<button class="crop-action button button-small" data-method="reset" type="button" title="<?php _e('Reset', 'nggallery'); ?>">
+						<span class="dashicons dashicons-update"></span>
+					</button>
+					<button id="center-selection" class="button button-small" data-method="reset" type="button" title="<?php _e('Center selection', 'nggallery'); ?>">
+						<span class="dashicons dashicons-align-center"></span>
+					</button>
+				</div>
+				<img src="<?php echo esc_url( $picture->imageURL ); ?>" alt="" id="imageToEdit" style="max-width: 100%; max-height: 100%; width: auto; height: auto;"/>
+			</td>
+			<td>
+				<div class="thumb-preview" style="max-width: 100%; width: 300px; height: 150px; overflow: hidden; margin-bottom: 10px; margin-left: auto; margin-right: auto; border: 1px solid black">
 
-if ( ($ngg_options['thumbfix'] == 1) ) {
+				</div>
+				<!--<div id="actualThumb">
+					<img src="<?php echo esc_url( $picture->thumbURL ); ?>?<?php echo time()?>" />
+				</div>-->
+				<table style="padding: 20px; width: 100%">
+					<tr>
+						<th colspan="2">
+							<?php _e('The parameters', 'nggallery'); ?>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<?php /* translators: x position on a grid */ ?>
+							<label for="dataX"><?php _e( 'X', 'nggallery' ) ?></label>
+						</td>
+						<td style="text-align: right">
+							<?php /* translators: a measurement unit, stand for pixels */ ?>
+							<input id="dataX" type="number" placeholder="0"> <?php _e( 'px', 'nggallery' ) ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<?php /* translators: y position on a grid */ ?>
+							<label for="dataY"><?php _e( 'Y', 'nggallery' ) ?></label>
+						</td>
+						<td style="text-align: right">
+							<input id="dataY" type="number" placeholder="0"> <?php _e( 'px', 'nggallery' ) ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="dataWidth"><?php _e( 'Width', 'nggallery' ) ?></label>
+						</td>
+						<td style="text-align: right">
+							<input id="dataWidth" type="number" placeholder="<?php echo $width ?>"> <?php _e( 'px', 'nggallery' ) ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="dataHeight"><?php _e( 'Height', 'nggallery' ) ?></label>
+						</td>
+						<td style="text-align: right">
+							<input id="dataHeight" type="number" placeholder="<?php echo $height ?>"> <?php _e( 'px', 'nggallery' ) ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="dataRotate"><?php _e( 'Rotation', 'nggallery' ) ?></label>
+						</td>
+						<td style="text-align: right">
+							<?php /* translators: stands for degrees, as in a rotation. Should be pretty short. */ ?>
+							<input id="dataRotate" type="number" placeholder="0"> <?php _e( 'deg', 'nggallery' ) ?>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align: right">
+							<button class="button button-secondary" type="button" id="apply-data" title="<?php _e('Apply the parameters', 'nggallery'); ?>">
+								<?php _e('Apply', 'nggallery'); ?>
+							</button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div id="thumbMsg" style="display : none; float:right; width:60%; height:2em; line-height:2em;"></div>
+			</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
 
-	$WidthHtmlPrev  = $ngg_options['thumbwidth'];
-	$HeightHtmlPrev = $ngg_options['thumbheight'];
+			//Some common elements we need multiple times.
+			var $image = jQuery('#imageToEdit');
+			var $dataX = jQuery("#dataX");
+			var $dataY = jQuery("#dataY");
+			var $dataHeight = jQuery("#dataHeight");
+			var $dataWidth = jQuery("#dataWidth");
+			var $dataRotate = jQuery("#dataRotate");
 
-} else {
-	// H > W
-	if ($imageInfo[1] > $imageInfo[0]) {
+			/**
+			 * Try and submit the new thumbnail.
+			 */
+			doAction = function() {
+				jQuery.ajax({
+					url: ajaxurl,
+					type: "POST",
+					data: {action: 'new_thumbnail', id: <?php echo $id ?>, newData: $image.cropper('getData', true)},
+					cache: false,
+					success: function(lol, hhh, xhr) {
+						console.log(lol);
+						jQuery(".wrap").append(lol);
+						showMessage('<?php _e('Thumbnail updated', 'nggallery'); ?>');
+					},
+					error: function(xhr) {
+						console.log(xhr.responseText);
+						showMessage('<?php _e('Error updating thumbnail', 'nggallery'); ?>');
+					}
+				});
+			};
 
-		$HeightHtmlPrev =  $ngg_options['thumbheight'];
-		$WidthHtmlPrev  = round($imageInfo[0] / ($imageInfo[1] / $ngg_options['thumbheight']),0);
+			/**
+			 * Properly destroy the cropper before destroying the dialog, or this gives errors.
+			 */
+			jQuery(".ngg-load-dialog").on("dialogbeforeclose", function() {
+				$image.cropper('destroy');
+			});
 
-	} else {
+			/**
+			 * Set the action buttons.
+			 */
+			jQuery(".crop-action").click(function() {
+				var $element = jQuery(this);
+				$image.cropper($element.data('method'), $element.data('option'));
+			});
 
-		$WidthHtmlPrev  =  $ngg_options['thumbwidth'];
-		$HeightHtmlPrev = round($imageInfo[1] / ($imageInfo[0] / $ngg_options['thumbwidth']),0);
+			/**
+			 * Allow manual apply of the data.
+			 */
+			jQuery("#apply-data").click(function() {
+				$image.cropper('setData', {
+					"x": parseInt($dataX.val()),
+					"y": parseInt($dataY.val()),
+					"width": parseInt($dataWidth.val()),
+					"height": parseInt($dataHeight.val()),
+					"rotate": parseInt($dataRotate.val())
+				});
+			});
 
-	}
-}
+			/**
+			 * Center the selection.
+			 */
+			jQuery("#center-selection").click(function() {
 
-?>
-<script src="<?php echo NGGALLERY_URLPATH; ?>/admin/js/Jcrop/js/jquery.Jcrop.js"></script>
-<link rel="stylesheet" href="<?php echo NGGALLERY_URLPATH; ?>/admin/js/Jcrop/css/jquery.Jcrop.css" type="text/css" />
+				var width = parseInt($dataWidth.val());
+				var height = parseInt($dataHeight.val());
+				var img_width = <?php echo esc_js( $width ) ?>;
+				var img_height = <?php echo esc_js( $height ) ?>;
 
-<script type="text/javascript">
-	//<![CDATA[
-	var status = 'start';
-	var xT, yT, wT, hT, selectedCoords;
-	var selectedImage = "thumb<?php echo $id ?>";
+				var x = Math.round((img_width - width) / 2);
+				var y = Math.round((img_height - height) / 2);
 
-	function showPreview(coords) {
+				$image.cropper('setData', {
+					"x": x,
+					"y": y
+				});
+			});
 
-		if (status != 'edit') {
-			jQuery('#actualThumb').hide();
-			jQuery('#previewNewThumb').show();
-			status = 'edit';
-		}
-
-		var rx = <?php echo $WidthHtmlPrev; ?> / coords.w;
-		var ry = <?php echo $HeightHtmlPrev; ?> / coords.h;
-
-		jQuery('#imageToEditPreview').css({
-			width: Math.round(rx * <?php echo $resizedPreviewInfo['newWidth']; ?>) + 'px',
-			height: Math.round(ry * <?php echo $resizedPreviewInfo['newHeight']; ?>) + 'px',
-			marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-			marginTop: '-' + Math.round(ry * coords.y) + 'px'
+			/**
+			 * Enable the cropper.
+			 */
+			$image.cropper({
+				preview: ".thumb-preview",
+				crop: function(data) {
+					$dataX.val(Math.round(data.x));
+					$dataY.val(Math.round(data.y));
+					$dataHeight.val(Math.round(data.height));
+					$dataWidth.val(Math.round(data.width));
+					$dataRotate.val(Math.round(data.rotate));
+				}
+			});
 		});
-
-		xT = coords.x;
-		yT = coords.y;
-		wT = coords.w;
-		hT = coords.h;
-
-		jQuery("#sizeThumb").html(xT+" "+yT+" "+wT+" "+hT);
-
-	}
-
-	doAction = function() {
-
-		if ( (wT == 0) || (hT == 0) || (wT == undefined) || (hT == undefined) ) {
-			alert("<?php _e('Select with the mouse the area for the new thumbnail', 'nggallery'); ?>");
-			return false;
-		}
-
-		jQuery.ajax({
-			url: ajaxurl,
-			type : "POST",
-			data:  {x: xT, y: yT, w: wT, h: hT, action: 'createNewThumb', id: <?php echo $id; ?>, rr: <?php echo str_replace(',','.',$rr); ?>},
-			cache: false,
-			success: function () { showMessage('<?php _e('Thumbnail updated', 'nggallery'); ?>') },
-			error: function () { showMessage('<?php _e('Error updating thumbnail', 'nggallery'); ?>') }
-		});
-
-	};
-	//]]>
-</script>
-<p><?php _e('Select the area for the thumbnail from the picture on the left.', 'nggallery'); ?></p>
-<table width="98%" align="center">
-	<tr>
-		<td valign="middle" align="center" width="350">
-			<img src="<?php echo esc_url( $preview_image ); ?>" alt="" id="imageToEdit" />
-		</td>
-		<td align="center" width="300" height="319">
-			<div id="previewNewThumb" style="display:none;width:<?php echo $WidthHtmlPrev; ?>px;height:<?php echo $HeightHtmlPrev; ?>px;overflow:hidden; margin-left:5px;">
-				<img src="<?php echo esc_url( $preview_image ); ?>" id="imageToEditPreview" />
-			</div>
-			<div id="actualThumb">
-				<img src="<?php echo esc_url( $picture->thumbURL ); ?>?<?php echo time()?>" />
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<div id="thumbMsg" style="display : none; float:right; width:60%; height:2em; line-height:2em;"></div>
-		</td>
-	</tr>
-</table>
-
-<script type="text/javascript">
-	//<![CDATA[
-	jQuery(document).ready(function(){
-		jQuery('#imageToEdit').Jcrop({
-			onChange: showPreview,
-			onSelect: showPreview,
-			aspectRatio: <?php echo str_replace(',', '.', round($WidthHtmlPrev/$HeightHtmlPrev, 3)); ?>
-		});
-	});
-	//]]>
-</script>
+	</script>
 <?php
 }

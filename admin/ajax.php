@@ -75,6 +75,64 @@ function ngg_ajax_operation() {
 
 add_action('wp_ajax_createNewThumb', 'createNewThumb');
 
+/**
+ * Create a new thumbnail.
+ *
+ * @todo When we have a better image manipulation framework, enable rotating with more angles.
+ */
+function new_thumbnail() {
+
+	global $ngg;
+
+	// check for correct capability
+	if ( !(is_user_logged_in() && current_user_can('NextGEN Manage gallery')) ) {
+		wp_die('-1', 403);
+	}
+
+	include_once( nggGallery::graphic_library() );
+
+	$id 	 = (int) $_POST['id'];
+	$picture = nggdb::find_image( $id );
+
+	$data = $_POST['newData'];
+
+	$x = (int) $data['x'];
+	$y = (int) $data['y'];
+	$w = (int) $data['width'];
+	$h = (int) $data['height'];
+
+	$thumb = new ngg_Thumbnail($picture->imagePath, TRUE);
+
+	if($data['rotate'] == '90') {
+		$thumb->rotateImage('CW');
+	} elseif ($data['rotate'] == '-90'){
+		$thumb->rotateImage('CCW');
+	}
+
+	$thumb->crop($x, $y, $w, $h);
+
+	if ( $thumb->save($picture->thumbPath, 100)) {
+
+		//read the new sizes
+		$new_size = @getimagesize ( $picture->thumbPath );
+		$size['width'] = $new_size[0];
+		$size['height'] = $new_size[1];
+
+		// add them to the database
+		nggdb::update_image_meta($picture->pid, array( 'thumbnail' => $size) );
+
+		echo "OK";
+	} else {
+		header('HTTP/1.1 500 Internal Server Error');
+		echo "KO";
+	}
+
+	exit();
+}
+
+add_action('wp_ajax_new_thumbnail', 'new_thumbnail');
+
+
 function createNewThumb() {
 
     global $ngg;
