@@ -21,12 +21,14 @@ class NGG_Image_Manager extends NGG_Manager {
 	 */
 	public function display() {
 
-		var_dump($_POST);
-
 		parent::display();
 
 		if (isset ($_POST['update_images']) )  {
 			$this->handle_update_images();
+		}
+
+		if( isset($_POST['scan_folder'])) {
+			$this->handle_scan_folder();
 		}
 
 		/**
@@ -114,9 +116,35 @@ class NGG_Image_Manager extends NGG_Manager {
 				var newUrl = $image.attr("src") + "?" + d.getTime();
 				$image.attr("src" , newUrl);
 			}
+
+			jQuery("#scan_folder").click(function() {
+				return confirm(
+					"<?php _e( 'This will change folder and file names (e.g. remove spaces, special characters, ...)', 'nggallery' ) ?>" +
+					"\n\n" +
+					"<?php _e( 'You will need to update your URLs if you link directly to the images.', 'nggallery' ) ?>" +
+					"\n\n" +
+					"<?php _e( 'Press OK to proceed, and Cancel to stop.', 'nggallery' ) ?>"
+				);
+			});
 		</script>
 
 		<?php
+	}
+
+	/**
+	 * Handle a request to scan the folder for new images.
+	 */
+	private function handle_scan_folder() {
+		if ( wp_verify_nonce( $_POST['_ngg_nonce_gallery'], 'ngg-update-gallery' ) === false ) {
+			nggGallery::show_error( __( 'You waited too long, or you cheated.', 'nggallery' ) );
+
+			return;
+		}
+
+		global $wpdb;
+
+		$gallery_path = $wpdb->get_var( $wpdb->prepare( "SELECT path FROM $wpdb->nggallery WHERE gid = %d", $this->id ) );
+		nggAdmin::import_gallery( $gallery_path );
 	}
 
 	/**
@@ -295,7 +323,7 @@ class NGG_Image_Manager extends NGG_Manager {
                     <?php do_action('ngg_manage_gallery_settings', $this->id); ?>
 				</table>
 				<div class="submit">
-					<input type="submit" onclick="return confirm('<?php _e("This will change folder and file names (e.g. remove spaces, special characters, ...)","nggallery")?>\n\n<?php _e("You will need to update your URLs if you link directly to the images.","nggallery")?>\n\n<?php _e("Press OK to proceed, and Cancel to stop.","nggallery")?>')" class="button-secondary" name="scanfolder" value="<?php _e("Scan folder for new images",'nggallery'); ?> " />
+					<input type="submit" class="button-secondary" name="scan_folder" id="scan_folder" value="<?php _e("Scan folder for new images",'nggallery'); ?> " />
 					<input type="submit" class="button-primary action" name="update_images" value="<?php _e("Save Changes",'nggallery'); ?>" />
 				</div>
 			</div>
