@@ -278,11 +278,11 @@ function ngg_ajax_dashboard() {
     switch ( $_GET['jax'] ) {
 
     case 'dashboard_primary' :
-    	Overview_Display::ngg_overview_news();
+    	NGG_Overview::ngg_overview_news();
     	break;
 
     case 'dashboard_plugins' :
-    	Overview_Display::ngg_related_plugins();
+    	NGG_Overview::ngg_related_plugins();
     	break;
 
     }

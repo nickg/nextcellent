@@ -246,62 +246,64 @@ class nggAdminPanel {
 			update_option( 'ngg_options', $ngg->options );
 		}
 
+		/**
+		 * @var NGG_Displayable $page
+		 */
+		$page = null;
+
 		switch ( $_GET['page'] ) {
 			case "nggallery-add-gallery" :
 				include_once( dirname( __FILE__ ) . '/functions.php' );        // admin functions
 				include_once( dirname( __FILE__ ) . '/addgallery.php' );    // nggallery_admin_add_gallery
 				$ngg->addgallery_page = new nggAddGallery ();
 				$ngg->addgallery_page->controller();
-				break;
-			/*case "nggallery-manage-gallery" :
-				include_once( dirname( __FILE__ ) . '/functions.php' );    // admin functions
-				include_once( dirname( __FILE__ ) . '/manage.php' );    // nggallery_admin_manage_gallery
-				// Initate the Manage Gallery page
-				$ngg->manage_page = new nggManageGallery ();
-				// Render the output now, because you cannot access a object during the constructor is not finished
-				$ngg->manage_page->controller();
-				break;*/
+
+				return;
 			case "nggallery-manage":
 				include_once( dirname( __FILE__ ) . '/functions.php' );    // admin functions
-				$this->show_manager();
+				$page = $this->get_manager();
 				break;
 			case "nggallery-manage-album" :
 				include_once( dirname( __FILE__ ) . '/album.php' );        // nggallery_admin_manage_album
 				$ngg->manage_album = new nggManageAlbum ();
 				$ngg->manage_album->controller();
-				break;
+
+				return;
 			case "nggallery-options" :
 				include_once( dirname( __FILE__ ) . '/settings.php' );    // nggallery_admin_options
 				$ngg->option_page = new nggOptions ();
 				$ngg->option_page->show_page();
-				break;
+
+				return;
 			case "nggallery-tags" :
 				include_once( dirname( __FILE__ ) . '/tags.php' );        // nggallery_admin_tags
-				break;
+				return;
 			case "nggallery-style" :
 				include_once( dirname( __FILE__ ) . '/style.php' );        // nggallery_admin_style
 				$ngg->nggallery_style = new NGG_Style ();
 				$ngg->nggallery_style->controller();
-				break;
+
+				return;
 			case "nggallery-setup" :
 				include_once( dirname( __FILE__ ) . '/setup.php' );        // nggallery_admin_setup
 				nggallery_admin_setup();
-				break;
+
+				return;
 			case "nggallery-roles" :
 				include_once( dirname( __FILE__ ) . '/roles.php' );        // nggallery_admin_roles
 				nggallery_admin_roles();
-				break;
-			case "nggallery-import" :
-				include_once( dirname( __FILE__ ) . '/myimport.php' );    // nggallery_admin_import
-				nggallery_admin_import();
-				break;
-			case "nggallery" :
-			default :
-				include_once( dirname( __FILE__ ) . '/overview.php' );    // nggallery_admin_overview
-				$output = new Overview_Display();
-				$output->display();
-				break;
+
+				return;
+			case "nggallery":
+			default:
+				//Display the overview
+				include_once( dirname( __FILE__ ) . '/class-ngg-overview.php' );
+				$page = new NGG_Overview();
 		}
+
+		//Display the pages working with the new system.
+		$page->display();
+
 	}
 
 	/**
@@ -310,54 +312,37 @@ class nggAdminPanel {
 	 * - a list of all images in a gallery,
 	 * - sort mode of a gallery,
 	 * - search mode.
+	 *
+	 * @return NGG_Displayable The correct managing page or null if the page could not be found.
 	 */
-	private function show_manager() {
-		if ( isset( $_GET['mode'] ) ) {
+	private function get_manager() {
 
-			if ( $_GET['mode'] == 'image' ) {
+		if( !isset($_GET['mode']) || $_GET['mode'] === 'gallery') {
 
-				/**
-				 * Display an overview for a specific gallery. Which gallery should be passed in the $_GET['gid']
-				 * parameter.
-				 */
-
-				include_once( 'manage/class-ngg-image-manager.php' );
-
-				$manager = new NGG_Image_Manager();
-
-			} elseif ( $_GET['mode'] == 'sort' ) {
-
-				/**
-				 * Display the sorting page for a specific gallery. Which gallery should be passed in the $_GET['gid']
-				 * parameter.
-				 */
-
-				include_once( 'manage/class-ngg-sort-manager.php' );
-				$manager = new NGG_Sort_Manager();
-			} elseif ( $_GET['mode'] == 'search' ) {
-
-				/**
-				 * Display the search result images.
-				 */
-
-				include_once( 'manage/class-ngg-search-manager.php' );
-				$manager = new NGG_Search_Manager();
-			}
-
-		}
-
-		if ( ! isset( $manager ) ) {
-			/**
-			 * If it's something else, display the gallery overview page. This is a list of all galleries.
-			 *
-			 * @access private
-			 */
+			//Display the normal page.
 			include_once( 'manage/class-ngg-gallery-manager.php' );
+			return new NGG_Gallery_Manager();
 
-			$manager = new NGG_Gallery_Manager();
+		} elseif ( $_GET['mode'] == 'image' ) {
+
+			//Display overview of a gallery.
+			include_once( 'manage/class-ngg-image-manager.php' );
+			return new NGG_Image_Manager();
+
+		} elseif ( $_GET['mode'] == 'sort' ) {
+
+			//Display sort page.
+			include_once( 'manage/class-ngg-sort-manager.php' );
+			return new NGG_Sort_Manager();
+
+		} elseif ( $_GET['mode'] == 'search' ) {
+
+			//Display search results.
+			include_once( 'manage/class-ngg-search-manager.php' );
+			return new NGG_Search_Manager();
+		} else {
+			return  null;
 		}
-
-		$manager->display();
 	}
 
 	function load_scripts() {

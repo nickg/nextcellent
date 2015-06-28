@@ -7,9 +7,10 @@ if ( preg_match( '#' . basename( __FILE__ ) . '#', $_SERVER['PHP_SELF'] ) ) {
  * Class to display the overview.
  * @since 1.9.24
  */
-class Overview_Display {
+class NGG_Overview {
 
 	public function __construct() {
+
 		add_meta_box( 'overview', __( 'At a Glance', 'nggallery' ), array(
 			$this,
 			'stats'
