@@ -224,7 +224,7 @@ class nggAdminPanel {
 	// show the network page
 	function show_network_settings() {
 		$this->show_upgrade_page();
-		include_once( dirname( __FILE__ ) . '/style.php' );
+		include_once( dirname( __FILE__ ) . '/class-ngg-style.php' );
 		include_once( dirname( __FILE__ ) . '/wpmu.php' );
 		nggallery_wpmu_setup();
 	}
@@ -276,11 +276,9 @@ class nggAdminPanel {
 				include_once( dirname( __FILE__ ) . '/tags.php' );        // nggallery_admin_tags
 				return;
 			case "nggallery-style" :
-				include_once( dirname( __FILE__ ) . '/style.php' );        // nggallery_admin_style
-				$ngg->nggallery_style = new NGG_Style ();
-				$ngg->nggallery_style->controller();
-
-				return;
+				include_once( dirname( __FILE__ ) . '/class-ngg-style.php' );        // nggallery_admin_style
+				$page = new NGG_Style();
+				break;
 			case "nggallery-setup" :
 				include_once( dirname( __FILE__ ) . '/setup.php' );        // nggallery_admin_setup
 				nggallery_admin_setup();
@@ -298,8 +296,10 @@ class nggAdminPanel {
 				$page = new NGG_Overview();
 		}
 
-		//Display the pages working with the new system.
-		$page->display();
+		//Display the pages working with the new system. If the page is not valid, do nothing.
+		if ( $page != null ) {
+			$page->display();
+		}
 
 	}
 

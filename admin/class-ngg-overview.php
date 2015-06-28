@@ -1,13 +1,12 @@
 <?php
-if ( preg_match( '#' . basename( __FILE__ ) . '#', $_SERVER['PHP_SELF'] ) ) {
-	die( 'You are not allowed to call this page directly.' );
-}
+
+include_once('interface-ngg-displayable.php');
 
 /**
  * Class to display the overview.
  * @since 1.9.24
  */
-class NGG_Overview {
+class NGG_Overview implements NGG_Displayable {
 
 	public function __construct() {
 

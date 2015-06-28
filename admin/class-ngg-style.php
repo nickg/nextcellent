@@ -1,16 +1,17 @@
 <?php  
-if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
-class NGG_Style {
+include_once('interface-ngg-displayable.php');
 
-    function __construct() {
+class NGG_Style implements NGG_Displayable {
+
+    public function __construct() {
 
        	// same as $_SERVER['REQUEST_URI'], but should work under IIS 6.0
 	   $this->filepath    = admin_url() . 'admin.php?page=' . $_GET['page'];
 
   		//Look for POST updates
 		if ( !empty($_POST) )
-			$this->processor();
+			{$this->processor();}
     }
 	
 	/**
@@ -19,7 +20,8 @@ class NGG_Style {
 	 * @since 1.9.22
 	 * 
 	 * @param array $directions Absolute paths to the folders that contain stylesheets.
-	 * @return array Absolute paths to the stylesheets.
+	 *
+	 *@return array Absolute paths to the stylesheets.
 	 */
 	static function ngg_get_cssfiles( $directions ) {
 
@@ -30,20 +32,20 @@ class NGG_Style {
 					if ($plugins_dir) {
 				while (($file = $plugins_dir->read()) !== false) {
 					if (preg_match('|^\.+$|', $file))
-						continue;
+						{continue;}
 					if (is_dir($direction.'/'.$file)) {
 						$plugins_subdir = dir($direction.'/'.$file);
 						if ($plugins_subdir) {
 							while (($subfile = $plugins_subdir->read()) !== false) {
 								if (preg_match('|^\.+$|', $subfile))
-									continue;
+									{continue;}
 								if (preg_match('|\.css$|', $subfile))
-									$plugin_files[] = "$direction/$file/$subfile";
+									{$plugin_files[] = "$direction/$file/$subfile";}
 							}
 						}
 					} else {
 						if (preg_match('|\.css$|', $file))
-							$plugin_files[] = $direction . '/' . $file;
+							{$plugin_files[] = $direction . '/' . $file;}
 					}
 				}
 			}
@@ -58,7 +60,8 @@ class NGG_Style {
 	 * @since 1.9.22
 	 * 
 	 * @param string $plugin_file Absolute path to the stylesheet.
-	 * @return array The information about the stylesheet.
+	 *
+	 *@return array The information about the stylesheet.
 	 */
 	static function ngg_get_cssfiles_data($plugin_file) {
 	
@@ -70,9 +73,9 @@ class NGG_Style {
 		preg_match("|Author:(.*)|i", $css_data, $author_name);
 		
 		if (preg_match("|Version:(.*)|i", $css_data, $version))
-			$version = trim($version[1]);
+			{$version = trim($version[1]);}
 		else
-			$version = '';
+			{$version = '';}
 
 		$description = wptexturize(trim($description[1]));
 
@@ -107,7 +110,7 @@ class NGG_Style {
 	 * @since 1.9.22
 	 *
 	 */
-	function processor() {
+	private function processor() {
 		global $ngg;
 		$i = 0;
 
@@ -133,7 +136,7 @@ class NGG_Style {
 			check_admin_referer('ngg_style');
 
 			if ( !current_user_can('edit_themes') )
-				wp_die('<p>'.__('You do not have sufficient permissions to edit templates for this blog.').'</p>');
+				{wp_die('<p>'.__('You do not have sufficient permissions to edit templates for this blog.').'</p>');}
 
 			$newcontent = stripslashes($_POST['newcontent']);
 			$old_path = $_POST['file'];
@@ -173,7 +176,7 @@ class NGG_Style {
 		if (isset($_POST['movecss'])) {
 
 			if ( !current_user_can('edit_themes') )
-				wp_die('<p>'.__('You do not have sufficient permissions to edit templates for this blog.').'</p>');
+				{wp_die('<p>'.__('You do not have sufficient permissions to edit templates for this blog.').'</p>');}
 			
 			$old_path = $_POST['oldpath'];
 			$new_path = NGG_CONTENT_DIR . "/ngg_styles/nggallery.css";
@@ -202,7 +205,7 @@ class NGG_Style {
 	 * @since 1.9.22
      *
      */
-	function controller() {
+	public function display() {
 		global $ngg;
 		
 		//the directions containing the css files
@@ -274,7 +277,7 @@ class NGG_Style {
 							$title .= sprintf(__('Browsing %s','nggallery'), $act_css_name);
 						}
 						if ( $theme_css_exists )
-							$title .= ' ' . __('(from the theme folder)','nggallery');
+							{$title .= ' ' . __('(from the theme folder)','nggallery');}
 						$title .= '</h3>';
 						echo $title
 						?>
@@ -324,6 +327,5 @@ class NGG_Style {
 			</div> <!-- wrap-->
 			<?php
 				} //end if ( !is_multisite() || is_super_admin() )
-	} //end controller() 
-} //end class
-?>
+	}
+}
