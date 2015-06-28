@@ -359,9 +359,7 @@ class nggAdminPanel {
 		wp_localize_script( 'ngg-ajax', 'nggAjaxSetup', array(
 			'url'        => admin_url( 'admin-ajax.php' ),
 			'action'     => 'ngg_ajax_operation',
-			'operation'  => '',
 			'nonce'      => wp_create_nonce( 'ngg-ajax' ),
-			'ids'        => '',
 			'permission' => __( 'You do not have the correct permission', 'nggallery' ),
 			'error'      => __( 'Unexpected Error', 'nggallery' ),
 			'failure'    => __( 'A failure occurred', 'nggallery' )

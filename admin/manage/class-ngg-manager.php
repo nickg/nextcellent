@@ -90,12 +90,12 @@ abstract class NGG_Manager implements NGG_Displayable {
 					</tr>
 					<tr valign="top">
 						<th align="left">
-							<label for="thumbfix">
+							<label for="thumb_fix">
 								<?php _e( 'Fixed size', 'nggallery' ); ?>
 							</label>
 						</th>
 						<td>
-							<input id="thumbfix" type="checkbox" name="thumbfix" value="1" <?php checked( '1',
+							<input id="thumb_fix" type="checkbox" name="thumb_fix" value="true" <?php checked( '1',
 								$options['thumbfix'] ); ?>>
 							<?php _e( 'This will ignore the aspect ratio, so no portrait thumbnails', 'nggallery' ) ?>
 						</td>
@@ -326,10 +326,13 @@ abstract class NGG_Manager implements NGG_Displayable {
 
 		$ngg_options = get_option( 'ngg_options' );
 
+		/**
+		 * If the post type is
+		 */
 		if ( $_POST['TB_type'] === 'gallery' ) {
-			$cp = 'gallery_';
+			$mode = 'gallery';
 		} else {
-			$cp = '';
+			$mode = 'image';
 		}
 
 		check_admin_referer( 'ngg_thickbox_form' );
@@ -338,20 +341,24 @@ abstract class NGG_Manager implements NGG_Displayable {
 
 		switch ( $_POST['TB_action'] ) {
 			case 'resize_images':
-				$ngg_options['imgWidth']  = (int) $_POST['imgWidth'];
-				$ngg_options['imgHeight'] = (int) $_POST['imgHeight'];
-
-				$command = $cp . 'resize_image';
+				$data = array(
+					'width'     => (int) $_POST['imgWidth'],
+					'height'    => (int) $_POST['imgHeight']
+				);
+				$command = 'resize_image';
 				$title   = __( 'Resize images', 'nggallery' );
-				break;
+				nggAdmin::do_ajax_operation( $command, $list, $title, $mode, $data );
+				return;
 			case 'new_thumbnails':
-				$ngg_options['thumbwidth']  = (int) $_POST['thumbwidth'];
-				$ngg_options['thumbheight'] = (int) $_POST['thumbheight'];
-				$ngg_options['thumbfix']    = isset ( $_POST['thumbfix'] ) ? true : false;
-
-				$command = $cp . 'create_thumbnail';
+				$data = array(
+					'width'     => (int) $_POST['thumbwidth'],
+					'height'    => (int) $_POST['thumbheight'],
+					'fix'       => isset( $_POST['thumb_fix'] ) ? true : false
+				);
+				$command = 'create_thumbnail';
 				$title   = __( 'Create new thumbnails', 'nggallery' );
-				break;
+				nggAdmin::do_ajax_operation( $command, $list, $title, $mode, $data );
+				return;
 			case 'copy_to':
 				$dest_gid = (int) $_POST['dest_gid'];
 				nggAdmin::copy_images( $list, $dest_gid );
@@ -404,13 +411,6 @@ abstract class NGG_Manager implements NGG_Displayable {
 			default:
 				return;
 		}
-
-		/**
-		 * Happens when there is no return keyword in the switch above.
-		 */
-		//TODO What is in the case the user has no if cap 'NextGEN Change options' ? Check feedback
-		update_option( 'ngg_options', $ngg_options );
-		nggAdmin::do_ajax_operation( $command, $list, $title );
 	}
 
 	/**

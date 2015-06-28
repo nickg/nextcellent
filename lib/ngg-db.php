@@ -284,7 +284,7 @@ class nggdb {
      * @param string $orderby
      * @param string $order (ASC |DESC)
      * @param bool $exclude
-     * @return An array containing the nggImage objects representing the images in the gallery.
+     * @return array An array containing the nggImage objects representing the images in the gallery.
      */
     static function get_ids_from_gallery($id, $order_by = 'sortorder', $order_dir = 'ASC', $exclude = true) {
 
@@ -559,7 +559,7 @@ class nggdb {
      * Get an image given its ID
      *
      * @param  int|string The image ID or Slug
-     * @return object A nggImage object representing the image (false if not found)
+     * @return nggImage|bool The image, or false if it wasn't found.
      */
     static function find_image( $id ) {
         global $wpdb;
