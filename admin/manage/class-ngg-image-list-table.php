@@ -31,6 +31,7 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 * @param bool|string $search The search string, or false if we don't search.
 	 */
 	public function prepare_items($search = false) {
+
 		/**
 		 * @global $nggdb nggdb
 		 */
@@ -60,23 +61,7 @@ class NGG_Image_List_Table extends WP_List_Table {
 			 * Do the pagination.
 			 */
 			$currentPage = $this->get_pagenum();
-			$perPage     = 50;
-
-			/**
-			 * Sorting
-			 *
-			 * if ( ( isset ( $_GET['order'] ) && $_GET['order'] == 'desc' ) ) {
-			 * $order = 'DESC';
-			 * } else {
-			 * $order = 'ASC';
-			 * }
-			 *
-			 * if ( ( isset ( $_GET['orderby'] ) && ( in_array( $_GET['orderby'], array( 'gid', 'title', 'author' ) ) ) ) ) {
-			 * $order_by = $_GET['orderby'];
-			 * } else {
-			 * $order_by = 'gid';
-			 * }
-			 * */
+			$perPage     = $this->get_items_per_page('ngg_images_per_page', 50);
 
 			$options    = get_option( 'ngg_options' );
 			$gallery_id = (int) $_GET['gid'];
@@ -113,13 +98,11 @@ class NGG_Image_List_Table extends WP_List_Table {
 		}
 	}
 
-
-
 	/**
-	 * Get the hidden columns.
+	 * Get the hidden columns from the screen options.
 	 */
-	private function get_hidden_columns() {
-		return array();
+	public function get_hidden_columns() {
+		return (array) get_user_option( 'manage' . $this->screen->id . 'columnshidden' );;
 	}
 
 	/**
@@ -238,10 +221,9 @@ class NGG_Image_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Get the columns.
+	 * With this we can register the columns in the screen options API.
 	 */
-	public function get_columns() {
-
+	public static function get_columns_static() {
 		$columns = array(
 			'cb'             => '<input type="checkbox" />',
 			'id'             => __( 'ID', 'nggallery' ),
@@ -258,6 +240,14 @@ class NGG_Image_List_Table extends WP_List_Table {
 		$columns = apply_filters( 'ngg_manage_images_columns', $columns );
 
 		return $columns;
+	}
+
+	/**
+	 * Get the columns.
+	 */
+	public function get_columns() {
+
+		return $this::get_columns_static();
 	}
 
 	/**

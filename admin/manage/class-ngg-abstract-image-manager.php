@@ -1,7 +1,7 @@
 <?php
 
 include_once( 'class-ngg-manager.php' );
-include_once( 'NGG_Image_List_Table.php' );
+include_once( 'class-ngg-image-list-table.php' );
 
 /**
  * Class NGG_Abstract_Image_Manager

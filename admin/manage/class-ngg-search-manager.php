@@ -3,10 +3,9 @@
 include_once( 'class-ngg-abstract-image-manager.php' );
 
 /**
- * Created by IntelliJ IDEA.
- * User: Niko
- * Date: 28/06/2015
- * Time: 16:54
+ * Class NGG_Search_Manager
+ *
+ * Represents an image search page.
  */
 class NGG_Search_Manager extends NGG_Abstract_Image_Manager {
 

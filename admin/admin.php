@@ -31,6 +31,8 @@ class nggAdminPanel {
 		// Add WPML hook to register description / alt text for translation
 		add_action( 'ngg_image_updated', array( 'nggGallery', 'RegisterString' ) );
 
+		add_filter('set-screen-option', array($this, 'save_options'), 10, 3);
+
 	}
 
 	/**
@@ -153,10 +155,10 @@ class nggAdminPanel {
 			__( 'Add Gallery / Images', 'nggallery' ), 'NextGEN Upload images', 'nggallery-add-gallery',
 			array( &$this, 'show_menu' ) );
 
-		add_submenu_page( NGGFOLDER, __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ),
+		/*add_submenu_page( NGGFOLDER, __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ),
 			'NextGEN Manage gallery', 'nggallery-manage-gallery',
-			array( &$this, 'show_menu' ) );
-		add_submenu_page( NGGFOLDER, __( 'Galleries2', 'nggallery' ), __( 'Galleries2', 'nggallery' ),
+			array( &$this, 'show_menu' ) );*/
+		add_submenu_page( NGGFOLDER, __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ),
 			'NextGEN Manage gallery', 'nggallery-manage',
 			array( &$this, 'show_menu' ) );
 
@@ -251,14 +253,14 @@ class nggAdminPanel {
 				$ngg->addgallery_page = new nggAddGallery ();
 				$ngg->addgallery_page->controller();
 				break;
-			case "nggallery-manage-gallery" :
+			/*case "nggallery-manage-gallery" :
 				include_once( dirname( __FILE__ ) . '/functions.php' );    // admin functions
 				include_once( dirname( __FILE__ ) . '/manage.php' );    // nggallery_admin_manage_gallery
 				// Initate the Manage Gallery page
 				$ngg->manage_page = new nggManageGallery ();
 				// Render the output now, because you cannot access a object during the constructor is not finished
 				$ngg->manage_page->controller();
-				break;
+				break;*/
 			case "nggallery-manage":
 				include_once( dirname( __FILE__ ) . '/functions.php' );    // admin functions
 				$this->show_manager();
@@ -302,6 +304,13 @@ class nggAdminPanel {
 		}
 	}
 
+	/**
+	 * Switch between the different management modes:
+	 * - a list of all galleries,
+	 * - a list of all images in a gallery,
+	 * - sort mode of a gallery,
+	 * - search mode.
+	 */
 	private function show_manager() {
 		if ( isset( $_GET['mode'] ) ) {
 
@@ -400,7 +409,7 @@ class nggAdminPanel {
 				add_thickbox();
 				wp_enqueue_script( 'postbox' );
 				break;
-			case "nggallery-manage-gallery" :
+			/*case "nggallery-manage-gallery" :
 				wp_enqueue_script( 'postbox' );
 				wp_enqueue_script( 'ngg-ajax' );
 				wp_enqueue_script( 'ngg-progressbar' );
@@ -414,10 +423,8 @@ class nggAdminPanel {
 					'imageCount' => '1'
 				) );
 				wp_enqueue_script( 'shutter' );
-				break;
+				break;*/
 			case "nggallery-manage":
-			case "nggallery-manage-images":
-			case "nggallery-manage-gallery2" :
 				wp_enqueue_script( 'postbox' );
 				wp_enqueue_script( 'ngg-ajax' );
 				wp_enqueue_script( 'ngg-progressbar' );
@@ -486,9 +493,6 @@ class nggAdminPanel {
                 wp_enqueue_style( 'ngg-jqueryui' );
 				break;
 			case "nggallery-manage":
-			case "nggallery-manage-images":
-			case "nggallery-manage-gallery2":
-			case "nggallery-manage-gallery" :
 				wp_enqueue_style('ngg-cropper', NGGALLERY_URLPATH . 'admin/js/cropper/cropper.min.css', '0.10.0');
 				wp_enqueue_style( 'shutter', NGGALLERY_URLPATH . 'shutter/shutter-reloaded.css', false, '1.3.2', 'screen' );
 				wp_enqueue_style( 'datepicker', NGGALLERY_URLPATH . 'admin/css/jquery.ui.datepicker.css', false, '1.8.2', 'screen' );
@@ -505,12 +509,16 @@ class nggAdminPanel {
 		}
 	}
 
+	public static function save_options($status, $option, $value) {
+		return $value;
+	}
+
 	/**
 	 * Add help and options to the correct screens
 	 *
 	 * @since 1.9.24
 	 *
-	 * @param object $screen The current screen.
+	 * @param WP_Screen $screen The current screen.
 	 *
 	 * @return object $screen The current screen.
 	 */
@@ -579,13 +587,30 @@ class nggAdminPanel {
 					'content' => $help
 				) );
 				break;
-			case "{$i18n}_page_nggallery-manage-gallery" :
-				// we would like to have screen option only at the manage images / gallery page
-				if ( ( isset( $_GET['mode'] ) && $_GET['mode'] == 'edit' ) || isset ( $_POST['backToGallery'] ) ) {
-					$screen->base = $screen->id = 'nggallery-manage-images';
+			case "{$i18n}_page_nggallery-manage" :
+
+				$option = 'per_page';
+
+				if( !isset($_GET['mode']) || $_GET['mode'] === 'gallery' ) {
+					include_once('manage/class-ngg-gallery-list-table.php');
+					add_filter( 'manage_' . $screen->id . '_columns', array( 'NGG_Gallery_List_Table', 'get_columns_static' ), 0 );
+					$args = array(
+						'label' => __( 'Galleries', 'nggallery'),
+						'default' => 25,
+						'option' => 'ngg_galleries_per_page'
+					);
 				} else {
-					$screen->base = $screen->id = 'nggallery-manage-gallery';
+					include_once('manage/class-ngg-image-list-table.php');
+					add_filter( 'manage_' . $screen->id . '_columns', array( 'NGG_Image_List_Table', 'get_columns_static' ), 0 );
+					$args = array(
+						'label' => __( 'Images', 'nggallery' ),
+						'default' => 50,
+						'option' => 'ngg_images_per_page'
+					);
 				}
+
+				$screen->add_option($option, $args);
+
 
 				$help = '<p>' . __( 'Manage your images and galleries.', 'nggallery' ) . '</p>';
 
@@ -594,24 +619,6 @@ class nggAdminPanel {
 					'title'   => 'Manage everything',
 					'content' => $help
 				) );
-				break;
-			case "{$i18n}_page_nggallery-manage-gallery2" :
-
-				// we would like to have screen option only at the manage images / gallery page
-				if ( ( isset( $_GET['mode'] ) && $_GET['mode'] == 'edit' ) || isset ( $_POST['backToGallery'] ) ) {
-					$screen->base = $screen->id = 'nggallery-manage-images';
-				} else {
-					$screen->base = $screen->id = 'nggallery-manage-gallery';
-				}
-
-				$help = '<p>' . __( 'Manage your images and galleries.', 'nggallery' ) . '</p>';
-
-				$screen->add_help_tab( array(
-					'id'      => $screen->id . '-general',
-					'title'   => 'Manage everything',
-					'content' => $help
-				) );
-
 				break;
 			case "{$i18n}_page_nggallery-manage-album" :
 				$help = '<p>' . __( 'Organize your galleries into albums.', 'nggallery' ) . '</p><p>' . __( 'First select an album from the dropdown and then drag the galleries you want to add or remove from the selected album.', 'nggallery' ) . '</p>';
@@ -695,13 +702,13 @@ class nggAdminPanel {
 	 * @return void
 	 */
 	function register_columns() {
-		include_once( dirname( __FILE__ ) . '/manage-images.php' );
+		//include_once( dirname( __FILE__ ) . '/manage-images.php' );
 
-		$wp_list_table = new _NGG_Images_List_Table( 'nggallery-manage-images' );
+		//$wp_list_table = new _NGG_Images_List_Table( 'nggallery-manage-images' );
 
-		include_once( dirname( __FILE__ ) . '/manage-galleries.php' );
+		//include_once( dirname( __FILE__ ) . '/manage-galleries.php' );
 
-		$wp_list_table = new _NGG_Galleries_List_Table( 'nggallery-manage-gallery' );
+		//$wp_list_table = new _NGG_Galleries_List_Table( 'nggallery-manage-gallery' );
 	}
 }
 

@@ -1,5 +1,5 @@
 <?php
-include_once( 'NGG_Gallery_List_Table.php' );
+include_once( 'class-ngg-gallery-list-table.php' );
 include_once( 'class-ngg-manager.php' );
 
 /**
