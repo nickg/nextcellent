@@ -1,12 +1,12 @@
 <?php
 
+include_once(NGGALLERY_ABSPATH . '/admin/interface-ngg-displayable.php');
 /**
- * Created by IntelliJ IDEA.
- * User: Niko
- * Date: 26/06/2015
- * Time: 16:57
+ * Class NGG_Manager
+ *
+ * Contains common JavaScript and other code for the managing pages.
  */
-abstract class NGG_Manager {
+abstract class NGG_Manager implements NGG_Displayable {
 
 	const BASE = 'admin.php?page=nggallery-manage';
 
@@ -470,29 +470,4 @@ abstract class NGG_Manager {
 			}
 		}
 	}
-
-	/**
-	 * Add a new gallery.
-	 */
-	private function handle_add_gallery() {
-
-		if( wp_verify_nonce($_POST['_wpnonce'], 'ngg_add_gallery') === false || !nggGallery::current_user_can( 'NextGEN Add new gallery' )) {
-			nggGallery::show_error(__('You waited too long, or you cheated.','nggallery'));
-			return;
-		}
-
-		// get the default path for a new gallery
-		$default_path = get_option('ngg_options')['gallerypath'];
-		$new_gallery = esc_attr( $_POST['gallery_name']);
-		if ( !empty($new_gallery) ) {
-			nggAdmin::create_gallery($new_gallery, $default_path);
-		}
-
-		do_action( 'ngg_update_addgallery_page' );
-	}
-
-
-
-
-
 }

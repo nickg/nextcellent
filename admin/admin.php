@@ -303,30 +303,48 @@ class nggAdminPanel {
 	}
 
 	private function show_manager() {
-		if(isset($_GET['mode']) && $_GET['mode'] == 'image') {
+		if ( isset( $_GET['mode'] ) ) {
+
+			if ( $_GET['mode'] == 'image' ) {
+
+				/**
+				 * Display an overview for a specific gallery. Which gallery should be passed in the $_GET['gid']
+				 * parameter.
+				 *
+				 * @access private
+				 */
+
+				include_once( 'manage/class-ngg-image-manager.php' );
+
+				$manager = new NGG_Image_Manager();
+
+			} elseif ( $_GET['mode'] == 'sort' ) {
+
+				/**
+				 * Display the sorting page for a specific gallery. Which gallery should be passed in the $_GET['gid']
+				 * parameter.
+				 *
+				 * @access private
+				 */
+
+				include_once( 'manage/class-ngg-sort-manager.php' );
+				$manager = new NGG_Sort_Manager();
+			}
+
+		}
+
+		if ( ! isset( $manager ) ) {
 			/**
-			 * Display an overview for a specific gallery. Which gallery should be passed in the $_GET['gid']
-			 * parameter.
+			 * If it's something else, display the gallery overview page. This is a list of all galleries.
 			 *
 			 * @access private
 			 */
-
-			include_once( 'manage/class-ngg-image-manager.php' );
-
-			$manager = new NGG_Image_Manager();
-			$manager->display();
-		} else {
-			/**
-			 * Display the gallery overview page. This is a list of all galleries.
-			 *
-			 * @access private
-			 */
-
 			include_once( 'manage/class-ngg-gallery-manager.php' );
 
 			$manager = new NGG_Gallery_Manager();
-			$manager->display();
 		}
+
+		$manager->display();
 	}
 
 	function load_scripts() {

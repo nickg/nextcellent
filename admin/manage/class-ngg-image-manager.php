@@ -38,6 +38,12 @@ class NGG_Image_Manager extends NGG_Manager {
 
 		$this->gallery = $nggdb->find_gallery($this->id);
 
+		if(isset($_GET['paged'])) {
+			$page = $_GET['paged'];
+		} else {
+			$page = '';
+		}
+
 		/**
 		 * Display the actual table.
 		 */
@@ -45,7 +51,7 @@ class NGG_Image_Manager extends NGG_Manager {
 		$table->prepare_items();
 		?>
 		<div class="wrap">
-			<form id="updategallery" class="nggform" method="POST" action="<?php echo self::BASE . '&mode=image&gid=' . $this->id . '&paged=' . $_GET['paged']; ?>" accept-charset="utf-8">
+			<form id="updategallery" class="nggform" method="POST" action="<?php echo self::BASE . '&mode=image&gid=' . $this->id . '&paged=' . $page; ?>" accept-charset="utf-8">
 				<?php wp_nonce_field('ngg-update-gallery', '_ngg_nonce_gallery'); ?>
 				<?php $this->print_gallery_overview($table->items) ?>
 				<input type="hidden" id="page-name" name="page" value="nggallery-manage-gallery2"/>
@@ -66,9 +72,11 @@ class NGG_Image_Manager extends NGG_Manager {
 		?>
 		<script type="text/javascript">
 
-			var doAction = function(dialog) {
+			var defaultAction = function(dialog) {
 				jQuery(dialog).dialog('close');
 			};
+
+			var doAction = defaultAction;
 
 			/**
 			 * Load the content with AJAX.
@@ -117,6 +125,9 @@ class NGG_Image_Manager extends NGG_Manager {
 				$image.attr("src" , newUrl);
 			}
 
+			/**
+			 * Confirm the scan operation.
+			 */
 			jQuery("#scan_folder").click(function() {
 				return confirm(
 					"<?php _e( 'This will change folder and file names (e.g. remove spaces, special characters, ...)', 'nggallery' ) ?>" +
@@ -125,6 +136,13 @@ class NGG_Image_Manager extends NGG_Manager {
 					"\n\n" +
 					"<?php _e( 'Press OK to proceed, and Cancel to stop.', 'nggallery' ) ?>"
 				);
+			});
+
+			/**
+			 * Redirect to the sorting UI.
+			 */
+			jQuery("#sort_gallery").click(function() {
+				location.href = "<?php echo esc_js(self::BASE) . '&mode=sort&gid=' . $this->id ?>";
 			});
 		</script>
 
@@ -250,6 +268,16 @@ class NGG_Image_Manager extends NGG_Manager {
 		 * @global $nggdb nggdb
 		 */
 		global $nggdb;
+
+		$disabled = $title = "";
+		$options  = get_option( 'ngg_options' );
+
+		if ( $options['galSort'] != "sortorder" ) {
+			//Disable sort button and provide feedback why is disabled
+			$disabled = "disabled ";
+			$title    = "title='" . __( 'To enable manual Sort set Custom Order Sort.See Settings->Gallery Settings->Sort Options',
+					'nggallery' ) . "'";
+		}
 		?>
 		<h2><?php _e( 'Gallery', 'nggallery' ) ?> <?php esc_html_e($this->gallery->title) ?></h2>
 		<?php if ( nggGallery::current_user_can( 'NextGEN Edit gallery options' )) { ?>
@@ -323,8 +351,15 @@ class NGG_Image_Manager extends NGG_Manager {
                     <?php do_action('ngg_manage_gallery_settings', $this->id); ?>
 				</table>
 				<div class="submit">
-					<input type="submit" class="button-secondary" name="scan_folder" id="scan_folder" value="<?php _e("Scan folder for new images",'nggallery'); ?> " />
-					<input type="submit" class="button-primary action" name="update_images" value="<?php _e("Save Changes",'nggallery'); ?>" />
+					<button class='button-secondary' type='button' <?php echo $disabled, $title ?> id='sort_gallery'>
+						<?php _e('Sort gallery', 'nggallery') ?>
+					</button>
+					<button type="submit" class="button-secondary" name="scan_folder" id="scan_folder">
+						<?php _e("Scan folder for new images",'nggallery'); ?>
+					</button>
+					<button type="submit" class="button-primary action" name="update_images">
+						<?php _e("Save Changes",'nggallery'); ?>
+					</button>
 				</div>
 			</div>
 			</div>

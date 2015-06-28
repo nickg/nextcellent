@@ -480,6 +480,7 @@ p#sortButton {
     top: 0;
 }
 
+/*DELETE*/
 .imageBox, .imageBoxHighlighted {
     width: 130px; /* Total width of each image box */
     height: 160px; /* Total height of each image box */
@@ -489,6 +490,28 @@ p#sortButton {
     padding: 5px;
 }
 
+.image-box {
+    width: 130px; /* Total width of each image box */
+    height: 160px; /* Total height of each image box */
+    float: left;
+    padding: 5px;
+	text-align: center;
+}
+
+.image-box img {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100px
+}
+
+.image-box p {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 11px;
+}
+
+/*DELETE*/
 .imageBox_theImage {
     width: 110px; /* Width of image */
     height: 125px; /* Height of image */
@@ -497,6 +520,7 @@ p#sortButton {
     margin: 0 auto 2px;
 }
 
+/*DELETE*/
 .imageBox_label {
     /* Title of images - both selected and not selected */
     text-align: center;

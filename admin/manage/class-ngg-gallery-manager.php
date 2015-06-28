@@ -9,9 +9,6 @@ include_once( 'class-ngg-manager.php' );
  */
 class NGG_Gallery_Manager extends NGG_Manager {
 
-
-	const BASE = 'admin.php?page=nggallery-manage';
-
 	/**
 	 * Display the page.
 	 */

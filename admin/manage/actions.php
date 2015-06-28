@@ -205,7 +205,11 @@ function ngg_show_meta( $id ) {
 			?>
 		</table>
 	<?php
-	}
+	} ?>
+	<script type="text/javascript">
+		doAction = defaultAction;
+	</script>
+	<?php
 }
 
 /**
