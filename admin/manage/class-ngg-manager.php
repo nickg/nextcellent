@@ -34,6 +34,9 @@ abstract class NGG_Manager implements NGG_Displayable {
 	 * Print the HTML for the dialogs.
 	 */
 	protected function print_dialogs() {
+
+		$options = get_option( 'ngg_options' );
+
 		?>
 		<style>
 			.ngg-dialog-container {
@@ -55,9 +58,9 @@ abstract class NGG_Manager implements NGG_Displayable {
 						</td>
 						<td>
 							<label for="imgWidth"><?php _e( 'Width', 'nggallery' ) ?></label>
-							<input type="number" min="0" class="small-text" id="imgWidth" name="imgWidth" value="<?php echo get_option( 'ngg_options' )['imgWidth']; ?>">
+							<input type="number" min="0" class="small-text" id="imgWidth" name="imgWidth" value="<?php echo $options['imgWidth']; ?>">
 							<label for="imgHeight"><?php _e( 'Height', 'nggallery' ) ?></label>
-							<input type="number" min="0" size="5" name="imgHeight" id="imgHeight" class="small-text" value="<?php echo get_option( 'ngg_options' )['imgHeight']; ?>">
+							<input type="number" min="0" size="5" name="imgHeight" id="imgHeight" class="small-text" value="<?php echo $options['imgHeight']; ?>">
 
 							<p class="description"><?php _e( 'Width and height (in pixels). NextCellent Gallery will keep the ratio size.',
 									'nggallery' ) ?></p>
@@ -78,9 +81,9 @@ abstract class NGG_Manager implements NGG_Displayable {
 						<th align="left"><?php _e( 'Size', 'nggallery' ) ?></th>
 						<td>
 							<label for="thumbwidth"><?php _e( 'Width', 'nggallery' ) ?></label>
-							<input id="thumbwidth" class="small-text" type="number" min="0" name="thumbwidth" value="<?php echo get_option( 'ngg_options' )['thumbwidth']; ?>">
+							<input id="thumbwidth" class="small-text" type="number" min="0" name="thumbwidth" value="<?php echo $options['thumbwidth']; ?>">
 							<label for="thumbheight"><?php _e( 'Height', 'nggallery' ) ?></label>
-							<input id="thumbheight" class="small-text" type="number" step="1" min="0" name="thumbheight" value="<?php echo get_option( 'ngg_options' )['thumbheight']; ?>">
+							<input id="thumbheight" class="small-text" type="number" step="1" min="0" name="thumbheight" value="<?php echo $options['thumbheight']; ?>">
 
 							<p class="description"><?php _e( 'These values are maximum values ', 'nggallery' ) ?></p>
 						</td>
@@ -93,7 +96,7 @@ abstract class NGG_Manager implements NGG_Displayable {
 						</th>
 						<td>
 							<input id="thumbfix" type="checkbox" name="thumbfix" value="1" <?php checked( '1',
-								get_option( 'ngg_options' )['thumbfix'] ); ?>>
+								$options['thumbfix'] ); ?>>
 							<?php _e( 'This will ignore the aspect ratio, so no portrait thumbnails', 'nggallery' ) ?>
 						</td>
 					</tr>
