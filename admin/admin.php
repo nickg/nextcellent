@@ -190,9 +190,6 @@ class nggAdminPanel {
 				'activate_plugins', 'nggallery-setup',
 				array( &$this, 'show_menu' ) );
 		}
-
-		//register the column fields
-		$this->register_columns();
 	}
 
 	// integrate the network menu
@@ -679,21 +676,6 @@ class nggAdminPanel {
 		);
 
 		return $screen;
-	}
-
-	/**
-	 * We need to register the columns at a very early point
-	 *
-	 * @return void
-	 */
-	function register_columns() {
-		//include_once( dirname( __FILE__ ) . '/manage-images.php' );
-
-		//$wp_list_table = new _NGG_Images_List_Table( 'nggallery-manage-images' );
-
-		//include_once( dirname( __FILE__ ) . '/manage-galleries.php' );
-
-		//$wp_list_table = new _NGG_Galleries_List_Table( 'nggallery-manage-gallery' );
 	}
 }
 
