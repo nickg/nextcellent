@@ -1,14 +1,10 @@
 <?php
-if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
-class nggAddGallery {
+include_once('interface-ngg-displayable.php');
 
-    /**
-     * nggAddGallery::__construct()
-     *
-     * @return void
-     */
-    function __construct() {
+class NGG_Adder implements NGG_Displayable {
+
+    public function __construct() {
 
        	// same as $_SERVER['REQUEST_URI'], but should work under IIS 6.0
 	   $this->filepath    = admin_url() . 'admin.php?page=' . $_GET['page'];
@@ -23,8 +19,8 @@ class nggAddGallery {
 	 *
 	 * @return void
 	 */
-	function processor() {
-        global $wpdb, $ngg, $nggdb;
+	private function processor() {
+        global $ngg, $nggdb;
 
     	$defaultpath = $ngg->options['gallerypath'];
 
@@ -109,7 +105,7 @@ class nggAddGallery {
      *
      * @return void
      */
-    function controller() {
+    public function display() {
         global $ngg, $nggdb;
 
     	// check for the max image size
@@ -517,4 +513,3 @@ class nggAddGallery {
     <?php
     }
 }
-?>

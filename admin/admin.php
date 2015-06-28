@@ -251,11 +251,9 @@ class nggAdminPanel {
 		switch ( $_GET['page'] ) {
 			case "nggallery-add-gallery" :
 				include_once( dirname( __FILE__ ) . '/functions.php' );        // admin functions
-				include_once( dirname( __FILE__ ) . '/addgallery.php' );    // nggallery_admin_add_gallery
-				$ngg->addgallery_page = new nggAddGallery ();
-				$ngg->addgallery_page->controller();
-
-				return;
+				include_once( dirname( __FILE__ ) . '/class-ngg-adder.php' );    // nggallery_admin_add_gallery
+				$page = new NGG_Adder();
+				break;
 			case "nggallery-manage":
 				include_once( dirname( __FILE__ ) . '/functions.php' );    // admin functions
 				$page = $this->get_manager();

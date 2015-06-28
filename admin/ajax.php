@@ -267,7 +267,7 @@ add_action('wp_ajax_ngg_dashboard', 'ngg_ajax_dashboard');
 function ngg_ajax_dashboard() {
 
    	require_once( dirname( dirname(__FILE__) ) . '/admin/admin.php');
-	require_once( dirname( dirname(__FILE__) ) . '/admin/overview.php');
+	require_once( dirname( dirname(__FILE__) ) . '/admin/class-ngg-overview.php');
 
    	if ( !current_user_can('NextGEN Gallery overview') )
 		die('-1');
