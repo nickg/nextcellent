@@ -70,7 +70,7 @@ class NGG_Image_List_Table extends WP_List_Table {
 		$start       = ( $currentPage - 1 ) * $perPage;
 		$this->items = $nggdb->get_gallery($gallery_id, $options['galSort'], $options['galSortDir'], false, $perPage, $start );
 
-		$totalItems = (int) $nggdb->count_images_in_gallery($gallery_id);
+		$totalItems = (int) nggdb::count_images_in_gallery($gallery_id);
 
 		$this->set_pagination_args( array(
 			'total_items' => $totalItems,

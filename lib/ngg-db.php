@@ -102,23 +102,21 @@ class nggdb {
 
     static function count_galleries() {
 
-	    global $wpdb;
+        global $wpdb;
 
-	    return $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggallery");
+        return $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->nggallery" );
     }
 
-	/**
-	 * @param $id int The gallery ID.
-	 *
-	 * @return null|string
-	 */
-    static function count_images_in_gallery($id) {
+    /**
+     * @param $id int The gallery ID.
+     *
+     * @return null|string
+     */
+    static function count_images_in_gallery( $id ) {
 
         global $wpdb;
 
-	    $query = $wpdb->prepare("SELECT COUNT(*) FROM $wpdb->nggpictures WHERE gid = %d", $id);
-
-        return $wpdb->get_var($query);
+        return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $wpdb->nggpictures WHERE galleryid = %d", $id ) );
     }
 
     /**
