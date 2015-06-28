@@ -19,7 +19,7 @@ class NGG_Gallery_Manager extends NGG_Manager {
 		/**
 		 * Add a gallery.
 		 */
-		if(  isset($_POST['gallery_name'])) {
+		if ( isset( $_POST['gallery_name'] ) ) {
 			$this->handle_add_gallery();
 		}
 
@@ -52,8 +52,8 @@ class NGG_Gallery_Manager extends NGG_Manager {
 		parent::print_scripts();
 		?>
 		<script type="text/javascript">
-			jQuery(function () {
-				jQuery("#new-gallery").click(function () {
+			jQuery(function() {
+				jQuery("#new-gallery").click(function() {
 					addGalleryDialog();
 					return false;
 				});
@@ -68,6 +68,8 @@ class NGG_Gallery_Manager extends NGG_Manager {
 
 	protected function print_dialogs() {
 		parent::print_dialogs();
+
+		$options = get_option( 'ngg_options' );
 		?>
 		<div class="ngg-dialog-container">
 			<!-- Add Gallery -->
@@ -80,10 +82,10 @@ class NGG_Gallery_Manager extends NGG_Manager {
 				<br>
 				<?php if ( ! is_multisite() ) { ?>
 					<?php _e( 'Create a new , empty gallery below the folder', 'nggallery' ); ?>
-					<strong><?php echo get_option('ngg_options')['gallerypath']; ?></strong><br>
+					<strong><?php echo $options['gallerypath']; ?></strong><br>
 				<?php } ?>
 				<p class="description">
-					<?php _e( 'Allowed characters for file and folder names are', 'nggallery' ); ?>: a-z, A-Z, 0-9, -, _
+					<?php printf( __( 'Allowed characters for file and folder names are %s', 'nggallery' ), 'a-z, A-Z, 0-9, -, _' ) ?>
 				</p>
 				<?php do_action( 'ngg_add_new_gallery_form' ); ?>
 			</form>
@@ -96,16 +98,21 @@ class NGG_Gallery_Manager extends NGG_Manager {
 	 */
 	private function handle_add_gallery() {
 
-		if( wp_verify_nonce($_POST['_wpnonce'], 'ngg_add_gallery') === false || !nggGallery::current_user_can( 'NextGEN Add new gallery' )) {
-			nggGallery::show_error(__('You waited too long, or you cheated.','nggallery'));
+		if ( wp_verify_nonce( $_POST['_wpnonce'],
+				'ngg_add_gallery' ) === false || ! nggGallery::current_user_can( 'NextGEN Add new gallery' )
+		) {
+			nggGallery::show_error( __( 'You waited too long, or you cheated.', 'nggallery' ) );
+
 			return;
 		}
 
+		$options = get_option( 'ngg_options' );
+
 		// get the default path for a new gallery
-		$default_path = get_option('ngg_options')['gallerypath'];
-		$new_gallery = esc_attr( $_POST['gallery_name']);
-		if ( !empty($new_gallery) ) {
-			nggAdmin::create_gallery($new_gallery, $default_path);
+		$default_path = $options['gallerypath'];
+		$new_gallery  = esc_attr( $_POST['gallery_name'] );
+		if ( ! empty( $new_gallery ) ) {
+			nggAdmin::create_gallery( $new_gallery, $default_path );
 		}
 
 		do_action( 'ngg_update_addgallery_page' );

@@ -137,7 +137,8 @@ class NGG_Gallery_List_Table extends WP_List_Table {
 				return $item->counter;
 			default:
 				ob_start();
-				do_action('ngg_manage_gallery_custom_column', $column_name, $item->gid);
+				do_action( 'ngg_manage_gallery_custom_column', $column_name, $item->gid );
+
 				return ob_get_clean();
 		}
 	}

@@ -55,17 +55,21 @@ function ngg_rotate( $id ) {
 	$preview_image = trailingslashit( home_url() ) . 'index.php?callback=image&pid=' . $picture->pid . '&width=500&height=500';
 
 	?>
-	<p><?php _e('Select how you would like to rotate the image on the left.', 'nggallery'); ?></p>
+	<p><?php _e( 'Select how you would like to rotate the image on the left.', 'nggallery' ); ?></p>
 	<table align="center" width="90%">
 		<tr>
 			<td style="text-align: center; vertical-align: middle">
-				<img src="<?php echo esc_url( $preview_image ); ?>" alt="" id="imageToEdit" />
+				<img src="<?php echo esc_url( $preview_image ); ?>" alt="" id="imageToEdit"/>
 			</td>
 			<td style="width: 200px;">
-				<label><input type="radio" name="ra" value="cw"><?php esc_html_e('90&deg; clockwise', 'nggallery'); ?></label><br>
-				<label><input type="radio" name="ra" value="ccw"><?php esc_html_e('90&deg; anticlockwise', 'nggallery'); ?></label><br>
-				<label><input type="radio" name="ra" value="fv"><?php esc_html_e('Flip horizontally', 'nggallery'); ?></label><br>
-				<label><input type="radio" name="ra" value="fh"><?php esc_html_e('Flip vertically', 'nggallery'); ?></label>
+				<label><input type="radio" name="ra" value="cw"><?php esc_html_e( '90&deg; clockwise', 'nggallery' ); ?>
+				</label><br>
+				<label><input type="radio" name="ra" value="ccw"><?php esc_html_e( '90&deg; anticlockwise',
+						'nggallery' ); ?></label><br>
+				<label><input type="radio" name="ra" value="fv"><?php esc_html_e( 'Flip horizontally', 'nggallery' ); ?>
+				</label><br>
+				<label><input type="radio" name="ra" value="fh"><?php esc_html_e( 'Flip vertically', 'nggallery' ); ?>
+				</label>
 			</td>
 		</tr>
 		<tr>
@@ -95,7 +99,7 @@ function ngg_rotate( $id ) {
 			});
 		};
 	</script>
-<?php
+	<?php
 }
 
 /**
@@ -117,94 +121,100 @@ function ngg_show_meta( $id ) {
 
 	?>
 	<!-- META DATA -->
-	<?php if ($dbdata) { ?>
+	<?php if ( $dbdata ) { ?>
 		<table id="the-list-x" style="width: 100%">
 			<thead style="text-align: left;">
 			<tr>
-				<th scope="col"><?php _e('Name','nggallery'); ?></th>
-				<th scope="col"><?php _e('Value','nggallery'); ?></th>
+				<th scope="col"><?php _e( 'Name', 'nggallery' ); ?></th>
+				<th scope="col"><?php _e( 'Value', 'nggallery' ); ?></th>
 			</tr>
 			</thead>
 			<?php
-			foreach ($dbdata as $key => $value){
-				if ( is_array($value) ) continue;
+			foreach ( $dbdata as $key => $value ) {
+				if ( is_array( $value ) ) {
+					continue;
+				}
 				$class = ( $class == 'class="alternate"' ) ? '' : 'class="alternate"';
-				echo '<tr '.$class.'>
-						<td style="width:230px">'. esc_html( $meta->i8n_name($key) ).'</td>
+				echo '<tr ' . $class . '>
+						<td style="width:230px">' . esc_html( $meta->i8n_name( $key ) ) . '</td>
 						<td>' . esc_html( $value ) . '</td>
 					</tr>';
 			}
 			?>
 		</table>
-	<?php  } else echo "<strong>" . __('No meta data saved','nggallery') . "</strong>"; ?>
+	<?php } else {
+		echo "<strong>" . __( 'No meta data saved', 'nggallery' ) . "</strong>";
+	} ?>
 
 	<!-- EXIF DATA -->
-	<?php if ($exifdata) { ?>
-		<h3><?php _e('EXIF Data','nggallery'); ?></h3>
-		<?php if ($exifdata) { ?>
+	<?php if ( $exifdata ) { ?>
+		<h3><?php _e( 'EXIF Data', 'nggallery' ); ?></h3>
+		<?php if ( $exifdata ) { ?>
 			<table id="the-list-x" width="100%">
 				<thead style="text-align: left;">
 				<tr>
-					<th scope="col"><?php _e('Name','nggallery'); ?></th>
-					<th scope="col"><?php _e('Value','nggallery'); ?></th>
+					<th scope="col"><?php _e( 'Name', 'nggallery' ); ?></th>
+					<th scope="col"><?php _e( 'Value', 'nggallery' ); ?></th>
 				</tr>
 				</thead>
 				<?php
-				foreach ($exifdata as $key => $value){
+				foreach ( $exifdata as $key => $value ) {
 					$class = ( $class == 'class="alternate"' ) ? '' : 'class="alternate"';
-					echo '<tr '.$class.'>
-						<td style="width:230px">' . esc_html ( $meta->i8n_name($key) ) . '</td>
-						<td>' . esc_html( $value ) .'</td>
+					echo '<tr ' . $class . '>
+						<td style="width:230px">' . esc_html( $meta->i8n_name( $key ) ) . '</td>
+						<td>' . esc_html( $value ) . '</td>
 					</tr>';
 				}
 				?>
 			</table>
-		<?php  } else echo "<strong>". __('No exif data','nggallery'). "</strong>"; ?>
-	<?php  } ?>
+		<?php } else {
+			echo "<strong>" . __( 'No exif data', 'nggallery' ) . "</strong>";
+		} ?>
+	<?php } ?>
 
 	<!-- IPTC DATA -->
-	<?php if ($iptcdata) { ?>
-		<h3><?php _e('IPTC Data','nggallery'); ?></h3>
+	<?php if ( $iptcdata ) { ?>
+		<h3><?php _e( 'IPTC Data', 'nggallery' ); ?></h3>
 		<table id="the-list-x" width="100%">
 			<thead style="text-align: left;">
 			<tr>
-				<th scope="col"><?php _e('Name','nggallery'); ?></th>
-				<th scope="col"><?php _e('Value','nggallery'); ?></th>
+				<th scope="col"><?php _e( 'Name', 'nggallery' ); ?></th>
+				<th scope="col"><?php _e( 'Value', 'nggallery' ); ?></th>
 			</tr>
 			</thead>
 			<?php
-			foreach ($iptcdata as $key => $value){
+			foreach ( $iptcdata as $key => $value ) {
 				$class = ( $class == 'class="alternate"' ) ? '' : 'class="alternate"';
-				echo '<tr '.$class.'>
-						<td style="width:230px">' . esc_html( $meta->i8n_name($key) ) . '</td>
+				echo '<tr ' . $class . '>
+						<td style="width:230px">' . esc_html( $meta->i8n_name( $key ) ) . '</td>
 						<td>' . esc_html( $value ) . '</td>
 					</tr>';
 			}
 			?>
 		</table>
-	<?php  } ?>
+	<?php } ?>
 
 	<!-- XMP DATA -->
-	<?php if ($xmpdata) { ?>
-		<h3><?php _e('XMP Data','nggallery'); ?></h3>
+	<?php if ( $xmpdata ) { ?>
+		<h3><?php _e( 'XMP Data', 'nggallery' ); ?></h3>
 		<table id="the-list-x" width="100%">
 			<thead>
 			<tr>
-				<th scope="col"><?php _e('Name','nggallery'); ?></th>
-				<th scope="col"><?php _e('Value','nggallery'); ?></th>
+				<th scope="col"><?php _e( 'Name', 'nggallery' ); ?></th>
+				<th scope="col"><?php _e( 'Value', 'nggallery' ); ?></th>
 			</tr>
 			</thead>
 			<?php
-			foreach ($xmpdata as $key => $value){
+			foreach ( $xmpdata as $key => $value ) {
 				$class = ( $class == 'class="alternate"' ) ? '' : 'class="alternate"';
-				echo '<tr '.$class.'>
-						<td style="width:230px">' . esc_html( $meta->i8n_name($key) ) . '</td>
+				echo '<tr ' . $class . '>
+						<td style="width:230px">' . esc_html( $meta->i8n_name( $key ) ) . '</td>
 						<td>' . esc_html( $value ) . '</td>
 					</tr>';
 			}
 			?>
 		</table>
-	<?php
+		<?php
 	} ?>
 	<script type="text/javascript">
 		doAction = defaultAction;
@@ -235,22 +245,28 @@ function ngg_edit_thumbnail( $id ) {
 		<tr>
 			<td style="text-align: center; vertical-align: middle; width: 60%">
 				<div style="padding: 10px">
-					<button class="crop-action button button-small" data-method="zoom" data-option="0.1" type="button" title="<?php _e('Zoom In', 'nggallery'); ?>">
+					<button class="crop-action button button-small" data-method="zoom" data-option="0.1" type="button" title="<?php _e( 'Zoom In',
+						'nggallery' ); ?>">
 						<span class="dashicons dashicons-plus"></span>
 					</button>
-					<button class="crop-action button button-small" data-method="zoom" data-option="-0.1" type="button" title="<?php _e('Zoom Out', 'nggallery'); ?>">
+					<button class="crop-action button button-small" data-method="zoom" data-option="-0.1" type="button" title="<?php _e( 'Zoom Out',
+						'nggallery' ); ?>">
 						<span class="dashicons dashicons-minus"></span>
 					</button>
-					<button class="crop-action button button-small" data-method="rotate" data-option="-90" type="button" title="<?php _e('Rotate Left', 'nggallery'); ?>">
+					<button class="crop-action button button-small" data-method="rotate" data-option="-90" type="button" title="<?php _e( 'Rotate Left',
+						'nggallery' ); ?>">
 						<span class="dashicons dashicons-image-rotate-left"></span>
 					</button>
-					<button class="crop-action button button-small" data-method="rotate" data-option="90" type="button" title="<?php _e('Rotate Right', 'nggallery'); ?>">
+					<button class="crop-action button button-small" data-method="rotate" data-option="90" type="button" title="<?php _e( 'Rotate Right',
+						'nggallery' ); ?>">
 						<span class="dashicons dashicons-image-rotate-right"></span>
 					</button>
-					<button class="crop-action button button-small" data-method="reset" type="button" title="<?php _e('Reset', 'nggallery'); ?>">
+					<button class="crop-action button button-small" data-method="reset" type="button" title="<?php _e( 'Reset',
+						'nggallery' ); ?>">
 						<span class="dashicons dashicons-update"></span>
 					</button>
-					<button id="center-selection" class="button button-small" data-method="reset" type="button" title="<?php _e('Center selection', 'nggallery'); ?>">
+					<button id="center-selection" class="button button-small" data-method="reset" type="button" title="<?php _e( 'Center selection',
+						'nggallery' ); ?>">
 						<span class="dashicons dashicons-align-center"></span>
 					</button>
 				</div>
@@ -261,12 +277,12 @@ function ngg_edit_thumbnail( $id ) {
 
 				</div>
 				<!--<div id="actualThumb">
-					<img src="<?php echo esc_url( $picture->thumbURL ); ?>?<?php echo time()?>" />
+					<img src="<?php echo esc_url( $picture->thumbURL ); ?>?<?php echo time() ?>" />
 				</div>-->
 				<table style="padding: 20px; width: 100%">
 					<tr>
 						<th colspan="2">
-							<?php _e('The parameters', 'nggallery'); ?>
+							<?php _e( 'The parameters', 'nggallery' ); ?>
 						</th>
 					</tr>
 					<tr>
@@ -293,7 +309,8 @@ function ngg_edit_thumbnail( $id ) {
 							<label for="dataWidth"><?php _e( 'Width', 'nggallery' ) ?></label>
 						</td>
 						<td style="text-align: right">
-							<input id="dataWidth" type="number" placeholder="<?php echo $width ?>"> <?php _e( 'px', 'nggallery' ) ?>
+							<input id="dataWidth" type="number" placeholder="<?php echo $width ?>"> <?php _e( 'px',
+								'nggallery' ) ?>
 						</td>
 					</tr>
 					<tr>
@@ -301,7 +318,8 @@ function ngg_edit_thumbnail( $id ) {
 							<label for="dataHeight"><?php _e( 'Height', 'nggallery' ) ?></label>
 						</td>
 						<td style="text-align: right">
-							<input id="dataHeight" type="number" placeholder="<?php echo $height ?>"> <?php _e( 'px', 'nggallery' ) ?>
+							<input id="dataHeight" type="number" placeholder="<?php echo $height ?>"> <?php _e( 'px',
+								'nggallery' ) ?>
 						</td>
 					</tr>
 					<tr>
@@ -315,8 +333,9 @@ function ngg_edit_thumbnail( $id ) {
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align: right">
-							<button class="button button-secondary" type="button" id="apply-data" title="<?php _e('Apply the parameters', 'nggallery'); ?>">
-								<?php _e('Apply', 'nggallery'); ?>
+							<button class="button button-secondary" type="button" id="apply-data" title="<?php _e( 'Apply the parameters',
+								'nggallery' ); ?>">
+								<?php _e( 'Apply', 'nggallery' ); ?>
 							</button>
 						</td>
 					</tr>
@@ -423,5 +442,5 @@ function ngg_edit_thumbnail( $id ) {
 			});
 		});
 	</script>
-<?php
+	<?php
 }
