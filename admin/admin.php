@@ -310,8 +310,6 @@ class nggAdminPanel {
 				/**
 				 * Display an overview for a specific gallery. Which gallery should be passed in the $_GET['gid']
 				 * parameter.
-				 *
-				 * @access private
 				 */
 
 				include_once( 'manage/class-ngg-image-manager.php' );
@@ -323,12 +321,18 @@ class nggAdminPanel {
 				/**
 				 * Display the sorting page for a specific gallery. Which gallery should be passed in the $_GET['gid']
 				 * parameter.
-				 *
-				 * @access private
 				 */
 
 				include_once( 'manage/class-ngg-sort-manager.php' );
 				$manager = new NGG_Sort_Manager();
+			} elseif ( $_GET['mode'] == 'search' ) {
+
+				/**
+				 * Display the search result images.
+				 */
+
+				include_once( 'manage/class-ngg-search-manager.php' );
+				$manager = new NGG_Search_Manager();
 			}
 
 		}

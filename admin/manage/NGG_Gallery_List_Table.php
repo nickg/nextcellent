@@ -82,7 +82,7 @@ class NGG_Gallery_List_Table extends WP_List_Table {
 	/**
 	 * Get the hidden columns.
 	 */
-	function get_hidden_columns() {
+	private function get_hidden_columns() {
 		return array();
 	}
 
@@ -93,7 +93,7 @@ class NGG_Gallery_List_Table extends WP_List_Table {
 	 *
 	 * @return string
 	 */
-	public function column_cb( $item ) {
+	protected function column_cb( $item ) {
 		if ( nggAdmin::can_manage_this_gallery( $item->author ) ) {
 			return '<input name="doaction[]" type="checkbox" value="' . $item->gid . '" />';
 		} else {
@@ -101,7 +101,7 @@ class NGG_Gallery_List_Table extends WP_List_Table {
 		}
 	}
 
-	public function column_title( $item ) {
+	protected function column_title( $item ) {
 		if ( nggAdmin::can_manage_this_gallery( $item->author ) ) {
 			$out = '<a href="' . wp_nonce_url( $this->base . '&mode=image&gid=' . $item->gid,
 					'ngg_editgallery' ) . '" class="edit" title="' . __( 'Edit' ) . '">';
@@ -123,7 +123,7 @@ class NGG_Gallery_List_Table extends WP_List_Table {
 	 *
 	 * @return Mixed
 	 */
-	public function column_default( $item, $column_name ) {
+	protected function column_default( $item, $column_name ) {
 		switch ( $column_name ) {
 			case 'id':
 				return $item->gid;

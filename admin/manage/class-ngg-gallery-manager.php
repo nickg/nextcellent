@@ -36,10 +36,15 @@ class NGG_Gallery_Manager extends NGG_Manager {
 				<?php }; ?>
 			</h2>
 
+			<form method="get">
+				<input type="hidden" name="page" value="nggallery-manage">
+				<input type="hidden" name="mode" value="search">
+				<?php $table->search_box( 'Search images', 'nggallery' ); ?>
+			</form>
+
 			<form method="post">
 				<input type="hidden" id="page_type" name="page_type" value="gallery"/>
 				<input type="hidden" id="page-name" name="page" value="nggallery-manage-gallery2"/>
-				<?php $table->search_box( 'Search images', 'nggallery' ); ?>
 				<?php $table->display(); ?>
 			</form>
 		</div>

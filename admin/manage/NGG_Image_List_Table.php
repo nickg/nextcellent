@@ -28,9 +28,9 @@ class NGG_Image_List_Table extends WP_List_Table {
 	/**
 	 * Prepare the items for the table to process
 	 *
-	 * @return Void
+	 * @param bool|string $search The search string, or false if we don't search.
 	 */
-	public function prepare_items() {
+	public function prepare_items($search = false) {
 		/**
 		 * @global $nggdb nggdb
 		 */
@@ -42,47 +42,83 @@ class NGG_Image_List_Table extends WP_List_Table {
 
 		$this->_column_headers = array( $columns, $hidden, $sortable );
 
-		/**
-		 * Do the pagination.
-		 */
-		$currentPage = $this->get_pagenum();
-		$perPage     = 50;
+		if( $search ) {
+			// look now for the images
+			$search_for_images = (array) $nggdb->search_for_images( $search );
+			$search_for_tags   = (array) nggTags::find_images_for_tags( $search , 'ASC' );
 
-		/**
-		 * Sorting
-		 *
-		 * if ( ( isset ( $_GET['order'] ) && $_GET['order'] == 'desc' ) ) {
-		 * $order = 'DESC';
-		 * } else {
-		 * $order = 'ASC';
-		 * }
-		 *
-		 * if ( ( isset ( $_GET['orderby'] ) && ( in_array( $_GET['orderby'], array( 'gid', 'title', 'author' ) ) ) ) ) {
-		 * $order_by = $_GET['orderby'];
-		 * } else {
-		 * $order_by = 'gid';
-		 * }
-		 * */
+			// finally merge the two results together
+			$this->items = array_merge( $search_for_images , $search_for_tags );
 
-		$options    = get_option( 'ngg_options' );
-		$gallery_id = (int) $_GET['gid'];
+			$this->set_pagination_args( array(
+				'total_items' => count( $this->items )
+			) );
 
-		$start       = ( $currentPage - 1 ) * $perPage;
-		$this->items = $nggdb->get_gallery( $gallery_id, $options['galSort'], $options['galSortDir'], false, $perPage,
-			$start );
+		} else {
 
-		$totalItems = (int) nggdb::count_images_in_gallery( $gallery_id );
+			/**
+			 * Do the pagination.
+			 */
+			$currentPage = $this->get_pagenum();
+			$perPage     = 50;
 
-		$this->set_pagination_args( array(
-			'total_items' => $totalItems,
-			'per_page'    => $perPage
-		) );
+			/**
+			 * Sorting
+			 *
+			 * if ( ( isset ( $_GET['order'] ) && $_GET['order'] == 'desc' ) ) {
+			 * $order = 'DESC';
+			 * } else {
+			 * $order = 'ASC';
+			 * }
+			 *
+			 * if ( ( isset ( $_GET['orderby'] ) && ( in_array( $_GET['orderby'], array( 'gid', 'title', 'author' ) ) ) ) ) {
+			 * $order_by = $_GET['orderby'];
+			 * } else {
+			 * $order_by = 'gid';
+			 * }
+			 * */
+
+			$options    = get_option( 'ngg_options' );
+			$gallery_id = (int) $_GET['gid'];
+
+			$start       = ( $currentPage - 1 ) * $perPage;
+
+			$this->items = $nggdb->get_gallery( $gallery_id, $options['galSort'], $options['galSortDir'], false,
+				$perPage,
+				$start );
+
+			$totalItems = (int) nggdb::count_images_in_gallery( $gallery_id );
+
+			$this->set_pagination_args( array(
+				'total_items' => $totalItems,
+				'per_page'    => $perPage
+			) );
+		}
 	}
+
+	/**
+	 * Override to add a button if on top.
+	 *
+	 * @param string $which
+	 */
+	protected function bulk_actions($which = '') {
+		parent::bulk_actions($which);
+
+		if($which === 'top') {
+			?>
+			<button type="submit" class="button-primary action manager-save" name="update_images">
+				<?php _e( "Save Changes", 'nggallery' ); ?>
+			</button>
+			<?php
+		}
+	}
+
+
 
 	/**
 	 * Get the hidden columns.
 	 */
-	function get_hidden_columns() {
+	private function get_hidden_columns() {
 		return array();
 	}
 
@@ -93,7 +129,7 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 *
 	 * @return string
 	 */
-	public function column_cb( $item ) {
+	protected function column_cb( $item ) {
 		return '<input name="doaction[]" type="checkbox" value="' . $item->pid . '" />';
 	}
 
@@ -102,7 +138,7 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 *
 	 * @return string
 	 */
-	public function column_thumbnail( $item ) {
+	protected function column_thumbnail( $item ) {
 		$out = '<a href="' . esc_url( add_query_arg( 'i', mt_rand(),
 				$item->imageURL ) ) . '" class="shutter" title="' . esc_attr( $item->filename ) . '">';
 		$out .= '<img class="thumb" src="' . esc_url( add_query_arg( 'i', mt_rand(),
@@ -116,7 +152,7 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 *
 	 * @return string
 	 */
-	public function column_filename( $item ) {
+	protected function column_filename( $item ) {
 		$date = mysql2date( get_option( 'date_format' ), $item->imagedate );
 		ob_start();
 		?>
@@ -158,7 +194,7 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 *
 	 * @return string
 	 */
-	public function column_alt_title_desc( $item ) {
+	protected function column_alt_title_desc( $item ) {
 		$img_alt_text    = nggGallery::suppress_injection( $item->alttext );
 		$img_description = nggGallery::suppress_injection( $item->description );
 
@@ -179,10 +215,10 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 *
 	 * @return Mixed
 	 */
-	public function column_default( $item, $column_name ) {
+	protected function column_default( $item, $column_name ) {
 		switch ( $column_name ) {
 			case 'id':
-				return $item->pid;
+				return '<input type="hidden" name="pid[]" value="' . $item->pid . '">' . $item->pid;
 			case 'tags':
 				$item->tags = wp_get_object_terms( $item->pid, 'ngg_tag', 'fields=names' );
 				if ( is_array( $item->tags ) ) {
@@ -195,7 +231,7 @@ class NGG_Image_List_Table extends WP_List_Table {
 				return '<input name="exclude[' . $item->pid . ']" type="checkbox" value="1" ' . checked( $item->exclude ) . '/>';
 			default:
 				ob_start();
-				do_action( 'ngg_manage_image_custom_column', $column_name, $item->pid );
+				do_action( 'ngg_manage_image_custom_column', $column_name, $item );
 
 				return ob_get_clean();
 		}
