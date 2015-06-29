@@ -9,7 +9,7 @@ class NGG_Media_RSS_Widget extends WP_Widget {
 	 * Register the widget.
 	 */
 	public function __construct() {
-		parent::WP_Widget( 'ngg-mrssw', __( 'NextCellent Media RSS', 'nggallery' ), array(
+		parent::__construct( 'ngg-mrssw', __( 'NextCellent Media RSS', 'nggallery' ), array(
 			'classname'   => 'ngg_mrssw',
 			'description' => __( 'Widget that displays a Media RSS links for NextCellent Gallery.', 'nggallery' )
 		) );
