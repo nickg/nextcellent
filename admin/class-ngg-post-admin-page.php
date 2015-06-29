@@ -15,15 +15,20 @@ abstract class NGG_Post_Admin_Page implements NGG_Displayable {
 
 		$this->page = admin_url() . 'admin.php?page=' . $_GET['page'];
 
+	}
+
+	/**
+	 * Display the page. Child classes should override this method.
+	 */
+	public function display() {
 		//Handle the post updates.
 		if ( isset( $_POST ) ) {
 			$this->processor();
 		}
-
 	}
 
 	/**
-	 * Handle the POST updates.
+	 * Handle the POST updates. This functions is called by the display() function, if used properly.
 	 */
 	protected abstract function processor();
 }

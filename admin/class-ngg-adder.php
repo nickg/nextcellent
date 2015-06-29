@@ -64,6 +64,9 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 				wp_die( __( 'Cheatin&#8217; uh?' ) );
 			}
 
+			var_dump($_POST);
+			var_dump($_FILES);
+
 			if ( $_FILES['imagefiles']['error'][0] == 0 ) {
 				nggAdmin::upload_images();
 			} else {
@@ -96,6 +99,8 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 	 * @return void
 	 */
 	public function display() {
+
+		parent::display();
 
 		/**
 		 * @global nggdb $nggdb
@@ -354,7 +359,7 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 					<?php } else { ?>
 						<td>
 							<span id='spanButtonPlaceholder'></span>
-							<input type="file" name="imagefiles[]" id="imagefiles" size="35" class="imagefiles" multiple/>
+							<input type="file" name="image_files[]" id="image-files" class="image-files" multiple>
 						</td>
 					<?php } ?>
 				</tr>
@@ -427,8 +432,7 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 						window.uploader = new plupload.Uploader({
 							browse_button: 'plupload-browse-button',
 							container: 'plupload-upload-ui',
-							drop_element: 'uploadimage',
-							file_data_name: 'Filedata',
+							drop_element: 'drag-drop-area',
 							url: '<?php echo esc_js( admin_url( '/?nggupload' ) ); ?>',
 							flash_swf_url: '<?php echo esc_js( includes_url('js/plupload/plupload.flash.swf') ); ?>',
 							silverlight_xap_url: '<?php echo esc_js( includes_url('js/plupload/plupload.silverlight.xap') ); ?>',
@@ -441,8 +445,6 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 								],
 								max_file_size: '<?php echo round( (int) wp_max_upload_size() / 1024 ); ?>kb'
 							},
-							multipart: true,
-							urlstream_upload: true,
 							multipart_params: <?php echo $post_params_str; ?>,
 							<?php if ( $args['options']['imgAutoResize'] == true) { ?>
 							resize: {
@@ -451,7 +453,7 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 								quality: <?php echo esc_js( $args['options']['imgQuality'] ); ?>
 							},
 							<?php } ?>
-							debug: false,
+							debug: true,
 							preinit: {
 								Init: function(up, info) {
 									debug('[Init]', 'Info :', info, 'Features :', up.features);
@@ -554,13 +556,14 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 			// File Tree implementation
 			jQuery(function() {
 				jQuery("span.browsefiles").show().click(function() {
-					jQuery("#file_browser").fileTree({
+					var fb = jQuery("#file_browser");
+					fb.fileTree({
 						script: "admin-ajax.php?action=ngg_file_browser&nonce=<?php echo wp_create_nonce( 'ngg-ajax' ) ;?>",
 						root: jQuery("#galleryfolder").val()
 					}, function(folder) {
 						jQuery("#galleryfolder").val(folder);
 					});
-					jQuery("#file_browser").show('slide');
+					fb.show('slide');
 				});
 			});
 
