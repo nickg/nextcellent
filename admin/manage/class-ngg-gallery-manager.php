@@ -44,7 +44,6 @@ class NGG_Gallery_Manager extends NGG_Manager {
 
 			<form method="post">
 				<input type="hidden" id="page_type" name="page_type" value="gallery"/>
-				<input type="hidden" id="page-name" name="page" value="nggallery-manage-gallery2"/>
 				<?php $table->display(); ?>
 			</form>
 		</div>

@@ -420,7 +420,7 @@ if (!class_exists('nggLoader')) {
 						'parent' => 'ngg-menu-overview',
 						'id'     => 'ngg-menu-manage-gallery',
 						'title'  => __( 'Gallery', 'nggallery' ),
-						'href'   => admin_url( 'admin.php?page=nggallery-manage-gallery' )
+						'href'   => admin_url( 'admin.php?page=nggallery-manage' )
 					) );
 				}
 				if ( current_user_can( 'NextGEN Edit album' ) ) {

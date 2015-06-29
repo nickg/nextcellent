@@ -119,7 +119,7 @@ class nggAdmin{
 		if ($galleryID != false) {
 			$message  = __('Gallery ID %1$s successfully created. You can show this gallery in your post or page with the shortcode %2$s.<br/>','nggallery');
 			$message  = sprintf($message, $galleryID, '<strong>[nggallery id=' . $galleryID . ']</strong>');
-			$message .= '<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $galleryID . '" >';
+			$message .= '<a href="' . admin_url() . 'admin.php?page=nggallery-manage&mode=image&gid=' . $galleryID . '" >';
 			$message .= __('Edit gallery','nggallery');
 			$message .= '</a>';
 			
@@ -303,7 +303,7 @@ class nggAdmin{
 		if ( count($image_ids) > 0 )
 			$message .= count($image_ids) .__(' picture(s) successfully added','nggallery') . '<br />';
 		if ($created_msg) {
-		$message .= ' [<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $gallery_id . '" >';
+		$message .= ' [<a href="' . admin_url() . 'admin.php?page=nggallery-manage&mode=image&gid=' . $gallery_id . '" >';
 		$message .=  __('Edit gallery','nggallery');
 		$message .= '</a>]';
 		}
@@ -406,7 +406,7 @@ class nggAdmin{
 		
 		//TODO:Message will not shown, because AJAX routine require more time, message should be passed to AJAX
 		$message  = $created_msg . count($image_ids) .__(' picture(s) successfully added','nggallery');
-		$message .= ' [<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $gallery_id . '" >';
+		$message .= ' [<a href="' . admin_url() . 'admin.php?page=nggallery-manage&mode=image&gid=' . $gallery_id . '" >';
 		$message .=  __('Edit gallery','nggallery');
 		$message .= '</a>]';
 		
@@ -1450,7 +1450,7 @@ class nggAdmin{
 		if ( $errors != '' )
 			nggGallery::show_error($errors);
 
-		$link = '<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $destination->gid . '" >' . esc_html( $destination->title ) . '</a>';
+		$link = '<a href="' . admin_url() . 'admin.php?page=nggallery-manage&mode=image&gid=' . $destination->gid . '" >' . esc_html( $destination->title ) . '</a>';
 		$messages  = sprintf(__('Moved %1$s picture(s) to gallery : %2$s .','nggallery'), $count, $link);
 		nggGallery::show_message($messages);
 
@@ -1547,7 +1547,7 @@ class nggAdmin{
 		
 		// Finish by showing errors or success
 		if ( $errors == '' ) {
-			$link = '<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $destination->gid . '" >' . esc_html($destination->title) . '</a>';
+			$link = '<a href="' . admin_url() . 'admin.php?page=nggallery-manage&mode=image&gid=' . $destination->gid . '" >' . esc_html($destination->title) . '</a>';
 			$messages .= '<hr />' . sprintf(__('Copied %1$s picture(s) to gallery: %2$s .','nggallery'), count($images), $link);
 		} 
 

@@ -267,13 +267,13 @@ class NGG_Image_List_Table extends WP_List_Table {
 					'nggallery' ) . '">' . __( 'Rotate', 'nggallery' ) . '</a>',
 		);
 		if ( file_exists( $item->imagePath . '_backup' ) ) {
-			$actions['recover'] = '<a class="confirmrecover" href="' . wp_nonce_url( "admin.php?page=nggallery-manage-gallery&amp;mode=recoverpic&amp;gid=" . $item->galleryid . "&amp;pid=" . $item->pid,
+			$actions['recover'] = '<a class="confirmrecover" href="' . wp_nonce_url( "admin.php?page=nggallery-manage&mode=recoverpic&gid=" . $item->galleryid . "&pid=" . $item->pid,
 					'ngg_recoverpicture' ) . '" title="' . __( 'Recover',
 					'nggallery' ) . '" onclick="javascript:check=confirm( \'' . esc_attr( sprintf( __( 'Recover "%s" ?',
 					'nggallery' ), $item->filename ) ) . '\');if(check==false) return false;">' . __( 'Recover',
 					'nggallery' ) . '</a>';
 		}
-		$actions['delete'] = '<a class="submitdelete" href="' . wp_nonce_url( "admin.php?page=nggallery-manage-gallery&amp;mode=delpic&amp;gid=" . $item->galleryid . "&amp;pid=" . $item->pid,
+		$actions['delete'] = '<a class="submitdelete" href="' . wp_nonce_url( "admin.php?page=nggallery-manage&;mode=delpic&gid=" . $item->galleryid . "&pid=" . $item->pid,
 				'ngg_delpicture' ) . '" class="delete column-delete" onclick="javascript:check=confirm( \'' . esc_attr( sprintf( __( 'Delete "%s" ?',
 				'nggallery' ), $item->filename ) ) . '\');if(check==false) return false;">' . __( 'Delete' ) . '</a>';
 
