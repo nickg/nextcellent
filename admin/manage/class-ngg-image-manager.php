@@ -30,6 +30,10 @@ class NGG_Image_Manager extends NGG_Abstract_Image_Manager {
 			$this->handle_scan_folder();
 		}
 
+		if ( isset( $_GET['action'] ) ) {
+			$this->handle_row_action();
+		}
+
 		/**
 		 * @global $nggdb nggdb
 		 */
@@ -85,6 +89,19 @@ class NGG_Image_Manager extends NGG_Abstract_Image_Manager {
 					"\n\n" +
 					"<?php _e( 'Press OK to proceed, and Cancel to stop.', 'nggallery' ) ?>"
 				);
+			});
+
+			/**
+			 * For the row actions.
+			 */
+			jQuery(".confirm_recover").click(function() {
+				var fileName = jQuery(this).data('file');
+				return confirm( '<?php _e( 'Recover "{}"?', 'nggallery' ) ?>'.replace('{}', fileName));
+			});
+
+			jQuery(".confirm_delete").click(function() {
+				var fileName = jQuery(this).data('file');
+				return confirm( '<?php _e( 'Delete "{}"?', 'nggallery' ) ?>'.replace('{}', fileName));
 			});
 
 			/**
@@ -282,6 +299,63 @@ class NGG_Image_Manager extends NGG_Abstract_Image_Manager {
 		do_action( 'ngg_update_gallery', $this->id, $_POST );
 
 		nggGallery::show_message( __( 'Update successful', "nggallery" ) );
+
+	}
+
+	private function handle_row_action() {
+
+		check_admin_referer('ngg_row_action');
+
+		/**
+		 * @global nggdb $nggdb
+		 */
+		global $nggdb;
+
+		// Delete a picture
+		if ( $_GET['action'] == 'delete' ) {
+
+			$pid = (int) $_GET['pid'];
+			$options = get_option( 'ngg_options' );
+
+			//TODO:Remove also Tag reference
+			$image = $nggdb->find_image( $pid );
+			if ($image) {
+				if ($options['deleteImg']) {
+					@unlink($image->imagePath);
+					@unlink($image->thumbPath);
+					@unlink($image->imagePath . '_backup' );
+				}
+				do_action('ngg_delete_picture', $pid);
+				$result = nggdb::delete_image ( $pid );
+			} else {
+				$result = false;
+			}
+
+			if ($result) {
+				nggGallery::show_message(
+					sprintf( __( 'Picture %d deleted successfully.', 'nggallery' ), $pid )
+				);
+			} else {
+				nggGallery::show_error(
+					sprintf( __( 'Picture %d could not be deleted.', 'nggallery' ), $pid )
+				);
+			}
+
+			return;
+		}
+
+		// Recover picture from backup
+		if ( $_GET['action'] == 'recover' ) {
+
+			$image = $nggdb->find_image( (int) $_GET['pid'] );
+			// bring back the old image
+			nggAdmin::recover_image( $image );
+			nggAdmin::create_thumbnail( $image );
+
+			nggGallery::show_message( __( 'Operation successful. Please clear your browser cache.', "nggallery" ) );
+
+			return;
+		}
 
 	}
 }

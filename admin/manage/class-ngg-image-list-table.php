@@ -256,6 +256,15 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 * @return array|mixed|void
 	 */
 	private function get_row_actions( $item ) {
+
+		if(isset($_GET['paged'])) {
+			$paged = '&paged=' . $_GET['paged'];
+		} else {
+			$paged = '';
+		}
+
+		$url = $this->base . '&mode=image&gid=' .  $_GET['gid'] . $paged;
+
 		$actions = array(
 			'view'         => '<a class="shutter" href="' . esc_url( $item->imageURL ) . '" title="' . esc_attr( sprintf( __( 'View "%s"' ),
 					sanitize_title( $item->filename ) ) ) . '">' . __( 'View', 'nggallery' ) . '</a>',
@@ -267,15 +276,13 @@ class NGG_Image_List_Table extends WP_List_Table {
 					'nggallery' ) . '">' . __( 'Rotate', 'nggallery' ) . '</a>',
 		);
 		if ( file_exists( $item->imagePath . '_backup' ) ) {
-			$actions['recover'] = '<a class="confirmrecover" href="' . wp_nonce_url( "admin.php?page=nggallery-manage&mode=recoverpic&gid=" . $item->galleryid . "&pid=" . $item->pid,
-					'ngg_recoverpicture' ) . '" title="' . __( 'Recover',
-					'nggallery' ) . '" onclick="javascript:check=confirm( \'' . esc_attr( sprintf( __( 'Recover "%s" ?',
-					'nggallery' ), $item->filename ) ) . '\');if(check==false) return false;">' . __( 'Recover',
-					'nggallery' ) . '</a>';
+			$actions['recover'] = '<a class="confirm_recover" href="' . wp_nonce_url( $url . "&action=recover&pid=" . $item->pid, 'ngg_row_action' ) .
+			                      '" data-file="' . esc_attr($item->filename) . '">' .
+			                      __( 'Recover', 'nggallery' ) . '</a>';
 		}
-		$actions['delete'] = '<a class="submitdelete" href="' . wp_nonce_url( "admin.php?page=nggallery-manage&;mode=delpic&gid=" . $item->galleryid . "&pid=" . $item->pid,
-				'ngg_delpicture' ) . '" class="delete column-delete" onclick="javascript:check=confirm( \'' . esc_attr( sprintf( __( 'Delete "%s" ?',
-				'nggallery' ), $item->filename ) ) . '\');if(check==false) return false;">' . __( 'Delete' ) . '</a>';
+		$actions['delete'] = '<a class="confirm_delete" href="' . wp_nonce_url( $url . "&action=delete&pid=" . $item->pid, 'ngg_row_action' ) .
+		                     '" class="delete column-delete" data-file="' . esc_attr($item->filename) . '">' .
+		                     __( 'Delete' ) . '</a>';
 
 		$actions = apply_filters( 'ngg_manage_images_actions', $actions );
 
