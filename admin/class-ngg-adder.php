@@ -60,18 +60,34 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 		if ( isset( $_POST['upload_image'] ) ) {
 			check_admin_referer( 'ngg_addgallery' );
 
-			if ( ! nggGallery::current_user_can( 'NextGEN Upload in all galleries' ) ) {
-				wp_die( __( 'Cheatin&#8217; uh?' ) );
-			}
+			global $nggdb;
 
-			var_dump($_POST);
-			var_dump($_FILES);
-
-			if ( $_FILES['imagefiles']['error'][0] == 0 ) {
-				nggAdmin::upload_images();
+			if(isset ($_POST['swf_callback'])) {
+				if ($_POST['galleryselect'] == '0' )
+					nggGallery::show_error(__('You didn\'t select a gallery!','nggallery'));
+				else {
+					if ( $_POST['swf_callback'] == '-1' ) {
+						nggGallery::show_error( __( 'Upload failed!', 'nggallery' ) );
+					} else {
+						$gallery = $nggdb->find_gallery( (int) $_POST['galleryselect'] );
+						nggAdmin::import_gallery( $gallery->path );
+					}
+				}
 			} else {
-				nggGallery::show_error( __( 'Upload failed! ' . nggAdmin::decode_upload_error( $_FILES['imagefiles']['error'][0] ),
-					'nggallery' ) );
+
+				if ( ! nggGallery::current_user_can( 'NextGEN Upload in all galleries' ) ) {
+					wp_die( __( 'Cheatin&#8217; uh?' ) );
+				}
+
+				var_dump( $_POST );
+				var_dump( $_FILES );
+
+				if ( $_FILES['imagefiles']['error'][0] == 0 ) {
+					nggAdmin::upload_images();
+				} else {
+					nggGallery::show_error( __( 'Upload failed! ' . nggAdmin::decode_upload_error( $_FILES['imagefiles']['error'][0] ),
+						'nggallery' ) );
+				}
 			}
 		}
 
@@ -99,6 +115,8 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 	 * @return void
 	 */
 	public function display() {
+
+		var_dump($_REQUEST);
 
 		parent::display();
 
@@ -370,6 +388,7 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 				</tr>
 			</table>
 			<div class="submit">
+				<button type="submit">hhh</button>
 				<?php if ( $args['options']['swfUpload'] ) { ?>
 					<input class="button action" type="submit" name="use_simple" id="use_simple" title="<?php _e( 'Click here to use the simple uploader instead',
 						'nggallery' ) ?>" value="<?php _e( 'Use basic uploader', 'nggallery' ); ?>"/>
@@ -433,6 +452,7 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 							browse_button: 'plupload-browse-button',
 							container: 'plupload-upload-ui',
 							drop_element: 'drag-drop-area',
+							fileData: 'files',
 							url: '<?php echo esc_js( admin_url( '/?nggupload' ) ); ?>',
 							flash_swf_url: '<?php echo esc_js( includes_url('js/plupload/plupload.flash.swf') ); ?>',
 							silverlight_xap_url: '<?php echo esc_js( includes_url('js/plupload/plupload.silverlight.xap') ); ?>',

@@ -66,8 +66,10 @@ function uploadComplete(fileObj) {
 	// Upload the next file until queue is empty
 	if ( uploader.total.queued == 0) {
         //TODO: we submit here no error code
+        var form = jQuery('#upload_image_form');
+        form.prepend("<input type=\"hidden\" name=\"swf_callback\" value=\"0\">");
         nggProgressBar.finished();
-		jQuery('#upload_image_form').submit();
+        form.submit();
 	}	
 }
 
