@@ -124,6 +124,27 @@
 	vertical-align: top;
 }
 
+#drag-drop-area {
+	border: 4px dashed #bbb;
+	height: 150px;
+	padding:20px
+}
+
+.drag-drop-inside {
+	margin:auto;
+	text-align:center;
+	width: 250px;
+	display: inline;
+}
+
+.drag-drop-inside p {
+	display: block;
+}
+
+.form-table td.gallery-selector {
+	padding: 0;
+}
+
 /* SETTINGS FOR THE OPTIONS TABLE */
 .ngg-options th {
 	width: 22%;
