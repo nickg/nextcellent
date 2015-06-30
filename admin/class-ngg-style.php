@@ -1,18 +1,8 @@
 <?php  
 
-include_once('interface-ngg-displayable.php');
+include_once('class-ngg-post-admin-page.php');
 
-class NGG_Style implements NGG_Displayable {
-
-    public function __construct() {
-
-       	// same as $_SERVER['REQUEST_URI'], but should work under IIS 6.0
-	   $this->filepath    = admin_url() . 'admin.php?page=' . $_GET['page'];
-
-  		//Look for POST updates
-		if ( !empty($_POST) )
-			{$this->processor();}
-    }
+class NGG_Style extends NGG_Post_Admin_Page {
 	
 	/**
 	 * Find stylesheets.
@@ -110,7 +100,7 @@ class NGG_Style implements NGG_Displayable {
 	 * @since 1.9.22
 	 *
 	 */
-	private function processor() {
+	protected function processor() {
 		global $ngg;
 		$i = 0;
 
@@ -206,6 +196,9 @@ class NGG_Style implements NGG_Displayable {
      *
      */
 	public function display() {
+
+		parent::display();
+
 		global $ngg;
 		
 		//the directions containing the css files

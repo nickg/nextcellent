@@ -247,38 +247,36 @@ class nggAdminPanel {
 
 		switch ( $_GET['page'] ) {
 			case "nggallery-add-gallery" :
-				include_once( dirname( __FILE__ ) . '/functions.php' );        // admin functions
-				include_once( dirname( __FILE__ ) . '/class-ngg-adder.php' );    // nggallery_admin_add_gallery
+				include_once( dirname( __FILE__ ) . '/functions.php' );
+				include_once( dirname( __FILE__ ) . '/class-ngg-adder.php' );
 				$page = new NGG_Adder();
 				break;
 			case "nggallery-manage":
-				include_once( dirname( __FILE__ ) . '/functions.php' );    // admin functions
+				include_once( dirname( __FILE__ ) . '/functions.php' );
 				$page = $this->get_manager();
 				break;
 			case "nggallery-manage-album" :
-				include_once( dirname( __FILE__ ) . '/class-ngg-album-manager.php' );        // nggallery_admin_manage_album
+				include_once( dirname( __FILE__ ) . '/class-ngg-album-manager.php' );
 				$page = new NGG_Album_Manager ();
 				break;
 			case "nggallery-options" :
-				include_once( dirname( __FILE__ ) . '/settings.php' );    // nggallery_admin_options
-				$ngg->option_page = new nggOptions ();
-				$ngg->option_page->show_page();
-
-				return;
+				include_once( dirname( __FILE__ ) . '/class-ngg-options.php' );
+				$page = new NGG_Options();
+				break;
 			case "nggallery-tags" :
-				include_once( dirname( __FILE__ ) . '/tags.php' );        // nggallery_admin_tags
-				return;
+				include_once( dirname( __FILE__ ) . '/class-ngg-tag-manager.php' );
+				$page = new NGG_Tag_Manager();
+				break;
 			case "nggallery-style" :
-				include_once( dirname( __FILE__ ) . '/class-ngg-style.php' );        // nggallery_admin_style
+				include_once( dirname( __FILE__ ) . '/class-ngg-style.php' );
 				$page = new NGG_Style();
 				break;
 			case "nggallery-setup" :
-				include_once( dirname( __FILE__ ) . '/setup.php' );        // nggallery_admin_setup
-				nggallery_admin_setup();
-
-				return;
+				include_once( dirname( __FILE__ ) . '/class-ngg-setup.php' );
+				$page = new NGG_Setup();
+				break;
 			case "nggallery-roles" :
-				include_once( dirname( __FILE__ ) . '/roles.php' );        // nggallery_admin_roles
+				include_once( dirname( __FILE__ ) . '/roles.php' );
 				nggallery_admin_roles();
 
 				return;
