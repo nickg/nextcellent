@@ -256,11 +256,9 @@ class nggAdminPanel {
 				$page = $this->get_manager();
 				break;
 			case "nggallery-manage-album" :
-				include_once( dirname( __FILE__ ) . '/album.php' );        // nggallery_admin_manage_album
-				$ngg->manage_album = new nggManageAlbum ();
-				$ngg->manage_album->controller();
-
-				return;
+				include_once( dirname( __FILE__ ) . '/class-ngg-album-manager.php' );        // nggallery_admin_manage_album
+				$page = new NGG_Album_Manager ();
+				break;
 			case "nggallery-options" :
 				include_once( dirname( __FILE__ ) . '/settings.php' );    // nggallery_admin_options
 				$ngg->option_page = new nggOptions ();
