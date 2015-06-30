@@ -139,8 +139,11 @@ class nggAdmin{
 	 */
 	 
 	static function import_gallery($galleryfolder) {
-		
-		global $wpdb, $user_ID;
+
+		/**
+		 * @global nggdb $nggdb
+		 */
+		global $wpdb, $user_ID, $nggdb;
 
 		// get the current user ID
 		get_currentuserinfo();
@@ -216,7 +219,7 @@ class nggAdmin{
 		}
 		
 		// Look for existing image list and sanitize file names before scanning for new images
-		$db_images = nggdb::get_gallery($gallery_id);
+		$db_images = $nggdb->get_gallery($gallery_id);
 		$updated = array();
 
 		foreach( $db_images as $image ){
