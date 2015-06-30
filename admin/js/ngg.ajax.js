@@ -10,20 +10,14 @@
 (function($) {
 
     nggAjax = {
+
         run: function(index) {
             s = this.settings;
-
-            //Set up the default parameters
-            s.data['action'] = s.action;
-            s.data['operation'] = s.operation;
-            s.data['_wpnonce'] = s.nonce;
-            s.data['image'] = s.ids[index];
-
 
             var req = $.ajax({
                 type: "POST",
                 url: s.url,
-                data: s.data,
+                data: "action=" + s.action + "&operation=" + s.operation + "&_wpnonce=" + s.nonce + "&image=" + s.ids[index],
                 cache: false,
                 timeout: 10000,
                 success: function(msg) {
@@ -112,8 +106,7 @@
                 error: nggAjaxSetup.error,
                 failure: nggAjaxSetup.failure,
                 timeout: 10000,
-                mode: "image",
-                data: {}
+                mode: "image"
             }, this.settings, s);
 
             /**
