@@ -12,25 +12,16 @@ function initUploader() {
 
 	jQuery(document).ready(function($){
 
-		/* Not working in chrome, needs rework
-		 var dropElm = jQuery('#' + uploader.settings.drop_element);
-		 if (dropElm.length && uploader.features.dragdrop) {
-		 dropElm.bind('dragenter', function() {
-		 jQuery(this).css('border', '3px dashed #cccccc');
-		 });
-		 dropElm.bind('dragout drop', function() {
-		 jQuery(this).css('border', 'none');
-		 });
-		 }*/
+		if ( uploader.features.dragdrop ) {
+			$('.ngg-dragdrop-info').show();
+		}
 
-		if ( uploader.features.dragdrop )
-			jQuery('.ngg-dragdrop-info').show();
-
-		jQuery("#uploadimage_btn").after("<input class='button-primary' type='button' name='uploadimage' id='plupload_btn' value='" + uploader.settings.i18n.upload + "' />")
+		$("#uploadimage_btn")
+            .after("<input class='button-primary' type='button' name='uploadimage' id='plupload_btn' value='" + uploader.settings.i18n.upload + "' />")
 			.remove();
-		jQuery("#plupload_btn").click( function() {
+		$("#plupload_btn").click( function() {
 			//check if a gallery is selected
-			if (jQuery('#galleryselect').val() > "0") {
+			if ($('#galleryselect').val() > "0") {
 				uploader.start();
 			} else {
 				event.preventDefault();
@@ -72,7 +63,7 @@ function uploadProgress(fileObj, bytesDone, bytesTotal) {
 	var percent = Math.ceil((bytesDone / bytesTotal) * 100);
 	debug('[uploadProgress]', fileObj.name + ' : ' + percent + "%");
 	nggProgressBar.increase( percent );
-	jQuery("#progressbar span").text(percent + "% - " + fileObj.name);
+	jQuery("#progressbar").find("span").text(percent + "% - " + fileObj.name);
 }
 
 // called when all files are uploaded
@@ -81,10 +72,10 @@ function uploadComplete(fileObj) {
 
 	// Upload the next file until queue is empty
 	if ( uploader.total.queued == 0) {
-		//TODO: we submit here no error code
-		jQuery('#uploadimage_form').prepend("<input type=\"hidden\" name=\"swf_callback\" value=\"0\">");
+		var form = jQuery('#uploadimage_form');
+		form.prepend("<input type=\"hidden\" name=\"swf_callback\" value=\"0\">");
 		nggProgressBar.finished();
-		jQuery("#uploadimage_form").submit();
+		form.submit();
 	}
 }
 
@@ -95,8 +86,7 @@ function uploadSuccess(fileObj, serverData) {
 	if (serverData.response != 0)
 		nggProgressBar.addNote("<strong>ERROR</strong>: " + fileObj.name + " : " + serverData.response);
 
-	jQuery("#" + fileObj.id).hide("slow");
-	jQuery("#" + fileObj.id).remove();
+	jQuery("#" + fileObj.id).hide("slow").remove();
 }
 
 function cancelUpload() {
@@ -154,8 +144,7 @@ function uploadError(fileObj, errorCode, message) {
 	}
 	//nggProgressBar.addNote("<strong>ERROR " + error_name + " </strong>: " + message);
 	jQuery('#plupload-upload-ui').prepend('<div id="file-' + fileObj.id + '" class="error"><p style="margin: auto;">' + error_name + message + '</p></div>');
-	jQuery("#" + fileObj.id).hide("slow");
-	jQuery("#" + fileObj.id).remove();
+	jQuery("#" + fileObj.id).hide("slow").remove();
 }
 
 function debug() {
