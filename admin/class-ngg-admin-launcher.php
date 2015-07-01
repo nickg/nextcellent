@@ -3,10 +3,7 @@
 /**
  * NGG_Admin_Launcher - Admin Section for NextGEN Gallery
  *
- * @package NextGEN Gallery
- * @author Alex Rabe
- *
- * @since 1.0.0
+ * @since   1.0.0
  */
 class NGG_Admin_Launcher {
 
@@ -29,7 +26,7 @@ class NGG_Admin_Launcher {
 		// Add WPML hook to register description / alt text for translation
 		add_action( 'ngg_image_updated', array( 'nggGallery', 'RegisterString' ) );
 
-		add_filter('set-screen-option', array($this, 'save_options'), 10, 3);
+		add_filter( 'set-screen-option', array( $this, 'save_options' ), 10, 3 );
 
 	}
 
@@ -42,16 +39,17 @@ class NGG_Admin_Launcher {
 	 * @return string The icon string.
 	 */
 
-    private function get_icon_gallery($wp_version='') {
-        if (empty($wp_version)) {
-            $wp_version= get_bloginfo( 'version' ) ; //get WP Version
-        }
-        if ( $wp_version >= 3.8 ) {
-            return 'dashicons-format-gallery'; //new style
-        }
-        //older style
-        return path_join( NGGALLERY_URLPATH, 'admin/images/nextgen_16_color.png' );
-    }
+	private function get_icon_gallery( $wp_version = '' ) {
+		if ( empty( $wp_version ) ) {
+			$wp_version = get_bloginfo( 'version' ); //get WP Version
+		}
+		if ( $wp_version >= 3.8 ) {
+			return 'dashicons-format-gallery'; //new style
+		}
+
+		//older style
+		return path_join( NGGALLERY_URLPATH, 'admin/images/nextgen_16_color.png' );
+	}
 
 	/**
 	 * Add all menu pages to the WordPress menu.
@@ -106,14 +104,16 @@ class NGG_Admin_Launcher {
 	 * Add the network pages to the network menu.
 	 */
 	function add_network_admin_menu() {
-        add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu',
-                       NGGFOLDER, array($this,'show_network_settings'), $this->get_icon_gallery() );
+		add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu',
+			NGGFOLDER, array( $this, 'show_network_settings' ), $this->get_icon_gallery() );
 
-		add_submenu_page( NGGFOLDER, __( 'Network settings', 'nggallery' ), __( 'Network settings', 'nggallery' ), 'nggallery-wpmu',
-                          NGGFOLDER, array($this, 'show_network_settings' ) );
+		add_submenu_page( NGGFOLDER, __( 'Network settings', 'nggallery' ), __( 'Network settings', 'nggallery' ),
+			'nggallery-wpmu',
+			NGGFOLDER, array( $this, 'show_network_settings' ) );
 
-		add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ), 'activate_plugins',
-                        'nggallery-setup', array($this, 'show_menu') );
+		add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ),
+			'activate_plugins',
+			'nggallery-setup', array( $this, 'show_menu' ) );
 	}
 
 	/**
@@ -147,7 +147,7 @@ class NGG_Admin_Launcher {
 		//Show the upgrade page if needed.
 		$this->show_upgrade_page();
 
-		$options = get_option('ngg_options');
+		$options = get_option( 'ngg_options' );
 
 		// Set installation date
 		if ( empty( $options['installDate'] ) ) {
@@ -221,31 +221,35 @@ class NGG_Admin_Launcher {
 	 */
 	private function get_manager() {
 
-		if( !isset($_GET['mode']) || $_GET['mode'] === 'gallery') {
+		if ( ! isset( $_GET['mode'] ) || $_GET['mode'] === 'gallery' ) {
 
 			//Display the normal page.
 			include_once( 'manage/class-ngg-gallery-manager.php' );
+
 			return new NGG_Gallery_Manager();
 
 		} elseif ( $_GET['mode'] == 'image' ) {
 
 			//Display overview of a gallery.
 			include_once( 'manage/class-ngg-image-manager.php' );
+
 			return new NGG_Image_Manager();
 
 		} elseif ( $_GET['mode'] == 'sort' ) {
 
 			//Display sort page.
 			include_once( 'manage/class-ngg-sort-manager.php' );
+
 			return new NGG_Sort_Manager();
 
 		} elseif ( $_GET['mode'] == 'search' ) {
 
 			//Display search results.
 			include_once( 'manage/class-ngg-search-manager.php' );
+
 			return new NGG_Search_Manager();
 		} else {
-			return  null;
+			return null;
 		}
 	}
 
@@ -267,7 +271,8 @@ class NGG_Admin_Launcher {
 			'error'      => __( 'Unexpected Error', 'nggallery' ),
 			'failure'    => __( 'A failure occurred', 'nggallery' )
 		) );
-		wp_register_script( 'ngg-plupload-handler', NGGALLERY_URLPATH . 'admin/js/plupload.handler.js', array( 'plupload-all' ), '0.0.1' );
+		wp_register_script( 'ngg-plupload-handler', NGGALLERY_URLPATH . 'admin/js/plupload.handler.js',
+			array( 'plupload-all' ), '0.0.1' );
 		wp_localize_script( 'ngg-plupload-handler', 'pluploadL10n', array(
 			'queue_limit_exceeded'      => __( 'You have attempted to queue too many files.' ),
 			'file_exceeds_size_limit'   => __( 'This file exceeds the maximum upload size for this site.' ),
@@ -291,8 +296,10 @@ class NGG_Admin_Launcher {
 			'error_uploading'           => __( '&#8220;%s&#8221; has failed to upload due to an error' ),
 			'no_gallery'                => __( 'You didn\'t select a gallery!', 'nggallery' )
 		) );
-		wp_register_script( 'ngg-progressbar', NGGALLERY_URLPATH . 'admin/js/ngg.progressbar.js', array( 'jquery' ), '2.0.1' );
-        wp_register_script( 'ngg-autocomplete', NGGALLERY_URLPATH . 'admin/js/ngg.autocomplete.js', array( 'jquery-ui-autocomplete' ), '1.1' );
+		wp_register_script( 'ngg-progressbar', NGGALLERY_URLPATH . 'admin/js/ngg.progressbar.js', array( 'jquery' ),
+			'2.0.1' );
+		wp_register_script( 'ngg-autocomplete', NGGALLERY_URLPATH . 'admin/js/ngg.autocomplete.js',
+			array( 'jquery-ui-autocomplete' ), '1.1' );
 
 		switch ( $_GET['page'] ) {
 			case NGGFOLDER :
@@ -306,8 +313,8 @@ class NGG_Admin_Launcher {
 				wp_enqueue_script( 'jquery-ui-dialog' );
 				wp_enqueue_script( 'jquery-ui-sortable' );
 				wp_enqueue_script( 'jquery-ui-datepicker' );
-				wp_enqueue_script( 'ngg-autocomplete');
-				wp_enqueue_script('ngg-cropper', NGGALLERY_URLPATH . 'admin/js/cropper/cropper.js', '0.10.0');
+				wp_enqueue_script( 'ngg-autocomplete' );
+				wp_enqueue_script( 'ngg-cropper', NGGALLERY_URLPATH . 'admin/js/cropper/cropper.js', '0.10.0' );
 				wp_register_script( 'shutter', NGGALLERY_URLPATH . 'shutter/shutter-reloaded.js', false, '1.3.2' );
 				wp_localize_script( 'shutter', 'shutterSettings', array(
 					'msgLoading' => __( 'L O A D I N G', 'nggallery' ),
@@ -324,7 +331,7 @@ class NGG_Admin_Launcher {
 			case "nggallery-options" :
 				wp_enqueue_script( 'jquery-ui-tabs' );
 				wp_enqueue_script( 'wp-color-picker' );
-                wp_enqueue_script( 'ngg-autocomplete');
+				wp_enqueue_script( 'ngg-autocomplete' );
 				break;
 			case "nggallery-add-gallery" :
 				wp_enqueue_script( 'jquery-ui-tabs' );
@@ -332,7 +339,8 @@ class NGG_Admin_Launcher {
 				wp_enqueue_script( 'ngg-ajax' );
 				wp_enqueue_script( 'ngg-progressbar' );
 				wp_enqueue_script( 'jquery-ui-dialog' );
-				wp_enqueue_script( 'jqueryFileTree', NGGALLERY_URLPATH . 'admin/js/jqueryFileTree/jqueryFileTree.js', array( 'jquery' ), '1.0.1' );
+				wp_enqueue_script( 'jqueryFileTree', NGGALLERY_URLPATH . 'admin/js/jqueryFileTree/jqueryFileTree.js',
+					array( 'jquery' ), '1.0.1' );
 				break;
 			case "nggallery-style" :
 				wp_enqueue_script( 'codepress' );
@@ -341,11 +349,11 @@ class NGG_Admin_Launcher {
 		}
 	}
 
-    /**
-     * Load the CSS files.
-     */
+	/**
+	 * Load the CSS files.
+	 */
 	function load_styles() {
-		wp_register_style( 'nggadmin'    , NGGALLERY_URLPATH . 'admin/css/nggadmin.css', false, '2.8.1', 'screen' );
+		wp_register_style( 'nggadmin', NGGALLERY_URLPATH . 'admin/css/nggadmin.css', false, '2.8.1', 'screen' );
 		wp_register_style( 'ngg-jqueryui', NGGALLERY_URLPATH . 'admin/css/jquery.ui.css', false, '1.8.5', 'screen' );
 
 		// no need to go on if it's not a plugin page
@@ -360,17 +368,21 @@ class NGG_Admin_Launcher {
 				break;
 			case "nggallery-add-gallery" :
 				wp_enqueue_style( 'ngg-jqueryui' );
-				wp_enqueue_style( 'jqueryFileTree', NGGALLERY_URLPATH . 'admin/js/jqueryFileTree/jqueryFileTree.css', false, '1.0.1', 'screen' );
+				wp_enqueue_style( 'jqueryFileTree', NGGALLERY_URLPATH . 'admin/js/jqueryFileTree/jqueryFileTree.css',
+					false, '1.0.1', 'screen' );
 			case "nggallery-options" :
-				wp_enqueue_style( 'nggtabs', NGGALLERY_URLPATH . 'admin/css/jquery.ui.tabs.css', false, '2.5.0', 'screen' );
+				wp_enqueue_style( 'nggtabs', NGGALLERY_URLPATH . 'admin/css/jquery.ui.tabs.css', false, '2.5.0',
+					'screen' );
 				wp_enqueue_style( 'nggadmin' );
 				wp_enqueue_style( 'wp-color-picker' );
-                wp_enqueue_style( 'ngg-jqueryui' );
+				wp_enqueue_style( 'ngg-jqueryui' );
 				break;
 			case "nggallery-manage":
-				wp_enqueue_style('ngg-cropper', NGGALLERY_URLPATH . 'admin/js/cropper/cropper.min.css', '0.10.0');
-				wp_enqueue_style( 'shutter', NGGALLERY_URLPATH . 'shutter/shutter-reloaded.css', false, '1.3.2', 'screen' );
-				wp_enqueue_style( 'datepicker', NGGALLERY_URLPATH . 'admin/css/jquery.ui.datepicker.css', false, '1.8.2', 'screen' );
+				wp_enqueue_style( 'ngg-cropper', NGGALLERY_URLPATH . 'admin/js/cropper/cropper.min.css', '0.10.0' );
+				wp_enqueue_style( 'shutter', NGGALLERY_URLPATH . 'shutter/shutter-reloaded.css', false, '1.3.2',
+					'screen' );
+				wp_enqueue_style( 'datepicker', NGGALLERY_URLPATH . 'admin/css/jquery.ui.datepicker.css', false,
+					'1.8.2', 'screen' );
 			case "nggallery-roles" :
 			case "nggallery-manage-album" :
 				wp_enqueue_style( 'ngg-jqueryui' );
@@ -387,7 +399,7 @@ class NGG_Admin_Launcher {
 	/**
 	 * Save the screen options.
 	 */
-	public static function save_options($status, $option, $value) {
+	public static function save_options( $status, $option, $value ) {
 		return $value;
 	}
 
@@ -418,18 +430,32 @@ class NGG_Admin_Launcher {
 
 				//The tab content
 				$help = '<p>' . __( 'The boxes on your overview screen are:', 'nggallery' ) . '</p>';
-				$help .= '<p><strong>' . __( 'At a Glance', 'nggallery' ) . '</strong> - ' . __( 'Shows some general information about your site, such as the number of pictures, albums and galleries.', 'nggallery' ) . '</p>';
-				$help .= '<p><strong>' . __( 'Latest News', 'nggallery' ) . '</strong> - ' . __( 'The latest NextCellent news.', 'nggallery' ) . '</p>';
+				$help .= '<p><strong>' . __( 'At a Glance',
+						'nggallery' ) . '</strong> - ' . __( 'Shows some general information about your site, such as the number of pictures, albums and galleries.',
+						'nggallery' ) . '</p>';
+				$help .= '<p><strong>' . __( 'Latest News',
+						'nggallery' ) . '</strong> - ' . __( 'The latest NextCellent news.', 'nggallery' ) . '</p>';
 				if ( ! is_multisite() || is_super_admin() ) {
-					$help .= '<p><strong>' . __( 'Related plugins', 'nggallery' ) . '</strong> - ' . __( 'Shows plugins that extend NextCellent.', 'nggallery' ) . ' <strong>' . __( 'Pay attention', 'nggallery' ) . '</strong>: ' . __( 'third parties plugins that are compatible with NGG may not be 100% compatible with NextCellent Gallery!', 'nggallery' ) . '</p>';
+					$help .= '<p><strong>' . __( 'Related plugins',
+							'nggallery' ) . '</strong> - ' . __( 'Shows plugins that extend NextCellent.',
+							'nggallery' ) . ' <strong>' . __( 'Pay attention',
+							'nggallery' ) . '</strong>: ' . __( 'third parties plugins that are compatible with NGG may not be 100% compatible with NextCellent Gallery!',
+							'nggallery' ) . '</p>';
 				}
-				$help .= '<p><strong>' . __( 'Help me help YOU!', 'nggallery' ) . '</strong> - ' . __( 'Shows general information about he plugin and some links.', 'nggallery' ) . '</p>';
+				$help .= '<p><strong>' . __( 'Help me help YOU!',
+						'nggallery' ) . '</strong> - ' . __( 'Shows general information about he plugin and some links.',
+						'nggallery' ) . '</p>';
 				if ( ! ( get_locale() == 'en_US' ) ) {
-					$help .= '<p><strong>' . __( 'Translation', 'nggallery' ) . '</strong> - ' . __( 'View information about the current translation.' ) . '</p>';
+					$help .= '<p><strong>' . __( 'Translation',
+							'nggallery' ) . '</strong> - ' . __( 'View information about the current translation.' ) . '</p>';
 				}
 				if ( ! is_multisite() || is_super_admin() ) {
-					$help .= '<p><strong>' . __( 'Server Settings', 'nggallery' ) . '</strong> - ' . __( 'Show all the server settings!.', 'nggallery' ) . '</p>';
-					$help .= '<p><strong>' . __( 'Plugin Check', 'nggallery' ) . '</strong> - ' . __( 'Check if there are known errors in your installation.', 'nggallery' ) . '</p>';
+					$help .= '<p><strong>' . __( 'Server Settings',
+							'nggallery' ) . '</strong> - ' . __( 'Show all the server settings!.',
+							'nggallery' ) . '</p>';
+					$help .= '<p><strong>' . __( 'Plugin Check',
+							'nggallery' ) . '</strong> - ' . __( 'Check if there are known errors in your installation.',
+							'nggallery' ) . '</p>';
 				}
 				//Add the tab
 				$screen->add_help_tab( array(
@@ -446,20 +472,28 @@ class NGG_Admin_Launcher {
 				global $nggdb;
 				$gallerylist = $nggdb->find_all_galleries( 'gid', 'DESC' ); //look for galleries
 
-				$help = '<p>' . __( 'On this page you can add galleries and pictures to those galleries.', 'nggallery' ) . '</p>';
+				$help = '<p>' . __( 'On this page you can add galleries and pictures to those galleries.',
+						'nggallery' ) . '</p>';
 				if ( nggGallery::current_user_can( 'NextGEN Add new gallery' ) ) {
-					$help .= '<p><strong>' . __( 'New gallery', 'nggallery' ) . '</strong> - ' . __( 'Add new galleries to NextCellent.', 'nggallery' ) . '</p>';
+					$help .= '<p><strong>' . __( 'New gallery',
+							'nggallery' ) . '</strong> - ' . __( 'Add new galleries to NextCellent.',
+							'nggallery' ) . '</p>';
 				}
 				if ( empty ( $gallerylist ) ) {
-					$help .= '<p><strong>' . __( 'You must add a gallery before adding images!', 'nggallery' ) . '</strong>';
+					$help .= '<p><strong>' . __( 'You must add a gallery before adding images!',
+							'nggallery' ) . '</strong>';
 				} else {
-					$help .= '<p><strong>' . __( 'Images', 'nggallery' ) . '</strong> - ' . __( 'Add new images to a gallery.', 'nggallery' ) . '</p>';
+					$help .= '<p><strong>' . __( 'Images',
+							'nggallery' ) . '</strong> - ' . __( 'Add new images to a gallery.', 'nggallery' ) . '</p>';
 				}
 				if ( wpmu_enable_function( 'wpmuZipUpload' ) && nggGallery::current_user_can( 'NextGEN Upload a zip' ) && ! empty ( $gallerylist ) ) {
-					$help .= '<p><strong>' . __( 'ZIP file', 'nggallery' ) . '</strong> - ' . __( 'Add images from a ZIP file.', 'nggallery' ) . '</p>';
+					$help .= '<p><strong>' . __( 'ZIP file',
+							'nggallery' ) . '</strong> - ' . __( 'Add images from a ZIP file.', 'nggallery' ) . '</p>';
 				}
 				if ( wpmu_enable_function( 'wpmuImportFolder' ) && nggGallery::current_user_can( 'NextGEN Import image folder' ) ) {
-					$help .= '<p><strong>' . __( 'Import folder', 'nggallery' ) . '</strong> - ' . __( 'Import a folder from the server as a new gallery.', 'nggallery' ) . '</p>';
+					$help .= '<p><strong>' . __( 'Import folder',
+							'nggallery' ) . '</strong> - ' . __( 'Import a folder from the server as a new gallery.',
+							'nggallery' ) . '</p>';
 				}
 
 				$screen->add_help_tab( array(
@@ -472,25 +506,27 @@ class NGG_Admin_Launcher {
 
 				$option = 'per_page';
 
-				if( !isset($_GET['mode']) || $_GET['mode'] === 'gallery' ) {
-					include_once('manage/class-ngg-gallery-list-table.php');
-					add_filter( 'manage_' . $screen->id . '_columns', array( 'NGG_Gallery_List_Table', 'get_columns_static' ), 0 );
+				if ( ! isset( $_GET['mode'] ) || $_GET['mode'] === 'gallery' ) {
+					include_once( 'manage/class-ngg-gallery-list-table.php' );
+					add_filter( 'manage_' . $screen->id . '_columns',
+						array( 'NGG_Gallery_List_Table', 'get_columns_static' ), 0 );
 					$args = array(
-						'label' => __( 'Galleries', 'nggallery'),
+						'label'   => __( 'Galleries', 'nggallery' ),
 						'default' => 25,
-						'option' => 'ngg_galleries_per_page'
+						'option'  => 'ngg_galleries_per_page'
 					);
 				} else {
-					include_once('manage/class-ngg-image-list-table.php');
-					add_filter( 'manage_' . $screen->id . '_columns', array( 'NGG_Image_List_Table', 'get_columns_static' ), 0 );
+					include_once( 'manage/class-ngg-image-list-table.php' );
+					add_filter( 'manage_' . $screen->id . '_columns',
+						array( 'NGG_Image_List_Table', 'get_columns_static' ), 0 );
 					$args = array(
-						'label' => __( 'Images', 'nggallery' ),
+						'label'   => __( 'Images', 'nggallery' ),
 						'default' => 50,
-						'option' => 'ngg_images_per_page'
+						'option'  => 'ngg_images_per_page'
 					);
 				}
 
-				$screen->add_option($option, $args);
+				$screen->add_option( $option, $args );
 
 
 				$help = '<p>' . __( 'Manage your images and galleries.', 'nggallery' ) . '</p>';
@@ -502,7 +538,9 @@ class NGG_Admin_Launcher {
 				) );
 				break;
 			case "{$i18n}_page_nggallery-manage-album" :
-				$help = '<p>' . __( 'Organize your galleries into albums.', 'nggallery' ) . '</p><p>' . __( 'First select an album from the dropdown and then drag the galleries you want to add or remove from the selected album.', 'nggallery' ) . '</p>';
+				$help = '<p>' . __( 'Organize your galleries into albums.',
+						'nggallery' ) . '</p><p>' . __( 'First select an album from the dropdown and then drag the galleries you want to add or remove from the selected album.',
+						'nggallery' ) . '</p>';
 
 				$screen->add_help_tab( array(
 					'id'      => $screen->id . '-general',
@@ -511,7 +549,9 @@ class NGG_Admin_Launcher {
 				) );
 				break;
 			case "{$i18n}_page_nggallery-tags" :
-				$help = '<p>' . __( 'Organize your pictures with tags.', 'nggallery' ) . '</p><p>' . __( 'Rename, delete and edit tags. Use the rename function to merge tags.', 'nggallery' ) . '</p>';
+				$help = '<p>' . __( 'Organize your pictures with tags.',
+						'nggallery' ) . '</p><p>' . __( 'Rename, delete and edit tags. Use the rename function to merge tags.',
+						'nggallery' ) . '</p>';
 
 				$screen->add_help_tab( array(
 					'id'      => $screen->id . '-general',
@@ -520,13 +560,25 @@ class NGG_Admin_Launcher {
 				) );
 				break;
 			case "{$i18n}_page_nggallery-options" :
-				$help = '<p>' . __( 'Edit all of NextCellent\'s options. The options are sorted in multiple categories.', 'nggallery' ) . '</p>';
-				$help .= '<p><strong>' . __( 'General', 'nggallery' ) . '</strong> - ' . __( 'General NextCellent options. Contains options for permalinks and related images.', 'nggallery' ) . '</p>';
-				$help .= '<p><strong>' . __( 'Images', 'nggallery' ) . '</strong> - ' . __( 'All image-related options. Also contains options for thumbnails.', 'nggallery' ) . '</p>';
-				$help .= '<p><strong>' . __( 'Gallery', 'nggallery' ) . '</strong> - ' . __( 'Everything about galleries. From sorting options to the number of images, it\'s all in here.', 'nggallery' ) . '</p>';
-				$help .= '<p><strong>' . __( 'Effects', 'nggallery' ) . '</strong> - ' . __( 'Make your gallery look beautiful.', 'nggallery' ) . '</p>';
-				$help .= '<p><strong>' . __( 'Watermark', 'nggallery' ) . '</strong> - ' . __( 'Who doesn\'t want theft-proof images?', 'nggallery' ) . '</p>';
-				$help .= '<p><strong>' . __( 'Slideshow', 'nggallery' ) . '</strong> - ' . __( 'Edit options for the slideshow.', 'nggallery' ) . '</p>';
+				$help = '<p>' . __( 'Edit all of NextCellent\'s options. The options are sorted in multiple categories.',
+						'nggallery' ) . '</p>';
+				$help .= '<p><strong>' . __( 'General',
+						'nggallery' ) . '</strong> - ' . __( 'General NextCellent options. Contains options for permalinks and related images.',
+						'nggallery' ) . '</p>';
+				$help .= '<p><strong>' . __( 'Images',
+						'nggallery' ) . '</strong> - ' . __( 'All image-related options. Also contains options for thumbnails.',
+						'nggallery' ) . '</p>';
+				$help .= '<p><strong>' . __( 'Gallery',
+						'nggallery' ) . '</strong> - ' . __( 'Everything about galleries. From sorting options to the number of images, it\'s all in here.',
+						'nggallery' ) . '</p>';
+				$help .= '<p><strong>' . __( 'Effects',
+						'nggallery' ) . '</strong> - ' . __( 'Make your gallery look beautiful.',
+						'nggallery' ) . '</p>';
+				$help .= '<p><strong>' . __( 'Watermark',
+						'nggallery' ) . '</strong> - ' . __( 'Who doesn\'t want theft-proof images?',
+						'nggallery' ) . '</p>';
+				$help .= '<p><strong>' . __( 'Slideshow',
+						'nggallery' ) . '</strong> - ' . __( 'Edit options for the slideshow.', 'nggallery' ) . '</p>';
 				$help .= '<p>' . __( 'Don\'t forget to press save!', 'nggallery' ) . '</p>';
 
 				$screen->add_help_tab( array(
@@ -536,8 +588,10 @@ class NGG_Admin_Launcher {
 				) );
 				break;
 			case "{$i18n}_page_nggallery-style" :
-				$help = '<p>' . __( 'You can edit the css file to adjust how your gallery looks.', 'nggallery' ) . '</p>';
-				$help .= '<p>' . __( 'When you save an edited file, NextCellent automatically saves it as a copy in the folder ngg_styles. This protects your changes from upgrades.', 'nggallery' ) . '</p>';
+				$help = '<p>' . __( 'You can edit the css file to adjust how your gallery looks.',
+						'nggallery' ) . '</p>';
+				$help .= '<p>' . __( 'When you save an edited file, NextCellent automatically saves it as a copy in the folder ngg_styles. This protects your changes from upgrades.',
+						'nggallery' ) . '</p>';
 
 				$screen->add_help_tab( array(
 					'id'      => $screen->id . '-general',
@@ -546,8 +600,10 @@ class NGG_Admin_Launcher {
 				) );
 				break;
 			case "{$i18n}_page_nggallery-roles" :
-				$help = '<p>' . __( 'You can assign the lowest user role that has access to a certain feature. Needless to say, all greater user roles will also have access to that feature.', 'nggallery' ) . '</p>';
-				$help .= '<p>' . __( 'NextCellent also works with various plugins that extend the default roles capabilities.', 'nggallery' ) . '</p>';
+				$help = '<p>' . __( 'You can assign the lowest user role that has access to a certain feature. Needless to say, all greater user roles will also have access to that feature.',
+						'nggallery' ) . '</p>';
+				$help .= '<p>' . __( 'NextCellent also works with various plugins that extend the default roles capabilities.',
+						'nggallery' ) . '</p>';
 
 				$screen->add_help_tab( array(
 					'id'      => $screen->id . '-general',
@@ -556,8 +612,11 @@ class NGG_Admin_Launcher {
 				) );
 				break;
 			case "{$i18n}_page_nggallery-setup" :
-				$help = '<p>' . __( 'If \'someone\' messed with your settings (yeah, definitely not you), you can reset them here.', 'nggallery' ) . '</p>';
-				$help .= '<p><b>' . __( 'Attention!', 'nggallery' ) . '</b> ' .  __( 'You should not use the Uninstall Plugin button, unless you know what you\'re doing! It should never be necessary to press it.', 'nggallery' ) . '</p>';
+				$help = '<p>' . __( 'If \'someone\' messed with your settings (yeah, definitely not you), you can reset them here.',
+						'nggallery' ) . '</p>';
+				$help .= '<p><b>' . __( 'Attention!',
+						'nggallery' ) . '</b> ' . __( 'You should not use the Uninstall Plugin button, unless you know what you\'re doing! It should never be necessary to press it.',
+						'nggallery' ) . '</p>';
 
 				$screen->add_help_tab( array(
 					'id'      => $screen->id . '-general',
@@ -570,8 +629,10 @@ class NGG_Admin_Launcher {
 		//Set the sidebar (same on all pages)
 		$screen->set_help_sidebar(
 			'<p><strong>' . __( 'For more information:', 'nggallery' ) . '</strong></p>' .
-			'<p><a href="http://codex.wordpress.org/Plugins_Editor_Screen" target="_blank">' . __( 'Support Forums', 'nggallery' ) . '</a></p>' .
-			'<p><a href="https://bitbucket.org/wpgetready/nextcellent" target="_blank">' . __( 'Source Code', 'nggallery' ) . '</a></p>'
+			'<p><a href="http://codex.wordpress.org/Plugins_Editor_Screen" target="_blank">' . __( 'Support Forums',
+				'nggallery' ) . '</a></p>' .
+			'<p><a href="https://bitbucket.org/wpgetready/nextcellent" target="_blank">' . __( 'Source Code',
+				'nggallery' ) . '</a></p>'
 		);
 
 		return $screen;
