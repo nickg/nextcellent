@@ -85,26 +85,23 @@ class NGG_Setup extends NGG_Post_Admin_Page {
 	protected function processor() {
 		global $ngg;
 
+		check_admin_referer('ngg_uninstall');
+
+		include_once ( dirname (__FILE__).  '/class-ngg-installer.php');
+
 		if (isset($_POST['resetdefault'])) {
-			check_admin_referer('ngg_uninstall');
 
-			include_once ( dirname (__FILE__).  '/install.php');
-
-			ngg_default_options();
+			NGG_Installer::set_default_options();
 			$ngg->load_options();
 
-			nggGallery::show_message(__('Reset all settings to default parameter','nggallery'));
+			nggGallery::show_message(__('Reset all settings to the default parameters.','nggallery'));
 		}
 
 		if (isset($_POST['uninstall'])) {
 
-			check_admin_referer('ngg_uninstall');
+			NGG_Installer::uninstall();
 
-			include_once ( dirname (__FILE__).  '/install.php');
-
-			nggallery_uninstall();
-
-			nggGallery::show_message(__('Uninstall sucessful ! Now delete the plugin and enjoy your life ! Good luck !','nggallery'));
+			nggGallery::show_message(__('Uninstall successful! Now delete the plugin and enjoy your life!','nggallery'));
 		}
 	}
 }

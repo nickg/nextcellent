@@ -581,12 +581,12 @@ if (!class_exists('nggLoader')) {
 		function multisite_new_blog($blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 			global $wpdb;
 
-			include_once (dirname (__FILE__) . '/admin/install.php');
+			include_once (dirname (__FILE__) . '/admin/class-ngg-installer.php');
 
 			if (is_plugin_active_for_network( $this->plugin_name )) {
 				$current_blog = $wpdb->blogid;
 				switch_to_blog($blog_id);
-				nggallery_install();
+				NGG_Installer::install();
 				switch_to_blog($current_blog);
 			}
 		}
@@ -640,7 +640,7 @@ if (!class_exists('nggLoader')) {
 			// Clean up transients
 			self::remove_transients();
 
-			include_once (dirname (__FILE__) . '/admin/install.php');
+			include_once (dirname (__FILE__) . '/admin/class-ngg-installer.php');
 
 			if (is_multisite()) {
 				$network=isset($_SERVER['SCRIPT_NAME'])?$_SERVER['SCRIPT_NAME']:"";
@@ -653,7 +653,7 @@ if (!class_exists('nggLoader')) {
 					$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs", NULL));
 					foreach ($blogids as $blog_id) {
 						switch_to_blog($blog_id);
-						nggallery_install();
+						NGG_Installer::install();
 					}
 					switch_to_blog($old_blog);
 					return;
@@ -661,7 +661,7 @@ if (!class_exists('nggLoader')) {
 			}
 
 			// check for tables
-			nggallery_install();
+			NGG_Installer::install();
 			// remove the update message
 			delete_option( 'ngg_update_exists' );
 
@@ -688,8 +688,8 @@ if (!class_exists('nggLoader')) {
 			// Clean up transients
 			self::remove_transients();
 
-			include_once (dirname (__FILE__) . '/admin/install.php');
-			nggallery_uninstall();
+			include_once (dirname (__FILE__) . '/admin/class-ngg-installer.php');
+			NGG_Installer::uninstall();
 		}
 
         /**
