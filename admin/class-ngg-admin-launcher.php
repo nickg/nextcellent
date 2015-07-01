@@ -103,7 +103,7 @@ class NGG_Admin_Launcher {
 	/**
 	 * Add the network pages to the network menu.
 	 */
-	function add_network_admin_menu() {
+	public function add_network_admin_menu() {
 		add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu',
 			NGGFOLDER, array( $this, 'show_network_settings' ), $this->get_icon_gallery() );
 
@@ -353,7 +353,7 @@ class NGG_Admin_Launcher {
 	/**
 	 * Load the CSS files.
 	 */
-	function load_styles() {
+	public function load_styles() {
 		wp_register_style( 'nggadmin', NGGALLERY_URLPATH . 'admin/css/nggadmin.css', false, '2.8.1', 'screen' );
 		wp_register_style( 'ngg-jqueryui', NGGALLERY_URLPATH . 'admin/css/jquery.ui.css', false, '1.8.5', 'screen' );
 
@@ -390,7 +390,7 @@ class NGG_Admin_Launcher {
 				wp_enqueue_style( 'nggadmin' );
 				break;
 			case "nggallery-tags" :
-				wp_enqueue_style( 'nggtags', NGGALLERY_URLPATH . 'admin/css/tags-admin.css', false, '2.6.1', 'screen' );
+				wp_enqueue_style( 'nggadmin' );
 				break;
 			case "nggallery-style" :
 				break;
@@ -413,7 +413,7 @@ class NGG_Admin_Launcher {
 	 *
 	 * @return WP_Screen $screen The current screen.
 	 */
-	function edit_current_screen( $screen ) {
+	public function edit_current_screen( $screen ) {
 
 		// menu title is localized, so we need to change the toplevel name
 		$i18n = strtolower( __( 'Galleries', 'nggallery' ) );

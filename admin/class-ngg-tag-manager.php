@@ -98,7 +98,7 @@ class NGG_Tag_Manager implements NGG_Displayable {
 			.disabled, .disabled:hover { border-color: #E5E5E5; color: #999999; cursor: default; }
 		</style>
 
-		<div class="wrap ngg_wrap">
+		<div class="wrap ngg-tag-wrap">
 			<h2><?php _e('Tags', 'nggallery'); ?></h2>
 
 			<?php if ($action_status['message']!='') : ?>
