@@ -53,7 +53,7 @@ if (!class_exists('nggLoader')) {
     class nggLoader {
 
 		var $version = '1.9.26';
-		var $dbversion   = '1.8.3';
+		var $dbversion   = '2';
 		var $minimum_WP  = '3.5';
 		var $options     = '';
 		var $manage_page;
@@ -96,10 +96,6 @@ if (!class_exists('nggLoader')) {
 			// Add a message for PHP4 Users, can disable the update message later on
 			if (version_compare(PHP_VERSION, '5.0.0', '<'))
 				add_filter('transient_update_plugins', array(&$this, 'disable_upgrade'));
-
-	        if( get_option( 'ngg_db_version' ) != NGG_DBVERSION && isset($_GET['page']) != "nextcellent" ) {
-		        add_action( 'all_admin_notices', array($this,'show_upgrade_message') );
-	        }
 
 			//Add some links on the plugin page
 			add_filter('plugin_row_meta', array(&$this, 'add_plugin_links'), 10, 2);
@@ -166,18 +162,21 @@ if (!class_exists('nggLoader')) {
 
 	        if( get_option( 'ngg_db_version' ) != NGG_DBVERSION && isset($_GET['page']) != "nextcellent" ) {
 
-		        global $ngg;
-		        include_once( dirname( __FILE__ ) . '/admin/functions.php' );
-		        include_once( dirname( __FILE__ ) . '/admin/upgrade.php' );
+		        $ngg_options = get_option('ngg_options');
 
-		        if ( !empty( $ngg->options['silentUpgrade'] ) ) {
+		        /**
+		         * If the silentUpgrade option is not empty, we try and do the upgrade now.
+		         */
+		        if ( !empty( $ngg_options['silentUpgrade'] ) ) {
 			        try {
-				        ngg_upgrade();
-			        } catch (Exception $e) {
+				        include_once( dirname( __FILE__ ) . '/admin/upgrade/class-ngg-upgrader.php' );
+				        $upgrader = new NGG_Upgrader(NGG_DBVERSION);
+				        $upgrader->upgrade();
+			        } catch (Upgrade_Exception $e) {
 				        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="error"><p><strong>' . __( 'Something went wrong while upgrading NextCellent Gallery.', "nggallery" ) . '</strong></p></div>\';' ) );
 			        }
 		        } else {
-			        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="update-nag"><p><strong>' . __( 'NextCellent Gallery requires a database upgrade.', "nggallery" ) . ' <a href="' . admin_url() . 'admin.php?page=nextcellent-gallery-nextgen-legacy" >' . __( 'Upgrade now', 'nggallery' ) . '</a></strong></p></div>\';' ) );
+			        add_action( 'all_admin_notices', array($this,'show_upgrade_message') );
 		        }
 	        }
 		}
