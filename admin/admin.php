@@ -276,10 +276,9 @@ class nggAdminPanel {
 				$page = new NGG_Setup();
 				break;
 			case "nggallery-roles" :
-				include_once( dirname( __FILE__ ) . '/roles.php' );
-				nggallery_admin_roles();
-
-				return;
+				include_once( dirname( __FILE__ ) . '/class-ngg-roles.php' );
+				$page = new NGG_Roles();
+				break;
 			case "nggallery":
 			default:
 				//Display the overview
