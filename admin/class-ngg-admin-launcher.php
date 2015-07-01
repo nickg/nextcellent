@@ -1,32 +1,30 @@
 <?php
 
 /**
- * nggAdminPanel - Admin Section for NextGEN Gallery
+ * NGG_Admin_Launcher - Admin Section for NextGEN Gallery
  *
  * @package NextGEN Gallery
  * @author Alex Rabe
  *
  * @since 1.0.0
  */
-class nggAdminPanel {
+class NGG_Admin_Launcher {
 
-	// constructor
-	function __construct() {
+	/**
+	 * The admin launcher isn't more than a bunch of functions that run when certain actions/filters are executed.
+	 */
+	public function __construct() {
 
 		// Add the admin menu
-		add_action( 'admin_menu', array( &$this, 'add_menu' ) );
-		add_action( 'network_admin_menu', array( &$this, 'add_network_admin_menu' ) );
+		add_action( 'admin_menu', array( $this, 'add_menu' ) );
+		//Add the network menu
+		add_action( 'network_admin_menu', array( $this, 'add_network_admin_menu' ) );
 
 		// Add the script and style files
-		add_action( 'admin_enqueue_scripts', array( &$this, 'load_scripts' ) );
-		add_action( 'admin_enqueue_scripts', array( &$this, 'load_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'load_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'load_styles' ) );
 
-		// Try to detect plugins that embed their own jQuery and jQuery UI
-		// libraries and load them in NGG's admin pages
-		add_action( 'admin_enqueue_scripts', array( &$this, 'buffer_scripts' ), 0 );
-		add_action( 'admin_enqueue_scripts', array( &$this, 'output_scripts' ), PHP_INT_MAX );
-
-		add_filter( 'current_screen', array( &$this, 'edit_current_screen' ) );
+		add_filter( 'current_screen', array( $this, 'edit_current_screen' ) );
 
 		// Add WPML hook to register description / alt text for translation
 		add_action( 'ngg_image_updated', array( 'nggGallery', 'RegisterString' ) );
@@ -36,100 +34,15 @@ class nggAdminPanel {
 	}
 
 	/**
-	 * If a NGG page is being requested, we buffer any rendering of <script>
-	 * tags to detect conflicts and remove them if need be
+	 * Enable dash icons for WP latest versions.
+	 * @see https://developer.wordpress.org/resource/dashicons/#format-gallery
+	 *
+	 * @param string $wp_version The WordPress version. Defaults to the current one.
+	 *
+	 * @return string The icon string.
 	 */
-	function buffer_scripts() {
-		// Is this a NGG admin page?
-		if ( isset( $_REQUEST['page'] ) && strpos( $_REQUEST['page'], 'nggallery' ) !== false ) {
-			ob_start();
-		}
-	}
 
-	function output_scripts() {
-		// Is this a NGG admin page?
-		if ( isset( $_REQUEST['page'] ) && strpos( $_REQUEST['page'], 'nggallery' ) !== false ) {
-			$plugin_folder = NGGFOLDER;
-			$skipjs_count  = 0;
-			$html          = ob_get_contents();
-			ob_end_clean();
-
-			if ( ! defined( 'NGG_JQUERY_CONFLICT_DETECTION' ) ) {
-				define( 'NGG_JQUERY_CONFLICT_DETECTION', true );
-			}
-
-			if ( NGG_JQUERY_CONFLICT_DETECTION ) {
-				// Detect custom jQuery script
-				if ( preg_match_all( "/<script.*wp-content.*jquery[-_\.](min\.)?js.*<\script>/", $html, $matches, PREG_SET_ORDER ) ) {
-					foreach ( $matches as $match ) {
-						$old_script = array_shift( $match );
-						if ( strpos( $old_script, NGGFOLDER ) === false ) {
-							$html = str_replace( $old_script, '', $html );
-						}
-					}
-				}
-
-				// Detect custom jQuery UI script and remove
-				if ( preg_match_all( "/<script.*wp-content.*jquery[-_\.]ui.*<\/script>/", $html, $matches, PREG_SET_ORDER ) ) {
-					$detected_jquery_ui = true;
-					foreach ( $matches as $match ) {
-						$old_script = array_shift( $match );
-						if ( strpos( $old_script, NGGFOLDER ) === false ) {
-							$html = str_replace( $old_script, '', $html );
-						}
-					}
-				}
-
-				if ( isset( $_REQUEST['skipjs'] ) ) {
-					foreach ( $_REQUEST['skipjs'] as $js ) {
-						$js = preg_quote( $js );
-						if ( preg_match_all( "#<script.*{$js}.*</script>#", $html, $matches, PREG_SET_ORDER ) ) {
-							foreach ( $matches as $match ) {
-								$old_script = array_shift( $match );
-								if ( strpos( $old_script, NGGFOLDER ) === false ) {
-									$html = str_replace( $old_script, '', $html );
-								}
-							}
-						}
-					}
-					$skipjs_count = count( $_REQUEST['skipjs'] );
-				}
-
-
-				// Use WordPress built-in version of jQuery
-				$jquery_url = includes_url( 'js/jquery/jquery.js' );
-				$html       = implode( '', array(
-					"<script type='text/javascript' src='{$jquery_url}'></script>\n",
-					"<script type='text/javascript'>
-					window.onerror = function(msg, url, line){
-						if (url.match(/\.js$|\.js\?/)) {
-							if (window.location.search.length > 0) {
-								if (window.location.search.indexOf(url) == -1)
-									window.location.search += '&skipjs[{$skipjs_count}]='+url;
-							}
-							else {
-								window.location.search = '?skipjs[{$skipjs_count}]='+url;
-							}
-						}
-						return true;
-					};</script>\n",
-					$html
-				) );
-			}
-
-			echo $html;
-		}
-	}
-
-
-
-    /**
-     * Enable dash icons for WP latest versions. See https://developer.wordpress.org/resource/dashicons/#format-gallery
-     * @param $wp_version  defaults to current WP version
-     * @return string
-     */
-
-    function get_icon_gallery($wp_version='') {
+    private function get_icon_gallery($wp_version='') {
         if (empty($wp_version)) {
             $wp_version= get_bloginfo( 'version' ) ; //get WP Version
         }
@@ -139,66 +52,68 @@ class nggAdminPanel {
         //older style
         return path_join( NGGALLERY_URLPATH, 'admin/images/nextgen_16_color.png' );
     }
-    /**
-     * Integrate the menu
-     *
-     */
-	function add_menu() {
+
+	/**
+	 * Add all menu pages to the WordPress menu.
+	 */
+	public function add_menu() {
 		add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ),
-			'NextGEN Gallery overview', NGGFOLDER, array( &$this, 'show_menu' ), $this->get_icon_gallery() );
+			'NextGEN Gallery overview', NGGFOLDER, array( $this, 'show_menu' ), $this->get_icon_gallery() );
 
 		add_submenu_page( NGGFOLDER, __( 'Overview', 'nggallery' ), __( 'Overview', 'nggallery' ),
 			'NextGEN Gallery overview',
-			NGGFOLDER, array( &$this, 'show_menu' ) );
+			NGGFOLDER, array( $this, 'show_menu' ) );
 
 		add_submenu_page( NGGFOLDER, __( 'Add Gallery / Images', 'nggallery' ),
 			__( 'Add Gallery / Images', 'nggallery' ), 'NextGEN Upload images', 'nggallery-add-gallery',
-			array( &$this, 'show_menu' ) );
+			array( $this, 'show_menu' ) );
 
 		add_submenu_page( NGGFOLDER, __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ),
 			'NextGEN Manage gallery', 'nggallery-manage',
-			array( &$this, 'show_menu' ) );
+			array( $this, 'show_menu' ) );
 
 		add_submenu_page( NGGFOLDER, __( 'Albums', 'nggallery' ), __( 'Albums', 'nggallery' ), 'NextGEN Edit album',
 			'nggallery-manage-album',
-			array( &$this, 'show_menu' ) );
+			array( $this, 'show_menu' ) );
 
 		add_submenu_page( NGGFOLDER, __( 'Tags', 'nggallery' ), __( 'Tags', 'nggallery' ), 'NextGEN Manage tags',
 			'nggallery-tags',
-			array( &$this, 'show_menu' ) );
+			array( $this, 'show_menu' ) );
 
 		add_submenu_page( NGGFOLDER, __( 'Settings', 'nggallery' ), __( 'Settings', 'nggallery' ),
 			'NextGEN Change options', 'nggallery-options',
-			array( &$this, 'show_menu' ) );
+			array( $this, 'show_menu' ) );
 
 		if ( wpmu_enable_function( 'wpmuStyle' ) ) {
 			add_submenu_page( NGGFOLDER, __( 'Style', 'nggallery' ), __( 'Style', 'nggallery' ), 'NextGEN Change style',
 				'nggallery-style',
-				array( &$this, 'show_menu' ) );
+				array( $this, 'show_menu' ) );
 		}
 		if ( wpmu_enable_function( 'wpmuRoles' ) || is_super_admin() ) {
 			add_submenu_page( NGGFOLDER, __( 'Roles', 'nggallery' ), __( 'Roles', 'nggallery' ), 'activate_plugins',
 				'nggallery-roles',
-				array( &$this, 'show_menu' ) );
+				array( $this, 'show_menu' ) );
 		}
 
 		if ( ! is_multisite() || is_super_admin() ) {
 			add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ),
 				'activate_plugins', 'nggallery-setup',
-				array( &$this, 'show_menu' ) );
+				array( $this, 'show_menu' ) );
 		}
 	}
 
-	// integrate the network menu
+	/**
+	 * Add the network pages to the network menu.
+	 */
 	function add_network_admin_menu() {
         add_menu_page( __( 'Galleries', 'nggallery' ), __( 'Galleries', 'nggallery' ), 'nggallery-wpmu',
-                       NGGFOLDER, array(&$this,'show_network_settings'), $this->get_icon_gallery() );
+                       NGGFOLDER, array($this,'show_network_settings'), $this->get_icon_gallery() );
 
 		add_submenu_page( NGGFOLDER, __( 'Network settings', 'nggallery' ), __( 'Network settings', 'nggallery' ), 'nggallery-wpmu',
-                          NGGFOLDER, array(&$this, 'show_network_settings' ) );
+                          NGGFOLDER, array($this, 'show_network_settings' ) );
 
 		add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ), 'activate_plugins',
-                        'nggallery-setup', array(&$this, 'show_menu') );
+                        'nggallery-setup', array($this, 'show_menu') );
 	}
 
 	/**
@@ -206,20 +121,19 @@ class nggAdminPanel {
 	 */
 	private function show_upgrade_page() {
 
-		global $ngg;
-
 		// check for upgrade and show upgrade screen
 		if ( get_option( 'ngg_db_version' ) != NGG_DBVERSION ) {
 			include_once( dirname( __FILE__ ) . '/functions.php' );
 			include_once( dirname( __FILE__ ) . '/upgrade.php' );
 			nggallery_upgrade_page();
-
 			exit;
 		}
 	}
 
-	// show the network page
-	function show_network_settings() {
+	/**
+	 * Show the network pages.
+	 */
+	public function show_network_settings() {
 		$this->show_upgrade_page();
 		include_once( dirname( __FILE__ ) . '/class-ngg-style.php' );
 		include_once( dirname( __FILE__ ) . '/wpmu.php' );
@@ -228,16 +142,17 @@ class nggAdminPanel {
 
 	// load the script for the defined page and load only this code
 	//20140515: removed donation code (not in use)
-	function show_menu() {
+	public function show_menu() {
 
-		global $ngg;
-
+		//Show the upgrade page if needed.
 		$this->show_upgrade_page();
 
+		$options = get_option('ngg_options');
+
 		// Set installation date
-		if ( empty( $ngg->options['installDate'] ) ) {
-			$ngg->options['installDate'] = time();
-			update_option( 'ngg_options', $ngg->options );
+		if ( empty( $options['installDate'] ) ) {
+			$options['installDate'] = time();
+			update_option( 'ngg_options', $options );
 		}
 
 		/**
@@ -286,7 +201,9 @@ class nggAdminPanel {
 				$page = new NGG_Overview();
 		}
 
-		//Display the pages working with the new system. If the page is not valid, do nothing.
+		/**
+		 * Display the page.
+		 */
 		if ( $page != null ) {
 			$page->display();
 		}
@@ -332,9 +249,10 @@ class nggAdminPanel {
 		}
 	}
 
-	function load_scripts() {
-		global $wp_version;
-
+	/**
+	 * Load the scripts on the admin pages.
+	 */
+	public function load_scripts() {
 		// no need to go on if it's not a plugin page
 		if ( ! isset( $_GET['page'] ) ) {
 			return;
@@ -424,7 +342,7 @@ class nggAdminPanel {
 	}
 
     /**
-     * Load the icon for the navigation menu
+     * Load the CSS files.
      */
 	function load_styles() {
 		wp_register_style( 'nggadmin'    , NGGALLERY_URLPATH . 'admin/css/nggadmin.css', false, '2.8.1', 'screen' );
@@ -466,6 +384,9 @@ class nggAdminPanel {
 		}
 	}
 
+	/**
+	 * Save the screen options.
+	 */
 	public static function save_options($status, $option, $value) {
 		return $value;
 	}
@@ -477,7 +398,7 @@ class nggAdminPanel {
 	 *
 	 * @param WP_Screen $screen The current screen.
 	 *
-	 * @return object $screen The current screen.
+	 * @return WP_Screen $screen The current screen.
 	 */
 	function edit_current_screen( $screen ) {
 
@@ -519,6 +440,9 @@ class nggAdminPanel {
 				break;
 			case "{$i18n}_page_nggallery-add-gallery" :
 
+				/**
+				 * @global nggdb $nggdb
+				 */
 				global $nggdb;
 				$gallerylist = $nggdb->find_all_galleries( 'gid', 'DESC' ); //look for galleries
 
@@ -654,6 +578,15 @@ class nggAdminPanel {
 	}
 }
 
+/**
+ * Check if a function is enabled on multisite.
+ *
+ * @param string $value
+ *
+ * @todo Move from here
+ *
+ * @return bool If it's enabled or not.
+ */
 function wpmu_enable_function( $value ) {
 	if ( is_multisite() ) {
 		$ngg_options = get_site_option( 'ngg_options' );

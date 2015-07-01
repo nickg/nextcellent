@@ -378,9 +378,9 @@ if (!class_exists('nggLoader')) {
 
 				// Load backend libraries
 				if ( is_admin() ) {
-					require_once (dirname (__FILE__) . '/admin/admin.php');
+					require_once (dirname (__FILE__) . '/admin/class-ngg-admin-launcher.php');
 					require_once (dirname (__FILE__) . '/admin/media-upload.php');
-					$this->nggAdminPanel = new nggAdminPanel();
+					$this->nggAdminPanel = new NGG_Admin_Launcher();
 				}
 			}
 		}
