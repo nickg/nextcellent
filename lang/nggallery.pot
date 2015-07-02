@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NextCellent\n"
-"POT-Creation-Date: 2015-07-02 17:50+0200\n"
+"POT-Creation-Date: 2015-07-02 18:05+0200\n"
 "PO-Revision-Date: 2015-01-09 16:11+0100\n"
 "Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: \n"
@@ -771,7 +771,8 @@ msgstr ""
 msgid "OK"
 msgstr "OK"
 
-#: ../admin/class-ngg-album-manager.php:485 ../admin/tinymce/window.php:469
+#: ../admin/class-ngg-album-manager.php:485
+#: ../admin/manage/class-ngg-manager.php:300 ../admin/tinymce/window.php:469
 #, fuzzy
 msgid "Cancel"
 msgstr "Stoppen"
@@ -2551,7 +2552,7 @@ msgstr ""
 #: ../admin/manage/class-ngg-image-list-table.php:229
 #, fuzzy
 msgid "ID"
-msgstr "Galerij \"{gallery_id}\" verwijderd"
+msgstr "Album \"{album_title}\" toegevoegd (# {album_id})"
 
 #: ../admin/manage/class-ngg-gallery-list-table.php:156
 msgid "Page ID"
@@ -2825,10 +2826,6 @@ msgid ""
 "You are about to start bulk edits for %s galleries\n"
 "\n"
 " 'Cancel' to stop, 'OK' to proceed."
-msgstr ""
-
-#: ../admin/manage/class-ngg-manager.php:300
-msgid "Annuleren"
 msgstr ""
 
 #: ../admin/manage/class-ngg-manager.php:380
