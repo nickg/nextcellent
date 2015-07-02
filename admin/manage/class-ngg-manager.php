@@ -297,7 +297,7 @@ abstract class NGG_Manager implements NGG_Displayable {
 					},
 					buttons: [
 						{
-							text: "<?php echo esc_js(__('Annuleren','nggallery')); ?>",
+							text: "<?php echo esc_js(__('Cancel','nggallery')); ?>",
 							'class': "button dialog-cancel",
 							'type': "reset",
 							click: function() {
