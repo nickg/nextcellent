@@ -653,7 +653,11 @@ function wpmu_enable_function( $value ) {
 	if ( is_multisite() ) {
 		$ngg_options = get_site_option( 'ngg_options' );
 
-		return $ngg_options[ $value ];
+		if(isset($ngg_options[ $value ])) {
+			return $ngg_options[ $value ];
+		} else {
+			return false;
+		}
 	}
 
 	// if this is not WPMU, enable it !

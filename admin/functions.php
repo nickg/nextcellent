@@ -139,7 +139,6 @@ class nggAdmin{
 	 */
 	 
 	static function import_gallery($galleryfolder) {
-		
 		/**
 		 * @global nggdb $nggdb
 		 */
