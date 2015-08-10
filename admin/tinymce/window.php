@@ -18,6 +18,9 @@ wp_enqueue_script( 'ngg-autocomplete', NGGALLERY_URLPATH . 'admin/js/ngg.autocom
 		<title>NextCellent</title>
 		<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>" />
         <meta charset="<?php echo get_option('blog_charset'); ?>">
+		<script type="text/javascript">
+			var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+		</script>
 		<?php wp_print_scripts(); ?>
 		<script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
 		<script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
