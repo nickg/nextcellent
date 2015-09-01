@@ -7,12 +7,18 @@
  *
  * @since 1.9.27
  */
-class Upgrade_1_2 implements NGG_Upgrade {
+class Upgrade_183_2 implements NGG_Upgrade {
 
+	/**
+	 * {@inheritDoc}
+     */
 	public function apply() {
-		return 2;
+		return '2';
 	}
 
+	/**
+	 * {@inheritDoc}
+     */
 	function undo() {
 		return '1.8.3';
 	}

@@ -24,8 +24,6 @@ class NGG_Upgrade_Page implements NGG_Displayable {
 			$file_path = network_admin_url() . 'admin.php?page=' . $_GET['page'];
 		}
 
-		$upgrader = new NGG_Upgrader( $this->new_version );
-
 		if ( isset( $_GET['upgrade'] ) && $_GET['upgrade'] == 'now' ) {
 			$this->doing_upgrade_page( $file_path );
 		} else {
@@ -65,7 +63,7 @@ class NGG_Upgrade_Page implements NGG_Displayable {
 					$upgrader->upgrade();
 					echo '<span class="dashicons dashicons-yes"></span><br>';
 				} catch ( Upgrade_Exception $e ) {
-					echo __( "Oh no! Something went wrong while updating the database", 'nggallery' ) . ": " . $e;
+					echo __( "Oh no! Something went wrong while updating the database", 'nggallery' ) . ": " . $e->getMessage();
 				}
 				?></p>
 

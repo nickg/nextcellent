@@ -59,7 +59,7 @@ class NGG_Upgrader {
 
 		foreach ( $files as $file ) {
 			$versions = array();
-			$match    = preg_match( '/^upgrade-([0-9]+)-([0-9]+).php$/', $file, $versions );
+			$match    = preg_match( '/^upgrade-([0-9.]+)-([0-9]+).php$/', $file, $versions );
 
 			if ( ! ( $match === 0 || $match === false ) ) {
 
@@ -95,7 +95,7 @@ class NGG_Upgrader {
 			include( dirname( __FILE__ ) . '/upgrades/' . $upgrade );
 
 			//Convert the filename to the classname
-			$class_name = rtrim( str_replace( '-', '_', ucfirst( $upgrade ) ), '.php' );
+			$class_name = rtrim( str_replace( array('-', '.'), array('_', ''), ucfirst( $upgrade ) ), '.php' );
 
 			try {
 				$reflection = new ReflectionClass( $class_name );
@@ -110,7 +110,8 @@ class NGG_Upgrader {
 					$upgraded_to = $class->apply();
 				}
 			} catch ( ReflectionException $e ) {
-				//If the class could not be instantiated, do nothing.
+				//If the class could not be instantiated, abort the upgrade process.
+				throw new Upgrade_Exception("Something went wrong with $class_name, and the upgrade was stopped.");
 			}
 		}
 		//Save the new version to the databse.
