@@ -100,10 +100,19 @@ class nggImage{
 			$this->thumbcode = stripslashes($ngg_options['thumbCode']);		
 		
 		// for highslide to a different approach	
-		if ($ngg_options['thumbEffect'] == "highslide")
-			$this->thumbcode = str_replace("%GALLERY_NAME%", "'".$galleryname."'", $this->thumbcode);
-		else
+		if ($ngg_options['thumbEffect'] == "highslide") {
+			$this->thumbcode = str_replace("%GALLERY_NAME%", "'" . $galleryname . "'", $this->thumbcode);
+		} else {
 			$this->thumbcode = str_replace("%GALLERY_NAME%", $galleryname, $this->thumbcode);
+		}
+
+		/**
+		 * The list of available variables:
+		 * - %GALLERY_NAME% - The name of the gallery
+		 * - %IMG_WIDTH% - The width of the full image.
+		 * - %IMG_HEIGHT% - The height of the full image.
+		 */
+		$this->thumbcode = str_replace(array('%IMG_WIDTH%', '%IMG_HEIGHT%'), array($this->meta_data['width'], $this->meta_data['height']), $this->thumbcode);
 				
 		return apply_filters('ngg_get_thumbcode', $this->thumbcode, $this);
 	}

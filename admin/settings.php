@@ -240,7 +240,7 @@ class nggOptions {
 		?>
 		<script type="text/javascript">
 			function insertcode(value) {
-				var effectcode;
+				var effectcode, extra;
 				switch (value) {
 					case 'none':
 						effectcode = "";
@@ -257,10 +257,15 @@ class nggOptions {
 					case "shutter":
 						effectcode = 'class="shutterset_%GALLERY_NAME%"';
 						break;
+					case "photoSwipe":
+						effectcode = 'data-size="%IMG_WIDTH%x%IMG_HEIGHT%"';
+						extra = 'Works with <a href="https://wordpress.org/plugins/photo-swipe/">PhotoSwipe</a>.';
+						break;
 					default:
 						break;
 				}
 				jQuery("#thumbCode").val(effectcode);
+				jQuery("#effects-more").html(extra);
 			}
 
 			jQuery(document).ready( function($) {
@@ -671,13 +676,18 @@ class nggOptions {
 		global $ngg;
 	?>
 		<h3><?php _e('Effects','nggallery'); ?></h3>
+		<p>
+			<?php _e('Here you can select the thumbnail effect, NextCellent Gallery will integrate the required HTML code in the images. Please note that only the Shutter and Thickbox effect will automatic added to your theme.','nggallery'); ?>
+			<?php _e('There are some placeholders available you can use in the code below.','nggallery'); ?>
+		</p>
+		<ul style="list-style: inside">
+			<li><strong>%GALLERY_NAME%</strong> - <?php _e('The gallery name.', 'nggallery'); ?></li>
+			<li><strong>%IMG_WIDTH%</strong> - <?php _e('The width of the image.', 'nggallery'); ?></li>
+			<li><strong>%IMG_HEIGHT%</strong> - <?php _e('The height of the image.', 'nggallery'); ?></li>
+		</ul>
 		<form name="effectsform" method="POST" action="<?php echo $this->filepath.'#effects'; ?>">
 			<?php wp_nonce_field('ngg_settings') ?>
 			<input type="hidden" name="page_options" value="thumbEffect,thumbCode">
-			<p>
-				<?php _e('Here you can select the thumbnail effect, NextCellent Gallery will integrate the required HTML code in the images. Please note that only the Shutter and Thickbox effect will automatic added to your theme.','nggallery'); ?>
-				<?php _e('With the placeholder <strong> %GALLERY_NAME% </strong> you can activate a navigation through the images (depend on the effect). Change the code line only , when you use a different thumbnail effect or you know what you do.','nggallery'); ?>
-			</p>
 			<table class="form-table ngg-options">
 				<tr>
 					<th><label for="thumbEffect"><?php _e('JavaScript Thumbnail effect','nggallery') ?></label></th>
@@ -688,6 +698,7 @@ class nggOptions {
 							<option value="lightbox" <?php selected('lightbox', $ngg->options['thumbEffect']); ?>><?php _e('Lightbox', 'nggallery') ;?></option>
 							<option value="highslide" <?php selected('highslide', $ngg->options['thumbEffect']); ?>><?php _e('Highslide', 'nggallery') ;?></option>
 							<option value="shutter" <?php selected('shutter', $ngg->options['thumbEffect']); ?>><?php _e('Shutter', 'nggallery') ;?></option>
+							<option value="photoSwipe" <?php selected('photoSwipe', $ngg->options['thumbEffect']); ?>><?php _e('PhotoSwipe', 'nggallery') ;?></option>
 							<option value="custom" <?php selected('custom', $ngg->options['thumbEffect']); ?>><?php _e('Custom', 'nggallery') ;?></option>
 						</select>
 					</td>
@@ -698,6 +709,7 @@ class nggOptions {
 				</tr>
 			</table>
 			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ) ?>
+			<p id="effects-more"></p>
 		</form>
 	<?php
 	}
