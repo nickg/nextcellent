@@ -9,7 +9,7 @@ class NGG_Slideshow_Widget extends WP_Widget {
 	 * Register the widget.
 	 */
 	public function __construct() {
-		parent::WP_Widget( 'slideshow', __( 'NextCellent Slideshow', 'nggallery' ), array(
+		parent::__construct( 'slideshow', __( 'NextCellent Slideshow', 'nggallery' ), array(
 			'classname'   => 'widget_slideshow',
 			'description' => __( 'Show a NextCellent Gallery Slideshow', 'nggallery' )
 		) );
