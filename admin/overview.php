@@ -549,7 +549,7 @@ class Overview_Display {
 			}
 			$plugins = (array) $api->plugins;
 			shuffle( $plugins );
-			var_dump("ok");
+			//var_dump("ok");
 			set_transient( 'ngg_related_plugins', $plugins, 60 * 60 * 24 ); //enable to check within a day.
 		}
 

@@ -3,13 +3,14 @@
 Plugin Name: NextCellent Gallery
 Plugin URI: http://www.wpgetready.com/nextcellent-gallery
 Description: A Photo Gallery for WordPress providing NextGEN legacy compatibility from version 1.9.13
-Author: WPGReady based on Alex Rabe & PhotoCrati work.
+Author: WPGReady, Niknetniko based on Alex Rabe & PhotoCrati work.
 Author URI: http://www.wpgetready.com
-Version: 1.9.26
+Version: 1.9.27
 
 Copyright (c) 2007-2011 by Alex Rabe & NextGEN DEV-Team
 Copyright (c) 2012 Photocrati Media
 Copyright (c) 2013-2014 WPGetReady
+Copyright (c) 2014-2015 WPGetReady, Niknetniko
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -52,7 +53,7 @@ if (!class_exists('nggLoader')) {
      */
     class nggLoader {
 
-		var $version = '1.9.26';
+		var $version 	 = '1.9.27';
 		var $dbversion   = '1.8.3';
 		var $minimum_WP  = '3.5';
 		var $options     = '';
