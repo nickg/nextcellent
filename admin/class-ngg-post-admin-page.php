@@ -22,7 +22,7 @@ abstract class NGG_Post_Admin_Page implements NGG_Displayable {
 	 */
 	public function display() {
 		//Handle the post updates.
-		if ( isset( $_POST ) ) {
+		if ( isset( $_POST ) && !empty($_POST) ) {
 			$this->processor();
 		}
 	}
