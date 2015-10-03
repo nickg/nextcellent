@@ -2,18 +2,29 @@
 Contributors: wpready
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 3.5
-Tested up to: 4.1
+Tested up to: 4.3
 Stable tag: trunk
 License: GPLv2
 
 == Description ==
 
-= 1.9.26 - 2015-03-27 =
+= 1.9.27 - 2015-10-01 =
 
  What's in it for you?
 
-* Improved Watermark with custom image selection (credits to Niko Strijbol)
-* fix: Albums preview image now correctly shows images from inside the album, not the last uploaded ones.
+* Fixes for multisite  (credits to Niko Strijbol)
+* Fix for slideshow (credits to Niko Strijbol)
+* Fix for widget (credits to Niko Strijbol)
+* Fix for var_dump in network options (credits to Fernando Zorrilla)
+* Manually set ajaxurl in the TinyMCE window (credits to Niko Strijbol)
+* Fix injection in albums (credits to Niko Strijbol)
+* Fix ajax gallery select in TinyMCE window (credits to Niko Strijbol)
+* Fix for PHP warnings (credits to Niko Strijbol)
+* Photo swipe integration (credits to Niko Strijbol)
+* Change styling PHP Constructor according https://gist.github.com/chriscct7/d7d077afb01011b1839d (credits to Fernando Zorrilla)
+* Fix correction suppressed var_dump (Fernando Zorrilla)
+* Fix/workaround new WP_List_Table implementation in WP 4.3 (credits to Fernando Zorrilla)
+* Danish Translation (credits to Thomas Blomberg Hansen)
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -322,6 +333,22 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 - Many users are creating their respective translations and they will be included, along respective credits. Thanks to them!!!
 
 == Changelog ==
+
+= 1.9.27 - 2015-10-01 =
+* Fixes for multisite  (credits to Niko Strijbol)
+* Fix for slideshow (credits to Niko Strijbol)
+* Fix for widget (credits to Niko Strijbol)
+* Fix for var_dump in network options (credits to Fernando Zorrilla)
+* Manually set ajaxurl in the TinyMCE window (credits to Niko Strijbol)
+* Fix injection in albums (credits to Niko Strijbol)
+* Fix ajax gallery select in TinyMCE window (credits to Niko Strijbol)
+* Fix for PHP warnings (credits to Niko Strijbol)
+* Photo swipe integration (credits to Niko Strijbol)
+* Change styling PHP Constructor according https://gist.github.com/chriscct7/d7d077afb01011b1839d (credits to Fernando Zorrilla)
+* Fix correction suppressed var_dump (Fernando Zorrilla)
+* Fix/workaround new WP_List_Table implementation in WP 4.3 (credits to Fernando Zorrilla)
+* Danish Translation (credits to Thomas Blomberg Hansen)
+
 = 1.9.26 - 27/03/2015 =
 * Improved Watermark (credits to Niko Strijbol)
 * fix: Albums: preview image now correctly shows images from inside the album, not the last uploaded ones.
