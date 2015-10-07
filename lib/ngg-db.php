@@ -100,6 +100,25 @@ class nggdb {
         return $this->albums;
     }
 
+    static function count_galleries() {
+
+        global $wpdb;
+
+        return $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->nggallery" );
+    }
+
+    /**
+     * @param $id int The gallery ID.
+     *
+     * @return null|string
+     */
+    static function count_images_in_gallery( $id ) {
+
+        global $wpdb;
+
+        return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $wpdb->nggpictures WHERE galleryid = %d", $id ) );
+    }
+
     /**
      * Get all the galleries
      *
@@ -265,7 +284,7 @@ class nggdb {
      * @param string $orderby
      * @param string $order (ASC |DESC)
      * @param bool $exclude
-     * @return An array containing the nggImage objects representing the images in the gallery.
+     * @return array An array containing the nggImage objects representing the images in the gallery.
      */
     static function get_ids_from_gallery($id, $order_by = 'sortorder', $order_dir = 'ASC', $exclude = true) {
 
@@ -301,22 +320,22 @@ class nggdb {
         wp_cache_delete($id, 'ngg_gallery');
 
         //TODO:Remove all tag relationship
-		
+
 		//Update the galleries to remove the deleted ID's
 		$albums = $nggdb->find_all_album();
-		
+
 		foreach ($albums as $album) {
 			$albumid = $album->id;
 			$galleries = $album->galleries;
 			$deleted = array_search($id, $galleries);
-			
+
 			unset($galleries[$deleted]);
-			
+
 			$new_galleries = serialize($galleries);
-			
+
 			nggdb::update_album($albumid, false, false, false, $new_galleries);
 		}
-		
+
         return true;
     }
 
@@ -540,7 +559,7 @@ class nggdb {
      * Get an image given its ID
      *
      * @param  int|string The image ID or Slug
-     * @return object A nggImage object representing the image (false if not found)
+     * @return nggImage|bool The image, or false if it wasn't found.
      */
     static function find_image( $id ) {
         global $wpdb;
@@ -586,7 +605,7 @@ class nggdb {
     /**
      *
      * Return sql query to get images
-     * 20150110: workarounded case if $pids is a string or numeric value. Makes function more flexible, yet there is no case where 
+     * 20150110: workarounded case if $pids is a string or numeric value. Makes function more flexible, yet there is no case where
      * this functions is called using string/numeric...
      *
      * @param $pids array of Picture Ids | id value (string or integer) which is converted to array.

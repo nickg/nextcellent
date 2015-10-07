@@ -1,15 +1,15 @@
 <?php
-if ( preg_match( '#' . basename( __FILE__ ) . '#', $_SERVER['PHP_SELF'] ) ) {
-	die( 'You are not allowed to call this page directly.' );
-}
+
+include_once('interface-ngg-displayable.php');
 
 /**
  * Class to display the overview.
  * @since 1.9.24
  */
-class Overview_Display {
+class NGG_Overview implements NGG_Displayable {
 
 	public function __construct() {
+
 		add_meta_box( 'overview', __( 'At a Glance', 'nggallery' ), array(
 			$this,
 			'stats'
@@ -55,7 +55,7 @@ class Overview_Display {
 				<li class="image-count"><a href="admin.php?page=nggallery-add-gallery">
 					<?php echo $images . ' ' . _n( 'Image', 'Images', $images, 'nggallery' ); ?></a>
 				</li>
-				<li class="gallery-count"><a href="admin.php?page=nggallery-manage-gallery">
+				<li class="gallery-count"><a href="admin.php?page=nggallery-manage">
 					<?php echo $galleries . ' ' . _n( 'Gallery', 'Galleries', $galleries, 'nggallery' ); ?></a>
 				</li>
 				<li class="album-count"><a href="admin.php?page=nggallery-manage-album">
@@ -105,11 +105,11 @@ class Overview_Display {
 		<table>
 			<tr>
 				<td><?php _e( 'Allowed' ); ?></td>
-				<td><?php printf( __( '<a href="%1$s" title="Manage Uploads">%2$s MB</a>' ), esc_url( admin_url( 'admin.php?page=nggallery-manage-gallery' ) ), $quota ); ?></td>
+				<td><?php printf( __( '<a href="%1$s" title="Manage Uploads">%2$s MB</a>' ), esc_url( admin_url( 'admin.php?page=nggallery-manage' ) ), $quota ); ?></td>
 			</tr>
 			<tr>
 				<td class="<?php echo $used_color; ?>"><?php _e( 'Used' ); ?></td>
-				<td><?php printf( __( '<a href="%1$s" title="Manage Uploads">%2$s MB (%3$s%%)</a>' ), esc_url( admin_url( 'admin.php?page=nggallery-manage-gallery' ) ), $used, $percent_used ); ?></td>
+				<td><?php printf( __( '<a href="%1$s" title="Manage Uploads">%2$s MB (%3$s%%)</a>' ), esc_url( admin_url( 'admin.php?page=nggallery-manage' ) ), $used, $percent_used ); ?></td>
 			</tr>
 		</table>
 	<?php

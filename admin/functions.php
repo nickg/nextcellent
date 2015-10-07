@@ -119,7 +119,7 @@ class nggAdmin{
 		if ($galleryID != false) {
 			$message  = __('Gallery ID %1$s successfully created. You can show this gallery in your post or page with the shortcode %2$s.<br/>','nggallery');
 			$message  = sprintf($message, $galleryID, '<strong>[nggallery id=' . $galleryID . ']</strong>');
-			$message .= '<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $galleryID . '" >';
+			$message .= '<a href="' . admin_url() . 'admin.php?page=nggallery-manage&mode=image&gid=' . $galleryID . '" >';
 			$message .= __('Edit gallery','nggallery');
 			$message .= '</a>';
 			
@@ -139,7 +139,6 @@ class nggAdmin{
 	 */
 	 
 	static function import_gallery($galleryfolder) {
-
 		/**
 		 * @global nggdb $nggdb
 		 */
@@ -306,7 +305,7 @@ class nggAdmin{
 		if ( count($image_ids) > 0 )
 			$message .= count($image_ids) .__(' picture(s) successfully added','nggallery') . '<br />';
 		if ($created_msg) {
-		$message .= ' [<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $gallery_id . '" >';
+		$message .= ' [<a href="' . admin_url() . 'admin.php?page=nggallery-manage&mode=image&gid=' . $gallery_id . '" >';
 		$message .=  __('Edit gallery','nggallery');
 		$message .= '</a>]';
 		}
@@ -409,7 +408,7 @@ class nggAdmin{
 		
 		//TODO:Message will not shown, because AJAX routine require more time, message should be passed to AJAX
 		$message  = $created_msg . count($image_ids) .__(' picture(s) successfully added','nggallery');
-		$message .= ' [<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $gallery_id . '" >';
+		$message .= ' [<a href="' . admin_url() . 'admin.php?page=nggallery-manage&mode=image&gid=' . $gallery_id . '" >';
 		$message .=  __('Edit gallery','nggallery');
 		$message .= '</a>]';
 		
@@ -442,85 +441,109 @@ class nggAdmin{
 		} 
 		sort( $files );
 		return ( $files ); 
-	} 
-	
+	}
+
 	/**
 	 * nggAdmin::createThumbnail() - function to create or recreate a thumbnail
-	 * 
-	 * @class nggAdmin
-	 * @param object | int $image contain all information about the image or the id
+	 *
+	 * @param nggImage|int $image The image or its id.
+	 * @param int $width The width of the new thumbnail.
+	 * @param int $height The height of the new thumbnail.
+	 * @param null|bool $fix If the ratio should be respected or not.
+	 *
 	 * @return string result code
 	 * @since v1.0.0
+	 * @since 1.9.27 The options for the dimensions are new, but backwards compatible.
 	 */
-	static function create_thumbnail($image) {
-		
-		global $ngg;
-		
-		if(! class_exists('ngg_Thumbnail'))
-			require_once( nggGallery::graphic_library() );
-		
-		if ( is_numeric($image) )
-			$image = nggdb::find_image( $image );
+	static function create_thumbnail( $image, $width = 0, $height = 0, $fix = null ) {
 
-		if ( !is_object($image) ) 
-			return __('Object didn\'t contain correct data','nggallery');
+		$options = get_option( 'ngg_options' );
+
+		/**
+		 * Set the default variables.
+		 */
+		if ( $width == 0 ) {
+			$width = $options['thumbwidth'];
+		}
+		if ( $height == 0 ) {
+			$height = $options['thumbheight'];
+		}
+		if ( $fix === null ) {
+			$fix = $options['thumbfix'];
+		}
+
+
+		if ( ! class_exists( 'ngg_Thumbnail' ) ) {
+			require_once( nggGallery::graphic_library() );
+		}
+
+		if ( is_numeric( $image ) ) {
+			$image = nggdb::find_image( $image );
+		}
+
+		if ( ! is_object( $image ) ) {
+			return __( 'Object didn\'t contain correct data', 'nggallery' );
+		}
 
 		// before we start we import the meta data to database (required for uploads before V1.4.0)
 		nggAdmin::maybe_import_meta( $image->pid );
-        		
-		// check for existing thumbnail
-		if (file_exists($image->thumbPath))
-			if (!is_writable($image->thumbPath))
-				return esc_html( $image->filename ) . __(' is not writeable ','nggallery');
 
-		$thumb = new ngg_Thumbnail($image->imagePath, TRUE);
+		// check for existing thumbnail
+		if ( file_exists( $image->thumbPath ) ) {
+			if ( ! is_writable( $image->thumbPath ) ) {
+				return esc_html( $image->filename ) . __( ' is not writeable ', 'nggallery' );
+			}
+		}
+
+		$thumb = new ngg_Thumbnail( $image->imagePath, true );
 
 		// skip if file is not there
-		if (!$thumb->error) {
-			if ($ngg->options['thumbfix'])  {
+		if ( ! $thumb->error ) {
+			if ( $fix ) {
 
 				// calculate correct ratio
-				$wratio = $ngg->options['thumbwidth'] / $thumb->currentDimensions['width'];
-				$hratio = $ngg->options['thumbheight'] / $thumb->currentDimensions['height'];
-				
-				if ($wratio > $hratio) {
+				$wratio = $width / $thumb->currentDimensions['width'];
+				$hratio = $height / $thumb->currentDimensions['height'];
+
+				if ( $wratio > $hratio ) {
 					// first resize to the wanted width
-					$thumb->resize($ngg->options['thumbwidth'], 0);
+					$thumb->resize( $width, 0 );
 					// get optimal y startpos
-					$ypos = ($thumb->currentDimensions['height'] - $ngg->options['thumbheight']) / 2;
-					$thumb->crop(0, $ypos, $ngg->options['thumbwidth'],$ngg->options['thumbheight']);	
+					$ypos = ( $thumb->currentDimensions['height'] - $height ) / 2;
+					$thumb->crop( 0, $ypos, $width, $height );
 				} else {
 					// first resize to the wanted height
-					$thumb->resize(0, $ngg->options['thumbheight']);	
+					$thumb->resize( 0, $height );
 					// get optimal x startpos
-					$xpos = ($thumb->currentDimensions['width'] - $ngg->options['thumbwidth']) / 2;
-					$thumb->crop($xpos, 0, $ngg->options['thumbwidth'],$ngg->options['thumbheight']);	
+					$xpos = ( $thumb->currentDimensions['width'] - $width ) / 2;
+					$thumb->crop( $xpos, 0, $width, $height );
 				}
-			//this create a thumbnail but keep ratio settings	
+				//this create a thumbnail but keep ratio settings
 			} else {
-				$thumb->resize($ngg->options['thumbwidth'],$ngg->options['thumbheight']);	
+				$thumb->resize( $width, $height );
 			}
-			
+
 			// save the new thumbnail
-			$thumb->save($image->thumbPath, $ngg->options['thumbquality']);
-			nggAdmin::chmod ($image->thumbPath); 
-			
+			$thumb->save( $image->thumbPath, $options['thumbquality'] );
+			nggAdmin::chmod( $image->thumbPath );
+
 			//read the new sizes
-			$new_size = @getimagesize ( $image->thumbPath );
-			$size['width'] = $new_size[0];
-			$size['height'] = $new_size[1]; 
-			
+			$new_size       = @getimagesize( $image->thumbPath );
+			$size['width']  = $new_size[0];
+			$size['height'] = $new_size[1];
+
 			// add them to the database
-			nggdb::update_image_meta($image->pid, array( 'thumbnail' => $size) );
-		} 
-				
+			nggdb::update_image_meta( $image->pid, array( 'thumbnail' => $size ) );
+		}
+
 		$thumb->destruct();
-		
-		if ( !empty($thumb->errmsg) )
-			return ' <strong>' . esc_html( $image->filename ) . ' (Error : '.$thumb->errmsg .')</strong>';
-		
+
+		if ( ! empty( $thumb->errmsg ) ) {
+			return ' <strong>' . esc_html( $image->filename ) . ' (Error : ' . $thumb->errmsg . ')</strong>';
+		}
+
 		// success
-		return '1'; 
+		return '1';
 	}
 	
 	/**
@@ -1429,7 +1452,7 @@ class nggAdmin{
 		if ( $errors != '' )
 			nggGallery::show_error($errors);
 
-		$link = '<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $destination->gid . '" >' . esc_html( $destination->title ) . '</a>';
+		$link = '<a href="' . admin_url() . 'admin.php?page=nggallery-manage&mode=image&gid=' . $destination->gid . '" >' . esc_html( $destination->title ) . '</a>';
 		$messages  = sprintf(__('Moved %1$s picture(s) to gallery : %2$s .','nggallery'), $count, $link);
 		nggGallery::show_message($messages);
 
@@ -1526,7 +1549,7 @@ class nggAdmin{
 		
 		// Finish by showing errors or success
 		if ( $errors == '' ) {
-			$link = '<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $destination->gid . '" >' . esc_html($destination->title) . '</a>';
+			$link = '<a href="' . admin_url() . 'admin.php?page=nggallery-manage&mode=image&gid=' . $destination->gid . '" >' . esc_html($destination->title) . '</a>';
 			$messages .= '<hr />' . sprintf(__('Copied %1$s picture(s) to gallery: %2$s .','nggallery'), count($images), $link);
 		} 
 
@@ -1538,43 +1561,50 @@ class nggAdmin{
 
 		return;
 	}
-	
-	/**
-	 * Initate the Ajax operation
-	 * 
-	 * @class nggAdmin	 
-	 * @param string $operation name of the function which should be executed
-	 * @param array $image_array
-	 * @param string $title name of the operation
-	 * @return string the javascript output
-	 */
-	static function do_ajax_operation( $operation, $image_array, $title = '' ) {
-		
-		if ( !is_array($image_array) || empty($image_array) )
-			return;
 
-		$js_array  = implode('","', $image_array);
-		
-		// send out some JavaScript, which initate the ajax operation
+	/**
+	 * Initiate an AJAX operation.
+	 *
+	 * Note: when operating on galleries instead of images, the ID's of the gallery should be used instead of the
+	 * images. The mode should be 'gallery' then.
+	 *
+	 * @param string $operation  Name of the function that should be executed.
+	 * @param array $image_array ID's of the images or the gallery.
+	 * @param string $title      The title that should be displayed on the modal window.
+	 * @param string $mode       Which mode to run in.
+	 * @param array $data        Data to be passed as GET parameters.
+	 */
+	static function do_ajax_operation( $operation, $image_array, $title = '', $mode = 'image', $data = array() ) {
+
+		if ( ! is_array( $image_array ) || empty( $image_array ) ) {
+			return;
+		}
+
+		$js_array = implode( ',', $image_array );
+		$data = json_encode($data);
+
+		//This initiates the AJAX operations.
 		?>
 		<script type="text/javascript">
 
-			Images = new Array("<?php echo $js_array; ?>");
+			images = [<?php echo esc_js($js_array); ?>];
 
 			nggAjaxOptions = {
-				operation: "<?php echo $operation; ?>",
-				ids: Images,		
-			  	header: "<?php echo $title; ?>",
-			  	maxStep: Images.length
+				operation: "<?php echo esc_js($operation) ?>",
+				ids: images,
+				header: "<?php echo esc_js($title) ?>",
+				maxStep: images.length,
+				mode: "<?php echo esc_js($mode) ?>",
+				data: <?php echo $data; ?>
 			};
-			
-			jQuery(document).ready( function(){ 
-				nggProgressBar.init( nggAjaxOptions );
-				nggAjax.init( nggAjaxOptions );
-			} );
+
+			jQuery(document).ready(function() {
+				nggProgressBar.init(nggAjaxOptions);
+				nggAjax.init(nggAjaxOptions);
+			});
 		</script>
-		
-		<?php	
+
+		<?php
 	}
 	
 	/**
@@ -1617,7 +1647,7 @@ class nggAdmin{
 		$gallery = nggdb::get_ids_from_gallery($galleryID, 'pid', 'ASC', false);
 
 		header('Content-Type: text/plain; charset=' . get_option('blog_charset'), true);
-		$output = json_encode($gallery);
+		$output = json_encode(array_map('intval', $gallery));
 		
 		return $output;
 	}
