@@ -882,7 +882,8 @@ class NGG_Overview implements NGG_Displayable {
 		return array(
 			'Vladimir Vasilenko'    => array( 'Russian translation', 'http://shumbely.com/' ),
 			'Niko Strijbol'         => array( 'Dutch translation', 'https://plus.google.com/u/0/+NikoStrijbol' ),
-			'Vesa Tiirikainen'      => array( 'Finnish translation', 'mailto:vesa@tiirikainen.fi' )
+			'Vesa Tiirikainen'      => array( 'Finnish translation', 'mailto:vesa@tiirikainen.fi' ),
+			'Thomas Blomberg Hansen'=> array( 'Danish translation' , 'mailto:thomasdk81@gmail.com')
 		);
 	}
 }

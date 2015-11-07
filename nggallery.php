@@ -52,7 +52,7 @@ if (!class_exists('nggLoader')) {
      * Class nggLoader
      */
     class nggLoader {
-
+	    
 		var $version = '1.9.30';
 		var $dbversion   = '2';
 		var $minimum_WP  = '3.5';
