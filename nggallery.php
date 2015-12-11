@@ -54,7 +54,7 @@ if (!class_exists('nggLoader')) {
     class nggLoader {
 	    
 		var $version = '1.9.30';
-		var $dbversion   = '2';
+		var $dbversion   = '1.8.3';
 		var $minimum_WP  = '3.5';
 		var $options     = '';
 		var $manage_page;
@@ -169,11 +169,11 @@ if (!class_exists('nggLoader')) {
 		         * If the silentUpgrade option is not empty, we try and do the upgrade now.
 		         */
 		        if ( !empty( $ngg_options['silentUpgrade'] ) ) {
+			        include_once( dirname( __FILE__ ) . '/admin/functions.php' );
+			        include_once( dirname( __FILE__ ) . '/admin/upgrade.php' );
 			        try {
-				        include_once( dirname( __FILE__ ) . '/admin/upgrade/class-ngg-upgrader.php' );
-				        $upgrader = new NGG_Upgrader(NGG_DBVERSION);
-				        $upgrader->upgrade();
-			        } catch (Upgrade_Exception $e) {
+				        ngg_upgrade();
+			        } catch (Exception $e) {
 				        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="error"><p><strong>' . __( 'Something went wrong while upgrading NextCellent Gallery.', "nggallery" ) . '</strong></p></div>\';' ) );
 			        }
 		        } else {
