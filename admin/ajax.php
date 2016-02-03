@@ -5,7 +5,7 @@ add_action('wp_ajax_ngg_ajax_operation', 'ngg_ajax_operation' );
  * Image edit functions via AJAX
  *
  * @author Alex Rabe
- *
+ * @todo Maybe we need to split this in multiple ajax operations?
  *
  * @return void
  */
@@ -28,42 +28,55 @@ function ngg_ajax_operation() {
 	include_once (dirname (__FILE__) . '/functions.php');
 
 	// Get the image id
-	if ( isset($_POST['image'])) {
+	if ( isset( $_POST['image'] ) ) {
 		$id = (int) $_POST['image'];
 		// let's get the image data
 		$picture = nggdb::find_image( $id );
 		// what do you want to do ?
 		switch ( $_POST['operation'] ) {
 			case 'create_thumbnail' :
-				$result = nggAdmin::create_thumbnail($picture);
-			break;
+				if ( isset( $_POST['width'] ) && isset( $_POST['height'] ) ) {
+					if ( isset( $_POST['fix'] ) ) {
+						$fix = filter_var( $_POST['fix'], FILTER_VALIDATE_BOOLEAN );
+					} else {
+						$fix = null;
+					}
+					$result = nggAdmin::create_thumbnail( $picture, (int) $_POST['width'], $_POST['height'], $fix );
+				} else {
+					$result = nggAdmin::create_thumbnail( $picture );
+				}
+				break;
 			case 'resize_image' :
-				$result = nggAdmin::resize_image($picture);
-			break;
+				if ( isset( $_POST['width'] ) && isset( $_POST['height'] ) ) {
+					$result = nggAdmin::resize_image( $picture, (int) $_POST['width'], $_POST['height'] );
+				} else {
+					$result = nggAdmin::resize_image( $picture );
+				}
+				break;
 			case 'rotate_cw' :
-				$result = nggAdmin::rotate_image($picture, 'CW');
-				nggAdmin::create_thumbnail($picture);
-			break;
+				$result = nggAdmin::rotate_image( $picture, 'CW' );
+				nggAdmin::create_thumbnail( $picture );
+				break;
 			case 'rotate_ccw' :
-				$result = nggAdmin::rotate_image($picture, 'CCW');
-				nggAdmin::create_thumbnail($picture);
-			break;
+				$result = nggAdmin::rotate_image( $picture, 'CCW' );
+				nggAdmin::create_thumbnail( $picture );
+				break;
 			case 'set_watermark' :
-				$result = nggAdmin::set_watermark($picture);
-			break;
+				$result = nggAdmin::set_watermark( $picture );
+				break;
 			case 'recover_image' :
-				$result = nggAdmin::recover_image($picture);
-			break;
+				$result = nggAdmin::recover_image( $picture );
+				break;
 			case 'import_metadata' :
 				$result = nggAdmin::import_MetaData( $id );
-			break;
+				break;
 			case 'get_image_ids' :
 				$result = nggAdmin::get_image_ids( $id );
-			break;
+				break;
 			default :
 				do_action( 'ngg_ajax_' . $_POST['operation'] );
-				die('-1');
-			break;
+				die( '-1' );
+				break;
 		}
 		// A success should return a '1'
 		die ($result);
@@ -74,6 +87,64 @@ function ngg_ajax_operation() {
 }
 
 add_action('wp_ajax_createNewThumb', 'createNewThumb');
+
+/**
+ * Create a new thumbnail.
+ *
+ * @todo When we have a better image manipulation framework, enable rotating with more angles.
+ */
+function new_thumbnail() {
+
+	global $ngg;
+
+	// check for correct capability
+	if ( !(is_user_logged_in() && current_user_can('NextGEN Manage gallery')) ) {
+		wp_die('-1');
+	}
+
+	include_once( nggGallery::graphic_library() );
+
+	$id 	 = (int) $_POST['id'];
+	$picture = nggdb::find_image( $id );
+
+	$data = $_POST['newData'];
+
+	$x = (int) $data['x'];
+	$y = (int) $data['y'];
+	$w = (int) $data['width'];
+	$h = (int) $data['height'];
+
+	$thumb = new ngg_Thumbnail($picture->imagePath, TRUE);
+
+	if($data['rotate'] == '90') {
+		$thumb->rotateImage('CW');
+	} elseif ($data['rotate'] == '-90'){
+		$thumb->rotateImage('CCW');
+	}
+
+	$thumb->crop($x, $y, $w, $h);
+
+	if ( $thumb->save($picture->thumbPath, 100)) {
+
+		//read the new sizes
+		$new_size = @getimagesize ( $picture->thumbPath );
+		$size['width'] = $new_size[0];
+		$size['height'] = $new_size[1];
+
+		// add them to the database
+		nggdb::update_image_meta($picture->pid, array( 'thumbnail' => $size) );
+
+		echo "OK";
+	} else {
+		header('HTTP/1.1 500 Internal Server Error');
+		echo "KO";
+	}
+
+	exit();
+}
+
+add_action('wp_ajax_new_thumbnail', 'new_thumbnail');
+
 
 function createNewThumb() {
 
@@ -195,8 +266,8 @@ add_action('wp_ajax_ngg_dashboard', 'ngg_ajax_dashboard');
 
 function ngg_ajax_dashboard() {
 
-   	require_once( dirname( dirname(__FILE__) ) . '/admin/admin.php');
-	require_once( dirname( dirname(__FILE__) ) . '/admin/overview.php');
+   	require_once( dirname( dirname(__FILE__) ) . '/admin/class-ngg-admin-launcher.php');
+	require_once( dirname( dirname(__FILE__) ) . '/admin/class-ngg-overview.php');
 
    	if ( !current_user_can('NextGEN Gallery overview') )
 		die('-1');
@@ -207,11 +278,11 @@ function ngg_ajax_dashboard() {
     switch ( $_GET['jax'] ) {
 
     case 'dashboard_primary' :
-    	Overview_Display::ngg_overview_news();
+    	NGG_Overview::ngg_overview_news();
     	break;
 
     case 'dashboard_plugins' :
-    	Overview_Display::ngg_related_plugins();
+    	NGG_Overview::ngg_related_plugins();
     	break;
 
     }

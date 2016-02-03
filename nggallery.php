@@ -5,7 +5,7 @@ Plugin URI: http://www.wpgetready.com/nextcellent-gallery
 Description: A Photo Gallery for WordPress providing NextGEN legacy compatibility from version 1.9.13
 Author: WPGReady, Niknetniko based on Alex Rabe & PhotoCrati work.
 Author URI: http://www.wpgetready.com
-Version: 1.9.27
+Version: 1.9.30
 
 Copyright (c) 2007-2011 by Alex Rabe & NextGEN DEV-Team
 Copyright (c) 2012 Photocrati Media
@@ -53,8 +53,8 @@ if (!class_exists('nggLoader')) {
      */
     class nggLoader {
 
-		var $version = '1.9.27';
-		var $dbversion   = '1.8.3';
+		var $version = '1.9.30';
+		var $dbversion   = '2';
 		var $minimum_WP  = '3.5';
 		var $options     = '';
 		var $manage_page;
@@ -97,10 +97,6 @@ if (!class_exists('nggLoader')) {
 			// Add a message for PHP4 Users, can disable the update message later on
 			if (version_compare(PHP_VERSION, '5.0.0', '<'))
 				add_filter('transient_update_plugins', array(&$this, 'disable_upgrade'));
-
-	        if( get_option( 'ngg_db_version' ) != NGG_DBVERSION && isset($_GET['page']) != "nextcellent" ) {
-		        add_action( 'all_admin_notices', array($this,'show_upgrade_message') );
-	        }
 
 			//Add some links on the plugin page
 			add_filter('plugin_row_meta', array(&$this, 'add_plugin_links'), 10, 2);
@@ -167,18 +163,21 @@ if (!class_exists('nggLoader')) {
 
 	        if( get_option( 'ngg_db_version' ) != NGG_DBVERSION && isset($_GET['page']) != "nextcellent" ) {
 
-		        global $ngg;
-		        include_once( dirname( __FILE__ ) . '/admin/functions.php' );
-		        include_once( dirname( __FILE__ ) . '/admin/upgrade.php' );
+		        $ngg_options = get_option('ngg_options');
 
-		        if ( !empty( $ngg->options['silentUpgrade'] ) ) {
+		        /**
+		         * If the silentUpgrade option is not empty, we try and do the upgrade now.
+		         */
+		        if ( !empty( $ngg_options['silentUpgrade'] ) ) {
 			        try {
-				        ngg_upgrade();
-			        } catch (Exception $e) {
+				        include_once( dirname( __FILE__ ) . '/admin/upgrade/class-ngg-upgrader.php' );
+				        $upgrader = new NGG_Upgrader(NGG_DBVERSION);
+				        $upgrader->upgrade();
+			        } catch (Upgrade_Exception $e) {
 				        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="error"><p><strong>' . __( 'Something went wrong while upgrading NextCellent Gallery.', "nggallery" ) . '</strong></p></div>\';' ) );
 			        }
 		        } else {
-			        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="update-nag"><p><strong>' . __( 'NextCellent Gallery requires a database upgrade.', "nggallery" ) . ' <a href="' . admin_url() . 'admin.php?page=nextcellent-gallery-nextgen-legacy" >' . __( 'Upgrade now', 'nggallery' ) . '</a></strong></p></div>\';' ) );
+			        add_action( 'all_admin_notices', array($this,'show_upgrade_message') );
 		        }
 	        }
 		}
@@ -379,9 +378,9 @@ if (!class_exists('nggLoader')) {
 
 				// Load backend libraries
 				if ( is_admin() ) {
-					require_once (dirname (__FILE__) . '/admin/admin.php');
+					require_once (dirname (__FILE__) . '/admin/class-ngg-admin-launcher.php');
 					require_once (dirname (__FILE__) . '/admin/media-upload.php');
-					$this->nggAdminPanel = new nggAdminPanel();
+					$this->nggAdminPanel = new NGG_Admin_Launcher();
 				}
 			}
 		}
@@ -421,7 +420,7 @@ if (!class_exists('nggLoader')) {
 						'parent' => 'ngg-menu-overview',
 						'id'     => 'ngg-menu-manage-gallery',
 						'title'  => __( 'Gallery', 'nggallery' ),
-						'href'   => admin_url( 'admin.php?page=nggallery-manage-gallery' )
+						'href'   => admin_url( 'admin.php?page=nggallery-manage' )
 					) );
 				}
 				if ( current_user_can( 'NextGEN Edit album' ) ) {
@@ -583,12 +582,12 @@ if (!class_exists('nggLoader')) {
 		function multisite_new_blog($blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 			global $wpdb;
 
-			include_once (dirname (__FILE__) . '/admin/install.php');
+			include_once (dirname (__FILE__) . '/admin/class-ngg-installer.php');
 
 			if (is_plugin_active_for_network( $this->plugin_name )) {
 				$current_blog = $wpdb->blogid;
 				switch_to_blog($blog_id);
-				nggallery_install();
+				NGG_Installer::install();
 				switch_to_blog($current_blog);
 			}
 		}
@@ -642,7 +641,7 @@ if (!class_exists('nggLoader')) {
 			// Clean up transients
 			self::remove_transients();
 
-			include_once (dirname (__FILE__) . '/admin/install.php');
+			include_once (dirname (__FILE__) . '/admin/class-ngg-installer.php');
 
 			if (is_multisite()) {
 				$network=isset($_SERVER['SCRIPT_NAME'])?$_SERVER['SCRIPT_NAME']:"";
@@ -655,7 +654,7 @@ if (!class_exists('nggLoader')) {
 					$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs", NULL));
 					foreach ($blogids as $blog_id) {
 						switch_to_blog($blog_id);
-						nggallery_install();
+						NGG_Installer::install();
 					}
 					switch_to_blog($old_blog);
 					return;
@@ -663,7 +662,7 @@ if (!class_exists('nggLoader')) {
 			}
 
 			// check for tables
-			nggallery_install();
+			NGG_Installer::install();
 			// remove the update message
 			delete_option( 'ngg_update_exists' );
 
@@ -690,8 +689,8 @@ if (!class_exists('nggLoader')) {
 			// Clean up transients
 			self::remove_transients();
 
-			include_once (dirname (__FILE__) . '/admin/install.php');
-			nggallery_uninstall();
+			include_once (dirname (__FILE__) . '/admin/class-ngg-installer.php');
+			NGG_Installer::uninstall();
 		}
 
         /**
