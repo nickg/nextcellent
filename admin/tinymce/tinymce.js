@@ -57,6 +57,7 @@ function insertNGGLink() {
 				break;
 			case 'other':
 				tagtext = "[nggallery id=" + galleryid + " template="+ otherName + "]";
+				break;
 			default:
 				tagtext = "[nggallery id=" + galleryid + " template="+ showtype + "]";
 		}
