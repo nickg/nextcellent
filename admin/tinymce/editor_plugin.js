@@ -36,7 +36,7 @@
 			ed.addButton('NextGEN', {
 				title : 'NextCellent',
 				cmd : 'mceNextGEN',
-				image : url + '/nextgen.gif',
+				icon: 'NextGEN dashicons-before dashicons-format-gallery',
 			});
 		},
 
