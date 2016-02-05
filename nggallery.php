@@ -10,7 +10,7 @@ Version: 1.9.30
 Copyright (c) 2007-2011 by Alex Rabe & NextGEN DEV-Team
 Copyright (c) 2012 Photocrati Media
 Copyright (c) 2013-2014 WPGetReady
-Copyright (c) 2014-2015 WPGetReady, Niknetniko
+Copyright (c) 2014-2016 WPGetReady, Niknetniko
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -55,7 +55,7 @@ if (!class_exists('nggLoader')) {
 
 		var $version = '1.9.30';
 		var $dbversion   = '1.8.3';
-		var $minimum_WP  = '3.5';
+		var $minimum_WP  = '4.0';
 		var $options     = '';
 		var $manage_page;
 		var $add_PHP5_notice = false;

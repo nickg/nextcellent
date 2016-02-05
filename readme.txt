@@ -2,19 +2,21 @@
 Contributors: wpready
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 4.0
-Tested up to: 4.3
+Tested up to: 4.4.2
 Stable tag: trunk
 License: GPLv2
 
 == Description ==
 
-= 1.9.30 - 2015-11-01 =
+= 1.9.30 - 2016-02-05 =
 
  What's in it for you?
 
 * Completely admin rewrite (Credits to Niko Strijbol. See details on https://bitbucket.org/wpgetready/nextcellent/pull-requests/62/rewrite-admin-section)
+* Several fixes (Credits to Niko Strijbol)
 * Bios4 provided also German translation (Late credits (included in previous version))
 * Etard the Live Caster found a XSS vulnerability (Late credits (included in previous version))
+* Thomas Bloomberg Hansen: Dashicon in TinyMCE
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -91,7 +93,7 @@ As a result, there is large and great community of users and developers, as well
 == Credits ==
 
 Copyright:<br>
-WpGetReady 2013-2014<br>
+WpGetReady 2013-2016<br>
 Photocrati Media 2012<br>
 Alex Rabe 2007-2011<br>
 
@@ -324,10 +326,13 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
-
 = 1.9.30 - 2015-11-01 =
 
 * Completely admin rewrite (Credits to Niko Strijbol. See details on https://bitbucket.org/wpgetready/nextcellent/pull-requests/62/rewrite-admin-section)
+* Several fixes (Credits to Niko Strijbol)
+* Bios4 provided also German translation (Late credits (included in previous version))
+* Etard the Live Caster found a XSS vulnerability (Late credits (included in previous version))
+* Thomas Bloomberg Hansen: Dashicon in TinyMCE
 
 = 1.9.27 - 2015-10-01 =
 * Fixes for multisite  (credits to Niko Strijbol)
