@@ -23,7 +23,11 @@ class NGG_Image_Manager extends NGG_Abstract_Image_Manager {
 		parent::display();
 
 		if ( isset( $_POST['form'] ) && $_POST['form'] === "gallery" ) {
-			$this->handle_update_gallery();
+			if (isset ($_POST['add-new-page'])) {
+				$this->create_page();
+			} else {
+				$this->handle_update_gallery();
+			}
 		}
 
 		if ( isset( $_POST['scan_folder'] ) ) {
@@ -227,7 +231,7 @@ class NGG_Image_Manager extends NGG_Abstract_Image_Manager {
 												parent_dropdown();
 											} ?>
 										</select>
-										<input class="button-secondary action" type="submit" name="addnewpage" value="<?php _e( 'Add page',
+										<input class="button-secondary action" type="submit" name="add-new-page" value="<?php _e( 'Add page',
 											'nggallery' ); ?>" id="group"/>
 									</td>
 								<?php } ?>
@@ -356,6 +360,44 @@ class NGG_Image_Manager extends NGG_Abstract_Image_Manager {
 
 			return;
 		}
+	}
 
+	/**
+	 * Create a page with the same title as the current gallery, and include a shortcode to this
+	 * gallery.
+	 */
+	private function create_page()
+	{
+		if ( wp_verify_nonce( $_POST['_ngg_nonce_gallery'], 'ngg-update-gallery' ) === false ) {
+			nggGallery::show_error( __( 'You waited too long, or you cheated.', 'nggallery' ) );
+
+			return;
+		}
+
+		global $wpdb;
+
+		$parent_id      = esc_attr($_POST['parent_id']);
+		$gallery_title  = esc_attr($_POST['title']);
+		$gallery_name   = $wpdb->get_var("SELECT name FROM $wpdb->nggallery WHERE gid = '$this->gid' ");
+
+		// Create a WP page
+		global $user_ID;
+
+		$page['post_type']    = 'page';
+		$page['post_content'] = '[nggallery id=' . $this->gid . ']';
+		$page['post_parent']  = $parent_id;
+		$page['post_author']  = $user_ID;
+		$page['post_status']  = 'publish';
+		$page['post_title']   = $gallery_title == '' ? $gallery_name : $gallery_title;
+		$page = apply_filters('ngg_add_new_page', $page, $this->gid);
+
+		$gallery_pageid = wp_insert_post ($page);
+		if ($gallery_pageid != 0) {
+			$result = $wpdb->query("UPDATE $wpdb->nggallery SET title= '$gallery_title', pageid = '$gallery_pageid' WHERE gid = '$this->gid'");
+			wp_cache_delete($this->gid, 'ngg_gallery');
+			nggGallery::show_message( sprintf( __( 'New page <strong>%s</strong> (ID: %s) created.','nggallery'),  $gallery_title, $gallery_pageid ));
+		}
+
+		do_action('ngg_gallery_addnewpage', $this->gid);
 	}
 }
