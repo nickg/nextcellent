@@ -590,3 +590,8 @@ p#sortButton {
 .ngg-tag-wrap #ajax_area_tagslist ul{list-style:square;margin:10px 0 10px 20px;padding:0;}
 .ngg-tag-wrap #ajax_area_tagslist ul li{margin:0;padding:0;line-height:1.4;}
 .ngg-tag-wrap #ajax_area_tagslist ul li span{cursor:pointer;}
+
+/* This is for the NextCellent help */
+.contextual-help-tabs-wrap .ncg-dl dt {
+	font-weight: bold;
+}
