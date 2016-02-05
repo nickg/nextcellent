@@ -528,14 +528,51 @@ class NGG_Admin_Launcher {
 
 				$screen->add_option( $option, $args );
 
-
-				$help = '<p>' . __( 'Manage your images and galleries.', 'nggallery' ) . '</p>';
+				$help = '<p>' . __( 'This box contains information and the various options a gallery had.', 'nggallery') . '</p>';
 
 				$screen->add_help_tab( array(
 					'id'      => $screen->id . '-general',
-					'title'   => 'Manage everything',
+					'title'   => __( 'Overview', 'nggallery'),
 					'content' => $help
 				) );
+
+
+
+				$help = '<p>' . __( 'Manage a single gallery and the images it contains:', 'nggallery' ) . '</p>';
+				$help .= '<dl class="ncg-dl">';
+
+				$help .= '<dt>' . __( 'Title', 'ngallery') . '</dt>';
+				$help .= '<dd>' . __( 'The title of the gallery. This can be visible to the users of the website. This has no effect on the gallery path.', 'nggallery') .'</dd>';
+
+				$help .= '<dt>' . __( 'Description', 'ngallery') . '</dt>';
+				$help .= '<dd>' . __( 'The description of the gallery. Albums using the "extend" template may display this on the website. The description cannot contain HTML.', 'nggallery') .'</dd>';
+
+				$help .= '<dt>' . __( 'Path', 'ngallery') . '</dt>';
+				$help .= '<dd>' . __( 'The path on the server to the folder containing this gallery. If you change this, NextCellent will not move the gallery for you.', 'nggallery') .'</dd>';
+
+				$help .= '<dt>' . __( 'Gallery ID', 'ngallery') . '</dt>';
+				$help .= '<dd>' . __( 'The internal ID used by NextCellent to represent this gallery. This information can be useful for developers. A gallery ID should never change.', 'nggallery') .'</dd>';
+
+				$help .= '<dt>' . __( 'Page Link', 'ngallery') . '</dt>';
+				$help .= '<dd>' . __( 'With this option you can select the behavior when an user clicks on a gallery in an album. If the option is set to "not linked", the gallery will be displayed on the same page. If you do select a page, the user will be redirected to that page.', 'nggallery');
+				$help .= ' '. sprintf( __( 'More information about this is available on this webpage: %s', 'nggallery'), '<a target="_blank" href="http://www.nextgen-gallery.com/link-to-page/">' . __('page', 'nggallery') . '</a>') . '</dd>';
+
+				$help .= '<dt>' . __( 'Preview image', 'ngallery') . '</dt>';
+				$help .= '<dd>' . __( 'This image will be shown when the gallery is shown on the website and it needs a preview, e.g. an album. If you do not select a preview image, NextCellent will use the last uploaded image of the gallery.', 'nggallery') .'</dd>';
+
+				$help .= '<dt>' . __( 'Author', 'ngallery') . '</dt>';
+				$help .= '<dd>' . __( 'The user who created this gallery.', 'nggallery') .'</dd>';
+
+				$help .= '<dt>' . __( 'Create new page', 'ngallery') . '</dt>';
+				$help .= '<dd>' . __( 'This will create a new page with the same name as the gallery, and include a shortcode for this gallery in it.', 'nggallery') .'</dd>';
+				$help .= '</dl>';
+
+				$screen->add_help_tab( array(
+					'id'      => $screen->id . '-options',
+					'title'   => __( 'Gallery settings', 'nggallery'),
+					'content' => $help
+				) );
+
 				break;
 			case "{$i18n}_page_nggallery-manage-album" :
 				$help = '<p>' . __( 'Organize your galleries into albums.',
