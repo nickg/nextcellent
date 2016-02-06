@@ -312,7 +312,7 @@ class NGG_Admin_Launcher {
 				wp_enqueue_script( 'jquery-ui-sortable' );
 				wp_enqueue_script( 'jquery-ui-datepicker' );
 				wp_enqueue_script( 'ngg-autocomplete' );
-				wp_enqueue_script( 'ngg-cropper', plugins_url('js/cropper/cropper.js', __FILE__), '0.10.0' );
+				wp_enqueue_script( 'ngg-cropper', plugins_url('js/cropper/cropper.min.js', __FILE__), '2.2.5' );
 				wp_register_script( 'shutter', plugins_url('shutter/shutter-reloaded.js', __DIR__), false, '1.3.2' );
 				wp_localize_script( 'shutter', 'shutterSettings', array(
 					'msgLoading' => __( 'L O A D I N G', 'nggallery' ),
@@ -374,7 +374,7 @@ class NGG_Admin_Launcher {
 				wp_enqueue_style( 'ngg-jqueryui' );
 				break;
 			case "nggallery-manage":
-				wp_enqueue_style( 'ngg-cropper', plugins_url( 'js/cropper/cropper.min.css', __FILE__), '0.10.0' );
+				wp_enqueue_style( 'ngg-cropper', plugins_url( 'js/cropper/cropper.min.css', __FILE__), '2.2.5' );
 				wp_enqueue_style( 'shutter', plugins_url('shutter/shutter-reloaded.css', __DIR__), false, '1.3.2',
 					'screen' );
 				wp_enqueue_style( 'datepicker', plugins_url('css/jquery.ui.datepicker.css', __FILE__), false,
