@@ -270,7 +270,7 @@ function ngg_edit_thumbnail( $id ) {
 						<span class="dashicons dashicons-align-center"></span>
 					</button>
 				</div>
-				<img src="<?php echo esc_url( $picture->imageURL ); ?>" alt="" id="imageToEdit" style="max-width: 100%; max-height: 100%; width: auto; height: auto;"/>
+				<img src="<?php echo esc_url( $picture->imageURL ); ?>" alt="" id="imageToEdit" style="max-width: 60%; max-height: 60%; width: auto; height: auto;"/>
 			</td>
 			<td>
 				<div class="thumb-preview" style="max-width: 100%; width: 300px; height: 150px; overflow: hidden; margin-bottom: 10px; margin-left: auto; margin-right: auto; border: 1px solid black">
