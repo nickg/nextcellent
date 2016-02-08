@@ -211,7 +211,7 @@ class NGG_Image_List_Table extends WP_List_Table {
 				return '<textarea placeholder="' . __( "Separated by commas",
 					'nggallery' ) . '" name="tags[' . $item->pid . ']" style="width:95%;" rows="2">' . $item->tags . '</textarea>';
 			case 'exclude':
-				return '<input name="exclude[' . $item->pid . ']" type="checkbox" value="1" ' . checked( $item->exclude ) . '/>';
+				return '<input name="exclude[' . $item->pid . ']" type="checkbox" value="1" ' . checked( $item->exclude, true, false ) . '/>';
 			default:
 				ob_start();
 				//The old action needs a pid.
