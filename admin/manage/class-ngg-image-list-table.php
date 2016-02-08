@@ -214,7 +214,11 @@ class NGG_Image_List_Table extends WP_List_Table {
 				return '<input name="exclude[' . $item->pid . ']" type="checkbox" value="1" ' . checked( $item->exclude ) . '/>';
 			default:
 				ob_start();
-				do_action( 'ngg_manage_image_custom_column', $column_name, $item );
+				//The old action needs a pid.
+				do_action( 'ngg_manage_image_custom_column', $column_name, $item->pid );
+
+				//We pass the whole object to new action.
+				do_action( 'ncg_manage_image_custom_column', $column_name, $item );
 
 				return ob_get_clean();
 		}

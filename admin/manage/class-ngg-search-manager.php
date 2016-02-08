@@ -18,7 +18,7 @@ class NGG_Search_Manager extends NGG_Abstract_Image_Manager {
 		$this->search = $_GET['s'];
 
 		add_filter( 'ngg_manage_images_columns', array( $this, 'add_column' ) );
-		add_action( 'ngg_manage_image_custom_column', array( $this, 'add_column_content' ), 10, 2 );
+		add_action( 'ncg_manage_image_custom_column', array( $this, 'add_column_content' ), 10, 2 );
 	}
 
 	public function display() {
