@@ -142,6 +142,9 @@ abstract class NGG_Abstract_Image_Manager extends NGG_Manager {
 				}
 
 			}
+
+			//This is for backwards compatibility.
+			do_action( 'ngg_update_gallery', (int) $_GET['gid'], $_POST);
 		}
 
 		//TODO: This produce 300-400 queries !
