@@ -8,15 +8,21 @@ License: GPLv2
 
 == Description ==
 
-= 1.9.30 - 2016-02-05 =
+= 1.9.31 - 2016-09-05 = Fixes for 1.9.30
 
  What's in it for you?
 
-* Completely admin rewrite (Credits to Niko Strijbol. See details on https://bitbucket.org/wpgetready/nextcellent/pull-requests/62/rewrite-admin-section)
-* Several fixes (Credits to Niko Strijbol)
-* Bios4 provided also German translation (Late credits (included in previous version))
-* Etard the Live Caster found a XSS vulnerability (Late credits (included in previous version))
-* Thomas Bloomberg Hansen: Dashicon in TinyMCE
+* Added more help documentation
+* Fix Add new page button
+* Style improvement
+* Enable different size thumbnails only if the option is set
+* Wrong url fixed
+* Updated cropper library to the latest version
+* Fixed few things now working with several PHP versions.
+* Few css fixes
+* Update setting(s) class(es)
+* Several fixes
+** All credits for Niko Strijbol **
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -326,13 +332,28 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
-= 1.9.30 - 2015-11-01 =
+= 1.9.31 - 2016-09-05 = FIX
 
+* Added more help documentation
+* Fix Add new page button
+* Style improvement
+* Enable different size thumbnails only if the option is set
+* Wrong url fixed
+* Updated cropper library to the latest version
+* Fixed few things now working with several PHP versions.
+* Few css fixes
+* Update setting(s) class(es)
+* Several fixes
+** All credits for Niko Strijbol **
+
+= 1.9.30 - 2015-11-01 =
 * Completely admin rewrite (Credits to Niko Strijbol. See details on https://bitbucket.org/wpgetready/nextcellent/pull-requests/62/rewrite-admin-section)
 * Several fixes (Credits to Niko Strijbol)
 * Bios4 provided also German translation (Late credits (included in previous version))
 * Etard the Live Caster found a XSS vulnerability (Late credits (included in previous version))
 * Thomas Bloomberg Hansen: Dashicon in TinyMCE
+
+= Versions 1.9.28 & 1.9.29 - Skipped
 
 = 1.9.27 - 2015-10-01 =
 * Fixes for multisite  (credits to Niko Strijbol)

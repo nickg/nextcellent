@@ -96,6 +96,7 @@ add_action('wp_ajax_createNewThumb', 'createNewThumb');
 function new_thumbnail() {
 
 	global $ngg;
+	$ngg_options = get_option('ngg_options');
 
 	// check for correct capability
 	if ( !(is_user_logged_in() && current_user_can('NextGEN Manage gallery')) ) {
@@ -123,6 +124,19 @@ function new_thumbnail() {
 	}
 
 	$thumb->crop($x, $y, $w, $h);
+
+	$differentSizes = false;
+	if(isset($ngg_options['thumbDifferentSize'])) {
+		$differentSizes = (bool) $ngg_options['thumbDifferentSize'];
+	}
+
+	if(!$differentSizes) {
+		if($ngg_options['thumbfix']) {
+			$thumb->resizeFix((int) $ngg_options['thumbwidth'], (int) $ngg_options['thumbheight']);
+		} else {
+			$thumb->resize((int) $ngg_options['thumbwidth'], (int) $ngg_options['thumbheight']);
+		}
+	}
 
 	if ( $thumb->save($picture->thumbPath, 100)) {
 

@@ -42,7 +42,7 @@ abstract class NGG_Abstract_Image_Manager extends NGG_Manager {
 				var $this = jQuery(this);
 				var action = $this.data("action");
 				var id = $this.data("id");
-				var base_url = "<?php echo esc_js(NGGALLERY_URLPATH) . "admin/manage/actions.php?cmd=" ?>";
+				var base_url = "<?php echo plugins_url('actions.php?cmd=', __FILE__) ?>";
 
 				if (!$spinner.length) {
 					jQuery("body").append('<div id="spinner"></div>');
