@@ -171,7 +171,7 @@ class NGG_Gallery_List_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 
-		return $this::get_columns_static();
+		return self::get_columns_static();
 	}
 
 	/**

@@ -211,10 +211,14 @@ class NGG_Image_List_Table extends WP_List_Table {
 				return '<textarea placeholder="' . __( "Separated by commas",
 					'nggallery' ) . '" name="tags[' . $item->pid . ']" style="width:95%;" rows="2">' . $item->tags . '</textarea>';
 			case 'exclude':
-				return '<input name="exclude[' . $item->pid . ']" type="checkbox" value="1" ' . checked( $item->exclude ) . '/>';
+				return '<input name="exclude[' . $item->pid . ']" type="checkbox" value="1" ' . checked( $item->exclude, true, false ) . '/>';
 			default:
 				ob_start();
-				do_action( 'ngg_manage_image_custom_column', $column_name, $item );
+				//The old action needs a pid.
+				do_action( 'ngg_manage_image_custom_column', $column_name, $item->pid );
+
+				//We pass the whole object to new action.
+				do_action( 'ncg_manage_image_custom_column', $column_name, $item );
 
 				return ob_get_clean();
 		}
@@ -247,7 +251,7 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 
-		return $this::get_columns_static();
+		return self::get_columns_static();
 	}
 
 	/**

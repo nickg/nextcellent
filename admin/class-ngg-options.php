@@ -357,7 +357,7 @@ class NGG_Options extends NGG_Post_Admin_Page {
 		<h3><?php _e('Image settings','nggallery'); ?></h3>
 		<form name="imagesettings" method="POST" action="<?php echo $this->page.'#images'; ?>">
 			<?php wp_nonce_field('ngg_settings') ?>
-			<input type="hidden" name="page_options" value="imgResize,imgWidth,imgHeight,imgQuality,imgBackup,imgAutoResize,thumbwidth,thumbheight,thumbfix,thumbquality">
+			<input type="hidden" name="page_options" value="imgResize,imgWidth,imgHeight,imgQuality,imgBackup,imgAutoResize,thumbwidth,thumbheight,thumbfix,thumbquality,thumbDifferentSize">
 			<table class="form-table ngg-options">
 				<tr>
 					<th><?php _e('Resize images','nggallery') ?></th>
@@ -393,7 +393,16 @@ class NGG_Options extends NGG_Post_Admin_Page {
 				</tr>
 			</table>
 		<h3><?php _e('Thumbnail settings','nggallery'); ?></h3>
-			<p><?php _e('Please note: if you change these settings, you need to recreate the thumbnails under -> Manage Gallery .', 'nggallery') ?></p>
+			<table class="form-table ngg-options">
+				<tr>
+					<th><?php _e('Different sizes','nggallery'); ?></th>
+					<td>
+						<input type="checkbox" name="thumbDifferentSize" id="thumbDifferentSize" value="true" <?php checked( $options['thumbDifferentSize']); ?>>
+						<label for="thumbDifferentSize"><?php _e('Allows you to make thubnails with dimensions that differ from the rest of the gallery.','nggallery') ?></label>
+					</td>
+				</tr>
+			</table>
+			<p><?php _e('Please note: if you change the settings below settings, you need to recreate the thumbnails under -> Manage Gallery .', 'nggallery') ?></p>
 			<table class="form-table ngg-options">
 				<tr>
 					<th><?php _e('Thumbnail size','nggallery'); ?></th>

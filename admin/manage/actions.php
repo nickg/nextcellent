@@ -240,6 +240,13 @@ function ngg_edit_thumbnail( $id ) {
 	$width  = $picture->meta_data['width'];
 	$height = $picture->meta_data['height'];
 
+	$ngg_options = get_option('ngg_options');
+
+	$differentSizes = false;
+	if(isset($ngg_options['thumbDifferentSize'])) {
+		$differentSizes = (bool) $ngg_options['thumbDifferentSize'];
+	}
+
 	?>
 	<table style="width: 100%">
 		<tr>
@@ -304,37 +311,36 @@ function ngg_edit_thumbnail( $id ) {
 							<input id="dataY" type="number" placeholder="0"> <?php _e( 'px', 'nggallery' ) ?>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<label for="dataWidth"><?php _e( 'Width', 'nggallery' ) ?></label>
-						</td>
-						<td style="text-align: right">
-							<input id="dataWidth" type="number" placeholder="<?php echo $width ?>"> <?php _e( 'px',
-								'nggallery' ) ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="dataHeight"><?php _e( 'Height', 'nggallery' ) ?></label>
-						</td>
-						<td style="text-align: right">
-							<input id="dataHeight" type="number" placeholder="<?php echo $height ?>"> <?php _e( 'px',
-								'nggallery' ) ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="dataRotate"><?php _e( 'Rotation', 'nggallery' ) ?></label>
-						</td>
-						<td style="text-align: right">
-							<?php /* translators: stands for degrees, as in a rotation. Should be pretty short. */ ?>
-							<input id="dataRotate" type="number" placeholder="0"> <?php _e( 'deg', 'nggallery' ) ?>
-						</td>
-					</tr>
+					<?php if($differentSizes): ?>
+						<tr>
+							<td>
+								<label for="dataWidth"><?php _e( 'Width', 'nggallery' ) ?></label>
+							</td>
+							<td style="text-align: right">
+								<input id="dataWidth" type="number" placeholder="<?php echo $width ?>"> <?php _e( 'px', 'nggallery' ) ?>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="dataHeight"><?php _e( 'Height', 'nggallery' ) ?></label>
+							</td>
+							<td style="text-align: right">
+								<input id="dataHeight" type="number" placeholder="<?php echo $height ?>"> <?php _e( 'px', 'nggallery' ) ?>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="dataRotate"><?php _e( 'Rotation', 'nggallery' ) ?></label>
+							</td>
+							<td style="text-align: right">
+								<?php /* translators: stands for degrees, as in a rotation. Should be pretty short. */ ?>
+								<input id="dataRotate" type="number" placeholder="0"> <?php _e( 'deg', 'nggallery' ) ?>
+							</td>
+						</tr>
+					<?php endif; ?>
 					<tr>
 						<td colspan="2" style="text-align: right">
-							<button class="button button-secondary" type="button" id="apply-data" title="<?php _e( 'Apply the parameters',
-								'nggallery' ); ?>">
+							<button class="button button-secondary" type="button" id="apply-data" title="<?php _e( 'Apply the parameters', 'nggallery' ); ?>">
 								<?php _e( 'Apply', 'nggallery' ); ?>
 							</button>
 						</td>
@@ -413,8 +419,13 @@ function ngg_edit_thumbnail( $id ) {
 			 */
 			jQuery("#center-selection").click(function() {
 
+				<?php if($differentSizes): ?>
 				var width = parseInt($dataWidth.val());
 				var height = parseInt($dataHeight.val());
+				<?php else: ?>
+				var width = <?php echo esc_js( $ngg_options['thumbwidth'] ) ?>;
+				var height = <?php echo esc_js( $ngg_options['thumbheight'] ) ?>;
+				<?php endif; ?>
 				var img_width = <?php echo esc_js( $width ) ?>;
 				var img_height = <?php echo esc_js( $height ) ?>;
 
@@ -438,7 +449,10 @@ function ngg_edit_thumbnail( $id ) {
 					$dataHeight.val(Math.round(data.height));
 					$dataWidth.val(Math.round(data.width));
 					$dataRotate.val(Math.round(data.rotate));
-				}
+				},
+				<?php if(!$differentSizes): ?>
+				aspectRatio: <?php echo esc_js( $ngg_options['thumbwidth'] ) ?> / <?php echo esc_js( $ngg_options['thumbheight'] ) ?>
+				<?php endif; ?>
 			});
 		});
 	</script>
