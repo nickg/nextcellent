@@ -243,7 +243,7 @@ abstract class NGG_Manager implements NGG_Displayable {
 			}
 
 			function set_TB_command(id, command) {
-				jQuery('#' + id + "_dialog #TB_action").val(command);
+				jQuery('#' + id + "_dialog input[name=TB_action]").val(command);
 			}
 
 			function ajaxOperation(command, title, $selected, warning) {

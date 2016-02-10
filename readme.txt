@@ -8,7 +8,7 @@ License: GPLv2
 
 == Description ==
 
-= 1.9.31 - 2016-09-05 = Fixes for 1.9.30
+= 1.9.31 - 2016-02-09 = Fixes for 1.9.30
 
  What's in it for you?
 
@@ -332,7 +332,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
-= 1.9.31 - 2016-02-05 = FIX
+= 1.9.31 - 2016-02-09 = FIX
 
 * Added more help documentation
 * Fix Add new page button
@@ -346,7 +346,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 * Several fixes
 ** All credits for Niko Strijbol **
 
-= 1.9.30 - 2015-11-01 =
+= 1.9.30 - 2016-02-02 =
 * Completely admin rewrite (Credits to Niko Strijbol. See details on https://bitbucket.org/wpgetready/nextcellent/pull-requests/62/rewrite-admin-section)
 * Several fixes (Credits to Niko Strijbol)
 * Bios4 provided also German translation (Late credits (included in previous version))
