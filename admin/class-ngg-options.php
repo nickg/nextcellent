@@ -398,7 +398,7 @@ class NGG_Options extends NGG_Post_Admin_Page {
 					<th><?php _e('Different sizes','nggallery'); ?></th>
 					<td>
 						<input type="checkbox" name="thumbDifferentSize" id="thumbDifferentSize" value="true" <?php checked( $options['thumbDifferentSize']); ?>>
-						<label for="thumbDifferentSize"><?php _e('Allows you to make thubnails with dimensions that differ from the rest of the gallery.','nggallery') ?></label>
+						<label for="thumbDifferentSize"><?php _e('Allows you to make thumbnails with dimensions that differ from the rest of the gallery.','nggallery') ?></label>
 					</td>
 				</tr>
 			</table>
