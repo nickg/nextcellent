@@ -11,14 +11,13 @@
 
     nggAjax = {
 
-        run: function(index, data) {
+        run: function(index) {
             s = this.settings;
 
             var req = $.ajax({
                 type: "POST",
                 url: s.url,
-                //data: "action=" + s.action + "&operation=" + s.operation + "&_wpnonce=" + s.nonce + "&image=" + s.ids[index],
-                data: data,
+                data: "action=" + s.action + "&operation=" + s.operation + "&_wpnonce=" + s.nonce + "&image=" + s.ids[index],
                 cache: false,
                 timeout: 10000,
                 success: function(msg) {
@@ -47,20 +46,19 @@
                     nggProgressBar.increase(index);
                     // parse the whole array
                     if (index < nggAjax.settings.ids.length)
-                        nggAjax.run(index, data);
+                        nggAjax.run(index);
                     else
                         nggProgressBar.finished();
                 }
             });
         },
 
-        readIDs: function(index, operation, next, data) {
+        readIDs: function(index, operation, next) {
             s = this.settings;
-
             var req = $.ajax({
                 type: "POST",
                 url: s.url,
-                data: data,
+                data: "action=" + s.action + "&operation=" + operation + "&_wpnonce=" + s.nonce + "&image=" + s.ids[index],
                 dataType: "json",
                 cache: false,
                 timeout: 10000,
@@ -76,7 +74,7 @@
                     nggProgressBar.increase(index);
                     // parse the whole array
                     if (index < nggAjax.settings.ids.length)
-                        nggAjax.readIDs(index, operation, next, data);
+                        nggAjax.readIDs(index);
                     else {
                         // and now run the image operation
                         index = 0;
@@ -84,7 +82,7 @@
                         nggAjax.settings.operation = next;
                         nggAjax.settings.maxStep = imageIDS.length;
                         nggProgressBar.init(nggAjax.settings);
-                        nggAjax.run(index, data);
+                        nggAjax.run(index);
                     }
                 }
             });
@@ -108,18 +106,8 @@
                 error: nggAjaxSetup.error,
                 failure: nggAjaxSetup.failure,
                 timeout: 10000,
-                mode: "image",
-                data: {}
+                mode: "image"
             }, this.settings, s);
-
-            var data = {};
-
-            $.extend(data, {
-                action: this.settings.action,
-                operation: this.settings.operation,
-                '_wpnonce': this.settings.nonce,
-                image: this.settings.ids[index]
-            }, this.settings.data);
 
             /**
              * If the mode is gallery, we must first get the image ID's from the galleries.
@@ -129,13 +117,13 @@
             if (this.settings.operation.substring(0, 8) === 'gallery_') {
                 //first run, get all the ids
                 imageIDS = [];
-                this.readIDs(index, 'get_image_ids', this.settings.operation.substring(8), data);
+                this.readIDs(index, 'get_image_ids', this.settings.operation.substring(8));
             } else if(this.settings.mode === "gallery") {
                 //first run, get all the ids
                 imageIDS = [];
-                this.readIDs(index, 'get_image_ids', this.settings.operation, data);
+                this.readIDs(index, 'get_image_ids', this.settings.operation);
             } else {
-                this.run(index, data);
+                this.run(index);
             }
         }
     }
