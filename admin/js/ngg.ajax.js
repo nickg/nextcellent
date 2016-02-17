@@ -70,7 +70,7 @@
 
             $.extend(data, {
                 action: this.settings.action,
-                operation: this.settings.operation,
+                operation: operation,
                 '_wpnonce': this.settings.nonce,
                 image: this.settings.ids[index]
             }, s.data);
