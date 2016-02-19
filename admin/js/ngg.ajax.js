@@ -14,10 +14,20 @@
         run: function(index) {
             s = this.settings;
 
+            var data = {};
+
+            $.extend(data, {
+                action: this.settings.action,
+                operation: this.settings.operation,
+                '_wpnonce': this.settings.nonce,
+                image: this.settings.ids[index]
+            }, s.data);
+
             var req = $.ajax({
                 type: "POST",
                 url: s.url,
-                data: "action=" + s.action + "&operation=" + s.operation + "&_wpnonce=" + s.nonce + "&image=" + s.ids[index],
+                //data: "action=" + s.action + "&operation=" + s.operation + "&_wpnonce=" + s.nonce + "&image=" + s.ids[index],
+                data: data,
                 cache: false,
                 timeout: 10000,
                 success: function(msg) {
@@ -55,10 +65,20 @@
 
         readIDs: function(index, operation, next) {
             s = this.settings;
+
+            var data = {};
+
+            $.extend(data, {
+                action: this.settings.action,
+                operation: operation,
+                '_wpnonce': this.settings.nonce,
+                image: this.settings.ids[index]
+            }, s.data);
+
             var req = $.ajax({
                 type: "POST",
                 url: s.url,
-                data: "action=" + s.action + "&operation=" + operation + "&_wpnonce=" + s.nonce + "&image=" + s.ids[index],
+                data: data,
                 dataType: "json",
                 cache: false,
                 timeout: 10000,
@@ -74,7 +94,7 @@
                     nggProgressBar.increase(index);
                     // parse the whole array
                     if (index < nggAjax.settings.ids.length)
-                        nggAjax.readIDs(index);
+                        nggAjax.readIDs(index, operation, next);
                     else {
                         // and now run the image operation
                         index = 0;
@@ -106,7 +126,8 @@
                 error: nggAjaxSetup.error,
                 failure: nggAjaxSetup.failure,
                 timeout: 10000,
-                mode: "image"
+                mode: "image",
+                data: {}
             }, this.settings, s);
 
             /**
