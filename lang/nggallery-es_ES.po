@@ -1,0 +1,3935 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NextCellent\n"
+"POT-Creation-Date: 2016-02-15 16:58-0300\n"
+"PO-Revision-Date: 2016-02-15 17:11-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-KeywordsList: _n;__;_e;esc_attr_e;esc_html_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../admin/ajax.php:372
+msgid "You are not allowed to be here"
+msgstr ""
+
+#: ../admin/ajax.php:470
+#, php-format
+msgid "Could create image with %s x %s pixel"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:34 ../admin/class-ngg-adder.php:48
+#: ../admin/class-ngg-adder.php:62 ../admin/class-ngg-adder.php:75
+#: ../admin/class-ngg-album-manager.php:82
+#: ../admin/class-ngg-album-manager.php:119
+#: ../admin/class-ngg-album-manager.php:143 ../admin/manage/actions.php:12
+msgid "Cheatin&#8217; uh?"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:54 ../admin/class-ngg-adder.php:91
+msgid "Upload failed!"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:81
+msgid "Upload failed! "
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:88 ../admin/class-ngg-adder.php:335
+#: ../admin/class-ngg-admin-launcher.php:296
+msgid "You didn't select a gallery!"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:162 ../admin/class-ngg-admin-launcher.php:65
+#: ../admin/class-ngg-admin-launcher.php:66
+msgid "Add Gallery / Images"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:199
+msgid "Image Files"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:224
+msgid "remove"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:225 ../admin/class-ngg-adder.php:488
+msgid "Browse..."
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:226 ../admin/class-ngg-adder.php:264
+#: ../admin/class-ngg-adder.php:506 ../admin/class-ngg-adder.php:557
+msgid "Upload images"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:307
+#: ../admin/manage/class-ngg-image-manager.php:90
+msgid ""
+"This will change folder and file names (e.g. remove spaces, special "
+"characters, ...)"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:309
+#: ../admin/manage/class-ngg-image-manager.php:92
+msgid "You will need to update your URLs if you link directly to the images."
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:311
+#: ../admin/manage/class-ngg-image-manager.php:94
+msgid "Press OK to proceed, and Cancel to stop."
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:343 ../admin/class-ngg-adder.php:351
+msgid "You didn't select a file!"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:370 ../admin/class-ngg-admin-launcher.php:474
+msgid "New gallery"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:373 ../admin/class-ngg-admin-launcher.php:482
+#: ../admin/class-ngg-admin-launcher.php:519
+#: ../admin/class-ngg-admin-launcher.php:619 ../admin/class-ngg-options.php:210
+#: ../admin/manage/class-ngg-gallery-list-table.php:157
+msgid "Images"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:376 ../admin/class-ngg-admin-launcher.php:486
+msgid "ZIP file"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:379 ../admin/class-ngg-adder.php:497
+#: ../admin/class-ngg-admin-launcher.php:490
+msgid "Import folder"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:390
+#: ../admin/manage/class-ngg-gallery-manager.php:67
+msgid "Add a new gallery"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:395 ../admin/class-ngg-album-manager.php:580
+#: ../admin/manage/actions.php:128 ../admin/manage/actions.php:156
+#: ../admin/manage/actions.php:181 ../admin/manage/actions.php:203
+#: ../admin/manage/class-ngg-gallery-manager.php:83
+msgid "Name"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:400
+#, php-format
+msgid "Create a new, empty gallery in the folder <strong>%s</strong>"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:403
+#, php-format
+msgid "Allowed characters for file and folder names are \"%s\"."
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:408 ../admin/class-ngg-admin-launcher.php:538
+#: ../admin/class-ngg-style.php:294
+#: ../admin/manage/class-ngg-gallery-list-table.php:154
+#: ../admin/manage/class-ngg-image-list-table.php:187
+#: ../admin/manage/class-ngg-image-list-table.php:236
+#: ../admin/manage/class-ngg-image-manager.php:178
+#: ../admin/media-upload.php:225
+msgid "Description"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:412
+msgid "Add a description. This is optional and can be changed later."
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:419
+msgid "Add gallery"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:428
+msgid "Upload a ZIP File"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:433
+msgid "Select ZIP file"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:437
+msgid "Upload a ZIP file with images"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:443
+msgid "or enter URL"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:447
+msgid "Import a ZIP file from a URL"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:453 ../admin/class-ngg-adder.php:512
+msgid "in to"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:456
+msgid "a new gallery"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:461
+#, php-format
+msgid "Note: the upload limit on your server is <strong>%s MB</strong>."
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:471
+msgid "Start upload"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:480
+msgid "Import an image folder"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:485
+msgid "Import from server:"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:491
+msgid "Note: you can change the default path in the gallery settings"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:514
+msgid "Choose gallery"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:530
+msgid "Drop your files in this window"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:532
+msgid "Or"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:534
+msgid "Select Files"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:553
+msgid "Click here to use the browser upload instead"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:553
+msgid "Use basic uploader"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:555
+msgid "Advanced uploading"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:555
+msgid "Use advanced uploader"
+msgstr ""
+
+#: ../admin/class-ngg-adder.php:560
+#, php-format
+msgid "Your images will be rescaled to max width %1$dpx or max height %2$dpx."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:58
+#: ../admin/class-ngg-admin-launcher.php:69
+#: ../admin/class-ngg-admin-launcher.php:107
+#: ../admin/class-ngg-admin-launcher.php:414
+#: ../admin/class-ngg-admin-launcher.php:510
+#: ../admin/manage/class-ngg-gallery-manager.php:33
+msgid "Galleries"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:61
+#: ../admin/class-ngg-admin-launcher.php:528 ../nggallery.php:724
+#: ../nggfunctions.php:966
+msgid "Overview"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:73
+#: ../admin/class-ngg-album-manager.php:286 ../nggallery.php:430
+msgid "Albums"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:77 ../admin/class-ngg-options.php:334
+#: ../admin/class-ngg-tag-manager.php:102
+#: ../admin/manage/class-ngg-image-list-table.php:237 ../lib/meta.php:459
+#: ../nggallery.php:438
+msgid "Tags"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:81 ../admin/class-ngg-options.php:116
+#: ../nggallery.php:446
+msgid "Settings"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:86 ../nggallery.php:454
+msgid "Style"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:91
+msgid "Roles"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:97
+#: ../admin/class-ngg-admin-launcher.php:114
+msgid "Reset / Uninstall"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:110
+msgid "Network settings"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:270
+msgid "You do not have the correct permission"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:271
+msgid "Unexpected Error"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:272
+msgid "A failure occurred"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:276
+msgid "You have attempted to queue too many files."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:277
+msgid "This file exceeds the maximum upload size for this site."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:278
+msgid "This file is empty. Please try another."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:279
+msgid "This file type is not allowed. Please try another."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:280
+msgid "This file is not an image. Please try another."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:281
+msgid "Memory exceeded. Please try another smaller file."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:282
+msgid "This is larger than the maximum size. Please try another."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:283
+msgid "An error occurred in the upload. Please try again later."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:284
+msgid ""
+"There was a configuration error. Please contact the server administrator."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:285
+msgid "You may only upload 1 file."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:286
+msgid "HTTP error."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:287
+msgid "Upload failed."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:288
+msgid "IO error."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:289
+msgid "Security error."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:290
+msgid "File canceled."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:291
+msgid "Upload stopped."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:292
+msgid "Dismiss"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:293
+msgid "Crunching&hellip;"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:294
+msgid "moved to the trash."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:295
+#, php-format
+msgid "&#8220;%s&#8221; has failed to upload due to an error"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:318 ../nggallery.php:489
+msgid "L O A D I N G"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:319 ../nggallery.php:490
+msgid "Click to Close"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:419
+msgid ""
+"Welcome to your NextCellent Dashboard! This screen gives you all kinds of "
+"information about NextCellent at glance. You can get help for any screen by "
+"clicking the Help tab in the upper corner."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:428
+msgid "The boxes on your overview screen are:"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:429 ../admin/class-ngg-overview.php:13
+msgid "At a Glance"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:430
+msgid ""
+"Shows some general information about your site, such as the number of "
+"pictures, albums and galleries."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:432 ../admin/class-ngg-overview.php:21
+msgid "Latest News"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:433
+msgid "The latest NextCellent news."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:435 ../admin/class-ngg-overview.php:34
+msgid "Related plugins"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:436
+msgid "Shows plugins that extend NextCellent."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:437
+msgid "Pay attention"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:438
+#, php-format
+msgid ""
+"third parties plugins that are compatible with NGG may not be "
+"100% compatible with NextCellent Gallery!"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:441 ../admin/class-ngg-overview.php:17
+msgid "Help me help YOU!"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:442
+msgid "Shows general information about he plugin and some links."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:445
+msgid "Translation"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:446
+msgid "View information about the current translation."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:449 ../admin/class-ngg-overview.php:30
+msgid "Server Settings"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:450
+msgid "Show all the server settings!."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:452 ../admin/class-ngg-overview.php:26
+msgid "Plugin Check"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:453
+msgid "Check if there are known errors in your installation."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:471
+msgid "On this page you can add galleries and pictures to those galleries."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:475
+msgid "Add new galleries to NextCellent."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:479
+msgid "You must add a gallery before adding images!"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:483
+msgid "Add new images to a gallery."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:487
+msgid "Add images from a ZIP file."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:491
+msgid "Import a folder from the server as a new gallery."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:524
+msgid "This box contains information and the various options a gallery had."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:532
+msgid "Manage a single gallery and the images it contains:"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:535
+#: ../admin/class-ngg-album-manager.php:582
+#: ../admin/manage/class-ngg-gallery-list-table.php:153
+#: ../admin/manage/class-ngg-image-manager.php:164 ../lib/meta.php:457
+#: ../widgets/class-ngg-media-rss-widget.php:90
+msgid "Title"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:536
+msgid ""
+"The title of the gallery. This can be visible to the users of the website. "
+"This has no effect on the gallery path."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:539
+msgid ""
+"The description of the gallery. Albums using the \"extend\" template may "
+"display this on the website. The description cannot contain HTML."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:541
+#: ../admin/manage/class-ngg-image-manager.php:211
+msgid "Path"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:542
+msgid ""
+"The path on the server to the folder containing this gallery. If you change "
+"this, NextCellent will not move the gallery for you."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:544
+#: ../admin/manage/class-ngg-image-manager.php:221
+#: ../admin/manage/class-ngg-search-manager.php:63
+msgid "Gallery ID"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:545
+msgid ""
+"The internal ID used by NextCellent to represent this gallery. This "
+"information can be useful for developers. A gallery ID should never change."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:547
+#: ../admin/manage/class-ngg-image-manager.php:168
+msgid "Page Link"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:548
+msgid ""
+"With this option you can select the behavior when an user clicks on a "
+"gallery in an album. If the option is set to \"not linked\", the gallery "
+"will be displayed on the same page. If you do select a page, the user will "
+"be redirected to that page."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:549
+#, php-format
+msgid "More information about this is available on this webpage: %s"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:549
+msgid "page"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:551
+#: ../admin/manage/class-ngg-image-manager.php:182
+msgid "Preview image"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:552
+msgid ""
+"This image will be shown when the gallery is shown on the website and it "
+"needs a preview, e.g. an album. If you do not select a preview image, "
+"NextCellent will use the last uploaded image of the gallery."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:554 ../admin/class-ngg-style.php:291
+#: ../admin/manage/class-ngg-gallery-list-table.php:155
+#: ../admin/manage/class-ngg-image-manager.php:217 ../lib/meta.php:458
+msgid "Author"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:555
+msgid "The user who created this gallery."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:557
+#: ../admin/manage/class-ngg-image-manager.php:224
+msgid "Create new page"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:558
+msgid ""
+"This will create a new page with the same name as the gallery, and include a "
+"shortcode for this gallery in it."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:563 ../admin/class-ngg-options.php:447
+#: ../admin/manage/class-ngg-image-manager.php:159
+msgid "Gallery settings"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:567
+msgid "There are three buttons:"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:570
+#: ../admin/manage/class-ngg-image-manager.php:243
+msgid "Sort gallery"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:571
+msgid ""
+"Allows you to manually set the order of the images in the gallery. This will "
+"only be enabled if you have selected the option \"Custom sort order\" in the "
+"NextCellent settings."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:573
+#: ../admin/manage/class-ngg-image-manager.php:246
+msgid "Scan folder for new images"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:574
+msgid ""
+"Scan the folder (the path of the gallery) for new images and add them to the "
+"gallery. <strong>Warning!</strong> This will normalize and rename the images "
+"that are added, e.g. spaces are removed."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:576
+msgid "Save"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:577
+msgid "Save changes you have made to the gallery options."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:583
+msgid "Buttons"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:592
+msgid "Organize your galleries into albums."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:593
+msgid ""
+"First select an album from the dropdown and then drag the galleries you want "
+"to add or remove from the selected album."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:603
+msgid "Organize your pictures with tags."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:604
+msgid "Rename, delete and edit tags. Use the rename function to merge tags."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:614
+msgid ""
+"Edit all of NextCellent's options. The options are sorted in multiple "
+"categories."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:616 ../admin/class-ngg-options.php:209
+msgid "General"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:617
+msgid ""
+"General NextCellent options. Contains options for permalinks and related "
+"images."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:620
+msgid "All image-related options. Also contains options for thumbnails."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:622 ../admin/class-ngg-options.php:211
+#: ../admin/class-ngg-overview.php:59 ../admin/functions.php:212
+#: ../admin/functions.php:374 ../admin/manage/class-ngg-image-manager.php:155
+#: ../admin/tinymce/window.php:120 ../admin/tinymce/window.php:153
+#: ../admin/tinymce/window.php:277 ../admin/tinymce/window.php:398
+#: ../admin/tinymce/window.php:449 ../lib/rewrite.php:220
+#: ../lib/rewrite.php:229 ../nggallery.php:422
+msgid "Gallery"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:623
+msgid ""
+"Everything about galleries. From sorting options to the number of images, "
+"it's all in here."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:625 ../admin/class-ngg-options.php:212
+#: ../admin/class-ngg-options.php:592
+msgid "Effects"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:626
+msgid "Make your gallery look beautiful."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:628 ../admin/class-ngg-options.php:213
+#: ../admin/class-ngg-options.php:646 ../admin/tinymce/window.php:329
+msgid "Watermark"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:629
+msgid "Who doesn't want theft-proof images?"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:631 ../admin/class-ngg-options.php:214
+#: ../admin/class-ngg-options.php:476 ../admin/class-ngg-options.php:502
+#: ../admin/class-ngg-options.php:798 ../admin/tinymce/window.php:159
+#: ../lib/rewrite.php:218 ../widgets/class-ngg-slideshow-widget.php:28
+#: ../widgets/class-ngg-slideshow-widget.php:93
+msgid "Slideshow"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:632
+msgid "Edit options for the slideshow."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:633
+msgid "Don't forget to press save!"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:642
+msgid "You can edit the css file to adjust how your gallery looks."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:644
+msgid ""
+"When you save an edited file, NextCellent automatically saves it as a copy "
+"in the folder ngg_styles. This protects your changes from upgrades."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:654
+msgid ""
+"You can assign the lowest user role that has access to a certain feature. "
+"Needless to say, all greater user roles will also have access to that "
+"feature."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:656
+msgid ""
+"NextCellent also works with various plugins that extend the default roles "
+"capabilities."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:666
+msgid ""
+"If 'someone' messed with your settings (yeah, definitely not you), you can "
+"reset them here."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:668
+msgid "Attention!"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:669
+msgid ""
+"You should not use the Uninstall Plugin button, unless you know what you're "
+"doing! It should never be necessary to press it."
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:682
+msgid "For more information:"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:683
+msgid "Support Forums"
+msgstr ""
+
+#: ../admin/class-ngg-admin-launcher.php:685
+msgid "Source Code"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:92
+#: ../admin/class-ngg-album-manager.php:112
+#: ../admin/class-ngg-album-manager.php:161
+msgid "Updated successfully"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:131
+msgid "Album deleted"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:277 ../admin/class-ngg-roles.php:47
+msgid "Edit Album"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:294
+#: ../admin/class-ngg-album-manager.php:352
+msgid "Select album"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:296
+msgid "No album selected"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:307
+msgid "Update"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:310
+msgid "Edit album"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:314
+#: ../admin/class-ngg-tag-manager.php:229
+#: ../admin/manage/class-ngg-gallery-list-table.php:210
+#: ../admin/manage/class-ngg-image-list-table.php:289
+msgid "Delete"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:320
+msgid "Add new album"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:322
+msgid "Add"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:334
+msgid "Show / hide used galleries"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:335
+msgid "[Show all]"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:336
+msgid "Maximize the widget content"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:337
+msgid "[Maximize]"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:338
+msgid "Minimize the widget content"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:339
+msgid "[Minimize]"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:341
+msgid ""
+"After you create and select a album, you can drag and drop a gallery or "
+"another album into your new album below"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:368
+msgid "Select gallery"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:398
+msgid "Album ID"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:412
+msgid "No album selected!"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:436
+msgid "Album name:"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:442
+msgid "Album description:"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:448
+msgid "Select a preview image:"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:451
+#: ../admin/class-ngg-album-manager.php:454
+msgid "No picture"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:466
+msgid "Page Link to"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:468
+#: ../admin/manage/class-ngg-image-manager.php:172
+msgid "Not linked"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:482
+#: ../admin/manage/class-ngg-manager.php:308
+msgid "OK"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:485
+#: ../admin/manage/class-ngg-manager.php:300 ../admin/tinymce/window.php:472
+msgid "Cancel"
+msgstr ""
+
+#: ../admin/class-ngg-album-manager.php:584 ../lib/rewrite.php:232
+msgid "Page"
+msgstr ""
+
+#: ../admin/class-ngg-installer.php:29
+msgid "Sorry, NextCellent Gallery works only with a role called administrator"
+msgstr ""
+
+#: ../admin/class-ngg-installer.php:112
+msgid ""
+"NextCellent Gallery : Tables could not created, please check your database "
+"settings"
+msgstr ""
+
+#: ../admin/class-ngg-installer.php:172
+msgid "[Show as slideshow]"
+msgstr "[Mostrar como slide]"
+
+#: ../admin/class-ngg-installer.php:173
+msgid "[Show picture list]"
+msgstr "[Mostrar lista imágenes]"
+
+#: ../admin/class-ngg-options.php:72
+msgid "Settings updated successfully"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:90
+msgid "Cache cleared"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:227
+msgid "General settings"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:233 ../admin/wpmu.php:85
+msgid "Gallery path"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:236
+msgid "This is the default path for all galleries"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:240 ../admin/wpmu.php:95
+msgid "Silent database upgrade"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:243 ../admin/wpmu.php:98
+msgid "Update the database without notice."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:247
+msgid "Image files"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:251
+msgid "Delete files when removing a gallery from the database"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:256
+msgid "Select graphic library"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:261
+msgid "GD Library"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:265
+msgid "ImageMagick (Experimental)"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:269
+msgid "Path to the ImageMagick library:"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:275
+msgid "Media RSS feed"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:278
+msgid "Add a RSS feed to you blog header. Useful for CoolIris/PicLens"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:282
+msgid "PicLens/CoolIris"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:285
+msgid "Include support for PicLens and CoolIris"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:286
+msgid ""
+"When activated, JavaScript is added to your site footer. Make sure that "
+"wp_footer is called in your theme."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:290
+msgid "Permalinks"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:293
+msgid "Use permalinks"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:296
+msgid "Adds a static link to all images"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:297
+msgid ""
+"When activating this option, you need to update your permalink structure once"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:301
+msgid "Gallery slug:"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:307
+msgid "Recreate URLs"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:309
+msgid "Start now &raquo;"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:310
+msgid "If you've changed these settings, you'll have to recreate the URLs."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:314
+msgid "Related images"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:317
+msgid "Add related images"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:320
+msgid "This will add related images to every post"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:324
+msgid "Match with"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:329
+msgid "Categories"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:340
+msgid "Max. number of images"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:343
+msgid "0 will show all images"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:347 ../admin/class-ngg-options.php:436
+#: ../admin/class-ngg-options.php:582 ../admin/class-ngg-options.php:629
+#: ../admin/class-ngg-options.php:748 ../admin/class-ngg-options.php:907
+#: ../admin/manage/class-ngg-image-list-table.php:95
+#: ../admin/manage/class-ngg-image-manager.php:249 ../admin/wpmu.php:149
+msgid "Save Changes"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:357
+msgid "Image settings"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:363
+#: ../admin/manage/class-ngg-gallery-list-table.php:213
+#: ../admin/manage/class-ngg-image-list-table.php:307
+#: ../admin/manage/class-ngg-manager.php:194
+#: ../admin/manage/class-ngg-manager.php:349
+msgid "Resize images"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:365 ../admin/class-ngg-options.php:410
+#: ../admin/class-ngg-options.php:810 ../admin/manage/actions.php:317
+#: ../admin/manage/class-ngg-manager.php:60
+#: ../admin/manage/class-ngg-manager.php:83 ../admin/tinymce/window.php:210
+#: ../admin/tinymce/window.php:318
+msgid "Width"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:367 ../admin/class-ngg-options.php:412
+#: ../admin/class-ngg-options.php:812 ../admin/manage/actions.php:325
+#: ../admin/manage/class-ngg-manager.php:62
+#: ../admin/manage/class-ngg-manager.php:85 ../admin/tinymce/window.php:211
+#: ../admin/tinymce/window.php:320
+msgid "Height"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:369 ../admin/manage/class-ngg-manager.php:65
+msgid ""
+"Width and height (in pixels). NextCellent Gallery will keep the ratio size."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:373
+msgid "Image quality"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:377
+msgid "Backup original"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:381
+msgid "Create a backup for the resized images"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:386
+msgid "Automatically resize"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:390
+msgid "Automatically resize images on upload."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:395
+msgid "Thumbnail settings"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:398
+msgid "Different sizes"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:401
+msgid ""
+"Allows you to make thumbnails with dimensions that differ from the rest of "
+"the gallery."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:405
+msgid ""
+"Please note: if you change the settings below settings, you need to recreate "
+"the thumbnails under -> Manage Gallery ."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:408
+msgid "Thumbnail size"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:414
+msgid "These values are maximum values."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:418 ../admin/manage/class-ngg-manager.php:94
+msgid "Fixed size"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:421
+msgid "Ignore the aspect ratio, so no portrait thumbnails."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:425
+msgid "Thumbnail quality"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:429
+msgid "Single picture"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:432
+msgid "Clear cache folder"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:433
+msgid "Proceed now &raquo;"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:453
+msgid "Inline gallery"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:456
+msgid "Galleries will not be shown on a subpage, but on the same page."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:460
+msgid "Images per page"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:463 ../admin/class-ngg-options.php:902
+msgid "images"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:464
+msgid "0 will disable pagination and show all images on one page."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:468
+msgid "Columns"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:471
+msgid "columns per page"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:472
+msgid ""
+"0 will display as much columns as possible. This is normally only required "
+"for captions below the images."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:480
+msgid "Enable slideshow"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:484
+msgid "Text to show:"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:488
+msgid ""
+"This is the text the visitors will have to click to switch between display "
+"modes."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:492
+msgid "Show first"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:497
+#: ../widgets/class-ngg-gallery-widget.php:110
+msgid "Thumbnails"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:505
+msgid "Choose what visitors will see first."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:509
+msgid "ImageBrowser"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:513
+msgid "Use ImageBrowser instead of another effect."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:518
+msgid "Hidden images"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:522
+msgid ""
+"Loads all images for the modal window, when pagination is used (like "
+"Thickbox, Lightbox etc.)."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:524
+msgid "Note: this increases the page load (possibly a lot)"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:528
+msgid "AJAX pagination"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:532
+msgid "Use AJAX pagination to browse images without reloading the page."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:534
+msgid "Note: works only in combination with the Shutter effect."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:538
+msgid "Sort options"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:541
+msgid "Sort thumbnails"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:546
+msgid "Custom order"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:550
+#: ../admin/manage/class-ngg-sort-manager.php:106
+msgid "Image ID"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:554
+msgid "File name"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:558
+msgid "Alt / Title text"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:562 ../view/imagebrowser-exif.php:58
+msgid "Date / Time"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:569
+msgid "Sort direction"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:573
+#: ../admin/manage/class-ngg-sort-manager.php:126
+msgid "Ascending"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:577
+#: ../admin/manage/class-ngg-sort-manager.php:131
+msgid "Descending"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:594
+msgid ""
+"Here you can select the thumbnail effect, NextCellent Gallery will integrate "
+"the required HTML code in the images. Please note that only the Shutter and "
+"Thickbox effect will automatic added to your theme."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:595
+msgid "There are some placeholders available you can use in the code below."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:598
+msgid "The gallery name."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:599
+msgid "The width of the image."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:600
+msgid "The height of the image."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:607
+msgid "JavaScript Thumbnail effect"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:610 ../admin/media-upload.php:232
+msgid "None"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:611
+msgid "Thickbox"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:612
+msgid "Lightbox"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:613
+msgid "Highslide"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:614
+msgid "Shutter"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:615
+msgid "PhotoSwipe"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:616 ../admin/tinymce/window.php:184
+msgid "Custom"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:621
+msgid "Link Code line"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:647
+msgid ""
+"Please note : you can only activate the watermark under -> Manage Galleries. "
+"This action cannot be undone."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:652
+msgid "Preview"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:653
+msgid "Select an image"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:658
+msgid "View full image"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:662 ../admin/class-ngg-options.php:666
+msgid "Position"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:686
+msgid "Offset"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:701
+msgid "Use image as watermark"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:704
+msgid "URL to file"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:708
+msgid "Use text as watermark"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:711
+msgid "Font"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:723
+msgid "This function will not work, cause you need the FreeType library"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:725
+msgid ""
+"You can upload more fonts in the folder <strong>nggallery/fonts</strong>"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:731 ../admin/manage/class-ngg-manager.php:81
+#: ../admin/media-upload.php:242
+msgid "Size"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:735
+msgid "Color"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:739
+msgid "Text"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:743
+msgid "Opaque"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:801
+msgid "Fit to space"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:804
+#: ../widgets/class-ngg-slideshow-widget.php:128
+msgid "Let the slideshow fit in the available space."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:808
+msgid "Default size"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:817
+msgid "Transition / Fade effect"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:822
+msgid "Attention Seekers"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:823
+msgid "Bouncing Entrances"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:824
+msgid "Fading Entrances"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:825
+msgid "Fading Exits"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:826
+msgid "Flippers"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:827
+msgid "Lightspeed"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:828
+msgid "Rotating Entrances"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:829
+msgid "Rotating Exits"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:830
+msgid "Specials"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:831
+msgid "Zoom Entrances"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:840
+msgid "These effects are powered by"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:840
+msgid "Click here for examples of all effects and to learn more."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:844
+msgid "Loop"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:847
+msgid "Infinity loop. Duplicate last and first items to get loop illusion."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:851
+msgid "Mouse/touch drag"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:854
+msgid "Enable dragging with the mouse (or touch)."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:858
+msgid "Previous / Next"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:861
+msgid "Show next/previous buttons."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:865
+msgid "Show dots"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:868
+msgid "Show dots for each image."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:872
+msgid "Autoplay"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:875
+msgid "Automatically play the images."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:879
+msgid "Duration"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:882
+msgid "sec."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:886
+msgid "Pause on hover"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:889
+msgid "Pause when hovering over the slideshow."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:893
+msgid "Click for next"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:896
+msgid "Click to go to the next image."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:899 ../admin/tinymce/window.php:197
+#: ../admin/tinymce/window.php:361 ../admin/tinymce/window.php:423
+msgid "Number of images"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:903
+msgid "Number of images to display when using random or latest."
+msgstr ""
+
+#: ../admin/class-ngg-options.php:966
+#, php-format
+msgid "Rebuild image structure : %s / %s images"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:967
+#, php-format
+msgid "Rebuild gallery structure : %s / %s galleries"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:968
+#, php-format
+msgid "Rebuild album structure : %s / %s albums"
+msgstr ""
+
+#: ../admin/class-ngg-options.php:1022
+msgid "Done."
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:39
+msgid "Contributors"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:53
+msgid "Here you can control your images, galleries and albums."
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:56
+msgid "Image"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:62 ../admin/tinymce/window.php:121
+#: ../admin/tinymce/window.php:236 ../lib/rewrite.php:226
+msgid "Album"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:67
+msgid "Add new pictures"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:104
+msgid "Storage Space"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:107
+msgid "Allowed"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:108
+#, php-format
+msgid "<a href=\"%1$s\" title=\"Manage Uploads\">%2$s MB</a>"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:111
+msgid "Used"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:112
+#, php-format
+msgid "<a href=\"%1$s\" title=\"Manage Uploads\">%2$s MB (%3$s%%)</a>"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:126
+#, php-format
+msgid ""
+"The newsfeed could not be loaded.  Check the <a href=\"%s\">front page</a> "
+"to check for updates."
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:137
+msgid "Untitled"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:305
+msgid "Running..."
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:349
+msgid "Check plugin/theme conflict"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:350 ../admin/class-ngg-overview.php:356
+#: ../admin/class-ngg-overview.php:362
+msgid "Not tested"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:351
+msgid "No conflict could be detected"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:352
+msgid "Test failed, disable other plugins & switch to default theme"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:355
+msgid "Test image function"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:357
+msgid "The plugin could create images."
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:358
+msgid "Could not create image, check your memory limit."
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:361
+msgid "Check theme compatibility"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:363
+msgid "Your theme should work fine with NextCellent Gallery"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:364
+msgid "wp_head()/wp_footer() is missing, contact the theme author"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:368
+msgid "Check plugin"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:384
+msgid "Graphic Library"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:410
+msgid "There is no GD support"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:423 ../admin/class-ngg-overview.php:491
+#: ../admin/class-ngg-overview.php:497 ../admin/class-ngg-overview.php:503
+msgid "Yes"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:425 ../admin/class-ngg-overview.php:493
+#: ../admin/class-ngg-overview.php:499 ../admin/class-ngg-overview.php:505
+msgid "No"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:445
+msgid "Not set"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:449
+msgid "On"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:451
+msgid "Off"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:457 ../admin/class-ngg-overview.php:463
+#: ../admin/class-ngg-overview.php:469 ../admin/class-ngg-overview.php:475
+#: ../admin/class-ngg-overview.php:481 ../admin/class-ngg-overview.php:487
+msgid "N/A"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:485
+msgid " MB"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:509
+msgid "Operating System"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:511
+msgid "Server"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:512
+msgid "Memory Usage"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:513
+msgid "MYSQL Version"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:514
+msgid "SQL Mode"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:515
+msgid "PHP Version"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:516
+msgid "PHP Allow URL fopen"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:517
+msgid "PHP Memory Limit"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:518
+msgid "PHP Max Upload Size"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:519
+msgid "PHP Max Post Size"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:520
+msgid "PCRE Backtracking Limit"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:521
+msgid "PHP Max Script Execute Time"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:522
+msgid "PHP EXIF Support"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:523
+msgid "PHP IPTC Support"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:524
+msgid "PHP XML Support"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:532
+msgid "Loading&#8230;"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:532
+msgid "This widget requires JavaScript."
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:557
+msgid ""
+"<strong>Note</strong>: third parties plugins that are compatible with NGG "
+"may not be 100&#37; compatible with NextCellent Gallery!"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:599
+#, php-format
+msgid "By %s"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:611
+#, php-format
+msgid "Install %s now"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:611
+msgid "Install Now"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:618
+#, php-format
+msgid "Update %s now"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:618
+msgid "Update Now"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:638 ../admin/class-ngg-overview.php:640
+#, php-format
+msgid "More information about %s"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:638 ../admin/class-ngg-overview.php:640
+msgid "More Details"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:679
+msgid "Untested with your version of WordPress"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:681
+msgid "<strong>Incompatible</strong> with your version of WordPress"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:683
+msgid "<strong>Compatible</strong> with your version of WordPress"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:746
+msgid "This plugin is a branch from NextGen Gallery, version 1.9.13."
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:747
+msgid ""
+"Developed & maintained by <a href=\"http://www.wpgetready.com\" target="
+"\"_blank\">WPGetReady.com</a>"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:753
+msgid "You can contribute by giving this plugin a good rating! Thanks a lot!"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:758
+msgid "Visit the plugin homepage"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:770
+msgid "Welcome to NextCellent Gallery!"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:835
+msgid "This plugin is made possible by the great work of a lot of people:"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:837
+msgid "Alex Rabe and Photocrati for the original NextGen Gallery"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:839
+msgid "for maintaining this fork of NextGen Gallery"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:842
+msgid "for helping maintain the plugin"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:844
+msgid "for his implementation of changing file the upload date using jQuery"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:847
+msgid "for his his code suggestions regarding nggtags shortcodes"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:850
+msgid "for his his suggestions on templates"
+msgstr ""
+
+#: ../admin/class-ngg-overview.php:851
+msgid "Also a big thank you to the new translators: "
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:16
+msgid "Roles / capabilities"
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:17
+msgid ""
+"Select the lowest role which should be able to access the following "
+"capabilities. NextCellent Gallery supports the standard roles from WordPress."
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:18
+msgid "For a more flexible user management you can use the"
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:23
+msgid "NextCellent Gallery overview"
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:27
+msgid "Use TinyMCE Button / Add Media"
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:31
+msgid "Add gallery / Upload images"
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:35
+msgid "Manage gallery"
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:39
+msgid "Manage others gallery"
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:43
+msgid "Manage tags"
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:51
+msgid "Change style"
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:55
+msgid "Change options"
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:59
+msgid "Update capabilities"
+msgstr ""
+
+#: ../admin/class-ngg-roles.php:82
+msgid "Updated capabilities"
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:14
+msgid "Reset options"
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:17
+msgid "Reset all options/settings to the default installation."
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:19
+msgid "Reset settings"
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:25
+msgid "Uninstall plugin tables"
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:30
+msgid "You don't like NextCellent Gallery?"
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:31
+msgid ""
+"With this button you can clear all database tables. This should also happen "
+"if you uninstall the normal way, but it can be useful for manually "
+"uninstalling NextCellent completely."
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:34
+msgid "WARNING:"
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:36
+msgid ""
+"Once uninstalled, this cannot be undone. You should use a Database Backup "
+"plugin of WordPress to backup all the tables first. NextCellent gallery is "
+"stored in the tables"
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:36
+msgid "and"
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:39
+msgid "Show uninstall button"
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:40
+msgid "Uninstall plugin"
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:49
+msgid "Reset all options to default settings?"
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:51 ../admin/class-ngg-setup.php:66
+msgid "Choose [Cancel] to Stop, [OK] to proceed."
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:64
+msgid ""
+"You are about to uninstall this plugin from WordPress. This action is not "
+"reversible."
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:97
+msgid "Reset all settings to the default parameters."
+msgstr ""
+
+#: ../admin/class-ngg-setup.php:104
+msgid "Uninstall successful! Now delete the plugin and enjoy your life!"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:118
+msgid "Successfully selected CSS file."
+msgstr ""
+
+#: ../admin/class-ngg-style.php:120
+msgid "No CSS file will be used."
+msgstr ""
+
+#: ../admin/class-ngg-style.php:129 ../admin/class-ngg-style.php:169
+msgid "You do not have sufficient permissions to edit templates for this blog."
+msgstr ""
+
+#: ../admin/class-ngg-style.php:154
+msgid "Could not move file."
+msgstr ""
+
+#: ../admin/class-ngg-style.php:160
+msgid "CSS file successfully updated."
+msgstr ""
+
+#: ../admin/class-ngg-style.php:162
+msgid "Could not save file."
+msgstr ""
+
+#: ../admin/class-ngg-style.php:182
+msgid "CSS file successfully moved."
+msgstr ""
+
+#: ../admin/class-ngg-style.php:187
+msgid "Could not move the CSS file."
+msgstr ""
+
+#: ../admin/class-ngg-style.php:218 ../admin/wpmu.php:63
+msgid "Your CSS file is set by a theme or another plugin."
+msgstr ""
+
+#: ../admin/class-ngg-style.php:218 ../admin/wpmu.php:63
+msgid "This CSS file will be applied:"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:248
+msgid "Style Editor"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:254
+msgid "Activate and use style sheet:"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:259
+msgid "Activate"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:268
+#, php-format
+msgid "Editing %s"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:270
+#, php-format
+msgid "Browsing %s"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:273
+msgid "(from the theme folder)"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:283
+msgid ""
+"To ensure your css file stays safe during upgrades, please move it to the "
+"right folder."
+msgstr ""
+
+#: ../admin/class-ngg-style.php:286
+msgid "Move file"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:292
+msgid "Version"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:296
+msgid "File location"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:309
+msgid "Update File"
+msgstr ""
+
+#: ../admin/class-ngg-style.php:311
+msgid "If this file were writable you could edit it."
+msgstr ""
+
+#: ../admin/class-ngg-style.php:316
+msgid "This file does not exist. Double check the name and try again."
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:45
+msgid "Most popular"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:46
+msgid "Least used"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:47
+msgid "Alphabetical"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:114
+msgid "Existing Tags"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:118
+msgid "Search tags"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:122
+msgid "Go"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:127
+msgid "Sort Order:"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:162
+#: ../admin/class-ngg-tag-manager.php:166
+#: ../admin/class-ngg-tag-manager.php:179
+msgid "Previous tags"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:175
+msgid "Next tags"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:187
+msgid "Rename Tag"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:195
+msgid ""
+"Enter the tag to rename and its new value.  You can use this feature to "
+"merge tags too. Click \"Rename\" and all posts which use this tag will be "
+"updated."
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:196
+#: ../admin/class-ngg-tag-manager.php:244
+msgid "You can specify multiple tags to rename by separating them with commas."
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:200
+msgid "Tag(s) to rename:"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:204
+msgid "New tag name(s):"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:207
+msgid "Rename"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:213
+msgid "Delete Tag"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:221
+msgid ""
+"Enter the name of the tag to delete.  This tag will be removed from all "
+"posts."
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:222
+msgid "You can specify multiple tags to delete by separating them with commas"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:226
+msgid "Tag(s) to delete:"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:235
+msgid "Edit Tag Slug"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:243
+msgid ""
+"Enter the tag name to edit and its new slug. <a href=\"http://codex."
+"wordpress.org/Glossary#Slug\">Slug definition</a>"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:248
+msgid "Tag(s) to match:"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:252
+msgid "Slug(s) to set:"
+msgstr ""
+
+#: ../admin/class-ngg-tag-manager.php:255
+#: ../admin/manage/class-ngg-gallery-list-table.php:106
+msgid "Edit"
+msgstr ""
+
+#: ../admin/functions.php:38
+msgid "No valid gallery name!"
+msgstr ""
+
+#: ../admin/functions.php:48 ../admin/functions.php:57
+#: ../admin/functions.php:83 ../admin/functions.php:157
+#: ../admin/functions.php:164 ../admin/functions.php:344
+#: ../admin/functions.php:352
+msgid "Directory"
+msgstr ""
+
+#: ../admin/functions.php:48
+msgid "didn't exist. Please create first the main gallery folder "
+msgstr ""
+
+#: ../admin/functions.php:49 ../admin/functions.php:58
+msgid "Check this link, if you didn't know how to set the permission :"
+msgstr ""
+
+#: ../admin/functions.php:57 ../admin/functions.php:83
+msgid "is not writeable !"
+msgstr ""
+
+#: ../admin/functions.php:79 ../admin/functions.php:88
+#: ../admin/functions.php:1126 ../lib/core.php:102
+msgid "Unable to create directory "
+msgstr ""
+
+#: ../admin/functions.php:92
+msgid "The server setting Safe-Mode is on !"
+msgstr ""
+
+#: ../admin/functions.php:93
+msgid "If you have problems, please create directory"
+msgstr ""
+
+#: ../admin/functions.php:94
+msgid "and the thumbnails directory"
+msgstr ""
+
+#: ../admin/functions.php:94
+msgid "with permission 777 manually !"
+msgstr ""
+
+#: ../admin/functions.php:120
+#, php-format
+msgid ""
+"Gallery ID %1$s successfully created. You can show this gallery in your post "
+"or page with the shortcode %2$s.<br/>"
+msgstr ""
+
+#: ../admin/functions.php:123 ../admin/functions.php:309
+#: ../admin/functions.php:412
+msgid "Edit gallery"
+msgstr ""
+
+#: ../admin/functions.php:157 ../admin/functions.php:344
+msgid "doesn&#96;t exist!"
+msgstr ""
+
+#: ../admin/functions.php:164 ../admin/functions.php:352
+msgid "contains no pictures"
+msgstr ""
+
+#: ../admin/functions.php:191
+msgid "Something went wrong when renaming"
+msgstr ""
+
+#: ../admin/functions.php:191
+msgid "Importing was aborted."
+msgstr ""
+
+#: ../admin/functions.php:209 ../admin/functions.php:371
+msgid "Database error. Could not add gallery!"
+msgstr ""
+
+#: ../admin/functions.php:212 ../admin/functions.php:374
+msgid "successfully created!"
+msgstr ""
+
+#: ../admin/functions.php:299 ../admin/functions.php:407
+#: ../admin/functions.php:1243
+#: ../admin/manage/class-ngg-gallery-list-table.php:212
+#: ../admin/manage/class-ngg-image-list-table.php:306
+#: ../admin/manage/class-ngg-manager.php:197
+#: ../admin/manage/class-ngg-manager.php:359
+msgid "Create new thumbnails"
+msgstr ""
+
+#: ../admin/functions.php:304
+msgid " picture(s) successfully renamed"
+msgstr ""
+
+#: ../admin/functions.php:306 ../admin/functions.php:410
+msgid " picture(s) successfully added"
+msgstr ""
+
+#: ../admin/functions.php:313
+msgid "No images were added."
+msgstr ""
+
+#: ../admin/functions.php:485 ../admin/functions.php:569
+#: ../admin/functions.php:624 ../admin/functions.php:721
+#: ../admin/functions.php:775
+msgid "Object didn't contain correct data"
+msgstr ""
+
+#: ../admin/functions.php:494
+msgid " is not writeable "
+msgstr ""
+
+#: ../admin/functions.php:579 ../admin/functions.php:627
+#: ../admin/functions.php:727 ../admin/functions.php:778
+msgid " is not writeable"
+msgstr ""
+
+#: ../admin/functions.php:781
+msgid "File do not exists"
+msgstr ""
+
+#: ../admin/functions.php:785
+msgid "Couldn't restore original image"
+msgstr ""
+
+#: ../admin/functions.php:901
+msgid "(Error : Couldn't not update data base)"
+msgstr ""
+
+#: ../admin/functions.php:908
+msgid "(Error : Couldn't not update meta data)"
+msgstr ""
+
+#: ../admin/functions.php:917
+msgid "(Error : Couldn't not find image)"
+msgstr ""
+
+#: ../admin/functions.php:1060
+msgid "No valid URL path "
+msgstr ""
+
+#: ../admin/functions.php:1076
+msgid "Import via cURL failed."
+msgstr ""
+
+#: ../admin/functions.php:1093
+msgid "Uploaded file was no or a faulty zip file ! The server recognized : "
+msgstr ""
+
+#: ../admin/functions.php:1110
+msgid "Could not get a valid foldername"
+msgstr ""
+
+#: ../admin/functions.php:1121
+#, php-format
+msgid ""
+"Unable to create directory %s. Is its parent directory writable by the "
+"server?"
+msgstr ""
+
+#: ../admin/functions.php:1136
+msgid "Zip-File successfully unpacked"
+msgstr ""
+
+#: ../admin/functions.php:1167 ../admin/functions.php:1267
+msgid "No gallery selected !"
+msgstr ""
+
+#: ../admin/functions.php:1175 ../admin/functions.php:1292
+msgid "Failure in database, no gallery path set !"
+msgstr ""
+
+#: ../admin/functions.php:1199 ../admin/functions.php:1286
+msgid "is no valid image file!"
+msgstr ""
+
+#: ../admin/functions.php:1213 ../admin/functions.php:1411
+#: ../admin/functions.php:1488
+#, php-format
+msgid ""
+"Unable to write to directory %s. Is this directory writable by the server?"
+msgstr ""
+
+#: ../admin/functions.php:1220 ../admin/functions.php:1309
+msgid "Error, the file could not be moved to : "
+msgstr ""
+
+#: ../admin/functions.php:1225 ../admin/functions.php:1313
+msgid "Error, the file permissions could not be set"
+msgstr ""
+
+#: ../admin/functions.php:1248
+msgid " Image(s) successfully added"
+msgstr ""
+
+#: ../admin/functions.php:1275
+msgid "Invalid upload. Error Code : "
+msgstr ""
+
+#: ../admin/functions.php:1351
+#, php-format
+msgid ""
+"SAFE MODE Restriction in effect! You need to create the folder <strong>%s</"
+"strong> manually"
+msgstr ""
+
+#: ../admin/functions.php:1352
+#, php-format
+msgid ""
+"When safe_mode is on, PHP checks to see if the owner (%s) of the current "
+"script matches the owner (%s) of the file to be operated on by a file "
+"function or its directory"
+msgstr ""
+
+#: ../admin/functions.php:1405 ../admin/functions.php:1482
+msgid "The destination gallery does not exist"
+msgstr ""
+
+#: ../admin/functions.php:1436 ../lib/xmlrpc.php:222
+#, php-format
+msgid "Failed to move image %1$s to %2$s"
+msgstr ""
+
+#: ../admin/functions.php:1456
+#, php-format
+msgid "Moved %1$s picture(s) to gallery : %2$s ."
+msgstr ""
+
+#: ../admin/functions.php:1515
+#, php-format
+msgid "Failed to copy image %1$s to %2$s"
+msgstr ""
+
+#: ../admin/functions.php:1529
+#, php-format
+msgid "Failed to copy database row for picture %s"
+msgstr ""
+
+#: ../admin/functions.php:1541
+#, php-format
+msgid ""
+"Image %1$s (%2$s) copied as image %3$s (%4$s) &raquo; The file already "
+"existed in the destination gallery."
+msgstr ""
+
+#: ../admin/functions.php:1544
+#, php-format
+msgid "Image %1$s (%2$s) copied as image %3$s (%4$s)"
+msgstr ""
+
+#: ../admin/functions.php:1553
+#, php-format
+msgid "Copied %1$s picture(s) to gallery: %2$s ."
+msgstr ""
+
+#: ../admin/functions.php:1668
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
+msgstr ""
+
+#: ../admin/functions.php:1671
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form"
+msgstr ""
+
+#: ../admin/functions.php:1674
+msgid "The uploaded file was only partially uploaded"
+msgstr ""
+
+#: ../admin/functions.php:1677
+msgid "No file was uploaded"
+msgstr ""
+
+#: ../admin/functions.php:1680
+msgid "Missing a temporary folder"
+msgstr ""
+
+#: ../admin/functions.php:1683
+msgid "Failed to write file to disk"
+msgstr ""
+
+#: ../admin/functions.php:1686
+msgid "File upload stopped by extension"
+msgstr ""
+
+#: ../admin/functions.php:1689
+msgid "Unknown upload error"
+msgstr ""
+
+#: ../admin/manage/actions.php:58
+msgid "Select how you would like to rotate the image on the left."
+msgstr ""
+
+#: ../admin/manage/actions.php:65
+msgid "90&deg; clockwise"
+msgstr ""
+
+#: ../admin/manage/actions.php:67
+msgid "90&deg; anticlockwise"
+msgstr ""
+
+#: ../admin/manage/actions.php:69
+msgid "Flip horizontally"
+msgstr ""
+
+#: ../admin/manage/actions.php:71
+msgid "Flip vertically"
+msgstr ""
+
+#: ../admin/manage/actions.php:94
+msgid "Image rotated"
+msgstr ""
+
+#: ../admin/manage/actions.php:97
+msgid "Error rotating thumbnail"
+msgstr ""
+
+#: ../admin/manage/actions.php:129 ../admin/manage/actions.php:157
+#: ../admin/manage/actions.php:182 ../admin/manage/actions.php:204
+msgid "Value"
+msgstr ""
+
+#: ../admin/manage/actions.php:146
+msgid "No meta data saved"
+msgstr ""
+
+#: ../admin/manage/actions.php:151
+msgid "EXIF Data"
+msgstr ""
+
+#: ../admin/manage/actions.php:171
+msgid "No exif data"
+msgstr ""
+
+#: ../admin/manage/actions.php:177
+msgid "IPTC Data"
+msgstr ""
+
+#: ../admin/manage/actions.php:199
+msgid "XMP Data"
+msgstr ""
+
+#: ../admin/manage/actions.php:255
+msgid "Zoom In"
+msgstr ""
+
+#: ../admin/manage/actions.php:259
+msgid "Zoom Out"
+msgstr ""
+
+#: ../admin/manage/actions.php:263
+msgid "Rotate Left"
+msgstr ""
+
+#: ../admin/manage/actions.php:267
+msgid "Rotate Right"
+msgstr ""
+
+#: ../admin/manage/actions.php:271
+msgid "Reset"
+msgstr ""
+
+#: ../admin/manage/actions.php:275
+msgid "Center selection"
+msgstr ""
+
+#: ../admin/manage/actions.php:292
+msgid "The parameters"
+msgstr ""
+
+#: ../admin/manage/actions.php:298
+msgid "X"
+msgstr ""
+
+#: ../admin/manage/actions.php:302 ../admin/manage/actions.php:311
+#: ../admin/manage/actions.php:320 ../admin/manage/actions.php:328
+msgid "px"
+msgstr ""
+
+#: ../admin/manage/actions.php:308
+msgid "Y"
+msgstr ""
+
+#: ../admin/manage/actions.php:333
+msgid "Rotation"
+msgstr ""
+
+#: ../admin/manage/actions.php:337
+msgid "deg"
+msgstr ""
+
+#: ../admin/manage/actions.php:343
+msgid "Apply the parameters"
+msgstr ""
+
+#: ../admin/manage/actions.php:344
+msgid "Apply"
+msgstr ""
+
+#: ../admin/manage/actions.php:380
+msgid "Thumbnail updated"
+msgstr ""
+
+#: ../admin/manage/actions.php:384
+msgid "Error updating thumbnail"
+msgstr ""
+
+#: ../admin/manage/class-ngg-abstract-image-manager.php:96
+#: ../admin/manage/class-ngg-gallery-manager.php:108
+#: ../admin/manage/class-ngg-image-manager.php:127
+#: ../admin/manage/class-ngg-image-manager.php:262
+#: ../admin/manage/class-ngg-image-manager.php:372
+#: ../admin/manage/class-ngg-manager.php:422
+#: ../admin/manage/class-ngg-sort-manager.php:178
+msgid "You waited too long, or you cheated."
+msgstr ""
+
+#: ../admin/manage/class-ngg-abstract-image-manager.php:158
+#: ../admin/manage/class-ngg-image-manager.php:305
+msgid "Update successful"
+msgstr ""
+
+#: ../admin/manage/class-ngg-gallery-list-table.php:152
+#: ../admin/manage/class-ngg-image-list-table.php:233
+msgid "ID"
+msgstr ""
+
+#: ../admin/manage/class-ngg-gallery-list-table.php:156
+msgid "Page ID"
+msgstr ""
+
+#: ../admin/manage/class-ngg-gallery-list-table.php:211
+#: ../admin/manage/class-ngg-image-list-table.php:305
+#: ../admin/manage/class-ngg-manager.php:206
+msgid "Set watermark"
+msgstr ""
+
+#: ../admin/manage/class-ngg-gallery-list-table.php:214
+#: ../admin/manage/class-ngg-image-list-table.php:308
+#: ../admin/manage/class-ngg-manager.php:200
+msgid "Import metadata"
+msgstr ""
+
+#: ../admin/manage/class-ngg-gallery-list-table.php:215
+#: ../admin/manage/class-ngg-image-list-table.php:309
+#: ../admin/manage/class-ngg-manager.php:203
+msgid "Recover from backup"
+msgstr ""
+
+#: ../admin/manage/class-ngg-gallery-manager.php:35
+msgid "Add new gallery"
+msgstr ""
+
+#: ../admin/manage/class-ngg-gallery-manager.php:88
+msgid "Create a new , empty gallery below the folder"
+msgstr ""
+
+#: ../admin/manage/class-ngg-gallery-manager.php:92
+#, php-format
+msgid "Allowed characters for file and folder names are %s"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:150
+msgid "Change Date"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:153
+msgid "pixel"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:184
+msgid "Alt & title text"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:211
+msgid "Separated by commas"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:234
+#: ../admin/media-upload.php:246
+msgid "Thumbnail"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:235
+#: ../admin/manage/class-ngg-sort-manager.php:111
+msgid "Filename"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:236
+msgid "Alt & Title Text"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:238
+msgid "Exclude"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:273
+#, php-format
+msgid "View \"%s\""
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:274
+msgid "View"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:275
+msgid "Show Meta data"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:276
+msgid "Meta"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:277
+msgid "Customize thumbnail"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:278
+msgid "Edit thumb"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:279
+#: ../admin/manage/class-ngg-image-list-table.php:280
+msgid "Rotate"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:285
+msgid "Recover"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:310
+msgid "Delete images"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:311
+msgid "Rotate images clockwise"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:312
+msgid "Rotate images counter-clockwise"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:313
+msgid "Copy to..."
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:314
+msgid "Move to..."
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:315
+msgid "Add tags"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:316
+#: ../admin/manage/class-ngg-manager.php:222
+msgid "Delete tags"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-list-table.php:317
+msgid "Overwrite tags"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-manager.php:103
+msgid "Recover \"{}\"?"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-manager.php:108
+msgid "Delete \"{}\"?"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-manager.php:151
+msgid ""
+"To enable manual Sort set Custom Order Sort.See Settings->Gallery Settings-"
+">Sort Options"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-manager.php:186
+msgid "No Picture"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-manager.php:228
+msgid "Main page (No parent)"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-manager.php:234
+msgid "Add page"
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-manager.php:340
+#, php-format
+msgid "Picture %d deleted successfully."
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-manager.php:344
+#, php-format
+msgid "Picture %d could not be deleted."
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-manager.php:359
+msgid "Operation successful. Please clear your browser cache."
+msgstr ""
+
+#: ../admin/manage/class-ngg-image-manager.php:398
+#, php-format
+msgid "New page <strong>%s</strong> (ID: %s) created."
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:57
+msgid "Resize Images to"
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:88
+msgid "These values are maximum values "
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:100
+msgid "This will ignore the aspect ratio, so no portrait thumbnails"
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:116
+msgid "Enter the tags"
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:132
+msgid "Select the destination gallery:"
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:134 ../admin/tinymce/window.php:138
+#: ../admin/tinymce/window.php:382 ../admin/tinymce/window.php:433
+msgid "Select or search for a gallery"
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:177
+msgid "No images selected"
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:191
+msgid "No action selected."
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:210
+msgid "Copy image to..."
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:214
+msgid "Move image to..."
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:218
+msgid "Add new tags"
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:226
+msgid "Overwrite"
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:229
+#: ../admin/manage/class-ngg-manager.php:232
+msgid "Rotate images"
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:239
+#: ../admin/manage/class-ngg-manager.php:256
+#, php-format
+msgid ""
+"You are about to start bulk edits for %s galleries\n"
+"\n"
+" 'Cancel' to stop, 'OK' to proceed."
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:380
+#: ../admin/manage/class-ngg-manager.php:397
+#: ../admin/manage/class-ngg-manager.php:408
+msgid "Tags changed"
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:464
+msgid "Gallery deleted successfully."
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:466
+msgid "Something went wrong."
+msgstr ""
+
+#: ../admin/manage/class-ngg-manager.php:486
+msgid "Pictures deleted successfully "
+msgstr ""
+
+#: ../admin/manage/class-ngg-search-manager.php:38
+#, php-format
+msgid "Image results for %s"
+msgstr ""
+
+#: ../admin/manage/class-ngg-sort-manager.php:33
+msgid ""
+"To enable manual Sort set Custom Order Sort. See Settings->Gallery Settings-"
+">Sort Options"
+msgstr ""
+
+#: ../admin/manage/class-ngg-sort-manager.php:35
+msgid "Go back"
+msgstr ""
+
+#: ../admin/manage/class-ngg-sort-manager.php:83
+msgid "Sort Gallery"
+msgstr ""
+
+#: ../admin/manage/class-ngg-sort-manager.php:89
+msgid "Back to gallery"
+msgstr ""
+
+#: ../admin/manage/class-ngg-sort-manager.php:91
+msgid "Update Sort Order"
+msgstr ""
+
+#: ../admin/manage/class-ngg-sort-manager.php:97
+msgid "Presort"
+msgstr ""
+
+#: ../admin/manage/class-ngg-sort-manager.php:101
+msgid "Unsorted"
+msgstr ""
+
+#: ../admin/manage/class-ngg-sort-manager.php:116 ../admin/media-upload.php:221
+msgid "Alt/Title text"
+msgstr ""
+
+#: ../admin/manage/class-ngg-sort-manager.php:121 ../lib/meta.php:452
+msgid "Date/Time"
+msgstr ""
+
+#: ../admin/manage/class-ngg-sort-manager.php:207
+msgid "Sort order changed"
+msgstr ""
+
+#: ../admin/media-upload.php:11
+msgid "NextCellent Gallery"
+msgstr ""
+
+#: ../admin/media-upload.php:166
+msgid "No gallery"
+msgstr ""
+
+#: ../admin/media-upload.php:178
+msgid "Select &#187;"
+msgstr ""
+
+#: ../admin/media-upload.php:209
+msgid "Show"
+msgstr ""
+
+#: ../admin/media-upload.php:210
+msgid "Hide"
+msgstr ""
+
+#: ../admin/media-upload.php:215
+msgid "Image ID:"
+msgstr ""
+
+#: ../admin/media-upload.php:229 ../admin/tinymce/window.php:335
+msgid "Alignment"
+msgstr ""
+
+#: ../admin/media-upload.php:234 ../admin/tinymce/window.php:339
+msgid "Left"
+msgstr ""
+
+#: ../admin/media-upload.php:236 ../admin/tinymce/window.php:340
+msgid "Center"
+msgstr ""
+
+#: ../admin/media-upload.php:238 ../admin/tinymce/window.php:341
+msgid "Right"
+msgstr ""
+
+#: ../admin/media-upload.php:248
+msgid "Full size"
+msgstr ""
+
+#: ../admin/media-upload.php:250
+msgid "Singlepic"
+msgstr ""
+
+#: ../admin/media-upload.php:263
+msgid "Insert into Post"
+msgstr ""
+
+#: ../admin/media-upload.php:274
+msgid "Save all changes"
+msgstr ""
+
+#: ../admin/tinymce/window.php:118
+msgid "To add something, select what you would want to display"
+msgstr ""
+
+#: ../admin/tinymce/window.php:122
+msgid "One picture"
+msgstr ""
+
+#: ../admin/tinymce/window.php:123
+msgid "Recent pictures"
+msgstr ""
+
+#: ../admin/tinymce/window.php:124
+msgid "Random pictures"
+msgstr ""
+
+#: ../admin/tinymce/window.php:132 ../admin/tinymce/window.php:233
+#: ../admin/tinymce/window.php:300 ../admin/tinymce/window.php:358
+#: ../admin/tinymce/window.php:420
+msgid "Basics"
+msgstr ""
+
+#: ../admin/tinymce/window.php:135 ../admin/tinymce/window.php:379
+#: ../admin/tinymce/window.php:430
+#: ../widgets/class-ngg-slideshow-widget.php:113
+msgid "Select a gallery:"
+msgstr ""
+
+#: ../admin/tinymce/window.php:143
+msgid "Display types"
+msgstr ""
+
+#: ../admin/tinymce/window.php:146
+msgid "Select how you want to display your gallery"
+msgstr ""
+
+#: ../admin/tinymce/window.php:165
+msgid "Imagebrowser"
+msgstr ""
+
+#: ../admin/tinymce/window.php:171 ../admin/tinymce/window.php:283
+#: ../admin/tinymce/window.php:404 ../admin/tinymce/window.php:455
+msgid "Carousel"
+msgstr ""
+
+#: ../admin/tinymce/window.php:177 ../admin/tinymce/window.php:289
+#: ../admin/tinymce/window.php:350 ../admin/tinymce/window.php:410
+#: ../admin/tinymce/window.php:461 ../lib/meta.php:451
+msgid "Caption"
+msgstr ""
+
+#: ../admin/tinymce/window.php:190
+msgid "Type options"
+msgstr ""
+
+#: ../admin/tinymce/window.php:200
+msgid ""
+"The number of images before pagination is applied. Leave empty for the "
+"default from the settings."
+msgstr ""
+
+#: ../admin/tinymce/window.php:208
+msgid "Slideshow dimensions"
+msgstr ""
+
+#: ../admin/tinymce/window.php:219
+msgid "Template name"
+msgstr ""
+
+#: ../admin/tinymce/window.php:239
+msgid "Select or enter album"
+msgstr ""
+
+#: ../admin/tinymce/window.php:241
+msgid "Leave this empty to display all galleries."
+msgstr ""
+
+#: ../admin/tinymce/window.php:245
+msgid "Album display types"
+msgstr ""
+
+#: ../admin/tinymce/window.php:248
+msgid "Select how you want to display the albums"
+msgstr ""
+
+#: ../admin/tinymce/window.php:255
+msgid "Compact version"
+msgstr ""
+
+#: ../admin/tinymce/window.php:261
+msgid "Extended version"
+msgstr ""
+
+#: ../admin/tinymce/window.php:267
+msgid "Gallery display types"
+msgstr ""
+
+#: ../admin/tinymce/window.php:270
+msgid ""
+"Select a template for the galleries (displayed after you click on an album)"
+msgstr ""
+
+#: ../admin/tinymce/window.php:304
+msgid "Select a picture"
+msgstr ""
+
+#: ../admin/tinymce/window.php:308
+msgid "Select or enter picture"
+msgstr ""
+
+#: ../admin/tinymce/window.php:313 ../admin/tinymce/window.php:388
+#: ../admin/tinymce/window.php:439
+msgid "Options"
+msgstr ""
+
+#: ../admin/tinymce/window.php:316
+msgid "Dimensions"
+msgstr ""
+
+#: ../admin/tinymce/window.php:325
+msgid "Effect"
+msgstr ""
+
+#: ../admin/tinymce/window.php:328
+msgid "No effect"
+msgstr ""
+
+#: ../admin/tinymce/window.php:330
+msgid "Web 2.0"
+msgstr ""
+
+#: ../admin/tinymce/window.php:338
+msgid "No float"
+msgstr ""
+
+#: ../admin/tinymce/window.php:346
+msgid "Link"
+msgstr ""
+
+#: ../admin/tinymce/window.php:347
+msgid "Add an optional link to the image. Leave blank for no link."
+msgstr ""
+
+#: ../admin/tinymce/window.php:351
+msgid "Add an optional caption to the image. Leave blank for no caption."
+msgstr ""
+
+#: ../admin/tinymce/window.php:364 ../admin/tinymce/window.php:426
+msgid "The number of images that should be displayed."
+msgstr ""
+
+#: ../admin/tinymce/window.php:368
+msgid "Sort the images"
+msgstr ""
+
+#: ../admin/tinymce/window.php:371
+msgid "Upload order"
+msgstr ""
+
+#: ../admin/tinymce/window.php:372
+msgid "Date taken"
+msgstr ""
+
+#: ../admin/tinymce/window.php:373
+msgid "User defined"
+msgstr ""
+
+#: ../admin/tinymce/window.php:375
+msgid ""
+"In what order the images are shown. Upload order uses the ID's, date taken "
+"uses the EXIF data and user defined is the sort mode from the settings."
+msgstr ""
+
+#: ../admin/tinymce/window.php:384 ../admin/tinymce/window.php:435
+msgid "If a gallery is selected, only images from that gallery will be shown."
+msgstr ""
+
+#: ../admin/tinymce/window.php:391 ../admin/tinymce/window.php:442
+msgid "Select a template to display the images"
+msgstr ""
+
+#: ../admin/tinymce/window.php:475
+msgid "Insert"
+msgstr ""
+
+#: ../admin/tinymce/window.php:511
+msgid "You need to select a gallery."
+msgstr ""
+
+#: ../admin/tinymce/window.php:515
+msgid "You need to select a picture."
+msgstr ""
+
+#: ../admin/tinymce/window.php:519 ../admin/tinymce/window.php:523
+msgid "You need to select a number of images."
+msgstr ""
+
+#: ../admin/upgrade.php:94
+msgid "Could not find NextCellent Gallery database tables, upgrade failed!"
+msgstr ""
+
+#: ../admin/upgrade.php:114 ../admin/upgrade.php:137
+msgid "Upgrade NextCellent Gallery"
+msgstr ""
+
+#: ../admin/upgrade.php:116
+msgid ""
+"You're upgrading from an older version. To enable the newest features, we "
+"sometimes need to do a database upgrade."
+msgstr ""
+
+#: ../admin/upgrade.php:120
+msgid ""
+"Normally you should be able to downgrade without any problems, but if you "
+"really want to play safe, you should make a backup of your database."
+msgstr ""
+
+#: ../admin/upgrade.php:124
+msgid "Start upgrade now"
+msgstr ""
+
+#: ../admin/upgrade.php:141
+msgid "Upgrading database…"
+msgstr ""
+
+#: ../admin/upgrade.php:145
+msgid "Oh no! Something went wrong while updating the database"
+msgstr ""
+
+#: ../admin/upgrade.php:149
+msgid "Upgrade complete."
+msgstr ""
+
+#: ../admin/upgrade.php:151
+msgid "Continue to NextCellent"
+msgstr ""
+
+#: ../admin/wpmu.php:44
+msgid "Update successfully"
+msgstr ""
+
+#: ../admin/wpmu.php:79
+msgid "Network Options"
+msgstr ""
+
+#: ../admin/wpmu.php:89
+msgid ""
+"This is the default path for all blogs. With the placeholder %BLOG_ID% you "
+"can organize the folder structure better."
+msgstr ""
+
+#: ../admin/wpmu.php:90
+#, php-format
+msgid "The default setting should be %s."
+msgstr ""
+
+#: ../admin/wpmu.php:102
+msgid "Enable upload quota check"
+msgstr ""
+
+#: ../admin/wpmu.php:105
+msgid "Should work if the gallery is bellow the blog.dir"
+msgstr ""
+
+#: ../admin/wpmu.php:109
+msgid "Enable zip upload option"
+msgstr ""
+
+#: ../admin/wpmu.php:112
+msgid "Allow users to upload zip folders."
+msgstr ""
+
+#: ../admin/wpmu.php:116
+msgid "Enable import function"
+msgstr ""
+
+#: ../admin/wpmu.php:119
+msgid "Allow users to import images folders from the server."
+msgstr ""
+
+#: ../admin/wpmu.php:123
+msgid "Enable style selection"
+msgstr ""
+
+#: ../admin/wpmu.php:126
+msgid "Allow users to choose a style for the gallery."
+msgstr ""
+
+#: ../admin/wpmu.php:130
+msgid "Enable roles/capabilities"
+msgstr ""
+
+#: ../admin/wpmu.php:133
+msgid "Allow users to change the roles for other blog authors."
+msgstr ""
+
+#: ../admin/wpmu.php:137
+msgid "Default style"
+msgstr ""
+
+#: ../admin/wpmu.php:143
+msgid "Choose the default style for the galleries."
+msgstr ""
+
+#: ../admin/wpmu.php:144
+msgid "Note: between brackets is the folder in which the file is."
+msgstr ""
+
+#: ../lib/core.php:432
+#, php-format
+msgid ""
+"Note : Based on your server memory limit you should not upload larger images "
+"then <strong>%d x %d</strong> pixel"
+msgstr ""
+
+#: ../lib/locale.php:112
+msgid "Invalid URL Provided."
+msgstr ""
+
+#: ../lib/locale.php:116 ../lib/locale.php:120
+msgid "Could not create Temporary file."
+msgstr ""
+
+#: ../lib/meta.php:131
+msgid " mm"
+msgstr ""
+
+#: ../lib/meta.php:137
+msgid " sec"
+msgstr ""
+
+#: ../lib/meta.php:141
+msgid "Fired"
+msgstr ""
+
+#: ../lib/meta.php:141
+msgid "Not fired"
+msgstr ""
+
+#: ../lib/meta.php:448 ../view/imagebrowser-exif.php:46
+msgid "Aperture"
+msgstr ""
+
+#: ../lib/meta.php:449 ../lib/meta.php:474
+msgid "Credit"
+msgstr ""
+
+#: ../lib/meta.php:450
+msgid "Camera"
+msgstr ""
+
+#: ../lib/meta.php:453
+msgid "Copyright"
+msgstr ""
+
+#: ../lib/meta.php:454
+msgid "Focal length"
+msgstr ""
+
+#: ../lib/meta.php:455
+msgid "ISO"
+msgstr ""
+
+#: ../lib/meta.php:456 ../view/imagebrowser-exif.php:54
+msgid "Shutter speed"
+msgstr ""
+
+#: ../lib/meta.php:460
+msgid "Subject"
+msgstr ""
+
+#: ../lib/meta.php:461
+msgid "Make"
+msgstr ""
+
+#: ../lib/meta.php:462
+msgid "Edit Status"
+msgstr ""
+
+#: ../lib/meta.php:463
+msgid "Category"
+msgstr ""
+
+#: ../lib/meta.php:464
+msgid "Keywords"
+msgstr ""
+
+#: ../lib/meta.php:465
+msgid "Date Created"
+msgstr ""
+
+#: ../lib/meta.php:466
+msgid "Time Created"
+msgstr ""
+
+#: ../lib/meta.php:467
+msgid "Author Position"
+msgstr ""
+
+#: ../lib/meta.php:468
+msgid "City"
+msgstr ""
+
+#: ../lib/meta.php:469
+msgid "Location"
+msgstr ""
+
+#: ../lib/meta.php:470
+msgid "Province/State"
+msgstr ""
+
+#: ../lib/meta.php:471
+msgid "Country code"
+msgstr ""
+
+#: ../lib/meta.php:472
+msgid "Country"
+msgstr ""
+
+#: ../lib/meta.php:473
+msgid "Headline"
+msgstr ""
+
+#: ../lib/meta.php:475
+msgid "Source"
+msgstr ""
+
+#: ../lib/meta.php:476
+msgid "Copyright Notice"
+msgstr ""
+
+#: ../lib/meta.php:477
+msgid "Contact"
+msgstr ""
+
+#: ../lib/meta.php:478
+msgid "Last modified"
+msgstr ""
+
+#: ../lib/meta.php:479
+msgid "Program tool"
+msgstr ""
+
+#: ../lib/meta.php:480
+msgid "Format"
+msgstr ""
+
+#: ../lib/meta.php:481
+msgid "Image Width"
+msgstr ""
+
+#: ../lib/meta.php:482
+msgid "Image Height"
+msgstr ""
+
+#: ../lib/meta.php:483
+msgid "Flash"
+msgstr ""
+
+#: ../lib/multisite.php:23
+msgid ""
+"Sorry, you have used your space allocation. Please delete some files to "
+"upload more files."
+msgstr ""
+
+#: ../lib/ngg-db.php:361 ../lib/ngg-db.php:362
+msgid "Album overview"
+msgstr ""
+
+#: ../lib/rewrite.php:223 ../view/imagebrowser-caption.php:31
+#: ../view/imagebrowser-exif.php:35 ../view/imagebrowser.php:31
+msgid "Picture"
+msgstr ""
+
+#: ../lib/shortcodes.php:358
+msgid "[Pictures not found]"
+msgstr ""
+
+#: ../lib/tags.php:35
+msgid "No new tag specified!"
+msgstr ""
+
+#: ../lib/tags.php:50
+msgid "No new/old valid tag specified!"
+msgstr ""
+
+#: ../lib/tags.php:86
+msgid "No tag renamed."
+msgstr ""
+
+#: ../lib/tags.php:88
+#, php-format
+msgid "Renamed tag(s) &laquo;%1$s&raquo; to &laquo;%2$s&raquo;"
+msgstr ""
+
+#: ../lib/tags.php:95
+msgid "No valid new tag."
+msgstr ""
+
+#: ../lib/tags.php:112
+msgid "No objects (post/page) found for specified old tags."
+msgstr ""
+
+#: ../lib/tags.php:141
+msgid "No tag merged."
+msgstr ""
+
+#: ../lib/tags.php:143
+#, php-format
+msgid ""
+"Merge tag(s) &laquo;%1$s&raquo; to &laquo;%2$s&raquo;. %3$s objects edited."
+msgstr ""
+
+#: ../lib/tags.php:146
+msgid "Error. No enough tags for rename. Too for merge. Choose !"
+msgstr ""
+
+#: ../lib/tags.php:163
+msgid "No tag specified!"
+msgstr ""
+
+#: ../lib/tags.php:186
+msgid "No tag deleted."
+msgstr ""
+
+#: ../lib/tags.php:188
+#, php-format
+msgid "%1s tag(s) deleted."
+msgstr ""
+
+#: ../lib/tags.php:202
+msgid "No new slug(s) specified!"
+msgstr ""
+
+#: ../lib/tags.php:214
+msgid "Tags number and slugs number isn't the same!"
+msgstr ""
+
+#: ../lib/tags.php:241
+msgid "No slug edited."
+msgstr ""
+
+#: ../lib/tags.php:243
+#, php-format
+msgid "%s slug(s) edited."
+msgstr ""
+
+#: ../lib/xmlrpc.php:93
+#, php-format
+msgid ""
+"XML-RPC services are disabled on this blog.  An admin user can enable them "
+"at %s"
+msgstr ""
+
+#: ../lib/xmlrpc.php:101
+msgid "Bad login/pass combination."
+msgstr ""
+
+#: ../lib/xmlrpc.php:157
+msgid "You are not allowed to upload files to this site."
+msgstr ""
+
+#: ../lib/xmlrpc.php:163 ../lib/xmlrpc.php:777 ../lib/xmlrpc.php:829
+msgid "Could not find gallery "
+msgstr ""
+
+#: ../lib/xmlrpc.php:168 ../lib/xmlrpc.php:782 ../lib/xmlrpc.php:834
+msgid "You are not allowed to upload files to this gallery."
+msgstr ""
+
+#: ../lib/xmlrpc.php:180
+msgid "This is no valid image file."
+msgstr ""
+
+#: ../lib/xmlrpc.php:192
+msgid "Could not find image id "
+msgstr ""
+
+#: ../lib/xmlrpc.php:199
+#, php-format
+msgid "Failed to delete image %1$s "
+msgstr ""
+
+#: ../lib/xmlrpc.php:208
+#, php-format
+msgid "Could not write file %1$s (%2$s)"
+msgstr ""
+
+#: ../lib/xmlrpc.php:275 ../lib/xmlrpc.php:327
+msgid "Invalid image ID"
+msgstr ""
+
+#: ../lib/xmlrpc.php:278 ../lib/xmlrpc.php:330
+msgid "Sorry, you must be able to edit this image"
+msgstr ""
+
+#: ../lib/xmlrpc.php:336
+msgid "Sorry, could not update the image"
+msgstr ""
+
+#: ../lib/xmlrpc.php:372 ../lib/xmlrpc.php:604 ../lib/xmlrpc.php:704
+#: ../lib/xmlrpc.php:739
+msgid "Sorry, you must be able to manage galleries"
+msgstr ""
+
+#: ../lib/xmlrpc.php:378
+msgid "Sorry, could not create the gallery"
+msgstr ""
+
+#: ../lib/xmlrpc.php:421 ../lib/xmlrpc.php:601
+msgid "Invalid gallery ID"
+msgstr ""
+
+#: ../lib/xmlrpc.php:424
+msgid "Sorry, you must be able to manage this gallery"
+msgstr ""
+
+#: ../lib/xmlrpc.php:430
+msgid "Sorry, could not update the gallery"
+msgstr ""
+
+#: ../lib/xmlrpc.php:470 ../lib/xmlrpc.php:522 ../lib/xmlrpc.php:564
+#: ../lib/xmlrpc.php:637 ../lib/xmlrpc.php:671
+msgid "Sorry, you must be able to manage albums"
+msgstr ""
+
+#: ../lib/xmlrpc.php:476
+msgid "Sorry, could not create the album"
+msgstr ""
+
+#: ../lib/xmlrpc.php:519 ../lib/xmlrpc.php:561
+msgid "Invalid album ID"
+msgstr ""
+
+#: ../lib/xmlrpc.php:528
+msgid "Sorry, could not update the album"
+msgstr ""
+
+#: ../nggallery.php:122
+msgid "NextCellent Gallery requires a database upgrade."
+msgstr ""
+
+#: ../nggallery.php:122
+msgid "Upgrade now."
+msgstr ""
+
+#: ../nggallery.php:136
+msgid ""
+"<strong>Translation by : </strong><a target=\"_blank\" href=\"http://"
+"alexrabe.de/wordpress-plugins/nextgen-gallery/languages/\">See here</a>"
+msgstr ""
+
+#: ../nggallery.php:137
+msgid ""
+"<strong>This translation is not yet updated for Version 1.9.0</strong>. If "
+"you would like to help with translation, download the current po from the "
+"plugin folder and read <a href=\"http://alexrabe.de/wordpress-plugins/"
+"wordtube/translation-of-plugins/\">here</a> how you can translate the plugin."
+msgstr ""
+
+#: ../nggallery.php:177
+msgid "Something went wrong while upgrading NextCellent Gallery."
+msgstr ""
+
+#: ../nggallery.php:266
+msgid ""
+"Sorry, NextCellent Gallery works only with a Memory Limit of 16 MB or higher"
+msgstr ""
+
+#: ../nggallery.php:295
+msgid "Picture tag"
+msgstr ""
+
+#: ../nggallery.php:296
+msgid "Picture tag: %2$l."
+msgstr ""
+
+#: ../nggallery.php:297
+msgid "Separate picture tags with commas."
+msgstr ""
+
+#: ../nggallery.php:405
+msgid "NextCellent Gallery / Images"
+msgstr ""
+
+#: ../nggallery.php:415
+msgid "NextCellent"
+msgstr ""
+
+#: ../nggallery.php:509
+msgid "loading"
+msgstr ""
+
+#: ../nggallery.php:725
+msgid "Get help"
+msgstr ""
+
+#: ../nggallery.php:807
+msgid "Sorry, NextCellent Gallery is deactivated: NextGEN version "
+msgstr ""
+
+#: ../nggfunctions.php:98
+msgid "The gallery was not found."
+msgstr ""
+
+#: ../nggfunctions.php:125
+msgid "previous"
+msgstr ""
+
+#: ../nggfunctions.php:125
+msgid "next"
+msgstr ""
+
+#: ../nggfunctions.php:177 ../nggfunctions.php:664
+msgid "[Gallery not found]"
+msgstr ""
+
+#: ../nggfunctions.php:465
+msgid "[Album not found]"
+msgstr ""
+
+#: ../nggfunctions.php:795
+msgid "[SinglePic not found]"
+msgstr ""
+
+#: ../nggfunctions.php:931
+msgid "Related images for"
+msgstr ""
+
+#: ../view/album-compact.php:32 ../view/album-extend.php:30
+msgid "Photos"
+msgstr ""
+
+#: ../view/gallery-caption.php:32 ../view/gallery.php:68
+msgid "[View with PicLens]"
+msgstr ""
+
+#: ../view/imagebrowser-caption.php:26 ../view/imagebrowser-exif.php:30
+#: ../view/imagebrowser.php:26
+msgid "Back"
+msgstr ""
+
+#: ../view/imagebrowser-caption.php:29 ../view/imagebrowser-exif.php:33
+#: ../view/imagebrowser.php:29
+msgid "Next"
+msgstr ""
+
+#: ../view/imagebrowser-caption.php:31 ../view/imagebrowser-exif.php:35
+#: ../view/imagebrowser.php:31
+msgid "of"
+msgstr ""
+
+#: ../view/imagebrowser-exif.php:38
+msgid "Meta data"
+msgstr ""
+
+#: ../view/imagebrowser-exif.php:42
+msgid "Camera / Type"
+msgstr ""
+
+#: ../view/imagebrowser-exif.php:50
+msgid "Focal Length"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:12
+msgid "NextCellent Gallery Widget"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:14
+msgid "Add recent or random images from the galleries"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:97
+#: ../widgets/class-ngg-slideshow-widget.php:106
+msgid "Title:"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:103
+msgid "Show:"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:112
+msgid "Original images"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:120
+msgid "random"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:126
+msgid "recent added "
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:131
+#: ../widgets/class-ngg-slideshow-widget.php:135
+msgid "Width:"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:140
+#: ../widgets/class-ngg-slideshow-widget.php:145
+msgid "Height:"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:149
+msgid "Select:"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:153
+msgid "All galleries"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:155
+msgid "Only which are not listed"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:157
+msgid "Only which are listed"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:161
+msgid "Gallery ID:"
+msgstr ""
+
+#: ../widgets/class-ngg-gallery-widget.php:166
+msgid "Gallery IDs, separated by commas."
+msgstr ""
+
+#: ../widgets/class-ngg-media-rss-widget.php:12
+msgid "NextCellent Media RSS"
+msgstr ""
+
+#: ../widgets/class-ngg-media-rss-widget.php:14
+msgid "Widget that displays a Media RSS links for NextCellent Gallery."
+msgstr ""
+
+#: ../widgets/class-ngg-media-rss-widget.php:80
+#: ../widgets/class-ngg-media-rss-widget.php:82
+msgid "Media RSS"
+msgstr ""
+
+#: ../widgets/class-ngg-media-rss-widget.php:83
+msgid "Link to the main image feed"
+msgstr ""
+
+#: ../widgets/class-ngg-media-rss-widget.php:100
+msgid "Show the RSS icon"
+msgstr ""
+
+#: ../widgets/class-ngg-media-rss-widget.php:108
+msgid "Show the link text"
+msgstr ""
+
+#: ../widgets/class-ngg-media-rss-widget.php:113
+msgid "Text for Media RSS link"
+msgstr ""
+
+#: ../widgets/class-ngg-media-rss-widget.php:121
+msgid "Tooltip text for Media RSS link"
+msgstr ""
+
+#: ../widgets/class-ngg-slideshow-widget.php:12
+msgid "NextCellent Slideshow"
+msgstr ""
+
+#: ../widgets/class-ngg-slideshow-widget.php:14
+msgid "Show a NextCellent Gallery Slideshow"
+msgstr ""
+
+#: ../widgets/class-ngg-slideshow-widget.php:117
+msgid "Random images"
+msgstr ""
+
+#: ../widgets/class-ngg-slideshow-widget.php:119
+msgid "Recent images"
+msgstr ""
+
+#: ../widgets/class-ngg-slideshow-widget.php:130
+msgid "The given width and height are ignored when this is selected."
+msgstr ""
+
+#: ../xml/media-rss.php:50
+msgid "No galleries have been yet created."
+msgstr ""
+
+#: ../xml/media-rss.php:69
+#, php-format
+msgid "The gallery ID=%s does not exist."
+msgstr ""
+
+#: ../xml/media-rss.php:100
+msgid "No album ID has been provided as parameter"
+msgstr ""
+
+#: ../xml/media-rss.php:108
+#, php-format
+msgid "The album ID=%s does not exist."
+msgstr ""
+
+#: ../xml/media-rss.php:115
+msgid "Invalid MediaRSS command"
+msgstr ""
