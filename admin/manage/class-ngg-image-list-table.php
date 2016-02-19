@@ -315,6 +315,8 @@ class NGG_Image_List_Table extends WP_List_Table {
 			'add_tags'       => __( 'Add tags', 'nggallery' ),
 			'delete_tags'    => __( 'Delete tags', 'nggallery' ),
 			'overwrite_tags' => __( 'Overwrite tags', 'nggallery' ),
+			'set_title'      => __( 'Set alt & title text', 'nggallery' ),
+			'set_descr'      => __( 'Set description', 'nggallery' ),
 		);
 	}
 }
