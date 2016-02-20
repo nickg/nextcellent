@@ -129,7 +129,8 @@ class NGG_Gallery_List_Table extends WP_List_Table {
 			case 'description':
 				return $item->galdesc;
 			case 'author':
-				return $item->author;
+				$author = get_userdata( (int) $item->author );
+				return $author->display_name;
 			case 'page_id':
 				return $item->pageid;
 			case 'quantity':
