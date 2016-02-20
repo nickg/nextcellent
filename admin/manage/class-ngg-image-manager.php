@@ -378,23 +378,23 @@ class NGG_Image_Manager extends NGG_Abstract_Image_Manager {
 
 		$parent_id      = esc_attr($_POST['parent_id']);
 		$gallery_title  = esc_attr($_POST['title']);
-		$gallery_name   = $wpdb->get_var("SELECT name FROM $wpdb->nggallery WHERE gid = '$this->gid' ");
+		$gallery_name   = $wpdb->get_var("SELECT name FROM $wpdb->nggallery WHERE gid = '$this->id' ");
 
 		// Create a WP page
 		global $user_ID;
 
 		$page['post_type']    = 'page';
-		$page['post_content'] = '[nggallery id=' . $this->gid . ']';
+		$page['post_content'] = '[nggallery id=' . $this->id . ']';
 		$page['post_parent']  = $parent_id;
 		$page['post_author']  = $user_ID;
 		$page['post_status']  = 'publish';
 		$page['post_title']   = $gallery_title == '' ? $gallery_name : $gallery_title;
-		$page = apply_filters('ngg_add_new_page', $page, $this->gid);
+		$page = apply_filters('ngg_add_new_page', $page, $this->id);
 
 		$gallery_pageid = wp_insert_post ($page);
 		if ($gallery_pageid != 0) {
-			$result = $wpdb->query("UPDATE $wpdb->nggallery SET title= '$gallery_title', pageid = '$gallery_pageid' WHERE gid = '$this->gid'");
-			wp_cache_delete($this->gid, 'ngg_gallery');
+			$result = $wpdb->query("UPDATE $wpdb->nggallery SET title= '$gallery_title', pageid = '$gallery_pageid' WHERE gid = '$this->id'");
+			wp_cache_delete($this->id, 'ngg_gallery');
 			nggGallery::show_message( sprintf( __( 'New page <strong>%s</strong> (ID: %s) created.','nggallery'),  $gallery_title, $gallery_pageid ));
 		}
 
