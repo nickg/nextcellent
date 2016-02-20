@@ -92,12 +92,6 @@ class NGG_Admin_Launcher {
 				'nggallery-roles',
 				array( $this, 'show_menu' ) );
 		}
-
-		if ( ! is_multisite() || is_super_admin() ) {
-			add_submenu_page( NGGFOLDER, __( 'Reset / Uninstall', 'nggallery' ), __( 'Reset / Uninstall', 'nggallery' ),
-				'activate_plugins', 'nggallery-setup',
-				array( $this, 'show_menu' ) );
-		}
 	}
 
 	/**
@@ -185,10 +179,6 @@ class NGG_Admin_Launcher {
 			case "nggallery-style" :
 				include_once( dirname( __FILE__ ) . '/class-ngg-style.php' );
 				$page = new NGG_Style();
-				break;
-			case "nggallery-setup" :
-				include_once( dirname( __FILE__ ) . '/class-ngg-setup.php' );
-				$page = new NGG_Setup();
 				break;
 			case "nggallery-roles" :
 				include_once( dirname( __FILE__ ) . '/class-ngg-roles.php' );
@@ -659,19 +649,6 @@ class NGG_Admin_Launcher {
 				$screen->add_help_tab( array(
 					'id'      => $screen->id . '-general',
 					'title'   => 'Grant permissions',
-					'content' => $help
-				) );
-				break;
-			case "{$i18n}_page_nggallery-setup" :
-				$help = '<p>' . __( 'If \'someone\' messed with your settings (yeah, definitely not you), you can reset them here.',
-						'nggallery' ) . '</p>';
-				$help .= '<p><b>' . __( 'Attention!',
-						'nggallery' ) . '</b> ' . __( 'You should not use the Uninstall Plugin button, unless you know what you\'re doing! It should never be necessary to press it.',
-						'nggallery' ) . '</p>';
-
-				$screen->add_help_tab( array(
-					'id'      => $screen->id . '-general',
-					'title'   => 'Reset',
 					'content' => $help
 				) );
 				break;
