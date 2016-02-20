@@ -17,6 +17,23 @@ class NGG_Options extends NGG_Post_Admin_Page {
 	 */
 	protected function processor() {
 
+		//If we reset to default, we only do that.
+		if (isset($_POST['resetdefault'])) {
+
+			global $ngg;
+
+			check_admin_referer('ngg_uninstall');
+
+			include_once ( dirname (__FILE__).  '/class-ngg-installer.php');
+
+			NGG_Installer::set_default_options();
+			$ngg->load_options();
+
+			nggGallery::show_message(__('Reset all settings to the default parameters.','nggallery'));
+
+			return;
+		}
+
 		global $nggRewrite;
 
 		$ngg_options = get_option('ngg_options');
@@ -96,7 +113,6 @@ class NGG_Options extends NGG_Post_Admin_Page {
 		}
 
 		do_action( 'ngg_update_options_page' );
-
 	}
 
 	/**
@@ -193,6 +209,17 @@ class NGG_Options extends NGG_Post_Admin_Page {
                     type: 'image',domain: "<?php echo home_url('index.php', is_ssl() ? 'https' : 'http'); ?>"
                 });
 			});
+
+			document.getElementById('reset-to-default').addEventListener('click', function(event) {
+				var check = confirm(
+					'<?php echo esc_js( __( 'Reset all options to default settings?', 'nggallery' ) ) ?>' +
+					'\n\n' +
+					'<?php echo esc_js( __( 'Choose [Cancel] to Stop, [OK] to proceed.', 'ngallery') ) ?>'
+				);
+				if(!check) {
+					event.preventDefault();
+				}
+			}, false);
 		</script>
 		<?php
 	}
@@ -212,6 +239,7 @@ class NGG_Options extends NGG_Post_Admin_Page {
 		$tabs['effects'] = __('Effects', 'nggallery');
 		$tabs['watermark'] = __('Watermark', 'nggallery');
 		$tabs['slideshow'] = __('Slideshow', 'nggallery');
+		$tabs['advanced']     = __('Advanced', 'nggallery');
 
 		$tabs = apply_filters('ngg_settings_tabs', $tabs);
 
@@ -907,6 +935,17 @@ class NGG_Options extends NGG_Post_Admin_Page {
 			<?php submit_button( __('Save Changes'), 'primary', 'updateoption' ); ?>
 	</form>
 	<?php
+	}
+
+
+	private function tab_advanced($options) {
+		?>
+		<form name="resetsettings" method="post" action="<?php echo $this->page.'#advanced'; ?>">
+			<?php wp_nonce_field('ngg_uninstall') ?>
+			<p><?php _e('Use this button to reset all NextCellent options.', 'nggallery') ;?></p>
+			<input type="submit" class="button" id="reset-to-default" name="resetdefault" value="<?php _e('Reset settings', 'nggallery') ;?>">
+		</form>
+		<?php
 	}
 
 	/**
