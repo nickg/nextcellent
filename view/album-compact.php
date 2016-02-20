@@ -27,7 +27,7 @@ Follow variables are useable :
 				</a>
 			</div>
 		</div>
-		<h4><a class="ngg-album-desc" title="<?php echo $gallery->title ?>" href="<?php echo $gallery->pagelink ?>" ><?php echo $gallery->title ?></a></h4>
+		<h4><a class="ngg-album-desc" title="<?php echo $gallery->title ?>" href="<?php echo $gallery->pagelink ?>" ><?php echo stripslashes($gallery->title) ?></a></h4>
 		<?php if ($gallery->counter > 0) : ?>
 		<p><strong><?php echo $gallery->counter ?></strong> <?php _e('Photos', 'nggallery') ?></p>
 		<?php endif; ?>

@@ -19,7 +19,7 @@ Follow variables are useable :
 	<?php foreach ($galleries as $gallery) : ?>
 
 	<div class="ngg-album">
-		<div class="ngg-albumtitle"><a href="<?php echo $gallery->pagelink ?>"><?php echo $gallery->title ?></a></div>
+		<div class="ngg-albumtitle"><a href="<?php echo $gallery->pagelink ?>"><?php echo stripslashes($gallery->title) ?></a></div>
 			<div class="ngg-albumcontent">
 				<div class="ngg-thumbnail">
 					<a href="<?php echo $gallery->pagelink ?>"><img class="Thumb" alt="<?php echo $gallery->title ?>" src="<?php echo $gallery->previewurl ?>"/></a>
