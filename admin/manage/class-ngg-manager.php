@@ -119,6 +119,22 @@ abstract class NGG_Manager implements NGG_Displayable {
 				</div>
 			</form>
 			<!-- /#entertags -->
+			<!-- #settext -->
+			<form id="settext_dialog" method="POST" accept-charset="utf-8">
+				<?php wp_nonce_field('ngg_thickbox_form') ?>
+				<input type="hidden" class="TB_type" name="TB_type" value="">
+				<input type="hidden" id="settext_imagelist" name="TB_imagelist" value="">
+				<input type="hidden" id="settext_bulkaction" name="TB_bulkaction" value="">
+				<input type="hidden" name="TB_action" value="">
+
+				<div style="text-align: center">
+					<label>
+						<?php _e( "Enter the text", 'nggallery' ); ?><br>
+						<input name="text" type="text" value="" style="width: 90%">
+					</label>
+				</div>
+			</form>
+			<!-- /#settext -->
 			<!-- #selectgallery -->
 			<form id="select_gallery_dialog" method="POST" accept-charset="utf-8">
 				<?php wp_nonce_field( 'ngg_thickbox_form' ) ?>
@@ -224,6 +240,14 @@ abstract class NGG_Manager implements NGG_Displayable {
 					case "overwrite_tags":
 						set_TB_command('tags', 'overwrite_tags');
 						bulkDialog('tags', '<?php echo esc_js(__('Overwrite','nggallery')); ?>', $selected);
+						break;
+					case "set_title":
+						set_TB_command('settext', 'set_title');
+						bulkDialog('settext', '<?php echo esc_js(__('Set alt and title text','nggallery')); ?>', $selected);
+						break;
+					case "set_descr":
+						set_TB_command('settext', 'set_descr');
+						bulkDialog('settext', '<?php echo esc_js(__('Set description','nggallery')); ?>', $selected);
 						break;
 					case 'rotate_cw':
 						ajaxOperation('rotate_cw', '<?php echo esc_js(__('Rotate images','nggallery')); ?>', $selected);
@@ -406,6 +430,26 @@ abstract class NGG_Manager implements NGG_Displayable {
 					}
 				}
 				nggGallery::show_message( __( 'Tags changed', 'nggallery' ) );
+
+				return;
+			case 'set_title':
+				$new_title = $_POST['text'];
+				if ( is_array( $list ) ) {
+					foreach ( $list as $pic_id ) {
+						nggdb::update_image($pic_id, false, false, false, $new_title);
+					}
+				}
+				nggGallery::show_message( __('Image title updated', 'nggallery') );
+
+				return;
+			case 'set_descr':
+				$new_descr = $_POST['text'];
+				if ( is_array( $list ) ) {
+					foreach ( $list as $pic_id ) {
+						nggdb::update_image($pic_id, false, false, $new_descr);
+					}
+				}
+				nggGallery::show_message( __('Image description updated', 'nggallery') );
 
 				return;
 			default:
