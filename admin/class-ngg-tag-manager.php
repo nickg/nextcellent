@@ -18,15 +18,15 @@ class NGG_Tag_Manager implements NGG_Displayable {
 			check_admin_referer('nggallery_admin_tags');
 
 			if ( $_POST['tag_action'] == 'renametag' ) {
-				$oldtag = (isset($_POST['renametag_old'])) ? $_POST['renametag_old'] : '';
-				$newtag = (isset($_POST['renametag_new'])) ? $_POST['renametag_new'] : '';
+				$oldtag = (isset($_POST['renametag_old'])) ? sanitize_text_field($_POST['renametag_old']) : '';
+				$newtag = (isset($_POST['renametag_new'])) ? sanitize_text_field(['renametag_new']) : '';
 				$action_status = nggTags::rename_tags( $oldtag, $newtag );
 			} elseif ( $_POST['tag_action'] == 'deletetag' ) {
-				$todelete = (isset($_POST['deletetag_name'])) ? $_POST['deletetag_name'] : '';
+				$todelete = (isset($_POST['deletetag_name'])) ? sanitize_text_field($_POST['deletetag_name']) : '';
 				$action_status = nggTags::delete_tags( $todelete );
 			} elseif ( $_POST['tag_action'] == 'editslug' ) {
-				$matchtag = (isset($_POST['tagname_match'])) ? $_POST['tagname_match'] : '';
-				$newslug   = (isset($_POST['tagslug_new'])) ? $_POST['tagslug_new'] : '';
+				$matchtag = (isset($_POST['tagname_match'])) ? sanitize_text_field($_POST['tagname_match']) : '';
+				$newslug   = (isset($_POST['tagslug_new'])) ? sanitize_text_field($_POST['tagslug_new']) : '';
 				$action_status = nggTags::edit_tag_slug( $matchtag, $newslug );
 			}
 		}

@@ -55,7 +55,7 @@ class NGG_Options extends NGG_Post_Admin_Page {
 					$option = trim($option);
 					$value = false;
 					if ( isset( $_POST[ $option ] ) ) {
-						$value = trim( $_POST[ $option ] );
+						$value = sanitize_title( $_POST[ $option ] );
 						if ($value === "true") {
 							$value = true;
 						}

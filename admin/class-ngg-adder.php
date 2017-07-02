@@ -55,6 +55,7 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 			}
 		}
 
+		/* 20170702: Import folder suppressed due exploit. This needs to be redone.
 		if ( isset( $_POST['importfolder'] ) ) {
 			check_admin_referer( 'ngg_addgallery' );
 
@@ -67,6 +68,7 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 				nggAdmin::import_gallery( $galleryfolder );
 			}
 		}
+		*/
 
 		if ( isset( $_POST['uploadimage'] ) ) {
 			check_admin_referer( 'ngg_addgallery' );
@@ -361,6 +363,7 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 	 * Create array for tabs and add a filter for other plugins to inject more tabs
 	 *
 	 * @return array $tabs
+	 * 20170702: suppressed tab Import Folder in this version due vulnerability
 	 */
 	private function tabs_order($args) {
 
