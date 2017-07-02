@@ -22,7 +22,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 				$option = trim( $option );
 				$value  = false;
 				if ( isset( $_POST[ $option ] ) ) {
-					$value = trim( $_POST[ $option ] );
+					$value = sanitize_text_field(trim( $_POST[ $option ] ));
 					if ( $value === "true" ) {
 						$value = true;
 					}

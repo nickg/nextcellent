@@ -102,12 +102,12 @@ abstract class NGG_Abstract_Image_Manager extends NGG_Manager {
 
 		//TODO:Error message when update failed
 
-		$description = isset ( $_POST['description'] ) ? $_POST['description'] : array();
-		$alttext     = isset ( $_POST['alttext'] ) ? $_POST['alttext'] : array();
-		$exclude     = isset ( $_POST['exclude'] ) ? $_POST['exclude'] : false;
-		$taglist     = isset ( $_POST['tags'] ) ? $_POST['tags'] : false;
-		$pictures    = isset ( $_POST['pid'] ) ? $_POST['pid'] : false;
-		$date        = isset ( $_POST['date'] ) ? $_POST['date'] : "NOW()"; //Not sure if NOW() will work or not but in theory it should
+		$description = isset ( $_POST['description'] ) ? sanitize_text_field( $_POST['description']) : array();
+		$alttext     = isset ( $_POST['alttext'] ) ? sanitize_text_field($_POST['alttext']) : array();
+		$exclude     = isset ( $_POST['exclude'] ) ? sanitize_text_field($_POST['exclude']) : false;
+		$taglist     = isset ( $_POST['tags'] ) ? sanitize_text_field($_POST['tags']) : false;
+		$pictures    = isset ( $_POST['pid'] ) ? sanitize_text_field($_POST['pid']) : false;
+		$date        = isset ( $_POST['date'] ) ? sanitize_text_field($_POST['date']) : "NOW()"; //Not sure if NOW() will work or not but in theory it should
 
 		if ( is_array( $pictures ) ) {
 			foreach ( $pictures as $pid ) {

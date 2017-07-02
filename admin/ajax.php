@@ -41,14 +41,14 @@ function ngg_ajax_operation() {
 					} else {
 						$fix = null;
 					}
-					$result = nggAdmin::create_thumbnail( $picture, (int) $_POST['width'], $_POST['height'], $fix );
+					$result = nggAdmin::create_thumbnail( $picture, (int) $_POST['width'],(int) $_POST['height'], $fix );
 				} else {
 					$result = nggAdmin::create_thumbnail( $picture );
 				}
 				break;
 			case 'resize_image' :
 				if ( isset( $_POST['width'] ) && isset( $_POST['height'] ) ) {
-					$result = nggAdmin::resize_image( $picture, (int) $_POST['width'], $_POST['height'] );
+					$result = nggAdmin::resize_image( $picture, (int) $_POST['width'], (int) $_POST['height'] );
 				} else {
 					$result = nggAdmin::resize_image( $picture );
 				}
@@ -74,7 +74,7 @@ function ngg_ajax_operation() {
 				$result = nggAdmin::get_image_ids( $id );
 				break;
 			default :
-				do_action( 'ngg_ajax_' . $_POST['operation'] );
+				do_action( 'ngg_ajax_' . sanitize_text_field($_POST['operation']) );
 				die( '-1' );
 				break;
 		}
@@ -390,7 +390,7 @@ function ngg_ajax_rebuild_unique_slugs() {
 	if ( !current_user_can('NextGEN Change options') )
 		die('No access');
 
-	$action = $_POST['_action'];
+	$action = sanitize_text_field($_POST['_action']);
     $offset = (int) $_POST['offset'];
 
     switch ($action) {

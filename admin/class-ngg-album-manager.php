@@ -82,7 +82,7 @@ class NGG_Album_Manager implements NGG_Displayable {
 				wp_die( __( 'Cheatin&#8217; uh?' ) );
 			}
 
-			$result          = nggdb::add_album( $_POST['newalbum'] );
+			$result          = nggdb::add_album( sanitize_text_field($_POST['newalbum']) );
 			$this->currentID = ( $result ) ? $result : 0;
 
 			//hook for other plugins
@@ -143,13 +143,13 @@ class NGG_Album_Manager implements NGG_Displayable {
 			wp_die( __( 'Cheatin&#8217; uh?' ) );
 		}
 
-		$name = $_POST['album_name'];
-		$desc = $_POST['album_desc'];
+		$name = sanitize_title($_POST['album_name']);
+		$desc = sanitize_title($_POST['album_desc']);
 		$prev = (int) $_POST['previewpic'];
 		$link = (int) $_POST['pageid'];
 
 		// slug must be unique, we use the title for that
-		$slug = nggdb::get_unique_slug( sanitize_title( $name ), 'album', $this->currentID );
+		$slug = nggdb::get_unique_slug( $name , 'album', $this->currentID );
 
 		$result = $wpdb->query( $wpdb->prepare( "UPDATE $wpdb->nggalbum SET slug= '%s', name= '%s', albumdesc= '%s', previewpic= %d, pageid= %d WHERE id = '%d'",
 			$slug, $name, $desc, $prev, $link, $this->currentID ) );

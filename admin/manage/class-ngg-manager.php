@@ -474,8 +474,8 @@ abstract class NGG_Manager implements NGG_Displayable {
 			return;
 		}
 
-		$a1 = $_POST['action'];
-		$a2 = $_POST['action2'];
+		$a1 = sanitize_text_field($_POST['action']);
+		$a2 = sanitize_text_field($_POST['action2']);
 
 		if ( $a1 === "delete_gallery" || $a2 === "delete_gallery" ) {
 			// Delete gallery
