@@ -375,9 +375,10 @@ class NGG_Adder extends NGG_Post_Admin_Page {
 		if ( wpmu_enable_function('wpmuZipUpload') && nggGallery::current_user_can( 'NextGEN Upload a zip' ) )
 			$tabs['zipupload'] = __('ZIP file', 'nggallery');
 
+		/*
 		if ( wpmu_enable_function('wpmuImportFolder') && nggGallery::current_user_can( 'NextGEN Import image folder' ) )
 			$tabs['importfolder'] = __('Import folder', 'nggallery');
-
+*/
 		$tabs = apply_filters('ngg_addgallery_tabs', $tabs);
 
 		return $tabs;
