@@ -8,21 +8,13 @@ License: GPLv2
 
 == Description ==
 
-= 1.9.31 - 2016-02-09 = Fixes for 1.9.30
+= 19.32 -  2017-07-12 = Fixes for 1.9.30
 
- What's in it for you?
+What's in it for you?
 
-* Added more help documentation
-* Fix Add new page button
-* Style improvement
-* Enable different size thumbnails only if the option is set
-* Wrong url fixed
-* Updated cropper library to the latest version
-* Fixed few things now working with several PHP versions.
-* Few css fixes
-* Update setting(s) class(es)
-* Several fixes
-** All credits for Niko Strijbol **
+* Fixed few vulnerabilities that turned the plugin down on the repository
+* Disabled temporarily upload zip files when creating galleries for vulnerability reasons
+* Enforced parameter checking in many places.
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -331,6 +323,13 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 - Many users are creating their respective translations and they will be included, along respective credits. Thanks to them!!!
 
 == Changelog ==
+
+= 19.32 -  2017-07-12 = Vulnerability FIX
+
+* Fixed few vulnerabilities that turned the plugin down on the repository
+* Disabled temporarily upload zip files when creating galleries for vulnerability reasons
+* Enforced parameter checking in many places.
+
 
 = 1.9.31 - 2016-02-09 = FIX
 
