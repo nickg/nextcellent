@@ -1,5 +1,6 @@
 <?php
 // Load wp-config
+
 if ( !defined('ABSPATH') ) 
 	require_once( dirname(__FILE__) . '/ngg-config.php');
 
