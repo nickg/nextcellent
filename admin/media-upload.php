@@ -22,7 +22,7 @@ function media_upload_nextgen() {
     
 	// Generate TinyMCE HTML output
 	if ( isset($_POST['send']) ) {
-		$keys = array_keys($_POST['send']);
+		$keys = array_keys(sanitize_title($_POST['send']));
 		$send_id = (int) array_shift($keys);
 		$image = $_POST['image'][$send_id];
 		$alttext = stripslashes( htmlspecialchars ($image['alttext'], ENT_QUOTES));

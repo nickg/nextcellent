@@ -129,8 +129,8 @@ class NGG_Style extends NGG_Post_Admin_Page {
 				{wp_die('<p>'.__('You do not have sufficient permissions to edit templates for this blog.').'</p>');}
 
 			$newcontent = stripslashes($_POST['newcontent']);
-			$old_path = $_POST['file'];
-			$folder = $_POST['folder'];
+			$old_path = sanitize_title($_POST['file']);
+			$folder = sanitize_title($_POST['folder']);
 			
 			//if the file is in the css folder, copy it.
 			if ($folder === 'css') {

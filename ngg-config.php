@@ -14,6 +14,7 @@
 /*
 $path  = ''; // It should be end with a trailing slash    
 */
+
 /** That's all, stop editing from here **/
 /*
 if ( !defined('WP_LOAD_PATH') ) {

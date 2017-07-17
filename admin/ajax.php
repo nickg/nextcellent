@@ -33,7 +33,8 @@ function ngg_ajax_operation() {
 		// let's get the image data
 		$picture = nggdb::find_image( $id );
 		// what do you want to do ?
-		switch ( $_POST['operation'] ) {
+		$operation = sanitize_title($_POST['operation']);
+		switch ( $operation ) {
 			case 'create_thumbnail' :
 				if ( isset( $_POST['width'] ) && isset( $_POST['height'] ) ) {
 					if ( isset( $_POST['fix'] ) ) {
