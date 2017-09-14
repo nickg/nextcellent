@@ -28,9 +28,7 @@ class nggAdmin{
 
 	static function create_gallery($title, $defaultpath, $output = true, $description = '') {
 
-		global $user_ID;
- 
-		get_currentuserinfo(); 		                            //get current user ID & sets global object $current_user
+		$user = wp_get_current_user(); //get current user ID & sets global object $current_user (?well that was get_ucrrentuserinfo did)
 		$name = sanitize_file_name( sanitize_title($title)  );  //cleanup pathname
 		$name = apply_filters('ngg_gallery_name', $name);
 
@@ -108,7 +106,7 @@ class nggAdmin{
 
 		//clean the description and add the gallery
 		$description = nggGallery::suppress_injection($description);
-        $galleryID = nggdb::add_gallery($title, $nggpath, $description, 0, 0, $user_ID );
+        $galleryID = nggdb::add_gallery($title, $nggpath, $description, 0, 0, $user->ID);
 		// here you can inject a custom function
 		do_action('ngg_created_new_gallery', $galleryID);
 
@@ -142,10 +140,9 @@ class nggAdmin{
 		/**
 		 * @global nggdb $nggdb
 		 */
-		global $wpdb, $user_ID, $nggdb;
+		global $wpdb, $nggdb;
 
-		// get the current user ID
-		get_currentuserinfo();
+		$user=wp_get_current_user(); // get the current user ID
 		
 		$created_msg = NULL;
 		
@@ -204,7 +201,7 @@ class nggAdmin{
 
 		if (!$gallery_id) {
             // now add the gallery to the database
-            $gallery_id = nggdb::add_gallery( $galleryname, $galleryfolder, '', 0, 0, $user_ID );
+            $gallery_id = nggdb::add_gallery( $galleryname, $galleryfolder, '', 0, 0, $user->ID );
 			if (!$gallery_id) {
 				nggGallery::show_error(__('Database error. Could not add gallery!','nggallery'));
 				return;
@@ -317,106 +314,7 @@ class nggAdmin{
 		return;
 
 	}
-	
-	/**
-	 * nggAdmin::old_import_gallery()
-	 * TODO: Check permission of existing thumb folder & images
-	 * Use is not recommended!
-	 * 
-	 * @class nggAdmin
-	 * @param string $galleryfolder contains relative path to the gallery itself
-	 * @return void
-	 */
-	static function old_import_gallery($galleryfolder) {
-		
-		global $wpdb, $user_ID;
 
-		// get the current user ID
-		get_currentuserinfo();
-		
-		$created_msg = '';
-		
-		// remove trailing slash at the end, if somebody use it
-		$galleryfolder = untrailingslashit($galleryfolder);
-		$gallerypath = WINABSPATH . $galleryfolder;
-		
-		if (!is_dir($gallerypath)) {
-			nggGallery::show_error(__('Directory', 'nggallery').' <strong>' . esc_html( $gallerypath ) .'</strong> '.__('doesn&#96;t exist!', 'nggallery'));
-			return ;
-		}
-		
-		// read list of images
-		$new_imageslist = nggAdmin::scandir($gallerypath);
-
-		if (empty($new_imageslist)) {
-			nggGallery::show_message(__('Directory', 'nggallery').' <strong>' . esc_html( $gallerypath ) . '</strong> '.__('contains no pictures', 'nggallery'));
-			return;
-		}
-		
-		// check & create thumbnail folder
-		if ( !nggGallery::get_thumbnail_folder($gallerypath) )
-			return;
-		
-		// take folder name as gallery name		
-		$galleryname = basename($galleryfolder);
-		$galleryname = apply_filters('ngg_gallery_name', $galleryname);
-		
-		// check for existing gallery folder
-		$gallery_id = $wpdb->get_var("SELECT gid FROM $wpdb->nggallery WHERE path = '$galleryfolder' ");
-
-		if (!$gallery_id) {
-            // now add the gallery to the database
-            $gallery_id = nggdb::add_gallery( $galleryname, $galleryfolder, '', 0, 0, $user_ID );
-			if (!$gallery_id) {
-				nggGallery::show_error(__('Database error. Could not add gallery!','nggallery'));
-				return;
-			}
-			$created_msg = __( 'Gallery', 'nggallery' ) . ' <strong>' . esc_html( $galleryname ) . '</strong> ' . __('successfully created!','nggallery') . '<br />';
-		}
-		
-		// Look for existing image list
-		$old_imageslist = $wpdb->get_col("SELECT filename FROM $wpdb->nggpictures WHERE galleryid = '$gallery_id' ");
-		
-		// if no images are there, create empty array
-		if ($old_imageslist == NULL) 
-			$old_imageslist = array();
-			
-		// check difference
-		$new_images = array_diff($new_imageslist, $old_imageslist);
-		
-		// all images must be valid files
-		foreach($new_images as $key => $picture) {
-            
-            // filter function to rename/change/modify image before
-            $picture = apply_filters('ngg_pre_add_new_image', $picture, $gallery_id);
-            $new_images[$key] = $picture;
-            
-			if (!@getimagesize($gallerypath . '/' . $picture) ) {
-				unset($new_images[$key]);
-				@unlink($gallerypath . '/' . $picture);				
-			}
-		}
-				
-		// add images to database		
-		$image_ids = nggAdmin::add_Images($gallery_id, $new_images);
-		
-		//add the preview image if needed
-		nggAdmin::set_gallery_preview ( $gallery_id );
-
-		// now create thumbnails
-		nggAdmin::do_ajax_operation( 'create_thumbnail' , $image_ids, __('Create new thumbnails','nggallery') );
-		
-		//TODO:Message will not shown, because AJAX routine require more time, message should be passed to AJAX
-		$message  = $created_msg . count($image_ids) .__(' picture(s) successfully added','nggallery');
-		$message .= ' [<a href="' . admin_url() . 'admin.php?page=nggallery-manage&mode=image&gid=' . $gallery_id . '" >';
-		$message .=  __('Edit gallery','nggallery');
-		$message .= '</a>]';
-		
-		nggGallery::show_message($message); 
-		
-		return;
-
-	}
 
 	/**
 	 * Scan folder for new images
@@ -1370,15 +1268,13 @@ class nggAdmin{
 		global $user_ID, $wp_roles;
 		
 		if ( !current_user_can('NextGEN Manage others gallery') ) {
-			// get the current user ID
-			get_currentuserinfo();
+			$user=wp_get_current_user(); // get the current user ID
 			
-			if ( $user_ID != $check_ID)
+			if ( $user->ID != $check_ID)
 				return false;
 		}
 		
 		return true;
-	
 	}
 	
 	/**
