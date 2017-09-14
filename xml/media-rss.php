@@ -23,8 +23,6 @@
 * 	@param aid The album ID to show
 */
 
-// Load required files and set some useful variables
-require_once(dirname(__FILE__) . "/../ngg-config.php");
 require_once(dirname(__FILE__) . "/../lib/media-rss.php");
 
 // Check we have the required GET parameters

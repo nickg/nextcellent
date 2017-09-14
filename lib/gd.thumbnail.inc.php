@@ -173,13 +173,13 @@ class ngg_Thumbnail {
 
             switch($this->format) {            	
                 case 'GIF':
-                    $this->oldImage = ImageCreateFromGif($this->fileName);
+                    $this->oldImage = imagecreatefromgif($this->fileName);
                     break;
                 case 'JPG':
-                       $this->oldImage = ImageCreateFromJpeg($this->fileName);
+		    $this->oldImage = imagecreatefromjpeg($this->fileName);
                     break;
                 case 'PNG':
-                    $this->oldImage = ImageCreateFromPng($this->fileName);
+                    $this->oldImage = imagecreatefrompng($this->fileName);
 					break;
             }
 			if (!$this->oldImage) { 

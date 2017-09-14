@@ -241,8 +241,6 @@ function ngg_rotateImage() {
 	if ( !current_user_can('NextGEN Manage gallery') )
 		die('-1');
 
-	require_once( dirname( dirname(__FILE__) ) . '/ngg-config.php');
-
 	// include the ngg function
 	include_once (dirname (__FILE__). '/functions.php');
 

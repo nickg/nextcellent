@@ -5,7 +5,6 @@
  * @access private
  */
 
-//require_once( '../../ngg-config.php' );
 require_once( NGGALLERY_ABSPATH . '/lib/image.php' );
 
 if ( ! is_user_logged_in() || ! current_user_can( 'NextGEN Manage gallery' ) ) {

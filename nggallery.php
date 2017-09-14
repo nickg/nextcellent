@@ -185,16 +185,14 @@ if (!class_exists('nggLoader')) {
         /**
          * Look for XML request
          * @param $wp
+         * 20170920: Deprecated imagerotator.php
          */
         function check_request( $wp ) {
 
 			if ( !array_key_exists('callback', $wp->query_vars) )
 				return;
 
-			if ( $wp->query_vars['callback'] == 'imagerotator') {
-				require_once (dirname (__FILE__) . '/xml/imagerotator.php');
-				exit();
-			}
+
 
 			if ( $wp->query_vars['callback'] == 'json') {
 				require_once (dirname (__FILE__) . '/xml/json.php');

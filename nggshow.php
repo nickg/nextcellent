@@ -1,9 +1,4 @@
 <?php
-// Load wp-config
-
-if ( !defined('ABSPATH') ) 
-	require_once( dirname(__FILE__) . '/ngg-config.php');
-
 // reference thumbnail class
 include_once( nggGallery::graphic_library() );
 include_once('lib/core.php');

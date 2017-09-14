@@ -8,13 +8,14 @@ License: GPLv2
 
 == Description ==
 
-= 19.32 -  2017-07-12 = Fixes for 1.9.30
+= 19.33 -  2017-09-22 = Fixes for 1.9.32
 
 What's in it for you?
 
-* Fixed few vulnerabilities that turned the plugin down on the repository
-* Disabled temporarily upload zip files when creating galleries for vulnerability reasons
-* Enforced parameter checking in many places.
+* Main Windows fixed: an issue around WP last version prevent from opening
+* Deprecated imagerotator.swf: older Nextcellent version depend on Flash part, now replaced with html counterpart
+* removed (finally) removed dependency with AJAX and wp-load.php
+
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -91,7 +92,7 @@ As a result, there is large and great community of users and developers, as well
 == Credits ==
 
 Copyright:<br>
-WpGetReady 2013-2016<br>
+WpGetReady 2013-2017<br>
 Photocrati Media 2012<br>
 Alex Rabe 2007-2011<br>
 
