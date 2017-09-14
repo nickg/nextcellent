@@ -20,9 +20,80 @@ abstract class NGG_Abstract_Image_Manager extends NGG_Manager {
 	}
 
 	/**
-	 * @todo Make this better.
+	 * @todo Attempting to make WP Ajax Standard
 	 */
 	protected function print_scripts() {
+		parent::print_scripts();
+		?>
+		<script type="text/javascript">
+
+
+			var defaultAction = function(dialog) {
+				jQuery(dialog).dialog('close');
+			};
+
+			var doAction = defaultAction;
+
+			/**
+			 * Load the content with AJAX.
+			 */
+			jQuery('a.ngg-dialog').click(function() {
+				//Get the spinner.
+				var $spinner = jQuery("#spinner");
+				var $this = jQuery(this);
+				var current_cmd = $this.data("action");
+				var current_id = $this.data("id");
+
+				if (!$spinner.length) {
+					jQuery("body").append('<div id="spinner"></div>');
+				}
+
+				$spinner.fadeIn();
+
+				var dialog = jQuery('<div style="display:none" class="ngg-load-dialog"></div>').appendTo('body');
+				// load the remote content
+				jQuery.post({
+					url: ajaxurl,
+					data: {action:"image_manager", cmd: current_cmd, id: current_id},
+					success: function(response){
+						dialog.append(response);
+						$spinner.hide(); 						//jQuery('#spinner').hide();
+						showDialog(dialog, ($this.attr('title')) ? $this.attr('title') : '', doAction);//doAction function must be defined in the actions.php
+					}
+				});
+
+				//prevent the browser to follow the link
+				return false;
+			});
+
+			/**
+			 * Show a message on the image action modal window.
+			 *
+			 * @param message string The message.
+			 */
+			function showMessage(message) {
+				jQuery('#thumbMsg').html(message).css({'display': 'block'});
+				setTimeout(function() {
+					jQuery('#thumbMsg').fadeOut('slow');
+				}, 1500);
+
+				var d = new Date();
+				var $image = jQuery("#imageToEdit");
+				var newUrl = $image.attr("src") + "?" + d.getTime();
+				$image.attr("src", newUrl);
+			}
+		</script>
+
+		<?php
+	}
+
+
+/*************************************/
+
+	/**
+	 * @todo Make this better.
+	 */
+	protected function print_scripts_old() {
 		parent::print_scripts();
 		?>
 		<script type="text/javascript">

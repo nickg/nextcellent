@@ -508,4 +508,23 @@ function ngg_ajax_test_head_footer() {
 	}
     die('success');
 }
+
+add_action('wp_ajax_image_manager', 'ngg_ajax_image_manager');
+
+/**
+ * handle image operations. This is the correct solution to avoid using wp-load.php issue on NGG 1.9.31
+ *
+ * @see 
+ * @since 1.9.33
+ * @return depend on the operation
+ */
+
+function ngg_ajax_image_manager() {
+
+require_once('manage/actions.php');
+wp_die();
+
+}
+
+
 ?>

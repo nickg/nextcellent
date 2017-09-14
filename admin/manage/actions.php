@@ -5,21 +5,21 @@
  * @access private
  */
 
-require_once( '../../ngg-config.php' );
+//require_once( '../../ngg-config.php' );
 require_once( NGGALLERY_ABSPATH . '/lib/image.php' );
 
 if ( ! is_user_logged_in() || ! current_user_can( 'NextGEN Manage gallery' ) ) {
 	wp_die( __( 'Cheatin&#8217; uh?' ) );
 }
 
-$id = (int) $_GET['id'];
+$id = (int) $_POST['id'];
 
 
 /**
  * Change the output based on which action the user wants to do.
  * If you need scripts, you should register them with the parent page.
  */
-switch ( $_GET['cmd'] ) {
+switch ( $_POST['cmd'] ) {
 	case "rotate":
 		ngg_rotate( $id );
 		break;
