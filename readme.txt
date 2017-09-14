@@ -2,20 +2,24 @@
 Contributors: wpready
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,NextGEN-gallery,NextGEN,nextcellent-gallery,nextcellent
 Requires at least: 4.0
-Tested up to: 4.4.2
+Tested up to: 4.8.2
 Stable tag: trunk
 License: GPLv2
 
 == Description ==
 
-= 19.33 -  2017-09-22 = Fixes for 1.9.32
+= 1.9.33 -  2017-09-23 = Fixes for 1.9.32
 
 What's in it for you?
 
-* Main Windows fixed: an issue around WP last version prevent from opening
-* Deprecated imagerotator.swf: older Nextcellent version depend on Flash part, now replaced with html counterpart
-* removed (finally) removed dependency with AJAX and wp-load.php
-
+* fix: issue around WP last version prevent from window popup opening.
+* fix: internal issue prevent refer images using Media Add
+* fix: removed (finally) dependency with AJAX and wp-load.php. Rotation, and thumbnail should work fine.
+* fix: issues preventing to display correctly.
+* fix: Class constructor warning on PHP 7.1 and aboved 
+* deprecadted: imagerotator.swf: older Nextcellent version depend on Flash part, now replaced with html counterpart
+* deprecated: Nextcellent is plupload instead is using swfUpload. For legacy code reasons only swfUpload is mentined but not used.
+* improve: core Ajax call simplified
 
 VERY IMPORTANT: Read ON!
 -----------------------
@@ -44,15 +48,14 @@ VERY IMPORTANT: Read ON!
 
 = What do you get with NextCellent Gallery? =
 
-- Backward compatibility with NextGEN plugin version (1.9.13)
+- This is a compatibility branch with the older NextGen 1.9.13. As such, it will steadily improving and keeping update with software upgrades. 
+For example, Nextcellent is not supporting Flash slideshow as 2017 for vulnerability reasons. In the same way Nextcellent should work fine with PHP 7.
 
-- Slow evolving code path, made only by NextGEN user's suggestions. Yep, you read it right: *slow* in counterpart as *fast*. Older code is good enough to keep a community and it worked (and works) for most people. Versions will rollup about once a month.
+- Backward compatibility with NextGEN plugin version (1.9.13). When we say 'backward' we mean to software level: most filters, actions and shortcodes should work.
+
+- Slow evolving code path. Yep, you read it right: *slow* in counterpart as *fast*. Older code is good enough to keep a community and it worked (and works) for most people. Versions will rollup about once a month. There is another reason for that: we don't have resources to keep a fast pace. So we'll try to improve the code as much as possible, keeping a stable plugin instead developing new features here and there.
 
 - A reliable way to work with already installed NextGEN galleries.
-
-- A place for updating the plugin without using FTP manual updates, but Wordpress plugin repository.
-
-- Alternative path preserving backward compatibility (while possible).
 
 - **Development on Bitbucket open to developers suggestions**. (https://bitbucket.org/wpgetready/nextcellent). You are free to download , test and make suggestions and requests.
 
@@ -102,10 +105,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-** Please note **
-
-NextCellent Gallery's flash slideshow option is powered by the JW Image Rotator from Long Tail Video. The Image Rotator is NOT provided with this plugin. For more information, see the Long Tail Video website: http://www.longtailvideo.com.
-
 == Installation ==
 
 1. 	Download, and install from the usual Wordpress Panel.
@@ -129,7 +128,7 @@ That's it ... have fun!
 
 == Shortcode ==
 
-NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortcodes.
+NextCellent Plugin Shortcodes should be backward compatible with older NGG shortcodes.
 
 = Examples =
 
@@ -169,6 +168,7 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 - Plugin will deactivate if you install and activate any NextGEN version (any version).
 - Minimal text changes to let the user know what plugin is running. This would affect translated texts in some cases.
 - Lot of fixes
+- Faster
 
 = What are the SIGNIFICATIVE differences between this NextCellent and NextGEN 2.x.x? =
 
@@ -209,7 +209,7 @@ NextCellent Plugin Shortcodes are 100% backward compatible with older NGG shortc
 
 = I have NextGEN 1.9.13 or older, should I install NextCellent? =
 
-- **YES** if you want an improved version in the similar fashion (but improved) in comparison with older NextGEN.
+- **YES** if you want an improved version of the older NextGEN.
 
 = If I have NextGEN 2.x.x, should I install NextCellent? =
 
@@ -273,10 +273,12 @@ Why then the name NextCellent instead NextGEN Legacy for example? =
 
 The reason is very simple: I cannot include non-GPL compatible code inside the plugin , according Wordpress.org policies. 
 But you can. Please download it from  http://www.longtailvideo.com and put in the plugin's root. 
+UPDATE: Nextcellent ceased support for imagerotator.swef
 
 = Are the galleries flash based? =
 
 NextCellent Gallery uses Javascript (J-Query) based displays to ensure compatibility across the widest range of displays possible.
+For security reasons, Nextcellente ceased supporting Flash sliders.
 
 = Are the galleries mobile friendly? =
 
@@ -316,7 +318,7 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 = Can I add an external links to galleries? =
 
-- Since the captions are fully HTML capable, you can add external links and any other type of mark up you wish.
+- Yes,Since the captions are fully HTML capable, you can add external links and any other type of mark up you wish.
 
 = Is NextCellent Gallery available in foreign languages? =
 
@@ -325,12 +327,22 @@ Yes, since we use Javascript rather than flash, NextCellent Gallery is compatibl
 
 == Changelog ==
 
+= 1.9.33 -  2017-09-23 = Fixes for 1.9.32
+
+* fix: issue around WP last version prevent from window popup opening.
+* fix: internal issue prevent refer images using Media Add
+* fix: removed (finally) dependency with AJAX and wp-load.php. Rotation, and thumbnail should work fine.
+* fix: issues preventing to display correctly.
+* fix: Class constructor warning on PHP 7.1 and aboved 
+* deprecated: imagerotator.swf: older Nextcellent version depend on Flash part, now replaced with html counterpart
+* deprecated: Nextcellent is plupload instead is using swfUpload. For legacy code reasons only swfUpload is mentined but not used.
+* improved: core Ajax call simplified
+
 = 19.32 -  2017-07-12 = Vulnerability FIX
 
 * Fixed few vulnerabilities that turned the plugin down on the repository
 * Disabled temporarily upload zip files when creating galleries for vulnerability reasons
 * Enforced parameter checking in many places.
-
 
 = 1.9.31 - 2016-02-09 = FIX
 

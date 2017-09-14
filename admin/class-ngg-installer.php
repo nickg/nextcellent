@@ -230,6 +230,8 @@ class NGG_Installer {
 			$ngg_options['gallerypath'] = str_replace( "%BLOG_ID%", $blog_id, $ngg_wpmu_options['gallerypath'] );
 			$ngg_options['CSSfile']     = $ngg_wpmu_options['wpmuCSSfile'];
 		}
+        $ngg_options['silentUpgrade']    = false;
+        $ngg_options['thumbDifferentSize']    = false;
 
 		update_option( 'ngg_options', $ngg_options );
 

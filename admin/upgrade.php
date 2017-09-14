@@ -73,6 +73,8 @@ function ngg_upgrade() {
 			$ngg_options['irNumber']         = 20;
 			$ngg_options['irClick']          = true;
 			$ngg_options['silentUpgrade']    = false;
+			$ngg_options['thumbDifferentSize'] = false;
+
 
 			//Convert color
 			$ngg_options['wmColor'] = '#' . $ngg_options['wmColor'];
