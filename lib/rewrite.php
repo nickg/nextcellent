@@ -32,7 +32,7 @@ class nggRewrite {
 	/**
 	* Constructor
 	*/
-	function nggRewrite() {
+	function __construct() {
 		
 		// read the option setting
 		$this->options = get_option('ngg_options');

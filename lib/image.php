@@ -47,7 +47,7 @@ class nggImage{
 	 * @param object $gallery The nggGallery object representing the gallery containing this image
 	 * @return void
 	 */
-	function nggImage($gallery) {			
+	function __construct($gallery) {			
 			
 		//This must be an object
 		$gallery = (object) $gallery;

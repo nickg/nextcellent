@@ -109,7 +109,7 @@ class NGG_Installer {
 		// check one table again, to be sure
 		if ( ! $wpdb->get_var( "SHOW TABLES LIKE '$nggpictures'" ) ) {
 			update_option( "ngg_init_check",
-				__( 'NextCellent Gallery : Tables could not created, please check your database settings',
+				__( 'NextCellent Gallery : Tables could not be created, please check your database settings',
 					"nggallery" ) );
 
 			return;

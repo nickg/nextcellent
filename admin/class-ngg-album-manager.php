@@ -143,8 +143,8 @@ class NGG_Album_Manager implements NGG_Displayable {
 			wp_die( __( 'Cheatin&#8217; uh?' ) );
 		}
 
-		$name = sanitize_title($_POST['album_name']);
-		$desc = sanitize_title($_POST['album_desc']);
+		$name = sanitize_text_field($_POST['album_name']);
+		$desc = sanitize_text_field($_POST['album_desc']);
 		$prev = (int) $_POST['previewpic'];
 		$link = (int) $_POST['pageid'];
 

@@ -22,7 +22,7 @@ function media_upload_nextgen() {
     
 	// Generate TinyMCE HTML output
 	if ( isset($_POST['send']) ) {
-		$keys = array_keys(sanitize_title($_POST['send']));
+		$keys = array_keys(($_POST['send']));
 		$send_id = (int) array_shift($keys);
 		$image = $_POST['image'][$send_id];
 		$alttext = stripslashes( htmlspecialchars ($image['alttext'], ENT_QUOTES));
@@ -35,6 +35,7 @@ function media_upload_nextgen() {
 		$class="ngg-singlepic ngg-{$image['align']}";
 		
 		// Build output
+		$html="";
 		if ($image['size'] == "thumbnail") 
 			$html = "<img src='{$image['thumb']}' alt='$alttext' class='$class' />";
 		// Wrap the link to the fullsize image around	

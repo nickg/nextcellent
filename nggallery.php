@@ -63,7 +63,7 @@ if (!class_exists('nggLoader')) {
         /**
          * class constructor
          */
-        function nggLoader() {
+        function __construct() {
 
 			// Stop the plugin if we missed the requirements
 			if ( ( !$this->required_version() ) || ( !$this->check_memory_limit() )  )

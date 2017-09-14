@@ -30,7 +30,7 @@ class nggMeta{
      * @param bool $onlyEXIF parse only exif if needed
      * @return
      */
-    function nggMeta($pic_id, $onlyEXIF = false) {
+    function __construct($pic_id, $onlyEXIF = false) {
 
         //get the path and other data about the image
         $this->image = nggdb::find_image( $pic_id );

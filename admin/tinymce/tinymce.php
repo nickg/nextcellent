@@ -21,7 +21,7 @@ class add_nextgen_button {
 	 * 
 	 * @return void
 	 */
-	function add_nextgen_button()  {
+	function __construct()  {
 		
 		// Set path to editor_plugin.js
 		$this->path = NGGALLERY_URLPATH . 'admin/tinymce/';		

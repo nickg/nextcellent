@@ -69,15 +69,15 @@ class NGG_Roles extends NGG_Post_Admin_Page {
 			check_admin_referer('ngg_addroles');
 
 			// now set or remove the capability
-			$this->ngg_set_capability(sanitize_title($_POST['general']),"NextGEN Gallery overview");
-			$this->ngg_set_capability(sanitize_title($_POST['tinymce']),"NextGEN Use TinyMCE");
-			$this->ngg_set_capability(sanitize_title($_POST['add_gallery']),"NextGEN Upload images");
-			$this->ngg_set_capability(sanitize_title($_POST['manage_gallery']),"NextGEN Manage gallery");
-			$this->ngg_set_capability(sanitize_title($_POST['manage_others']),"NextGEN Manage others gallery");
-			$this->ngg_set_capability(sanitize_title($_POST['manage_tags']),"NextGEN Manage tags");
-			$this->ngg_set_capability(sanitize_title($_POST['edit_album']),"NextGEN Edit album");
-			$this->ngg_set_capability(sanitize_title($_POST['change_style']),"NextGEN Change style");
-			$this->ngg_set_capability(sanitize_title($_POST['change_options']),"NextGEN Change options");
+			$this->ngg_set_capability(sanitize_text_field($_POST['general']),"NextGEN Gallery overview");
+			$this->ngg_set_capability(sanitize_text_field($_POST['tinymce']),"NextGEN Use TinyMCE");
+			$this->ngg_set_capability(sanitize_text_field($_POST['add_gallery']),"NextGEN Upload images");
+			$this->ngg_set_capability(sanitize_text_field($_POST['manage_gallery']),"NextGEN Manage gallery");
+			$this->ngg_set_capability(sanitize_text_field($_POST['manage_others']),"NextGEN Manage others gallery");
+			$this->ngg_set_capability(sanitize_text_field($_POST['manage_tags']),"NextGEN Manage tags");
+			$this->ngg_set_capability(sanitize_text_field($_POST['edit_album']),"NextGEN Edit album");
+			$this->ngg_set_capability(sanitize_text_field($_POST['change_style']),"NextGEN Change style");
+			$this->ngg_set_capability(sanitize_text_field($_POST['change_options']),"NextGEN Change options");
 
 			nggGallery::show_message(__('Updated capabilities',"nggallery"));
 		}
