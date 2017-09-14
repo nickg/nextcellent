@@ -1253,13 +1253,13 @@ class nggAdmin{
 	}
 	
 	/**
-	 * Upload function will be called via the Flash uploader
+	 * checks data validation when uploading a file. Return '0' if success, else string with error reason.
 	 * 
 	 * @class nggAdmin
 	 * @param integer $galleryID
 	 * @return string $result
 	 */
-	static function swfupload_image($galleryID = 0) {
+	static function check_upload_image($galleryID = 0) {
 
 		global $nggdb;
 		

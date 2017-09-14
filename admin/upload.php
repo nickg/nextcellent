@@ -44,6 +44,6 @@ include_once (NGGALLERY_ABSPATH. 'admin/functions.php');
 // get the gallery
 $galleryID = (int) $_POST['galleryselect'];
 
-echo nggAdmin::swfupload_image($galleryID);
+echo nggAdmin::check_upload_image($galleryID);
 
 ?>
