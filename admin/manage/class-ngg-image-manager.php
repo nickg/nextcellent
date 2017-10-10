@@ -329,7 +329,7 @@ class NGG_Image_Manager extends NGG_Abstract_Image_Manager {
 					@unlink($image->thumbPath);
 					@unlink($image->imagePath . '_backup' );
 				}
-				do_action('ngg_delete_picture', $pid);
+				//do_action('ngg_delete_picture', $pid); 1.9.34: action embedded inside delete_image
 				$result = nggdb::delete_image ( $pid );
 			} else {
 				$result = false;

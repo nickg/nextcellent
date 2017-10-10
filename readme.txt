@@ -8,6 +8,13 @@ License: GPLv2
 
 == Description ==
 
+= 1.9.34 - 2017-10-10 = Fixes for 1.9.33
+
+What's in it for you?
+* fix: patch for WP 4.8.2 issue window modal empty. Tested and working, however it could prevent working in other WP versions. Users area advised
+to update WP in order getting Nextcellent operating.
+* improved: added filter ngg_pre_delete_image and action ngg_deleted_image to provide some degree of control when deleting a picture.
+
 = 1.9.33 -  2017-09-23 = Fixes for 1.9.32
 
 What's in it for you?
@@ -17,7 +24,7 @@ What's in it for you?
 * fix: removed (finally) dependency with AJAX and wp-load.php. Rotation, and thumbnail should work fine.
 * fix: issues preventing to display correctly.
 * fix: Class constructor warning on PHP 7.1 and aboved 
-* deprecadted: imagerotator.swf: older Nextcellent version depend on Flash part, now replaced with html counterpart
+* deprecated: imagerotator.swf: older Nextcellent version depend on Flash part, now replaced with html counterpart
 * deprecated: Nextcellent is plupload instead is using swfUpload. For legacy code reasons only swfUpload is mentined but not used.
 * improve: core Ajax call simplified
 

@@ -744,6 +744,11 @@ class nggdb {
     static function delete_image( $id ) {
         global $wpdb;
 
+        //Example: add_filter( 'ngg_pre_delete_image', '__return_true' ) will prevent to delete an image just addint a filter
+        //Use the filter for specific cases when you desire to control wether delete or not an image based on external conditions
+        if (apply_filters('ngg_pre_delete_image',false,$id)) {
+            return;
+        }
         // Delete the image
         $result = $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->nggpictures WHERE pid = %d", $id) );
 
@@ -752,7 +757,7 @@ class nggdb {
 
         // Remove from cache
         wp_cache_delete( $id, 'ngg_image');
-
+        do_action('ngg_deleted_image', $id);
         return $result;
     }
 
