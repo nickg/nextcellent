@@ -22,13 +22,10 @@ wp_enqueue_script( 'ngg-autocomplete', NGGALLERY_URLPATH . 'admin/js/ngg.autocom
 			var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
 		</script>
 		<?php wp_print_scripts(); ?>
-				<!--<script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>-->
 		<script language="javascript" type="text/javascript" src="<?php echo NGGALLERY_URLPATH ?>admin/tinymce/tiny_mce_popup.js"></script>
-		<!--<script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>-->
 		<script language="javascript" type="text/javascript" src="<?php echo NGGALLERY_URLPATH ?>admin/tinymce/utils/mctabs.js"></script>
 		<script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
-
-	<!--<script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/tinymce.min.js"></script>-->
+        <script language="javascript" type="text/javascript" src="<?php echo NGGALLERY_URLPATH ?>admin/tinymce/tinymce.js"></script>
 		<?php wp_print_styles(); ?>
 		<style>
 			.nggwrap {
