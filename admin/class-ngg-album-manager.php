@@ -95,12 +95,10 @@ class NGG_Album_Manager implements NGG_Displayable {
 
 		if ( isset( $_POST['update'] ) && ( $this->currentID > 0 ) ) {
 
-			$gid = '';
-
 			// get variable galleryContainer
-			parse_str( $_POST['sortorder'] );
-			if ( is_array( $gid ) ) {
-				$serial_sort = serialize( $gid );
+			parse_str( $_POST['sortorder'], $vars );
+			if ( is_array( $vars['gid'] ) ) {
+				$serial_sort = serialize( $vars['gid'] );
 				$wpdb->query( "UPDATE $wpdb->nggalbum SET sortorder = '$serial_sort' WHERE id = $this->currentID " );
 			} else {
 				$wpdb->query( "UPDATE $wpdb->nggalbum SET sortorder = '0' WHERE id = $this->currentID " );

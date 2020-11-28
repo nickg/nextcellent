@@ -144,7 +144,7 @@ if (!class_exists('nggLoader')) {
 
 				// Pass the init check or show a message
 				if (get_option( 'ngg_init_check' ) != false )
-					add_action( 'admin_notices', create_function('', 'echo \'<div id="message" class="error"><p><strong>' . get_option( "ngg_init_check" ) . '</strong></p></div>\';') );
+					add_action( 'admin_notices', function () { echo '<div id="message" class="error"><p><strong>' . get_option( "ngg_init_check" ) . '</strong></p></div>'; } );
 
 			} else {
 
@@ -174,7 +174,7 @@ if (!class_exists('nggLoader')) {
 			        try {
 				        ngg_upgrade();
 			        } catch (Exception $e) {
-				        add_action( 'admin_notices', create_function( '', 'echo \'<div id="message" class="error"><p><strong>' . __( 'Something went wrong while upgrading NextCellent Gallery.', "nggallery" ) . '</strong></p></div>\';' ) );
+				        add_action( 'admin_notices', function () { echo '<div id="message" class="error"><p><strong>' . __( 'Something went wrong while upgrading NextCellent Gallery.', "nggallery" ) . '</strong></p></div>'; } );
 			        }
 		        } else {
 			        add_action( 'all_admin_notices', array($this,'show_upgrade_message') );
@@ -225,10 +225,12 @@ if (!class_exists('nggLoader')) {
 			if ( ($wp_ok == FALSE) ) {
 				add_action(
 					'admin_notices',
-					create_function(
-						'',
-						'global $ngg; printf (\'<div id="message" class="error"><p><strong>\' . __(\'Sorry, NextGEN Gallery works only under WordPress %s or higher\', "nggallery" ) . \'</strong></p></div>\', $ngg->minimum_WP );'
-					)
+					function () {
+						global $ngg;
+						printf ('<div id="message" class="error"><p><strong>'
+								. __('Sorry, NextGEN Gallery works only under WordPress %s or higher', "nggallery" )
+								. '</strong></p></div>', $ngg->minimum_WP );
+					}
 				);
 				return false;
 			}
@@ -259,10 +261,9 @@ if (!class_exists('nggLoader')) {
 				if ( ($this->memory_limit != 0) && ($this->memory_limit < 16 ) ) {
 					add_action(
 						'admin_notices',
-						create_function(
-							'',
-							'echo \'<div id="message" class="error"><p><strong>' . __('Sorry, NextCellent Gallery works only with a Memory Limit of 16 MB or higher', 'nggallery') . '</strong></p></div>\';'
-						)
+						function () {
+							echo '<div id="message" class="error"><p><strong>' . __('Sorry, NextCellent Gallery works only with a Memory Limit of 16 MB or higher', 'nggallery') . '</strong></p></div>';
+						}
 					);
 					return false;
 				}
@@ -707,7 +708,11 @@ if (!class_exists('nggLoader')) {
 
 				//Add a notice message
 				if ($this->add_PHP5_notice == false){
-					add_action( "in_plugin_update_message-$this->plugin_name", create_function('', 'echo \'<br /><span style="color:red">Please update to PHP5.2 as soon as possible, the plugin is not tested under PHP4 anymore</span>\';') );
+					add_action( "in_plugin_update_message-$this->plugin_name",
+						function () {
+							echo '<br /><span style="color:red">Please update to PHP5.2 as soon as possible, the plugin is not tested under PHP4 anymore</span>';
+						}
+					);
 					$this->add_PHP5_notice = true;
 				}
 			}
@@ -731,11 +736,11 @@ if (!class_exists('nggLoader')) {
 
 			// If test-head query var exists hook into wp_head
 			if ( isset( $_GET['test-head'] ) )
-				add_action( 'wp_head', create_function('', 'echo \'<!--wp_head-->\';'), 99999 );
+				add_action( 'wp_head', function () { echo '<!--wp_head-->'; }, 99999 );
 
 			// If test-footer query var exists hook into wp_footer
 			if ( isset( $_GET['test-footer'] ) )
-				add_action( 'wp_footer', create_function('', 'echo \'<!--wp_footer-->\';'), 99999 );
+				add_action( 'wp_footer', function () { echo '<!--wp_footer-->'; }, 99999 );
 		}
 
 		/**
@@ -800,10 +805,9 @@ class check_nextgen {
                     //Yes, display msg on admin console
                     add_action(
                         'admin_notices',
-                        create_function(
-                            '',
-                            'echo \'<div id="message" class="error"><p><strong>' . __('Sorry, NextCellent Gallery is deactivated: NextGEN version ' . $version . ' was detected. Deactivate it before running NextCellent!', 'nggallery') . '</strong></p></div>\';'
-                        )
+                        function () {
+                            echo '<div id="message" class="error"><p><strong>' . __('Sorry, NextCellent Gallery is deactivated: NextGEN version ' . $version . ' was detected. Deactivate it before running NextCellent!', 'nggallery') . '</strong></p></div>';
+                        }
                     );
                     //Deactivate this plugin
                     deactivate_plugins($nextcellent_plugin);

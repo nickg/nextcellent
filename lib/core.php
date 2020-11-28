@@ -410,7 +410,7 @@ class nggGallery {
 			// get memory limit
 			$memory_limit = ini_get('memory_limit');
 			if ($memory_limit != '')
-				$memory_limit = substr($memory_limit, 0, -1) * 1024 * 1024;
+				$memory_limit = intval(substr($memory_limit, 0, -1)) * 1024 * 1024;
 
 			// calculate the free memory
 			$freeMemory = $memory_limit - memory_get_usage();

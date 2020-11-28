@@ -918,7 +918,7 @@ class nggAdmin{
 		$ext = apply_filters('ngg_allowed_file_types', array('jpeg', 'jpg', 'png', 'gif') ); 
 		if ( in_array( strtolower($info['extension']), $ext) ) {
 			// For MAC skip the ".image" files
-			if ($info['basename']{0} ==  '.' ) 
+			if ($info['basename'][0] ==  '.' )
 				return 0;
 			else {
                 // sanitize the file name before we do further processing

@@ -96,7 +96,7 @@ class nggMeta{
 
         // on request sanitize the output
         if ( $this->sanitize == true )
-            array_walk( $meta , create_function('&$value', '$value = esc_html($value);'));
+            array_walk( $meta , function (&$value) { $value = esc_html($value); });
 
         return $meta;
     }
@@ -182,7 +182,7 @@ class nggMeta{
 
         // on request sanitize the output
         if ( $this->sanitize == true )
-            array_walk( $this->exif_array , create_function('&$value', '$value = esc_html($value);'));
+            array_walk( $this->exif_array , function (&$value) { $value = esc_html($value); });
 
         return $this->exif_array;
 
@@ -257,7 +257,7 @@ class nggMeta{
 
         // on request sanitize the output
         if ( $this->sanitize == true )
-            array_walk( $this->iptc_array , create_function('&$value', '$value = esc_html($value);'));
+            array_walk( $this->iptc_array , function (&$value) { $value = esc_html($value); });
 
         return $this->iptc_array;
     }
@@ -399,7 +399,7 @@ class nggMeta{
 
         // on request sanitize the output
         if ( $this->sanitize == true )
-            array_walk( $this->xmp_array , create_function('&$value', '$value = esc_html($value);'));
+            array_walk( $this->xmp_array , function (&$value) { $value = esc_html($value); });
 
         return $this->xmp_array;
     }
