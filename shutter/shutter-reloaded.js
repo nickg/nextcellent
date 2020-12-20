@@ -24,20 +24,20 @@ shutterReloaded = {
 	},
 
 	settings : function() {
-		var t = this, s = shutterSettings;
+		var s = shutterSettings;
 
-		t.imageCount = s.imageCount || 0;
-		t.msgLoading = s.msgLoading || 'L O A D I N G';
-		t.msgClose = s.msgClose || 'Click to Close';
+		this.imageCount = s.imageCount || 0;
+		this.msgLoading = s.msgLoading || 'L O A D I N G';
+		this.msgClose = s.msgClose || 'Click to Close';
 	},
 
 	init : function (a) {
-		var t = this, L, T, ext, i, m, setid, inset, shfile, shMenuPre, k, img;
+		var L, T, ext, i, m, setid, inset, shfile, shMenuPre, k, img;
 		shutterLinks = {}, shutterSets = {};
 		if ( 'object' != typeof shutterSettings ) shutterSettings = {};
 
 		// If the screen orientation is defined we are in a modern mobile OS
-		t.mobileOS = typeof orientation != 'undefined' ? true : false;
+		this.mobileOS = typeof orientation != 'undefined' ? true : false;
 
 		for ( i = 0; i < document.links.length; i++ ) {
 			L = document.links[i];
@@ -62,57 +62,58 @@ shutterReloaded = {
 
 			shutterLinks[i] = {link:L.href,num:inset,set:setid,title:T}
 			L.onclick = new Function('shutterReloaded.make("' + i + '");return false;');
+			//L.onclick = function () { shutterReloaded.make("" + i); return false; }
 		}
 
-		t.settings();
+		this.settings();
 
 	},
 
 	make : function(ln,fs) {
-		var t = this, prev, next, prevlink = '', nextlink = '', previmg, nextimg, D, S, W, fsarg = -1, imgNum, NavBar;
+		var prev, next, prevlink = '', nextlink = '', previmg, nextimg, D, S, W, fsarg = -1, imgNum, NavBar;
 
-		if ( ! t.Top ) {
-			if ( typeof window.pageYOffset != 'undefined' ) t.Top = window.pageYOffset;
-			else t.Top = (document.documentElement.scrollTop > 0) ? document.documentElement.scrollTop : document.body.scrollTop;
+		if ( ! this.Top ) {
+			if ( typeof window.pageYOffset != 'undefined' ) this.Top = window.pageYOffset;
+			else this.Top = (document.documentElement.scrollTop > 0) ? document.documentElement.scrollTop : document.body.scrollTop;
 		}
 
-		if ( typeof t.pgHeight == 'undefined' )
-			t.pgHeight = Math.max(document.documentElement.scrollHeight,document.body.scrollHeight);
+		if ( typeof this.pgHeight == 'undefined' )
+			this.pgHeight = Math.max(document.documentElement.scrollHeight,document.body.scrollHeight);
 
-		if ( fs ) t.FS = ( fs > 0 ) ? 1 : 0;
-		else t.FS = shutterSettings.FS || 0;
+		if ( fs ) this.FS = ( fs > 0 ) ? 1 : 0;
+		else this.FS = shutterSettings.FS || 0;
 
-		if ( t.resizing ) t.resizing = null;
+		if ( this.resizing ) this.resizing = null;
 
 		// resize event if window or orientation changed (i.e. iOS)
-		if(t.mobileOS == true)
+		if(this.mobileOS == true)
 			window.onorientationchange = new Function('shutterReloaded.resize("'+ln+'");');
 		else
 			window.onresize = new Function('shutterReloaded.resize("'+ln+'");');
 
 		document.documentElement.style.overflowX = 'hidden';
-		if ( ! t.VP ) {
-			t._viewPort();
-			t.VP = true;
+		if ( ! this.VP ) {
+			this._viewPort();
+			this.VP = true;
 		}
 
-		if ( ! (S = t.I('shShutter')) ) {
+		if ( ! (S = this.I('shShutter')) ) {
 			S = document.createElement('div');
 			S.setAttribute('id','shShutter');
 			document.getElementsByTagName('body')[0].appendChild(S);
-			t.hideTags();
+			this.hideTags();
 		}
 
-		if ( ! (D = t.I('shDisplay')) ) {
+		if ( ! (D = this.I('shDisplay')) ) {
 			D = document.createElement('div');
 			D.setAttribute('id','shDisplay');
-			D.style.top = t.Top + 'px';
+			D.style.top = this.Top + 'px';
 			document.getElementsByTagName('body')[0].appendChild(D);
 		}
 
-		S.style.height = t.pgHeight + 'px';
+		S.style.height = this.pgHeight + 'px';
 
-		var dv = t.textBtns ? ' | ' : '';
+		var dv = this.textBtns ? ' | ' : '';
 		if ( shutterLinks[ln].num > 1 ) {
 			prev = shutterSets[shutterLinks[ln].set][shutterLinks[ln].num - 2];
 			prevlink = '<a href="#" id="prevpic" onclick="shutterReloaded.make('+prev+');return false">&lt;&lt;</a>'+dv;
@@ -131,11 +132,11 @@ shutterReloaded = {
 			nextlink = '';
 		}
 
-		imgNum = ( (shutterLinks[ln].num > 0) && t.imageCount ) ? '<div id="shCount">&nbsp;(&nbsp;' + shutterLinks[ln].num + '&nbsp;/&nbsp;' + shutterSets[shutterLinks[ln].set].length + '&nbsp;)&nbsp;</div>' : '';
+		imgNum = ( (shutterLinks[ln].num > 0) && this.imageCount ) ? '<div id="shCount">&nbsp;(&nbsp;' + shutterLinks[ln].num + '&nbsp;/&nbsp;' + shutterSets[shutterLinks[ln].set].length + '&nbsp;)&nbsp;</div>' : '';
 
 		NavBar = '<div id="shTitle"><div id="shPrev">' + prevlink + '</div><div id="shNext">' + nextlink + '</div><div id="shName">' + shutterLinks[ln].title + '</div>' + imgNum + '</div>';
 
-		D.innerHTML = '<div id="shWrap"><img src="'+shutterLinks[ln].link+'" id="shTopImg" title="' + t.msgClose + '" onload="shutterReloaded.showImg();" onclick="shutterReloaded.hideShutter();" />' + NavBar +'</div>';
+		D.innerHTML = '<div id="shWrap"><img src="'+shutterLinks[ln].link+'" id="shTopImg" title="' + this.msgClose + '" onload="shutterReloaded.showImg();" onclick="shutterReloaded.hideShutter();" />' + NavBar +'</div>';
 
 		document.onkeydown = function(event){shutterReloaded.handleArrowKeys(event);};
 		//Google Chrome 4.0.249.78 bug for onload attribute
@@ -145,96 +146,93 @@ shutterReloaded = {
 	},
 
 	loading : function() {
-		var t = this, S, WB, W;
-		if ( (W = t.I('shWrap')) && W.style.visibility == 'visible' ) return;
-		if ( ! (S = t.I('shShutter')) ) return;
-		if ( t.I('shWaitBar') ) return;
+		var S, WB, W;
+		if ( (W = this.I('shWrap')) && W.style.visibility == 'visible' ) return;
+		if ( ! (S = this.I('shShutter')) ) return;
+		if ( this.I('shWaitBar') ) return;
 		WB = document.createElement('div');
 		WB.setAttribute('id','shWaitBar');
-		WB.style.top = t.Top + 'px';
-		WB.style.marginTop =(t.pgHeight/2) + 'px'
-		WB.innerHTML = t.msgLoading;
+		WB.style.top = this.Top + 'px';
+		WB.style.marginTop =(this.pgHeight/2) + 'px'
+		WB.innerHTML = this.msgLoading;
 		S.appendChild(WB);
 	},
 
 	hideShutter : function() {
-		var t = this, D, S;
-		if ( D = t.I('shDisplay') ) D.parentNode.removeChild(D);
-		if ( S = t.I('shShutter') ) S.parentNode.removeChild(S);
-		t.hideTags(true);
-		window.scrollTo(0,t.Top);
-		window.onresize = t.FS = t.Top = t.VP = null;
+		var D, S;
+		if ( D = this.I('shDisplay') ) D.parentNode.removeChild(D);
+		if ( S = this.I('shShutter') ) S.parentNode.removeChild(S);
+		this.hideTags(true);
+		window.scrollTo(0,this.Top);
+		window.onresize = this.FS = this.Top = this.VP = null;
 		document.documentElement.style.overflowX = '';
 		document.onkeydown = null;
 	},
 
 	resize : function(ln) {
-		var t = this;
-
-		if ( t.resizing ) return;
-		if ( ! t.I('shShutter') ) return;
-		var W = t.I('shWrap');
+		if ( this.resizing ) return;
+		if ( ! this.I('shShutter') ) return;
+		var W = this.I('shWrap');
 		if ( W ) W.style.visibility = 'hidden';
 
 		window.setTimeout(function(){shutterReloaded.resizing = null},500);
 		window.setTimeout(new Function('shutterReloaded.VP = null;shutterReloaded.make("'+ln+'");'),100);
-		t.resizing = true;
+		this.resizing = true;
 	},
 
 	_viewPort : function() {
-		var t = this;
 		var wiH = window.innerHeight ? window.innerHeight : 0;
 		var dbH = document.body.clientHeight ? document.body.clientHeight : 0;
 		var deH = document.documentElement ? document.documentElement.clientHeight : 0;
 
 		if( wiH > 0 ) {
-			t.wHeight = ( (wiH - dbH) > 1 && (wiH - dbH) < 30 ) ? dbH : wiH;
-			t.wHeight = ( (t.wHeight - deH) > 1 && (t.wHeight - deH) < 30 ) ? deH : t.wHeight;
-		} else t.wHeight = ( deH > 0 ) ? deH : dbH;
+			this.wHeight = ( (wiH - dbH) > 1 && (wiH - dbH) < 30 ) ? dbH : wiH;
+			this.wHeight = ( (this.wHeight - deH) > 1 && (this.wHeight - deH) < 30 ) ? deH : this.wHeight;
+		} else this.wHeight = ( deH > 0 ) ? deH : dbH;
 
 		var deW = document.documentElement ? document.documentElement.clientWidth : 0;
 		var dbW = window.innerWidth ? window.innerWidth : document.body.clientWidth;
-		t.wWidth = ( deW > 1 ) ? deW : dbW;
+		this.wWidth = ( deW > 1 ) ? deW : dbW;
 	},
 
 	showImg : function() {
-		var t = this, S = t.I('shShutter'), D = t.I('shDisplay'), TI = t.I('shTopImg'), T = t.I('shTitle'), NB = t.I('shNavBar'), W, WB, wHeight, wWidth, shHeight, maxHeight, itop, mtop, resized = 0;
+		var S = this.I('shShutter'), D = this.I('shDisplay'), TI = this.I('shTopImg'), T = this.I('shTitle'), NB = this.I('shNavBar'), W, WB, wHeight, wWidth, shHeight, maxHeight, itop, mtop, resized = 0;
 
 		if ( ! S ) return;
-		if ( (W = t.I('shWrap')) && W.style.visibility == 'visible' ) return;
-		if ( WB = t.I('shWaitBar') ) WB.parentNode.removeChild(WB);
+		if ( (W = this.I('shWrap')) && W.style.visibility == 'visible' ) return;
+		if ( WB = this.I('shWaitBar') ) WB.parentNode.removeChild(WB);
 
 		S.style.width = D.style.width = '';
 		T.style.width = (TI.width - 4) + 'px';
 
-		shHeight = t.wHeight - 50;
+		shHeight = this.wHeight - 50;
 
-		if ( t.FS ) {
-			if ( TI.width > (t.wWidth - 10) )
+		if ( this.FS ) {
+			if ( TI.width > (this.wWidth - 10) )
 			S.style.width = D.style.width = TI.width + 10 + 'px';
 			document.documentElement.style.overflowX = '';
 		} else {
-			window.scrollTo(0,t.Top);
+			window.scrollTo(0, this.Top);
 			if ( TI.height > shHeight ) {
 				TI.width = TI.width * (shHeight / TI.height);
 				TI.height = shHeight;
 				resized = 1;
 			}
-			if ( TI.width > (t.wWidth - 16) ) {
-				TI.height = TI.height * ((t.wWidth - 16) / TI.width);
-				TI.width = t.wWidth - 16;
+			if ( TI.width > (this.wWidth - 16) ) {
+				TI.height = TI.height * ((this.wWidth - 16) / TI.width);
+				TI.width = this.wWidth - 16;
 				resized = 1;
 			}
 			T.style.width = (TI.width - 4) + 'px';
 		}
 
-		maxHeight = t.Top + TI.height + 10;
-		if ( maxHeight > t.pgHeight ) S.style.height = maxHeight + 'px';
-		window.scrollTo(0,t.Top);
+		maxHeight = this.Top + TI.height + 10;
+		if ( maxHeight > this.pgHeight ) S.style.height = maxHeight + 'px';
+		window.scrollTo(0,this.Top);
 
 		itop = (shHeight - TI.height) * 0.45;
 		mtop = (itop > 3) ? Math.floor(itop) : 3;
-		D.style.top = t.Top + mtop + 'px';
+		D.style.top = this.Top + mtop + 'px';
 		W.style.visibility = 'visible';
 	},
 
