@@ -39,7 +39,7 @@ shutterReloaded = {
 		// If the screen orientation is defined we are in a modern mobile OS
 		this.mobileOS = typeof orientation != 'undefined' ? true : false;
 
-		for ( i = 0; i < document.links.length; i++ ) {
+		for ( let i = 0; i < document.links.length; i++ ) {
 			L = document.links[i];
 			ext = ( L.href.indexOf('?') == -1 ) ? L.href.slice(-4).toLowerCase() : L.href.substring( 0, L.href.indexOf('?') ).slice(-4).toLowerCase();
 			if ( ext != '.jpg' && ext != '.png' && ext != '.gif' && ext != 'jpeg' ) continue;
@@ -61,12 +61,10 @@ shutterReloaded = {
 			T = ( L.title && L.title != shfile ) ? L.title : '';
 
 			shutterLinks[i] = {link:L.href,num:inset,set:setid,title:T}
-			L.onclick = new Function('shutterReloaded.make("' + i + '");return false;');
-			//L.onclick = function () { shutterReloaded.make("" + i); return false; }
+			L.onclick = function () { shutterReloaded.make(i); return false; }
 		}
 
 		this.settings();
-
 	},
 
 	make : function(ln,fs) {
@@ -86,10 +84,10 @@ shutterReloaded = {
 		if ( this.resizing ) this.resizing = null;
 
 		// resize event if window or orientation changed (i.e. iOS)
-		if(this.mobileOS == true)
-			window.onorientationchange = new Function('shutterReloaded.resize("'+ln+'");');
+		if (this.mobileOS)
+			window.onorientationchange = function () { shutterReloaded.resize(ln); }
 		else
-			window.onresize = new Function('shutterReloaded.resize("'+ln+'");');
+			window.onresize = function () { shutterReloaded.resize(ln); }
 
 		document.documentElement.style.overflowX = 'hidden';
 		if ( ! this.VP ) {
@@ -175,8 +173,11 @@ shutterReloaded = {
 		var W = this.I('shWrap');
 		if ( W ) W.style.visibility = 'hidden';
 
-		window.setTimeout(function(){shutterReloaded.resizing = null},500);
-		window.setTimeout(new Function('shutterReloaded.VP = null;shutterReloaded.make("'+ln+'");'),100);
+		window.setTimeout(function () { shutterReloaded.resizing = null }, 500);
+		window.setTimeout(function () {
+			shutterReloaded.VP = null;
+			shutterReloaded.make(ln);
+		}, 100);
 		this.resizing = true;
 	},
 
