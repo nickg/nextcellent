@@ -112,8 +112,10 @@ class nggImage{
 		 * - %IMG_WIDTH% - The width of the full image.
 		 * - %IMG_HEIGHT% - The height of the full image.
 		 */
-		$this->thumbcode = str_replace(array('%IMG_WIDTH%', '%IMG_HEIGHT%'), array($this->meta_data['width'], $this->meta_data['height']), $this->thumbcode);
-				
+		if (isset($this->meta_data['width']) && isset($this->meta_data['width'])) {
+			$this->thumbcode = str_replace(array('%IMG_WIDTH%', '%IMG_HEIGHT%'), array($this->meta_data['width'], $this->meta_data['height']), $this->thumbcode);
+		}
+
 		return apply_filters('ngg_get_thumbcode', $this->thumbcode, $this);
 	}
 	
