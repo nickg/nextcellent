@@ -98,7 +98,7 @@ function nggShowSlideshow( $galleryID, $args = null) {
         throw new NGG_Not_Found( __( "The gallery was not found.", 'nggallery' ) );
     }
 
-    $out  = '<div class="slideshow"><div id="' . $param['anchor'] . '" class="' . $param['class'] . ' owl-carousel" ';
+    $out  = '<div class="slideshow"><div id="' . $param['anchor'] . '" class="' . $param['class'] . ' owl-carousel owl-theme" ';
 
     if( !$param['autodim'] ) {
         $out .=  'style="max-width: ' .  $param['width'] . 'px; max-height: ' . $param['height'] . 'px;"';
@@ -127,6 +127,7 @@ function nggShowSlideshow( $galleryID, $args = null) {
 	$out .=    "
 	            dots: " .  var_export($param['nav_dots'], true) .",
 	            autoplay: ". var_export($param['autoplay'], true) .",
+				margin: 10,
 				autoplayTimeout: " . $param['time'] . ",
 				autoplayHoverPause: " . var_export($param['hover'], true) . ",
 				animateIn: '" . $param['effect'] . "',
@@ -136,7 +137,7 @@ function nggShowSlideshow( $galleryID, $args = null) {
 				touchDrag: " . var_export($param['drag'], true) . "
 			});";
     if ( $param['click'] ) {
-        $out .= "\n" . "owl.click( function () {
+        $out .= "\n" . "$('.owl-item').click( function () {
                     owl.trigger( 'next.owl.carousel' );
                 } );";
     }

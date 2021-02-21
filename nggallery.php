@@ -495,8 +495,8 @@ if (!class_exists('nggLoader')) {
 			// required for the slideshow
 			if ( NGGALLERY_IREXIST == true && $this->options['enableIR'] == '1' && nggGallery::detect_mobile_phone() === false )
 				wp_enqueue_script('swfobject');
-			else {
-				wp_enqueue_script('owl', NGGALLERY_URLPATH .'js/owl.carousel.min.js', array('jquery'), '2');
+			else if ($this->options['galShowSlide']) {
+				wp_enqueue_script('owl', NGGALLERY_URLPATH .'js/owl.carousel.min.js', array('jquery'), '2.3.4');
 			}
 
 			// Load AJAX navigation script, works only with shutter script as we need to add the listener
@@ -542,15 +542,11 @@ if (!class_exists('nggLoader')) {
 
 			if ( $css_file = nggGallery::get_theme_css_file() ) {
 				wp_enqueue_style('NextGEN', $css_file , false, '1.0.0', 'screen');
-				//load the framework
-				wp_enqueue_style('NextCellent-Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.1', 'screen');
 			} elseif ($this->options['activateCSS']) {
 				//convert the path to an URL
 				$replace = content_url();
 				$path = str_replace( NGG_CONTENT_DIR , $replace, $this->options['CSSfile']); 
 				wp_enqueue_style('NextGEN', $path, false, '1.0.0', 'screen');
-				//load the framework
-				wp_enqueue_style('NextCellent-Framework', NGGALLERY_URLPATH . 'css/framework-min.css', false, '1.0.1', 'screen');
 			}
 
 
@@ -561,6 +557,13 @@ if (!class_exists('nggLoader')) {
 			// activate modified Shutter reloaded if not use the Shutter plugin
 			if ( ($this->options['thumbEffect'] == 'shutter') && !function_exists('srel_makeshutter') )
 				wp_enqueue_style('shutter', NGGALLERY_URLPATH .'shutter/shutter-reloaded.css', false, '1.3.4', 'screen');
+
+			// Load Owl carousel stylesheets if slideshow enabled
+			if ($this->options['galShowSlide']) {
+				wp_enqueue_style('owl', NGGALLERY_URLPATH . 'css/owl.carousel.min.css', false, '2.3.4', 'screen');
+				wp_enqueue_style('owl-theme', NGGALLERY_URLPATH . 'css/owl.theme.default.min.css', false, '2.3.4', 'screen');
+				wp_enqueue_style('animate', NGGALLERY_URLPATH . 'css/animate.min.css', false, '3.7.2', 'screen');
+			}
 
 			// add qunit style if activated. I put 1.0.0 as formula, but it would mean nothing.
 
