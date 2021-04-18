@@ -26,7 +26,7 @@ jQuery.fn.nggAutocomplete = function (args) {
         term: s.term
     };
 
-    var obj = this.selector;
+    var obj = '#' + jQuery(this).attr('id');
     var id = jQuery(this).attr('id');
     var cache = {}, lastXhr;
 
@@ -119,10 +119,6 @@ jQuery.fn.nggAutocomplete = function (args) {
     });
 
     obj_ac_selector.click(function () {
-        //FZSM 20050307: There is an issue with drop downn list which it can stay behind form editor.
-        //this workaround makes drop-down z-index to follow dialo z-index.
-        jQuery ('.ui-autocomplete').css('z-index', jQuery('.ui-dialog').zIndex()+1);
-
         var search = obj_ac_selector.val();
 
         /**
