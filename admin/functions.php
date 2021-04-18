@@ -639,7 +639,7 @@ class nggAdmin{
 			}
 			if ($ngg->options['wmType'] == 'text') {
 				$file->watermarkText = $ngg->options['wmText'];
-				$file->watermarkCreateText($ngg->options['wmColor'], $ngg->options['wmFont'], $ngg->options['wmSize'], $ngg->options['wmOpaque']);
+				$file->watermarkCreateText($ngg->options['wmFont'], $ngg->options['wmColor'], $ngg->options['wmSize'], $ngg->options['wmOpaque']);
 				$file->watermarkImage($ngg->options['wmPos'], $ngg->options['wmXpos'], $ngg->options['wmYpos']);  
 			}
 			$file->save($image->imagePath, $ngg->options['imgQuality']);

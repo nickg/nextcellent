@@ -829,7 +829,7 @@ class ngg_Thumbnail {
 	 * @param int $wmSize
  	 * @param int $wmOpaque
      */
-	function watermarkCreateText($color = '000000',$wmFont, $wmSize = 10, $wmOpaque = 90 ){
+	function watermarkCreateText($wmFont, $color = '000000', $wmSize = 10, $wmOpaque = 90 ){
 		// set font path
 		$wmFontPath = NGGALLERY_ABSPATH."fonts/".$wmFont;
 		if ( !is_readable($wmFontPath))

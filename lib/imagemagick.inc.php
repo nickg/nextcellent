@@ -470,7 +470,7 @@ var $imageMagickBefore;
 	 * @param int $wmSize
  	 * @param int $wmOpaque
      */
-	function watermarkCreateText($color = '000000', $wmFont, $wmSize = 10, $wmOpaque = 90 ){
+	function watermarkCreateText($wmFont, $color = '000000', $wmSize = 10, $wmOpaque = 90 ){
 		//create a watermark.png image with the requested text.
 		
 		// set font path

@@ -186,7 +186,7 @@ class nggImage{
 				}
 				if ($ngg_options['wmType'] == 'text') {
 					$thumb->watermarkText = $ngg_options['wmText'];
-					$thumb->watermarkCreateText($ngg_options['wmColor'], $ngg_options['wmFont'], $ngg_options['wmSize'], $ngg_options['wmOpaque']);
+					$thumb->watermarkCreateText($ngg_options['wmFont'], $ngg_options['wmColor'], $ngg_options['wmSize'], $ngg_options['wmOpaque']);
 					$thumb->watermarkImage($ngg_options['wmPos'], $ngg_options['wmXpos'], $ngg_options['wmYpos']);  
 				}
 			}
