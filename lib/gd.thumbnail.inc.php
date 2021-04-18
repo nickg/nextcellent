@@ -869,10 +869,7 @@ class ngg_Thumbnail {
      */
     function watermarkImage( $relPOS = 'botRight', $xPOS = 0, $yPOS = 0) {
     	
-		// if it's a resource ID take it as watermark text image
-    	if(is_resource($this->watermarkImgPath)) {
-    		$this->workingImage = $this->watermarkImgPath;
-    	} else {
+	if (!is_resource($this->watermarkImgPath) && ! $this->watermarkImgPath instanceof \GdImage) {
 		// Would you really want to use anything other than a png? 
 		$this->workingImage = @imagecreatefrompng($this->watermarkImgPath);
 		// if it's not a valid file die...
