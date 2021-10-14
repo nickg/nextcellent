@@ -470,14 +470,13 @@ abstract class NGG_Manager implements NGG_Displayable {
 
 		global $wpdb, $ngg;
 
-		if ( $_POST['action'] !== "-1" && $_POST['action2'] !== "-1" ) {
-			return;
-		}
+		$action = array_filter( array( $_POST['action'] => true,
+									   $_POST['action2'] => true,
+									   "-1" => false ));
+		$action = count( $action ) === 1 ? key( $action ) : '';
+		$action = sanitize_text_field( $action );
 
-		$a1 = sanitize_text_field($_POST['action']);
-		$a2 = sanitize_text_field($_POST['action2']);
-
-		if ( $a1 === "delete_gallery" || $a2 === "delete_gallery" ) {
+		if ( $action === "delete_gallery" ) {
 			// Delete gallery
 			if ( is_array( $_POST['doaction'] ) ) {
 				$deleted = false;
@@ -511,7 +510,7 @@ abstract class NGG_Manager implements NGG_Displayable {
 				}
 
 			}
-		} elseif ( $a1 === "delete_images" || $a2 === "delete_images" ) {
+		} elseif ( $action === "delete_images" ) {
 			global $nggdb;
 			if ( is_array( $_POST['doaction'] ) ) {
 				foreach ( $_POST['doaction'] as $imageID ) {
