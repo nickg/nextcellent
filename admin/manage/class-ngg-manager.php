@@ -317,7 +317,7 @@ abstract class NGG_Manager implements NGG_Displayable {
 					modal: true,
 					title: title,
 					close: function() {
-						jQuery(this).dialog('destroy').remove();
+						jQuery(this).dialog('destroy');
 					},
 					buttons: [
 						{
