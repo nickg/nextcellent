@@ -1,13 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NextCellent Gallery suomeksi\n"
-"POT-Creation-Date: 2013-11-16 19:17+0100\n"
-"PO-Revision-Date: \n"
+"Report-Msgid-Bugs-To: \n"
 "Last-Translator: Vesa Tiirikainen <vesa@tiirikainen.fi>\n"
 "Language-Team: Vesa Tiirikainen <vesa@tiirikainen.fi>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2013-11-16 19:17+0100\n"
+"PO-Revision-Date: \n"
+"Language: \n"
 "X-Poedit-Language: Finnish\n"
 "X-Poedit-Country: Finland\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -2691,14 +2693,8 @@ msgid "Reset settings"
 msgstr "Resetoi asetukset"
 
 #: ../admin/setup.php:34
-msgid ""
-"Reset all options to default settings ?\\n"
-"\\n"
-"Choose [Cancel] to Stop, [OK] to proceed.\\n"
-msgstr ""
-"Resetoi kaikki oletusarvoihin?\\n"
-"\\n"
-"Valitse [peruuta] keskeyttääksesi, [OK] jatkaaksesi.\\n"
+msgid "Reset all options to default settings ?\\n\\nChoose [Cancel] to Stop, [OK] to proceed.\\n"
+msgstr "Resetoi kaikki oletusarvoihin?\\n\\nValitse [peruuta] keskeyttääksesi, [OK] jatkaaksesi.\\n"
 
 #: ../admin/setup.php:39
 msgid "Uninstall plugin tables"
@@ -2729,16 +2725,8 @@ msgid "Uninstall plugin"
 msgstr "Poista lisäosa"
 
 #: ../admin/setup.php:50
-msgid ""
-"You are about to Uninstall this plugin from WordPress.\\n"
-"This action is not reversible.\\n"
-"\\n"
-"Choose [Cancel] to Stop, [OK] to Uninstall.\\n"
-msgstr ""
-"Olet poistamassa tätä lisäosaa WordPressistä.\\n"
-"Tätä toimenpidettä EI voi palauttaa.\\n"
-"\\n"
-"Valitse [Peruuta] keskeyttääksesi, [OK] poistaaksesi.\\n"
+msgid "You are about to Uninstall this plugin from WordPress.\\nThis action is not reversible.\\n\\nChoose [Cancel] to Stop, [OK] to Uninstall.\\n"
+msgstr "Olet poistamassa tätä lisäosaa WordPressistä.\\nTätä toimenpidettä EI voi palauttaa.\\n\\nValitse [Peruuta] keskeyttääksesi, [OK] poistaaksesi.\\n"
 
 #: ../admin/showmeta.php:29
 msgid "Meta Data"
@@ -3588,4 +3576,3 @@ msgstr "Albumi ID %s ei ole olemassa"
 #: ../xml/media-rss.php:115
 msgid "Invalid MediaRSS command"
 msgstr "Virheellinen Media RSS -komento"
-

@@ -2,18 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NextCellent Gallery 1.9.24\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-02 18:55+0200\n"
-"PO-Revision-Date: \n"
 "Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: Niko Strijbol <strijbol.niko@gmail.com>\n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2015-07-02 18:55+0200\n"
+"PO-Revision-Date: \n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: k\n"
 "X-Textdomain-Support: yes\n"
 "X-Generator: Poedit 1.8.2\n"
@@ -31,16 +30,20 @@ msgid "Could create image with %s x %s pixel"
 msgstr "Kan afbeelding maken met  %s x %s pixels"
 
 # @ default
-#: ../admin/class-ngg-adder.php:34 ../admin/class-ngg-adder.php:48
-#: ../admin/class-ngg-adder.php:62 ../admin/class-ngg-adder.php:75
+#: ../admin/class-ngg-adder.php:34
+#: ../admin/class-ngg-adder.php:48
+#: ../admin/class-ngg-adder.php:62
+#: ../admin/class-ngg-adder.php:75
 #: ../admin/class-ngg-album-manager.php:82
 #: ../admin/class-ngg-album-manager.php:119
-#: ../admin/class-ngg-album-manager.php:143 ../admin/manage/actions.php:12
+#: ../admin/class-ngg-album-manager.php:143
+#: ../admin/manage/actions.php:12
 msgid "Cheatin&#8217; uh?"
 msgstr "Vals aan 't spelen, eh?"
 
 # @ nggallery
-#: ../admin/class-ngg-adder.php:54 ../admin/class-ngg-adder.php:91
+#: ../admin/class-ngg-adder.php:54
+#: ../admin/class-ngg-adder.php:91
 msgid "Upload failed!"
 msgstr "Upload mislukt!"
 
@@ -50,13 +53,15 @@ msgid "Upload failed! "
 msgstr "Upload mislukt!"
 
 # @ nggallery
-#: ../admin/class-ngg-adder.php:88 ../admin/class-ngg-adder.php:335
+#: ../admin/class-ngg-adder.php:88
+#: ../admin/class-ngg-adder.php:335
 #: ../admin/class-ngg-admin-launcher.php:298
 msgid "You didn't select a gallery!"
 msgstr "Je hebt geen galerij geselecteerd!"
 
 # @ nggallery
-#: ../admin/class-ngg-adder.php:162 ../admin/class-ngg-admin-launcher.php:65
+#: ../admin/class-ngg-adder.php:162
+#: ../admin/class-ngg-admin-launcher.php:65
 #: ../admin/class-ngg-admin-launcher.php:66
 msgid "Add Gallery / Images"
 msgstr "Galerij / afbeeldingen toevoegen"
@@ -72,48 +77,48 @@ msgid "remove"
 msgstr "verwijderen"
 
 # @ nggallery
-#: ../admin/class-ngg-adder.php:225 ../admin/class-ngg-adder.php:488
+#: ../admin/class-ngg-adder.php:225
+#: ../admin/class-ngg-adder.php:488
 msgid "Browse..."
 msgstr "Blader..."
 
 # @ nggallery
-#: ../admin/class-ngg-adder.php:226 ../admin/class-ngg-adder.php:264
-#: ../admin/class-ngg-adder.php:506 ../admin/class-ngg-adder.php:557
+#: ../admin/class-ngg-adder.php:226
+#: ../admin/class-ngg-adder.php:264
+#: ../admin/class-ngg-adder.php:506
+#: ../admin/class-ngg-adder.php:557
 msgid "Upload images"
 msgstr "Afbeeldingen uploaden"
 
 #: ../admin/class-ngg-adder.php:307
 #: ../admin/manage/class-ngg-image-manager.php:86
-msgid ""
-"This will change folder and file names (e.g. remove spaces, special "
-"characters, ...)"
-msgstr ""
-"Dit zal map- en bestandsnamen wijzigen (bv. spaties en speciale tekens "
-"verwijderen, ...)"
+msgid "This will change folder and file names (e.g. remove spaces, special characters, ...)"
+msgstr "Dit zal map- en bestandsnamen wijzigen (bv. spaties en speciale tekens verwijderen, ...)"
 
 #: ../admin/class-ngg-adder.php:309
 #: ../admin/manage/class-ngg-image-manager.php:88
 msgid "You will need to update your URLs if you link directly to the images."
-msgstr ""
-"Je zal je URL's moeten bijwerken als je rechtstreeks naar de afbeeldingen "
-"linkt."
+msgstr "Je zal je URL's moeten bijwerken als je rechtstreeks naar de afbeeldingen linkt."
 
 #: ../admin/class-ngg-adder.php:311
 #: ../admin/manage/class-ngg-image-manager.php:90
 msgid "Press OK to proceed, and Cancel to stop."
 msgstr "Druk OK om verder te gaan, Annuleren om te stoppen."
 
-#: ../admin/class-ngg-adder.php:343 ../admin/class-ngg-adder.php:351
+#: ../admin/class-ngg-adder.php:343
+#: ../admin/class-ngg-adder.php:351
 msgid "You didn't select a file!"
 msgstr "Je hebt geen bestand geselecteerd!"
 
 # @ nggallery
-#: ../admin/class-ngg-adder.php:370 ../admin/class-ngg-admin-launcher.php:479
+#: ../admin/class-ngg-adder.php:370
+#: ../admin/class-ngg-admin-launcher.php:479
 msgid "New gallery"
 msgstr "Nieuwe galerij"
 
 # @ nggallery
-#: ../admin/class-ngg-adder.php:373 ../admin/class-ngg-admin-launcher.php:487
+#: ../admin/class-ngg-adder.php:373
+#: ../admin/class-ngg-admin-launcher.php:487
 #: ../admin/class-ngg-admin-launcher.php:524
 #: ../admin/class-ngg-admin-launcher.php:569
 #: ../admin/class-ngg-options.php:205
@@ -121,12 +126,14 @@ msgstr "Nieuwe galerij"
 msgid "Images"
 msgstr "Afbeeldingen"
 
-#: ../admin/class-ngg-adder.php:376 ../admin/class-ngg-admin-launcher.php:491
+#: ../admin/class-ngg-adder.php:376
+#: ../admin/class-ngg-admin-launcher.php:491
 msgid "ZIP file"
 msgstr "Zip-bestand"
 
 # @ nggallery
-#: ../admin/class-ngg-adder.php:379 ../admin/class-ngg-adder.php:497
+#: ../admin/class-ngg-adder.php:379
+#: ../admin/class-ngg-adder.php:497
 #: ../admin/class-ngg-admin-launcher.php:495
 msgid "Import folder"
 msgstr "Importeer map"
@@ -138,9 +145,12 @@ msgid "Add a new gallery"
 msgstr "Nieuwe galerij toevoegen"
 
 # @ nggallery
-#: ../admin/class-ngg-adder.php:395 ../admin/class-ngg-album-manager.php:580
-#: ../admin/manage/actions.php:128 ../admin/manage/actions.php:156
-#: ../admin/manage/actions.php:181 ../admin/manage/actions.php:203
+#: ../admin/class-ngg-adder.php:395
+#: ../admin/class-ngg-album-manager.php:580
+#: ../admin/manage/actions.php:128
+#: ../admin/manage/actions.php:156
+#: ../admin/manage/actions.php:181
+#: ../admin/manage/actions.php:203
 #: ../admin/manage/class-ngg-gallery-manager.php:83
 msgid "Name"
 msgstr "Naam"
@@ -159,7 +169,8 @@ msgstr "Toegestane karakters voor bestanden en mappen zijn \"%s\"."
 
 # @ nggallery
 # @ default
-#: ../admin/class-ngg-adder.php:408 ../admin/class-ngg-style.php:294
+#: ../admin/class-ngg-adder.php:408
+#: ../admin/class-ngg-style.php:294
 #: ../admin/manage/class-ngg-gallery-list-table.php:154
 #: ../admin/manage/class-ngg-image-list-table.php:187
 #: ../admin/manage/class-ngg-image-list-table.php:232
@@ -170,8 +181,7 @@ msgstr "Beschrijving"
 
 #: ../admin/class-ngg-adder.php:412
 msgid "Add a description. This is optional and can be changed later."
-msgstr ""
-"Voeg een beschrijving toe. Dit is optioneel en kan later veranderd worden."
+msgstr "Voeg een beschrijving toe. Dit is optioneel en kan later veranderd worden."
 
 # @ nggallery
 #: ../admin/class-ngg-adder.php:419
@@ -204,7 +214,8 @@ msgid "Import a ZIP file from a URL"
 msgstr "Importeer een zip-bestand vanuit een URL"
 
 # @ nggallery
-#: ../admin/class-ngg-adder.php:453 ../admin/class-ngg-adder.php:512
+#: ../admin/class-ngg-adder.php:453
+#: ../admin/class-ngg-adder.php:512
 msgid "in to"
 msgstr "naar"
 
@@ -279,9 +290,7 @@ msgstr "Gebruik de geavanceerde uploader"
 #: ../admin/class-ngg-adder.php:560
 #, php-format
 msgid "Your images will be rescaled to max width %1$dpx or max height %2$dpx."
-msgstr ""
-"Je afbeeldingen zullen verkleind worden tot max breedte %1$dpx of max hoogte "
-"%2$dpx."
+msgstr "Je afbeeldingen zullen verkleind worden tot max breedte %1$dpx of max hoogte %2$dpx."
 
 # @ nggallery
 # @ default
@@ -295,33 +304,39 @@ msgid "Galleries"
 msgstr "Galerijen"
 
 # @ nggallery
-#: ../admin/class-ngg-admin-launcher.php:61 ../nggallery.php:723
+#: ../admin/class-ngg-admin-launcher.php:61
+#: ../nggallery.php:723
 #: ../nggfunctions.php:966
 msgid "Overview"
 msgstr "Overzicht"
 
 # @ nggallery
 #: ../admin/class-ngg-admin-launcher.php:73
-#: ../admin/class-ngg-album-manager.php:286 ../nggallery.php:429
+#: ../admin/class-ngg-album-manager.php:286
+#: ../nggallery.php:429
 msgid "Albums"
 msgstr "Albums"
 
 # @ nggallery
-#: ../admin/class-ngg-admin-launcher.php:77 ../admin/class-ngg-options.php:329
+#: ../admin/class-ngg-admin-launcher.php:77
+#: ../admin/class-ngg-options.php:329
 #: ../admin/class-ngg-tag-manager.php:102
-#: ../admin/manage/class-ngg-image-list-table.php:233 ../lib/meta.php:459
+#: ../admin/manage/class-ngg-image-list-table.php:233
+#: ../lib/meta.php:459
 #: ../nggallery.php:437
 msgid "Tags"
 msgstr "Tags"
 
 # @ nggallery
-#: ../admin/class-ngg-admin-launcher.php:81 ../admin/class-ngg-options.php:116
+#: ../admin/class-ngg-admin-launcher.php:81
+#: ../admin/class-ngg-options.php:116
 #: ../nggallery.php:445
 msgid "Settings"
 msgstr "Instellingen"
 
 # @ nggallery
-#: ../admin/class-ngg-admin-launcher.php:86 ../nggallery.php:453
+#: ../admin/class-ngg-admin-launcher.php:86
+#: ../nggallery.php:453
 msgid "Style"
 msgstr "Stijl"
 
@@ -398,8 +413,7 @@ msgstr "Een fout is opgetreden tijdens het uploaden.  Probeer eens opnieuw."
 
 # @ default
 #: ../admin/class-ngg-admin-launcher.php:286
-msgid ""
-"There was a configuration error. Please contact the server administrator."
+msgid "There was a configuration error. Please contact the server administrator."
 msgstr "Er was een configuratiefout.  Contacteer de server administrator."
 
 # @ default
@@ -459,24 +473,20 @@ msgid "&#8220;%s&#8221; has failed to upload due to an error"
 msgstr "&#8220;%s&#8221; is niet geupload omwille van een fout"
 
 # @ nggallery
-#: ../admin/class-ngg-admin-launcher.php:321 ../nggallery.php:488
+#: ../admin/class-ngg-admin-launcher.php:321
+#: ../nggallery.php:488
 msgid "L O A D I N G"
 msgstr "L A D E N"
 
 # @ nggallery
-#: ../admin/class-ngg-admin-launcher.php:322 ../nggallery.php:489
+#: ../admin/class-ngg-admin-launcher.php:322
+#: ../nggallery.php:489
 msgid "Click to Close"
 msgstr "Klik om te sluiten"
 
 #: ../admin/class-ngg-admin-launcher.php:424
-msgid ""
-"Welcome to your NextCellent Dashboard! This screen gives you all kinds of "
-"information about NextCellent at glance. You can get help for any screen by "
-"clicking the Help tab in the upper corner."
-msgstr ""
-"Welkom bij je NextCellent Dashboard! Dit scherm geeft je allerlei informatie "
-"over NextCellent in een ogenblik. Je kan meer hulp voor elk scherm krijgen "
-"door op Help te drukken in de rechterbovenhoek."
+msgid "Welcome to your NextCellent Dashboard! This screen gives you all kinds of information about NextCellent at glance. You can get help for any screen by clicking the Help tab in the upper corner."
+msgstr "Welkom bij je NextCellent Dashboard! Dit scherm geeft je allerlei informatie over NextCellent in een ogenblik. Je kan meer hulp voor elk scherm krijgen door op Help te drukken in de rechterbovenhoek."
 
 #: ../admin/class-ngg-admin-launcher.php:433
 msgid "The boxes on your overview screen are:"
@@ -489,12 +499,8 @@ msgid "At a Glance"
 msgstr "In een oogopslag"
 
 #: ../admin/class-ngg-admin-launcher.php:435
-msgid ""
-"Shows some general information about your site, such as the number of "
-"pictures, albums and galleries."
-msgstr ""
-"Toont algemene informatie over je site, zoals het aantal afbeeldingen, "
-"albums en galerijen."
+msgid "Shows some general information about your site, such as the number of pictures, albums and galleries."
+msgstr "Toont algemene informatie over je site, zoals het aantal afbeeldingen, albums en galerijen."
 
 # @ nggallery
 #: ../admin/class-ngg-admin-launcher.php:437
@@ -522,9 +528,7 @@ msgstr "Aandacht"
 
 #: ../admin/class-ngg-admin-launcher.php:443
 #, php-format
-msgid ""
-"third parties plugins that are compatible with NGG may not be "
-"100% compatible with NextCellent Gallery!"
+msgid "third parties plugins that are compatible with NGG may not be 100% compatible with NextCellent Gallery!"
 msgstr ""
 
 #: ../admin/class-ngg-admin-launcher.php:446
@@ -568,8 +572,7 @@ msgstr "Kijk of er fouten in je installatie zijn."
 
 #: ../admin/class-ngg-admin-launcher.php:476
 msgid "On this page you can add galleries and pictures to those galleries."
-msgstr ""
-"Op deze pagina kan je galerijen en afbeeldingen aan die galerijen toevoegen."
+msgstr "Op deze pagina kan je galerijen en afbeeldingen aan die galerijen toevoegen."
 
 #: ../admin/class-ngg-admin-launcher.php:480
 msgid "Add new galleries to NextCellent."
@@ -604,12 +607,8 @@ msgid "Organize your galleries into albums."
 msgstr "Organiseer je galerijen in albums."
 
 #: ../admin/class-ngg-admin-launcher.php:543
-msgid ""
-"First select an album from the dropdown and then drag the galleries you want "
-"to add or remove from the selected album."
-msgstr ""
-"Selecteer eerst een album van de dropdown en sleep dan de galerijen die je "
-"wilt toevoegen of verwijderen naar en van het album."
+msgid "First select an album from the dropdown and then drag the galleries you want to add or remove from the selected album."
+msgstr "Selecteer eerst een album van de dropdown en sleep dan de galerijen die je wilt toevoegen of verwijderen naar en van het album."
 
 # @ nggallery
 #: ../admin/class-ngg-admin-launcher.php:553
@@ -618,17 +617,11 @@ msgstr "Organiseer je afbeeldingen met tags."
 
 #: ../admin/class-ngg-admin-launcher.php:554
 msgid "Rename, delete and edit tags. Use the rename function to merge tags."
-msgstr ""
-"Henroem, verwijder en bewerk tags. Gebruik de functie hernoemen om tags "
-"samen te voegen."
+msgstr "Henroem, verwijder en bewerk tags. Gebruik de functie hernoemen om tags samen te voegen."
 
 #: ../admin/class-ngg-admin-launcher.php:564
-msgid ""
-"Edit all of NextCellent's options. The options are sorted in multiple "
-"categories."
-msgstr ""
-"Wijzig alle NextCellent-instellingen. De opties zijn gesorteerd per "
-"categorie."
+msgid "Edit all of NextCellent's options. The options are sorted in multiple categories."
+msgstr "Wijzig alle NextCellent-instellingen. De opties zijn gesorteerd per categorie."
 
 # @ nggallery
 #: ../admin/class-ngg-admin-launcher.php:566
@@ -637,41 +630,40 @@ msgid "General"
 msgstr "Algemeen"
 
 #: ../admin/class-ngg-admin-launcher.php:567
-msgid ""
-"General NextCellent options. Contains options for permalinks and related "
-"images."
+msgid "General NextCellent options. Contains options for permalinks and related images."
 msgstr "Algemene opties. Bevat permalinks en gerelateerde afbeeldingen."
 
 #: ../admin/class-ngg-admin-launcher.php:570
 msgid "All image-related options. Also contains options for thumbnails."
-msgstr ""
-"Alle opties met betrekking tot afbeeldingen. Bevat ook opties voor "
-"miniaturen."
+msgstr "Alle opties met betrekking tot afbeeldingen. Bevat ook opties voor miniaturen."
 
 # @ nggallery
 # @ default
 #: ../admin/class-ngg-admin-launcher.php:572
-#: ../admin/class-ngg-options.php:206 ../admin/class-ngg-overview.php:59
-#: ../admin/functions.php:213 ../admin/functions.php:375
+#: ../admin/class-ngg-options.php:206
+#: ../admin/class-ngg-overview.php:59
+#: ../admin/functions.php:213
+#: ../admin/functions.php:375
 #: ../admin/manage/class-ngg-image-manager.php:151
-#: ../admin/tinymce/window.php:117 ../admin/tinymce/window.php:150
-#: ../admin/tinymce/window.php:274 ../admin/tinymce/window.php:395
-#: ../admin/tinymce/window.php:446 ../lib/rewrite.php:220
-#: ../lib/rewrite.php:229 ../nggallery.php:421
+#: ../admin/tinymce/window.php:117
+#: ../admin/tinymce/window.php:150
+#: ../admin/tinymce/window.php:274
+#: ../admin/tinymce/window.php:395
+#: ../admin/tinymce/window.php:446
+#: ../lib/rewrite.php:220
+#: ../lib/rewrite.php:229
+#: ../nggallery.php:421
 msgid "Gallery"
 msgstr "Galerij"
 
 #: ../admin/class-ngg-admin-launcher.php:573
-msgid ""
-"Everything about galleries. From sorting options to the number of images, "
-"it's all in here."
-msgstr ""
-"Alles over galerijen. Van sorteeropties tot het aantal afbeeldingen, het zit "
-"allemaal hier."
+msgid "Everything about galleries. From sorting options to the number of images, it's all in here."
+msgstr "Alles over galerijen. Van sorteeropties tot het aantal afbeeldingen, het zit allemaal hier."
 
 # @ nggallery
 #: ../admin/class-ngg-admin-launcher.php:575
-#: ../admin/class-ngg-options.php:207 ../admin/class-ngg-options.php:578
+#: ../admin/class-ngg-options.php:207
+#: ../admin/class-ngg-options.php:578
 msgid "Effects"
 msgstr "Effecten"
 
@@ -681,7 +673,8 @@ msgstr "Laat je galerij er prachtig uitzien."
 
 # @ nggallery
 #: ../admin/class-ngg-admin-launcher.php:578
-#: ../admin/class-ngg-options.php:208 ../admin/class-ngg-options.php:625
+#: ../admin/class-ngg-options.php:208
+#: ../admin/class-ngg-options.php:625
 #: ../admin/tinymce/window.php:326
 msgid "Watermark"
 msgstr "Watermerk"
@@ -692,9 +685,12 @@ msgstr "Wie wilt er geen diefstal-bestendige afbeeldingen?"
 
 # @ nggallery
 #: ../admin/class-ngg-admin-launcher.php:581
-#: ../admin/class-ngg-options.php:209 ../admin/class-ngg-options.php:462
-#: ../admin/class-ngg-options.php:488 ../admin/class-ngg-options.php:777
-#: ../admin/tinymce/window.php:156 ../lib/rewrite.php:218
+#: ../admin/class-ngg-options.php:209
+#: ../admin/class-ngg-options.php:462
+#: ../admin/class-ngg-options.php:488
+#: ../admin/class-ngg-options.php:777
+#: ../admin/tinymce/window.php:156
+#: ../lib/rewrite.php:218
 #: ../widgets/class-ngg-slideshow-widget.php:28
 #: ../widgets/class-ngg-slideshow-widget.php:93
 msgid "Slideshow"
@@ -710,51 +706,30 @@ msgstr "Vergeet niet om op opslaan te drukken!"
 
 #: ../admin/class-ngg-admin-launcher.php:592
 msgid "You can edit the css file to adjust how your gallery looks."
-msgstr ""
-"Je kan het css-bestand wijzigen om het uitzien van je galerij te veranderen."
+msgstr "Je kan het css-bestand wijzigen om het uitzien van je galerij te veranderen."
 
 #: ../admin/class-ngg-admin-launcher.php:594
-msgid ""
-"When you save an edited file, NextCellent automatically saves it as a copy "
-"in the folder ngg_styles. This protects your changes from upgrades."
-msgstr ""
-"Als je een gewijzigd bestand opslaat, slaat NextCellent het automatisch op "
-"als een kopie in de map ngg_styles. Dit beschermt je wijzigingen van "
-"upgrades."
+msgid "When you save an edited file, NextCellent automatically saves it as a copy in the folder ngg_styles. This protects your changes from upgrades."
+msgstr "Als je een gewijzigd bestand opslaat, slaat NextCellent het automatisch op als een kopie in de map ngg_styles. Dit beschermt je wijzigingen van upgrades."
 
 #: ../admin/class-ngg-admin-launcher.php:604
-msgid ""
-"You can assign the lowest user role that has access to a certain feature. "
-"Needless to say, all greater user roles will also have access to that "
-"feature."
-msgstr ""
-"Je kan de laagste rol aanduiden die toegang heeft tot een functie. Alle "
-"hogere rollen zullen ook toegang hebben."
+msgid "You can assign the lowest user role that has access to a certain feature. Needless to say, all greater user roles will also have access to that feature."
+msgstr "Je kan de laagste rol aanduiden die toegang heeft tot een functie. Alle hogere rollen zullen ook toegang hebben."
 
 #: ../admin/class-ngg-admin-launcher.php:606
-msgid ""
-"NextCellent also works with various plugins that extend the default roles "
-"capabilities."
-msgstr ""
-"NextCellent werkt ook met verschillende plug-ins die het rollensysteem nog "
-"uitbreiden."
+msgid "NextCellent also works with various plugins that extend the default roles capabilities."
+msgstr "NextCellent werkt ook met verschillende plug-ins die het rollensysteem nog uitbreiden."
 
 #: ../admin/class-ngg-admin-launcher.php:616
-msgid ""
-"If 'someone' messed with your settings (yeah, definitely not you), you can "
-"reset them here."
-msgstr ""
-"Als 'iemand' (jij zeker niet) je instellingen verknoeit heeft, kan je ze "
-"hier resetten."
+msgid "If 'someone' messed with your settings (yeah, definitely not you), you can reset them here."
+msgstr "Als 'iemand' (jij zeker niet) je instellingen verknoeit heeft, kan je ze hier resetten."
 
 #: ../admin/class-ngg-admin-launcher.php:618
 msgid "Attention!"
 msgstr "Aandacht!"
 
 #: ../admin/class-ngg-admin-launcher.php:619
-msgid ""
-"You should not use the Uninstall Plugin button, unless you know what you're "
-"doing! It should never be necessary to press it."
+msgid "You should not use the Uninstall Plugin button, unless you know what you're doing! It should never be necessary to press it."
 msgstr "Je zou de knop Verwijderen nooit moeten gebruiken!"
 
 # @ nggallery
@@ -784,7 +759,8 @@ msgid "Album deleted"
 msgstr "Album verwijderd"
 
 # @ nggallery
-#: ../admin/class-ngg-album-manager.php:277 ../admin/class-ngg-roles.php:47
+#: ../admin/class-ngg-album-manager.php:277
+#: ../admin/class-ngg-roles.php:47
 msgid "Edit Album"
 msgstr "Album bewerken"
 
@@ -861,12 +837,8 @@ msgstr "[Minimaliseer]"
 
 # @ nggallery
 #: ../admin/class-ngg-album-manager.php:341
-msgid ""
-"After you create and select a album, you can drag and drop a gallery or "
-"another album into your new album below"
-msgstr ""
-"Nadat je een album geslecteerd hebt, kun je een galerij of zelfs een ander "
-"album naar je nieuwe album hieronder slepen"
+msgid "After you create and select a album, you can drag and drop a gallery or another album into your new album below"
+msgstr "Nadat je een album geslecteerd hebt, kun je een galerij of zelfs een ander album naar je nieuwe album hieronder slepen"
 
 # @ nggallery
 #: ../admin/class-ngg-album-manager.php:368
@@ -923,7 +895,8 @@ msgstr "OK"
 
 # @ nggallery
 #: ../admin/class-ngg-album-manager.php:485
-#: ../admin/manage/class-ngg-manager.php:300 ../admin/tinymce/window.php:469
+#: ../admin/manage/class-ngg-manager.php:300
+#: ../admin/tinymce/window.php:469
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -931,30 +904,27 @@ msgstr "Annuleren"
 # @ default
 #: ../admin/class-ngg-album-manager.php:582
 #: ../admin/manage/class-ngg-gallery-list-table.php:153
-#: ../admin/manage/class-ngg-image-manager.php:160 ../lib/meta.php:457
+#: ../admin/manage/class-ngg-image-manager.php:160
+#: ../lib/meta.php:457
 #: ../widgets/class-ngg-media-rss-widget.php:90
 msgid "Title"
 msgstr "Titel"
 
 # @ nggallery
-#: ../admin/class-ngg-album-manager.php:584 ../lib/rewrite.php:232
+#: ../admin/class-ngg-album-manager.php:584
+#: ../lib/rewrite.php:232
 msgid "Page"
 msgstr "Pagina"
 
 # @ nggallery
 #: ../admin/class-ngg-installer.php:29
 msgid "Sorry, NextCellent Gallery works only with a role called administrator"
-msgstr ""
-"Helaas, NextCellent Gallery werkt enkel met een rol genaamd administrator"
+msgstr "Helaas, NextCellent Gallery werkt enkel met een rol genaamd administrator"
 
 # @ nggallery
 #: ../admin/class-ngg-installer.php:112
-msgid ""
-"NextCellent Gallery : Tables could not created, please check your database "
-"settings"
-msgstr ""
-"NextCellent Gallery: tabellen kunnen niet gemaakt worden, controleer je "
-"database-instellingen"
+msgid "NextCellent Gallery : Tables could not created, please check your database settings"
+msgstr "NextCellent Gallery: tabellen kunnen niet gemaakt worden, controleer je database-instellingen"
 
 # @ nggallery
 #: ../admin/class-ngg-installer.php:172
@@ -982,7 +952,8 @@ msgid "General settings"
 msgstr "Instellingen"
 
 # @ nggallery
-#: ../admin/class-ngg-options.php:228 ../admin/wpmu.php:85
+#: ../admin/class-ngg-options.php:228
+#: ../admin/wpmu.php:85
 msgid "Gallery path"
 msgstr "Galerij pad"
 
@@ -992,11 +963,13 @@ msgid "This is the default path for all galleries"
 msgstr "Dit is het standaard pad voor alle galerijen"
 
 # @ nggallery
-#: ../admin/class-ngg-options.php:235 ../admin/wpmu.php:95
+#: ../admin/class-ngg-options.php:235
+#: ../admin/wpmu.php:95
 msgid "Silent database upgrade"
 msgstr "Databank in stilte bijwerken"
 
-#: ../admin/class-ngg-options.php:238 ../admin/wpmu.php:98
+#: ../admin/class-ngg-options.php:238
+#: ../admin/wpmu.php:98
 msgid "Update the database without notice."
 msgstr "Werk de databank bij zonder melding."
 
@@ -1038,8 +1011,7 @@ msgstr "Media-RSS-feed"
 # @ nggallery
 #: ../admin/class-ngg-options.php:273
 msgid "Add a RSS feed to you blog header. Useful for CoolIris/PicLens"
-msgstr ""
-"Een RSS-feed wordt toegevoegd aan je header. Handig voor CoolIris/PicLens"
+msgstr "Een RSS-feed wordt toegevoegd aan je header. Handig voor CoolIris/PicLens"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:277
@@ -1052,12 +1024,8 @@ msgstr "Inclusief ondersteuning voor PicLens en CoolIris"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:281
-msgid ""
-"When activated, JavaScript is added to your site footer. Make sure that "
-"wp_footer is called in your theme."
-msgstr ""
-"Als je deze optie activeert, wordt wat javascript toegevoegd aan je footer. "
-"Verzeker je ervan dat wp_footer wordt aangeroepen in je thema"
+msgid "When activated, JavaScript is added to your site footer. Make sure that wp_footer is called in your theme."
+msgstr "Als je deze optie activeert, wordt wat javascript toegevoegd aan je footer. Verzeker je ervan dat wp_footer wordt aangeroepen in je thema"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:285
@@ -1075,11 +1043,8 @@ msgstr "Voegt een statische link toe aan alle afbeeldingen"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:292
-msgid ""
-"When activating this option, you need to update your permalink structure once"
-msgstr ""
-"Als je deze optie activeert, is het nodig eenmalig je permalinkstructuur te "
-"updaten."
+msgid "When activating this option, you need to update your permalink structure once"
+msgstr "Als je deze optie activeert, is het nodig eenmalig je permalinkstructuur te updaten."
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:296
@@ -1138,11 +1103,15 @@ msgstr "0 zal alle afbeeldingen tonen"
 
 # @ nggallery
 # @ default
-#: ../admin/class-ngg-options.php:342 ../admin/class-ngg-options.php:422
-#: ../admin/class-ngg-options.php:568 ../admin/class-ngg-options.php:609
-#: ../admin/class-ngg-options.php:727 ../admin/class-ngg-options.php:886
+#: ../admin/class-ngg-options.php:342
+#: ../admin/class-ngg-options.php:422
+#: ../admin/class-ngg-options.php:568
+#: ../admin/class-ngg-options.php:609
+#: ../admin/class-ngg-options.php:727
+#: ../admin/class-ngg-options.php:886
 #: ../admin/manage/class-ngg-image-list-table.php:95
-#: ../admin/manage/class-ngg-image-manager.php:245 ../admin/wpmu.php:149
+#: ../admin/manage/class-ngg-image-manager.php:245
+#: ../admin/wpmu.php:149
 msgid "Save Changes"
 msgstr "Bijwerken"
 
@@ -1161,30 +1130,34 @@ msgid "Resize images"
 msgstr "Formaat afbeeldingen aanpassen"
 
 # @ nggallery
-#: ../admin/class-ngg-options.php:360 ../admin/class-ngg-options.php:396
-#: ../admin/class-ngg-options.php:789 ../admin/manage/actions.php:309
+#: ../admin/class-ngg-options.php:360
+#: ../admin/class-ngg-options.php:396
+#: ../admin/class-ngg-options.php:789
+#: ../admin/manage/actions.php:309
 #: ../admin/manage/class-ngg-manager.php:60
-#: ../admin/manage/class-ngg-manager.php:83 ../admin/tinymce/window.php:207
+#: ../admin/manage/class-ngg-manager.php:83
+#: ../admin/tinymce/window.php:207
 #: ../admin/tinymce/window.php:315
 msgid "Width"
 msgstr "Breedte"
 
 # @ nggallery
-#: ../admin/class-ngg-options.php:362 ../admin/class-ngg-options.php:398
-#: ../admin/class-ngg-options.php:791 ../admin/manage/actions.php:318
+#: ../admin/class-ngg-options.php:362
+#: ../admin/class-ngg-options.php:398
+#: ../admin/class-ngg-options.php:791
+#: ../admin/manage/actions.php:318
 #: ../admin/manage/class-ngg-manager.php:62
-#: ../admin/manage/class-ngg-manager.php:85 ../admin/tinymce/window.php:208
+#: ../admin/manage/class-ngg-manager.php:85
+#: ../admin/tinymce/window.php:208
 #: ../admin/tinymce/window.php:317
 msgid "Height"
 msgstr "Hoogte"
 
 # @ nggallery
-#: ../admin/class-ngg-options.php:364 ../admin/manage/class-ngg-manager.php:65
-msgid ""
-"Width and height (in pixels). NextCellent Gallery will keep the ratio size."
-msgstr ""
-"Breedte en hoogte (in pixels).  NextCellent Gallery zal de verhoudingen "
-"respecteren."
+#: ../admin/class-ngg-options.php:364
+#: ../admin/manage/class-ngg-manager.php:65
+msgid "Width and height (in pixels). NextCellent Gallery will keep the ratio size."
+msgstr "Breedte en hoogte (in pixels).  NextCellent Gallery zal de verhoudingen respecteren."
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:368
@@ -1218,12 +1191,8 @@ msgstr "Thumbnail instellingen"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:391
-msgid ""
-"Please note: if you change these settings, you need to recreate the "
-"thumbnails under -> Manage Gallery ."
-msgstr ""
-"Opmerking: als je deze instellingen verandert, is het nodig om de miniaturen "
-"opnieuw te maken."
+msgid "Please note: if you change these settings, you need to recreate the thumbnails under -> Manage Gallery ."
+msgstr "Opmerking: als je deze instellingen verandert, is het nodig om de miniaturen opnieuw te maken."
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:394
@@ -1236,7 +1205,8 @@ msgid "These values are maximum values."
 msgstr "Dit zijn de maximale waarden"
 
 # @ default
-#: ../admin/class-ngg-options.php:404 ../admin/manage/class-ngg-manager.php:94
+#: ../admin/class-ngg-options.php:404
+#: ../admin/manage/class-ngg-manager.php:94
 msgid "Fixed size"
 msgstr "Vaste grootte"
 
@@ -1286,16 +1256,15 @@ msgid "Images per page"
 msgstr "Afbeeldingen per pagina"
 
 # @ nggallery
-#: ../admin/class-ngg-options.php:449 ../admin/class-ngg-options.php:881
+#: ../admin/class-ngg-options.php:449
+#: ../admin/class-ngg-options.php:881
 msgid "images"
 msgstr "Afbeeldingen"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:450
 msgid "0 will disable pagination and show all images on one page."
-msgstr ""
-"0 schakelt instellen voor pagina&#39;s uit, alle afbeeldingen komen op 1 "
-"pagina"
+msgstr "0 schakelt instellen voor pagina&#39;s uit, alle afbeeldingen komen op 1 pagina"
 
 #: ../admin/class-ngg-options.php:454
 msgid "Columns"
@@ -1308,12 +1277,8 @@ msgstr "Afbeeldingen per pagina"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:458
-msgid ""
-"0 will display as much columns as possible. This is normally only required "
-"for captions below the images."
-msgstr ""
-"0 zal zoveel mogelijk tonen. Instellen is normaal alleen vereist voor tekst "
-"onder de afbeeldingen."
+msgid "0 will display as much columns as possible. This is normally only required for captions below the images."
+msgstr "0 zal zoveel mogelijk tonen. Instellen is normaal alleen vereist voor tekst onder de afbeeldingen."
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:466
@@ -1325,12 +1290,8 @@ msgid "Text to show:"
 msgstr "Te tonen tekst:"
 
 #: ../admin/class-ngg-options.php:474
-msgid ""
-"This is the text the visitors will have to click to switch between display "
-"modes."
-msgstr ""
-"Dit is de tekst die bezoekers zullen zien als ze wisselen tussen de "
-"weergavemodi."
+msgid "This is the text the visitors will have to click to switch between display modes."
+msgstr "Dit is de tekst die bezoekers zullen zien als ze wisselen tussen de weergavemodi."
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:478
@@ -1363,17 +1324,12 @@ msgid "Hidden images"
 msgstr "Verborgen afbeeldingen"
 
 #: ../admin/class-ngg-options.php:508
-msgid ""
-"Loads all images for the modal window, when pagination is used (like "
-"Thickbox, Lightbox etc.)."
-msgstr ""
-"Laadt alle afbeeldingen voor het modaal venster als pagina's worden gebruikt "
-"(zoals Thickbox, Lightbox, enz.)."
+msgid "Loads all images for the modal window, when pagination is used (like Thickbox, Lightbox etc.)."
+msgstr "Laadt alle afbeeldingen voor het modaal venster als pagina's worden gebruikt (zoals Thickbox, Lightbox, enz.)."
 
 #: ../admin/class-ngg-options.php:510
 msgid "Note: this increases the page load (possibly a lot)"
-msgstr ""
-"Opmerking: dit verhoogt de laadtijd van de pagina (met misschien wel veel)"
+msgstr "Opmerking: dit verhoogt de laadtijd van de pagina (met misschien wel veel)"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:514
@@ -1382,9 +1338,7 @@ msgstr "AJAX-pagina's"
 
 #: ../admin/class-ngg-options.php:518
 msgid "Use AJAX pagination to browse images without reloading the page."
-msgstr ""
-"Gebruik AJAX-pagina's om afbeeldingen te bekijken zonder de pagina te "
-"herladen."
+msgstr "Gebruik AJAX-pagina's om afbeeldingen te bekijken zonder de pagina te herladen."
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:520
@@ -1423,7 +1377,8 @@ msgid "Alt / Title text"
 msgstr "Alt / Titel tekst"
 
 # @ nggallery
-#: ../admin/class-ngg-options.php:548 ../view/imagebrowser-exif.php:58
+#: ../admin/class-ngg-options.php:548
+#: ../view/imagebrowser-exif.php:58
 msgid "Date / Time"
 msgstr "Datum / tijd"
 
@@ -1446,26 +1401,13 @@ msgstr "Aflopend"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:583
-msgid ""
-"Here you can select the thumbnail effect, NextCellent Gallery will integrate "
-"the required HTML code in the images. Please note that only the Shutter and "
-"Thickbox effect will automatic added to your theme."
-msgstr ""
-"Hier kun je het effect voor de miniaturen selecteren, NextCellent Gallery "
-"zal de vereiste HTML code in de afbeeldingen integreren. Houd er rekening "
-"mee dat alleen het sluiter- en thickbox-effect automatisch toegevoegd worden "
-"aan je thema."
+msgid "Here you can select the thumbnail effect, NextCellent Gallery will integrate the required HTML code in the images. Please note that only the Shutter and Thickbox effect will automatic added to your theme."
+msgstr "Hier kun je het effect voor de miniaturen selecteren, NextCellent Gallery zal de vereiste HTML code in de afbeeldingen integreren. Houd er rekening mee dat alleen het sluiter- en thickbox-effect automatisch toegevoegd worden aan je thema."
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:584
-msgid ""
-"With the placeholder <strong> %GALLERY_NAME% </strong> you can activate a "
-"navigation through the images (depend on the effect). Change the code line "
-"only , when you use a different thumbnail effect or you know what you do."
-msgstr ""
-"<br>Er kan navigatie toegevoegd worden aan de afbeeldingen (hangt van het "
-"effect af).  Wijzig de code uitsluitend als je voor een afwijkend thumbnail "
-"effect gaat of als je weet waar je mee bezig bent!"
+msgid "With the placeholder <strong> %GALLERY_NAME% </strong> you can activate a navigation through the images (depend on the effect). Change the code line only , when you use a different thumbnail effect or you know what you do."
+msgstr "<br>Er kan navigatie toegevoegd worden aan de afbeeldingen (hangt van het effect af).  Wijzig de code uitsluitend als je voor een afwijkend thumbnail effect gaat of als je weet waar je mee bezig bent!"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:588
@@ -1474,7 +1416,8 @@ msgstr "JavaScript Thumbnail effect"
 
 # @ default
 # @ nggallery
-#: ../admin/class-ngg-options.php:591 ../admin/media-upload.php:232
+#: ../admin/class-ngg-options.php:591
+#: ../admin/media-upload.php:232
 msgid "None"
 msgstr "Geen"
 
@@ -1499,7 +1442,8 @@ msgid "Shutter"
 msgstr "Sluiter"
 
 # @ nggallery
-#: ../admin/class-ngg-options.php:596 ../admin/tinymce/window.php:181
+#: ../admin/class-ngg-options.php:596
+#: ../admin/tinymce/window.php:181
 msgid "Custom"
 msgstr "Custom"
 
@@ -1510,12 +1454,8 @@ msgstr "Link Code regel"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:626
-msgid ""
-"Please note : you can only activate the watermark under -> Manage Galleries. "
-"This action cannot be undone."
-msgstr ""
-"Opmerking: je kan het watermerk enkel activeren bij -> Galerij beheren. Deze "
-"actie kan niet ongedaan gemaakt worden."
+msgid "Please note : you can only activate the watermark under -> Manage Galleries. This action cannot be undone."
+msgstr "Opmerking: je kan het watermerk enkel activeren bij -> Galerij beheren. Deze actie kan niet ongedaan gemaakt worden."
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:631
@@ -1533,7 +1473,8 @@ msgid "View full image"
 msgstr "Afbeelding vooraf bekijken"
 
 # @ nggallery
-#: ../admin/class-ngg-options.php:641 ../admin/class-ngg-options.php:645
+#: ../admin/class-ngg-options.php:641
+#: ../admin/class-ngg-options.php:645
 msgid "Position"
 msgstr "Positie"
 
@@ -1565,19 +1506,17 @@ msgstr "Lettertype"
 # @ nggallery
 #: ../admin/class-ngg-options.php:702
 msgid "This function will not work, cause you need the FreeType library"
-msgstr ""
-"Deze functie zal niet werken, omdat je een Free Type library nodig hebt"
+msgstr "Deze functie zal niet werken, omdat je een Free Type library nodig hebt"
 
 # @ nggallery
 #: ../admin/class-ngg-options.php:704
-msgid ""
-"You can upload more fonts in the folder <strong>nggallery/fonts</strong>"
-msgstr ""
-"Je kan meer lettertypes uploaden in de map  <strong>nggallery/fonts</strong>"
+msgid "You can upload more fonts in the folder <strong>nggallery/fonts</strong>"
+msgstr "Je kan meer lettertypes uploaden in de map  <strong>nggallery/fonts</strong>"
 
 # @ default
 # @ nggallery
-#: ../admin/class-ngg-options.php:710 ../admin/manage/class-ngg-manager.php:81
+#: ../admin/class-ngg-options.php:710
+#: ../admin/manage/class-ngg-manager.php:81
 #: ../admin/media-upload.php:242
 msgid "Size"
 msgstr "Formaat"
@@ -1671,9 +1610,7 @@ msgstr "Herhalen"
 
 #: ../admin/class-ngg-options.php:826
 msgid "Infinity loop. Duplicate last and first items to get loop illusion."
-msgstr ""
-"Oneindig herhalen. Het eerste en laatste item worden gedupliceerd om een "
-"lusillusie te creëren."
+msgstr "Oneindig herhalen. Het eerste en laatste item worden gedupliceerd om een lusillusie te creëren."
 
 #: ../admin/class-ngg-options.php:830
 msgid "Mouse/touch drag"
@@ -1740,8 +1677,10 @@ msgid "Click to go to the next image."
 msgstr "Ga naar de volgende pagina"
 
 # @ nggallery
-#: ../admin/class-ngg-options.php:878 ../admin/tinymce/window.php:194
-#: ../admin/tinymce/window.php:358 ../admin/tinymce/window.php:420
+#: ../admin/class-ngg-options.php:878
+#: ../admin/tinymce/window.php:194
+#: ../admin/tinymce/window.php:358
+#: ../admin/tinymce/window.php:420
 msgid "Number of images"
 msgstr "Aantal afbeeldingen"
 
@@ -1787,8 +1726,10 @@ msgid "Image"
 msgstr "Afbeelding"
 
 # @ nggallery
-#: ../admin/class-ngg-overview.php:62 ../admin/tinymce/window.php:118
-#: ../admin/tinymce/window.php:233 ../lib/rewrite.php:226
+#: ../admin/class-ngg-overview.php:62
+#: ../admin/tinymce/window.php:118
+#: ../admin/tinymce/window.php:233
+#: ../lib/rewrite.php:226
 msgid "Album"
 msgstr "Album"
 
@@ -1811,8 +1752,7 @@ msgstr "Je hebt geen toestemming om hier te zijn"
 #: ../admin/class-ngg-overview.php:108
 #, php-format
 msgid "<a href=\"%1$s\" title=\"Manage Uploads\">%2$s MB</a>"
-msgstr ""
-"<a href=\"%1$s\" title=\"Beheer uploads\" class=\"musublink\">%2$sMB</a>"
+msgstr "<a href=\"%1$s\" title=\"Beheer uploads\" class=\"musublink\">%2$sMB</a>"
 
 #: ../admin/class-ngg-overview.php:111
 msgid "Used"
@@ -1822,19 +1762,13 @@ msgstr "Toon / verberg gebruikte galerijen"
 #: ../admin/class-ngg-overview.php:112
 #, php-format
 msgid "<a href=\"%1$s\" title=\"Manage Uploads\">%2$s MB (%3$s%%)</a>"
-msgstr ""
-"<a href=\"%1$s\" title=\"Beheer uploads\" class=\"musublink\">%2$sMB (%3$s"
-"%%)</a>"
+msgstr "<a href=\"%1$s\" title=\"Beheer uploads\" class=\"musublink\">%2$sMB (%3$s%%)</a>"
 
 # @ nggallery
 #: ../admin/class-ngg-overview.php:126
 #, php-format
-msgid ""
-"The newsfeed could not be loaded.  Check the <a href=\"%s\">front page</a> "
-"to check for updates."
-msgstr ""
-"Nieuwsfeed kan niet geladen worden.  Ga naar de <a href=\"%s\">voorpagina  </"
-"a> om te controleren op updates."
+msgid "The newsfeed could not be loaded.  Check the <a href=\"%s\">front page</a> to check for updates."
+msgstr "Nieuwsfeed kan niet geladen worden.  Ga naar de <a href=\"%s\">voorpagina  </a> om te controleren op updates."
 
 # @ default
 #: ../admin/class-ngg-overview.php:137
@@ -1852,7 +1786,8 @@ msgid "Check plugin/theme conflict"
 msgstr "Plugin controle / thema conflict"
 
 # @ nggallery
-#: ../admin/class-ngg-overview.php:350 ../admin/class-ngg-overview.php:356
+#: ../admin/class-ngg-overview.php:350
+#: ../admin/class-ngg-overview.php:356
 #: ../admin/class-ngg-overview.php:362
 msgid "Not tested"
 msgstr "Niet getest"
@@ -1865,8 +1800,7 @@ msgstr "Er kan geen conflict worden gevonden"
 # @ nggallery
 #: ../admin/class-ngg-overview.php:352
 msgid "Test failed, disable other plugins & switch to default theme"
-msgstr ""
-"Test mislukt, schakel andere plugins uit en stel het standaard thema in"
+msgstr "Test mislukt, schakel andere plugins uit en stel het standaard thema in"
 
 # @ nggallery
 #: ../admin/class-ngg-overview.php:355
@@ -1896,9 +1830,7 @@ msgstr "Je thema zou moeten werken met NextCellent Gallery"
 # @ nggallery
 #: ../admin/class-ngg-overview.php:364
 msgid "wp_head()/wp_footer() is missing, contact the theme author"
-msgstr ""
-"wp_head()/wp_footer() ontbreekt, neem contact op met de ontwikkelaar van het "
-"thema"
+msgstr "wp_head()/wp_footer() ontbreekt, neem contact op met de ontwikkelaar van het thema"
 
 # @ nggallery
 #: ../admin/class-ngg-overview.php:368
@@ -1916,14 +1848,18 @@ msgid "There is no GD support"
 msgstr "Geen GD ondersteuning"
 
 # @ nggallery
-#: ../admin/class-ngg-overview.php:423 ../admin/class-ngg-overview.php:491
-#: ../admin/class-ngg-overview.php:497 ../admin/class-ngg-overview.php:503
+#: ../admin/class-ngg-overview.php:423
+#: ../admin/class-ngg-overview.php:491
+#: ../admin/class-ngg-overview.php:497
+#: ../admin/class-ngg-overview.php:503
 msgid "Yes"
 msgstr "Ja"
 
 # @ nggallery
-#: ../admin/class-ngg-overview.php:425 ../admin/class-ngg-overview.php:493
-#: ../admin/class-ngg-overview.php:499 ../admin/class-ngg-overview.php:505
+#: ../admin/class-ngg-overview.php:425
+#: ../admin/class-ngg-overview.php:493
+#: ../admin/class-ngg-overview.php:499
+#: ../admin/class-ngg-overview.php:505
 msgid "No"
 msgstr "Nee"
 
@@ -1943,9 +1879,12 @@ msgid "Off"
 msgstr "Uit"
 
 # @ nggallery
-#: ../admin/class-ngg-overview.php:457 ../admin/class-ngg-overview.php:463
-#: ../admin/class-ngg-overview.php:469 ../admin/class-ngg-overview.php:475
-#: ../admin/class-ngg-overview.php:481 ../admin/class-ngg-overview.php:487
+#: ../admin/class-ngg-overview.php:457
+#: ../admin/class-ngg-overview.php:463
+#: ../admin/class-ngg-overview.php:469
+#: ../admin/class-ngg-overview.php:475
+#: ../admin/class-ngg-overview.php:481
+#: ../admin/class-ngg-overview.php:487
 msgid "N/A"
 msgstr "N/A"
 
@@ -2040,12 +1979,8 @@ msgid "This widget requires JavaScript."
 msgstr "Deze widget vereist JavaScript."
 
 #: ../admin/class-ngg-overview.php:557
-msgid ""
-"<strong>Note</strong>: third parties plugins that are compatible with NGG "
-"may not be 100&#37; compatible with NextCellent Gallery!"
-msgstr ""
-"niet alle plug-ins van derden die compatibel zijn met NGG zullen 100% werken "
-"met NextCellent Gallery!"
+msgid "<strong>Note</strong>: third parties plugins that are compatible with NGG may not be 100&#37; compatible with NextCellent Gallery!"
+msgstr "niet alle plug-ins van derden die compatibel zijn met NGG zullen 100% werken met NextCellent Gallery!"
 
 #: ../admin/class-ngg-overview.php:599
 #, php-format
@@ -2078,13 +2013,15 @@ msgid "Update Now"
 msgstr "Bijwerken"
 
 # @ nggallery
-#: ../admin/class-ngg-overview.php:638 ../admin/class-ngg-overview.php:640
+#: ../admin/class-ngg-overview.php:638
+#: ../admin/class-ngg-overview.php:640
 #, php-format
 msgid "More information about %s"
 msgstr "Voor meer informatie over %s"
 
 # @ nggallery
-#: ../admin/class-ngg-overview.php:638 ../admin/class-ngg-overview.php:640
+#: ../admin/class-ngg-overview.php:638
+#: ../admin/class-ngg-overview.php:640
 msgid "More Details"
 msgstr "Meer instellingen"
 
@@ -2105,12 +2042,8 @@ msgid "This plugin is a branch from NextGen Gallery, version 1.9.13."
 msgstr "Deze plug-in is een aanpassing van NextGen Gallery, versie 1.9.13."
 
 #: ../admin/class-ngg-overview.php:747
-msgid ""
-"Developed & maintained by <a href=\"http://www.wpgetready.com\" target="
-"\"_blank\">WPGetReady.com</a>"
-msgstr ""
-"Deze plug-in is een tak van de NGG stabiele versie 1.9.13.<br> Ontwikkeld en "
-"onderhouden door <a href=\"%s\" target=\"_blank\">WPGetReady.com</a>"
+msgid "Developed & maintained by <a href=\"http://www.wpgetready.com\" target=\"_blank\">WPGetReady.com</a>"
+msgstr "Deze plug-in is een tak van de NGG stabiele versie 1.9.13.<br> Ontwikkeld en onderhouden door <a href=\"%s\" target=\"_blank\">WPGetReady.com</a>"
 
 #: ../admin/class-ngg-overview.php:753
 msgid "You can contribute by giving this plugin a good rating! Thanks a lot!"
@@ -2127,9 +2060,7 @@ msgstr "Welkom bij NextCellent Gallery!"
 
 #: ../admin/class-ngg-overview.php:835
 msgid "This plugin is made possible by the great work of a lot of people:"
-msgstr ""
-"Deze plug-in wordt mogelijk gemaakt door het fantastische werk van een "
-"heleboel mensen. Een speciale dank u aan onderstaande personen:"
+msgstr "Deze plug-in wordt mogelijk gemaakt door het fantastische werk van een heleboel mensen. Een speciale dank u aan onderstaande personen:"
 
 #: ../admin/class-ngg-overview.php:837
 msgid "Alex Rabe and Photocrati for the original NextGen Gallery"
@@ -2146,8 +2077,7 @@ msgstr "voor de Watermerk plugin"
 
 #: ../admin/class-ngg-overview.php:844
 msgid "for his implementation of changing file the upload date using jQuery"
-msgstr ""
-"voor zijn implementatie van het veranderen van de uploaddatum met jQuery"
+msgstr "voor zijn implementatie van het veranderen van de uploaddatum met jQuery"
 
 #: ../admin/class-ngg-overview.php:847
 msgid "for his his code suggestions regarding nggtags shortcodes"
@@ -2168,12 +2098,8 @@ msgstr "Instellen Rollen/Rechten voor gebruik NextGEN"
 
 # @ nggallery
 #: ../admin/class-ngg-roles.php:17
-msgid ""
-"Select the lowest role which should be able to access the following "
-"capabilities. NextCellent Gallery supports the standard roles from WordPress."
-msgstr ""
-"Selecteer de laagste rol die toegang krijgt de volgende toepassingen uit te "
-"voeren. NextCellent Gallery gebruikt de standaard WordPress-rollen."
+msgid "Select the lowest role which should be able to access the following capabilities. NextCellent Gallery supports the standard roles from WordPress."
+msgstr "Selecteer de laagste rol die toegang krijgt de volgende toepassingen uit te voeren. NextCellent Gallery gebruikt de standaard WordPress-rollen."
 
 # @ nggallery
 #: ../admin/class-ngg-roles.php:18
@@ -2256,14 +2182,8 @@ msgid "You don't like NextCellent Gallery?"
 msgstr "Vind je NextCellent niet leuk?"
 
 #: ../admin/class-ngg-setup.php:31
-msgid ""
-"With this button you can clear all database tables. This should also happen "
-"if you uninstall the normal way, but it can be useful for manually "
-"uninstalling NextCellent completely."
-msgstr ""
-"Met deze knop kan u de databanktabellen wissen. Dit zou ook vanzelf moeten "
-"gebeuren als je op de normale wijze verwijdert, maar het kan nuttig zijn om "
-"NextCellent manueel te verwijderen."
+msgid "With this button you can clear all database tables. This should also happen if you uninstall the normal way, but it can be useful for manually uninstalling NextCellent completely."
+msgstr "Met deze knop kan u de databanktabellen wissen. Dit zou ook vanzelf moeten gebeuren als je op de normale wijze verwijdert, maar het kan nuttig zijn om NextCellent manueel te verwijderen."
 
 # @ nggallery
 #: ../admin/class-ngg-setup.php:34
@@ -2272,14 +2192,8 @@ msgstr "WAARSCHUWING:"
 
 # @ nggallery
 #: ../admin/class-ngg-setup.php:36
-msgid ""
-"Once uninstalled, this cannot be undone. You should use a Database Backup "
-"plugin of WordPress to backup all the tables first. NextCellent gallery is "
-"stored in the tables"
-msgstr ""
-" Eenmaal verwijderd, kan dit niet ongedaan gemaakt worden. Je zult een "
-"Database Backup plugin van WordPress moeten gebruiken om eerst een backup te "
-"maken van alle tabellen. NextCellent Gallery is opgeslagen in de tabellen "
+msgid "Once uninstalled, this cannot be undone. You should use a Database Backup plugin of WordPress to backup all the tables first. NextCellent gallery is stored in the tables"
+msgstr " Eenmaal verwijderd, kan dit niet ongedaan gemaakt worden. Je zult een Database Backup plugin van WordPress moeten gebruiken om eerst een backup te maken van alle tabellen. NextCellent Gallery is opgeslagen in de tabellen "
 
 # @ nggallery
 #: ../admin/class-ngg-setup.php:36
@@ -2300,17 +2214,14 @@ msgstr "De&iuml;nstalleer knop"
 msgid "Reset all options to default settings?"
 msgstr "Alle opties/instellingen terugzetten naar de standaard installatie"
 
-#: ../admin/class-ngg-setup.php:51 ../admin/class-ngg-setup.php:66
+#: ../admin/class-ngg-setup.php:51
+#: ../admin/class-ngg-setup.php:66
 msgid "Choose [Cancel] to Stop, [OK] to proceed."
 msgstr "Kies [Annuleren] om te stoppen, [OK] om door te gaan."
 
 #: ../admin/class-ngg-setup.php:64
-msgid ""
-"You are about to uninstall this plugin from WordPress. This action is not "
-"reversible."
-msgstr ""
-"Je staat op het punt deze plug-in te verwijderen van WordPress. Deze actie "
-"kan niet ongedaan gemaakt worden."
+msgid "You are about to uninstall this plugin from WordPress. This action is not reversible."
+msgstr "Je staat op het punt deze plug-in te verwijderen van WordPress. Deze actie kan niet ongedaan gemaakt worden."
 
 # @ nggallery
 #: ../admin/class-ngg-setup.php:97
@@ -2320,9 +2231,7 @@ msgstr "Alle instellingen terugzetten naar de standaard waarden"
 # @ nggallery
 #: ../admin/class-ngg-setup.php:104
 msgid "Uninstall successful! Now delete the plugin and enjoy your life!"
-msgstr ""
-"De&iuml;nstalleren succesvol! Nu de plugin verwijderen en vrolijk verder "
-"leven! Veel plezier!"
+msgstr "De&iuml;nstalleren succesvol! Nu de plugin verwijderen en vrolijk verder leven! Veel plezier!"
 
 # @ nggallery
 #: ../admin/class-ngg-style.php:118
@@ -2334,10 +2243,10 @@ msgid "No CSS file will be used."
 msgstr "Geen css-bestand zal gebruikt worden."
 
 # @ default
-#: ../admin/class-ngg-style.php:129 ../admin/class-ngg-style.php:169
+#: ../admin/class-ngg-style.php:129
+#: ../admin/class-ngg-style.php:169
 msgid "You do not have sufficient permissions to edit templates for this blog."
-msgstr ""
-"Je hebt niet de juiste permissies om sjablonen van deze site te bewerken"
+msgstr "Je hebt niet de juiste permissies om sjablonen van deze site te bewerken"
 
 # @ default
 #: ../admin/class-ngg-style.php:154
@@ -2364,11 +2273,13 @@ msgstr "CSS bestand met succes verplaatst."
 msgid "Could not move the CSS file."
 msgstr "Kon het css-bestand niet verplaatsen."
 
-#: ../admin/class-ngg-style.php:218 ../admin/wpmu.php:63
+#: ../admin/class-ngg-style.php:218
+#: ../admin/wpmu.php:63
 msgid "Your CSS file is set by a theme or another plugin."
 msgstr "Je css-bestand is ingesteld door een thema of een plug-in."
 
-#: ../admin/class-ngg-style.php:218 ../admin/wpmu.php:63
+#: ../admin/class-ngg-style.php:218
+#: ../admin/wpmu.php:63
 msgid "This CSS file will be applied:"
 msgstr "Dit css-bestand zal gebruikt worden:"
 
@@ -2404,12 +2315,8 @@ msgid "(from the theme folder)"
 msgstr "(van de themamap)"
 
 #: ../admin/class-ngg-style.php:283
-msgid ""
-"To ensure your css file stays safe during upgrades, please move it to the "
-"right folder."
-msgstr ""
-"Om zeker te zijn dat je css-bestand veilig is, moet je het naar de juiste "
-"map verplaatsen."
+msgid "To ensure your css file stays safe during upgrades, please move it to the right folder."
+msgstr "Om zeker te zijn dat je css-bestand veilig is, moet je het naar de juiste map verplaatsen."
 
 # @ nggallery
 #: ../admin/class-ngg-style.php:286
@@ -2420,7 +2327,8 @@ msgstr "Verplaats bestand"
 # @ default
 #: ../admin/class-ngg-style.php:291
 #: ../admin/manage/class-ngg-gallery-list-table.php:155
-#: ../admin/manage/class-ngg-image-manager.php:213 ../lib/meta.php:458
+#: ../admin/manage/class-ngg-image-manager.php:213
+#: ../lib/meta.php:458
 msgid "Author"
 msgstr "Auteur"
 
@@ -2447,8 +2355,7 @@ msgstr "Als dit bestand beschrijfbaar zou zijn, zou je het kunnen bewerken"
 # @ nggallery
 #: ../admin/class-ngg-style.php:316
 msgid "This file does not exist. Double check the name and try again."
-msgstr ""
-"Dit bestand bestaat niet. Controleer de naam nogmaals en probeer het opnieuw."
+msgstr "Dit bestand bestaat niet. Controleer de naam nogmaals en probeer het opnieuw."
 
 # @ nggallery
 #: ../admin/class-ngg-tag-manager.php:45
@@ -2504,22 +2411,14 @@ msgstr "Hernoem tag"
 
 # @ nggallery
 #: ../admin/class-ngg-tag-manager.php:195
-msgid ""
-"Enter the tag to rename and its new value.  You can use this feature to "
-"merge tags too. Click \"Rename\" and all posts which use this tag will be "
-"updated."
-msgstr ""
-"Geef de tag die je wilt hernoemen een nieuwe naam. Je kunt deze mogelijkheid "
-"ook gebruiken om tags samen te voegen. Klik  \"Hernoemen\" en alle berichten "
-"die deze tag gebruiken zullen bijgewerkt worden."
+msgid "Enter the tag to rename and its new value.  You can use this feature to merge tags too. Click \"Rename\" and all posts which use this tag will be updated."
+msgstr "Geef de tag die je wilt hernoemen een nieuwe naam. Je kunt deze mogelijkheid ook gebruiken om tags samen te voegen. Klik  \"Hernoemen\" en alle berichten die deze tag gebruiken zullen bijgewerkt worden."
 
 # @ nggallery
 #: ../admin/class-ngg-tag-manager.php:196
 #: ../admin/class-ngg-tag-manager.php:244
 msgid "You can specify multiple tags to rename by separating them with commas."
-msgstr ""
-"Je kunt meerdere tags specificeren om te hernoemen door ze met komma&#39;s "
-"te scheiden"
+msgstr "Je kunt meerdere tags specificeren om te hernoemen door ze met komma&#39;s te scheiden"
 
 # @ nggallery
 #: ../admin/class-ngg-tag-manager.php:200
@@ -2543,19 +2442,13 @@ msgstr " verwijder Tag"
 
 # @ nggallery
 #: ../admin/class-ngg-tag-manager.php:221
-msgid ""
-"Enter the name of the tag to delete.  This tag will be removed from all "
-"posts."
-msgstr ""
-"Geef de naam van de tag om te verwijderen. Deze tag zal verwijderd worden "
-"van alle berichten."
+msgid "Enter the name of the tag to delete.  This tag will be removed from all posts."
+msgstr "Geef de naam van de tag om te verwijderen. Deze tag zal verwijderd worden van alle berichten."
 
 # @ nggallery
 #: ../admin/class-ngg-tag-manager.php:222
 msgid "You can specify multiple tags to delete by separating them with commas"
-msgstr ""
-"Je kunt meerdere tags specificeren om te verwijderen door ze te scheiden "
-"door komma&#39;s"
+msgstr "Je kunt meerdere tags specificeren om te verwijderen door ze te scheiden door komma&#39;s"
 
 # @ nggallery
 #: ../admin/class-ngg-tag-manager.php:226
@@ -2569,12 +2462,8 @@ msgstr "Bewerk tag slug"
 
 # @ nggallery
 #: ../admin/class-ngg-tag-manager.php:243
-msgid ""
-"Enter the tag name to edit and its new slug. <a href=\"http://codex."
-"wordpress.org/Glossary#Slug\">Slug definition</a>"
-msgstr ""
-"Geef de tagnaam om te bewerken en de nieuwe slug. <a href=\"http://codex."
-"wordpress.org/Glossary#Slug\">Slug definitie</a>"
+msgid "Enter the tag name to edit and its new slug. <a href=\"http://codex.wordpress.org/Glossary#Slug\">Slug definition</a>"
+msgstr "Geef de tagnaam om te bewerken en de nieuwe slug. <a href=\"http://codex.wordpress.org/Glossary#Slug\">Slug definitie</a>"
 
 # @ nggallery
 #: ../admin/class-ngg-tag-manager.php:248
@@ -2599,9 +2488,12 @@ msgid "No valid gallery name!"
 msgstr "Geen geldige galerij naam!"
 
 # @ nggallery
-#: ../admin/functions.php:48 ../admin/functions.php:57
-#: ../admin/functions.php:83 ../admin/functions.php:158
-#: ../admin/functions.php:165 ../admin/functions.php:345
+#: ../admin/functions.php:48
+#: ../admin/functions.php:57
+#: ../admin/functions.php:83
+#: ../admin/functions.php:158
+#: ../admin/functions.php:165
+#: ../admin/functions.php:345
 #: ../admin/functions.php:353
 msgid "Directory"
 msgstr "Directory"
@@ -2612,18 +2504,22 @@ msgid "didn't exist. Please create first the main gallery folder "
 msgstr "bestaat niet. Maak eerst de hoofdmap 'gallery' aan"
 
 # @ nggallery
-#: ../admin/functions.php:49 ../admin/functions.php:58
+#: ../admin/functions.php:49
+#: ../admin/functions.php:58
 msgid "Check this link, if you didn't know how to set the permission :"
 msgstr "Klik deze link, als je niet weet hoe je rechten moet toewijzen :"
 
 # @ nggallery
-#: ../admin/functions.php:57 ../admin/functions.php:83
+#: ../admin/functions.php:57
+#: ../admin/functions.php:83
 msgid "is not writeable !"
 msgstr "is niet beschrijfbaar!"
 
 # @ nggallery
-#: ../admin/functions.php:79 ../admin/functions.php:88
-#: ../admin/functions.php:1127 ../lib/core.php:102
+#: ../admin/functions.php:79
+#: ../admin/functions.php:88
+#: ../admin/functions.php:1127
+#: ../lib/core.php:102
 msgid "Unable to create directory "
 msgstr "Niet mogelijk de directory aan te maken"
 
@@ -2650,26 +2546,25 @@ msgstr "met permissie 777 handmatig ingesteld !"
 # @ nggallery
 #: ../admin/functions.php:120
 #, php-format
-msgid ""
-"Gallery ID %1$s successfully created. You can show this gallery in your post "
-"or page with the shortcode %2$s.<br/>"
-msgstr ""
-"Galerij ID %1$s met succes gemaakt. Je kunt deze galerij in je bericht of "
-"pagina tonen met de code %2$s.<br/>"
+msgid "Gallery ID %1$s successfully created. You can show this gallery in your post or page with the shortcode %2$s.<br/>"
+msgstr "Galerij ID %1$s met succes gemaakt. Je kunt deze galerij in je bericht of pagina tonen met de code %2$s.<br/>"
 
 # @ nggallery
-#: ../admin/functions.php:123 ../admin/functions.php:310
+#: ../admin/functions.php:123
+#: ../admin/functions.php:310
 #: ../admin/functions.php:413
 msgid "Edit gallery"
 msgstr "Galerij bewerken"
 
 # @ nggallery
-#: ../admin/functions.php:158 ../admin/functions.php:345
+#: ../admin/functions.php:158
+#: ../admin/functions.php:345
 msgid "doesn&#96;t exist!"
 msgstr "bestaat niet!"
 
 # @ nggallery
-#: ../admin/functions.php:165 ../admin/functions.php:353
+#: ../admin/functions.php:165
+#: ../admin/functions.php:353
 msgid "contains no pictures"
 msgstr "bevat geen afbeeldingen"
 
@@ -2682,17 +2577,20 @@ msgid "Importing was aborted."
 msgstr "Importeren is gestopt."
 
 # @ nggallery
-#: ../admin/functions.php:210 ../admin/functions.php:372
+#: ../admin/functions.php:210
+#: ../admin/functions.php:372
 msgid "Database error. Could not add gallery!"
 msgstr "Database fout. Kan geen galerij toevoegen!"
 
 # @ nggallery
-#: ../admin/functions.php:213 ../admin/functions.php:375
+#: ../admin/functions.php:213
+#: ../admin/functions.php:375
 msgid "successfully created!"
 msgstr "met succes gemaakt!"
 
 # @ nggallery
-#: ../admin/functions.php:300 ../admin/functions.php:408
+#: ../admin/functions.php:300
+#: ../admin/functions.php:408
 #: ../admin/functions.php:1244
 #: ../admin/manage/class-ngg-gallery-list-table.php:212
 #: ../admin/manage/class-ngg-image-list-table.php:302
@@ -2707,7 +2605,8 @@ msgid " picture(s) successfully renamed"
 msgstr " afbeelding(en) met succes hernoemd"
 
 # @ nggallery
-#: ../admin/functions.php:307 ../admin/functions.php:411
+#: ../admin/functions.php:307
+#: ../admin/functions.php:411
 msgid " picture(s) successfully added"
 msgstr " afbeelding(en) met succes toegevoegd"
 
@@ -2717,8 +2616,10 @@ msgid "No images were added."
 msgstr "Er zijn geen afbeeldingen toegevoegd."
 
 # @ nggallery
-#: ../admin/functions.php:486 ../admin/functions.php:570
-#: ../admin/functions.php:625 ../admin/functions.php:722
+#: ../admin/functions.php:486
+#: ../admin/functions.php:570
+#: ../admin/functions.php:625
+#: ../admin/functions.php:722
 #: ../admin/functions.php:776
 msgid "Object didn't contain correct data"
 msgstr "Object bevat onjuiste gegevens"
@@ -2729,8 +2630,10 @@ msgid " is not writeable "
 msgstr "is niet beschrijfbaar"
 
 # @ nggallery
-#: ../admin/functions.php:580 ../admin/functions.php:628
-#: ../admin/functions.php:728 ../admin/functions.php:779
+#: ../admin/functions.php:580
+#: ../admin/functions.php:628
+#: ../admin/functions.php:728
+#: ../admin/functions.php:779
 msgid " is not writeable"
 msgstr "is niet beschrijfbaar"
 
@@ -2772,9 +2675,7 @@ msgstr "Importeer via cURL mislukt."
 # @ nggallery
 #: ../admin/functions.php:1094
 msgid "Uploaded file was no or a faulty zip file ! The server recognized : "
-msgstr ""
-"Geuploade bestand is geen geldig of onjuist zip bestand ! De server "
-"herkent : "
+msgstr "Geuploade bestand is geen geldig of onjuist zip bestand ! De server herkent : "
 
 # @ nggallery
 #: ../admin/functions.php:1111
@@ -2784,12 +2685,8 @@ msgstr "Geen geldige mapnaam"
 # @ nggallery
 #: ../admin/functions.php:1122
 #, php-format
-msgid ""
-"Unable to create directory %s. Is its parent directory writable by the "
-"server?"
-msgstr ""
-"Kan de map %s niet maken. Is de bovenstaande  map beschrijfbaar op de "
-"server? "
+msgid "Unable to create directory %s. Is its parent directory writable by the server?"
+msgstr "Kan de map %s niet maken. Is de bovenstaande  map beschrijfbaar op de server? "
 
 # @ nggallery
 #: ../admin/functions.php:1137
@@ -2797,36 +2694,40 @@ msgid "Zip-File successfully unpacked"
 msgstr "Zip-bestand is met succes uitgepakt"
 
 # @ nggallery
-#: ../admin/functions.php:1168 ../admin/functions.php:1268
+#: ../admin/functions.php:1168
+#: ../admin/functions.php:1268
 msgid "No gallery selected !"
 msgstr "Geen galerij geselecteerd !"
 
 # @ nggallery
-#: ../admin/functions.php:1176 ../admin/functions.php:1293
+#: ../admin/functions.php:1176
+#: ../admin/functions.php:1293
 msgid "Failure in database, no gallery path set !"
 msgstr "Mislukt in de database, geen galerij pad ingesteld !"
 
 # @ nggallery
-#: ../admin/functions.php:1200 ../admin/functions.php:1287
+#: ../admin/functions.php:1200
+#: ../admin/functions.php:1287
 msgid "is no valid image file!"
 msgstr "is geen geldig afbeeldingsbestand!"
 
 # @ nggallery
-#: ../admin/functions.php:1214 ../admin/functions.php:1412
+#: ../admin/functions.php:1214
+#: ../admin/functions.php:1412
 #: ../admin/functions.php:1489
 #, php-format
-msgid ""
-"Unable to write to directory %s. Is this directory writable by the server?"
-msgstr ""
-"Kan niet schrijven naar de map %s. Is deze map beschrijfbaar op de server?"
+msgid "Unable to write to directory %s. Is this directory writable by the server?"
+msgstr "Kan niet schrijven naar de map %s. Is deze map beschrijfbaar op de server?"
 
 # @ nggallery
-#: ../admin/functions.php:1221 ../admin/functions.php:1310
+#: ../admin/functions.php:1221
+#: ../admin/functions.php:1310
 msgid "Error, the file could not be moved to : "
 msgstr "Mislukt, het bestand kan niet verplaatst worden naar: "
 
 # @ nggallery
-#: ../admin/functions.php:1226 ../admin/functions.php:1314
+#: ../admin/functions.php:1226
+#: ../admin/functions.php:1314
 msgid "Error, the file permissions could not be set"
 msgstr "Fout, de bestandspermissies kunnen niet ingesteld worden"
 
@@ -2843,31 +2744,24 @@ msgstr "Ongeldige upload: fout code:"
 # @ nggallery
 #: ../admin/functions.php:1352
 #, php-format
-msgid ""
-"SAFE MODE Restriction in effect! You need to create the folder <strong>%s</"
-"strong> manually"
-msgstr ""
-"BEVEILINGS beperking in effect! Het is nodig de map <strong>%s</strong> "
-"handmatig te maken"
+msgid "SAFE MODE Restriction in effect! You need to create the folder <strong>%s</strong> manually"
+msgstr "BEVEILINGS beperking in effect! Het is nodig de map <strong>%s</strong> handmatig te maken"
 
 # @ nggallery
 #: ../admin/functions.php:1353
 #, php-format
-msgid ""
-"When safe_mode is on, PHP checks to see if the owner (%s) of the current "
-"script matches the owner (%s) of the file to be operated on by a file "
-"function or its directory"
-msgstr ""
-"Als safe_mode aan staat, controleert PHP of dat de eigenaar (%s) van het "
-"script overeenkomt met de eigenaar (%s) van het bestand"
+msgid "When safe_mode is on, PHP checks to see if the owner (%s) of the current script matches the owner (%s) of the file to be operated on by a file function or its directory"
+msgstr "Als safe_mode aan staat, controleert PHP of dat de eigenaar (%s) van het script overeenkomt met de eigenaar (%s) van het bestand"
 
 # @ nggallery
-#: ../admin/functions.php:1406 ../admin/functions.php:1483
+#: ../admin/functions.php:1406
+#: ../admin/functions.php:1483
 msgid "The destination gallery does not exist"
 msgstr "De doelgalerij bestaat niet"
 
 # @ nggallery
-#: ../admin/functions.php:1437 ../lib/xmlrpc.php:222
+#: ../admin/functions.php:1437
+#: ../lib/xmlrpc.php:222
 #, php-format
 msgid "Failed to move image %1$s to %2$s"
 msgstr "Afbeelding verplaatsen mislukt %1$s naar %2$s"
@@ -2893,12 +2787,8 @@ msgstr "Database rij kopieeren mislukt voor afbeelding %s"
 # @ nggallery
 #: ../admin/functions.php:1542
 #, php-format
-msgid ""
-"Image %1$s (%2$s) copied as image %3$s (%4$s) &raquo; The file already "
-"existed in the destination gallery."
-msgstr ""
-"Afbeelding %1$s (%2$s) gekopieerd als afbeelding %3$s (%4$s) &raquo; De "
-"bestandsnaam was al aanwezig in de bestaande galerij."
+msgid "Image %1$s (%2$s) copied as image %3$s (%4$s) &raquo; The file already existed in the destination gallery."
+msgstr "Afbeelding %1$s (%2$s) gekopieerd als afbeelding %3$s (%4$s) &raquo; De bestandsnaam was al aanwezig in de bestaande galerij."
 
 # @ nggallery
 #: ../admin/functions.php:1545
@@ -2915,18 +2805,12 @@ msgstr "%1$s afbeelding(en) gekopieerd naar galerij: %2$s ."
 # @ nggallery
 #: ../admin/functions.php:1669
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
-msgstr ""
-"Het geuploade bestand overschrijdt de upload_max_filesize richtlijn in php."
-"ini"
+msgstr "Het geuploade bestand overschrijdt de upload_max_filesize richtlijn in php.ini"
 
 # @ nggallery
 #: ../admin/functions.php:1672
-msgid ""
-"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
-"the HTML form"
-msgstr ""
-"Het geuploade bestand overschrijdt de MAX_FILE_SIZE richtlijn welke is "
-"ingesteld op het HTML formulier"
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
+msgstr "Het geuploade bestand overschrijdt de MAX_FILE_SIZE richtlijn welke is ingesteld op het HTML formulier"
 
 # @ nggallery
 #: ../admin/functions.php:1675
@@ -2961,8 +2845,7 @@ msgstr "Onbekende upload fout"
 # @ nggallery
 #: ../admin/manage/actions.php:58
 msgid "Select how you would like to rotate the image on the left."
-msgstr ""
-"Selecteer het gebied voor de thumbnail van de afbeelding aan de linkerkant"
+msgstr "Selecteer het gebied voor de thumbnail van de afbeelding aan de linkerkant"
 
 # @ nggallery
 #: ../admin/manage/actions.php:65
@@ -2995,8 +2878,10 @@ msgid "Error rotating thumbnail"
 msgstr "Fout bij roteren van de thumbnail"
 
 # @ nggallery
-#: ../admin/manage/actions.php:129 ../admin/manage/actions.php:157
-#: ../admin/manage/actions.php:182 ../admin/manage/actions.php:204
+#: ../admin/manage/actions.php:129
+#: ../admin/manage/actions.php:157
+#: ../admin/manage/actions.php:182
+#: ../admin/manage/actions.php:204
 msgid "Value"
 msgstr "Waarde"
 
@@ -3062,8 +2947,10 @@ msgid "X"
 msgstr "X"
 
 #. translators: a measurement unit, stand for pixels
-#: ../admin/manage/actions.php:295 ../admin/manage/actions.php:304
-#: ../admin/manage/actions.php:312 ../admin/manage/actions.php:321
+#: ../admin/manage/actions.php:295
+#: ../admin/manage/actions.php:304
+#: ../admin/manage/actions.php:312
+#: ../admin/manage/actions.php:321
 msgid "px"
 msgstr "px"
 
@@ -3301,12 +3188,8 @@ msgid "Delete \"{}\"?"
 msgstr " \"%s\" verwijderen?"
 
 #: ../admin/manage/class-ngg-image-manager.php:147
-msgid ""
-"To enable manual Sort set Custom Order Sort.See Settings->Gallery Settings-"
-">Sort Options"
-msgstr ""
-"Om manueel sorteren aan te zetten moet je Aangepaste Sorteermethode "
-"inschakelen in Instellingen -> Galerij-opties -> Sorteeropties"
+msgid "To enable manual Sort set Custom Order Sort.See Settings->Gallery Settings->Sort Options"
+msgstr "Om manueel sorteren aan te zetten moet je Aangepaste Sorteermethode inschakelen in Instellingen -> Galerij-opties -> Sorteeropties"
 
 # @ nggallery
 #: ../admin/manage/class-ngg-image-manager.php:164
@@ -3402,8 +3285,10 @@ msgid "Select the destination gallery:"
 msgstr "Selecteer een doel galerij:"
 
 # @ nggallery
-#: ../admin/manage/class-ngg-manager.php:134 ../admin/tinymce/window.php:135
-#: ../admin/tinymce/window.php:379 ../admin/tinymce/window.php:430
+#: ../admin/manage/class-ngg-manager.php:134
+#: ../admin/tinymce/window.php:135
+#: ../admin/tinymce/window.php:379
+#: ../admin/tinymce/window.php:430
 msgid "Select or search for a gallery"
 msgstr "Selecteer of zoek een galerij"
 
@@ -3483,12 +3368,8 @@ msgid "Image results for %s"
 msgstr "Afbeeldingsresultaten voor %s"
 
 #: ../admin/manage/class-ngg-sort-manager.php:33
-msgid ""
-"To enable manual Sort set Custom Order Sort. See Settings->Gallery Settings-"
-">Sort Options"
-msgstr ""
-"Om manueel sorteren aan te zetten moet je Aangepaste Sorteermethode "
-"inschakelen in Instellingen -> Galerij-opties -> Sorteeropties"
+msgid "To enable manual Sort set Custom Order Sort. See Settings->Gallery Settings->Sort Options"
+msgstr "Om manueel sorteren aan te zetten moet je Aangepaste Sorteermethode inschakelen in Instellingen -> Galerij-opties -> Sorteeropties"
 
 #: ../admin/manage/class-ngg-sort-manager.php:35
 msgid "Go back"
@@ -3526,7 +3407,8 @@ msgid "Alt/Title text"
 msgstr "Alt / Titel tekst"
 
 # @ nggallery
-#: ../admin/manage/class-ngg-sort-manager.php:121 ../lib/meta.php:452
+#: ../admin/manage/class-ngg-sort-manager.php:121
+#: ../lib/meta.php:452
 msgid "Date/Time"
 msgstr "Datum/tijd"
 
@@ -3567,25 +3449,29 @@ msgstr "Afbeeldings ID:"
 
 # @ default
 # @ nggallery
-#: ../admin/media-upload.php:229 ../admin/tinymce/window.php:332
+#: ../admin/media-upload.php:229
+#: ../admin/tinymce/window.php:332
 msgid "Alignment"
 msgstr "Uitlijning"
 
 # @ default
 # @ nggallery
-#: ../admin/media-upload.php:234 ../admin/tinymce/window.php:336
+#: ../admin/media-upload.php:234
+#: ../admin/tinymce/window.php:336
 msgid "Left"
 msgstr "Links"
 
 # @ default
 # @ nggallery
-#: ../admin/media-upload.php:236 ../admin/tinymce/window.php:337
+#: ../admin/media-upload.php:236
+#: ../admin/tinymce/window.php:337
 msgid "Center"
 msgstr "Centreren"
 
 # @ default
 # @ nggallery
-#: ../admin/media-upload.php:238 ../admin/tinymce/window.php:338
+#: ../admin/media-upload.php:238
+#: ../admin/tinymce/window.php:338
 msgid "Right"
 msgstr "Rechts"
 
@@ -3628,14 +3514,17 @@ msgstr "Recente afbeeldingen"
 msgid "Random pictures"
 msgstr "Willekeurige afbeeldingen"
 
-#: ../admin/tinymce/window.php:129 ../admin/tinymce/window.php:230
-#: ../admin/tinymce/window.php:297 ../admin/tinymce/window.php:355
+#: ../admin/tinymce/window.php:129
+#: ../admin/tinymce/window.php:230
+#: ../admin/tinymce/window.php:297
+#: ../admin/tinymce/window.php:355
 #: ../admin/tinymce/window.php:417
 msgid "Basics"
 msgstr "Basis"
 
 # @ nggallery
-#: ../admin/tinymce/window.php:132 ../admin/tinymce/window.php:376
+#: ../admin/tinymce/window.php:132
+#: ../admin/tinymce/window.php:376
 #: ../admin/tinymce/window.php:427
 #: ../widgets/class-ngg-slideshow-widget.php:113
 msgid "Select a gallery:"
@@ -3655,15 +3544,20 @@ msgstr "Selecteer hoe je je galerij wilt weergeven"
 msgid "Imagebrowser"
 msgstr "Afbeeldingsbrowser"
 
-#: ../admin/tinymce/window.php:168 ../admin/tinymce/window.php:280
-#: ../admin/tinymce/window.php:401 ../admin/tinymce/window.php:452
+#: ../admin/tinymce/window.php:168
+#: ../admin/tinymce/window.php:280
+#: ../admin/tinymce/window.php:401
+#: ../admin/tinymce/window.php:452
 msgid "Carousel"
 msgstr "Carousel"
 
 # @ nggallery
-#: ../admin/tinymce/window.php:174 ../admin/tinymce/window.php:286
-#: ../admin/tinymce/window.php:347 ../admin/tinymce/window.php:407
-#: ../admin/tinymce/window.php:458 ../lib/meta.php:451
+#: ../admin/tinymce/window.php:174
+#: ../admin/tinymce/window.php:286
+#: ../admin/tinymce/window.php:347
+#: ../admin/tinymce/window.php:407
+#: ../admin/tinymce/window.php:458
+#: ../lib/meta.php:451
 msgid "Caption"
 msgstr "Titel"
 
@@ -3673,12 +3567,8 @@ msgid "Type options"
 msgstr "Type-opties"
 
 #: ../admin/tinymce/window.php:197
-msgid ""
-"The number of images before pagination is applied. Leave empty for the "
-"default from the settings."
-msgstr ""
-"Het aantal afbeelding voordat een pagina gebruikt wordt. Laat leeg voor de "
-"standaardwaarde van de instellingen."
+msgid "The number of images before pagination is applied. Leave empty for the default from the settings."
+msgstr "Het aantal afbeelding voordat een pagina gebruikt wordt. Laat leeg voor de standaardwaarde van de instellingen."
 
 # @ nggallery
 #: ../admin/tinymce/window.php:205
@@ -3724,11 +3614,8 @@ msgid "Gallery display types"
 msgstr "Weergavemodi"
 
 #: ../admin/tinymce/window.php:267
-msgid ""
-"Select a template for the galleries (displayed after you click on an album)"
-msgstr ""
-"Selecteer een sjabloon voor de galerijen (wordt getoond nadat je klikt op "
-"een album)"
+msgid "Select a template for the galleries (displayed after you click on an album)"
+msgstr "Selecteer een sjabloon voor de galerijen (wordt getoond nadat je klikt op een album)"
 
 # @ nggallery
 #: ../admin/tinymce/window.php:301
@@ -3741,7 +3628,8 @@ msgid "Select or enter picture"
 msgstr "Selecteer of geef afbeedling"
 
 # @ nggallery
-#: ../admin/tinymce/window.php:310 ../admin/tinymce/window.php:385
+#: ../admin/tinymce/window.php:310
+#: ../admin/tinymce/window.php:385
 #: ../admin/tinymce/window.php:436
 msgid "Options"
 msgstr "Opties"
@@ -3776,16 +3664,14 @@ msgstr "Link"
 
 #: ../admin/tinymce/window.php:344
 msgid "Add an optional link to the image. Leave blank for no link."
-msgstr ""
-"Voeg een optionele link toe aan de afbeelding. Laat leeg voor geen link."
+msgstr "Voeg een optionele link toe aan de afbeelding. Laat leeg voor geen link."
 
 #: ../admin/tinymce/window.php:348
 msgid "Add an optional caption to the image. Leave blank for no caption."
-msgstr ""
-"Voeg een optioneel bijschrift toe aan de afbeelding. Laat leeg voor geen "
-"bijschrift."
+msgstr "Voeg een optioneel bijschrift toe aan de afbeelding. Laat leeg voor geen bijschrift."
 
-#: ../admin/tinymce/window.php:361 ../admin/tinymce/window.php:423
+#: ../admin/tinymce/window.php:361
+#: ../admin/tinymce/window.php:423
 msgid "The number of images that should be displayed."
 msgstr "Het aantal afbeeldingen dat getoond moet worden."
 
@@ -3809,22 +3695,17 @@ msgid "User defined"
 msgstr "Aangepast"
 
 #: ../admin/tinymce/window.php:372
-msgid ""
-"In what order the images are shown. Upload order uses the ID's, date taken "
-"uses the EXIF data and user defined is the sort mode from the settings."
-msgstr ""
-"In welke volgorde de afbeeldingen getoond worden. Uploadvolgorde gebruikt de "
-"ID's, datum gemaakt gebruikt de EXIF-data en door de gebruiker gedefinieerd "
-"is de volgorde uit de instellingen."
+msgid "In what order the images are shown. Upload order uses the ID's, date taken uses the EXIF data and user defined is the sort mode from the settings."
+msgstr "In welke volgorde de afbeeldingen getoond worden. Uploadvolgorde gebruikt de ID's, datum gemaakt gebruikt de EXIF-data en door de gebruiker gedefinieerd is de volgorde uit de instellingen."
 
-#: ../admin/tinymce/window.php:381 ../admin/tinymce/window.php:432
+#: ../admin/tinymce/window.php:381
+#: ../admin/tinymce/window.php:432
 msgid "If a gallery is selected, only images from that gallery will be shown."
-msgstr ""
-"Als een galerij geselecteerd wordt, zullen er enkel afbeeldingen uit die "
-"galerij getoond worden."
+msgstr "Als een galerij geselecteerd wordt, zullen er enkel afbeeldingen uit die galerij getoond worden."
 
 # @ nggallery
-#: ../admin/tinymce/window.php:388 ../admin/tinymce/window.php:439
+#: ../admin/tinymce/window.php:388
+#: ../admin/tinymce/window.php:439
 msgid "Select a template to display the images"
 msgstr "Selecteer een sjabloon om de afbeeldingen te tonen"
 
@@ -3843,7 +3724,8 @@ msgid "You need to select a picture."
 msgstr "Je moet een afbeelding selecteren."
 
 # @ nggallery
-#: ../admin/tinymce/window.php:516 ../admin/tinymce/window.php:520
+#: ../admin/tinymce/window.php:516
+#: ../admin/tinymce/window.php:520
 msgid "You need to select a number of images."
 msgstr "Je moet een aantal afbeelding selecteren."
 
@@ -3854,20 +3736,12 @@ msgid "Upgrade NextCellent Gallery"
 msgstr "NextCellent Gallery upgraden"
 
 #: ../admin/upgrade/class-ngg-upgrade-page.php:41
-msgid ""
-"You're upgrading from an older version. To enable the newest features, we "
-"sometimes need to do a database upgrade."
-msgstr ""
-"Je upgrade van een oudere versie. Om de nieuwste functies te kunnen "
-"gebruiken, moet je een database-upgrade uitvoeren."
+msgid "You're upgrading from an older version. To enable the newest features, we sometimes need to do a database upgrade."
+msgstr "Je upgrade van een oudere versie. Om de nieuwste functies te kunnen gebruiken, moet je een database-upgrade uitvoeren."
 
 #: ../admin/upgrade/class-ngg-upgrade-page.php:46
-msgid ""
-"Normally you should be able to downgrade without any problems, but if you "
-"really want to play safe, you should make a backup of your database."
-msgstr ""
-"Normaal gezien zou je moeten kunnen downgraden zonder problemen, maar als je "
-"het echt veilig wil spelen, maak je best een back-up van je database."
+msgid "Normally you should be able to downgrade without any problems, but if you really want to play safe, you should make a backup of your database."
+msgstr "Normaal gezien zou je moeten kunnen downgraden zonder problemen, maar als je het echt veilig wil spelen, maak je best een back-up van je database."
 
 # @ nggallery
 #: ../admin/upgrade/class-ngg-upgrade-page.php:51
@@ -3904,12 +3778,8 @@ msgstr "Netwerk instellingen"
 
 # @ nggallery
 #: ../admin/wpmu.php:89
-msgid ""
-"This is the default path for all blogs. With the placeholder %BLOG_ID% you "
-"can organize the folder structure better."
-msgstr ""
-"Dit is het standaard path voor alle sites. Met de placeholder %BLOG_ID%  kun "
-"je de map beter structureren."
+msgid "This is the default path for all blogs. With the placeholder %BLOG_ID% you can organize the folder structure better."
+msgstr "Dit is het standaard path voor alle sites. Met de placeholder %BLOG_ID%  kun je de map beter structureren."
 
 # @ nggallery
 #: ../admin/wpmu.php:90
@@ -3979,18 +3849,13 @@ msgstr "Kies de standaard stijl voor de galerijen."
 
 #: ../admin/wpmu.php:144
 msgid "Note: between brackets is the folder in which the file is."
-msgstr ""
-"Opmerking: tussen haakjes staat de map waarin het bestand zich bevindt."
+msgstr "Opmerking: tussen haakjes staat de map waarin het bestand zich bevindt."
 
 # @ nggallery
 #: ../lib/core.php:432
 #, php-format
-msgid ""
-"Note : Based on your server memory limit you should not upload larger images "
-"then <strong>%d x %d</strong> pixel"
-msgstr ""
-"Opm.: Gebaseerd op je servers geheugenlimiet, upload geen afbeeldingen "
-"groter dan <strong>%d x %d</strong> pixels"
+msgid "Note : Based on your server memory limit you should not upload larger images then <strong>%d x %d</strong> pixel"
+msgstr "Opm.: Gebaseerd op je servers geheugenlimiet, upload geen afbeeldingen groter dan <strong>%d x %d</strong> pixels"
 
 # @ default
 #: ../lib/locale.php:112
@@ -3998,7 +3863,8 @@ msgid "Invalid URL Provided."
 msgstr "Ongeldige plugin gebruikt."
 
 # @ default
-#: ../lib/locale.php:116 ../lib/locale.php:120
+#: ../lib/locale.php:116
+#: ../lib/locale.php:120
 msgid "Could not create Temporary file."
 msgstr "Kan geen tijdelijk bestand maken."
 
@@ -4023,12 +3889,14 @@ msgid "Not fired"
 msgstr "Niet fired"
 
 # @ nggallery
-#: ../lib/meta.php:448 ../view/imagebrowser-exif.php:46
+#: ../lib/meta.php:448
+#: ../view/imagebrowser-exif.php:46
 msgid "Aperture"
 msgstr "Opening"
 
 # @ nggallery
-#: ../lib/meta.php:449 ../lib/meta.php:474
+#: ../lib/meta.php:449
+#: ../lib/meta.php:474
 msgid "Credit"
 msgstr "Credit"
 
@@ -4053,7 +3921,8 @@ msgid "ISO"
 msgstr "ISO"
 
 # @ nggallery
-#: ../lib/meta.php:456 ../view/imagebrowser-exif.php:54
+#: ../lib/meta.php:456
+#: ../view/imagebrowser-exif.php:54
 msgid "Shutter speed"
 msgstr "Sluiter snelheid"
 
@@ -4174,21 +4043,20 @@ msgstr "Flash"
 
 # @ nggallery
 #: ../lib/multisite.php:23
-msgid ""
-"Sorry, you have used your space allocation. Please delete some files to "
-"upload more files."
-msgstr ""
-"Helaas, je hebt de maximale ruimte gebruikt. Verwijder enkele bestanden om "
-"andere bestanden te kunnen uploaden."
+msgid "Sorry, you have used your space allocation. Please delete some files to upload more files."
+msgstr "Helaas, je hebt de maximale ruimte gebruikt. Verwijder enkele bestanden om andere bestanden te kunnen uploaden."
 
 # @ nggallery
-#: ../lib/ngg-db.php:361 ../lib/ngg-db.php:362
+#: ../lib/ngg-db.php:361
+#: ../lib/ngg-db.php:362
 msgid "Album overview"
 msgstr "Album overzicht"
 
 # @ nggallery
-#: ../lib/rewrite.php:223 ../view/imagebrowser-caption.php:31
-#: ../view/imagebrowser-exif.php:35 ../view/imagebrowser.php:31
+#: ../lib/rewrite.php:223
+#: ../view/imagebrowser-caption.php:31
+#: ../view/imagebrowser-exif.php:35
+#: ../view/imagebrowser.php:31
 msgid "Picture"
 msgstr "Afbeelding"
 
@@ -4226,8 +4094,7 @@ msgstr "Geen geldige nieuwe tag."
 # @ nggallery
 #: ../lib/tags.php:112
 msgid "No objects (post/page) found for specified old tags."
-msgstr ""
-"Geen objecten (berichten/pagina&#39;s) gevonden voor de opgegeven oude tags."
+msgstr "Geen objecten (berichten/pagina&#39;s) gevonden voor de opgegeven oude tags."
 
 # @ nggallery
 #: ../lib/tags.php:141
@@ -4237,11 +4104,8 @@ msgstr "Geen tag samengevoegd"
 # @ nggallery
 #: ../lib/tags.php:143
 #, php-format
-msgid ""
-"Merge tag(s) &laquo;%1$s&raquo; to &laquo;%2$s&raquo;. %3$s objects edited."
-msgstr ""
-"Samengevoegde tag(s) &laquo;%1$s&raquo; naar &laquo;%2$s&raquo;. %3$s "
-"objecten bewerkt."
+msgid "Merge tag(s) &laquo;%1$s&raquo; to &laquo;%2$s&raquo;. %3$s objects edited."
+msgstr "Samengevoegde tag(s) &laquo;%1$s&raquo; naar &laquo;%2$s&raquo;. %3$s objecten bewerkt."
 
 # @ nggallery
 #: ../lib/tags.php:146
@@ -4288,12 +4152,8 @@ msgstr "%s slug(s) bewerkt."
 # @ default
 #: ../lib/xmlrpc.php:93
 #, php-format
-msgid ""
-"XML-RPC services are disabled on this blog.  An admin user can enable them "
-"at %s"
-msgstr ""
-"XML-RPC services zijn uitgeschakeld op deze site.  Een Admin kan deze "
-"inschakelen op %s"
+msgid "XML-RPC services are disabled on this blog.  An admin user can enable them at %s"
+msgstr "XML-RPC services zijn uitgeschakeld op deze site.  Een Admin kan deze inschakelen op %s"
 
 # @ default
 #: ../lib/xmlrpc.php:101
@@ -4306,15 +4166,18 @@ msgid "You are not allowed to upload files to this site."
 msgstr "Je hebt onvoldoende rechten om bestanden op deze site te uploaden."
 
 # @ default
-#: ../lib/xmlrpc.php:163 ../lib/xmlrpc.php:777 ../lib/xmlrpc.php:829
+#: ../lib/xmlrpc.php:163
+#: ../lib/xmlrpc.php:777
+#: ../lib/xmlrpc.php:829
 msgid "Could not find gallery "
 msgstr "Kan geen galerij vinden"
 
 # @ default
-#: ../lib/xmlrpc.php:168 ../lib/xmlrpc.php:782 ../lib/xmlrpc.php:834
+#: ../lib/xmlrpc.php:168
+#: ../lib/xmlrpc.php:782
+#: ../lib/xmlrpc.php:834
 msgid "You are not allowed to upload files to this gallery."
-msgstr ""
-"Je hebt onvoldoende rechten om bestanden naar deze gallery te uploaden."
+msgstr "Je hebt onvoldoende rechten om bestanden naar deze gallery te uploaden."
 
 # @ nggallery
 #: ../lib/xmlrpc.php:180
@@ -4339,12 +4202,14 @@ msgid "Could not write file %1$s (%2$s)"
 msgstr "Kan bestand %1$s (%2$s) niet beschrijven"
 
 # @ default
-#: ../lib/xmlrpc.php:275 ../lib/xmlrpc.php:327
+#: ../lib/xmlrpc.php:275
+#: ../lib/xmlrpc.php:327
 msgid "Invalid image ID"
 msgstr "Ongeldige afbeelding ID"
 
 # @ default
-#: ../lib/xmlrpc.php:278 ../lib/xmlrpc.php:330
+#: ../lib/xmlrpc.php:278
+#: ../lib/xmlrpc.php:330
 msgid "Sorry, you must be able to edit this image"
 msgstr "Helaas, je moet toestemming hebben om deze afbeelding te bewerken"
 
@@ -4354,7 +4219,9 @@ msgid "Sorry, could not update the image"
 msgstr "Helaas, de afbeelding kon niet bijgewerkt worden."
 
 # @ default
-#: ../lib/xmlrpc.php:372 ../lib/xmlrpc.php:604 ../lib/xmlrpc.php:704
+#: ../lib/xmlrpc.php:372
+#: ../lib/xmlrpc.php:604
+#: ../lib/xmlrpc.php:704
 #: ../lib/xmlrpc.php:739
 msgid "Sorry, you must be able to manage galleries"
 msgstr "Mislukt, je moet toestemming hebben om gallerys kunnen beheren."
@@ -4365,7 +4232,8 @@ msgid "Sorry, could not create the gallery"
 msgstr "Mislukt, de gallery kon niet gemaakt worden"
 
 # @ default
-#: ../lib/xmlrpc.php:421 ../lib/xmlrpc.php:601
+#: ../lib/xmlrpc.php:421
+#: ../lib/xmlrpc.php:601
 msgid "Invalid gallery ID"
 msgstr "Ongeldige gallery ID"
 
@@ -4380,8 +4248,11 @@ msgid "Sorry, could not update the gallery"
 msgstr "Mislukt, de gallery kon niet bijgewerkt worden."
 
 # @ default
-#: ../lib/xmlrpc.php:470 ../lib/xmlrpc.php:522 ../lib/xmlrpc.php:564
-#: ../lib/xmlrpc.php:637 ../lib/xmlrpc.php:671
+#: ../lib/xmlrpc.php:470
+#: ../lib/xmlrpc.php:522
+#: ../lib/xmlrpc.php:564
+#: ../lib/xmlrpc.php:637
+#: ../lib/xmlrpc.php:671
 msgid "Sorry, you must be able to manage albums"
 msgstr "Mislukt, je moet toestemming heb om albums te beheren"
 
@@ -4391,7 +4262,8 @@ msgid "Sorry, could not create the album"
 msgstr "Mislukt, het album kon niet gemaakt worden"
 
 # @ default
-#: ../lib/xmlrpc.php:519 ../lib/xmlrpc.php:561
+#: ../lib/xmlrpc.php:519
+#: ../lib/xmlrpc.php:561
 msgid "Invalid album ID"
 msgstr "Ongeldig album ID"
 
@@ -4411,25 +4283,13 @@ msgstr "Nu upgraden"
 
 # @ nggallery
 #: ../nggallery.php:135
-msgid ""
-"<strong>Translation by : </strong><a target=\"_blank\" href=\"http://"
-"alexrabe.de/wordpress-plugins/nextgen-gallery/languages/\">See here</a>"
-msgstr ""
-"<strong>Vertaling door: </strong><a target=\"_blank\" href=\"http://www."
-"werkgroepen.net/wordpress/\">Anja</a>"
+msgid "<strong>Translation by : </strong><a target=\"_blank\" href=\"http://alexrabe.de/wordpress-plugins/nextgen-gallery/languages/\">See here</a>"
+msgstr "<strong>Vertaling door: </strong><a target=\"_blank\" href=\"http://www.werkgroepen.net/wordpress/\">Anja</a>"
 
 # @ nggallery
 #: ../nggallery.php:136
-msgid ""
-"<strong>This translation is not yet updated for Version 1.9.0</strong>. If "
-"you would like to help with translation, download the current po from the "
-"plugin folder and read <a href=\"http://alexrabe.de/wordpress-plugins/"
-"wordtube/translation-of-plugins/\">here</a> how you can translate the plugin."
-msgstr ""
-"<strong>Deze vertaling is nog niet geupdate voor Versie 1.9.0</strong>.  Als "
-"je graag wil helpen met de vertaling, download dan de huidige po uit de "
-"plugin map en lees <a href=\"http://alexrabe.de/wordpress-plugins/wordtube/"
-"translation-of-plugins/\">hier</a> hoe je de plugin kan vertalen."
+msgid "<strong>This translation is not yet updated for Version 1.9.0</strong>. If you would like to help with translation, download the current po from the plugin folder and read <a href=\"http://alexrabe.de/wordpress-plugins/wordtube/translation-of-plugins/\">here</a> how you can translate the plugin."
+msgstr "<strong>Deze vertaling is nog niet geupdate voor Versie 1.9.0</strong>.  Als je graag wil helpen met de vertaling, download dan de huidige po uit de plugin map en lees <a href=\"http://alexrabe.de/wordpress-plugins/wordtube/translation-of-plugins/\">hier</a> hoe je de plugin kan vertalen."
 
 #: ../nggallery.php:176
 msgid "Something went wrong while upgrading NextCellent Gallery."
@@ -4437,11 +4297,8 @@ msgstr "Iets ging verkeerd bij het hernoemen van"
 
 # @ nggallery
 #: ../nggallery.php:265
-msgid ""
-"Sorry, NextCellent Gallery works only with a Memory Limit of 16 MB or higher"
-msgstr ""
-"Helaas, NextCellent Gallery werkt alleen met een geheugen limiet van 16MB of "
-"hoger"
+msgid "Sorry, NextCellent Gallery works only with a Memory Limit of 16 MB or higher"
+msgstr "Helaas, NextCellent Gallery werkt alleen met een geheugen limiet van 16MB of hoger"
 
 # @ nggallery
 #: ../nggallery.php:294
@@ -4496,7 +4353,8 @@ msgid "next"
 msgstr "Volgende"
 
 # @ nggallery
-#: ../nggfunctions.php:177 ../nggfunctions.php:664
+#: ../nggfunctions.php:177
+#: ../nggfunctions.php:664
 msgid "[Gallery not found]"
 msgstr "[Galerij niet gevonden]"
 
@@ -4516,29 +4374,34 @@ msgid "Related images for"
 msgstr "Gerelateerde afbeeldingen voor"
 
 # @ nggallery
-#: ../view/album-compact.php:32 ../view/album-extend.php:30
+#: ../view/album-compact.php:32
+#: ../view/album-extend.php:30
 msgid "Photos"
 msgstr "Afbeeldingen"
 
 # @ nggallery
-#: ../view/gallery-caption.php:32 ../view/gallery.php:68
+#: ../view/gallery-caption.php:32
+#: ../view/gallery.php:68
 msgid "[View with PicLens]"
 msgstr "[Bekijk met PicLens] "
 
 # @ nggallery
-#: ../view/imagebrowser-caption.php:26 ../view/imagebrowser-exif.php:30
+#: ../view/imagebrowser-caption.php:26
+#: ../view/imagebrowser-exif.php:30
 #: ../view/imagebrowser.php:26
 msgid "Back"
 msgstr "Terug"
 
 # @ nggallery
-#: ../view/imagebrowser-caption.php:29 ../view/imagebrowser-exif.php:33
+#: ../view/imagebrowser-caption.php:29
+#: ../view/imagebrowser-exif.php:33
 #: ../view/imagebrowser.php:29
 msgid "Next"
 msgstr "Volgende"
 
 # @ nggallery
-#: ../view/imagebrowser-caption.php:31 ../view/imagebrowser-exif.php:35
+#: ../view/imagebrowser-caption.php:31
+#: ../view/imagebrowser-exif.php:35
 #: ../view/imagebrowser.php:31
 msgid "of"
 msgstr "van"
@@ -4699,8 +4562,7 @@ msgstr "Formaat afbeeldingen aanpassen"
 
 #: ../widgets/class-ngg-slideshow-widget.php:130
 msgid "The given width and height are ignored when this is selected."
-msgstr ""
-"De opgegeven breedte en hoogte worden genegeerd als dit ingeschakeld is."
+msgstr "De opgegeven breedte en hoogte worden genegeerd als dit ingeschakeld is."
 
 # @ nggallery
 #: ../xml/media-rss.php:50
@@ -4761,17 +4623,11 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgid "for the Gallery Icon"
 #~ msgstr "voor het galerij icoon"
 
-#~ msgid ""
-#~ "The original translators for NextGen Gallery, who made the translations"
-#~ msgstr ""
-#~ "De originele vertalers voor NextGen Gallery, die de vertalingen maakten"
+#~ msgid "The original translators for NextGen Gallery, who made the translations"
+#~ msgstr "De originele vertalers voor NextGen Gallery, die de vertalingen maakten"
 
-#~ msgid ""
-#~ "NextCellent Gallery is based on the 1.9.13 version of the NextGen Gallery "
-#~ "by Photocrati Media, which is the succesor to the work by Alex Rabe."
-#~ msgstr ""
-#~ "NextCellent is gebaseerd op versie 1.9.13 van NextGen Gallery door "
-#~ "Photocrati Media, wat de opvolger is van het werk door Alex Rabe."
+#~ msgid "NextCellent Gallery is based on the 1.9.13 version of the NextGen Gallery by Photocrati Media, which is the succesor to the work by Alex Rabe."
+#~ msgstr "NextCellent is gebaseerd op versie 1.9.13 van NextGen Gallery door Photocrati Media, wat de opvolger is van het werk door Alex Rabe."
 
 # @ nggallery
 #~ msgid "What do you get with NextCellent Gallery?"
@@ -4780,24 +4636,17 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgid "Backward compatibility with NextGEN plugin version (1.9.13)"
 #~ msgstr "Achterwaartse compatabiliteit met NextGEN versie 1.9.13"
 
-#~ msgid ""
-#~ "Slow evolving code path, made only by NextGEN user's suggestions. Yep, "
-#~ "you read it right: slow in counterpart as fast. Older code is good enough "
-#~ "to keep a community and it worked (and works) for most people."
+#~ msgid "Slow evolving code path, made only by NextGEN user's suggestions. Yep, you read it right: slow in counterpart as fast. Older code is good enough to keep a community and it worked (and works) for most people."
 #~ msgstr "Traag evoluerende code, enkel door de suggesties van gebruikers."
 
 #~ msgid "A reliable way to work with already installed NextGEN galleries."
-#~ msgstr ""
-#~ "Een betrouwbare manier om te werken met bestaande NextGEN-galerijen."
+#~ msgstr "Een betrouwbare manier om te werken met bestaande NextGEN-galerijen."
 
-#~ msgid ""
-#~ "A place for updating the plugin without using FTP manual updates, but "
-#~ "WordPress plugin repository."
+#~ msgid "A place for updating the plugin without using FTP manual updates, but WordPress plugin repository."
 #~ msgstr "Een plaats om de plug-in bij te werken zonder manuele FTP-updates."
 
 #~ msgid "Alternative path preserving backward compatibility (while possible)."
-#~ msgstr ""
-#~ "Alternatieve paden met achterwaartse compatibiliteit (waar mogelijk)."
+#~ msgstr "Alternatieve paden met achterwaartse compatibiliteit (waar mogelijk)."
 
 # @ nggallery
 #~ msgid "How to support us?"
@@ -4811,22 +4660,16 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Stuur ons bugfixes / code aanpassingen"
 
 # @ nggallery
-#~ msgid ""
-#~ "The most motivated support for this plugin are your ideas and brain work."
-#~ msgstr ""
-#~ "De meest motiverende steun voor deze plug-in zijn je ideeën en denkwerk."
+#~ msgid "The most motivated support for this plugin are your ideas and brain work."
+#~ msgstr "De meest motiverende steun voor deze plug-in zijn je ideeën en denkwerk."
 
 # @ nggallery
 #~ msgid "Translate the plugin"
 #~ msgstr "Vertaal de plugin"
 
 # @ nggallery
-#~ msgid ""
-#~ "To help people to work with this plugin, we would like to have it in all "
-#~ "available languages."
-#~ msgstr ""
-#~ "Om mensen te helpen werken met de plug-in, willen we de plug-in in alle "
-#~ "talen beschikbaar maken."
+#~ msgid "To help people to work with this plugin, we would like to have it in all available languages."
+#~ msgstr "Om mensen te helpen werken met de plug-in, willen we de plug-in in alle talen beschikbaar maken."
 
 # @ nggallery
 #~ msgid "Place a link to the plugin in your blog/webpage"
@@ -4836,12 +4679,8 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Ja, delen is ook een manier van helpen."
 
 # @ nggallery
-#~ msgid ""
-#~ "Please note: If safe-mode is ON, you need to add the subfolder with "
-#~ "thumbs manually"
-#~ msgstr ""
-#~ "Opmerking: Indien safe-mode = AAN moet je de thumbnail submap manueel "
-#~ "aanmaken"
+#~ msgid "Please note: If safe-mode is ON, you need to add the subfolder with thumbs manually"
+#~ msgstr "Opmerking: Indien safe-mode = AAN moet je de thumbnail submap manueel aanmaken"
 
 # @ nggallery
 #~ msgid "About this Gallery"
@@ -4853,8 +4692,7 @@ msgstr "Ongeldige MediaRSS opdracht"
 
 # @ nggallery
 #~ msgid "Select the area for the thumbnail from the picture on the left."
-#~ msgstr ""
-#~ "Selecteer het gebied voor de thumbnail van de afbeelding aan de linkerkant"
+#~ msgstr "Selecteer het gebied voor de thumbnail van de afbeelding aan de linkerkant"
 
 # @ nggallery
 #~ msgid "Search Images"
@@ -4878,13 +4716,13 @@ msgstr "Ongeldige MediaRSS opdracht"
 
 # @ nggallery
 #~ msgid ""
-#~ "You are about to start the bulk edit for %s images \n"
-#~ " \n"
-#~ " 'Cancel' to stop, 'OK' to proceed."
+"You are about to start the bulk edit for %s images \n"
+" \n"
+" 'Cancel' to stop, 'OK' to proceed."
 #~ msgstr ""
-#~ "Je bent bezig meerdere bewerkingen van %s afbeeldingen te starten \n"
-#~ " \n"
-#~ " 'Annuleren' om te stoppen, 'OK' om door te gaan."
+"Je bent bezig meerdere bewerkingen van %s afbeeldingen te starten \n"
+" \n"
+" 'Annuleren' om te stoppen, 'OK' om door te gaan."
 
 # @ nggallery
 #~ msgid "Search results for &#8220;%s&#8221;"
@@ -4962,18 +4800,8 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "PHP Exif ondersteuning"
 
 # @ nggallery
-#~ msgid ""
-#~ "NextCellent Gallery contains some functions which are only available "
-#~ "under PHP 5.2. You are using the old PHP 4 version, upgrade now! It's no "
-#~ "longer supported by the PHP group. Many shared hosting providers offer "
-#~ "both PHP 4 and PHP 5, running simultaneously. Ask your provider if they "
-#~ "can do this."
-#~ msgstr ""
-#~ "NextCellent Gallery bevat enkele functies die niet beschikbaar zijn onder "
-#~ "PHP 5.2. Je gebruikt de oude PHP 4 versie, upgrade nu! Het wordt niet "
-#~ "langer ondersteund door de PHP groep. Verschillende hosting providers "
-#~ "bieden beide PHP 4 en PHP 5, tegelijk. Vraag je provider of ze dit kunnen "
-#~ "doen."
+#~ msgid "NextCellent Gallery contains some functions which are only available under PHP 5.2. You are using the old PHP 4 version, upgrade now! It's no longer supported by the PHP group. Many shared hosting providers offer both PHP 4 and PHP 5, running simultaneously. Ask your provider if they can do this."
+#~ msgstr "NextCellent Gallery bevat enkele functies die niet beschikbaar zijn onder PHP 5.2. Je gebruikt de oude PHP 4 versie, upgrade nu! Het wordt niet langer ondersteund door de PHP groep. Verschillende hosting providers bieden beide PHP 4 en PHP 5, tegelijk. Vraag je provider of ze dit kunnen doen."
 
 # @ nggallery
 #~ msgid "Post title"
@@ -5000,11 +4828,8 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Met de plaatshouder  "
 
 # @ nggallery
-#~ msgid ""
-#~ "The accessing of URL files is disabled at your server (allow_url_fopen)"
-#~ msgstr ""
-#~ "De toegang van de URL bestanden zijn uitgeschakeld bij je server "
-#~ "(allow_url_fopen)"
+#~ msgid "The accessing of URL files is disabled at your server (allow_url_fopen)"
+#~ msgstr "De toegang van de URL bestanden zijn uitgeschakeld bij je server (allow_url_fopen)"
 
 # @ nggallery
 #~ msgid "(hex w/o #)"
@@ -5051,24 +4876,17 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "De instellingen voor de JW Image Rotator"
 
 # @ nggallery
-#~ msgid ""
-#~ "NextCellent Gallery flash slideshows use the JW Image Rotator Version "
-#~ "3.17 by"
-#~ msgstr ""
-#~ "De instellingen worden alleen gebruikt in de JW Image Rotator Version "
+#~ msgid "NextCellent Gallery flash slideshows use the JW Image Rotator Version 3.17 by"
+#~ msgstr "De instellingen worden alleen gebruikt in de JW Image Rotator Version "
 
 #~ msgid ""
-#~ "Press the button below to search for it automatically. For earlier "
-#~ "versions of NextCellent Gallery, you'll need to\n"
-#~ "\t\t\t\t\tupload the file manually to the"
+"Press the button below to search for it automatically. For earlier versions of NextCellent Gallery, you'll need to\n"
+"\t\t\t\t\tupload the file manually to the"
 #~ msgstr "Druk op de knop hieronder om te zoeken."
 
 # @ nggallery
-#~ msgid ""
-#~ "The path to JW Image Rotator is not defined, the slideshow will not work."
-#~ msgstr ""
-#~ "Het pad naar  imagerotator.swf is niet opgegeven, de slideshow zal niet "
-#~ "werken"
+#~ msgid "The path to JW Image Rotator is not defined, the slideshow will not work."
+#~ msgstr "Het pad naar  imagerotator.swf is niet opgegeven, de slideshow zal niet werken"
 
 #~ msgid "Press the button below to search for the file."
 #~ msgstr "Druk op de knop hieronder om het bestand te zoeken."
@@ -5079,9 +4897,7 @@ msgstr "Ongeldige MediaRSS opdracht"
 
 # @ nggallery
 #~ msgid "Integrate the flash based slideshow for all flash supported devices"
-#~ msgstr ""
-#~ "Integreer de flash gebaseerde slideshow voor alle flash ondersteunde "
-#~ "apparaten"
+#~ msgstr "Integreer de flash gebaseerde slideshow voor alle flash ondersteunde apparaten"
 
 # @ nggallery
 #~ msgid "Path to the JW Image Rotator (URL)"
@@ -5196,44 +5012,24 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Probeer XHTML validatie (met CDATA)"
 
 # @ nggallery
-#~ msgid ""
-#~ "Important : Could causes problem with some browser. Please recheck your "
-#~ "page."
-#~ msgstr ""
-#~ "Belangrijk: kan problemen veroorzaken met bepaalde browsers. Controleer "
-#~ "je pagina."
+#~ msgid "Important : Could causes problem with some browser. Please recheck your page."
+#~ msgstr "Belangrijk: kan problemen veroorzaken met bepaalde browsers. Controleer je pagina."
 
 # @ nggallery
-#~ msgid ""
-#~ "No problem, before you deactivate this plugin press the Uninstall Button, "
-#~ "because deactivating NextCellent Gallery does not remove any data that "
-#~ "may have been created. "
-#~ msgstr ""
-#~ "Geen probleem, voor je deze plug-in deactiveert, klik op de knop "
-#~ "verwijderen, omdat het deactiveren van NextCellent Gallery niet de data "
-#~ "verwijdert die gemaakt is."
+#~ msgid "No problem, before you deactivate this plugin press the Uninstall Button, because deactivating NextCellent Gallery does not remove any data that may have been created. "
+#~ msgstr "Geen probleem, voor je deze plug-in deactiveert, klik op de knop verwijderen, omdat het deactiveren van NextCellent Gallery niet de data verwijdert die gemaakt is."
 
 # @ nggallery
 #~ msgid "Could not find NextCellent Gallery database tables, upgrade failed!"
 #~ msgstr "Kon NextCellent Database niet vinden, upgrade is mislukt!"
 
 # @ nggallery
-#~ msgid ""
-#~ "The <a href=\"http://www.macromedia.com/go/getflashplayer\">Flash Player</"
-#~ "a> and <a href=\"http://www.mozilla.com/firefox/\">a browser with "
-#~ "Javascript support</a> are needed."
-#~ msgstr ""
-#~ "De <a href=\"http://www.macromedia.com/go/getflashplayer\">Flash Player</"
-#~ "a> en <a href=\"http://www.mozilla.com/firefox/\">en browser met "
-#~ "Javascript ondersteuning</a> zijn nodig."
+#~ msgid "The <a href=\"http://www.macromedia.com/go/getflashplayer\">Flash Player</a> and <a href=\"http://www.mozilla.com/firefox/\">a browser with Javascript support</a> are needed."
+#~ msgstr "De <a href=\"http://www.macromedia.com/go/getflashplayer\">Flash Player</a> en <a href=\"http://www.mozilla.com/firefox/\">en browser met Javascript ondersteuning</a> zijn nodig."
 
 # @ nggallery
-#~ msgid ""
-#~ "<a href=\"http://www.macromedia.com/go/getflashplayer\">Get the Flash "
-#~ "Player</a> to see the slideshow."
-#~ msgstr ""
-#~ "<a href=\"http://www.macromedia.com/go/getflashplayer\">Gebruik de Flash "
-#~ "Player</a> om de slideshow te bekijken."
+#~ msgid "<a href=\"http://www.macromedia.com/go/getflashplayer\">Get the Flash Player</a> to see the slideshow."
+#~ msgstr "<a href=\"http://www.macromedia.com/go/getflashplayer\">Gebruik de Flash Player</a> om de slideshow te bekijken."
 
 # @ nggallery
 #~ msgid "Select Gallery:"
@@ -5252,84 +5048,44 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "IE8 webslices inschakelen"
 
 # @ nggallery
-#~ msgid ""
-#~ "<a href=\"http://alexrabe.de/wordpress-plugins/nextgen-gallery/languages/"
-#~ "\" target=\"_blank\">Translation by alex rabe</a>"
-#~ msgstr ""
-#~ "<a href=\"http://http://www.werkgroepen.net/wordpress/downloads/\" target="
-#~ "\"_blank\">Vertaling door Anja (werkgroepen.net)</a>"
+#~ msgid "<a href=\"http://alexrabe.de/wordpress-plugins/nextgen-gallery/languages/\" target=\"_blank\">Translation by alex rabe</a>"
+#~ msgstr "<a href=\"http://http://www.werkgroepen.net/wordpress/downloads/\" target=\"_blank\">Vertaling door Anja (werkgroepen.net)</a>"
 
 # @ nggallery
-#~ msgid ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "image-management/\" target=\"_blank\">Image management</a>"
-#~ msgstr ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "image-management/\" target=\"_blank\">Afbeeldingsbeheer</a>"
+#~ msgid "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-image-management/\" target=\"_blank\">Image management</a>"
+#~ msgstr "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-image-management/\" target=\"_blank\">Afbeeldingsbeheer</a>"
 
 # @ nggallery
-#~ msgid ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Album management</a>"
-#~ msgstr ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Album beheer</a>"
+#~ msgid "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Album management</a>"
+#~ msgstr "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Album beheer</a>"
 
 # @ nggallery
-#~ msgid ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Gallery management</a>"
-#~ msgstr ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Gallery beheer</a>"
+#~ msgid "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Gallery management</a>"
+#~ msgstr "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Gallery beheer</a>"
 
 # @ nggallery
-#~ msgid ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Gallery tags</a>"
-#~ msgstr ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Gallery tags</a>"
+#~ msgid "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Gallery tags</a>"
+#~ msgstr "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Gallery tags</a>"
 
 # @ nggallery
-#~ msgid ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Introduction</a>"
-#~ msgstr ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Introductie</a>"
+#~ msgid "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Introduction</a>"
+#~ msgstr "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Introductie</a>"
 
 # @ nggallery
-#~ msgid ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Roles / Capabilities</a>"
-#~ msgstr ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Rollen / Rechten</a>"
+#~ msgid "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Roles / Capabilities</a>"
+#~ msgstr "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Rollen / Rechten</a>"
 
 # @ nggallery
-#~ msgid ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Setup</a>"
-#~ msgstr ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Setup</a>"
+#~ msgid "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Setup</a>"
+#~ msgstr "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Setup</a>"
 
 # @ nggallery
-#~ msgid ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Styles</a>"
-#~ msgstr ""
-#~ "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-"
-#~ "introduction/\" target=\"_blank\">Styles</a>"
+#~ msgid "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Styles</a>"
+#~ msgstr "<a href=\"http://dpotter.net/Technical/2008/03/nextgen-gallery-review-introduction/\" target=\"_blank\">Styles</a>"
 
 # @ nggallery
-#~ msgid ""
-#~ "<a href=\"http://wordpress.org/tags/nextgen-gallery?forum_id=10\" target="
-#~ "\"_blank\">Support Forums</a>"
-#~ msgstr ""
-#~ "<a href=\"http://wordpress.org/tags/nextgen-gallery?forum_id=10\" target="
-#~ "\"_blank\">Ondersteuningsforums</a> (Engels)"
+#~ msgid "<a href=\"http://wordpress.org/tags/nextgen-gallery?forum_id=10\" target=\"_blank\">Support Forums</a>"
+#~ msgstr "<a href=\"http://wordpress.org/tags/nextgen-gallery?forum_id=10\" target=\"_blank\">Ondersteuningsforums</a> (Engels)"
 
 # @ nggallery
 #~ msgid "Activate Media RSS feed"
@@ -5396,12 +5152,8 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Verwijder afbeeldings bestanden"
 
 # @ nggallery
-#~ msgid ""
-#~ "Depend on the amount of database entries this will take a while, don't "
-#~ "reload this page."
-#~ msgstr ""
-#~ "Afhankelijk van de grootte van de database gegevens zal dit een tijdje "
-#~ "duren, herlaad deze pagina daarom niet."
+#~ msgid "Depend on the amount of database entries this will take a while, don't reload this page."
+#~ msgstr "Afhankelijk van de grootte van de database gegevens zal dit een tijdje duren, herlaad deze pagina daarom niet."
 
 # @ nggallery
 #~ msgid "Disable flash upload"
@@ -5421,8 +5173,7 @@ msgstr "Ongeldige MediaRSS opdracht"
 
 # @ nggallery
 #~ msgid "Donate the work via paypal."
-#~ msgstr ""
-#~ "Donaties voor het werk ziet de ontwikkelaar graag tegemoet via paypal"
+#~ msgstr "Donaties voor het werk ziet de ontwikkelaar graag tegemoet via paypal"
 
 # @ nggallery
 #~ msgid "Download latest version"
@@ -5469,50 +5220,24 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Help met vertalen."
 
 # @ nggallery
-#~ msgid ""
-#~ "If pagination is used, this option will still show all images in the "
-#~ "modal window (Thickbox, Lightbox etc.). Note : This increases the page "
-#~ "load"
-#~ msgstr ""
-#~ "Als paginering wordt gebruikt, zal deze optie nog steeds getoond worden "
-#~ "in het modale venster (thickbox, lightbox enz.). Opmerking: dit neemt "
-#~ "meer ruimte/tijd bij het laden van de pagina"
+#~ msgid "If pagination is used, this option will still show all images in the modal window (Thickbox, Lightbox etc.). Note : This increases the page load"
+#~ msgstr "Als paginering wordt gebruikt, zal deze optie nog steeds getoond worden in het modale venster (thickbox, lightbox enz.). Opmerking: dit neemt meer ruimte/tijd bij het laden van de pagina"
 
 # @ nggallery
-#~ msgid ""
-#~ "If you didn't find your name on this list and there is some code which I "
-#~ "integrate in my plugin, don't hesitate to send me a mail."
-#~ msgstr ""
-#~ "Als je je naam niet gevonden hebt op deze lijst en ik heb code ge&iuml;"
-#~ "ntegreerd in mijn plugin, aarzel dan niet mij een mail te sturen."
+#~ msgid "If you didn't find your name on this list and there is some code which I integrate in my plugin, don't hesitate to send me a mail."
+#~ msgstr "Als je je naam niet gevonden hebt op deze lijst en ik heb code ge&iuml;ntegreerd in mijn plugin, aarzel dan niet mij een mail te sturen."
 
 # @ nggallery
-#~ msgid ""
-#~ "If you study the code of this plugin, you will find out that we mixed a "
-#~ "lot of good already existing code and ideas together."
-#~ msgstr ""
-#~ "Als je de code van deze plugin bestudeert, zul je zien dat we veel goede "
-#~ "al bestaande code en idee&euml;n gecombineerd hebben."
+#~ msgid "If you study the code of this plugin, you will find out that we mixed a lot of good already existing code and ideas together."
+#~ msgstr "Als je de code van deze plugin bestudeert, zul je zien dat we veel goede al bestaande code en idee&euml;n gecombineerd hebben."
 
 # @ nggallery
-#~ msgid ""
-#~ "If you would like to downgrade later, please make first a complete backup "
-#~ "of your database and the images."
-#~ msgstr ""
-#~ "Wil je later downgraden, maak dan een complete backup van je database en "
-#~ "afbeeldingen."
+#~ msgid "If you would like to downgrade later, please make first a complete backup of your database and the images."
+#~ msgstr "Wil je later downgraden, maak dan een complete backup van je database en afbeeldingen."
 
 # @ nggallery
-#~ msgid ""
-#~ "If you would like to use the JW Image Rotatator, please download the "
-#~ "player <a href=\"http://www.longtailvideo.com/players/jw-image-rotator/\" "
-#~ "target=\"_blank\" >here</a> and upload it to your Upload folder (Default "
-#~ "is wp-content/uploads)."
-#~ msgstr ""
-#~ "Als je de JW image rotator wilt gebruiken, download de speler dan vanaf "
-#~ "<a href=\"http://www.longtailvideo.com/players/jw-image-rotator/\" target="
-#~ "\"_blank\" >hier</a> en upload het naar je upload map (standaard is dit "
-#~ "wp-content/uploads)."
+#~ msgid "If you would like to use the JW Image Rotatator, please download the player <a href=\"http://www.longtailvideo.com/players/jw-image-rotator/\" target=\"_blank\" >here</a> and upload it to your Upload folder (Default is wp-content/uploads)."
+#~ msgstr "Als je de JW image rotator wilt gebruiken, download de speler dan vanaf <a href=\"http://www.longtailvideo.com/players/jw-image-rotator/\" target=\"_blank\" >hier</a> en upload het naar je upload map (standaard is dit wp-content/uploads)."
 
 # @ nggallery
 #~ msgid "Image list"
@@ -5564,21 +5289,15 @@ msgstr "Ongeldige MediaRSS opdracht"
 
 # @ nggallery
 #~ msgid "One of the upcomming features are a reworked permalinks structure."
-#~ msgstr ""
-#~ "Een van de komende functies een automatisch bijgewerkte permalink "
-#~ "structuur."
+#~ msgstr "Een van de komende functies een automatisch bijgewerkte permalink structuur."
 
 # @ nggallery
 #~ msgid "Please update the database of NextGEN Gallery."
 #~ msgstr "Update de database van NextGEN Gallery !"
 
 # @ nggallery
-#~ msgid ""
-#~ "Press the button to search automatically for the imagerotator, if you "
-#~ "uploaded it to wp-content/uploads or a subfolder"
-#~ msgstr ""
-#~ "Klik de knop om automatisch naar de imagerotator te zoeken, als je het "
-#~ "hebt geupload naar wp-content/uploads of een submap"
+#~ msgid "Press the button to search automatically for the imagerotator, if you uploaded it to wp-content/uploads or a subfolder"
+#~ msgstr "Klik de knop om automatisch naar de imagerotator te zoeken, als je het hebt geupload naar wp-content/uploads of een submap"
 
 # @ nggallery
 #~ msgid "Recent donators"
@@ -5613,21 +5332,12 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Toon Afbeelding Browser"
 
 # @ nggallery
-#~ msgid ""
-#~ "So, we would like to thank the following people for their pioneer work "
-#~ "(without this work it's impossible to create such a plugin so fast)"
-#~ msgstr ""
-#~ "Daarom willen we graag de volgende mensen bedanken voor hun pioneerswerk "
-#~ "(zonder dit werk zou het onmogelijk zijn geweest een plugin als deze zo "
-#~ "snel snel te ontwikkelen)"
+#~ msgid "So, we would like to thank the following people for their pioneer work (without this work it's impossible to create such a plugin so fast)"
+#~ msgstr "Daarom willen we graag de volgende mensen bedanken voor hun pioneerswerk (zonder dit werk zou het onmogelijk zijn geweest een plugin als deze zo snel snel te ontwikkelen)"
 
 # @ nggallery
-#~ msgid ""
-#~ "Some folders/files could not renamed, please recheck the permission and "
-#~ "rescan the folder in the manage gallery section."
-#~ msgstr ""
-#~ "Enkele mappen/bestanden konden niet hernoemd worden, controleer de "
-#~ "permissies en herscan de map in de beheer gallery sectie"
+#~ msgid "Some folders/files could not renamed, please recheck the permission and rescan the folder in the manage gallery section."
+#~ msgstr "Enkele mappen/bestanden konden niet hernoemd worden, controleer de permissies en herscan de map in de beheer gallery sectie"
 
 # @ nggallery
 #~ msgid "Tag"
@@ -5642,36 +5352,12 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Tags / categorie&#235;n"
 
 # @ nggallery
-#~ msgid ""
-#~ "Thanks for using this plugin, I hope you are satisfied ! If you would "
-#~ "like to support the further development, please consider a <strong><a "
-#~ "href=\"%s\">donation</a></strong>! If you still need some help, please "
-#~ "post your questions <a href=\"http://wordpress.org/tags/nextgen-gallery?"
-#~ "forum_id=10\">here</a> ."
-#~ msgstr ""
-#~ "Bedankt voor het gebruik van deze plugin, de maker hoopt dat je er "
-#~ "tevreden mee bent! Als je verdere ontwikkeling van deze plugin wilt "
-#~ "ondersteunen, overweeg dan een <strong><a href=\"%s\">donatie</a></"
-#~ "strong>! Heb je hulp nodig,  stel dan <a href=\"http://wordpress.org/tags/"
-#~ "nextgen-gallery?forum_id=10\">hier</a> je vragen."
+#~ msgid "Thanks for using this plugin, I hope you are satisfied ! If you would like to support the further development, please consider a <strong><a href=\"%s\">donation</a></strong>! If you still need some help, please post your questions <a href=\"http://wordpress.org/tags/nextgen-gallery?forum_id=10\">here</a> ."
+#~ msgstr "Bedankt voor het gebruik van deze plugin, de maker hoopt dat je er tevreden mee bent! Als je verdere ontwikkeling van deze plugin wilt ondersteunen, overweeg dan een <strong><a href=\"%s\">donatie</a></strong>! Heb je hulp nodig,  stel dan <a href=\"http://wordpress.org/tags/nextgen-gallery?forum_id=10\">hier</a> je vragen."
 
 # @ nggallery
-#~ msgid ""
-#~ "Thanks for using this plugin, NextGEN Gallery is initially developed for "
-#~ "self hosted blogs. A multisite setup is possible, but cannot currently "
-#~ "fully supported, as it can have several special condition ( i.e. Domain "
-#~ "mapping).<br /> If you would like to support the further development, "
-#~ "please consider a <strong><a href=\"%s\">donation</a></strong>! If you "
-#~ "still need some help, please post your questions <a href=\"http://"
-#~ "wordpress.org/tags/nextgen-gallery?forum_id=10\">here</a> ."
-#~ msgstr ""
-#~ "Bedankt voor het gebruik van deze plugin, Nextgen Gallery is ontwikkeld "
-#~ "voor zelf gehosted sites. Een multisite setup is mogelijk, maar kan "
-#~ "momenteel nog niet volledig ondersteund worden, zoals de bijzondere "
-#~ "voorwaarde (b.v. domain mapping).<br />. Als je verdere ontwikkeling wilt "
-#~ "ondersteunen, overweeg een <strong><a href=\"%s\">donatie</a></strong> "
-#~ "Heb je hulp nodig,  stel dan <a href=\"http://wordpress.org/tags/nextgen-"
-#~ "gallery?forum_id=10\">hier</a> je vragen."
+#~ msgid "Thanks for using this plugin, NextGEN Gallery is initially developed for self hosted blogs. A multisite setup is possible, but cannot currently fully supported, as it can have several special condition ( i.e. Domain mapping).<br /> If you would like to support the further development, please consider a <strong><a href=\"%s\">donation</a></strong>! If you still need some help, please post your questions <a href=\"http://wordpress.org/tags/nextgen-gallery?forum_id=10\">here</a> ."
+#~ msgstr "Bedankt voor het gebruik van deze plugin, Nextgen Gallery is ontwikkeld voor zelf gehosted sites. Een multisite setup is mogelijk, maar kan momenteel nog niet volledig ondersteund worden, zoals de bijzondere voorwaarde (b.v. domain mapping).<br />. Als je verdere ontwikkeling wilt ondersteunen, overweeg een <strong><a href=\"%s\">donatie</a></strong> Heb je hulp nodig,  stel dan <a href=\"http://wordpress.org/tags/nextgen-gallery?forum_id=10\">hier</a> je vragen."
 
 # @ nggallery
 #~ msgid "Thanks to all donators..."
@@ -5682,19 +5368,12 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Bedankt!"
 
 # @ nggallery
-#~ msgid ""
-#~ "The album will not link to a gallery subpage. The gallery is shown on the "
-#~ "same page."
-#~ msgstr ""
-#~ "Het album zal niet linken naar een galerij subpagina. De galerij wordt "
-#~ "getoond op dezelfde pagina."
+#~ msgid "The album will not link to a gallery subpage. The gallery is shown on the same page."
+#~ msgstr "Het album zal niet linken naar een galerij subpagina. De galerij wordt getoond op dezelfde pagina."
 
 # @ nggallery
-#~ msgid ""
-#~ "The batch upload requires Adobe Flash 10, disable it if you have problems"
-#~ msgstr ""
-#~ "De batch upload vereist Adobe Flash 10, uitschakelen als je problemen "
-#~ "ondervindt"
+#~ msgid "The batch upload requires Adobe Flash 10, disable it if you have problems"
+#~ msgstr "De batch upload vereist Adobe Flash 10, uitschakelen als je problemen ondervindt"
 
 # @ nggallery
 #~ msgid "The script detect that you upgrade from a older version."
@@ -5705,59 +5384,32 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Het upgrade process zal even duren, een beetje geduld asjeblieft"
 
 # @ nggallery
-#~ msgid ""
-#~ "There are many other folks who have made contributions to this project :"
-#~ msgstr ""
-#~ "Er zijn vele andere mensen die hun bijdragen leveren aan dit project:"
+#~ msgid "There are many other folks who have made contributions to this project :"
+#~ msgstr "Er zijn vele andere mensen die hun bijdragen leveren aan dit project:"
 
 # @ nggallery
-#~ msgid ""
-#~ "There exist several ways to contribute, help or support us in this work. "
-#~ "Non of them are mandatory."
-#~ msgstr ""
-#~ "Er bestaan vele manieren om te geven, te helpen of ons te ondersteunen in "
-#~ "dit werk. Geen van alle is verplicht."
+#~ msgid "There exist several ways to contribute, help or support us in this work. Non of them are mandatory."
+#~ msgstr "Er bestaan vele manieren om te geven, te helpen of ons te ondersteunen in dit werk. Geen van alle is verplicht."
 
 # @ nggallery
-#~ msgid ""
-#~ "Therefore it's needed to have a unique identifier for each image, gallery "
-#~ "and album."
-#~ msgstr ""
-#~ "Daarom is een uniek identificatienummer nog voor elke afbeelding, galerij "
-#~ "en album."
+#~ msgid "Therefore it's needed to have a unique identifier for each image, gallery and album."
+#~ msgstr "Daarom is een uniek identificatienummer nog voor elke afbeelding, galerij en album."
 
 # @ nggallery
-#~ msgid ""
-#~ "This plugin is primarily developed, maintained, supported and documented "
-#~ "by <a href=\"%s\">Alex Rabe</a> with a lot of love & effort. Any kind of "
-#~ "contribution would be highly appreciated. Thanks!"
-#~ msgstr ""
-#~ "Deze plugin wordt met veel liefde en inspanning, voornamelijk ontwikkeld, "
-#~ "onderhouden, ondersteund en gedocumenteerd door <a href=\"%s\">Alex Rabe</"
-#~ "a>.  Elke vorm van ondersteuning zou zeer gewaardeerd worden. Bedankt!"
+#~ msgid "This plugin is primarily developed, maintained, supported and documented by <a href=\"%s\">Alex Rabe</a> with a lot of love & effort. Any kind of contribution would be highly appreciated. Thanks!"
+#~ msgstr "Deze plugin wordt met veel liefde en inspanning, voornamelijk ontwikkeld, onderhouden, ondersteund en gedocumenteerd door <a href=\"%s\">Alex Rabe</a>.  Elke vorm van ondersteuning zou zeer gewaardeerd worden. Bedankt!"
 
 # @ nggallery
-#~ msgid ""
-#~ "This plugin is primarily developed, maintained, supported, documented by"
-#~ msgstr ""
-#~ "Deze plugin wordt hoofdzakelijk ontwikkeld, bijgehouden, ondersteund, "
-#~ "gedocumenteerd door"
+#~ msgid "This plugin is primarily developed, maintained, supported, documented by"
+#~ msgstr "Deze plugin wordt hoofdzakelijk ontwikkeld, bijgehouden, ondersteund, gedocumenteerd door"
 
 # @ nggallery
-#~ msgid ""
-#~ "Tip : Copy your stylesheet (nggallery.css) to your theme folder, so it "
-#~ "will be not lost during a upgrade"
-#~ msgstr ""
-#~ "Tip : Kopieer je stylesheet (nggallery.css) naar je themamap, dan blijft "
-#~ "het bewaard tijdens een upgrade"
+#~ msgid "Tip : Copy your stylesheet (nggallery.css) to your theme folder, so it will be not lost during a upgrade"
+#~ msgstr "Tip : Kopieer je stylesheet (nggallery.css) naar je themamap, dan blijft het bewaard tijdens een upgrade"
 
 # @ nggallery
-#~ msgid ""
-#~ "Tip No. 2: Use the color picker below to help you find the right color "
-#~ "scheme for your gallery!"
-#~ msgstr ""
-#~ "Tip nr. 2: Gebruik onderstaande kleurenpicker om het goede kleurenschema "
-#~ "voor je gallery te vinden !"
+#~ msgid "Tip No. 2: Use the color picker below to help you find the right color scheme for your gallery!"
+#~ msgstr "Tip nr. 2: Gebruik onderstaande kleurenpicker om het goede kleurenschema voor je gallery te vinden !"
 
 # @ nggallery
 #~ msgid "Title :"
@@ -5780,12 +5432,8 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Instellingen bijgewerkt"
 
 # @ nggallery
-#~ msgid ""
-#~ "Updated widget structure. If you used NextGEN Widgets, you need to setup "
-#~ "them again..."
-#~ msgstr ""
-#~ "Bijgewerkte widget structuur. Als je NextGEN widgets gebruikt, is het "
-#~ "nodig ze opnieuw in te stellen..."
+#~ msgid "Updated widget structure. If you used NextGEN Widgets, you need to setup them again..."
+#~ msgstr "Bijgewerkte widget structuur. Als je NextGEN widgets gebruikt, is het nodig ze opnieuw in te stellen..."
 
 # @ nggallery
 #~ msgid "Upgrade finished..."
@@ -5797,8 +5445,7 @@ msgstr "Ongeldige MediaRSS opdracht"
 
 # @ nggallery
 #~ msgid "Upload multiple files at once by ctrl/shift-selecting in dialog"
-#~ msgstr ""
-#~ "Meerdere bestandenden in 1 keer uploaden met ctrl/shift-knoppen in dialoog"
+#~ msgstr "Meerdere bestandenden in 1 keer uploaden met ctrl/shift-knoppen in dialoog"
 
 # @ default
 #~ msgid "Use as featured image"
@@ -5810,8 +5457,7 @@ msgstr "Ongeldige MediaRSS opdracht"
 
 # @ nggallery
 #~ msgid "We would like to thank this people which support us in the work :"
-#~ msgstr ""
-#~ "We willen de mensen bedanken die ons ondersteund hebben in het werk : "
+#~ msgstr "We willen de mensen bedanken die ons ondersteund hebben in het werk : "
 
 # @ nggallery
 #~ msgid "Width x Height"
@@ -5823,25 +5469,15 @@ msgstr "Ongeldige MediaRSS opdracht"
 
 # @ nggallery
 #~ msgid "Yes, share and trackback is also a good support for this work "
-#~ msgstr ""
-#~ "Ja, ook sharen(delen) en trackback is een goede ondersteuning voor dit "
-#~ "werk."
+#~ msgstr "Ja, ook sharen(delen) en trackback is een goede ondersteuning voor dit werk."
 
 # @ nggallery
-#~ msgid ""
-#~ "Your database tables for NextGEN Gallery is out-of-date, and must be "
-#~ "upgraded before you can continue."
-#~ msgstr ""
-#~ "Je database tabellen voor Next-Gen Gallery zijn verouderd en moeten "
-#~ "bijgewerkt worden voor je kunt doorgaan."
+#~ msgid "Your database tables for NextGEN Gallery is out-of-date, and must be upgraded before you can continue."
+#~ msgstr "Je database tabellen voor Next-Gen Gallery zijn verouderd en moeten bijgewerkt worden voor je kunt doorgaan."
 
 # @ nggallery
-#~ msgid ""
-#~ "Your theme contain a NextGEN Gallery stylesheet (nggallery.css), this "
-#~ "file will be used"
-#~ msgstr ""
-#~ "Je thema bevat een NextGEN Gallery stylesheet (nggallery.css), dit "
-#~ "bestand wordt gebruikt "
+#~ msgid "Your theme contain a NextGEN Gallery stylesheet (nggallery.css), this file will be used"
+#~ msgstr "Je thema bevat een NextGEN Gallery stylesheet (nggallery.css), dit bestand wordt gebruikt "
 
 # @ nggallery
 #~ msgid "and all donators..."
@@ -5877,9 +5513,5 @@ msgstr "Ongeldige MediaRSS opdracht"
 #~ msgstr "Ga naar de laatste pagina"
 
 # @ nggallery
-#~ msgid ""
-#~ "<h3>Client side resize</h3><p>You can now resize the images before you "
-#~ "start with the upload.</p>"
-#~ msgstr ""
-#~ "<h3>Client side verkleinen</h3><p>Je kan de afbeeldingen nu verkleinen "
-#~ "vooraleer je begint te uploaden.</p>"
+#~ msgid "<h3>Client side resize</h3><p>You can now resize the images before you start with the upload.</p>"
+#~ msgstr "<h3>Client side verkleinen</h3><p>Je kan de afbeeldingen nu verkleinen vooraleer je begint te uploaden.</p>"

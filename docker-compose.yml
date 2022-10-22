@@ -1,0 +1,41 @@
+version: "3.1"
+
+services:
+  wordpress:
+    image: wordpress
+    ports:
+      - 8999:80
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      ABSPATH: /usr/src/wordpress/
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        define( 'SCRIPT_DEBUG', true );
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./:/var/www/html/wp-content/plugins/nextcellent
+      - mysql
+    links:
+      - mysql:mysql
+
+  wp-cli:
+    image: wordpress:cli
+    entrypoint: wp
+    working_dir: /var/www/html/wp-content/plugins/nextcellent
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./:/var/www/html/wp-content/plugins/nextcellent
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+volumes:
+  wordpress_data:

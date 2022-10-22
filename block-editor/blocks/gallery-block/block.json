@@ -1,0 +1,26 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "nggallery/gallery-block",
+	"version": "0.1.0",
+	"title": "Gallery",
+	"category": "nextcellent-blocks",
+	"icon": "format-gallery",
+	"description": "",
+	"attributes": {
+		"galleryLabel": {
+			"type": "string"
+		},
+		"numberOfImages": {
+			"type": "number",
+			"default": 0
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "nggallery",
+	"editorScript": "file:../../../public/blocks/gallery-block/gallery-block.js",
+	"editorStyle": "file:../../../public/blocks/gallery-block/gallery-block.css",
+	"style": "file:../../../public/blocks/style-blocks/gallery-block/style-gallery-block.css"
+}
