@@ -1,0 +1,40 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "nggallery/single-image-block",
+	"version": "0.1.0",
+	"title": "Single Image",
+	"category": "nextcellent-blocks",
+
+	"description": "",
+	"attributes": {
+		"imageLabel": {
+			"type": "string"
+		},
+		"mode": {
+			"type": "string"
+		},
+		"float": {
+			"type": "string"
+		},
+		"link": {
+			"type": "string"
+		},
+		"width": {
+			"type": "number"
+		},
+		"height": {
+			"type": "number"
+		},
+		"description": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "nggallery",
+	"editorScript": "file:../../../public/blocks/single-image-block/single-image-block.js",
+	"editorStyle": "file:../../../public/blocks/single-image-block/single-image-block.css",
+	"style": "file:../../../public/blocks/style-blocks/single-image-block/style-single-image-block.css"
+}

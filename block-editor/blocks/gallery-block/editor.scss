@@ -13,8 +13,12 @@
 	padding: 16px;
 }
 
+.nextcellent-single-gallery-block-render {
+	pointer-events: none;
+}
+
 #nextcellent-block-set-button {
 	display: block;
 	width: 80%;
-	margin: 5px auto;
+	margin: 10px auto;
 }

@@ -1,0 +1,148 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./block-editor/gerneral-components/number-of-images-input/numberOfImages.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+.nextcellent-number-of-images {
+  margin: 5px 0 5px 0;
+}
+
+.nextcellent-number-of-images input {
+  width: 100%;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./block-editor/blocks/recent-images-block/editor.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+/*  .wp-block-nggallery-gallery-block {
+	border: 1px dotted #f00;
+	background: #f00;
+} */
+#nextcellent-recent-images-block-controlls {
+  padding: 16px;
+}
+
+.nextcellent-recent-images-block-render {
+  pointer-events: none;
+}
+
+#nextcellent-block-set-button {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./block-editor/gerneral-components/autocomplete/autocomplete.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
+.nextcellent-autocomplete-content {
+  display: flex;
+  flex-flow: column;
+  position: relative;
+}
+
+.nextcellent-autocomplete-content label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.nextcellent-autocomplete-options {
+  position: absolute;
+  margin: 0;
+  width: 100%;
+  top: 100%;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  z-index: 1;
+}
+
+.nextcellent-autocomplete-options .option {
+  padding: 6px;
+  margin: 0;
+}
+
+.nextcellent-autocomplete-options .option:hover, .nextcellent-autocomplete-options .option.focus {
+  cursor: pointer;
+  background-color: var(--wp-admin-theme-color);
+  color: #fff;
+}
+
+.nextcellent-autocomplete-options .loading {
+  height: 40px;
+}
+
+.nextcellent-autocomplete-options .loading::before {
+  animation: 1.5s linear infinite spinner;
+  animation-play-state: inherit;
+  border: solid 5px #cfd0d1;
+  border-bottom-color: var(--wp-admin-theme-color);
+  border-radius: 50%;
+  content: "";
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  will-change: transform;
+}
+
+@keyframes spinner {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./block-editor/gerneral-components/template-radio-group/template.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
+.nextcellent-template-radio {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 10px 0 10px 0;
+}
+
+.nextcellent-template-radio input {
+  display: none;
+}
+
+.nextcellent-template-radio label {
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  min-width: 50px;
+}
+
+.nextcellent-template-radio label p {
+  margin: 0;
+}
+
+.nextcellent-template-radio input[type=radio]:checked + label {
+  background-color: rgba(var(--wp-admin-theme-color--rgb), 0.5);
+}
+
+.nextcellent-template-radio label:hover {
+  background-color: rgba(var(--wp-admin-theme-color--rgb), 0.2);
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./block-editor/gerneral-components/mode-select/mode.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.nextcellent-image-mode-select {
+  margin-bottom: 10px;
+}
+
+.nextcellent-image-mode-select label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.nextcellent-image-mode-select select {
+  width: 100%;
+}
+
+/*# sourceMappingURL=recent-images-block.css.map*/

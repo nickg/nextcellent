@@ -1,0 +1,32 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "nggallery/random-images-block",
+	"version": "1.0.0",
+	"title": "Random pictures",
+	"category": "nextcellent-blocks",
+	"description": "",
+	"attributes": {
+		"galleryLabel": {
+			"type": "string"
+		},
+		"numberOfImages": {
+			"type": "number",
+			"default": 0
+		},
+		"galleryTemplate": {
+			"type": "string",
+			"default": "gallery"
+		},
+		"mode": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "nggallery",
+	"editorScript": "file:../../../public/blocks/random-images-block/random-images-block.js",
+	"editorStyle": "file:../../../public/blocks/random-images-block/random-images-block.css",
+	"style": "file:../../../public/blocks/style-blocks/random-images-block/style-random-images-block.css"
+}
