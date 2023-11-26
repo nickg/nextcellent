@@ -1,8 +1,12 @@
-/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./block-editor/gerneral-components/numberOfImages/numberOfImages.scss ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./block-editor/gerneral-components/number-of-images-input/numberOfImages.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
 .nextcellent-number-of-images {
   margin: 5px 0 5px 0;
+}
+
+.nextcellent-number-of-images input {
+  width: 100%;
 }
 /*!**********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./block-editor/blocks/gallery-block/editor.scss ***!
@@ -20,10 +24,14 @@
   padding: 16px;
 }
 
+.nextcellent-single-gallery-block-render {
+  pointer-events: none;
+}
+
 #nextcellent-block-set-button {
   display: block;
   width: 80%;
-  margin: 5px auto;
+  margin: 10px auto;
 }
 /*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./block-editor/gerneral-components/autocomplete/autocomplete.scss ***!
@@ -65,10 +73,8 @@
 }
 
 .nextcellent-autocomplete-options .loading::before {
-  -webkit-animation: 1.5s linear infinite spinner;
-          animation: 1.5s linear infinite spinner;
-  -webkit-animation-play-state: inherit;
-          animation-play-state: inherit;
+  animation: 1.5s linear infinite spinner;
+  animation-play-state: inherit;
   border: solid 5px #cfd0d1;
   border-bottom-color: var(--wp-admin-theme-color);
   border-radius: 50%;
@@ -82,15 +88,6 @@
   will-change: transform;
 }
 
-@-webkit-keyframes spinner {
-  0% {
-    transform: translate3d(-50%, -50%, 0) rotate(0deg);
-  }
-  100% {
-    transform: translate3d(-50%, -50%, 0) rotate(360deg);
-  }
-}
-
 @keyframes spinner {
   0% {
     transform: translate3d(-50%, -50%, 0) rotate(0deg);
@@ -98,6 +95,54 @@
   100% {
     transform: translate3d(-50%, -50%, 0) rotate(360deg);
   }
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./block-editor/gerneral-components/template-radio-group/template.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
+.nextcellent-template-radio {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 10px 0 10px 0;
+}
+
+.nextcellent-template-radio input {
+  display: none;
+}
+
+.nextcellent-template-radio label {
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  min-width: 50px;
+}
+
+.nextcellent-template-radio label p {
+  margin: 0;
+}
+
+.nextcellent-template-radio input[type=radio]:checked + label {
+  background-color: rgba(var(--wp-admin-theme-color--rgb), 0.5);
+}
+
+.nextcellent-template-radio label:hover {
+  background-color: rgba(var(--wp-admin-theme-color--rgb), 0.2);
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./block-editor/gerneral-components/custom-template-input/description-input/CustomTemplateInput.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.nextcellent-custom-template {
+  margin-bottom: 10px;
+}
+
+.nextcellent-custom-template label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.nextcellent-custom-template input {
+  width: 100%;
 }
 
 /*# sourceMappingURL=gallery-block.css.map*/

@@ -2,10 +2,9 @@
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
 	"name": "nggallery/gallery-block",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"title": "Gallery",
 	"category": "nextcellent-blocks",
-	"icon": "format-gallery",
 	"description": "",
 	"attributes": {
 		"galleryLabel": {
@@ -14,6 +13,13 @@
 		"numberOfImages": {
 			"type": "number",
 			"default": 0
+		},
+		"template": {
+			"type": "string",
+			"default": "gallery"
+		},
+		"customTemplate": {
+			"type": "string"
 		}
 	},
 	"supports": {

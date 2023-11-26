@@ -483,7 +483,20 @@ msgstr ""
 #: admin/tinymce/window.php:132 admin/tinymce/window.php:233
 #: admin/tinymce/window.php:300 admin/tinymce/window.php:358
 #: admin/tinymce/window.php:420
-#: public/blocks/gallery-block/gallery-block.js:1
+#: public/blocks/album-block/album-block.js:126
+#: public/blocks/gallery-block/gallery-block.js:138
+#: public/blocks/image-browser-block/image-browser-block.js:108
+#: public/blocks/random-images-block/random-images-block.js:141
+#: public/blocks/recent-images-block/recent-images-block.js:143
+#: public/blocks/single-image-block/single-image-block.js:182
+#: public/blocks/slideshow-block/slideshow-block.js:142
+#: public/blocks/album-block/album-block.js:112
+#: public/blocks/gallery-block/gallery-block.js:117
+#: public/blocks/image-browser-block/image-browser-block.js:83
+#: public/blocks/random-images-block/random-images-block.js:130
+#: public/blocks/recent-images-block/recent-images-block.js:132
+#: public/blocks/single-image-block/single-image-block.js:174
+#: public/blocks/slideshow-block/slideshow-block.js:124
 msgid "Basics"
 msgstr ""
 
@@ -524,6 +537,22 @@ msgstr ""
 #: lib/meta.php:451 admin/tinymce/window.php:177 admin/tinymce/window.php:289
 #: admin/tinymce/window.php:350 admin/tinymce/window.php:410
 #: admin/tinymce/window.php:461
+#: public/blocks/album-block/album-block.js:632
+#: public/blocks/gallery-block/gallery-block.js:755
+#: public/blocks/random-images-block/random-images-block.js:789
+#: public/blocks/recent-images-block/recent-images-block.js:804
+#: public/blocks/album-block/album-block.js:607
+#: public/blocks/gallery-block/gallery-block.js:705
+#: public/blocks/random-images-block/random-images-block.js:756
+#: public/blocks/recent-images-block/recent-images-block.js:765
+#: public/blocks/album-block/album-block.js:645
+#: public/blocks/gallery-block/gallery-block.js:768
+#: public/blocks/random-images-block/random-images-block.js:802
+#: public/blocks/recent-images-block/recent-images-block.js:817
+#: public/blocks/album-block/album-block.js:624
+#: public/blocks/gallery-block/gallery-block.js:722
+#: public/blocks/random-images-block/random-images-block.js:773
+#: public/blocks/recent-images-block/recent-images-block.js:782
 msgid "Caption"
 msgstr ""
 
@@ -541,6 +570,8 @@ msgid "Category"
 msgstr ""
 
 #: admin/tinymce/window.php:340
+#: public/blocks/single-image-block/single-image-block.js:791
+#: public/blocks/single-image-block/single-image-block.js:720
 msgid "Center"
 msgstr ""
 
@@ -781,6 +812,12 @@ msgid "Date Created"
 msgstr ""
 
 #: admin/tinymce/window.php:372
+#: public/blocks/random-images-block/random-images-block.js:648
+#: public/blocks/recent-images-block/recent-images-block.js:663
+#: public/blocks/single-image-block/single-image-block.js:980
+#: public/blocks/random-images-block/random-images-block.js:630
+#: public/blocks/recent-images-block/recent-images-block.js:639
+#: public/blocks/single-image-block/single-image-block.js:865
 msgid "Date taken"
 msgstr ""
 
@@ -836,6 +873,8 @@ msgstr ""
 #: admin/manage/class-ngg-gallery-list-table.php:155
 #: admin/manage/class-ngg-image-list-table.php:187
 #: admin/manage/class-ngg-image-list-table.php:236
+#: public/blocks/single-image-block/single-image-block.js:727
+#: public/blocks/single-image-block/single-image-block.js:681
 msgid "Description"
 msgstr ""
 
@@ -934,6 +973,12 @@ msgid "Editing %s"
 msgstr ""
 
 #: admin/tinymce/window.php:325
+#: public/blocks/random-images-block/random-images-block.js:626
+#: public/blocks/recent-images-block/recent-images-block.js:641
+#: public/blocks/single-image-block/single-image-block.js:958
+#: public/blocks/random-images-block/random-images-block.js:604
+#: public/blocks/recent-images-block/recent-images-block.js:613
+#: public/blocks/single-image-block/single-image-block.js:839
 msgid "Effect"
 msgstr ""
 
@@ -1197,6 +1242,14 @@ msgstr ""
 #: admin/manage/class-ngg-image-manager.php:155 admin/tinymce/window.php:120
 #: admin/tinymce/window.php:153 admin/tinymce/window.php:277
 #: admin/tinymce/window.php:398 admin/tinymce/window.php:449
+#: public/blocks/album-block/album-block.js:619
+#: public/blocks/gallery-block/gallery-block.js:742
+#: public/blocks/random-images-block/random-images-block.js:776
+#: public/blocks/recent-images-block/recent-images-block.js:791
+#: public/blocks/album-block/album-block.js:590
+#: public/blocks/gallery-block/gallery-block.js:688
+#: public/blocks/random-images-block/random-images-block.js:739
+#: public/blocks/recent-images-block/recent-images-block.js:748
 msgid "Gallery"
 msgstr ""
 
@@ -1337,6 +1390,10 @@ msgid "ID"
 msgstr ""
 
 #: admin/tinymce/window.php:384 admin/tinymce/window.php:435
+#: public/blocks/random-images-block/random-images-block.js:156
+#: public/blocks/recent-images-block/recent-images-block.js:158
+#: public/blocks/random-images-block/random-images-block.js:158
+#: public/blocks/recent-images-block/recent-images-block.js:160
 msgid "If a gallery is selected, only images from that gallery will be shown."
 msgstr ""
 
@@ -1489,6 +1546,10 @@ msgid "in to"
 msgstr ""
 
 #: admin/tinymce/window.php:375
+#: public/blocks/random-images-block/random-images-block.js:151
+#: public/blocks/recent-images-block/recent-images-block.js:153
+#: public/blocks/random-images-block/random-images-block.js:146
+#: public/blocks/recent-images-block/recent-images-block.js:148
 msgid ""
 "In what order the images are shown. Upload order uses the ID's, date taken "
 "uses the EXIF data and user defined is the sort mode from the settings."
@@ -1567,6 +1628,8 @@ msgid "Leave this empty to display all galleries."
 msgstr ""
 
 #: admin/tinymce/window.php:339
+#: public/blocks/single-image-block/single-image-block.js:789
+#: public/blocks/single-image-block/single-image-block.js:719
 msgid "Left"
 msgstr ""
 
@@ -1583,6 +1646,8 @@ msgid "Lightspeed"
 msgstr ""
 
 #: admin/tinymce/window.php:346
+#: public/blocks/single-image-block/single-image-block.js:902
+#: public/blocks/single-image-block/single-image-block.js:798
 msgid "Link"
 msgstr ""
 
@@ -1855,6 +1920,12 @@ msgid "No CSS file will be used."
 msgstr ""
 
 #: admin/tinymce/window.php:328
+#: public/blocks/random-images-block/random-images-block.js:635
+#: public/blocks/recent-images-block/recent-images-block.js:650
+#: public/blocks/single-image-block/single-image-block.js:967
+#: public/blocks/random-images-block/random-images-block.js:617
+#: public/blocks/recent-images-block/recent-images-block.js:626
+#: public/blocks/single-image-block/single-image-block.js:852
 msgid "No effect"
 msgstr ""
 
@@ -1867,6 +1938,8 @@ msgid "No file was uploaded"
 msgstr ""
 
 #: admin/tinymce/window.php:338
+#: public/blocks/single-image-block/single-image-block.js:787
+#: public/blocks/single-image-block/single-image-block.js:718
 msgid "No float"
 msgstr ""
 
@@ -2004,7 +2077,14 @@ msgstr ""
 
 #: admin/class-ngg-options.php:929 admin/tinymce/window.php:197
 #: admin/tinymce/window.php:361 admin/tinymce/window.php:423
-#: public/blocks/gallery-block/gallery-block.js:1
+#: public/blocks/gallery-block/gallery-block.js:668
+#: public/blocks/random-images-block/random-images-block.js:702
+#: public/blocks/recent-images-block/recent-images-block.js:717
+#: public/blocks/slideshow-block/slideshow-block.js:682
+#: public/blocks/gallery-block/gallery-block.js:615
+#: public/blocks/random-images-block/random-images-block.js:666
+#: public/blocks/recent-images-block/recent-images-block.js:675
+#: public/blocks/slideshow-block/slideshow-block.js:618
 msgid "Number of images"
 msgstr ""
 
@@ -2429,6 +2509,8 @@ msgid "Resize Images to"
 msgstr ""
 
 #: admin/tinymce/window.php:341
+#: public/blocks/single-image-block/single-image-block.js:793
+#: public/blocks/single-image-block/single-image-block.js:721
 msgid "Right"
 msgstr ""
 
@@ -2536,7 +2618,14 @@ msgstr ""
 
 #: widgets/class-ngg-slideshow-widget.php:113 admin/tinymce/window.php:135
 #: admin/tinymce/window.php:379 admin/tinymce/window.php:430
-#: public/blocks/gallery-block/gallery-block.js:1
+#: public/blocks/gallery-block/gallery-block.js:140
+#: public/blocks/image-browser-block/image-browser-block.js:110
+#: public/blocks/random-images-block/random-images-block.js:152
+#: public/blocks/recent-images-block/recent-images-block.js:154
+#: public/blocks/slideshow-block/slideshow-block.js:144
+#: public/blocks/gallery-block/gallery-block.js:120
+#: public/blocks/image-browser-block/image-browser-block.js:86
+#: public/blocks/slideshow-block/slideshow-block.js:127
 msgid "Select a gallery:"
 msgstr ""
 
@@ -2562,6 +2651,8 @@ msgid "Select album"
 msgstr ""
 
 #: admin/class-ngg-options.php:683
+#: public/blocks/single-image-block/single-image-block.js:184
+#: public/blocks/single-image-block/single-image-block.js:177
 msgid "Select an image"
 msgstr ""
 
@@ -2828,6 +2919,12 @@ msgid "Sort Order:"
 msgstr ""
 
 #: admin/tinymce/window.php:368
+#: public/blocks/random-images-block/random-images-block.js:628
+#: public/blocks/recent-images-block/recent-images-block.js:643
+#: public/blocks/single-image-block/single-image-block.js:960
+#: public/blocks/random-images-block/random-images-block.js:607
+#: public/blocks/recent-images-block/recent-images-block.js:616
+#: public/blocks/single-image-block/single-image-block.js:842
 msgid "Sort the images"
 msgstr ""
 
@@ -2918,6 +3015,8 @@ msgid "Tags number and slugs number isn't the same!"
 msgstr ""
 
 #: admin/tinymce/window.php:219
+#: public/blocks/gallery-block/gallery-block.js:612
+#: public/blocks/gallery-block/gallery-block.js:579
 msgid "Template name"
 msgstr ""
 
@@ -3010,6 +3109,14 @@ msgid ""
 msgstr ""
 
 #: admin/tinymce/window.php:364 admin/tinymce/window.php:426
+#: public/blocks/gallery-block/gallery-block.js:675
+#: public/blocks/random-images-block/random-images-block.js:709
+#: public/blocks/recent-images-block/recent-images-block.js:724
+#: public/blocks/slideshow-block/slideshow-block.js:689
+#: public/blocks/gallery-block/gallery-block.js:636
+#: public/blocks/random-images-block/random-images-block.js:687
+#: public/blocks/recent-images-block/recent-images-block.js:696
+#: public/blocks/slideshow-block/slideshow-block.js:639
 msgid "The number of images that should be displayed."
 msgstr ""
 
@@ -3259,7 +3366,18 @@ msgid "Translation"
 msgstr ""
 
 #: admin/tinymce/window.php:190
-#: public/blocks/gallery-block/gallery-block.js:1
+#: public/blocks/album-block/album-block.js:133
+#: public/blocks/gallery-block/gallery-block.js:145
+#: public/blocks/random-images-block/random-images-block.js:146
+#: public/blocks/recent-images-block/recent-images-block.js:148
+#: public/blocks/single-image-block/single-image-block.js:189
+#: public/blocks/slideshow-block/slideshow-block.js:149
+#: public/blocks/album-block/album-block.js:122
+#: public/blocks/gallery-block/gallery-block.js:127
+#: public/blocks/random-images-block/random-images-block.js:138
+#: public/blocks/recent-images-block/recent-images-block.js:140
+#: public/blocks/single-image-block/single-image-block.js:184
+#: public/blocks/slideshow-block/slideshow-block.js:134
 msgid "Type options"
 msgstr ""
 
@@ -3369,6 +3487,12 @@ msgid "Upload images"
 msgstr ""
 
 #: admin/tinymce/window.php:371
+#: public/blocks/random-images-block/random-images-block.js:646
+#: public/blocks/recent-images-block/recent-images-block.js:661
+#: public/blocks/single-image-block/single-image-block.js:978
+#: public/blocks/random-images-block/random-images-block.js:629
+#: public/blocks/recent-images-block/recent-images-block.js:638
+#: public/blocks/single-image-block/single-image-block.js:864
 msgid "Upload order"
 msgstr ""
 
@@ -3421,6 +3545,12 @@ msgid "Use TinyMCE Button / Add Media"
 msgstr ""
 
 #: admin/tinymce/window.php:373
+#: public/blocks/random-images-block/random-images-block.js:650
+#: public/blocks/recent-images-block/recent-images-block.js:665
+#: public/blocks/single-image-block/single-image-block.js:982
+#: public/blocks/random-images-block/random-images-block.js:631
+#: public/blocks/recent-images-block/recent-images-block.js:640
+#: public/blocks/single-image-block/single-image-block.js:866
 msgid "User defined"
 msgstr ""
 
@@ -3447,10 +3577,22 @@ msgstr ""
 
 #: admin/class-ngg-admin-launcher.php:618 admin/class-ngg-options.php:242
 #: admin/class-ngg-options.php:676 admin/tinymce/window.php:329
+#: public/blocks/random-images-block/random-images-block.js:637
+#: public/blocks/recent-images-block/recent-images-block.js:652
+#: public/blocks/single-image-block/single-image-block.js:969
+#: public/blocks/random-images-block/random-images-block.js:618
+#: public/blocks/recent-images-block/recent-images-block.js:627
+#: public/blocks/single-image-block/single-image-block.js:853
 msgid "Watermark"
 msgstr ""
 
 #: admin/tinymce/window.php:330
+#: public/blocks/random-images-block/random-images-block.js:639
+#: public/blocks/recent-images-block/recent-images-block.js:654
+#: public/blocks/single-image-block/single-image-block.js:971
+#: public/blocks/random-images-block/random-images-block.js:619
+#: public/blocks/recent-images-block/recent-images-block.js:628
+#: public/blocks/single-image-block/single-image-block.js:854
 msgid "Web 2.0"
 msgstr ""
 
@@ -3614,6 +3756,10 @@ msgid "You need to select a gallery."
 msgstr ""
 
 #: admin/tinymce/window.php:519 admin/tinymce/window.php:523
+#: public/blocks/random-images-block/random-images-block.js:169
+#: public/blocks/recent-images-block/recent-images-block.js:171
+#: public/blocks/random-images-block/random-images-block.js:190
+#: public/blocks/recent-images-block/recent-images-block.js:192
 msgid "You need to select a number of images."
 msgstr ""
 
@@ -3674,12 +3820,137 @@ msgstr ""
 msgid "Zoom Out"
 msgstr ""
 
-#: public/blocks/gallery-block/gallery-block.js:1
+#: public/blocks/album-block/album-block.js:128
+#: public/blocks/album-block/album-block.js:115
+msgid "Select a album:"
+msgstr ""
+
+#: public/blocks/album-block/album-block.js:133
+#: public/blocks/gallery-block/gallery-block.js:145
+#: public/blocks/random-images-block/random-images-block.js:146
+#: public/blocks/recent-images-block/recent-images-block.js:148
+#: public/blocks/single-image-block/single-image-block.js:189
+#: public/blocks/slideshow-block/slideshow-block.js:149
+#: public/blocks/album-block/album-block.js:122
+#: public/blocks/gallery-block/gallery-block.js:127
+#: public/blocks/random-images-block/random-images-block.js:138
+#: public/blocks/recent-images-block/recent-images-block.js:140
+#: public/blocks/single-image-block/single-image-block.js:184
+#: public/blocks/slideshow-block/slideshow-block.js:134
+msgid "Type options"
+msgstr ""
+
+#: public/blocks/album-block/album-block.js:153
+#: public/blocks/album-block/album-block.js:157
+msgid "Please select an album"
+msgstr ""
+
+#: public/blocks/gallery-block/gallery-block.js:165
+#: public/blocks/image-browser-block/image-browser-block.js:123
+#: public/blocks/slideshow-block/slideshow-block.js:165
+#: public/blocks/gallery-block/gallery-block.js:167
+#: public/blocks/image-browser-block/image-browser-block.js:112
+#: public/blocks/slideshow-block/slideshow-block.js:159
 msgid "Please select a gallery"
 msgstr ""
 
-#: public/blocks/gallery-block/gallery-block.js:1
+#: public/blocks/single-image-block/single-image-block.js:184
+#: public/blocks/single-image-block/single-image-block.js:177
+msgid "Select an image:"
+msgstr ""
+
+#: public/blocks/single-image-block/single-image-block.js:218
+#: public/blocks/single-image-block/single-image-block.js:223
+msgid "Please select an image"
+msgstr ""
+
+#: public/blocks/gallery-block/gallery-block.js:612
+#: public/blocks/gallery-block/gallery-block.js:579
+msgid "Template name"
+msgstr ""
+
+#: public/blocks/single-image-block/single-image-block.js:780
+#: public/blocks/single-image-block/single-image-block.js:715
+msgid "Float"
+msgstr ""
+
+#: public/blocks/single-image-block/single-image-block.js:844
+#: public/blocks/slideshow-block/slideshow-block.js:623
+#: public/blocks/single-image-block/single-image-block.js:755
+#: public/blocks/slideshow-block/slideshow-block.js:575
+msgid "Height of image"
+msgstr ""
+
+#: public/blocks/single-image-block/single-image-block.js:907
+#: public/blocks/single-image-block/single-image-block.js:806
+msgid "Http link"
+msgstr ""
+
+#: public/blocks/gallery-block/gallery-block.js:675
+#: public/blocks/random-images-block/random-images-block.js:709
+#: public/blocks/recent-images-block/recent-images-block.js:724
+#: public/blocks/slideshow-block/slideshow-block.js:689
+#: public/blocks/gallery-block/gallery-block.js:628
+#: public/blocks/random-images-block/random-images-block.js:679
+#: public/blocks/recent-images-block/recent-images-block.js:688
+#: public/blocks/slideshow-block/slideshow-block.js:631
 msgid "The number of images before pagination is applied. Leave empty or 0 for the default from the settings."
+msgstr ""
+
+#: public/blocks/album-block/album-block.js:658
+#: public/blocks/gallery-block/gallery-block.js:781
+#: public/blocks/random-images-block/random-images-block.js:815
+#: public/blocks/recent-images-block/recent-images-block.js:830
+#: public/blocks/album-block/album-block.js:644
+#: public/blocks/gallery-block/gallery-block.js:742
+#: public/blocks/random-images-block/random-images-block.js:793
+#: public/blocks/recent-images-block/recent-images-block.js:802
+msgid "Other"
+msgstr ""
+
+#: public/blocks/album-block/album-block.js:671
+#: public/blocks/gallery-block/gallery-block.js:794
+#: public/blocks/random-images-block/random-images-block.js:828
+#: public/blocks/recent-images-block/recent-images-block.js:843
+#: public/blocks/album-block/album-block.js:665
+#: public/blocks/gallery-block/gallery-block.js:763
+#: public/blocks/random-images-block/random-images-block.js:814
+#: public/blocks/recent-images-block/recent-images-block.js:823
+msgid "Compact"
+msgstr ""
+
+#: public/blocks/album-block/album-block.js:684
+#: public/blocks/gallery-block/gallery-block.js:807
+#: public/blocks/random-images-block/random-images-block.js:841
+#: public/blocks/recent-images-block/recent-images-block.js:856
+#: public/blocks/album-block/album-block.js:682
+#: public/blocks/gallery-block/gallery-block.js:780
+#: public/blocks/random-images-block/random-images-block.js:831
+#: public/blocks/recent-images-block/recent-images-block.js:840
+msgid "Extend"
+msgstr ""
+
+#: public/blocks/single-image-block/single-image-block.js:1033
+#: public/blocks/slideshow-block/slideshow-block.js:740
+#: public/blocks/single-image-block/single-image-block.js:901
+#: public/blocks/slideshow-block/slideshow-block.js:674
+msgid "Width of image"
+msgstr ""
+
+#: block-editor/blocks/album-block/block.json
+msgctxt "block title"
+msgid "Album"
+msgstr ""
+
+#: block-editor/blocks/album-block/block.json
+#: block-editor/blocks/gallery-block/block.json
+#: block-editor/blocks/image-browser-block/block.json
+#: block-editor/blocks/random-images-block/block.json
+#: block-editor/blocks/recent-images-block/block.json
+#: block-editor/blocks/single-image-block/block.json
+#: block-editor/blocks/slideshow-block/block.json
+msgctxt "block description"
+msgid ""
 msgstr ""
 
 #: block-editor/blocks/gallery-block/block.json
@@ -3687,7 +3958,27 @@ msgctxt "block title"
 msgid "Gallery"
 msgstr ""
 
-#: block-editor/blocks/gallery-block/block.json
-msgctxt "block description"
-msgid ""
+#: block-editor/blocks/image-browser-block/block.json
+msgctxt "block title"
+msgid "Image browser"
+msgstr ""
+
+#: block-editor/blocks/random-images-block/block.json
+msgctxt "block title"
+msgid "Random pictures"
+msgstr ""
+
+#: block-editor/blocks/recent-images-block/block.json
+msgctxt "block title"
+msgid "Recent pictures"
+msgstr ""
+
+#: block-editor/blocks/single-image-block/block.json
+msgctxt "block title"
+msgid "Single Image"
+msgstr ""
+
+#: block-editor/blocks/slideshow-block/block.json
+msgctxt "block title"
+msgid "Slideshow"
 msgstr ""
