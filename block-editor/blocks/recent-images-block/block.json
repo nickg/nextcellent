@@ -1,0 +1,32 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "nggallery/recent-images-block",
+	"version": "1.0.0",
+	"title": "Recent pictures",
+	"category": "nextcellent-blocks",
+	"description": "",
+	"attributes": {
+		"galleryLabel": {
+			"type": "string"
+		},
+		"numberOfImages": {
+			"type": "number",
+			"default": 0
+		},
+		"galleryTemplate": {
+			"type": "string",
+			"default": "gallery"
+		},
+		"mode": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "nggallery",
+	"editorScript": "file:../../../public/blocks/recent-images-block/recent-images-block.js",
+	"editorStyle": "file:../../../public/blocks/recent-images-block/recent-images-block.css",
+	"style": "file:../../../public/blocks/style-blocks/recent-images-block/style-recent-images-block.css"
+}

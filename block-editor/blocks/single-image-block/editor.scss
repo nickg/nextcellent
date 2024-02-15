@@ -1,0 +1,24 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+/*  .wp-block-nggallery-single-image-block {
+	border: 1px dotted #f00;
+	background: #f00;
+} */
+
+#nextcellent-single-image-block-controlls {
+	padding: 16px;
+}
+
+#nextcellent-single-image-set-button {
+	display: block;
+	width: 80%;
+	margin: 5px auto;
+}
+
+.nextcellent-single-image-block-image {
+	pointer-events: none;
+}

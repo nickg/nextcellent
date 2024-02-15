@@ -1,0 +1,21 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "nggallery/image-browser-block",
+	"version": "0.1.0",
+	"title": "Image browser",
+	"category": "nextcellent-blocks",
+	"description": "",
+	"attributes": {
+		"galleryLabel": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "nggallery",
+	"editorScript": "file:../../../public/blocks/image-browser-block/image-browser-block.js",
+	"editorStyle": "file:../../../public/blocks/image-browser-block/single-image-block.css",
+	"style": "file:../../../public/blocks/style-blocks/image-browser-block/style-image-browser-block.css"
+}

@@ -1,0 +1,5 @@
+{
+	"preset": "@wordpress/jest-preset-default",
+	"roots": ["tests/js/"],
+	"testMatch": ["**/tests/js/*.[jt]s?(x)", "**/?(*.)test.[jt]s?(x)"]
+}

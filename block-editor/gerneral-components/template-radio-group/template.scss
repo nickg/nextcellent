@@ -1,0 +1,30 @@
+.nextcellent-template-radio {
+	display: flex;
+	flex-flow: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+    margin: 10px 0 10px 0;
+}
+
+.nextcellent-template-radio input {
+	display: none;
+}
+
+.nextcellent-template-radio label {
+	text-align: center;
+	display: flex;
+	flex-flow: column;
+	min-width: 50px;
+}
+
+.nextcellent-template-radio label p {
+	margin: 0;
+}
+
+.nextcellent-template-radio input[type="radio"]:checked+label {
+	background-color: rgba(var(--wp-admin-theme-color--rgb), 0.5);
+}
+
+.nextcellent-template-radio label:hover {
+	background-color: rgba(var(--wp-admin-theme-color--rgb), 0.2);
+}

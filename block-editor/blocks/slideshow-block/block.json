@@ -1,0 +1,27 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "nggallery/slideshow-block",
+	"version": "1.0.0",
+	"title": "Slideshow",
+	"category": "nextcellent-blocks",
+	"description": "",
+	"attributes": {
+		"galleryLabel": {
+			"type": "string"
+		},
+		"width": {
+			"type": "number"
+		},
+		"height": {
+			"type": "number"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "nggallery",
+	"editorScript": "file:../../../public/blocks/slideshow-block/slideshow-block.js",
+	"editorStyle": "file:../../../public/blocks/slideshow-block/slideshow-block.css",
+	"style": "file:../../../public/blocks/style-blocks/slideshow-block/style-slideshow-block.css"
+}

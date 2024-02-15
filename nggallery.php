@@ -1,31 +1,32 @@
 <?php
-/*
-Plugin Name: NextCellent Gallery
-Plugin URI: http://www.wpgetready.com/nextcellent-gallery
-Description: A Photo Gallery for WordPress providing NextGEN legacy compatibility from version 1.9.13
-Author: WPGReady, Niknetniko based on Alex Rabe & PhotoCrati work.
-Author URI: http://www.wpgetready.com
-Version: 1.9.35
-
-Copyright (c) 2007-2011 by Alex Rabe & NextGEN DEV-Team
-Copyright (c) 2012 Photocrati Media
-Copyright (c) 2013-2014 WPGetReady
-Copyright (c) 2014-2016 WPGetReady, Niknetniko
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+/**
+ * Plugin Name: NextCellent Gallery
+ * Plugin URI: http://www.wpgetready.com/nextcellent-gallery
+ * Description: A Photo Gallery for WordPress providing NextGEN legacy compatibility from version 1.9.13
+ * Author: WPGReady, Niknetniko based on Alex Rabe & PhotoCrati work.
+ * Author URI: http://www.wpgetready.com
+ * Version: 1.9.35
+ * Text Domain: nggallery
+ * Domain Path: /lang
+ * 
+ * Copyright (c) 2007-2011 by Alex Rabe & NextGEN DEV-Team
+ * Copyright (c) 2012 Photocrati Media
+ * Copyright (c) 2013-2014 WPGetReady
+ * Copyright (c) 2014-2016 WPGetReady, Niknetniko
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 
 // Stop direct call
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
@@ -341,6 +342,7 @@ if (!class_exists('nggLoader')) {
          * Load libraries
          */
         function load_dependencies() {
+			global $wp_version;
 
 			// Load global libraries												// average memory usage (in bytes)
 			require_once (dirname (__FILE__) . '/lib/core.php');					//  94.840
@@ -353,11 +355,17 @@ if (!class_exists('nggLoader')) {
 	        require_once( dirname( __FILE__ ) . '/widgets/class-ngg-gallery-widget.php' );
 			require_once (dirname (__FILE__) . '/lib/multisite.php');
 			require_once (dirname (__FILE__) . '/lib/sitemap.php');
-
+			
 			// Load frontend libraries
 			require_once (dirname (__FILE__) . '/lib/navigation.php');		        // 242.016
 			require_once (dirname (__FILE__) . '/nggfunctions.php');		        // n.a.
 			require_once (dirname (__FILE__) . '/lib/shortcodes.php'); 		        // 92.664
+			
+			// Load the Gutenberg blocks php
+            if (version_compare( $wp_version, '5.0', '>=' )) {
+	            require_once( dirname( __FILE__ ) . '/blocks-main.php' );
+            }
+
 
 			// Add to the toolbar
 			add_action( 'admin_bar_menu', array( &$this, 'admin_bar_menu' ), 999 );
