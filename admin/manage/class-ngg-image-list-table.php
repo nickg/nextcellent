@@ -1,7 +1,7 @@
 <?php
 
 if ( ! class_exists( 'WP_List_Table' ) ) {
-	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+	require_once ( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
 /**
@@ -30,26 +30,26 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 *
 	 * @param bool|string $search The search string, or false if we don't search.
 	 */
-	public function prepare_items($search = false) {
+	public function prepare_items( $search = false ) {
 
 		/**
 		 * @global $nggdb nggdb
 		 */
 		global $nggdb;
 
-		$columns  = $this->get_columns();
-		$hidden   = $this->get_hidden_columns();
+		$columns = $this->get_columns();
+		$hidden = $this->get_hidden_columns();
 		$sortable = $this->get_sortable_columns();
 
 		$this->_column_headers = array( $columns, $hidden, $sortable );
 
-		if( $search ) {
+		if ( $search ) {
 			// look now for the images
 			$search_for_images = (array) $nggdb->search_for_images( $search );
-			$search_for_tags   = (array) nggTags::find_images_for_tags( $search , 'ASC' );
+			$search_for_tags = (array) nggTags::find_images_for_tags( $search, 'ASC' );
 
 			// finally merge the two results together
-			$this->items = array_merge( $search_for_images , $search_for_tags );
+			$this->items = array_merge( $search_for_images, $search_for_tags );
 
 			$this->set_pagination_args( array(
 				'total_items' => count( $this->items )
@@ -61,12 +61,12 @@ class NGG_Image_List_Table extends WP_List_Table {
 			 * Do the pagination.
 			 */
 			$currentPage = $this->get_pagenum();
-			$perPage     = $this->get_items_per_page('ngg_images_per_page', 50);
+			$perPage = $this->get_items_per_page( 'ngg_images_per_page', 50 );
 
-			$options    = get_option( 'ngg_options' );
+			$options = get_option( 'ngg_options' );
 			$gallery_id = (int) $_GET['gid'];
 
-			$start       = ( $currentPage - 1 ) * $perPage;
+			$start = ( $currentPage - 1 ) * $perPage;
 
 			$this->items = $nggdb->get_gallery( $gallery_id, $options['galSort'], $options['galSortDir'], false,
 				$perPage,
@@ -76,7 +76,7 @@ class NGG_Image_List_Table extends WP_List_Table {
 
 			$this->set_pagination_args( array(
 				'total_items' => $totalItems,
-				'per_page'    => $perPage
+				'per_page' => $perPage
 			) );
 		}
 	}
@@ -86,10 +86,10 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 *
 	 * @param string $which
 	 */
-	protected function bulk_actions($which = '') {
-		parent::bulk_actions($which);
+	protected function bulk_actions( $which = '' ) {
+		parent::bulk_actions( $which );
 
-		if($which === 'top') {
+		if ( $which === 'top' ) {
 			?>
 			<button type="submit" class="button-primary action manager-save" name="update_images">
 				<?php _e( "Save Changes", 'nggallery' ); ?>
@@ -102,7 +102,8 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 * Get the hidden columns from the screen options.
 	 */
 	public function get_hidden_columns() {
-		return (array) get_user_option( 'manage' . $this->screen->id . 'columnshidden' );;
+		return (array) get_user_option( 'manage' . $this->screen->id . 'columnshidden' );
+		;
 	}
 
 	/**
@@ -123,9 +124,9 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 */
 	protected function column_thumbnail( $item ) {
 		$out = '<a href="' . esc_url( add_query_arg( 'i', mt_rand(),
-				$item->imageURL ) ) . '" class="shutter" title="' . esc_attr( $item->filename ) . '">';
+			$item->imageURL ) ) . '" class="shutter" title="' . esc_attr( $item->filename ) . '">';
 		$out .= '<img class="thumb" src="' . esc_url( add_query_arg( 'i', mt_rand(),
-				$item->thumbURL ) ) . '" id="thumb' . $item->pid . '" /></a>';
+			$item->thumbURL ) ) . '" id="thumb' . $item->pid . '" /></a>';
 
 		return $out;
 	}
@@ -145,22 +146,29 @@ class NGG_Image_List_Table extends WP_List_Table {
 			</strong>
 		</a>
 		<br>
-		<span class="date"><?php echo $date ?></span>
-		<input type="text" class="datepicker" value="<?php echo $date ?>"/>
-		<span class="change"> <?php _e( 'Change Date', 'nggallery' ); ?></span>
-		<input type="hidden" class="rawdate" name="date[<?php echo $item->pid ?>]" value="<?php echo $item->imagedate ?>"/>
-		<?php if ( ! empty( $item->meta_data ) ) { ?>
-			<br><?php echo $item->meta_data['width'] ?> x <?php echo $item->meta_data['height'] ?><?php _e( 'pixel',
+		<span class="date">
+			<?php echo $date ?>
+		</span>
+		<input type="text" class="datepicker" value="<?php echo $date ?>" />
+		<span class="change">
+			<?php _e( 'Change Date', 'nggallery' ); ?>
+		</span>
+		<input type="hidden" class="rawdate" name="date[<?php echo $item->pid ?>]" value="<?php echo $item->imagedate ?>" />
+		<?php if ( ! empty ( $item->meta_data ) ) { ?>
+			<br>
+			<?php echo $item->meta_data['width'] ?> x
+			<?php echo $item->meta_data['height'] ?>
+			<?php _e( 'pixel',
 				'nggallery' ) ?>
 		<?php } ?>
 		<p>
 			<?php
-			$actions      = $this->get_row_actions( $item );
+			$actions = $this->get_row_actions( $item );
 			$action_count = count( $actions );
-			$i            = 0;
+			$i = 0;
 			echo '<div class="row-actions">';
 			foreach ( $actions as $action => $link ) {
-				++ $i;
+				++$i;
 				( $i == $action_count ) ? $sep = '' : $sep = ' | ';
 				echo "<span class='$action'>$link$sep</span>";
 			}
@@ -178,14 +186,14 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 * @return string
 	 */
 	protected function column_alt_title_desc( $item ) {
-		$img_alt_text    = nggGallery::suppress_injection( $item->alttext );
+		$img_alt_text = nggGallery::suppress_injection( $item->alttext );
 		$img_description = nggGallery::suppress_injection( $item->description );
 
 		$out = '<input placeholder="' . __( "Alt & title text",
-				'nggallery' ) . '" name="alttext[' . $item->pid . ']" type="text" style="width:95%; margin-bottom: 2px;" value="' . $img_alt_text . '"/>';
+			'nggallery' ) . '" name="alttext[' . $item->pid . ']" type="text" style="width:95%; margin-bottom: 2px;" value="' . $img_alt_text . '"/>';
 		$out .= '<br>';
 		$out .= '<textarea placeholder="' . __( "Description",
-				'nggallery' ) . '" name="description[' . $item->pid . ']" style="width:95%; margin: 1px;" rows="2">' . $img_description . '</textarea>';
+			'nggallery' ) . '" name="description[' . $item->pid . ']" style="width:95%; margin: 1px;" rows="2">' . $img_description . '</textarea>';
 
 		return $out;
 	}
@@ -194,18 +202,20 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 * Define what data to show on each column of the table
 	 *
 	 * @param  nggImage $item      Data
-	 * @param  String $column_name - Current column name
+	 * @param  string $column_name - Current column name
 	 *
-	 * @return Mixed
+	 * @return bool|string
 	 */
 	protected function column_default( $item, $column_name ) {
 		switch ( $column_name ) {
 			case 'id':
 				return '<input type="hidden" name="pid[]" value="' . $item->pid . '">' . $item->pid;
 			case 'tags':
-				$item->tags = wp_get_object_terms( $item->pid, 'ngg_tag', 'fields=names' );
-				if ( is_array( $item->tags ) ) {
-					$item->tags = implode( ', ', $item->tags );
+				$tags = wp_get_object_terms( $item->pid, 'ngg_tag', 'fields=names' );
+				if ( is_array( $tags ) ) {
+					$item->tags = implode( ', ', $tags );
+				} else {
+					$item->tags = $tags;
 				}
 
 				return '<textarea placeholder="' . __( "Separated by commas",
@@ -229,13 +239,13 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 */
 	public static function get_columns_static() {
 		$columns = array(
-			'cb'             => '<input type="checkbox" />',
-			'id'             => __( 'ID', 'nggallery' ),
-			'thumbnail'      => __( 'Thumbnail', 'nggallery' ),
-			'filename'       => __( 'Filename', 'nggallery' ),
+			'cb' => '<input type="checkbox" />',
+			'id' => __( 'ID', 'nggallery' ),
+			'thumbnail' => __( 'Thumbnail', 'nggallery' ),
+			'filename' => __( 'Filename', 'nggallery' ),
 			'alt_title_desc' => __( 'Alt & Title Text', 'nggallery' ) . '/' . __( 'Description', 'nggallery' ),
-			'tags'           => __( 'Tags', 'nggallery' ),
-			'exclude'        => __( 'Exclude', 'nggallery' )
+			'tags' => __( 'Tags', 'nggallery' ),
+			'exclude' => __( 'Exclude', 'nggallery' )
 		);
 
 		/**
@@ -261,32 +271,32 @@ class NGG_Image_List_Table extends WP_List_Table {
 	 */
 	private function get_row_actions( $item ) {
 
-		if(isset($_GET['paged'])) {
+		if ( isset ( $_GET['paged'] ) ) {
 			$paged = '&paged=' . $_GET['paged'];
 		} else {
 			$paged = '';
 		}
 
-		$url = $this->base . '&mode=image&gid=' .  $_GET['gid'] . $paged;
+		$url = $this->base . '&mode=image&gid=' . $_GET['gid'] . $paged;
 
 		$actions = array(
-			'view'         => '<a class="shutter" href="' . esc_url( $item->imageURL ) . '" title="' . esc_attr( sprintf( __( 'View "%s"' ),
-					sanitize_title( $item->filename ) ) ) . '">' . __( 'View', 'nggallery' ) . '</a>',
-			'meta'         => '<a class="ngg-dialog" data-action="show_meta" data-id="' . $item->pid . '" href="#" title="' . __( 'Show Meta data',
-					'nggallery' ) . '">' . __( 'Meta', 'nggallery' ) . '</a>',
+			'view' => '<a class="shutter" href="' . esc_url( $item->imageURL ) . '" title="' . esc_attr( sprintf( __( 'View "%s"' ),
+				sanitize_title( $item->filename ) ) ) . '">' . __( 'View', 'nggallery' ) . '</a>',
+			'meta' => '<a class="ngg-dialog" data-action="show_meta" data-id="' . $item->pid . '" href="#" title="' . __( 'Show Meta data',
+				'nggallery' ) . '">' . __( 'Meta', 'nggallery' ) . '</a>',
 			'custom_thumb' => '<a class="ngg-dialog" data-action="edit_thumb" data-id="' . $item->pid . '" href="#" title="' . __( 'Customize thumbnail',
-					'nggallery' ) . '">' . __( 'Edit thumb', 'nggallery' ) . '</a>',
-			'rotate'       => '<a class="ngg-dialog" data-action="rotate" data-id="' . $item->pid . '" href="#" title="' . __( 'Rotate',
-					'nggallery' ) . '">' . __( 'Rotate', 'nggallery' ) . '</a>',
+				'nggallery' ) . '">' . __( 'Edit thumb', 'nggallery' ) . '</a>',
+			'rotate' => '<a class="ngg-dialog" data-action="rotate" data-id="' . $item->pid . '" href="#" title="' . __( 'Rotate',
+				'nggallery' ) . '">' . __( 'Rotate', 'nggallery' ) . '</a>',
 		);
 		if ( file_exists( $item->imagePath . '_backup' ) ) {
 			$actions['recover'] = '<a class="confirm_recover" href="' . wp_nonce_url( $url . "&action=recover&pid=" . $item->pid, 'ngg_row_action' ) .
-			                      '" data-file="' . esc_attr($item->filename) . '">' .
-			                      __( 'Recover', 'nggallery' ) . '</a>';
+				'" data-file="' . esc_attr( $item->filename ) . '">' .
+				__( 'Recover', 'nggallery' ) . '</a>';
 		}
 		$actions['delete'] = '<a class="confirm_delete" href="' . wp_nonce_url( $url . "&action=delete&pid=" . $item->pid, 'ngg_row_action' ) .
-		                     '" class="delete column-delete" data-file="' . esc_attr($item->filename) . '">' .
-		                     __( 'Delete' ) . '</a>';
+			'" class="delete column-delete" data-file="' . esc_attr( $item->filename ) . '">' .
+			__( 'Delete' ) . '</a>';
 
 		$actions = apply_filters( 'ngg_manage_images_actions', $actions );
 
@@ -302,21 +312,21 @@ class NGG_Image_List_Table extends WP_List_Table {
 
 	protected function get_bulk_actions() {
 		return array(
-			'set_watermark'  => __( 'Set watermark', 'nggallery' ),
-			'new_thumbnail'  => __( 'Create new thumbnails', 'nggallery' ),
-			'resize_images'  => __( 'Resize images', 'nggallery' ),
-			'import_meta'    => __( 'Import metadata', 'nggallery' ),
+			'set_watermark' => __( 'Set watermark', 'nggallery' ),
+			'new_thumbnail' => __( 'Create new thumbnails', 'nggallery' ),
+			'resize_images' => __( 'Resize images', 'nggallery' ),
+			'import_meta' => __( 'Import metadata', 'nggallery' ),
 			'recover_images' => __( 'Recover from backup', 'nggallery' ),
-			'delete_images'  => __( 'Delete images', 'nggallery' ),
-			'rotate_cw'      => __( 'Rotate images clockwise', 'nggallery' ),
-			'rotate_ccw'     => __( 'Rotate images counter-clockwise', 'nggallery' ),
-			'copy_to'        => __( 'Copy to...', 'nggallery' ),
-			'move_to'        => __( 'Move to...', 'nggallery' ),
-			'add_tags'       => __( 'Add tags', 'nggallery' ),
-			'delete_tags'    => __( 'Delete tags', 'nggallery' ),
+			'delete_images' => __( 'Delete images', 'nggallery' ),
+			'rotate_cw' => __( 'Rotate images clockwise', 'nggallery' ),
+			'rotate_ccw' => __( 'Rotate images counter-clockwise', 'nggallery' ),
+			'copy_to' => __( 'Copy to...', 'nggallery' ),
+			'move_to' => __( 'Move to...', 'nggallery' ),
+			'add_tags' => __( 'Add tags', 'nggallery' ),
+			'delete_tags' => __( 'Delete tags', 'nggallery' ),
 			'overwrite_tags' => __( 'Overwrite tags', 'nggallery' ),
-			'set_title'      => __( 'Set alt & title text', 'nggallery' ),
-			'set_descr'      => __( 'Set description', 'nggallery' ),
+			'set_title' => __( 'Set alt & title text', 'nggallery' ),
+			'set_descr' => __( 'Set description', 'nggallery' ),
 		);
 	}
 }

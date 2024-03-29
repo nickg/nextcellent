@@ -1,6 +1,6 @@
 <?php
 
-include_once( NGGALLERY_ABSPATH . '/admin/interface-ngg-displayable.php' );
+include_once ( NGGALLERY_ABSPATH . '/admin/interface-ngg-displayable.php' );
 
 /**
  * Class NGG_Manager
@@ -18,14 +18,14 @@ abstract class NGG_Manager implements NGG_Displayable {
 		/**
 		 * Do a bulk action.
 		 */
-		if ( ( isset( $_POST['action'] ) || isset( $_POST['action2'] ) ) && isset ( $_POST['doaction'] ) ) {
+		if ( ( isset ( $_POST['action'] ) || isset ( $_POST['action2'] ) ) && isset ( $_POST['doaction'] ) ) {
 			$this->handle_bulk_actions();
 		}
 
 		/**
 		 * Do the operations with a dialog.
 		 */
-		if ( isset( $_POST['TB_bulkaction'] ) && isset( $_POST['TB_action'] ) ) {
+		if ( isset ( $_POST['TB_bulkaction'] ) && isset ( $_POST['TB_action'] ) ) {
 			$this->handle_dialog_actions();
 		}
 	}
@@ -54,16 +54,26 @@ abstract class NGG_Manager implements NGG_Displayable {
 				<table width="100%">
 					<tr valign="top">
 						<td>
-							<strong><?php _e( 'Resize Images to', 'nggallery' ); ?>:</strong>
+							<strong>
+								<?php _e( 'Resize Images to', 'nggallery' ); ?>:
+							</strong>
 						</td>
 						<td>
-							<label for="imgWidth"><?php _e( 'Width', 'nggallery' ) ?></label>
-							<input type="number" min="0" class="small-text" id="imgWidth" name="imgWidth" value="<?php echo $options['imgWidth']; ?>">
-							<label for="imgHeight"><?php _e( 'Height', 'nggallery' ) ?></label>
-							<input type="number" min="0" size="5" name="imgHeight" id="imgHeight" class="small-text" value="<?php echo $options['imgHeight']; ?>">
+							<label for="imgWidth">
+								<?php _e( 'Width', 'nggallery' ) ?>
+							</label>
+							<input type="number" min="0" class="small-text" id="imgWidth" name="imgWidth"
+								value="<?php echo $options['imgWidth']; ?>">
+							<label for="imgHeight">
+								<?php _e( 'Height', 'nggallery' ) ?>
+							</label>
+							<input type="number" min="0" size="5" name="imgHeight" id="imgHeight" class="small-text"
+								value="<?php echo $options['imgHeight']; ?>">
 
-							<p class="description"><?php _e( 'Width and height (in pixels). NextCellent Gallery will keep the ratio size.',
-									'nggallery' ) ?></p>
+							<p class="description">
+								<?php _e( 'Width and height (in pixels). NextCellent Gallery will keep the ratio size.',
+									'nggallery' ) ?>
+							</p>
 						</td>
 					</tr>
 				</table>
@@ -78,14 +88,24 @@ abstract class NGG_Manager implements NGG_Displayable {
 				<input type="hidden" name="TB_action" value="new_thumbnails">
 				<table width="100%">
 					<tr valign="top">
-						<th align="left"><?php _e( 'Size', 'nggallery' ) ?></th>
+						<th align="left">
+							<?php _e( 'Size', 'nggallery' ) ?>
+						</th>
 						<td>
-							<label for="thumbwidth"><?php _e( 'Width', 'nggallery' ) ?></label>
-							<input id="thumbwidth" class="small-text" type="number" min="0" name="thumbwidth" value="<?php echo $options['thumbwidth']; ?>">
-							<label for="thumbheight"><?php _e( 'Height', 'nggallery' ) ?></label>
-							<input id="thumbheight" class="small-text" type="number" step="1" min="0" name="thumbheight" value="<?php echo $options['thumbheight']; ?>">
+							<label for="thumbwidth">
+								<?php _e( 'Width', 'nggallery' ) ?>
+							</label>
+							<input id="thumbwidth" class="small-text" type="number" min="0" name="thumbwidth"
+								value="<?php echo $options['thumbwidth']; ?>">
+							<label for="thumbheight">
+								<?php _e( 'Height', 'nggallery' ) ?>
+							</label>
+							<input id="thumbheight" class="small-text" type="number" step="1" min="0" name="thumbheight"
+								value="<?php echo $options['thumbheight']; ?>">
 
-							<p class="description"><?php _e( 'These values are maximum values ', 'nggallery' ) ?></p>
+							<p class="description">
+								<?php _e( 'These values are maximum values ', 'nggallery' ) ?>
+							</p>
 						</td>
 					</tr>
 					<tr valign="top">
@@ -121,7 +141,7 @@ abstract class NGG_Manager implements NGG_Displayable {
 			<!-- /#entertags -->
 			<!-- #settext -->
 			<form id="settext_dialog" method="POST" accept-charset="utf-8">
-				<?php wp_nonce_field('ngg_thickbox_form') ?>
+				<?php wp_nonce_field( 'ngg_thickbox_form' ) ?>
 				<input type="hidden" class="TB_type" name="TB_type" value="">
 				<input type="hidden" id="settext_imagelist" name="TB_imagelist" value="">
 				<input type="hidden" id="settext_bulkaction" name="TB_bulkaction" value="">
@@ -147,8 +167,10 @@ abstract class NGG_Manager implements NGG_Displayable {
 					<label>
 						<?php _e( 'Select the destination gallery:', 'nggallery' ); ?><br>
 						<select id="dest_gid" name="dest_gid" style="width: 300px">
-							<option value="0" selected="selected"><?php _e( "Select or search for a gallery",
-									'nggallery' ); ?></option>
+							<option value="0" selected="selected">
+								<?php _e( "Select or search for a gallery",
+									'nggallery' ); ?>
+							</option>
 						</select>
 					</label>
 				</div>
@@ -166,13 +188,13 @@ abstract class NGG_Manager implements NGG_Displayable {
 	protected function print_scripts() {
 		?>
 		<script type="text/javascript">
-			jQuery(function() {
-				jQuery("[id^=doaction]").click(function(event) {
+			jQuery(function () {
+				jQuery("[id^=doaction]").click(function (event) {
 					return handleBulkActions(event);
 				});
 				jQuery("#dest_gid").nggAutocomplete({
 					type: 'gallery',
-					domain: "<?php echo home_url('index.php', is_ssl() ? 'https' : 'http'); ?>"
+					domain: "<?php echo home_url( 'index.php', is_ssl() ? 'https' : 'http' ); ?>"
 				});
 				if (jQuery("#page_type").val() === 'gallery') {
 					jQuery('.TB_type').val('gallery');
@@ -190,7 +212,7 @@ abstract class NGG_Manager implements NGG_Displayable {
 				var $selected = jQuery("input[name^=doaction]:checkbox:checked");
 
 				if ($selected.length < 1) {
-					alert('<?php echo esc_js(__('No images selected', 'nggallery')); ?>');
+					alert('<?php echo esc_js( __( 'No images selected', 'nggallery' ) ); ?>');
 					return false;
 				}
 
@@ -204,63 +226,63 @@ abstract class NGG_Manager implements NGG_Displayable {
 				 */
 				switch ($selector.val()) {
 					case "-1":
-						alert('<?php echo esc_js(__('No action selected.', 'nggallery')); ?>');
+						alert('<?php echo esc_js( __( 'No action selected.', 'nggallery' ) ); ?>');
 						break;
 					case 'resize_images':
-						bulkDialog('resize_images', '<?php echo esc_js(__('Resize images','nggallery')); ?>', $selected);
+						bulkDialog('resize_images', '<?php echo esc_js( __( 'Resize images', 'nggallery' ) ); ?>', $selected);
 						break;
 					case 'new_thumbnail':
-						bulkDialog('new_thumbnail', '<?php echo esc_js(__('Create new thumbnails','nggallery')); ?>', $selected);
+						bulkDialog('new_thumbnail', '<?php echo esc_js( __( 'Create new thumbnails', 'nggallery' ) ); ?>', $selected);
 						break;
 					case 'import_meta':
-						ajaxOperation(cp + 'import_metadata', '<?php echo esc_js(__('Import metadata','nggallery')); ?>', $selected, true);
+						ajaxOperation(cp + 'import_metadata', '<?php echo esc_js( __( 'Import metadata', 'nggallery' ) ); ?>', $selected, true);
 						break;
 					case 'recover_images':
-						ajaxOperation(cp + 'recover_image', '<?php echo esc_js(__('Recover from backup','nggallery')); ?>', $selected, true);
+						ajaxOperation(cp + 'recover_image', '<?php echo esc_js( __( 'Recover from backup', 'nggallery' ) ); ?>', $selected, true);
 						break;
 					case 'set_watermark':
-						ajaxOperation(cp + 'set_watermark', '<?php echo esc_js(__('Set watermark','nggallery')); ?>', $selected, true);
+						ajaxOperation(cp + 'set_watermark', '<?php echo esc_js( __( 'Set watermark', 'nggallery' ) ); ?>', $selected, true);
 						break;
 					case "copy_to":
 						set_TB_command('select_gallery', 'copy_to');
-						bulkDialog('select_gallery', '<?php echo esc_js(__('Copy image to...','nggallery')); ?>', $selected);
+						bulkDialog('select_gallery', '<?php echo esc_js( __( 'Copy image to...', 'nggallery' ) ); ?>', $selected);
 						break;
 					case "move_to":
 						set_TB_command('select_gallery', 'move_to');
-						bulkDialog('select_gallery', '<?php echo esc_js(__('Move image to...','nggallery')); ?>', $selected);
+						bulkDialog('select_gallery', '<?php echo esc_js( __( 'Move image to...', 'nggallery' ) ); ?>', $selected);
 						break;
 					case "add_tags":
 						set_TB_command('tags', 'add_tags');
-						bulkDialog('tags', '<?php echo esc_js(__('Add new tags','nggallery')); ?>', $selected);
+						bulkDialog('tags', '<?php echo esc_js( __( 'Add new tags', 'nggallery' ) ); ?>', $selected);
 						break;
 					case "delete_tags":
 						set_TB_command('tags', 'delete_tags');
-						bulkDialog('tags', '<?php echo esc_js(__('Delete tags','nggallery')); ?>', $selected);
+						bulkDialog('tags', '<?php echo esc_js( __( 'Delete tags', 'nggallery' ) ); ?>', $selected);
 						break;
 					case "overwrite_tags":
 						set_TB_command('tags', 'overwrite_tags');
-						bulkDialog('tags', '<?php echo esc_js(__('Overwrite','nggallery')); ?>', $selected);
+						bulkDialog('tags', '<?php echo esc_js( __( 'Overwrite', 'nggallery' ) ); ?>', $selected);
 						break;
 					case "set_title":
 						set_TB_command('settext', 'set_title');
-						bulkDialog('settext', '<?php echo esc_js(__('Set alt and title text','nggallery')); ?>', $selected);
+						bulkDialog('settext', '<?php echo esc_js( __( 'Set alt and title text', 'nggallery' ) ); ?>', $selected);
 						break;
 					case "set_descr":
 						set_TB_command('settext', 'set_descr');
-						bulkDialog('settext', '<?php echo esc_js(__('Set description','nggallery')); ?>', $selected);
+						bulkDialog('settext', '<?php echo esc_js( __( 'Set description', 'nggallery' ) ); ?>', $selected);
 						break;
 					case 'rotate_cw':
-						ajaxOperation('rotate_cw', '<?php echo esc_js(__('Rotate images','nggallery')); ?>', $selected);
+						ajaxOperation('rotate_cw', '<?php echo esc_js( __( 'Rotate images', 'nggallery' ) ); ?>', $selected);
 						break;
 					case 'rotate_ccw':
-						ajaxOperation('rotate_ccw', '<?php echo esc_js(__('Rotate images','nggallery')); ?>', $selected);
+						ajaxOperation('rotate_ccw', '<?php echo esc_js( __( 'Rotate images', 'nggallery' ) ); ?>', $selected);
 						break;
 					default:
 						console.log($selected);
-						var images = $selected.map(function() {
+						var images = $selected.map(function () {
 							return this.value;
 						}).get();
-						var message = '<?php echo sprintf(esc_js(__("You are about to start bulk edits for %s galleries\n\n 'Cancel' to stop, 'OK' to proceed.", 'nggallery' )), "' + images.length + '") ?>';
+						var message = '<?php echo sprintf( esc_js( __( "You are about to start bulk edits for %s galleries\n\n 'Cancel' to stop, 'OK' to proceed.", 'nggallery' ) ), "' + images.length + '" ) ?>';
 						return confirm(message);
 				}
 				return false;
@@ -272,12 +294,12 @@ abstract class NGG_Manager implements NGG_Displayable {
 
 			function ajaxOperation(command, title, $selected, warning) {
 
-				var images = $selected.map(function() {
+				var images = $selected.map(function () {
 					return this.value;
 				}).get();
 
 				if (warning) {
-					var message = '<?php echo sprintf(esc_js(__("You are about to start bulk edits for %s galleries\n\n 'Cancel' to stop, 'OK' to proceed.", 'nggallery' )), "' + images.length + '") ?>';
+					var message = '<?php echo sprintf( esc_js( __( "You are about to start bulk edits for %s galleries\n\n 'Cancel' to stop, 'OK' to proceed.", 'nggallery' ) ), "' + images.length + '" ) ?>';
 
 					if (!confirm(message)) {
 						return false;
@@ -297,7 +319,7 @@ abstract class NGG_Manager implements NGG_Displayable {
 
 			function bulkDialog(id, title, $selected) {
 				jQuery('#' + id + "_bulkaction").val(id);
-				jQuery('#' + id + "_imagelist").val($selected.map(function() {
+				jQuery('#' + id + "_imagelist").val($selected.map(function () {
 					return this.value;
 				}).get().join(','));
 				showDialog('#' + id + "_dialog", title);
@@ -306,7 +328,7 @@ abstract class NGG_Manager implements NGG_Displayable {
 			function showDialog(id, title, onSubmit) {
 
 				if (typeof onSubmit === 'undefined' || onSubmit === null) {
-					onSubmit = function(dialog) {
+					onSubmit = function (dialog) {
 						jQuery(dialog).submit();
 					}
 				}
@@ -316,23 +338,23 @@ abstract class NGG_Manager implements NGG_Displayable {
 					resizable: true,
 					modal: true,
 					title: title,
-					close: function() {
+					close: function () {
 						jQuery(this).dialog('destroy');
 					},
 					buttons: [
 						{
-							text: "<?php echo esc_js(__('Cancel','nggallery')); ?>",
+							text: "<?php echo esc_js( __( 'Cancel', 'nggallery' ) ); ?>",
 							'class': "button dialog-cancel",
 							'type': "reset",
-							click: function() {
+							click: function () {
 								jQuery(this).dialog('close');
 							}
 						},
 						{
-							text: "<?php echo esc_js(__('OK','nggallery')); ?>",
+							text: "<?php echo esc_js( __( 'OK', 'nggallery' ) ); ?>",
 							'class': "button-primary",
 							'type': "submit",
-							click: function() {
+							click: function () {
 								onSubmit(this);
 							}
 						}
@@ -366,21 +388,21 @@ abstract class NGG_Manager implements NGG_Displayable {
 		switch ( $_POST['TB_action'] ) {
 			case 'resize_images':
 				$data = array(
-					'width'     => (int) $_POST['imgWidth'],
-					'height'    => (int) $_POST['imgHeight']
+					'width' => (int) $_POST['imgWidth'],
+					'height' => (int) $_POST['imgHeight']
 				);
 				$command = 'resize_image';
-				$title   = __( 'Resize images', 'nggallery' );
+				$title = __( 'Resize images', 'nggallery' );
 				nggAdmin::do_ajax_operation( $command, $list, $title, $mode, $data );
 				return;
 			case 'new_thumbnails':
 				$data = array(
-					'width'     => (int) $_POST['thumbwidth'],
-					'height'    => (int) $_POST['thumbheight'],
-					'fix'       => isset( $_POST['thumb_fix'] ) ? true : false
+					'width' => (int) $_POST['thumbwidth'],
+					'height' => (int) $_POST['thumbheight'],
+					'fix' => isset ( $_POST['thumb_fix'] ) ? true : false
 				);
 				$command = 'create_thumbnail';
-				$title   = __( 'Create new thumbnails', 'nggallery' );
+				$title = __( 'Create new thumbnails', 'nggallery' );
 				nggAdmin::do_ajax_operation( $command, $list, $title, $mode, $data );
 				return;
 			case 'copy_to':
@@ -412,7 +434,7 @@ abstract class NGG_Manager implements NGG_Displayable {
 						$old_tags = wp_get_object_terms( $pic_id, 'ngg_tag', 'fields=names' );
 						// get the slugs, to vaoid  case sensitive problems
 						$slug_array = array_map( 'sanitize_title', $tag_list );
-						$old_tags   = array_map( 'sanitize_title', $old_tags );
+						$old_tags = array_map( 'sanitize_title', $old_tags );
 						// compare them and return the diff
 						$new_tags = array_diff( $old_tags, $slug_array );
 						wp_set_object_terms( $pic_id, $new_tags, 'ngg_tag' );
@@ -436,20 +458,20 @@ abstract class NGG_Manager implements NGG_Displayable {
 				$new_title = $_POST['text'];
 				if ( is_array( $list ) ) {
 					foreach ( $list as $pic_id ) {
-						nggdb::update_image($pic_id, false, false, false, $new_title);
+						nggdb::update_image( $pic_id, false, false, false, $new_title );
 					}
 				}
-				nggGallery::show_message( __('Image title updated', 'nggallery') );
+				nggGallery::show_message( __( 'Image title updated', 'nggallery' ) );
 
 				return;
 			case 'set_descr':
 				$new_descr = $_POST['text'];
 				if ( is_array( $list ) ) {
 					foreach ( $list as $pic_id ) {
-						nggdb::update_image($pic_id, false, false, $new_descr);
+						nggdb::update_image( $pic_id, false, false, $new_descr );
 					}
 				}
-				nggGallery::show_message( __('Image description updated', 'nggallery') );
+				nggGallery::show_message( __( 'Image description updated', 'nggallery' ) );
 
 				return;
 			default:
@@ -471,9 +493,10 @@ abstract class NGG_Manager implements NGG_Displayable {
 		global $wpdb, $ngg;
 
 		$action = array_filter( array( $_POST['action'] => true,
-									   $_POST['action2'] => true,
-									   "-1" => false ));
-		$action = count( $action ) === 1 ? key( $action ) : '';
+			$_POST['action2'] => true,
+			"-1" => false ) );
+
+		$action = count( $action ) === 1 ? array_key_first( $action ) : '';
 		$action = sanitize_text_field( $action );
 
 		if ( $action === "delete_gallery" ) {
