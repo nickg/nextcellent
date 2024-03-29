@@ -133,8 +133,8 @@ class nggXMLRPC{
 		require_once ( 'meta.php' );			// meta data import
 
 		$blog_ID	= (int) $args[0];
-		$username	= $wpdb->escape($args[1]);
-		$password	= $wpdb->escape($args[2]);
+		$username	= esc_sql($args[1]);
+		$password	= esc_sql($args[2]);
 		$data		= $args[3];
 
 		$name = $data['name'];
@@ -854,7 +854,7 @@ class nggXMLRPC{
 		global $wpdb;
 
 		if (!is_array($array)) {
-			return($wpdb->escape($array));
+			return(esc_sql($array));
 		} else {
 			foreach ( (array) $array as $k => $v ) {
 				if ( is_array($v) ) {
@@ -862,7 +862,7 @@ class nggXMLRPC{
 				} else if ( is_object($v) ) {
 					//skip
 				} else {
-					$array[$k] = $wpdb->escape($v);
+					$array[$k] = esc_sql($v);
 				}
 			}
 		}

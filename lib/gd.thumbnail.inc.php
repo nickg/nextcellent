@@ -389,14 +389,14 @@ class ngg_Thumbnail {
      * @param int $Height
      */
     function resizeFix($Width = 0, $Height = 0, $deprecated = 3) {
-        $this->newWidth = $Width;
-        $this->newHeight = $Height;
+        $newWidth = $Width;
+        $newHeight = $Height;
 
 		if(function_exists("ImageCreateTrueColor")) {
-			$this->workingImage = ImageCreateTrueColor($this->newWidth,$this->newHeight);
+			$this->workingImage = ImageCreateTrueColor($newWidth,$newHeight);
 		}
 		else {
-			$this->workingImage = ImageCreate($this->newWidth,$this->newHeight);
+			$this->workingImage = ImageCreate($newWidth,$newHeight);
 		}
 
 //		ImageCopyResampled(
@@ -407,16 +407,16 @@ class ngg_Thumbnail {
 			0,
 			0,
 			0,
-			$this->newWidth,
-			$this->newHeight,
+			$newWidth,
+			$newHeight,
 			$this->currentDimensions['width'],
 			$this->currentDimensions['height']
 		);
 
 		$this->oldImage = $this->workingImage;
 		$this->newImage = $this->workingImage;
-		$this->currentDimensions['width'] = $this->newWidth;
-		$this->currentDimensions['height'] = $this->newHeight;
+		$this->currentDimensions['width'] = $newWidth;
+		$this->currentDimensions['height'] = $newHeight;
 	}
 
 

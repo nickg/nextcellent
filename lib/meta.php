@@ -150,7 +150,7 @@ class nggMeta{
                 if (!empty($exif['Make']))
                     $meta['make'] = $exif['Make'];
                 if (!empty($exif['ImageDescription']))
-                    $meta['title'] = utf8_encode($exif['ImageDescription']);
+                    $meta['title'] = mb_convert_encoding($exif['ImageDescription'], 'UTF-8');
                 if (!empty($exif['Orientation']))
                     $meta['Orientation'] = $exif['Orientation'];
             }
@@ -160,15 +160,15 @@ class nggMeta{
                 $exif = $this->exif_data['WINXP'];
 
                 if (!empty($exif['Title']) && empty($meta['title']))
-                    $meta['title'] = utf8_encode($exif['Title']);
+                    $meta['title'] = mb_convert_encoding($exif['Title'], 'UTF-8');
                 if (!empty($exif['Author']))
-                    $meta['author'] = utf8_encode($exif['Author']);
+                    $meta['author'] = mb_convert_encoding($exif['Author'], 'UTF-8');
                 if (!empty($exif['Keywords']))
-                    $meta['tags'] = utf8_encode($exif['Keywords']);
+                    $meta['tags'] = mb_convert_encoding($exif['Keywords'], 'UTF-8');
                 if (!empty($exif['Subject']))
-                    $meta['subject'] = utf8_encode($exif['Subject']);
+                    $meta['subject'] = mb_convert_encoding($exif['Subject'], 'UTF-8');
                 if (!empty($exif['Comments']))
-                    $meta['caption'] = utf8_encode($exif['Comments']);
+                    $meta['caption'] = mb_convert_encoding($exif['Comments'], 'UTF-8');
             }
 
             $this->exif_array = $meta;
@@ -245,7 +245,7 @@ class nggMeta{
             $meta = array();
             foreach ($iptcTags as $key => $value) {
                 if (isset ( $this->iptc_data[$key] ) )
-                    $meta[$value] = trim(utf8_encode(implode(", ", $this->iptc_data[$key])));
+                    $meta[$value] = trim(mb_convert_encoding(implode(", ", $this->iptc_data[$key]), 'UTF-8'));
 
             }
             $this->iptc_array = $meta;

@@ -53,12 +53,16 @@ if (!class_exists('nggLoader')) {
      */
     class nggLoader {
 
-		var $version = '1.9.35';
-		var $dbversion   = '1.8.3';
-		var $minimum_WP  = '4.0';
-		var $options     = '';
-		var $manage_page;
-		var $add_PHP5_notice = false;
+		public string $version = '1.9.35';
+		private string $dbversion = '1.8.3';
+		private string $minimum_WP = '4.0';
+		public array $options = [];
+		private bool $add_PHP5_notice = false;
+		private bool $add_PHP7_notice = false;
+		public string $memory_limit = '0';
+		private string $plugin_name = '';
+		private string $translator = '';
+		private NGG_Admin_Launcher $nggAdminPanel;
 
         /**
          * class constructor
@@ -634,9 +638,15 @@ if (!class_exists('nggLoader')) {
         function activate() {
 			global $wpdb;
 			//Starting from version 1.8.0 it's works only with PHP5.2
-			if (version_compare(PHP_VERSION, '5.2.0', '<')) {
-					deactivate_plugins($this->plugin_name); // Deactivate ourself
-					wp_die("Sorry, but you can't run this plugin, it requires PHP 5.2 or higher.");
+			// if ( version_compare( PHP_VERSION, '5.2.0', '<' ) ) {
+					// 	deactivate_plugins( $this->plugin_name ); // Deactivate ourself
+					// 	wp_die( "Sorry, but you can't run this plugin, it requires PHP 5.2 or higher." );
+			// 	return;
+			// }
+
+			if ( version_compare( PHP_VERSION, '7.3.0', '<' ) ) {
+				deactivate_plugins( $this->plugin_name ); // Deactivate ourself
+				wp_die( "Sorry, but you can't run this plugin, it requires PHP 7.3 or higher." );
 					return;
 			}
 
@@ -710,13 +720,21 @@ if (!class_exists('nggLoader')) {
 				$option->response[ $this->plugin_name ]->package = '';
 
 				//Add a notice message
-				if ($this->add_PHP5_notice == false){
+				// if ( $this->add_PHP5_notice == false ) {
+				// 	add_action( "in_plugin_update_message-$this->plugin_name",
+				// 		function () {
+				// 			echo '<br /><span style="color:red">Please update to PHP5.2 as soon as possible, the plugin is not tested under PHP4 anymore</span>';
+				// 		}
+				// 	);
+				// 	$this->add_PHP5_notice = true;
+				// }
+				if ( $this->add_PHP7_notice == false ) {
 					add_action( "in_plugin_update_message-$this->plugin_name",
 						function () {
-							echo '<br /><span style="color:red">Please update to PHP5.2 as soon as possible, the plugin is not tested under PHP4 anymore</span>';
+							echo '<br /><span style="color:red">Please update to PHP7.3 as soon as possible, the plugin is not tested under PHP5 anymore</span>';
 						}
 					);
-					$this->add_PHP5_notice = true;
+					$this->add_PHP7_notice = true;
 				}
 			}
 			return $option;
