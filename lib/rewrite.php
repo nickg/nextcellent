@@ -19,7 +19,7 @@ class nggRewrite {
 	 * @since 1.8.0
 	 * @var string
 	 */
-	var $slug = 'nggallery';
+	private string $slug = 'nggallery';
     
 	/**
 	 * Contain the main rewrite structure
@@ -27,7 +27,12 @@ class nggRewrite {
 	 * @since 1.8.3
 	 * @var array
 	 */    
-    var $ngg_rules = '';
+    private array $ngg_rules = [];
+
+	/**
+	 * Contains ngg options
+	 */
+	private array $options = [];
     
 	/**
 	* Constructor

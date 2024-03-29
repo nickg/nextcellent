@@ -333,7 +333,7 @@ class nggAdmin{
 				// just look for images with the correct extension
                 if ( isset($info['extension']) )
 				    if ( in_array( strtolower($info['extension']), $ext) )
-					   $files[] = utf8_encode( $file );
+					   $files[] = mb_convert_encoding( $file, 'UTF-8' );
 			}		
 			closedir( $handle ); 
 		} 

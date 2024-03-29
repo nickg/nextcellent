@@ -9,37 +9,69 @@ if ( !class_exists('nggImage') ) :
 class nggImage{
 	
 	/**** Public variables ****/	
-	var $errmsg			=	'';			// Error message to display, if any
-	var $error			=	FALSE; 		// Error state
-	var $imageURL		=	'';			// URL Path to the image
-	var $thumbURL		=	'';			// URL Path to the thumbnail
-	var $imagePath		=	'';			// Server Path to the image
-	var $thumbPath		=	'';			// Server Path to the thumbnail
-	var $href			=	'';			// A href link code
+	public string $name = '';			// Gallery/image and album name
+	private string $errmsg = '';			// Error message to display, if any
+	public bool $error = FALSE; 		// Error state
+	public string $imageURL = '';			// URL Path to the image
+	public string $thumbURL = '';			// URL Path to the thumbnail
+	public string $imagePath = '';			// Server Path to the image
+	public string $thumbPath = '';			// Server Path to the thumbnail
+	public string $href = '';			// A href link code
 	
 	// TODO: remove thumbPrefix and thumbFolder (constants)
-	var $thumbPrefix	=	'thumbs_';	// FolderPrefix to the thumbnail
-	var $thumbFolder	=	'/thumbs/';	// Foldername to the thumbnail
+	private string $thumbPrefix = 'thumbs_';	// FolderPrefix to the thumbnail
+	private string $thumbFolder = '/thumbs/';	// Foldername to the thumbnail
 	
 	/**** Image Data ****/
-	var $galleryid		=	0;			// Gallery ID
-	var $pid			=	0;			// Image ID	
-	var $filename		=	'';			// Image filename
-	var $description	=	'';			// Image description	
-	var $alttext		=	'';			// Image alttext	
-	var $imagedate		=	'';			// Image date/time	
-	var $exclude		=	'';			// Image exclude
-	var $thumbcode		=	'';			// Image effect code
+	public int $galleryid = 0;			// Gallery ID
+	public int $pid = 0;			// Image ID	
+	public string $filename = '';			// Image filename
+	public string $description = '';			// Image description	
+	public string $alttext = '';			// Image alttext	
+	public string $imagedate = '';			// Image date/time	
+	public string $exclude = '';			// Image exclude
+	public string $thumbcode = '';			// Image effect code
+	public string $tags = '';
+	public $image_slug;
+	public string $imageHTML;
+	public string $thumbHTML;
+	public bool $hidden;
+	public string $style;
+	public string $pidlink;
+	public string $url;
+	public string $thumbnailURL;
+	public string $size;
+	public string $caption;
+	public string $href_link;
+	public string $previous_image_link;
+	public string $next_image_link;
+	public int $previous_pid;
+	public string $next_pid;
+	public int $number;
+	public int $total;
+	public string $linktitle;
+	public string $anchor;
 
 	/**** Gallery Data ****/
-	var $name			=	'';			// Gallery name
-	var $path			=	'';			// Gallery path	
-	var $title			=	'';			// Gallery title
-	var $pageid			=	0;			// Gallery page ID
-	var $previewpic		=	0;			// Gallery preview pic		
+	public string $path = '';			// Gallery path	
+	public string $title = '';			// Gallery title
+	public int $pageid = 0;			// Gallery page ID
+	public int $previewpic = 0;			// Gallery preview pic		
+	public int $gid;
+	public $galdesc;
+	public string $abspath;
+	public string $permalink = '';
+	public $post_id;
+	public $sortorder;
+	public $meta_data;
+	public $slug;
+	public int $author;
 
-	var $permalink		=	'';
-	var $tags			=   '';
+	/**** Album Data ****/
+	public array $gallery_ids;
+	public int $id;
+	public string $albumdesc;
+
 		
 	/**
 	 * Constructor
