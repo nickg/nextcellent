@@ -60,7 +60,7 @@ if ( ! class_exists( 'nggLoader' ) ) {
 		public array $options = [];
 		private bool $add_PHP5_notice = false;
 		private bool $add_PHP7_notice = false;
-		private string $memory_limit = '0';
+		public string $memory_limit = '0';
 		private string $plugin_name = '';
 		private string $translator = '';
 		private NGG_Admin_Launcher $nggAdminPanel;
