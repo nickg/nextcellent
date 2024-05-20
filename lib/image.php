@@ -17,21 +17,21 @@ class nggImage{
 	public string $imagePath = '';			// Server Path to the image
 	public string $thumbPath = '';			// Server Path to the thumbnail
 	public string $href = '';			// A href link code
-	
+
 	// TODO: remove thumbPrefix and thumbFolder (constants)
 	private string $thumbPrefix = 'thumbs_';	// FolderPrefix to the thumbnail
 	private string $thumbFolder = '/thumbs/';	// Foldername to the thumbnail
-	
+
 	/**** Image Data ****/
 	public int $galleryid = 0;			// Gallery ID
-	public int $pid = 0;			// Image ID	
+	public int $pid = 0;			// Image ID
 	public string $filename = '';			// Image filename
-	public string $description = '';			// Image description	
-	public string $alttext = '';			// Image alttext	
-	public string $imagedate = '';			// Image date/time	
+	public string $description = '';			// Image description
+	public string $alttext = '';			// Image alttext
+	public string $imagedate = '';			// Image date/time
 	public string $exclude = '';			// Image exclude
 	public string $thumbcode = '';			// Image effect code
-	public string $tags = '';
+	public string|array $tags;
 	public $image_slug;
 	public string $imageHTML;
 	public string $thumbHTML;
