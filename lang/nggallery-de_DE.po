@@ -587,14 +587,6 @@ msgstr "in den Papierkorb geschoben."
 msgid "&#8220;%s&#8221; has failed to upload due to an error"
 msgstr "&#8220;%s&#8221; konnte auf Grund eines Fehler nicht geladen werden."
 
-#: ../admin/admin.php:414
-#, fuzzy
-msgid ""
-"<a href=\"http://www.wpgetready.com\" target=\"_blank\">Introduction</a>"
-msgstr ""
-"<a href=\"http://www.curlyrob.de/curlyrob/?page_id=129\" target=\"_blank"
-"\">Einführung</a>"
-
 #: ../admin/admin.php:417
 #, fuzzy
 msgid ""
@@ -1905,13 +1897,6 @@ msgstr ""
 #: ../admin/overview.php:820
 msgid "Install"
 msgstr "Installieren"
-
-#: ../admin/overview.php:834
-#, php-format
-msgid ""
-"This plugin is a branch from NGG stable version 1.9.13.<br> Developed & "
-"maintained by <a href=\"%s\" target=\"_blank\">WPGetReady.com</a>"
-msgstr ""
 
 #: ../admin/overview.php:840
 msgid "Please contribute it giving this plugin a good rate! Thank you!!!"

@@ -2049,15 +2049,6 @@ msgstr ""
 msgid "Install"
 msgstr "Telepítés"
 
-#: ../admin/overview.php:784
-#, php-format
-msgid ""
-"This plugin is a branch from NGG stable version 1.9.13.<br> Developed & "
-"maintained by <a href=\"%s\" target=\"_blank\">WPGetReady.com</a>"
-msgstr ""
-"Ez a bővítmény az NGG 1.9.13 stabil verzió leágazása.<br>Fejleszti és karban "
-"tartja a <a href=\"%s\" target=\"_blank\">WPGetReady.com</a>."
-
 #: ../admin/overview.php:790
 msgid "You can contribute by giving this plugin a good rating! Thanks a lot!"
 msgstr "Segíthet azzal, ha jó minősítést ad a bővítménynek. Köszi!"
@@ -4076,11 +4067,6 @@ msgstr "Nem létező album: ID=%s"
 #: ../xml/media-rss.php:115
 msgid "Invalid MediaRSS command"
 msgstr "Hibás a Média RSS parancs"
-
-#~ msgid ""
-#~ "<a href=\"http://www.wpgetready.com\" target=\"_blank\">Introduction</a>"
-#~ msgstr ""
-#~ "<a href=\"http://www.wpgetready.com\" target=\"_blank\">Bevezetés</a>"
 
 #~ msgid ""
 #~ "<a href=\"http://www.nextgen-gallery.com/languages\" target=\"_blank"

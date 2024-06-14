@@ -1862,12 +1862,6 @@ msgstr ""
 msgid "This plugin is a branch from NextGen Gallery, version 1.9.13."
 msgstr ""
 
-#: ../admin/class-ngg-overview.php:747
-msgid ""
-"Developed & maintained by <a href=\"http://www.wpgetready.com\" target="
-"\"_blank\">WPGetReady.com</a>"
-msgstr ""
-
 #: ../admin/class-ngg-overview.php:753
 msgid "You can contribute by giving this plugin a good rating! Thanks a lot!"
 msgstr ""

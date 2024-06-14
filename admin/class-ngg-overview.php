@@ -18,10 +18,6 @@ class NGG_Overview implements NGG_Displayable {
 			$this,
 			'like_this'
 		), 'ngg_overview', 'side', 'core' );
-		add_meta_box( 'dashboard_primary', __( 'Latest News', 'nggallery' ), array(
-			$this,
-			'js_loading'
-		), 'ngg_overview', 'normal', 'core' );
 		if ( ! is_multisite() || is_super_admin() ) {
 			add_meta_box( 'ngg_plugin_check', __( 'Plugin Check', 'nggallery' ), array(
 				$this,
@@ -31,10 +27,6 @@ class NGG_Overview implements NGG_Displayable {
 				$this,
 				'ngg_overview_server'
 			), 'ngg_overview', 'side', 'core' );
-			add_meta_box( 'dashboard_plugins', __( 'Related plugins', 'nggallery' ), array(
-				$this,
-				'js_loading'
-			), 'ngg_overview', 'normal', 'core' );
 		}
 		add_meta_box( 'dashboard_contributors', __( 'Contributors', 'nggallery' ), array( $this, 'contributors' ), 'ngg_overview', 'normal', 'core' );
 	}
@@ -120,58 +112,6 @@ class NGG_Overview implements NGG_Displayable {
 	 */
 	static public function ngg_overview_news() {
 
-		$rss = fetch_feed( 'http://wpgetready.com/feed/' );
-
-		if ( is_wp_error( $rss ) ) {
-			echo '<p>' . sprintf( __( 'The newsfeed could not be loaded.  Check the <a href="%s">front page</a> to check for updates.', 'nggallery' ), 'http://www.wpgetready.com/' ) . '</p>';
-		} else {
-			echo '<div class="rss-widget">';
-			foreach ( $rss->get_items( 0, 3 ) as $item ) {
-				$link = $item->get_link();
-				while ( stristr( $link, 'http' ) != $link ) {
-					$link = substr( $link, 1 );
-				}
-				$link  = esc_url( strip_tags( $link ) );
-				$title = esc_attr( strip_tags( $item->get_title() ) );
-				if ( empty( $title ) ) {
-					$title = __( 'Untitled' );
-				}
-
-				$desc = str_replace( array(
-					"\n",
-					"\r"
-				), ' ', esc_attr( strip_tags( @html_entity_decode( $item->get_description(), ENT_QUOTES, get_option( 'blog_charset' ) ) ) ) );
-				$desc = wp_html_excerpt( $desc, 360 );
-
-				// Append ellipsis. Change existing [...] to [&hellip;].
-				if ( '[...]' == substr( $desc, - 5 ) ) {
-					$desc = substr( $desc, 0, - 5 ) . '[&hellip;]';
-				} elseif ( '[&hellip;]' != substr( $desc, - 10 ) ) {
-					$desc .= ' [&hellip;]';
-				}
-
-				$desc = esc_html( $desc );
-
-				$date = $item->get_date();
-				$diff = '';
-
-				if ( $date ) {
-
-					$diff = human_time_diff( strtotime( $date, time() ) );
-
-					if ( $date_stamp = strtotime( $date ) ) {
-						$date = ' <span class="rss-date">' . date_i18n( get_option( 'date_format' ), $date_stamp ) . '</span>';
-					} else {
-						$date = '';
-					}
-				}
-				echo '<ul><li>';
-				echo '<a class="rsswidget" target="_blank" href="' . $link . '" >' . $title . '</a>';
-				echo '<span class="rss-date">' . $date . '</span>';
-				echo '<div class="rssSummary"><strong>' . $diff . '</strong> - ' . $desc . '</div></li></ul>';
-			}
-			echo '</div>';
-		}
 	}
 
 	/**
@@ -744,20 +684,10 @@ class NGG_Overview implements NGG_Displayable {
 		?>
 		<p>
 			<?php _e( 'This plugin is a branch from NextGen Gallery, version 1.9.13.', 'nggallery' ); ?><br>
-			<?php _e( 'Developed & maintained by <a href="http://www.wpgetready.com" target="_blank">WPGetReady.com</a>', 'nggallery' ); ?>
+		  <a href="https://github.com/nickg/nextcellent" target="_blank">
+		    https://github.com/nickg/nextcellent
+		  </a>
 		</p>
-		<table>
-			<tr>
-				<td><span class="dashicons dashicons-star-filled"></span></td>
-				<td><a href="http://www.wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/" target="_blank">
-					<?php _e( 'You can contribute by giving this plugin a good rating! Thanks a lot!', 'nggallery' ); ?></a>
-				</td>
-			</tr>
-			<tr>
-				<td><span class="dashicons dashicons-admin-home"></span></td>
-				<td><a href="http://www.wpgetready.com" target="_blank"><?php _e( "Visit the plugin homepage", 'nggallery' ); ?></a></td>
-			</tr>
-		</table>
 	<?php
 	}
 
@@ -785,42 +715,6 @@ class NGG_Overview implements NGG_Displayable {
 			var ajaxWidgets, ajaxPopulateWidgets;
 
 			jQuery(document).ready(function ($) {
-				// These widgets are sometimes populated via ajax
-				ajaxWidgets = [
-					'dashboard_primary',
-					'dashboard_plugins'
-				];
-
-				ajaxPopulateWidgets = function (el) {
-					show = function (id, i) {
-						var p, e = $('#' + id + ' div.inside:visible').find('.widget-loading');
-						if (e.length) {
-							p = e.parent();
-							setTimeout(function () {
-								p.load('admin-ajax.php?action=ngg_dashboard&jax=' + id, '', function () {
-									p.hide().slideDown('normal', function () {
-										$(this).css('display', '');
-										if ('dashboard_plugins' == id && $.isFunction(tb_init))
-											tb_init('#dashboard_plugins a.thickbox');
-									});
-								});
-							}, i * 500);
-						}
-					};
-					if (el) {
-						el = el.toString();
-						if ($.inArray(el, ajaxWidgets) != -1)
-							show(el, 0);
-					} else {
-						$.each(ajaxWidgets, function (i) {
-							show(this, i);
-						});
-					}
-				};
-				ajaxPopulateWidgets();
-			});
-
-			jQuery(document).ready(function ($) {
 				// postboxes setup
 				postboxes.add_postbox_toggles('ngg-overview');
 			});
@@ -835,8 +729,7 @@ class NGG_Overview implements NGG_Displayable {
 			<p><?php _e( 'This plugin is made possible by the great work of a lot of people:', 'nggallery' ); ?></p>
 			<ul class="ngg-list">
 				<li><?php _e('Alex Rabe and Photocrati for the original NextGen Gallery', 'nggallery')?></li>
-				<li><a href="http://wpgetready.com/"
-				       target="_blank">WPGetReady</a> <?php _e( 'for maintaining this fork of NextGen Gallery', 'nggallery' ); ?>
+				<li>WPGetReady <?php _e( 'for maintaining this fork of NextGen Gallery', 'nggallery' ); ?>
 				</li>
 				<li><a href="https://plus.google.com/u/0/+NikoStrijbol/posts" target="_blank">Niko
 						Strijbol</a> <?php _e( 'for helping maintain the plugin', 'nggallery' ); ?></li>

@@ -559,10 +559,6 @@ msgstr "siirretty roskakoriin."
 msgid "&#8220;%s&#8221; has failed to upload due to an error"
 msgstr "&#8220;%s&#8221; ei latautunut virheen takia"
 
-#: ../admin/admin.php:414
-msgid "<a href=\"http://www.wpgetready.com\" target=\"_blank\">Introduction</a>"
-msgstr "<a href=\"http://www.wpgetready.com\" target=\"_blank\">Johdanto</a>"
-
 #: ../admin/admin.php:417
 msgid "<a href=\"http://www.nextgen-gallery.com/languages\" target=\"_blank\">Languages</a>"
 msgstr "<a href=\"http://www.nextgen-gallery.com/languages\" target=\"_blank\">Kielet</a>"

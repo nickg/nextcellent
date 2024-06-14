@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: NextCellent Gallery
-Plugin URI: http://www.wpgetready.com/nextcellent-gallery
+Plugin URI: https://github.com/nickg/nextcellent
 Description: A Photo Gallery for WordPress providing NextGEN legacy compatibility from version 1.9.13
 Author: WPGReady, Niknetniko based on Alex Rabe & PhotoCrati work.
-Author URI: http://www.wpgetready.com
+Author URI: https://github.com/nickg
 Version: 1.9.35
 
 Copyright (c) 2007-2011 by Alex Rabe & NextGEN DEV-Team
@@ -549,7 +549,7 @@ if (!class_exists('nggLoader')) {
 			} elseif ($this->options['activateCSS']) {
 				//convert the path to an URL
 				$replace = content_url();
-				$path = str_replace( NGG_CONTENT_DIR , $replace, $this->options['CSSfile']); 
+				$path = str_replace( NGG_CONTENT_DIR , $replace, $this->options['CSSfile']);
 				wp_enqueue_style('NextGEN', $path, false, '1.0.0', 'screen');
 			}
 

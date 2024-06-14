@@ -2104,14 +2104,6 @@ msgstr "<strong>Compatibel</strong> met jouw versie van WordPress"
 msgid "This plugin is a branch from NextGen Gallery, version 1.9.13."
 msgstr "Deze plug-in is een aanpassing van NextGen Gallery, versie 1.9.13."
 
-#: ../admin/class-ngg-overview.php:747
-msgid ""
-"Developed & maintained by <a href=\"http://www.wpgetready.com\" target="
-"\"_blank\">WPGetReady.com</a>"
-msgstr ""
-"Deze plug-in is een tak van de NGG stabiele versie 1.9.13.<br> Ontwikkeld en "
-"onderhouden door <a href=\"%s\" target=\"_blank\">WPGetReady.com</a>"
-
 #: ../admin/class-ngg-overview.php:753
 msgid "You can contribute by giving this plugin a good rating! Thanks a lot!"
 msgstr "Je kan helpen door deze plug-in een goede rating te geven! Bedankt!"

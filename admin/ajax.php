@@ -288,17 +288,6 @@ function ngg_ajax_dashboard() {
     @header( 'Content-Type: ' . get_option( 'html_type' ) . '; charset=' . get_option( 'blog_charset' ) );
     @header( 'X-Content-Type-Options: nosniff' );
 
-    switch ( $_GET['jax'] ) {
-
-    case 'dashboard_primary' :
-    	NGG_Overview::ngg_overview_news();
-    	break;
-
-    case 'dashboard_plugins' :
-    	NGG_Overview::ngg_related_plugins();
-    	break;
-
-    }
     die();
 }
 
@@ -512,7 +501,7 @@ add_action('wp_ajax_image_manager', 'ngg_ajax_image_manager');
 /**
  * handle image operations. This is the correct solution to avoid using wp-load.php issue on NGG 1.9.31
  *
- * @see 
+ * @see
  * @since 1.9.33
  * @return depend on the operation
  */
